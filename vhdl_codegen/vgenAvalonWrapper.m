@@ -32,10 +32,5 @@ function vgenAvalonWrapper(infile, outfile, verbose, print_output)
 
 % TODO: add default values to input arguments
 
-% make sure the current folder is on the python search path
-if count(py.sys.path,'') == 0
-    insert(py.sys.path,int32(0),'');
-end
-
 % call the python file that autogens the vhdl code
 py.vgenAvalonWrapper.main(infile, outfile, verbose, print_output)

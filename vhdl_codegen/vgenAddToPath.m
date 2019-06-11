@@ -14,4 +14,10 @@
 % Bozeman, MT 59718
 % support@flatearthinc.com
 
+
 addpath('.')
+
+% make sure the current folder is on the python search path
+if count(py.sys.path,pwd) == 0
+    insert(py.sys.path,int32(0),pwd);
+end
