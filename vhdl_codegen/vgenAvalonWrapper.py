@@ -6,7 +6,8 @@ import re
 from textwrap import dedent
 from math import ceil, log2
 
-# TODO: add comment header to file
+# TODO: add comment header to this file
+# TODO: make generated VHDL match the coding style guideline
 # TODO: error checking
 
 indent = '  '
