@@ -4,7 +4,7 @@ import json
 import argparse
 import re
 from textwrap import dedent
-from math import ceil, log2
+from math import ceil, log
 
 # TODO: add comment header to this file
 # TODO: make generated VHDL match the coding style guideline
@@ -58,7 +58,7 @@ def create_entity(name, sink_enabled, sink, source_enabled, source,
     # avalon memorymapped bus
     if registers_enabled:
         entity += indent*2 + "s1_address : in std_logic_vector({} downto 0);\
-            \n".format(ceil(log2(len(registers))) - 1)
+            \n".format(int(ceil(log(len(registers),2)) - 1))
 
         entity += indent*2 + "s1_read : in std_logic;\n"
         entity += indent*2 + "s1_readdata : out std_logic_vector(31 downto 0);\n"
@@ -137,7 +137,7 @@ def create_architecture(name, registers_enabled, registers, register_defaults,
     architecture += create_component_instantiation(component_instantiation)
 
     if registers_enabled:
-        addr_width = ceil(log2(len(registers)))
+        addr_width = int(ceil(log(len(registers),2)))
 
         # create read process
         architecture += indent + "bus_read : process(clk)\n" + indent + "begin\n"
@@ -242,11 +242,11 @@ def parseargs():
         help="json file containing the interface and register specifications")
     parser.add_argument('-v', '--verbose', action='store_true',
         help="verbose output")
-    parser.add_argument('-p', '--print', action='store_true',
+    parser.add_argument('-p', '--print', action='store_true', dest='print_output',
         help="print out the generated vhdl code")
     parser.add_argument('outfile', help="the name of the output vhdl file")
     args = parser.parse_args()
-    return (args.infile, args.outfile, args.verbose, args.print)
+    return (args.infile, args.outfile, args.verbose, args.print_output)
 
 
 # TODO: make a default filename?
