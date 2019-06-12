@@ -37,14 +37,14 @@ def create_entity(name, sink_enabled, sink, source_enabled, source,
 
     entity = ENTITY_BEGIN
 
-    entity += indent*2 + "clk : in std_logic;\n"
-    entity += indent*2 + "reset : in std_logic;\n"
+    entity += indent*2 + "clk".ljust(26, ' ') + ": in std_logic;\n"
+    entity += indent*2 + "reset".ljust(26, ' ') + ": in std_logic;\n"
 
     # avalon streaming sink
     if sink_enabled:
         for signal in sink:
             datatype = convert_data_type(signal['data_type'])
-            entity += indent*2 + signal['name'] + " : in " + datatype + "; --" +\
+            entity += indent*2 + (signal['name']).ljust(26, ' ') + ": in " + datatype + "; --" +\
                 signal['data_type'] + '\n'
 
 
@@ -94,7 +94,8 @@ def create_entity(name, sink_enabled, sink, source_enabled, source,
 
 # TODO: add support for instantiating the entity being wrapped by this avalon code
 def create_architecture(name, registers_enabled, registers, register_defaults,
-    component_declaration, component_instantiation):
+    component_declaration, component_instantiation,
+    sink_flag, sink_signal, mm_flag, mm_signal, ci_flag, ci_signal, source_flag, source_signal, co_flag, co_signal):
     global indent
 
     ARCH_BEGIN = "architecture {}_avalon_arch of {}_avalon is\n\n".format(name, name)
@@ -129,12 +130,16 @@ def create_architecture(name, registers_enabled, registers, register_defaults,
 
 
     architecture += "\n"
-    architecture += create_component_declaration(component_declaration)
+    architecture += create_component_declaration2(ts_system=None, entity=name, sink_flag=sink_flag, sink_signal=sink_signal,
+                            mm_flag=mm_flag, mm_signal=mm_signal, ci_flag=ci_flag, ci_signal=ci_signal,
+                            source_flag=source_flag, source_signal=source_signal, co_flag=co_flag, co_signal=co_signal)
 
     # begin architecture
     architecture += "\nbegin\n\n"
 
-    architecture += create_component_instantiation(component_instantiation)
+    architecture += create_component_instantiation2(ts_system=None, entity=name, sink_flag=sink_flag, sink_signal=sink_signal,
+                            mm_flag=mm_flag, mm_signal=mm_signal, ci_flag=ci_flag, ci_signal=ci_signal,
+                            source_flag=source_flag, source_signal=source_signal, co_flag=co_flag, co_signal=co_signal)
 
     if registers_enabled:
         addr_width = int(ceil(log(len(registers),2)))
@@ -165,8 +170,7 @@ def create_architecture(name, registers_enabled, registers, register_defaults,
         #     if 'default_value' in register:
         #         default = convert_default_value(register['default_value'])
         #         architecture += default + ";\n"
-        for register in register_defaults:
-            architecture += indent*3 + register + "\n"
+        architecture += create_component_reg_defaults(mm_flag=mm_flag, mm_signal=mm_signal)
 
         architecture += indent*2 + "elsif rising_edge(clk) and " + \
             "s1_write = '1' then\n"
@@ -220,6 +224,105 @@ def convert_data_type(intype):
 
     return outtype
 
+def int_to_bitstring(integer, tot_bits, frac_bits):
+    bit_string = bin(integer)[2:]
+    bit_string += ("0" * frac_bits)
+    bit_string = bit_string.rjust(tot_bits, "0")
+    return bit_string
+
+
+def create_component_declaration2(ts_system, entity, sink_flag, sink_signal, mm_flag, mm_signal, ci_flag, ci_signal, source_flag, source_signal, co_flag, co_signal):
+    global indent
+    decl = "ComPoNeNt " + entity + "_src_" + entity + "\n"
+    decl += indent * 1 + "PORT(\n"
+    decl += indent * 2 + "clk : IN std_logic; -- comment to fill in\n"
+    decl += indent * 2 + "clk_enable : IN std_logic;\n"
+    decl += indent * 2 + "reset : IN std_logic;\n"
+    if sink_flag == 1:
+        for i in range(len(sink_signal)):
+            name = sink_signal[i]["name"]
+            data_type = sink_signal[i]["data_type"]
+            decl += (indent * 2 + name).ljust(30, ' ') + ": IN " + convert_data_type(data_type) + ";\n"
+    if mm_flag == 1:
+        for i in range(len(mm_signal)):
+            name = mm_signal[i]["name"]
+            data_type = mm_signal[i]["data_type"]
+            decl += (indent * 2 + name).ljust(30, ' ') + ": IN " + convert_data_type(data_type) + ";\n"
+    if ci_flag == 1:
+        for i in range(len(ci_signal)):
+            name = ci_signal[i]["name"]
+            data_type = ci_signal[i]["data_type"]
+            decl += (indent * 2 + name).ljust(30, ' ') + ": IN " + convert_data_type(data_type) + ";\n"
+    decl += (indent * 2 + "ce_out").ljust(30, ' ') + ": OUT std_logic;\n"
+    if source_flag == 1:
+        for i in range(len(source_signal)):
+            name = source_signal[i]["name"]
+            data_type = source_signal[i]["data_type"]
+            decl += (indent * 2 + name).ljust(30, ' ') + ": OUT " + convert_data_type(data_type) + ";\n"
+    if co_flag == 1:
+        for i in range(len(co_signal)):
+            name = co_signal[i]["name"]
+            data_type = co_signal[i]["data_type"]
+            decl += (indent * 2 + name).ljust(30, ' ') + ": OUT " + convert_data_type(data_type) + ";\n"
+    last_semi_ind = decl.rfind(";")
+    decl = decl[:last_semi_ind] + decl[last_semi_ind + 1:]
+    decl += indent * 1 + ");\n"
+    return decl
+
+def create_component_instantiation2(ts_system, entity, sink_flag, sink_signal, mm_flag, mm_signal, ci_flag, ci_signal, source_flag, source_signal, co_flag, co_signal):
+    global indent
+    inst = "u_" + entity + "_src_" + entity + " : " + entity + "_src_" + entity + "\n"
+    inst += indent * 1 + "PORT MAP(\n"
+    inst += (indent * 2 + "clk").ljust(30, ' ') + "=>  clk,\n"
+    inst += (indent * 2 + "clk_enable").ljust(30, ' ') + "=>  '1',\n"
+    inst += (indent * 2 + "reset").ljust(30, ' ') + "=>  reset,\n"
+    if sink_flag == 1:
+        for i in range(len(sink_signal)):
+            name = sink_signal[i]["name"]
+            inst += (indent * 2 + name).ljust(30, ' ') + "=>  " + name + ",\n"
+    if mm_flag == 1:
+        for i in range(len(mm_signal)):
+            name = mm_signal[i]["name"]
+            name2 = name.replace("Register_Control_", "")
+            inst += (indent * 2 + name).ljust(30, ' ') + "=>  " + name2 + ",\n"
+    if ci_flag == 1:
+        for i in range(len(ci_signal)):
+            name = ci_signal[i]["name"]
+            name2 = name.replace("Export_", "")
+            inst += (indent * 2 + name).ljust(30, ' ') + "=>  " + name2 + ",\n"
+    if source_flag == 1:
+        for i in range(len(source_signal)):
+            name = source_signal[i]["name"]
+            inst += (indent * 2 + name).ljust(30, ' ') + "=>  " + name + ",\n"
+    if co_flag == 1:
+        for i in range(len(co_signal)):
+            name = co_signal[i]["name"]
+            name2 = name.replace("Export_", "")
+            inst += (indent * 2 + name).ljust(30, ' ') + "=>  " + name2 + ",\n"
+    last_comma_ind = inst.rfind(',')
+    inst = inst[:last_comma_ind] + inst[last_comma_ind + 1:]
+    inst += indent * 1 + ");\n"
+    return inst
+
+
+def create_component_reg_defaults(mm_flag, mm_signal):
+    global indent
+    if mm_flag == 1:
+        for i in range(len(mm_signal)):
+            name = mm_signal[i]["name"]
+            name2 = name.replace("Register_Control_", "")
+            def_val = mm_signal[i]["default_value"]
+            # todo: generalize this to work for more than just int to fp32_16 type
+            if i == 0 or i == 1:
+                bitstring = int_to_bitstring(def_val, 32, 16)
+            else:
+                bitstring = int_to_bitstring(def_val, 32, 0)
+            if i == 0:
+                defs = indent * 3 + name2 + "  <=  \"" + bitstring + "\";\n"
+            else:
+                defs += indent * 3 + name2 + "  <=  \"" + bitstring + "\";\n"
+    return defs
+
 
 def convert_default_value(value):
     if isinstance(value, int):
@@ -269,12 +372,16 @@ def main(infile, outfile, verbose, print_output):
     component_declaration = avalon['vhdl']['component_declaration']
     component_instantiation = avalon['vhdl']['component_instantiation']
 
+
     vhdl_out = create_library()
-    vhdl_out += create_entity(name, sink_enabled, sink, source_enabled, source,
-        registers_enabled, registers, conduit_out_enabled, conduit_out,
-        conduit_in_enabled, conduit_in)
+    vhdl_out += create_entity(name=name, sink_enabled=sink_enabled, sink=sink, source_enabled=source_enabled, source=source,
+        registers_enabled=registers_enabled, registers=registers, conduit_out_enabled=conduit_out_enabled,
+        conduit_out=conduit_out, conduit_in_enabled=conduit_in_enabled, conduit_in=conduit_in)
     vhdl_out += create_architecture(name, registers_enabled, registers,
-        register_defaults, component_declaration, component_instantiation)
+        register_defaults, component_declaration, component_instantiation, sink_flag=sink_enabled, sink_signal=sink,
+        source_flag=source_enabled, source_signal=source, mm_flag=registers_enabled, mm_signal=registers,
+        co_flag=conduit_out_enabled, co_signal=conduit_out, ci_flag=conduit_in_enabled,
+        ci_signal=conduit_in)
 
     if print_output:
         print(vhdl_out)
