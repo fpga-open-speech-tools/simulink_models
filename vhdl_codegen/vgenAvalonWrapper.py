@@ -1,13 +1,33 @@
 #!/usr/bin/python
 
+# @file vgenAvalonWrapper.py
+#
+#     Python function to auto generate vhdl code given json generated from a corresponding matlab func.
+#
+#     @author Trevor Vannoy, Aaron Koenigsberg
+#     @date 2019
+#     @copyright 2019 Flat Earth Inc
+#
+#     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+#     INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
+#     PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE
+#     FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+#     ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+#
+#     Trevor Vannoy
+#     Flat Earth Inc
+#     985 Technology Blvd
+#     Bozeman, MT 59718
+#     support@flatearthinc.com
+
 import json
 import argparse
 import re
 from textwrap import dedent
 from math import ceil, log
 
-# TODO: add comment header to this file
-# TODO: make generated VHDL match the coding style guideline
+# TODO: add comment header to this file                       (done, may be worth expanding)
+# TODO: make generated VHDL match the coding style guideline  (done?)
 # TODO: error checking
 
 indent = '  '
