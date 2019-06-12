@@ -1,0 +1,89 @@
+{
+    "avalon_memorymapped_flag": 1, 
+    "conduit_input_flag": 0, 
+    "avalon_source_flag": 1, 
+    "clock": {
+        "frequency": 49152000.0, 
+        "period": 2.0345052083333333e-08
+    }, 
+    "entity": "DataPlane", 
+    "conduit_output": {
+        "signal": [
+            {
+                "name": "Export_LED", 
+                "data_type": "uint8"
+            }
+        ]
+    }, 
+    "avalon_sink_flag": 1, 
+    "avalon_sink": {
+        "signal": [
+            {
+                "name": "Avalon_Sink_Valid", 
+                "data_type": "boolean"
+            }, 
+            {
+                "name": "Avalon_Sink_Data", 
+                "data_type": "sfix32_En28"
+            }, 
+            {
+                "name": "Avalon_Sink_Channel", 
+                "data_type": "ufix2"
+            }, 
+            {
+                "name": "Avalon_Sink_Error", 
+                "data_type": "ufix2"
+            }
+        ]
+    }, 
+    "conduit_output_flag": 1, 
+    "conduit_input": [], 
+    "avalon_memorymapped": {
+        "register": [
+            {
+                "reg_num": 1, 
+                "default_value": 1, 
+                "name": "Register_Control_Left_Gain", 
+                "data_type": "ufix32_En16"
+            }, 
+            {
+                "reg_num": 2, 
+                "default_value": 1, 
+                "name": "Register_Control_Right_Gain", 
+                "data_type": "ufix32_En16"
+            }, 
+            {
+                "reg_num": 3, 
+                "default_value": 9600, 
+                "name": "Register_Control_Reset_Threshold", 
+                "data_type": "uint32"
+            }, 
+            {
+                "reg_num": 4, 
+                "default_value": 2400, 
+                "name": "Register_Control_LED_Persistence", 
+                "data_type": "uint32"
+            }
+        ]
+    }, 
+    "avalon_source": {
+        "signal": [
+            {
+                "name": "Avalon_Source_Valid", 
+                "data_type": "boolean"
+            }, 
+            {
+                "name": "Avalon_Source_Data", 
+                "data_type": "sfix32_En28"
+            }, 
+            {
+                "name": "Avalon_Source_Channel", 
+                "data_type": "ufix2"
+            }, 
+            {
+                "name": "Avalon_Source_Error", 
+                "data_type": "ufix2"
+            }
+        ]
+    }
+}
