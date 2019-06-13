@@ -50,6 +50,7 @@ ComPoNeNt DataPlane_src_DataPlane
     Avalon_Source_Error       : out std_logic_vector(1   downto 0);         -- ufix2
     Export_LED                : out std_logic_vector(7   downto 0)          -- uint8
   );
+end component
 
 begin
 

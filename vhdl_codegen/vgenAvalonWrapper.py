@@ -273,6 +273,7 @@ def create_component_declaration2(clock, entity, sink_flag, sink_signal, mm_flag
     last_semi_ind = decl.rfind(";")
     decl = decl[:last_semi_ind] + ' ' + decl[last_semi_ind + 1:]
     decl += indent * 1 + ");\n"
+    decl += "end component\n"
     return decl
 
 def create_component_instantiation2(ts_system, entity, sink_flag, sink_signal, mm_flag, mm_signal, ci_flag, ci_signal, source_flag, source_signal, co_flag, co_signal):
