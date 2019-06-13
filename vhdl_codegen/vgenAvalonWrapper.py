@@ -193,6 +193,8 @@ def create_architecture(name, registers_enabled, registers, register_defaults,
         #         default = convert_default_value(register['default_value'])
         #         architecture += default + ";\n"
         #architecture += create_component_reg_defaults(mm_flag=mm_flag, mm_signal=mm_signal)
+        for reg in register_defaults:
+            architecture += indent * 3 + reg + "\n"
 
         architecture += indent*2 + "elsif rising_edge(clk) and " + \
             "s1_write = '1' then\n"
