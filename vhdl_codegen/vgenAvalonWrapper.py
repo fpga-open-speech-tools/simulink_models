@@ -114,7 +114,7 @@ def create_entity(name, sink_enabled, sink, source_enabled, source,
 
 # TODO: add support for instantiating the entity being wrapped by this avalon code
 def create_architecture(name, registers_enabled, registers, register_defaults,
-    component_declaration, component_instantiation,
+    component_declaration, component_instantiation, clock,
     sink_flag, sink_signal, mm_flag, mm_signal, ci_flag, ci_signal, source_flag, source_signal, co_flag, co_signal):
     global indent
 
@@ -144,20 +144,22 @@ def create_architecture(name, registers_enabled, registers, register_defaults,
             #         register['data_type'] + "\n"
             # else:
             #     architecture += ";\n"
+        #architecture += create_component_reg_defaults(mm_flag=mm_flag, mm_signal=mm_signal)
+        register_defaults = create_component_reg_defaults(mm_flag, mm_signal)
         for register in register_defaults:
             architecture += indent + "signal " + register.replace('<=',
                 ': std_logic_vector(31  downto 0) :=') + "\n"
 
 
     architecture += "\n"
-    architecture += create_component_declaration2(ts_system=None, entity=name, sink_flag=sink_flag, sink_signal=sink_signal,
+    architecture += create_component_declaration2(clock=clock, entity=name, sink_flag=sink_flag, sink_signal=sink_signal,
                             mm_flag=mm_flag, mm_signal=mm_signal, ci_flag=ci_flag, ci_signal=ci_signal,
                             source_flag=source_flag, source_signal=source_signal, co_flag=co_flag, co_signal=co_signal)
 
     # begin architecture
     architecture += "\nbegin\n\n"
 
-    architecture += create_component_instantiation2(ts_system=None, entity=name, sink_flag=sink_flag, sink_signal=sink_signal,
+    architecture += create_component_instantiation2(ts_system=clock, entity=name, sink_flag=sink_flag, sink_signal=sink_signal,
                             mm_flag=mm_flag, mm_signal=mm_signal, ci_flag=ci_flag, ci_signal=ci_signal,
                             source_flag=source_flag, source_signal=source_signal, co_flag=co_flag, co_signal=co_signal)
 
@@ -190,7 +192,7 @@ def create_architecture(name, registers_enabled, registers, register_defaults,
         #     if 'default_value' in register:
         #         default = convert_default_value(register['default_value'])
         #         architecture += default + ";\n"
-        architecture += create_component_reg_defaults(mm_flag=mm_flag, mm_signal=mm_signal)
+        #architecture += create_component_reg_defaults(mm_flag=mm_flag, mm_signal=mm_signal)
 
         architecture += indent*2 + "elsif rising_edge(clk) and " + \
             "s1_write = '1' then\n"
@@ -209,26 +211,6 @@ def create_architecture(name, registers_enabled, registers, register_defaults,
 
     return architecture
 
-def create_component_declaration(component_declaration):
-    # NOTE: this might be expanded if I generate the VHDL in this script
-    # instead of generating it from matlab like is currently being done;
-    # thus I'm creating this function for future use
-    global indent
-    vhdl = ''
-    for line in component_declaration:
-        vhdl += indent + line + "\n"
-    return vhdl
-
-def create_component_instantiation(component_instantiation):
-    # NOTE: this might be expanded if I generate the VHDL in this script
-    # instead of generating it from matlab like is currently being done;
-    # thus I'm creating this function for future use
-    global indent
-    vhdl = ''
-    for line in component_instantiation:
-        vhdl += indent + line + "\n"
-    return vhdl
-
 def convert_data_type(intype):
     # TODO: add support for more data types (e.g. integer, signed, unsigned)?
     if intype in {'boolean', 'ufix1'}:
@@ -245,17 +227,19 @@ def convert_data_type(intype):
     return outtype
 
 def int_to_bitstring(integer, tot_bits, frac_bits):
+    if not (isinstance(integer, int) or integer.is_integer()):
+        print("Default value must be an integer. Must manually modify vhdl")
     bit_string = bin(integer)[2:]
     bit_string += ("0" * frac_bits)
     bit_string = bit_string.rjust(tot_bits, "0")
     return bit_string
 
 
-def create_component_declaration2(ts_system, entity, sink_flag, sink_signal, mm_flag, mm_signal, ci_flag, ci_signal, source_flag, source_signal, co_flag, co_signal):
+def create_component_declaration2(clock, entity, sink_flag, sink_signal, mm_flag, mm_signal, ci_flag, ci_signal, source_flag, source_signal, co_flag, co_signal):
     global indent
     decl = "ComPoNeNt " + entity + "_src_" + entity + "\n"
     decl += indent * 1 + "port(\n"
-    decl += indent * 2 + "clk".ljust(26, ' ') + ": in  std_logic; -- comment to fill in\n"
+    decl += indent * 2 + "clk".ljust(26, ' ') + ": in  std_logic; -- clk_freq = " + str(clock['frequency']) + " Hz, period = " + str(clock['period']) + "\n"
     decl += indent * 2 + "clk_enable".ljust(26, ' ') + ": in  std_logic;\n"
     decl += indent * 2 + "reset".ljust(26, ' ') + ": in  std_logic;\n"
     if sink_flag == 1:
@@ -332,6 +316,7 @@ def create_component_instantiation2(ts_system, entity, sink_flag, sink_signal, m
 
 def create_component_reg_defaults(mm_flag, mm_signal):
     global indent
+    reg_defs = []
     if mm_flag == 1:
         for i in range(len(mm_signal)):
             name = mm_signal[i]["name"]
@@ -343,10 +328,10 @@ def create_component_reg_defaults(mm_flag, mm_signal):
             else:
                 bitstring = int_to_bitstring(def_val, 32, 0)
             if i == 0:
-                defs = indent * 3 + name2.ljust(24, ' ') + "  <=  \"" + bitstring + "\";\n"
+                reg_defs.append(name2.ljust(24, ' ') + "  <=  \"" + bitstring + "\";")
             else:
-                defs += indent * 3 + name2.ljust(24, ' ') + "  <=  \"" + bitstring + "\";\n"
-    return defs
+                reg_defs.append(name2.ljust(24, ' ') + "  <=  \"" + bitstring + "\";")
+    return reg_defs
 
 
 def convert_default_value(value):
@@ -393,9 +378,10 @@ def main(infile, outfile, verbose, print_output):
     conduit_in = avalon['conduit_input']['signal'] if conduit_in_enabled else None
     conduit_out_enabled = avalon['conduit_output_flag']
     conduit_out = avalon['conduit_output']['signal'] if conduit_out_enabled else None
-    register_defaults = avalon['vhdl']['register_defaults']
-    component_declaration = avalon['vhdl']['component_declaration']
-    component_instantiation = avalon['vhdl']['component_instantiation']
+    register_defaults = None#avalon['vhdl']['register_defaults']
+    component_declaration = None#avalon['vhdl']['component_declaration']
+    component_instantiation = None#avalon['vhdl']['component_instantiation']
+    clock = {'frequency': 1, 'period': .1}#avalon['clock']
 
 
     vhdl_out = create_library()
@@ -403,7 +389,7 @@ def main(infile, outfile, verbose, print_output):
         registers_enabled=registers_enabled, registers=registers, conduit_out_enabled=conduit_out_enabled,
         conduit_out=conduit_out, conduit_in_enabled=conduit_in_enabled, conduit_in=conduit_in)
     vhdl_out += create_architecture(name, registers_enabled, registers,
-        register_defaults, component_declaration, component_instantiation, sink_flag=sink_enabled, sink_signal=sink,
+        register_defaults, component_declaration, component_instantiation, clock=clock, sink_flag=sink_enabled, sink_signal=sink,
         source_flag=source_enabled, source_signal=source, mm_flag=registers_enabled, mm_signal=registers,
         co_flag=conduit_out_enabled, co_signal=conduit_out, ci_flag=conduit_in_enabled,
         ci_signal=conduit_in)
