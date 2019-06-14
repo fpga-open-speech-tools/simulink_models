@@ -1,0 +1,5 @@
+vlib work
+vcom  DataPlane_src_Left_Channel_Processing.vhd
+vcom  DataPlane_src_Right_Channel_Processing.vhd
+vcom  DataPlane_src_Avalon_Data_Processing.vhd
+vcom  DataPlane_src_DataPlane.vhd

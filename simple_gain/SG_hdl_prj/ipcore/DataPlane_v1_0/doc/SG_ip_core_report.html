@@ -1,0 +1,426 @@
+<html>
+<head>
+<title>IP Core Generation Report for SG</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<style type="text/css">
+table {
+	width: 100%;
+	border: 1px solid black;
+}
+
+div {
+	line-heigh: 90%;
+}
+
+h2.title {
+	color: #000066;
+	font-weight: bold;
+}
+
+h3.sectionHeading {
+	color: #000066;
+	font-weight: bold;
+}
+
+td.distinctCellColor {
+	background-color: #eeeeff;
+}
+
+td.summaryTableSndColOddRow {
+	background-color: #eeeeff;
+	text-align: right;
+}
+
+td.summaryTableSndColEvenRow {
+	text-align: right;
+}
+
+thead.reportTableHeader {
+	background-color: #eeeeee;
+	font-weight: bold;
+}
+
+</style>
+
+</head>
+<body>
+<h2 class="title">IP Core Generation Report for SG</h2>
+<div>
+<h3 class="sectionHeading">Summary</h3>
+<table>
+<tbody>
+<tr>
+<td class="distinctCellColor">IP core name
+</td>
+<td class="summaryTableSndColOddRow">DataPlane
+</td>
+</tr>
+<tr>
+<td>IP core version
+</td>
+<td class="summaryTableSndColEvenRow">1.0
+</td>
+</tr>
+<tr>
+<td class="distinctCellColor">IP core folder
+</td>
+<td class="summaryTableSndColOddRow"><a href="matlab:uiopen('SG_hdl_prj\ipcore\DataPlane_v1_0\*.*')">SG_hdl_prj\ipcore\DataPlane_v1_0</a>
+</td>
+</tr>
+<tr>
+<td>Target platform
+</td>
+<td class="summaryTableSndColEvenRow">Generic Altera Platform
+</td>
+</tr>
+<tr>
+<td class="distinctCellColor">Target tool
+</td>
+<td class="summaryTableSndColOddRow">Altera QUARTUS II
+</td>
+</tr>
+<tr>
+<td>Target language
+</td>
+<td class="summaryTableSndColEvenRow">VHDL
+</td>
+</tr>
+<tr>
+<td class="distinctCellColor">Model
+</td>
+<td class="summaryTableSndColOddRow"><a class="code2model" id="code2model" href="matlab:Simulink.ID.hilite('SG')">SG</a>
+</td>
+</tr>
+<tr>
+<td>Model version
+</td>
+<td class="summaryTableSndColEvenRow">1.57
+</td>
+</tr>
+<tr>
+<td class="distinctCellColor">HDL Coder version
+</td>
+<td class="summaryTableSndColOddRow">3.14
+</td>
+</tr>
+<tr>
+<td>IP core generated on
+</td>
+<td class="summaryTableSndColEvenRow">13-Jun-2019 13:16:15
+</td>
+</tr>
+<tr>
+<td class="distinctCellColor">IP core generated for
+</td>
+<td class="summaryTableSndColOddRow"><a class="code2model" id="code2model" href="matlab:Simulink.ID.hilite('SG:233')">DataPlane</a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div>
+<h3 class="sectionHeading">Target Interface Configuration</h3>
+You chose the following target interface configuration for 
+<a class="code2model" id="code2model" href="matlab:Simulink.ID.hilite('SG')">SG</a>
+:
+<br/><br/>
+Processor/FPGA synchronization mode: 
+<b>Free running</b>
+<br/><br/>
+Target platform interface table:
+<br/>
+<table>
+<thead class="reportTableHeader">
+<tr>
+<td>Port Name
+</td>
+<td>Port Type
+</td>
+<td>Data Type
+</td>
+<td>Target Platform Interfaces
+</td>
+<td>Bit Range / Address / FPGA Pin
+</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="code2model" id="code2model" href="matlab:Simulink.ID.hilite('SG:235')">Avalon_Sink_Valid</a>
+</td>
+<td>Inport
+</td>
+<td>boolean
+</td>
+<td>External Port
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td class="distinctCellColor"><a class="code2model" id="code2model" href="matlab:Simulink.ID.hilite('SG:234')">Avalon_Sink_Data</a>
+</td>
+<td class="distinctCellColor">Inport
+</td>
+<td class="distinctCellColor">sfix32_En28
+</td>
+<td class="distinctCellColor">External Port
+</td>
+<td class="distinctCellColor">
+</td>
+</tr>
+<tr>
+<td><a class="code2model" id="code2model" href="matlab:Simulink.ID.hilite('SG:236')">Avalon_Sink_Channel</a>
+</td>
+<td>Inport
+</td>
+<td>ufix2
+</td>
+<td>External Port
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td class="distinctCellColor"><a class="code2model" id="code2model" href="matlab:Simulink.ID.hilite('SG:237')">Avalon_Sink_Error</a>
+</td>
+<td class="distinctCellColor">Inport
+</td>
+<td class="distinctCellColor">ufix2
+</td>
+<td class="distinctCellColor">External Port
+</td>
+<td class="distinctCellColor">
+</td>
+</tr>
+<tr>
+<td><a class="code2model" id="code2model" href="matlab:Simulink.ID.hilite('SG:1023')">Register_Control_Left_Gain</a>
+</td>
+<td>Inport
+</td>
+<td>sfix32_En28
+</td>
+<td>External Port
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td class="distinctCellColor"><a class="code2model" id="code2model" href="matlab:Simulink.ID.hilite('SG:1024')">Register_Control_Right_Gain</a>
+</td>
+<td class="distinctCellColor">Inport
+</td>
+<td class="distinctCellColor">sfix32_En28
+</td>
+<td class="distinctCellColor">External Port
+</td>
+<td class="distinctCellColor">
+</td>
+</tr>
+<tr>
+<td><a class="code2model" id="code2model" href="matlab:Simulink.ID.hilite('SG:412')">Avalon_Source_Valid</a>
+</td>
+<td>Outport
+</td>
+<td>boolean
+</td>
+<td>External Port
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td class="distinctCellColor"><a class="code2model" id="code2model" href="matlab:Simulink.ID.hilite('SG:411')">Avalon_Source_Data</a>
+</td>
+<td class="distinctCellColor">Outport
+</td>
+<td class="distinctCellColor">sfix32_En28
+</td>
+<td class="distinctCellColor">External Port
+</td>
+<td class="distinctCellColor">
+</td>
+</tr>
+<tr>
+<td><a class="code2model" id="code2model" href="matlab:Simulink.ID.hilite('SG:413')">Avalon_Source_Channel</a>
+</td>
+<td>Outport
+</td>
+<td>ufix2
+</td>
+<td>External Port
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td class="distinctCellColor"><a class="code2model" id="code2model" href="matlab:Simulink.ID.hilite('SG:414')">Avalon_Source_Error</a>
+</td>
+<td class="distinctCellColor">Outport
+</td>
+<td class="distinctCellColor">ufix2
+</td>
+<td class="distinctCellColor">External Port
+</td>
+<td class="distinctCellColor">
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div>
+<h3 class="sectionHeading">Register Address Mapping</h3>
+The following AXI4 bus accessible registers were generated for this IP core:
+<br/><br/>
+<table>
+<thead class="reportTableHeader">
+<tr>
+<td>Register Name
+</td>
+<td>Address Offset
+</td>
+<td>Description
+</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IPCore_Reset
+</td>
+<td>0x0
+</td>
+<td>write 0x1 to bit 0 to reset IP core
+</td>
+</tr>
+<tr>
+<td class="distinctCellColor">IPCore_Enable
+</td>
+<td class="distinctCellColor">0x4
+</td>
+<td class="distinctCellColor">enabled (by default) when bit 0 is 0x1
+</td>
+</tr>
+<tr>
+<td>IPCore_Timestamp
+</td>
+<td>0x8
+</td>
+<td>contains unique IP timestamp (yymmddHHMM): 1906131316
+</td>
+</tr>
+</tbody>
+</table>
+<br/>
+The AXI4 slave write register readback is OFF for the IP core.
+<br/>
+The register address mapping is also in the following C header file for you to use when programming the processor:
+<br/>
+<a href="matlab:edit('SG_hdl_prj\ipcore\DataPlane_v1_0\include\DataPlane_addr.h')">include\DataPlane_addr.h</a>
+<br/>
+The IP core name is appended to the register names to avoid name conflicts.
+</div>
+<div>
+<h3 class="sectionHeading">IP Core User Guide</h3>
+<b>Theory of Operation</b>
+<br/><br/>
+This IP core is designed to be connected to an embedded processor with an 
+<b>AXI4 interface. </b>
+The processor acts as master, and the IP core acts as slave. By accessing the generated registers via the AXI4 interface, the processor can control the IP core, and read and write data from and to the IP core. 
+<br/><br/>
+For example, to reset the IP core, write 0x1 to the bit 0 of IPCore_Reset register. To enable or disable the IP core, write 0x1 or 0x0 to the IPCore_Enable register. To access the data ports of the MATLAB/Simulink algorithm, read or write to the associated data registers.
+<br/><br/>
+<img src="doc_arch_axi4.jpg"/>
+<br/><br/>
+This IP core also support the 
+<b>External Port </b>
+interface. To connect the external ports to the FPGA external IO pins, add FPGA pin assignment constraints in the Altera Qsys environment.
+<br/><br/>
+<b>Processor/FPGA Synchronization</b>
+<br/><br/>
+The 
+<b>Free running </b>
+mode means there is no explicit synchronization between embedded processor software execution (SW) and the IP core (HW). SW and HW runs independently. The data written from the processor to IP core takes effect immediately, and the data read from the IP core is the latest data available on the IP core output ports. 
+<br/><br/>
+<img src="free_running.jpg"/>
+<br/><br/>
+<b>Altera Qsys Environment Integration</b>
+<br/><br/>
+This IP Core is generated for the Altera Qsys environment. The following steps are an example showing how to integrate the generated IP core into Altera Qsys environment:
+<br/><br/>
+1. Copy the IP core folder into the "ip" folder in your Altera Qsys project folder. If there is no folder named "ip", create one. This step adds the IP core into the Qsys project user library.
+<br/>
+2. In the Qsys project, find the IP core in the user library and add the IP core to the design.
+<br/>
+3. Connect the S_AXI port of the IP core to the embedded processor's AXI master port.
+<br/>
+4. Connect the clock and reset ports of the IP core to the global clock and reset signals.
+<br/>
+5. Assign a base address for the IP core.
+<br/>
+6. Connect external ports and add FPGA pin assignment constraints.
+<br/>
+7. Generate FPGA bitstream and download the bitstream to target device.
+<br/><br/>
+If you are targeting Intel SoC hardware supported by HDL Coder Support Package for Intel SoC Devices, you can select the board you are using in the Target platform option in the Set Target > Set Target Device and Synthesis Tool task. You can then use Embedded System Integration tasks in HDL Workflow Advisor to help you integrate the generated IP core into Altera Qsys environment.
+</div>
+<div>
+<h3 class="sectionHeading">IP Core File List</h3>
+The IP core folder is located at:
+<br/>
+<a href="matlab:uiopen('SG_hdl_prj\ipcore\DataPlane_v1_0\*.*')">SG_hdl_prj\ipcore\DataPlane_v1_0</a>
+<br/>
+Following files are generated under this folder:
+<br/><br/>
+<b>IP core definition files</b>
+<br/>
+<a href="matlab:edit('SG_hdl_prj\ipcore\DataPlane_v1_0\DataPlane_hw.tcl')">DataPlane_hw.tcl</a>
+<br/><br/>
+<b>IP core report</b>
+<br/>
+<a href="matlab:web('SG_hdl_prj\ipcore\DataPlane_v1_0\doc\SG_ip_core_report.html')">doc\SG_ip_core_report.html</a>
+<br/><br/>
+<b>IP core HDL source files</b>
+<br/>
+<a href="matlab:edit('SG_hdl_prj\ipcore\DataPlane_v1_0\hdl\DataPlane_src_Left_Channel_Processing.vhd')">hdl\DataPlane_src_Left_Channel_Processing.vhd</a>
+<br/>
+<a href="matlab:edit('SG_hdl_prj\ipcore\DataPlane_v1_0\hdl\DataPlane_src_Right_Channel_Processing.vhd')">hdl\DataPlane_src_Right_Channel_Processing.vhd</a>
+<br/>
+<a href="matlab:edit('SG_hdl_prj\ipcore\DataPlane_v1_0\hdl\DataPlane_src_Avalon_Data_Processing.vhd')">hdl\DataPlane_src_Avalon_Data_Processing.vhd</a>
+<br/>
+<a href="matlab:edit('SG_hdl_prj\ipcore\DataPlane_v1_0\hdl\DataPlane_src_DataPlane.vhd')">hdl\DataPlane_src_DataPlane.vhd</a>
+<br/>
+<a href="matlab:edit('SG_hdl_prj\ipcore\DataPlane_v1_0\hdl\DataPlane_reset_sync.vhd')">hdl\DataPlane_reset_sync.vhd</a>
+<br/>
+<a href="matlab:edit('SG_hdl_prj\ipcore\DataPlane_v1_0\hdl\DataPlane_dut.vhd')">hdl\DataPlane_dut.vhd</a>
+<br/>
+<a href="matlab:edit('SG_hdl_prj\ipcore\DataPlane_v1_0\hdl\DataPlane_SimpleDualPortRAM_generic.vhd')">hdl\DataPlane_SimpleDualPortRAM_generic.vhd</a>
+<br/>
+<a href="matlab:edit('SG_hdl_prj\ipcore\DataPlane_v1_0\hdl\DataPlane_rdfifo_data_classic.vhd')">hdl\DataPlane_rdfifo_data_classic.vhd</a>
+<br/>
+<a href="matlab:edit('SG_hdl_prj\ipcore\DataPlane_v1_0\hdl\DataPlane_rdfifo_data.vhd')">hdl\DataPlane_rdfifo_data.vhd</a>
+<br/>
+<a href="matlab:edit('SG_hdl_prj\ipcore\DataPlane_v1_0\hdl\DataPlane_SimpleDualPortRAM_singlebit.vhd')">hdl\DataPlane_SimpleDualPortRAM_singlebit.vhd</a>
+<br/>
+<a href="matlab:edit('SG_hdl_prj\ipcore\DataPlane_v1_0\hdl\DataPlane_rdfifo_last_classic.vhd')">hdl\DataPlane_rdfifo_last_classic.vhd</a>
+<br/>
+<a href="matlab:edit('SG_hdl_prj\ipcore\DataPlane_v1_0\hdl\DataPlane_rdfifo_last.vhd')">hdl\DataPlane_rdfifo_last.vhd</a>
+<br/>
+<a href="matlab:edit('SG_hdl_prj\ipcore\DataPlane_v1_0\hdl\DataPlane_rdfifo_rid_classic.vhd')">hdl\DataPlane_rdfifo_rid_classic.vhd</a>
+<br/>
+<a href="matlab:edit('SG_hdl_prj\ipcore\DataPlane_v1_0\hdl\DataPlane_rdfifo_rid.vhd')">hdl\DataPlane_rdfifo_rid.vhd</a>
+<br/>
+<a href="matlab:edit('SG_hdl_prj\ipcore\DataPlane_v1_0\hdl\DataPlane_axi4_module.vhd')">hdl\DataPlane_axi4_module.vhd</a>
+<br/>
+<a href="matlab:edit('SG_hdl_prj\ipcore\DataPlane_v1_0\hdl\DataPlane_addr_decoder.vhd')">hdl\DataPlane_addr_decoder.vhd</a>
+<br/>
+<a href="matlab:edit('SG_hdl_prj\ipcore\DataPlane_v1_0\hdl\DataPlane_axi4.vhd')">hdl\DataPlane_axi4.vhd</a>
+<br/>
+<a href="matlab:edit('SG_hdl_prj\ipcore\DataPlane_v1_0\hdl\DataPlane.vhd')">hdl\DataPlane.vhd</a>
+<br/>
+<br/>
+<b>IP core C header file</b>
+<br/>
+<a href="matlab:edit('SG_hdl_prj\ipcore\DataPlane_v1_0\include\DataPlane_addr.h')">include\DataPlane_addr.h</a>
+</div>
+</body>
+</html>
