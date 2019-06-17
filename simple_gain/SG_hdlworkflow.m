@@ -49,7 +49,7 @@ hdlset_param('SG', 'SynthesisToolChipFamily', 'Cyclone V');
 hdlset_param('SG', 'SynthesisToolDeviceName', '5CSXFC6D6F31C8');
 hdlset_param('SG', 'SynthesisToolPackageName', '');
 hdlset_param('SG', 'SynthesisToolSpeedValue', '');
-hdlset_param('SG', 'TargetDirectory', [model_path '\' avalon.model_name '_' 'hdl_prj\hdlsrc']);  % LineMod
+hdlset_param('SG', 'TargetDirectory', [model_path '\' model_name '_' 'hdl_prj\hdlsrc']);  % LineMod
 hdlset_param('SG', 'TargetPlatform', 'Generic Altera Platform');
 hdlset_param('SG', 'Workflow', 'IP Core Generation');
 
@@ -103,7 +103,7 @@ hdlset_param('SG/DataPlane/Avalon_Source_Error', 'IOInterfaceMapping', '');
 hWC = hdlcoder.WorkflowConfig('SynthesisTool','Altera QUARTUS II','TargetWorkflow','IP Core Generation');
 
 % Specify the top level project directory
-hWC.ProjectFolder = [avalon.model_name '_' 'hdl_prj'];   % LineMod
+hWC.ProjectFolder = [model_name '_' 'hdl_prj'];   % LineMod
 hWC.ReferenceDesignToolVersion = '';
 hWC.IgnoreToolVersionMismatch = false;
 
