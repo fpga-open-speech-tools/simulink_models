@@ -19,10 +19,6 @@
 % and the registers
 %----------------------------------------------------------
 avalon = vgen_get_simulink_block_interfaces();
-avalon.vhdl = vgen_generate_VHDL_component(avalon);
-disp(avalon.vhdl.component_declaration)
-disp(avalon.vhdl.component_instantiation)
-disp(avalon.vhdl.register_defaults)
 
 % save the specified clock frequencies
 avalon.clocks.sample_frequency_Hz   = Fs;
