@@ -1,23 +1,42 @@
-function avalon1 = vgen_get_simulink_block_interfaces()
+% avalon = vgen_get_simulink_block_interfaces(model_params)
+%
+% This function parses the simulink model and extracts the interface signals
 % Note: The model simulation needs to be run first before this function
-% is called since there are workspace variables that need to be set
-% in the initiallization callback function
+% is called since there are workspace variables that need to be set/created
+% in the initiallization callback function first
 
-%--------------------------------------------------------------------------
-% Put the model in compile mode  needed to get the CompiledPortDataTypes
+% Inputs:
+%   model_params, which is the model data structure that holds the model parameters
+%
+% Outputs:
+%   The data structure avalon that contains the interface signals for the
+%   dataplane block
+%
+% Copyright 2019 Flat Earth Inc
+%
+% THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+% INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
+% PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE
+% FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+% ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+%
+% Ross K. Snider
+% Flat Earth Inc
+% 985 Technology Blvd
+% Bozeman, MT 59718
+% support@flatearthinc.com
+
+function avalon1 = vgen_get_simulink_block_interfaces(model_params)
+%% Put the model in compile mode  needed to get the CompiledPortDataTypes
 % https://www.mathworks.com/matlabcentral/answers/8679-how-to-get-the-port-types-and-dimensions-for-a-block
-%--------------------------------------------------------------------------
 modelName = bdroot;  % get model name
 disp(['Placing the model in compile mode.'])
 disp(['     If for some reason an error occurs, you will need to manually terminate the compile mode'])
 disp(['     by executing the command: eval([<modelName>,''([],[],[],''''term'''');'']);  % terminate the compile mode'])
 eval([modelName,'([],[],[],''compile'');']);  % put in compile mode
 
-avalon1.model_name = modelName;
-%----------------------------------
-% Get Avalon Streaming Sink Info
-%----------------------------------
-avalon_sink_signals = find_system('SearchDepth','2','regexp','on','BlockType','Inport','BlockDialogParams','Avalon_Sink*');
+%% Get the Avalon streaming sink signals
+avalon_sink_signals = find_system('SearchDepth','2','regexp','on','BlockType','Inport','BlockDialogParams','avalon_sink*');
 if (isempty(avalon_sink_signals)==0) % The avalon streaming sink exists
     avalon1.avalon_sink_flag = 1;
     Na = length(avalon_sink_signals);
@@ -43,11 +62,8 @@ else
     avalon1.avalon_sink = [];
 end
 
-
-%----------------------------------
-% Get Avalon Streaming Source Info
-%----------------------------------
-avalon_source_signals = find_system('SearchDepth','2','regexp','on','BlockType','Outport','BlockDialogParams','Avalon_Source*');
+%% Get the Avalon streaming source signals
+avalon_source_signals = find_system('SearchDepth','2','regexp','on','BlockType','Outport','BlockDialogParams','avalon_source*');
 if (isempty(avalon_source_signals)==0) % The avalon streaming source exists
     avalon1.avalon_source_flag = 1;
     Na = length(avalon_source_signals);
@@ -68,12 +84,9 @@ else
     avalon1.avalon_source = [];
 end
 
-
-%----------------------------------
-% Get Avalon Memory Mapping Info
-% Registers that Linux will interact with
-%----------------------------------
-register_names = find_system('SearchDepth','2','regexp','on','BlockType','Inport','BlockDialogParams','Register_Control*');
+%% Get the Avalon memory mapped signals
+% These are the registers that Linux will interact with
+register_names = find_system('SearchDepth','2','regexp','on','BlockType','Inport','BlockDialogParams','register_control*');
 if (isempty(register_names)==0) % The avalon memory mapped interface exists
     avalon1.avalon_memorymapped_flag = 1;
     Na = length(register_names);
@@ -85,11 +98,18 @@ if (isempty(register_names)==0) % The avalon memory mapped interface exists
             h = getSimulinkBlockHandle(register_name);  % get block handle
             p=get_param(h,'CompiledPortDataTypes');
             register_name = get(h,'PortName');
+            register_name = register_name(length('register_control_')+1:end);  % remove "register_control_" from name
             avalon1.avalon_memorymapped.register{index}.name      = register_name;
             avalon1.avalon_memorymapped.register{index}.data_type = p.Outport{1};
             avalon1.avalon_memorymapped.register{index}.reg_num   = index;
-            default_value = evalin('base',[register_name]);  % get value in the 'base' workspace variable
-            avalon1.avalon_memorymapped.register{index}.default_value = default_value;
+            Nregisters = length(model_params.register);
+            for j=1:Nregisters
+                 if strcmpi(register_name,model_params.register(j).name)  % get the register with the same name
+                    avalon1.avalon_memorymapped.register{index}.default_value = model_params.register(j).value;
+                    avalon1.avalon_memorymapped.register{index}.min_value     = model_params.register(j).min;
+                    avalon1.avalon_memorymapped.register{index}.max_value     = model_params.register(j).max;
+                end
+            end
             index = index + 1;
         end
     end
@@ -98,10 +118,9 @@ else
     avalon1.avalon_memorymapped = [];
 end
 
-%----------------------------------
-% Get Exported Input Signals Info
-%----------------------------------
-conduit_names = find_system('SearchDepth','2','regexp','on','BlockType','Inport','BlockDialogParams','Export*');
+%% Get the Exported Input signals 
+% These are the input signals coming in from outside the FPGA
+conduit_names = find_system('SearchDepth','2','regexp','on','BlockType','Inport','BlockDialogParams','export*');
 if (isempty(conduit_names)==0)
     avalon1.conduit_input_flag = 1;
     Na = length(conduit_names);
@@ -122,10 +141,9 @@ else
     avalon1.conduit_input = [];
 end
 
-%----------------------------------
-% Get Exported Output Signals Info
-%----------------------------------
-conduit_names = find_system('SearchDepth','2','regexp','on','BlockType','Outport','BlockDialogParams','Export*');
+%% Get the Exported Output signals 
+% These are the output signals going outside the FPGA
+conduit_names = find_system('SearchDepth','2','regexp','on','BlockType','Outport','BlockDialogParams','export*');
 if (isempty(conduit_names)==0)
     avalon1.conduit_output_flag = 1;
     Na = length(conduit_names);
@@ -146,7 +164,7 @@ else
     avalon1.conduit_output = [];
 end
 
-
+%% Misc Info
 % Other compiled port information:
 % CompiledPortWidths: [1x1 struct]
 %  CompiledPortDimensions: [1x1 struct]
@@ -157,14 +175,11 @@ end
 %get(gcbh)  % get block parameters when block is selected
 
 
-%------------------------------------------------
-% Turn off the compile mode 
+%% Turn off the compile mode 
 % Otherwise you won't be able to modify the model
 % If you can't modify, you may need to call
 % the function below multiple times (a terminate call is needed for each compile call)
-% because the termination has been deferred
-%------------------------------------------------
+% because the termination has been deferred.  This can happen if an error
+% occurs in the function.
 eval([modelName,'([],[],[],''term'');']);  % terminate the compile mode
 
-
-%avalon1

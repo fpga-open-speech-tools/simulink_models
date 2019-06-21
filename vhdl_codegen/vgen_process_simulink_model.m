@@ -1,63 +1,55 @@
-%--------------------------------------------------------------------------
-% Description:  Matlab script to setup environment for Simulink VHDL code
-%               generation
-%--------------------------------------------------------------------------
-% Author:       Ross K. Snider
-% Company:      Flat Earth Inc
-%               985 Technology Blvd
-%               Bozeman, MT 59718
-%               support@flatearthinc.com
-% Create Date:  June 7, 2019
-% Tool Version: MATLAB R2019a
-% Revision:     1.0
-% License:      MIT License (see license at end of code)
-%--------------------------------------------------------------------------
-%------------- BEGIN CODE --------------
+% vgen_process_simulink_model
+%
+% This script parses the simulink model and extracts the interface signals
+% and puts this information in a JSON file.
 
-% ---------------------------------------------------------
-% Parse the Simulink Model to get the Avalon signals
-% and the registers
-%----------------------------------------------------------
-avalon = vgen_get_simulink_block_interfaces();
+% Copyright 2019 Flat Earth Inc
+%
+% THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+% INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
+% PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE
+% FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+% ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+%
+% Ross K. Snider
+% Flat Earth Inc
+% 985 Technology Blvd
+% Bozeman, MT 59718
+% support@flatearthinc.com
 
-% save the specified clock frequencies
-avalon.clocks.sample_frequency_Hz   = Fs;
-avalon.clocks.sample_period_seconds = Ts;
-avalon.clocks.system_frequency_Hz   = Fs_system;
-avalon.clocks.system_period_seconds = Ts_system;
 
-% Save the avalon structure to a json file and a .mat file
+%% Parse the Simulink Model (currently opened model) 
+% We parse the model to get the Avalon signals and control registers we need for the Avalon vhdl wrapper
+try
+    avalon = vgen_get_simulink_block_interfaces(model_params);
+catch
+    % Terminate the compile mode if an error occurs while the model
+    % has been placed in compile mode. Otherwise the model will be frozen
+    % and you can't quit Matlab
+    disp('   ***************************************************************************');
+    disp('   Error occurred in function vgen_get_simulink_block_interfaces(model_params)');
+    disp('   ***************************************************************************');
+    cmd = [bdroot,'([],[],[],''term'');'];
+    eval(cmd)
+end
+
+%% save the specified clock frequencies
+avalon.clocks.sample_frequency_Hz   = model_params.Fs;
+avalon.clocks.sample_period_seconds = model_params.Ts;
+avalon.clocks.system_frequency_Hz   = model_params.Fs_system;
+avalon.clocks.system_period_seconds = model_params.Ts_system;
+
+%% save the device info
+avalon.model_name           = model_params.model_name;
+avalon.model_abbreviation   = model_params.model_abbreviation;
+avalon.linux_device_name    = model_params.linux_device_name;
+avalon.linux_device_version = model_params.linux_device_version;
+
+%% Save the avalon structure to a json file and a .mat file
 writejson(avalon, [avalon.entity,'.json'])
-save([model_name '_avalon'], 'avalon')
+save([model_params.model_abbreviation '_avalon'], 'avalon')
 
-% Generate the VHDL code
-eval([model_name '_hdlworkflow'])
-
-%------------- END OF CODE --------------
-%--------------------------------------------------------------------------
-% MIT License
-% Copyright (c) 2019 Flat Earth Inc
-%
-%Permission is hereby granted, free of charge, to any person obtaining a copy
-%of this software and associated documentation files (the "Software"), to deal
-%in the Software without restriction, including without limitation the rights
-%to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-%copies of the Software, and to permit persons to whom the Software is
-%furnished to do so, subject to the following conditions:
-%
-%The above copyright notice and this permission notice shall be included in all
-%copies or substantial portions of the Software.
-%
-%THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-%IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-%FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-%AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-%LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-%OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-%SOFTWARE.
-%--------------------------------------------------------------------------
-
-
-
-
+%% Generate the VHDL code
+model_params.sim_prompts = 0;    % turn off the simulation prompts and the stop callbacks when running HDL workflow (otherwise this runs at each HDL workflow step)
+eval([model_params.model_abbreviation '_hdlworkflow'])
 
