@@ -1,0 +1,30 @@
+[
+    {
+        "name": "name",
+        "description": "control signal name"
+    },
+    {
+        "name": "value",
+        "description": "value control signal will take during simulation"
+    },
+    {
+        "name": "min",
+        "description": "The minimum value the control signal will ever take"
+    },
+    {
+        "name": "max",
+        "description": "The maximum value the control signal will ever take"
+    },
+    {
+        "name": "default",
+        "description": "default (initial or powerup) value"
+    },
+    {
+        "name": "widget_type",
+        "description": "display widget for register"
+    },
+    {
+        "name": "widget_display_units",
+        "description": "the units the diplay widget will use"
+    }
+]
