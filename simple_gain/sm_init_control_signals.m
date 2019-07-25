@@ -47,7 +47,7 @@ mp.register(2).value      = 1.0;          % value control signal will take durin
 mp.register(2).min        =   0;          % The minimum value the control signal will ever take
 mp.register(2).max        = 1.0;          % The maximum value the control signal will ever take
 mp.register(2).default    = 0.3;          % default (initial) value
-mp.register(2).widget_type          = 'slide';
+mp.register(2).widget_type          = 'slider';
 mp.register(2).widget_display_units = 'dB';
 
 % Any other register control signals should be created in a similar manner

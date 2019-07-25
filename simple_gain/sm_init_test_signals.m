@@ -35,28 +35,41 @@ signal_option = 3;  % set which test signal to use
 switch signal_option
     case 1 % Simple tones        
         mp.test_signal.duration = 1;  % duration of tone in seconds
-        mp.test_signal.Nsamples = round(mp.test_signal.duration*mp.Fs);
-        sample_times = [0 1:(mp.Nsamples-1)]*mp.Ts;
+        Nsamples = round(mp.test_signal.duration*mp.Fs);
+        if mp.fastsim_flag == 1 % perform fast simulation by reducing the number of samples
+           mp.test_signal.Nsamples = min(Nsamples, mp.fastsim_Nsamples);
+        else
+           mp.test_signal.Nsamples = mp.fastsim_Nsamples;
+        end
+        sample_times = [0 1:(mp.test_signal.Nsamples-1)]*mp.Ts;
         mp.test_signal.left  = cos(2*pi*2000*sample_times);
         mp.test_signal.right = cos(2*pi*3000*sample_times);
     case 2  % speech 
         [y,Fs] = audioread('SpeechDFT-16-8-mono-5secs.wav');  % speech sample found in the Matlab Audio Toolbox 
         y_resampled = resample(y,mp.Fs,Fs);  % resample to change the sample rate to SG.Fs
-        %Nsamples = length(y_resampled);
-        Nsamples = 24000;  % reduce the number of samples to reduce simulation time
-        mp.test_signal.left  = y_resampled(1:Nsamples);
-        mp.test_signal.right = y_resampled(1:Nsamples);
+        Nsamples = length(y_resampled);
+        if mp.fastsim_flag == 1 % perform fast simulation by reducing the number of samples
+           mp.test_signal.Nsamples = min(Nsamples, mp.fastsim_Nsamples);
+        else
+           mp.test_signal.Nsamples = mp.fastsim_Nsamples;
+        end
+        mp.test_signal.left  = y_resampled(1:mp.test_signal.Nsamples);
+        mp.test_signal.right = y_resampled(1:mp.test_signal.Nsamples);
         mp.test_signal.Nsamples = length(mp.test_signal.left);
         mp.test_signal.duration = mp.test_signal.Nsamples * mp.Ts;
     case 3 % user supplied music
         [y,Fs] = audioread([mp.test_signals_path '\' 'Urban_Light_HedaMusic_Creative_Commons.mp3']); 
         y_resampled = resample(y,mp.Fs,Fs);  % resample to change the sample rate to SG.Fs
-        %Nsamples = length(y_resampled);
-        Nsamples = 24000;  % reduce the number of samples to reduce simulation time
-        mp.test_signal.left  = y_resampled(1:Nsamples);
-        mp.test_signal.right = y_resampled(1:Nsamples);
+        Nsamples = length(y_resampled);
+        if mp.fastsim_flag == 1 % perform fast simulation by reducing the number of samples
+           mp.test_signal.Nsamples = min(Nsamples, mp.fastsim_Nsamples);
+        else
+           mp.test_signal.Nsamples = mp.fastsim_Nsamples;
+        end     
+        mp.test_signal.left  = y_resampled(1:mp.test_signal.Nsamples);
+        mp.test_signal.right = y_resampled(1:mp.test_signal.Nsamples);
         mp.test_signal.Nsamples = length(mp.test_signal.left);
         mp.test_signal.duration = mp.test_signal.Nsamples * mp.Ts;
     otherwise
-        disp('Please choose a viable option for the test signal')
+        error('Please choose a viable option for the test signal (see sm_init_test_signals)')
 end
