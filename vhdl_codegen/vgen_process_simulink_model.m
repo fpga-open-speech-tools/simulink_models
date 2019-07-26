@@ -63,3 +63,15 @@ vhdl_source_path = [mp.model_path '\hdl_prj\ipcore\DataPlane_v1_0\hdl\'];
 outfile = [vhdl_source_path avalon.entity, '.vhd'];
 vgenAvalonWrapper(infile, outfile, false, false);
 
+%% Generate the .tcl script to be used by Platform Designer in Quartus
+infile = [avalon.entity '.json'];
+vhdl_source_path = [mp.model_path '\hdl_prj\ipcore\DataPlane_v1_0\hdl\'];
+outfile = [vhdl_source_path avalon.entity, '.tcl'];
+vgenTcl(infile, outfile);
+
+
+
+
+
+
+
