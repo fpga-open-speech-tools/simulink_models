@@ -65,8 +65,8 @@ vgenAvalonWrapper(infile, outfile, false, false);
 
 %% Generate the .tcl script to be used by Platform Designer in Quartus
 infile = [avalon.entity '.json'];
-vhdl_source_path = [mp.model_path '\hdl_prj\ipcore\DataPlane_v1_0\hdl\'];
-outfile = [vhdl_source_path avalon.entity, '.tcl'];
+tcl_source_path = [mp.model_path '\hdl_prj\ipcore\DataPlane_v1_0\'];
+outfile = [tcl_source_path avalon.entity, '_avalon_hw.tcl'];  % Note: platform designer only adds components if they have the _hw.tcl suffix
 vgenTcl(infile, outfile);
 
 
