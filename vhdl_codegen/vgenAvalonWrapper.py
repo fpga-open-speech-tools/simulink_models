@@ -77,14 +77,14 @@ def create_entity(name, sink_enabled, sink, source_enabled, source,
 
     # avalon memorymapped bus
     if registers_enabled:
-        entity += indent*2 + "s1_address".ljust(26, ' ') + ": in  std_logic_vector({} downto 0);\
+        entity += indent*2 + "avalon_slave_address".ljust(26, ' ') + ": in  std_logic_vector({} downto 0);\
             \n".format(str(int(ceil(log(len(registers),2)) - 1)).ljust(3, ' '))
 
-        entity += indent*2 + "s1_read".ljust(26, ' ') + ": in  std_logic;\n"
-        entity += indent*2 + "s1_readdata".ljust(26, ' ') + ": out std_logic_vector(31  downto 0);\n"
+        entity += indent*2 + "avalon_slave_read".ljust(26, ' ') + ": in  std_logic;\n"
+        entity += indent*2 + "avalon_slave_readdata".ljust(26, ' ') + ": out std_logic_vector(31  downto 0);\n"
 
-        entity += indent*2 + "s1_write".ljust(26, ' ') + ": in  std_logic;\n"
-        entity += indent*2 + "s1_writedata".ljust(26, ' ') +": in  std_logic_vector(31  downto 0);\n"
+        entity += indent*2 + "avalon_slave_write".ljust(26, ' ') + ": in  std_logic;\n"
+        entity += indent*2 + "avalon_slave_writedata".ljust(26, ' ') +": in  std_logic_vector(31  downto 0);\n"
 
     # input conduit signals
     if conduit_in_enabled:
@@ -127,11 +127,6 @@ def create_architecture(name, registers_enabled, registers, register_defaults,
         # sort registers according to register number
         registers = sorted(registers, key=lambda k: k['reg_num'])
 
-        # remove Register_Control from register names
-        for register in registers:
-            register['name'] = re.search('Register_Control_(.*)',
-                register['name']).group(1)
-
         # declare register signals
         # NOTE: this block will be refactored later when the format of the
         # matlab struct gets updated to be more conducive.
@@ -168,15 +163,15 @@ def create_architecture(name, registers_enabled, registers, register_defaults,
 
         # create read process
         architecture += indent + "bus_read : process(clk)\n" + indent + "begin\n"
-        architecture += indent*2 + "if rising_edge(clk) and s1_read = '1' then\n"
-        architecture += indent*3 + "case s1_address is\n"
+        architecture += indent*2 + "if rising_edge(clk) and avalon_slave_read = '1' then\n"
+        architecture += indent*3 + "case avalon_slave_address is\n"
 
         for addr, register in enumerate(registers):
             architecture += indent*4 + \
-                "when \"{0:0{1}b}\" => s1_readdata <= {2};\n".format(addr,\
+                "when \"{0:0{1}b}\" => avalon_slave_readdata <= {2};\n".format(addr,\
                 addr_width, register['name'])
 
-        architecture += indent*4 + "when others => s1_readdata <= (others => '0');\n"
+        architecture += indent*4 + "when others => avalon_slave_readdata <= (others => '0');\n"
         architecture += indent*3 + "end case;\n" + indent*2 + "end if;\n" + \
             indent + "end process;\n\n"
 
@@ -197,13 +192,13 @@ def create_architecture(name, registers_enabled, registers, register_defaults,
             architecture += indent * 3 + reg + "\n"
 
         architecture += indent*2 + "elsif rising_edge(clk) and " + \
-            "s1_write = '1' then\n"
-        architecture += indent*3 + "case s1_address is\n"
+            "avalon_slave_write = '1' then\n"
+        architecture += indent*3 + "case avalon_slave_address is\n"
 
         for addr, register in enumerate(registers):
             architecture += indent*4 + \
                 "when \"{0:0{1}b}\" => {2} <= ".format(addr, addr_width,\
-                register['name']) + "s1_writedata;\n"
+                register['name']) + "avalon_slave_writedata;\n"
 
         architecture += indent*4 + "when others => null;\n"
         architecture += indent*3 + "end case;\n" + indent*2 + "end if;\n" + \
@@ -239,7 +234,7 @@ def int_to_bitstring(integer, tot_bits, frac_bits):
 
 def create_component_declaration2(clock, entity, sink_flag, sink_signal, mm_flag, mm_signal, ci_flag, ci_signal, source_flag, source_signal, co_flag, co_signal):
     global indent
-    decl = "ComPoNeNt " + entity + "_src_" + entity + "\n"
+    decl = "component " + entity + "_src_" + entity + "\n"
     decl += indent * 1 + "port(\n"
     decl += indent * 2 + "clk".ljust(26, ' ') + ": in  std_logic; -- clk_freq = " + str(clock['frequency']) + " Hz, period = " + str(clock['period']) + "\n"
     decl += indent * 2 + "clk_enable".ljust(26, ' ') + ": in  std_logic;\n"
@@ -251,7 +246,8 @@ def create_component_declaration2(clock, entity, sink_flag, sink_signal, mm_flag
             decl += (indent * 2 + name).ljust(30, ' ') + (": in  " + convert_data_type(data_type) + ";").ljust(45, ' ') + " -- " + data_type + "\n"
     if mm_flag == 1:
         for i in range(len(mm_signal)):
-            name = mm_signal[i]["name"]
+            # the vhdl that matlab generates has register_control prefixed to each register name, so we need to do the same
+            name = "register_control_" + mm_signal[i]["name"]
             data_type = mm_signal[i]["data_type"]
             decl += (indent * 2 + name).ljust(30, ' ') + (": in  " + convert_data_type(data_type) + ";").ljust(45, ' ') + " -- " + data_type + "\n"
     if ci_flag == 1:
@@ -291,7 +287,7 @@ def create_component_instantiation2(ts_system, entity, sink_flag, sink_signal, m
     if mm_flag == 1:
         for i in range(len(mm_signal)):
             name = mm_signal[i]["name"]
-            name2 = name.replace("Register_Control_", "")
+            name2 = "register_control_" + name
             data_type = sink_signal[i]["data_type"]
             inst += (indent * 2 + name).ljust(30, ' ') + "=>  " + (name2 + ",").ljust(30, ' ') + " -- " + data_type + "\n"
     if ci_flag == 1:

@@ -21,35 +21,36 @@
 %% Parse the Simulink Model (currently opened model) 
 % We parse the model to get the Avalon signals and control registers we need for the Avalon vhdl wrapper
 try
-    avalon = vgen_get_simulink_block_interfaces(model_params);
+    mp.fastsim_flag = 0;  % turn off fast sim so that the model runs at the system clock rate
+    avalon = vgen_get_simulink_block_interfaces(mp);
 catch
     % Terminate the compile mode if an error occurs while the model
     % has been placed in compile mode. Otherwise the model will be frozen
     % and you can't quit Matlab
     disp('   ***************************************************************************');
-    disp('   Error occurred in function vgen_get_simulink_block_interfaces(model_params)');
+    disp('   Error occurred in function vgen_get_simulink_block_interfaces(mp)');
     disp('   ***************************************************************************');
     cmd = [bdroot,'([],[],[],''term'');'];
     eval(cmd)
 end
 
 %% save the specified clock frequencies
-avalon.clocks.sample_frequency_Hz   = model_params.Fs;
-avalon.clocks.sample_period_seconds = model_params.Ts;
-avalon.clocks.system_frequency_Hz   = model_params.Fs_system;
-avalon.clocks.system_period_seconds = model_params.Ts_system;
+avalon.clocks.sample_frequency_Hz   = mp.Fs;
+avalon.clocks.sample_period_seconds = mp.Ts;
+avalon.clocks.system_frequency_Hz   = mp.Fs_system;
+avalon.clocks.system_period_seconds = mp.Ts_system;
 
 %% save the device info
-avalon.model_name           = model_params.model_name;
-avalon.model_abbreviation   = model_params.model_abbreviation;
-avalon.linux_device_name    = model_params.linux_device_name;
-avalon.linux_device_version = model_params.linux_device_version;
+avalon.model_name           = mp.model_name;
+avalon.model_abbreviation   = mp.model_abbreviation;
+avalon.linux_device_name    = mp.linux_device_name;
+avalon.linux_device_version = mp.linux_device_version;
 
 %% Save the avalon structure to a json file and a .mat file
 writejson(avalon, [avalon.entity,'.json'])
-save([model_params.model_abbreviation '_avalon'], 'avalon')
+save([mp.model_abbreviation '_avalon'], 'avalon')
 
 %% Generate the VHDL code
-model_params.sim_prompts = 0;    % turn off the simulation prompts and the stop callbacks when running HDL workflow (otherwise this runs at each HDL workflow step)
-eval([model_params.model_abbreviation '_hdlworkflow'])
+mp.sim_prompts = 0;    % turn off the simulation prompts and the stop callbacks when running HDL workflow (otherwise this runs at each HDL workflow step)
+sm_hdlworkflow         % run the workflow script
 

@@ -1,0 +1,47 @@
+[
+    {
+        "name": "dial",
+        "io_type": "input",
+        "description": "radial slider on a numeric range"
+    },
+    {
+        "name": "slider",
+        "io_type": "input",
+        "description": "vertical slider  on a numeric range"
+    },
+    {
+        "name": "toggle",
+        "io_type": "input",
+        "description": "a switch, binary on/off"
+    },
+    {
+        "name": "button",
+        "io_type": "input",
+        "description": "button that sends a single value"
+    },
+    {
+        "name": "panel",
+        "io_type": "input",
+        "description": "container that holds an arbitrary number of elements in a layoutStyle (Horizontal, Vertical, Grid)."
+    },
+    {
+        "name": "monitor",
+        "io_type": "output",
+        "description": "for 2d graphing.  Plots x,y ..."
+    },
+    {
+        "name": "level",
+        "io_type": "output",
+        "description": "for 1d graphing.  Plots a single value (ie, output level monitoring)"
+    },
+    {
+        "name": "state",
+        "io_type": "output",
+        "description": "displays a binary state (on, off), e.g. LED"
+    },
+    {
+        "name": "text",
+        "io_type": "output",
+        "description": "displays text output."
+    }
+]
