@@ -38,7 +38,7 @@ mp.fastsim_Nsamples    = 12000; % set to the string 'all' to use all the samples
 % Model variables will be placed in a data structure called mp 
 % (<model_abbreviation>_params)that can be passed to functions
 mp.model_name           = 'simple_gain';                                       % model name initials
-mp.model_abbreviation   = 'sm_SG';                                                % model initials
+mp.model_abbreviation   = 'sm_SG';                                             % model initials
 mp.linux_device_version = '18.0';                                              % string that describes device version (typically set as Quartus version)
 mp.model_path           = 'E:\git\nih_simulinklib\simple_gain';                % path to the model directory
 mp.test_signals_path    = 'E:\git\nih_simulinklib\test_signals';               % path to test signals folder
@@ -65,6 +65,11 @@ if  python_loaded
 else
     pyversion(mp.python_path);    % Note: if the version changes from what is already loaded in Matlab, you will need to restart Matlab
 end
+% add the codegen_path to python's search path
+if count(py.sys.path,mp.codegen_path) == 0
+    insert(py.sys.path,int32(0),mp.codegen_path);
+end
+
 
 %% Open the model
 open_system([mp.model_abbreviation])
