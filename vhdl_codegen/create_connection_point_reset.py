@@ -1,0 +1,15 @@
+def create_connection_point_reset(input_struct):
+    built_string = "# # # # # # # # # # # # # # # # # # # # # #\n"
+    built_string += "# Created by create_connection_point_reset\n"
+    built_string += "# # # # # # # # # # # # # # # # # # # # # #\n\n"
+    built_string += "add_interface reset reset end\n"
+    built_string += "set_interface_property reset associatedClock clock\n"
+    built_string += "set_interface_property reset synchronousEdges DEASSERT\n"
+    built_string += "set_interface_property reset ENABLED true\n"
+    built_string += "set_interface_property reset EXPORT_OF true\n"
+    built_string += "set_interface_property reset PORT_NAME_MAP \"\"\n"
+    built_string += "set_interface_property reset CMSIS_SVD_VARIABLES \"\"\n"
+    built_string += "set_interface_property reset SVD_ADDRESS_GROUP \"\"\n"
+    built_string += "add_interface_port reset reset reset Input 1\n"
+    built_string += "# End create_connection_point_reset\n\n\n"
+    return built_string
