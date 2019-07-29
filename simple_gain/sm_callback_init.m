@@ -48,7 +48,7 @@ mp = sm_init_control_signals(mp);  % create the control signals
 %% Create test signals for the left and right channels
 mp = sm_init_test_signals(mp);  % create the test signals that will go through the model
 stop_time = mp.test_signal.duration;  % simulation time is based on the number of audio samples to go through the model
-if mp.sim_prompts == 1  % Note: sim_prompts is set in Run_me_first.m
+if mp.sim_prompts == 1  % Note: sim_prompts is set in Run_me_first.m and is set to zero when hdl code generation is run
     Nsamples_avalon = mp.test_signal.Nsamples * mp.rate_change;
     disp(['Simulation time has been set to ' num2str(stop_time) ' seconds'])
     disp(['    Processing ' num2str(Nsamples_avalon) ' Avalon streaming samples.'])
@@ -61,7 +61,7 @@ end
 % i.e. put the test signals into the data-channel-valid protocol
 mp = sm_init_avalon_signals(mp);  % create the avalon streaming signals 
 
-%% place variables into workspace directly
+%% place variables into workspace directly (debug)
 % Avalon_Source_Data    = SG.Avalon_Source_Data;    % place into workspace directly so that the "From Workspace" blocks can read from these variables
 % Avalon_Source_Valid   = SG.Avalon_Source_Valid;    
 % Avalon_Source_Channel = SG.Avalon_Source_Channel;  

@@ -9,7 +9,7 @@ from create_sink_connection_point import create_sink_connection_point
 from create_source_connection_point import  create_source_connection_point
 from input_structure import InputStructure
 from parse_json import parse_json
-def autogen_tcl(inputFilename, outputFilename):
+def main(inputFilename, outputFilename):
     input_struct = parse_json(inputFilename)
     write_tcl(input_struct, outputFilename)
 
