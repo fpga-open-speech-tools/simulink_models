@@ -20,7 +20,8 @@ def create_sink_connection_point(input_struct):
     built_string += "set_interface_property " + ssname + " SVD_ADDRESS_GROUP \"\"\n"
 
     for port_name, num_bits in input_struct.sink_signal_port_names_and_widths.items():
-        built_string += ("add_interface_port " + ssname + " " + port_name + " " + port_name + " Input "
+        port_type = port_name.rpartition('_')[2]
+        built_string += ("add_interface_port " + ssname + " " + port_name + " " + port_type + " Input "
                          + str(num_bits) + "\n")
     built_string += "# End create_sink_connection_point\n\n\n"
     return built_string

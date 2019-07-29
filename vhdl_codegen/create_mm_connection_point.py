@@ -20,7 +20,7 @@ def create_mm_connection_point(input_struct):
     built_string += "set_interface_property " + mmname + " readLatency 0\n"
     built_string += "set_interface_property " + mmname + " readWaitTime 1\n"
     built_string += "set_interface_property " + mmname + " setupTime 1\n"
-    built_string += "set_interface_property " + mmname + " timeingUnits Cycles\n"
+    built_string += "set_interface_property " + mmname + " timingUnits Cycles\n"
     built_string += "set_interface_property " + mmname + " writeWaitTime 0\n"
     built_string += "set_interface_property " + mmname + " ENABLED true\n"
     built_string += "set_interface_property " + mmname + " EXPORT_OF \"\"\n"
