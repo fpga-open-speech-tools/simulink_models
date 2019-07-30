@@ -18,7 +18,7 @@ def parse_json(inputFilename):
         input_struct.display_name = json_dict['model_name']
 
         if json_dict['avalon_memorymapped_flag'] == 1:
-            input_struct.avalon_mm_slave_signal_name = 'mm_signal'
+            input_struct.avalon_mm_slave_signal_name = 'avalon_slave'
             input_struct.has_avalon_mm_slave_signal = True
             input_struct.data_bus_size = 32
             input_struct.address_bus_size = math.ceil(math.log(len(json_dict['avalon_memorymapped']['register'])))
@@ -45,6 +45,6 @@ def datatype_to_bits(str_type):
         return 1
     if str_type == 'ufix2':
         return 2
-    match = re.match(r'.*(\d+)', str_type)
+    match = re.search('\d+', str_type)
     if match:
-        return int(match[1])
+        return int(match.group(0))
