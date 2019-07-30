@@ -236,36 +236,36 @@ def create_component_declaration2(clock, entity, sink_flag, sink_signal, mm_flag
     global indent
     decl = "component " + entity + "_src_" + entity + "\n"
     decl += indent * 1 + "port(\n"
-    decl += indent * 2 + "clk".ljust(26, ' ') + ": in  std_logic; -- clk_freq = " + str(clock['frequency']) + " Hz, period = " + str(clock['period']) + "\n"
-    decl += indent * 2 + "clk_enable".ljust(26, ' ') + ": in  std_logic;\n"
-    decl += indent * 2 + "reset".ljust(26, ' ') + ": in  std_logic;\n"
+    decl += indent * 2 + "clk".ljust(28, ' ') + ": in  std_logic; -- clk_freq = " + str(clock['frequency']) + " Hz, period = " + str(clock['period']) + "\n"
+    decl += indent * 2 + "clk_enable".ljust(28, ' ') + ": in  std_logic;\n"
+    decl += indent * 2 + "reset".ljust(28, ' ') + ": in  std_logic;\n"
     if sink_flag == 1:
         for i in range(len(sink_signal)):
             name = sink_signal[i]["name"]
             data_type = sink_signal[i]["data_type"]
-            decl += (indent * 2 + name).ljust(30, ' ') + (": in  " + convert_data_type(data_type) + ";").ljust(45, ' ') + " -- " + data_type + "\n"
+            decl += (indent * 2 + name).ljust(32, ' ') + (": in  " + convert_data_type(data_type) + ";").ljust(45, ' ') + " -- " + data_type + "\n"
     if mm_flag == 1:
         for i in range(len(mm_signal)):
             # the vhdl that matlab generates has register_control prefixed to each register name, so we need to do the same
             name = "register_control_" + mm_signal[i]["name"]
             data_type = mm_signal[i]["data_type"]
-            decl += (indent * 2 + name).ljust(30, ' ') + (": in  " + convert_data_type(data_type) + ";").ljust(45, ' ') + " -- " + data_type + "\n"
+            decl += (indent * 2 + name).ljust(32, ' ') + (": in  " + convert_data_type(data_type) + ";").ljust(45, ' ') + " -- " + data_type + "\n"
     if ci_flag == 1:
         for i in range(len(ci_signal)):
             name = ci_signal[i]["name"]
             data_type = ci_signal[i]["data_type"]
-            decl += (indent * 2 + name).ljust(30, ' ') + (": in  " + convert_data_type(data_type) + ";").ljust(45, ' ') + " -- " + data_type + "\n"
-    decl += (indent * 2 + "ce_out").ljust(30, ' ') + ": out std_logic;\n"
+            decl += (indent * 2 + name).ljust(32, ' ') + (": in  " + convert_data_type(data_type) + ";").ljust(45, ' ') + " -- " + data_type + "\n"
+    decl += (indent * 2 + "ce_out").ljust(32, ' ') + ": out std_logic;\n"
     if source_flag == 1:
         for i in range(len(source_signal)):
             name = source_signal[i]["name"]
             data_type = source_signal[i]["data_type"]
-            decl += (indent * 2 + name).ljust(30, ' ') + (": out " + convert_data_type(data_type) + ";").ljust(45, ' ') + " -- " + data_type + "\n"
+            decl += (indent * 2 + name).ljust(32, ' ') + (": out " + convert_data_type(data_type) + ";").ljust(45, ' ') + " -- " + data_type + "\n"
     if co_flag == 1:
         for i in range(len(co_signal)):
             name = co_signal[i]["name"]
             data_type = co_signal[i]["data_type"]
-            decl += (indent * 2 + name).ljust(30, ' ') + (": out " + convert_data_type(data_type) + ";").ljust(45, ' ') + " -- " + data_type + "\n"
+            decl += (indent * 2 + name).ljust(32, ' ') + (": out " + convert_data_type(data_type) + ";").ljust(45, ' ') + " -- " + data_type + "\n"
     last_semi_ind = decl.rfind(";")
     decl = decl[:last_semi_ind] + ' ' + decl[last_semi_ind + 1:]
     decl += indent * 1 + ");\n"
@@ -276,37 +276,37 @@ def create_component_instantiation2(ts_system, entity, sink_flag, sink_signal, m
     global indent
     inst = "u_" + entity + "_src_" + entity + " : " + entity + "_src_" + entity + "\n"
     inst += indent * 1 + "port map(\n"
-    inst += (indent * 2 + "clk").ljust(30, ' ') + "=>  clk,\n"
-    inst += (indent * 2 + "clk_enable").ljust(30, ' ') + "=>  '1',\n"
-    inst += (indent * 2 + "reset").ljust(30, ' ') + "=>  reset,\n"
+    inst += (indent * 2 + "clk").ljust(32, ' ') + "=>  clk,\n"
+    inst += (indent * 2 + "clk_enable").ljust(32, ' ') + "=>  '1',\n"
+    inst += (indent * 2 + "reset").ljust(32, ' ') + "=>  reset,\n"
     if sink_flag == 1:
         for i in range(len(sink_signal)):
             name = sink_signal[i]["name"]
             data_type = sink_signal[i]["data_type"]
-            inst += (indent * 2 + name).ljust(30, ' ') + "=>  " + (name + ",").ljust(30, ' ') + " -- " + data_type + "\n"
+            inst += (indent * 2 + name).ljust(32, ' ') + "=>  " + (name + ",").ljust(32, ' ') + " -- " + data_type + "\n"
     if mm_flag == 1:
         for i in range(len(mm_signal)):
-            name = mm_signal[i]["name"]
-            name2 = "register_control_" + name
+            name = "register_control_" + mm_signal[i]["name"]
+            name2 = mm_signal[i]["name"]
             data_type = sink_signal[i]["data_type"]
-            inst += (indent * 2 + name).ljust(30, ' ') + "=>  " + (name2 + ",").ljust(30, ' ') + " -- " + data_type + "\n"
+            inst += (indent * 2 + name).ljust(32, ' ') + "=>  " + (name2 + ",").ljust(32, ' ') + " -- " + data_type + "\n"
     if ci_flag == 1:
         for i in range(len(ci_signal)):
             name = ci_signal[i]["name"]
             name2 = name.replace("Export_", "")
             data_type = sink_signal[i]["data_type"]
-            inst += (indent * 2 + name).ljust(30, ' ') + "=>  " + (name2 + ",").ljust(30, ' ') + " -- " + data_type + "\n"
+            inst += (indent * 2 + name).ljust(32, ' ') + "=>  " + (name2 + ",").ljust(32, ' ') + " -- " + data_type + "\n"
     if source_flag == 1:
         for i in range(len(source_signal)):
             name = source_signal[i]["name"]
             data_type = sink_signal[i]["data_type"]
-            inst += (indent * 2 + name).ljust(30, ' ') + "=>  " + (name + ",").ljust(30, ' ') + " -- " + data_type + "\n"
+            inst += (indent * 2 + name).ljust(32, ' ') + "=>  " + (name + ",").ljust(32, ' ') + " -- " + data_type + "\n"
     if co_flag == 1:
         for i in range(len(co_signal)):
             name = co_signal[i]["name"]
             name2 = name.replace("Export_", "")
             data_type = sink_signal[i]["data_type"]
-            inst += (indent * 2 + name).ljust(30, ' ') + "=>  " + (name2 + ",").ljust(30, ' ') + " -- " + data_type + "\n"
+            inst += (indent * 2 + name).ljust(32, ' ') + "=>  " + (name2 + ",").ljust(32, ' ') + " -- " + data_type + "\n"
     last_comma_ind = inst.rfind(',')
     inst = inst[:last_comma_ind] + ' ' + inst[last_comma_ind + 1:]
     inst += indent * 1 + ");\n"
