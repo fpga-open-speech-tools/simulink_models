@@ -234,7 +234,7 @@ def int_to_bitstring(integer, tot_bits, frac_bits):
 
 def create_component_declaration2(clock, entity, sink_flag, sink_signal, mm_flag, mm_signal, ci_flag, ci_signal, source_flag, source_signal, co_flag, co_signal):
     global indent
-    decl = "component " + entity + "_src_" + entity + "\n"
+    decl = "component " + entity + "_dut\n"
     decl += indent * 1 + "port(\n"
     decl += indent * 2 + "clk".ljust(28, ' ') + ": in  std_logic; -- clk_freq = " + str(clock['frequency']) + " Hz, period = " + str(clock['period']) + "\n"
     decl += indent * 2 + "clk_enable".ljust(28, ' ') + ": in  std_logic;\n"
@@ -274,7 +274,7 @@ def create_component_declaration2(clock, entity, sink_flag, sink_signal, mm_flag
 
 def create_component_instantiation2(ts_system, entity, sink_flag, sink_signal, mm_flag, mm_signal, ci_flag, ci_signal, source_flag, source_signal, co_flag, co_signal):
     global indent
-    inst = "u_" + entity + "_src_" + entity + " : " + entity + "_src_" + entity + "\n"
+    inst = "u_" + entity + "_dut" + " : " + entity + "_dut\n"
     inst += indent * 1 + "port map(\n"
     inst += (indent * 2 + "clk").ljust(32, ' ') + "=>  clk,\n"
     inst += (indent * 2 + "clk_enable").ljust(32, ' ') + "=>  '1',\n"
