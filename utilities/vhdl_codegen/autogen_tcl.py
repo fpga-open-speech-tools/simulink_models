@@ -9,8 +9,10 @@ from create_sink_connection_point import create_sink_connection_point
 from create_source_connection_point import  create_source_connection_point
 from input_structure import InputStructure
 from parse_json import parse_json
-def main(inputFilename, outputFilename):
+from populate_additional_filesets import populate_additional_filesets
+def main(inputFilename, outputFilename, additionalFilesetAbsDir):
     input_struct = parse_json(inputFilename)
+    populate_additional_filesets(input_struct, additionalFilesetAbsDir)
     write_tcl(input_struct, outputFilename)
 
 def write_tcl(input_struct, outputFilename):
