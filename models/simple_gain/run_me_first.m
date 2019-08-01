@@ -45,7 +45,8 @@ mp.test_signals_path    = 'E:\git\nih_simulinklib\test_signals';               %
 mp.utility_path         = 'E:\git\nih_simulinklib\matlab';                     % path to matlab utility functions folder
 mp.config_path          = 'E:\git\nih_simulinklib\config';                     % path to configuration folder (widget and register field definitions)
 mp.codegen_path         = 'E:\git\nih_simulinklib\utilities\vhdl_codegen';     % path to \vhdl_codegen folder
-mp.quartus_path         = 'F:\intelFPGA_lite\18.0\quartus\bin64\quartus.exe';  % path to the Quartus executable
+mp.quartus_project_path = 'E:\NIH\Simulink\Simple_Gain\Quartus_Project';       % path to the Quartus project directory for the Simulink model
+mp.quartus_exe_path     = 'F:\intelFPGA_lite\18.0\quartus\bin64\quartus.exe';  % path to the Quartus executable
 mp.python_path          = 'F:\Python\Python37\python.exe';                     % path to Python executable.
 mp.linux_device_name    = mp.model_name;                                       % device driver name that Linux will see
 
@@ -55,7 +56,7 @@ addpath(mp.model_path)
 addpath(mp.utility_path)
 addpath(mp.codegen_path)
 addpath(mp.config_path)
-hdlsetuptoolpath('ToolName', 'Altera Quartus II', 'ToolPath', mp.quartus_path);  % setup the HDL toochain path that needs to be set before calling HDL workflow process
+hdlsetuptoolpath('ToolName', 'Altera Quartus II', 'ToolPath', mp.quartus_exe_path);  % setup the HDL toochain path that needs to be set before calling HDL workflow process
 eval(['cd ' mp.model_path])  % change the working directory to the model directory
 
 %% python
@@ -72,7 +73,7 @@ end
 
 
 %% Open the model
-open_system(['sm_' mp.model_abbreviation])
+open_system([mp.model_abbreviation])
 % display popup reminder message 
 helpdlg(sprintf(['NOTE: You will need to first run the Simulation for model ' mp.model_name ' to initialize variables in the Matlab workspace before converting to VHDL.']),'Reminder Message')
 mp.sim_prompts = 1;  % turn on the simulation prompts/comments (these will be turned off when the HDL conversion process starts).

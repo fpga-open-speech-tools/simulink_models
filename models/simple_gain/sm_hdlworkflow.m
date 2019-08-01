@@ -6,24 +6,25 @@
 %     Overwrite : true
 %     Comments  : true
 %     Headers   : true
-%     DUT       : [model '/DataPlane'
+%     DUT       : [model '/' dataplane_name
 % To view changes after modifying the workflow, run the following command:
-% >> hWC.export('DUT',[model '/DataPlane');
+% >> hWC.export('DUT',[model '/' dataplane_name);
 %--------------------------------------------------------------------------
 
 
 %% Load the Model
 model = mp.model_abbreviation;
+dataplane_name = [mp.model_abbreviation '_DataPlane'];
 load_system(model);
 
 %% Restore the Model to default HDL parameters
-%hdlrestoreparams([model '/DataPlane');
+%hdlrestoreparams([model '/' dataplane_name);
 
 %% Model HDL Parameters
 %% Set Model model HDL parameters
 hdlset_param(model, 'CriticalPathEstimation', 'on');
 hdlset_param(model, 'HDLGenerateWebview', 'on');
-hdlset_param(model, 'HDLSubsystem', [model '/DataPlane']);
+hdlset_param(model, 'HDLSubsystem', [model '/' dataplane_name]);
 hdlset_param(model, 'OptimizationReport', 'on');
 hdlset_param(model, 'ResourceReport', 'on');
 hdlset_param(model, 'SynthesisTool', 'Altera QUARTUS II');
@@ -36,64 +37,64 @@ hdlset_param(model, 'TargetPlatform', 'Generic Altera Platform');
 hdlset_param(model, 'Workflow', 'IP Core Generation');
 
 % Set SubSystem HDL parameters
-hdlset_param([model '/DataPlane'], 'IPCoreName', 'DataPlane');
-hdlset_param([model '/DataPlane'], 'ProcessorFPGASynchronization', 'Free running');
+hdlset_param([model '/' dataplane_name], 'IPCoreName', dataplane_name);
+hdlset_param([model '/' dataplane_name], 'ProcessorFPGASynchronization', 'Free running');
 
 % Set Inport HDL parameters
-hdlset_param([model '/DataPlane/avalon_sink_valid'], 'IOInterface', 'External Port');
-hdlset_param([model '/DataPlane/avalon_sink_valid'], 'IOInterfaceMapping', '');
+hdlset_param([model '/' dataplane_name '/avalon_sink_valid'], 'IOInterface', 'External Port');
+hdlset_param([model '/' dataplane_name '/avalon_sink_valid'], 'IOInterfaceMapping', '');
 
 % Set Inport HDL parameters
-hdlset_param([model '/DataPlane/avalon_sink_data'], 'IOInterface', 'External Port');
-hdlset_param([model '/DataPlane/avalon_sink_data'], 'IOInterfaceMapping', '');
+hdlset_param([model '/' dataplane_name '/avalon_sink_data'], 'IOInterface', 'External Port');
+hdlset_param([model '/' dataplane_name '/avalon_sink_data'], 'IOInterfaceMapping', '');
 
 % Set Inport HDL parameters
-hdlset_param([model '/DataPlane/avalon_sink_channel'], 'IOInterface', 'External Port');
-hdlset_param([model '/DataPlane/avalon_sink_channel'], 'IOInterfaceMapping', '');
+hdlset_param([model '/' dataplane_name '/avalon_sink_channel'], 'IOInterface', 'External Port');
+hdlset_param([model '/' dataplane_name '/avalon_sink_channel'], 'IOInterfaceMapping', '');
 
 % Set Inport HDL parameters
-hdlset_param([model '/DataPlane/avalon_sink_error'], 'IOInterface', 'External Port');
-hdlset_param([model '/DataPlane/avalon_sink_error'], 'IOInterfaceMapping', '');
+hdlset_param([model '/' dataplane_name '/avalon_sink_error'], 'IOInterface', 'External Port');
+hdlset_param([model '/' dataplane_name '/avalon_sink_error'], 'IOInterfaceMapping', '');
 
 % Set Inport HDL parameters
-hdlset_param([model '/DataPlane/register_control_left_gain'], 'IOInterface', 'External Port');
-hdlset_param([model '/DataPlane/register_control_left_gain'], 'IOInterfaceMapping', '');
+hdlset_param([model '/' dataplane_name '/register_control_left_gain'], 'IOInterface', 'External Port');
+hdlset_param([model '/' dataplane_name '/register_control_left_gain'], 'IOInterfaceMapping', '');
 
 % Set Inport HDL parameters
-hdlset_param([model '/DataPlane/register_control_right_gain'], 'IOInterface', 'External Port');
-hdlset_param([model '/DataPlane/register_control_right_gain'], 'IOInterfaceMapping', '');
+hdlset_param([model '/' dataplane_name '/register_control_right_gain'], 'IOInterface', 'External Port');
+hdlset_param([model '/' dataplane_name '/register_control_right_gain'], 'IOInterfaceMapping', '');
 
 % Set Inport HDL parameters
-hdlset_param([model '/DataPlane/Avalon Data Processing/Sink_Data'], 'IOInterface', 'External Port');
-hdlset_param([model '/DataPlane/Avalon Data Processing/Sink_Data'], 'IOInterfaceMapping', '');
+hdlset_param([model '/' dataplane_name '/Avalon Data Processing/Sink_Data'], 'IOInterface', 'External Port');
+hdlset_param([model '/' dataplane_name '/Avalon Data Processing/Sink_Data'], 'IOInterfaceMapping', '');
 
 % Set Inport HDL parameters
-hdlset_param([model '/DataPlane/Avalon Data Processing/Sink_Channel'], 'IOInterface', 'External Port');
-hdlset_param([model '/DataPlane/Avalon Data Processing/Sink_Channel'], 'IOInterfaceMapping', '');
+hdlset_param([model '/' dataplane_name '/Avalon Data Processing/Sink_Channel'], 'IOInterface', 'External Port');
+hdlset_param([model '/' dataplane_name '/Avalon Data Processing/Sink_Channel'], 'IOInterfaceMapping', '');
 
 % Set Outport HDL parameters
-hdlset_param([model '/DataPlane/Avalon Data Processing/Source_Data'], 'IOInterface', 'External Port');
-hdlset_param([model '/DataPlane/Avalon Data Processing/Source_Data'], 'IOInterfaceMapping', '');
+hdlset_param([model '/' dataplane_name '/Avalon Data Processing/Source_Data'], 'IOInterface', 'External Port');
+hdlset_param([model '/' dataplane_name '/Avalon Data Processing/Source_Data'], 'IOInterfaceMapping', '');
 
 % Set Outport HDL parameters
-hdlset_param([model '/DataPlane/Avalon Data Processing/Source_Channel'], 'IOInterface', 'External Port');
-hdlset_param([model '/DataPlane/Avalon Data Processing/Source_Channel'], 'IOInterfaceMapping', '');
+hdlset_param([model '/' dataplane_name '/Avalon Data Processing/Source_Channel'], 'IOInterface', 'External Port');
+hdlset_param([model '/' dataplane_name '/Avalon Data Processing/Source_Channel'], 'IOInterfaceMapping', '');
 
 % Set Outport HDL parameters
-hdlset_param([model '/DataPlane/avalon_source_valid'], 'IOInterface', 'External Port');
-hdlset_param([model '/DataPlane/avalon_source_valid'], 'IOInterfaceMapping', '');
+hdlset_param([model '/' dataplane_name '/avalon_source_valid'], 'IOInterface', 'External Port');
+hdlset_param([model '/' dataplane_name '/avalon_source_valid'], 'IOInterfaceMapping', '');
 
 % Set Outport HDL parameters
-hdlset_param([model '/DataPlane/avalon_source_data'], 'IOInterface', 'External Port');
-hdlset_param([model '/DataPlane/avalon_source_data'], 'IOInterfaceMapping', '');
+hdlset_param([model '/' dataplane_name '/avalon_source_data'], 'IOInterface', 'External Port');
+hdlset_param([model '/' dataplane_name '/avalon_source_data'], 'IOInterfaceMapping', '');
 
 % Set Outport HDL parameters
-hdlset_param([model '/DataPlane/avalon_source_channel'], 'IOInterface', 'External Port');
-hdlset_param([model '/DataPlane/avalon_source_channel'], 'IOInterfaceMapping', '');
+hdlset_param([model '/' dataplane_name '/avalon_source_channel'], 'IOInterface', 'External Port');
+hdlset_param([model '/' dataplane_name '/avalon_source_channel'], 'IOInterfaceMapping', '');
 
 % Set Outport HDL parameters
-hdlset_param([model '/DataPlane/avalon_source_error'], 'IOInterface', 'External Port');
-hdlset_param([model '/DataPlane/avalon_source_error'], 'IOInterfaceMapping', '');
+hdlset_param([model '/' dataplane_name '/avalon_source_error'], 'IOInterface', 'External Port');
+hdlset_param([model '/' dataplane_name '/avalon_source_error'], 'IOInterfaceMapping', '');
 
 
 %% Workflow Configuration Settings
@@ -135,4 +136,4 @@ hWC.ProgrammingMethod = hdlcoder.ProgrammingMethod.JTAG;
 hWC.validate;
 
 %% Run the workflow
-hdlcoder.runWorkflow([model '/DataPlane'], hWC);
+hdlcoder.runWorkflow([model '/' dataplane_name], hWC);
