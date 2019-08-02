@@ -24,3 +24,4 @@ def write_tcl(input_struct, outputFilename):
         out_file.write(create_mm_connection_point(input_struct))
         out_file.write(create_sink_connection_point(input_struct))
         out_file.write(create_source_connection_point(input_struct))
+

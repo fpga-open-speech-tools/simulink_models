@@ -9,7 +9,7 @@ def parse_json(inputFilename):
         input_struct = InputStructure()
         input_struct.name = json_dict['model_name']
         input_struct.quartus_synth_top_level = json_dict['entity'] + "_avalon"
-        input_struct.vhdl_top_level_file = json_dict['model_abbreviation'] + "_dataplane.vhd"
+        input_struct.vhdl_top_level_file = json_dict['model_abbreviation'] + "_dataplane_avalon.vhd"
         input_struct.compatible_flag = "dev,fe-" + json_dict['linux_device_name']
         input_struct.group = json_dict['model_name']
         input_struct.vendor = "fe"
