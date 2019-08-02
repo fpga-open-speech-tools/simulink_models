@@ -16,6 +16,7 @@ def parse_json(inputFilename):
         input_struct.clock_rate = json_dict['clocks']['system_frequency_Hz']
         input_struct.clock_abbrev = "clk"
         input_struct.display_name = json_dict['model_name']
+        input_struct.model_abbreviation = json_dict['model_abbreviation']
 
         if json_dict['avalon_memorymapped_flag'] == 1:
             input_struct.avalon_mm_slave_signal_name = 'avalon_slave'
