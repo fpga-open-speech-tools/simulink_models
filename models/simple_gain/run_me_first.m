@@ -24,6 +24,17 @@ clear all   % clear all workspace variables
 close all   % close all open Matlab windows
 clc         % clear command window
 
+%% Determine computer platform
+if ispc
+    platform_selection  = 1;  % 1=Windows                                              
+elseif isunix
+    platform_selection  = 2;  % 2=Linux                                          
+elseif ismac
+    platform_selection  = 3;  % 3=mac  (not currently used)                                                
+else
+    disp('Computer Platform not supported')
+end
+
 %% Fast simulation
 % Fast simulation reduces the Fs_system clock rate to reduce the number of
 % simulated clock cycles between each sample in the Avalon bus signals.
@@ -37,7 +48,6 @@ mp.fastsim_Nsamples    = 12000; % set to the string 'all' to use all the samples
 %% Setup the directory paths & tool settings
 % Model variables will be placed in a data structure called mp 
 % (<model_abbreviation>_params)that can be passed to functions
-platform_selection      = 1;                                                   % 1=Windows, 2=Linux
 mp.model_name           = 'simple_gain';                                       % model name initials
 mp.model_abbreviation   = 'SG';                                                % model initials
 mp.linux_device_version = '18.0';                                              % string that describes device version (typically set as Quartus version)
