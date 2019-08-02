@@ -1,4 +1,0 @@
-SG/SG_DataPlane/Avalon Data Processing/Left Channel Processing --> SG_DataPlane_src_Left_Channel_Processing
-SG/SG_DataPlane/Avalon Data Processing/Right Channel Processing --> SG_DataPlane_src_Right_Channel_Processing
-SG/SG_DataPlane/Avalon Data Processing --> SG_DataPlane_src_Avalon_Data_Processing
-SG/SG_DataPlane --> SG_DataPlane_src_SG_DataPlane

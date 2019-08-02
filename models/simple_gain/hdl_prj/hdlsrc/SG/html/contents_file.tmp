@@ -1,8 +1,0 @@
-<TABLE BORDER="0" CELLSPACING="0" CELLPADDING="4" WIDTH="100%%" BGCOLOR="#ffffff"><TR><TD>
-<B>Generated Source Files</B>
-</TD></TR><TR></TR>
-<tr><td><a href="SG_DataPlane_src_Left_Channel_Processing_vhd.html" onclick="if (top) if (top.tocHiliteMe) top.tocHiliteMe(window, this, false);" id="SG_DataPlane_src_Left_Channel_Processing_vhd.html" target="rtwreport_document_frame" name="rtwIdGenFileLinks">SG_DataPlane_src_Left_Channel_Processing.vhd</a><span> </span></td></tr><tr></tr>
-<tr><td><a href="SG_DataPlane_src_Right_Channel_Processing_vhd.html" onclick="if (top) if (top.tocHiliteMe) top.tocHiliteMe(window, this, false);" id="SG_DataPlane_src_Right_Channel_Processing_vhd.html" target="rtwreport_document_frame" name="rtwIdGenFileLinks">SG_DataPlane_src_Right_Channel_Processing.vhd</a><span> </span></td></tr><tr></tr>
-<tr><td><a href="SG_DataPlane_src_Avalon_Data_Processing_vhd.html" onclick="if (top) if (top.tocHiliteMe) top.tocHiliteMe(window, this, false);" id="SG_DataPlane_src_Avalon_Data_Processing_vhd.html" target="rtwreport_document_frame" name="rtwIdGenFileLinks">SG_DataPlane_src_Avalon_Data_Processing.vhd</a><span> </span></td></tr><tr></tr>
-<tr><td><a href="SG_DataPlane_src_SG_DataPlane_vhd.html" onclick="if (top) if (top.tocHiliteMe) top.tocHiliteMe(window, this, false);" id="SG_DataPlane_src_SG_DataPlane_vhd.html" target="rtwreport_document_frame" name="rtwIdGenFileLinks">SG_DataPlane_src_SG_DataPlane.vhd</a><span> </span></td></tr><tr></tr>
-</table>
