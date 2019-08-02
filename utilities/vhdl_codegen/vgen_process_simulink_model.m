@@ -20,7 +20,7 @@
 
 %% Parse the Simulink Model (currently opened model) 
 % We parse the model to get the Avalon signals and control registers we need for the Avalon vhdl wrapper
-disp(['vgen: Parsing Simulink model ' mp.model_name])
+disp(['vgen: Parsing Simulink model: ' mp.model_name '. Please wait until you see the message "vgen: Finished."'])
 try
     mp.fastsim_flag = 0;  % turn off fast sim so that the model runs at the system clock rate
     avalon = vgen_get_simulink_block_interfaces(mp);
@@ -72,7 +72,8 @@ disp('vgen: Creating .tcl script for Platform Designer.')
 infile = [avalon.entity '.json'];
 tcl_output_path = [mp.model_path '\hdl_prj\ipcore\' avalon.entity '_v1_0\'];
 outfile = [tcl_output_path avalon.entity, '_avalon_hw.tcl'];  % Note: platform designer only adds components if they have the _hw.tcl suffix
-vgenTcl(infile, outfile);
+IPcoreVHDLfilesDir = [tcl_output_path 'hdl'];  % the directory of the VHDL source files for the IP core that the HDL coder created.
+vgenTcl(infile, outfile, IPcoreVHDLfilesDir);
 disp(['      created tcl file: ' outfile])
 
 %% copy the ip core generated files into the quartus project
