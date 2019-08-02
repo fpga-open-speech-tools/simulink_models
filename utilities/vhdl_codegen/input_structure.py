@@ -7,6 +7,7 @@ class InputStructure:
         self.opaque_address_map = True
         self.author = ""
         self.display_name = "Fill me in"
+        self.model_abbreviation = "Fill me in"
         self.inst_in_sys_mod = True
         self.editable = True
         self.report_to_talkback = False
