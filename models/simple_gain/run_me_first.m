@@ -37,13 +37,13 @@ mp.fastsim_Nsamples    = 12000; % set to the string 'all' to use all the samples
 %% Setup the directory paths & tool settings
 % Model variables will be placed in a data structure called mp 
 % (<model_abbreviation>_params)that can be passed to functions
-mp.model_name           = 'simple_gain';                                       % model name initials
+mp.model_name           = 'simple_gain';                                       % model name 
 mp.model_abbreviation   = 'SG';                                                % model initials
 mp.linux_device_version = '18.0';                                              % string that describes device version (typically set as Quartus version)
 mp.model_path           = 'E:\git\nih_simulinklib\models\simple_gain';         % path to the model directory
 mp.test_signals_path    = 'E:\git\nih_simulinklib\test_signals';               % path to test signals folder
 mp.utility_path         = 'E:\git\nih_simulinklib\matlab';                     % path to matlab utility functions folder
-mp.config_path          = 'E:\git\nih_simulinklib\config';                     % path to configuration folder (widget and register field definitions)
+mp.config_path          = 'E:\git\nih_simulinklib\config';                     % path to \configuration folder (widget and register field definitions)
 mp.codegen_path         = 'E:\git\nih_simulinklib\utilities\vhdl_codegen';     % path to \vhdl_codegen folder
 mp.quartus_project_path = 'E:\NIH\Simulink\Simple_Gain\Quartus_Project';       % path to the Quartus project directory for the Simulink model
 mp.quartus_exe_path     = 'F:\intelFPGA_lite\18.0\quartus\bin64\quartus.exe';  % path to the Quartus executable
@@ -65,6 +65,8 @@ if  python_loaded
     disp(['Using Python version ' python_version])
 else
     pyversion(mp.python_path);    % Note: if the version changes from what is already loaded in Matlab, you will need to restart Matlab
+    [python_version, python_exe, python_loaded] = pyversion;
+    disp(['Setting Python to version ' python_version])
 end
 % add the codegen_path to python's search path
 if count(py.sys.path,mp.codegen_path) == 0
@@ -73,6 +75,8 @@ end
 
 
 %% Open the model
+disp(['Please wait while the Simulink Model: '  mp.model_name  ' is being opened.'])
+disp(['Note: Before generating VHDL, you will need to run a model simulation.'])
 open_system([mp.model_abbreviation])
 % display popup reminder message 
 helpdlg(sprintf(['NOTE: You will need to first run the Simulation for model ' mp.model_name ' to initialize variables in the Matlab workspace before converting to VHDL.']),'Reminder Message')

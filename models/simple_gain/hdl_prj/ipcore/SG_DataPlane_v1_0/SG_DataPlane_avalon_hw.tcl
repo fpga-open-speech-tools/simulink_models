@@ -33,7 +33,23 @@ add_fileset QUARTUS_SYNTH QUARTUS_SYNTH "" ""
 set_fileset_property QUARTUS_SYNTH TOP_LEVEL SG_DataPlane_avalon
 set_fileset_property QUARTUS_SYNTH ENABLE_RELATIVE_INCLUDE_PATHS false
 set_fileset_property QUARTUS_SYNTH ENABLE_FILE_OVERWRITE_MODE false
-add_fileset_file SG_dataplane_avalon.vhd VHDL PATH hdl/SG_dataplane_avalon.vhd TOP_LEVEL_FILE
+add_fileset_file SG_dataplane_avalon.vhd                                      VHDL PATH hdl/SG_dataplane_avalon.vhd TOP_LEVEL_FILE
+#add_fileset_file SG_DataPlane.vhd                                             VHDL PATH hdl/SG_DataPlane.vhd
+add_fileset_file SG_DataPlane_addr_decoder.vhd                                VHDL PATH hdl/SG_DataPlane_addr_decoder.vhd
+add_fileset_file SG_DataPlane_dut.vhd                                         VHDL PATH hdl/SG_DataPlane_dut.vhd
+add_fileset_file SG_DataPlane_rdfifo_data.vhd                                 VHDL PATH hdl/SG_DataPlane_rdfifo_data.vhd
+add_fileset_file SG_DataPlane_rdfifo_data_classic.vhd                         VHDL PATH hdl/SG_DataPlane_rdfifo_data_classic.vhd
+add_fileset_file SG_DataPlane_rdfifo_last.vhd                                 VHDL PATH hdl/SG_DataPlane_rdfifo_last.vhd
+add_fileset_file SG_DataPlane_rdfifo_last_classic.vhd                         VHDL PATH hdl/SG_DataPlane_rdfifo_last_classic.vhd
+add_fileset_file SG_DataPlane_rdfifo_rid.vhd                                  VHDL PATH hdl/SG_DataPlane_rdfifo_rid.vhd
+add_fileset_file SG_DataPlane_rdfifo_rid_classic.vhd                          VHDL PATH hdl/SG_DataPlane_rdfifo_rid_classic.vhd
+add_fileset_file SG_DataPlane_reset_sync.vhd                                  VHDL PATH hdl/SG_DataPlane_reset_sync.vhd
+add_fileset_file SG_DataPlane_SimpleDualPortRAM_generic.vhd                   VHDL PATH hdl/SG_DataPlane_SimpleDualPortRAM_generic.vhd
+add_fileset_file SG_DataPlane_SimpleDualPortRAM_singlebit.vhd                 VHDL PATH hdl/SG_DataPlane_SimpleDualPortRAM_singlebit.vhd
+add_fileset_file SG_DataPlane_src_Avalon_Data_Processing.vhd                  VHDL PATH hdl/SG_DataPlane_src_Avalon_Data_Processing.vhd
+add_fileset_file SG_DataPlane_src_Left_Channel_Processing.vhd                 VHDL PATH hdl/SG_DataPlane_src_Left_Channel_Processing.vhd
+add_fileset_file SG_DataPlane_src_Right_Channel_Processing.vhd                VHDL PATH hdl/SG_DataPlane_src_Right_Channel_Processing.vhd
+add_fileset_file SG_DataPlane_src_SG_DataPlane.vhd                            VHDL PATH hdl/SG_DataPlane_src_SG_DataPlane.vhd
 # end create_file_sets
 
 
