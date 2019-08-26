@@ -1,0 +1,1970 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="rtwreport.css" /><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>
+High-level Resource Utilization Report for HA_sys8
+</title>
+
+</head>
+<body bgcolor="#ffffff" link="0033CC" vlink="#666666" onload="try {if (top) {if (top.rtwPageOnLoad) top.rtwPageOnLoad('rtwIdBillOfMaterials'); else local_onload();}} catch(err) {};hdlTableShrink(this, 'Input_Port');hdlTableShrink(this, 'Output_Port');hdlTableShrink(this, 'Multiply_2_6');hdlTableShrink(this, 'Multiply_2_7');hdlTableShrink(this, 'Multiply_2_8');hdlTableShrink(this, 'Multiply_2_9');hdlTableShrink(this, 'Adder_2_3');hdlTableShrink(this, 'Adder_2_4');hdlTableShrink(this, 'Adder_2_5');hdlTableShrink(this, 'Adder_2_6');hdlTableShrink(this, 'Adder_2_7');hdlTableShrink(this, 'Adder_2_8');hdlTableShrink(this, 'Adder_2_9');hdlTableShrink(this, 'Adder_2_10');hdlTableShrink(this, 'Adder_2_11');hdlTableShrink(this, 'Adder_2_12');hdlTableShrink(this, 'Adder_2_13');hdlTableShrink(this, 'Adder_2_14');hdlTableShrink(this, 'Adder_2_15');hdlTableShrink(this, 'Register_2_1');hdlTableShrink(this, 'Register_2_2');hdlTableShrink(this, 'Register_2_3');hdlTableShrink(this, 'Register_2_4');hdlTableShrink(this, 'Register_2_5');hdlTableShrink(this, 'Register_2_6');hdlTableShrink(this, 'Register_2_7');hdlTableShrink(this, 'Register_2_8');hdlTableShrink(this, 'Multiplexer_2_6');hdlTableShrink(this, 'Multiplexer_2_7');hdlTableShrink(this, 'Multiplexer_2_8');hdlTableShrink(this, 'Multiplexer_2_9');hdlTableShrink(this, 'Multiplexer_2_10');hdlTableShrink(this, 'Multiplexer_2_11');hdlTableShrink(this, 'Multiplexer_2_12');hdlTableShrink(this, 'Multiplexer_2_13');hdlTableShrink(this, 'Multiplexer_2_14');hdlTableShrink(this, 'Multiplexer_2_15');hdlTableShrink(this, 'Multiplexer_2_16');hdlTableShrink(this, 'Multiplexer_2_17');hdlTableShrink(this, 'Multiplexer_2_18');hdlTableShrink(this, 'Multiplexer_2_19');hdlTableShrink(this, 'Multiplexer_2_20');hdlTableShrink(this, 'Multiplexer_2_21');hdlTableShrink(this, 'Multiplexer_2_22');hdlTableShrink(this, 'Multiplexer_2_23');hdlTableShrink(this, 'Multiplexer_2_24');hdlTableShrink(this, 'Multiplexer_2_25');hdlTableShrink(this, 'Multiplexer_2_26');hdlTableShrink(this, 'Multiplexer_2_27');hdlTableShrink(this, 'Multiplexer_2_28');hdlTableShrink(this, 'Multiplexer_2_29');hdlTableShrink(this, 'Multiplexer_2_30');hdlTableShrink(this, 'Multiplexer_2_31');hdlTableShrink(this, 'Multiplexer_2_32');hdlTableShrink(this, 'Multiplexer_2_33');">
+<script>
+<!--
+function hdlTableShrink(o,tagNameStr)
+{
+var temp = document.getElementsByName(tagNameStr);
+if (temp[0].style.display == "")
+{
+	temp[0].style.display = "none";
+	o.innerHTML = '<span style="font-family:monospace">[+]</span>';
+}
+else
+{
+	temp[0].style.display = "";
+	o.innerHTML = '<span style="font-family:monospace">[-]</span>';
+}
+}
+// -->
+</script>
+<script>
+<!--
+function hdlTableCollapseAll(o, numNtks, numComps)
+{
+	var id = "";
+	for (i = 1; i <= numNtks; i++)
+	{
+		for (j = 1; j <= numComps; j++)
+		{
+			id = "Multiply" + "_" + i + "_" + j;
+			var temp = document.getElementsByName(id);
+			if (temp != null && temp.length > 0)
+			{
+				temp[0].style.display = "none";
+			}
+			id = "Adder" + "_" + i + "_" + j;
+			temp = document.getElementsByName(id);
+			if (temp != null && temp.length > 0)
+			{
+				temp[0].style.display = "none";
+			}
+			id = "Subtractor" + "_" + i + "_" + j;
+			temp = document.getElementsByName(id);
+			if (temp != null && temp.length > 0)
+			{
+				temp[0].style.display = "none";
+			}
+			id = "Register" + "_" + i + "_" + j;
+			temp = document.getElementsByName(id);
+			if (temp != null && temp.length > 0)
+			{
+				temp[0].style.display = "none";
+			}
+			id = "RAM" + "_" + i + "_" + j;
+			temp = document.getElementsByName(id);
+			if (temp != null && temp.length > 0)
+			{
+				temp[0].style.display = "none";
+			}
+			id = "Multiplexer" + "_" + i + "_" + j;
+			temp = document.getElementsByName(id);
+			if (temp != null && temp.length > 0)
+			{
+				temp[0].style.display = "none";
+			}
+		}
+	}
+	var collapsibles = document.getElementsByName('collapsible');
+	for (i = 0; i < collapsibles.length; i++)
+	{
+		collapsibles[i].innerHTML = '<span style="font-family:monospace">[+]</span>';
+	}
+}
+// -->
+</script>
+<script>
+<!--
+function hdlTableExpandAll(o, numNtks, numComps)
+{
+	var id = "";
+	for (i = 1; i <= numNtks; i++)
+	{
+		for (j = 1; j <= numComps; j++)
+		{
+			id = "Multiply" + "_" + i + "_" + j;
+			var temp = document.getElementsByName(id);
+			if (temp != null && temp.length > 0)
+			{
+				temp[0].style.display = "";
+			}
+			id = "Adder" + "_" + i + "_" + j;
+			temp = document.getElementsByName(id);
+			if (temp != null && temp.length > 0)
+			{
+				temp[0].style.display = "";
+			}
+			id = "Subtractor" + "_" + i + "_" + j;
+			temp = document.getElementsByName(id);
+			if (temp != null && temp.length > 0)
+			{
+				temp[0].style.display = "";
+			}
+			id = "Register" + "_" + i + "_" + j;
+			temp = document.getElementsByName(id);
+			if (temp != null && temp.length > 0)
+			{
+				temp[0].style.display = "";
+			}
+			id = "RAM" + "_" + i + "_" + j;
+			temp = document.getElementsByName(id);
+			if (temp != null && temp.length > 0)
+			{
+				temp[0].style.display = "";
+			}
+			id = "Multiplexer" + "_" + i + "_" + j;
+			temp = document.getElementsByName(id);
+			if (temp != null && temp.length > 0)
+			{
+				temp[0].style.display = "";
+			}
+		}
+	}
+	var collapsibles = document.getElementsByName('collapsible');
+	for (i = 0; i < collapsibles.length; i++)
+	{
+		collapsibles[i].innerHTML = '<span style="font-family:monospace">[-]</span>';
+	}
+}
+// -->
+</script>
+<font SIZE="+2" COLOR="#000066">
+Generic Resource Report for HA_sys8
+</font>
+<br /><br /><br /><a name="Summary">
+<font size="+1" color="#000066">
+<b class="midprod">
+Summary
+</b>
+
+</font>
+
+</a>
+<br /><br /><table width="100%" border="1">
+<tr style="background-color: #eeeeff">
+<td align="left" valign="top" style="border-style: none">
+Multipliers
+</td>
+<td align="center" valign="top" style="border-style: none">
+59
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td align="left" valign="top" style="border-style: none">
+Adders/Subtractors
+</td>
+<td align="center" valign="top" style="border-style: none">
+128
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td align="left" valign="top" style="border-style: none">
+Registers
+</td>
+<td align="center" valign="top" style="border-style: none">
+396
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td align="left" valign="top" style="border-style: none">
+Total 1-Bit Registers
+</td>
+<td align="center" valign="top" style="border-style: none">
+13642
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td align="left" valign="top" style="border-style: none">
+RAMs
+</td>
+<td align="center" valign="top" style="border-style: none">
+0
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td align="left" valign="top" style="border-style: none">
+Multiplexers
+</td>
+<td align="center" valign="top" style="border-style: none">
+194
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td align="left" valign="top" style="border-style: none">
+I/O Bits
+</td>
+<td align="center" valign="top" style="border-style: none">
+292
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td align="left" valign="top" style="border-style: none">
+Static Shift operators
+</td>
+<td align="center" valign="top" style="border-style: none">
+15
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td align="left" valign="top" style="border-style: none">
+Dynamic Shift operators
+</td>
+<td align="center" valign="top" style="border-style: none">
+0
+</td>
+
+</tr>
+
+</table>
+<br /><br /><a name="Detailed Report">
+<font size="+1" color="#000066">
+<b class="midprod">
+Detailed Report
+</b>
+
+</font>
+
+</a>
+<br /><br /><p><hr /></p><h5>
+Report for Subsystem:    <a href="matlab:Simulink.ID.hilite('HA_sys8:657')" name="code2model" class="code2model">
+HA_LR
+</a>
+
+</h5>
+<h5>
+Multipliers (5)
+</h5>
+<span style="font-family:monospace">
+2x2-bit Multiply 							: 1
+</span>
+<br /><span style="font-family:monospace">
+14x14-bit Multiply 							: 1
+</span>
+<br /><span style="font-family:monospace">
+18x14-bit Multiply 							: 1
+</span>
+<br /><span style="font-family:monospace">
+14x18-bit Multiply 							: 1
+</span>
+<br /><span style="font-family:monospace">
+18x18-bit Multiply 							: 1
+</span>
+<br /><h5>
+Adders/Subtractors (6)
+</h5>
+<span style="font-family:monospace">
+65x65-bit Adder 							: 2
+</span>
+<br /><span style="font-family:monospace">
+66x66-bit Adder 							: 1
+</span>
+<br /><span style="font-family:monospace">
+33-bit Subtractor 							: 2
+</span>
+<br /><span style="font-family:monospace">
+67-bit Subtractor 							: 1
+</span>
+<br /><h5>
+Multiplexers (7)
+</h5>
+<span style="font-family:monospace">
+2-bit 3-to-1 Multiplexer 							: 2
+</span>
+<br /><span style="font-family:monospace">
+1-bit 2-to-1 Multiplexer 							: 1
+</span>
+<br /><span style="font-family:monospace">
+33-bit 2-to-1 Multiplexer 							: 2
+</span>
+<br /><span style="font-family:monospace">
+66-bit 2-to-1 Multiplexer 							: 1
+</span>
+<br /><span style="font-family:monospace">
+32-bit 3-to-1 Multiplexer 							: 1
+</span>
+<br /><h5>
+Number of Shift operators (3)
+</h5>
+<span style="font-family:monospace">
+Static Shift Left 							: 3
+</span>
+<br /><h5>
+Number of I/O Bits (292)
+</h5>
+<span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, 'Input_Port')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+Number of Input Bits: 227
+</span>
+<span name="Input_Port" id="Input_Port">
+<ul>
+<li>
+clk: 1 bit
+</li>
+<li>
+reset: 1 bit
+</li>
+<li>
+clk_enable: 1 bit
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:658')" name="code2model" class="code2model">
+HA_left_data_in
+</a>
+: 32 bits
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:659')" name="code2model" class="code2model">
+Gain_B1_left
+</a>
+: 32 bits
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:660')" name="code2model" class="code2model">
+Gain_B2_left
+</a>
+: 32 bits
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:661')" name="code2model" class="code2model">
+Gain_B3_left
+</a>
+: 32 bits
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:662')" name="code2model" class="code2model">
+Gain_B4_left
+</a>
+: 32 bits
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:684')" name="code2model" class="code2model">
+Gain_left_all
+</a>
+: 32 bits
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:664')" name="code2model" class="code2model">
+HA_right_data_in
+</a>
+: 32 bits
+</li>
+
+</ul>
+
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, 'Output_Port')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+Number of Output Bits: 65
+</span>
+<span name="Output_Port" id="Output_Port">
+<ul>
+<li>
+ce_out: 1 bit
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:670')" name="code2model" class="code2model">
+HA_left_data_out
+</a>
+: 32 bits
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:671')" name="code2model" class="code2model">
+HA_right_data_out
+</a>
+: 32 bits
+</li>
+
+</ul>
+
+</span>
+<br /><p><hr /></p><h5>
+Report for Subsystem:    <a href="matlab:Simulink.ID.hilite('HA_sys8:117')" name="code2model" class="code2model">
+HA_left
+</a>
+
+</h5>
+<h5>
+Multipliers (54)
+</h5>
+<span style="font-family:monospace">
+2x2-bit Multiply 							: 4
+</span>
+<br /><span style="font-family:monospace">
+14x14-bit Multiply 							: 4
+</span>
+<br /><span style="font-family:monospace">
+18x14-bit Multiply 							: 4
+</span>
+<br /><span style="font-family:monospace">
+14x18-bit Multiply 							: 4
+</span>
+<br /><span style="font-family:monospace">
+18x18-bit Multiply 							: 4
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, 'Multiply_2_6')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+32x32-bit Multiply 							: 12
+</span>
+<span name="Multiply_2_6" id="Multiply_2_6">
+<ul>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:365')" name="code2model" class="code2model">
+FIRDecimator1
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:383')" name="code2model" class="code2model">
+FIRBandPass1
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:587')" name="code2model" class="code2model">
+FIRBandPass2
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:595')" name="code2model" class="code2model">
+FIRBandPass3
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:603')" name="code2model" class="code2model">
+FIRBandPass4
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, 'Multiply_2_7')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+32x33-bit Multiply 							: 14
+</span>
+<span name="Multiply_2_7" id="Multiply_2_7">
+<ul>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:588')" name="code2model" class="code2model">
+FIRDecimator2
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:596')" name="code2model" class="code2model">
+FIRDecimator3
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:604')" name="code2model" class="code2model">
+FIRDecimator4
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:605')" name="code2model" class="code2model">
+FIRInterpolator4
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, 'Multiply_2_8')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+33x34-bit Multiply 							: 6
+</span>
+<span name="Multiply_2_8" id="Multiply_2_8">
+<ul>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:597')" name="code2model" class="code2model">
+FIRInterpolator3
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:589')" name="code2model" class="code2model">
+FIRInterpolator2
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, 'Multiply_2_9')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+33x33-bit Multiply 							: 2
+</span>
+<span name="Multiply_2_9" id="Multiply_2_9">
+<ul>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:367')" name="code2model" class="code2model">
+FIRInterpolator1
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><h5>
+Adders/Subtractors (122)
+</h5>
+<span style="font-family:monospace">
+65x65-bit Adder 							: 8
+</span>
+<br /><span style="font-family:monospace">
+66x66-bit Adder 							: 4
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, 'Adder_2_3')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+33x33-bit Adder 							: 3
+</span>
+<span name="Adder_2_3" id="Adder_2_3">
+<ul>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:608')" name="code2model" class="code2model">
+Add3
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:600')" name="code2model" class="code2model">
+Add2
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:592')" name="code2model" class="code2model">
+Add1
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, 'Adder_2_4')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+67x67-bit Adder 							: 2
+</span>
+<span name="Adder_2_4" id="Adder_2_4">
+<ul>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:365')" name="code2model" class="code2model">
+FIRDecimator1
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, 'Adder_2_5')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+74x74-bit Adder 							: 1
+</span>
+<span name="Adder_2_5" id="Adder_2_5">
+<ul>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:365')" name="code2model" class="code2model">
+FIRDecimator1
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, 'Adder_2_6')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+66x66-bit Adder 							: 15
+</span>
+<span name="Adder_2_6" id="Adder_2_6">
+<ul>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:383')" name="code2model" class="code2model">
+FIRBandPass1
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:587')" name="code2model" class="code2model">
+FIRBandPass2
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:595')" name="code2model" class="code2model">
+FIRBandPass3
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:603')" name="code2model" class="code2model">
+FIRBandPass4
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, 'Adder_2_7')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+33x33-bit Adder 							: 32
+</span>
+<span name="Adder_2_7" id="Adder_2_7">
+<ul>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:588')" name="code2model" class="code2model">
+FIRDecimator2
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:596')" name="code2model" class="code2model">
+FIRDecimator3
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:604')" name="code2model" class="code2model">
+FIRDecimator4
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:605')" name="code2model" class="code2model">
+FIRInterpolator4
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, 'Adder_2_8')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+68x68-bit Adder 							: 2
+</span>
+<span name="Adder_2_8" id="Adder_2_8">
+<ul>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:588')" name="code2model" class="code2model">
+FIRDecimator2
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, 'Adder_2_9')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+71x71-bit Adder 							: 4
+</span>
+<span name="Adder_2_9" id="Adder_2_9">
+<ul>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:588')" name="code2model" class="code2model">
+FIRDecimator2
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:596')" name="code2model" class="code2model">
+FIRDecimator3
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:604')" name="code2model" class="code2model">
+FIRDecimator4
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:605')" name="code2model" class="code2model">
+FIRInterpolator4
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, 'Adder_2_10')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+70x70-bit Adder 							: 14
+</span>
+<span name="Adder_2_10" id="Adder_2_10">
+<ul>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:596')" name="code2model" class="code2model">
+FIRDecimator3
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:604')" name="code2model" class="code2model">
+FIRDecimator4
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:605')" name="code2model" class="code2model">
+FIRInterpolator4
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:589')" name="code2model" class="code2model">
+FIRInterpolator2
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, 'Adder_2_11')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+34x34-bit Adder 							: 16
+</span>
+<span name="Adder_2_11" id="Adder_2_11">
+<ul>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:597')" name="code2model" class="code2model">
+FIRInterpolator3
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:589')" name="code2model" class="code2model">
+FIRInterpolator2
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, 'Adder_2_12')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+72x72-bit Adder 							: 4
+</span>
+<span name="Adder_2_12" id="Adder_2_12">
+<ul>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:597')" name="code2model" class="code2model">
+FIRInterpolator3
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, 'Adder_2_13')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+73x73-bit Adder 							: 2
+</span>
+<span name="Adder_2_13" id="Adder_2_13">
+<ul>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:597')" name="code2model" class="code2model">
+FIRInterpolator3
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:589')" name="code2model" class="code2model">
+FIRInterpolator2
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, 'Adder_2_14')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+69x69-bit Adder 							: 2
+</span>
+<span name="Adder_2_14" id="Adder_2_14">
+<ul>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:367')" name="code2model" class="code2model">
+FIRInterpolator1
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, 'Adder_2_15')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+76x76-bit Adder 							: 1
+</span>
+<span name="Adder_2_15" id="Adder_2_15">
+<ul>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:367')" name="code2model" class="code2model">
+FIRInterpolator1
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><span style="font-family:monospace">
+33-bit Subtractor 							: 8
+</span>
+<br /><span style="font-family:monospace">
+67-bit Subtractor 							: 4
+</span>
+<br /><h5>
+Registers (396)
+</h5>
+<span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, 'Register_2_1')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+32-bit Register 							: 308
+</span>
+<span name="Register_2_1" id="Register_2_1">
+<ul class="SystemdefinedCollapse" id="ab80a419-a5b8-486d-9aa7-052b324ee665" dataCollapse="off">
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:365')" name="code2model" class="code2model">
+FIRDecimator1
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:383')" name="code2model" class="code2model">
+FIRBandPass1
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:588')" name="code2model" class="code2model">
+FIRDecimator2
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:587')" name="code2model" class="code2model">
+FIRBandPass2
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:596')" name="code2model" class="code2model">
+FIRDecimator3
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:595')" name="code2model" class="code2model">
+FIRBandPass3
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:604')" name="code2model" class="code2model">
+FIRDecimator4
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:603')" name="code2model" class="code2model">
+FIRBandPass4
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:605')" name="code2model" class="code2model">
+FIRInterpolator4
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:597')" name="code2model" class="code2model">
+FIRInterpolator3
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:589')" name="code2model" class="code2model">
+FIRInterpolator2
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:367')" name="code2model" class="code2model">
+FIRInterpolator1
+</a>
+
+</li>
+
+</ul>
+<span class="SDCollapseControl" onclick="collapseSD(this, 'ab80a419-a5b8-486d-9aa7-052b324ee665')" onmouseover="this.style.cursor = 'pointer'">
+&#8743; Less
+</span>
+<br />
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, 'Register_2_2')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+73-bit Register 							: 2
+</span>
+<span name="Register_2_2" id="Register_2_2">
+<ul>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:365')" name="code2model" class="code2model">
+FIRDecimator1
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, 'Register_2_3')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+65-bit Register 							: 14
+</span>
+<span name="Register_2_3" id="Register_2_3">
+<ul>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:383')" name="code2model" class="code2model">
+FIRBandPass1
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:587')" name="code2model" class="code2model">
+FIRBandPass2
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:595')" name="code2model" class="code2model">
+FIRBandPass3
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:603')" name="code2model" class="code2model">
+FIRBandPass4
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, 'Register_2_4')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+70-bit Register 							: 10
+</span>
+<span name="Register_2_4" id="Register_2_4">
+<ul>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:588')" name="code2model" class="code2model">
+FIRDecimator2
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:596')" name="code2model" class="code2model">
+FIRDecimator3
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:604')" name="code2model" class="code2model">
+FIRDecimator4
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:605')" name="code2model" class="code2model">
+FIRInterpolator4
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, 'Register_2_5')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+1-bit Register 							: 8
+</span>
+<span name="Register_2_5" id="Register_2_5">
+<ul>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:596')" name="code2model" class="code2model">
+FIRDecimator3
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:604')" name="code2model" class="code2model">
+FIRDecimator4
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, 'Register_2_6')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+33-bit Register 							: 48
+</span>
+<span name="Register_2_6" id="Register_2_6">
+<ul>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:597')" name="code2model" class="code2model">
+FIRInterpolator3
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:589')" name="code2model" class="code2model">
+FIRInterpolator2
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:367')" name="code2model" class="code2model">
+FIRInterpolator1
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, 'Register_2_7')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+72-bit Register 							: 4
+</span>
+<span name="Register_2_7" id="Register_2_7">
+<ul>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:597')" name="code2model" class="code2model">
+FIRInterpolator3
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:589')" name="code2model" class="code2model">
+FIRInterpolator2
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, 'Register_2_8')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+75-bit Register 							: 2
+</span>
+<span name="Register_2_8" id="Register_2_8">
+<ul>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:367')" name="code2model" class="code2model">
+FIRInterpolator1
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><h5>
+Multiplexers (187)
+</h5>
+<span style="font-family:monospace">
+2-bit 3-to-1 Multiplexer 							: 8
+</span>
+<br /><span style="font-family:monospace">
+1-bit 2-to-1 Multiplexer 							: 4
+</span>
+<br /><span style="font-family:monospace">
+33-bit 2-to-1 Multiplexer 							: 8
+</span>
+<br /><span style="font-family:monospace">
+66-bit 2-to-1 Multiplexer 							: 4
+</span>
+<br /><span style="font-family:monospace">
+32-bit 3-to-1 Multiplexer 							: 4
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, 'Multiplexer_2_6')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+32-bit 24-to-1 Multiplexer 							: 4
+</span>
+<span name="Multiplexer_2_6" id="Multiplexer_2_6">
+<ul>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:365')" name="code2model" class="code2model">
+FIRDecimator1
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, 'Multiplexer_2_7')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+64-bit 2-to-1 Multiplexer 							: 7
+</span>
+<span name="Multiplexer_2_7" id="Multiplexer_2_7">
+<ul>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:365')" name="code2model" class="code2model">
+FIRDecimator1
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:588')" name="code2model" class="code2model">
+FIRDecimator2
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:596')" name="code2model" class="code2model">
+FIRDecimator3
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:604')" name="code2model" class="code2model">
+FIRDecimator4
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:605')" name="code2model" class="code2model">
+FIRInterpolator4
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, 'Multiplexer_2_8')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+73-bit 2-to-1 Multiplexer 							: 1
+</span>
+<span name="Multiplexer_2_8" id="Multiplexer_2_8">
+<ul>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:365')" name="code2model" class="code2model">
+FIRDecimator1
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, 'Multiplexer_2_9')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+32-bit 3-to-1 Multiplexer 							: 10
+</span>
+<span name="Multiplexer_2_9" id="Multiplexer_2_9">
+<ul>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:365')" name="code2model" class="code2model">
+FIRDecimator1
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:588')" name="code2model" class="code2model">
+FIRDecimator2
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:596')" name="code2model" class="code2model">
+FIRDecimator3
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:604')" name="code2model" class="code2model">
+FIRDecimator4
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:603')" name="code2model" class="code2model">
+FIRBandPass4
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:605')" name="code2model" class="code2model">
+FIRInterpolator4
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:597')" name="code2model" class="code2model">
+FIRInterpolator3
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:589')" name="code2model" class="code2model">
+FIRInterpolator2
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:367')" name="code2model" class="code2model">
+FIRInterpolator1
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, 'Multiplexer_2_10')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+66-bit 3-to-1 Multiplexer 							: 2
+</span>
+<span name="Multiplexer_2_10" id="Multiplexer_2_10">
+<ul>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:365')" name="code2model" class="code2model">
+FIRDecimator1
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, 'Multiplexer_2_11')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+73-bit 3-to-1 Multiplexer 							: 1
+</span>
+<span name="Multiplexer_2_11" id="Multiplexer_2_11">
+<ul>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:365')" name="code2model" class="code2model">
+FIRDecimator1
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, 'Multiplexer_2_12')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+65-bit 2-to-1 Multiplexer 							: 23
+</span>
+<span name="Multiplexer_2_12" id="Multiplexer_2_12">
+<ul>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:383')" name="code2model" class="code2model">
+FIRBandPass1
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:588')" name="code2model" class="code2model">
+FIRDecimator2
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:587')" name="code2model" class="code2model">
+FIRBandPass2
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:596')" name="code2model" class="code2model">
+FIRDecimator3
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:595')" name="code2model" class="code2model">
+FIRBandPass3
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:604')" name="code2model" class="code2model">
+FIRDecimator4
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:603')" name="code2model" class="code2model">
+FIRBandPass4
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:605')" name="code2model" class="code2model">
+FIRInterpolator4
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, 'Multiplexer_2_13')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+32-bit 5-to-1 Multiplexer 							: 4
+</span>
+<span name="Multiplexer_2_13" id="Multiplexer_2_13">
+<ul>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:383')" name="code2model" class="code2model">
+FIRBandPass1
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:587')" name="code2model" class="code2model">
+FIRBandPass2
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, 'Multiplexer_2_14')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+32-bit 8-to-1 Multiplexer 							: 4
+</span>
+<span name="Multiplexer_2_14" id="Multiplexer_2_14">
+<ul>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:383')" name="code2model" class="code2model">
+FIRBandPass1
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:587')" name="code2model" class="code2model">
+FIRBandPass2
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, 'Multiplexer_2_15')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+70-bit 2-to-1 Multiplexer 							: 4
+</span>
+<span name="Multiplexer_2_15" id="Multiplexer_2_15">
+<ul>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:588')" name="code2model" class="code2model">
+FIRDecimator2
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:596')" name="code2model" class="code2model">
+FIRDecimator3
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:604')" name="code2model" class="code2model">
+FIRDecimator4
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:605')" name="code2model" class="code2model">
+FIRInterpolator4
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, 'Multiplexer_2_16')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+67-bit 3-to-1 Multiplexer 							: 2
+</span>
+<span name="Multiplexer_2_16" id="Multiplexer_2_16">
+<ul>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:588')" name="code2model" class="code2model">
+FIRDecimator2
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, 'Multiplexer_2_17')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+70-bit 3-to-1 Multiplexer 							: 4
+</span>
+<span name="Multiplexer_2_17" id="Multiplexer_2_17">
+<ul>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:588')" name="code2model" class="code2model">
+FIRDecimator2
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:596')" name="code2model" class="code2model">
+FIRDecimator3
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:604')" name="code2model" class="code2model">
+FIRDecimator4
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:605')" name="code2model" class="code2model">
+FIRInterpolator4
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, 'Multiplexer_2_18')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+32-bit 4-to-1 Multiplexer 							: 10
+</span>
+<span name="Multiplexer_2_18" id="Multiplexer_2_18">
+<ul>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:588')" name="code2model" class="code2model">
+FIRDecimator2
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:595')" name="code2model" class="code2model">
+FIRBandPass3
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:603')" name="code2model" class="code2model">
+FIRBandPass4
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, 'Multiplexer_2_19')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+33-bit 4-to-1 Multiplexer 							: 4
+</span>
+<span name="Multiplexer_2_19" id="Multiplexer_2_19">
+<ul>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:588')" name="code2model" class="code2model">
+FIRDecimator2
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:589')" name="code2model" class="code2model">
+FIRInterpolator2
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, 'Multiplexer_2_20')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+32-bit 2-to-1 Multiplexer 							: 16
+</span>
+<span name="Multiplexer_2_20" id="Multiplexer_2_20">
+<ul>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:596')" name="code2model" class="code2model">
+FIRDecimator3
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:604')" name="code2model" class="code2model">
+FIRDecimator4
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:605')" name="code2model" class="code2model">
+FIRInterpolator4
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:597')" name="code2model" class="code2model">
+FIRInterpolator3
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:589')" name="code2model" class="code2model">
+FIRInterpolator2
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:367')" name="code2model" class="code2model">
+FIRInterpolator1
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, 'Multiplexer_2_21')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+33-bit 2-to-1 Multiplexer 							: 16
+</span>
+<span name="Multiplexer_2_21" id="Multiplexer_2_21">
+<ul>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:596')" name="code2model" class="code2model">
+FIRDecimator3
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:604')" name="code2model" class="code2model">
+FIRDecimator4
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:605')" name="code2model" class="code2model">
+FIRInterpolator4
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:597')" name="code2model" class="code2model">
+FIRInterpolator3
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, 'Multiplexer_2_22')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+69-bit 3-to-1 Multiplexer 							: 14
+</span>
+<span name="Multiplexer_2_22" id="Multiplexer_2_22">
+<ul>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:596')" name="code2model" class="code2model">
+FIRDecimator3
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:604')" name="code2model" class="code2model">
+FIRDecimator4
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:605')" name="code2model" class="code2model">
+FIRInterpolator4
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:589')" name="code2model" class="code2model">
+FIRInterpolator2
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, 'Multiplexer_2_23')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+34-bit 2-to-1 Multiplexer 							: 4
+</span>
+<span name="Multiplexer_2_23" id="Multiplexer_2_23">
+<ul>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:597')" name="code2model" class="code2model">
+FIRInterpolator3
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, 'Multiplexer_2_24')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+66-bit 2-to-1 Multiplexer 							: 5
+</span>
+<span name="Multiplexer_2_24" id="Multiplexer_2_24">
+<ul>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:597')" name="code2model" class="code2model">
+FIRInterpolator3
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:589')" name="code2model" class="code2model">
+FIRInterpolator2
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:367')" name="code2model" class="code2model">
+FIRInterpolator1
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, 'Multiplexer_2_25')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+67-bit 2-to-1 Multiplexer 							: 6
+</span>
+<span name="Multiplexer_2_25" id="Multiplexer_2_25">
+<ul>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:597')" name="code2model" class="code2model">
+FIRInterpolator3
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:589')" name="code2model" class="code2model">
+FIRInterpolator2
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, 'Multiplexer_2_26')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+72-bit 2-to-1 Multiplexer 							: 2
+</span>
+<span name="Multiplexer_2_26" id="Multiplexer_2_26">
+<ul>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:597')" name="code2model" class="code2model">
+FIRInterpolator3
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:589')" name="code2model" class="code2model">
+FIRInterpolator2
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, 'Multiplexer_2_27')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+71-bit 3-to-1 Multiplexer 							: 4
+</span>
+<span name="Multiplexer_2_27" id="Multiplexer_2_27">
+<ul>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:597')" name="code2model" class="code2model">
+FIRInterpolator3
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, 'Multiplexer_2_28')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+72-bit 3-to-1 Multiplexer 							: 2
+</span>
+<span name="Multiplexer_2_28" id="Multiplexer_2_28">
+<ul>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:597')" name="code2model" class="code2model">
+FIRInterpolator3
+</a>
+
+</li>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:589')" name="code2model" class="code2model">
+FIRInterpolator2
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, 'Multiplexer_2_29')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+34-bit 4-to-1 Multiplexer 							: 2
+</span>
+<span name="Multiplexer_2_29" id="Multiplexer_2_29">
+<ul>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:589')" name="code2model" class="code2model">
+FIRInterpolator2
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, 'Multiplexer_2_30')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+33-bit 24-to-1 Multiplexer 							: 4
+</span>
+<span name="Multiplexer_2_30" id="Multiplexer_2_30">
+<ul>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:367')" name="code2model" class="code2model">
+FIRInterpolator1
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, 'Multiplexer_2_31')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+75-bit 2-to-1 Multiplexer 							: 1
+</span>
+<span name="Multiplexer_2_31" id="Multiplexer_2_31">
+<ul>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:367')" name="code2model" class="code2model">
+FIRInterpolator1
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, 'Multiplexer_2_32')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+68-bit 3-to-1 Multiplexer 							: 2
+</span>
+<span name="Multiplexer_2_32" id="Multiplexer_2_32">
+<ul>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:367')" name="code2model" class="code2model">
+FIRInterpolator1
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, 'Multiplexer_2_33')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+75-bit 3-to-1 Multiplexer 							: 1
+</span>
+<span name="Multiplexer_2_33" id="Multiplexer_2_33">
+<ul>
+<li>
+<a href="matlab:Simulink.ID.hilite('HA_sys8:367')" name="code2model" class="code2model">
+FIRInterpolator1
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><h5>
+Number of Shift operators (12)
+</h5>
+<span style="font-family:monospace">
+Static Shift Left 							: 12
+</span>
+<br /><p><hr /></p>
+</body>
+
+</html>
