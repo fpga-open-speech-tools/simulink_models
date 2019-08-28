@@ -1,0 +1,57 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dD:/trevor/research/NIH_SBIR_R44_DC015443/Audio_Beamforming/hw/library/dummy_beamformer/rtl
+Paltera_primitives_components
+Z1 DPx4 ieee 16 vital_primitives 0 22 G>kiXP8Q9dRClKfK1Zn7j1
+DPx4 work 11 dffeas_pack 0 22 m`0JV`H5aOB^Vd6J;g<M40
+Z2 DPx4 ieee 12 vital_timing 0 22 J>EBealN09f8GzldA[z2>3
+Z3 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z4 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
+Z5 w1524625461
+R0
+Z6 8C:/intelFPGA/18.0/quartus/eda/sim_lib/altera_primitives_components.vhd
+Z7 FC:/intelFPGA/18.0/quartus/eda/sim_lib/altera_primitives_components.vhd
+l0
+L46
+V?R@_IlWR7G608nhiA2Rz02
+!s100 RYTh1CVZ8[0oKiRk0YPJY3
+Z8 OL;C;10.5c;63
+31
+Z9 !s110 1554320126
+!i10b 1
+Z10 !s108 1554320126.000000
+Z11 !s90 -93|-quiet|-work|D:/trevor/research/NIH_SBIR_R44_DC015443/Audio_Beamforming/hw/library/dummy_beamformer/rtl/altera|C:/intelFPGA/18.0/quartus/eda/sim_lib/altera_primitives_components.vhd|
+Z12 !s107 C:/intelFPGA/18.0/quartus/eda/sim_lib/altera_primitives_components.vhd|
+!i113 0
+Z13 o-quiet -93 -work D:/trevor/research/NIH_SBIR_R44_DC015443/Audio_Beamforming/hw/library/dummy_beamformer/rtl/altera
+Z14 tExplicit 1 CvgOpt 0
+Pdffeas_pack
+R1
+R2
+R3
+R4
+R5
+R0
+R6
+R7
+l0
+L25
+Vm`0JV`H5aOB^Vd6J;g<M40
+!s100 8nG3RgH93_aNnh^AhF]jM0
+R8
+31
+R9
+!i10b 1
+R10
+R11
+R12
+!i113 0
+R13
+R14

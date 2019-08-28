@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<?xml-stylesheet type="text/xsl" href="file:///C:/intelFPGA/18.0/quartus/dspba/Blocksets/BaseBlocks/modelip.xsl"?>
+<MODEL>
+<NAME>dummy_beamformer/ch_sum/AStOutput</NAME>
+<BUILD_YEAR>2018</BUILD_YEAR>
+<LATENCY block='lastTStep'>0</LATENCY>
+<INFO>
+ <TEXT>Created using DSP Builder for Intel(R) FPGAs - Advanced Blockset software</TEXT>
+</INFO>
+<INFO>
+ <TEXT>Written on Fri Apr 05 13:36:52 2019
+</TEXT>
+</INFO>
+<PORTS>
+<PORT>
+ <NAME>in_1_avalonIfaceRole_valid_output_valid</NAME>
+ <WIDTH>1</WIDTH>
+ <DIRECTION>in</DIRECTION>
+ <DESCRIPTION>Qualifying signal to indicate validity of data signals</DESCRIPTION>
+</PORT>
+<PORT>
+ <NAME>in_2_avalonIfaceRole_channel_output_channel</NAME>
+ <WIDTH>8</WIDTH>
+ <DIRECTION>in</DIRECTION>
+ <DESCRIPTION>Qualifying signal to indicate channel of data signals</DESCRIPTION>
+</PORT>
+<PORT>
+ <NAME>in_3_avalonIfaceRole_data_output_data</NAME>
+ <WIDTH>32</WIDTH>
+ <DIRECTION>in</DIRECTION>
+ <DESCRIPTION>Data signal</DESCRIPTION>
+</PORT>
+<PORT>
+ <NAME>out_1_avalonIfaceRole_valid_source_valid</NAME>
+ <WIDTH>1</WIDTH>
+ <DIRECTION>out</DIRECTION>
+ <DESCRIPTION>Qualifying signal to indicate validity of data signals</DESCRIPTION>
+</PORT>
+<PORT>
+ <NAME>out_2_avalonIfaceRole_channel_source_channel</NAME>
+ <WIDTH>8</WIDTH>
+ <DIRECTION>out</DIRECTION>
+ <DESCRIPTION>Qualifying signal to indicate channel of data signals</DESCRIPTION>
+</PORT>
+<PORT>
+ <NAME>out_3_avalonIfaceRole_data_source_data</NAME>
+ <WIDTH>32</WIDTH>
+ <DIRECTION>out</DIRECTION>
+ <DESCRIPTION>Data signal</DESCRIPTION>
+</PORT>
+</PORTS>
+
+<TIMING>
+ <WAVEFORM>
+  <NAME>Overview</NAME>
+  <PATH>./cic.svg</PATH>
+ </WAVEFORM>
+</TIMING>
+<RESOURCES>
+<FUNIT>
+ <FUNAME>GND</FUNAME>
+ <FUTYPE>CONSTANT</FUTYPE>
+ <LUT4>0</LUT4>
+ <MULT>0</MULT>
+ <BITS>0</BITS>
+ <BLOCKS>0</BLOCKS>
+ <SHOWINRESOURCEVIEWER>0</SHOWINRESOURCEVIEWER>
+ <LATENCY>0</LATENCY>
+</FUNIT>
+<FUNIT>
+ <FUNAME>VCC</FUNAME>
+ <FUTYPE>CONSTANT</FUTYPE>
+ <LUT4>0</LUT4>
+ <MULT>0</MULT>
+ <BITS>0</BITS>
+ <BLOCKS>0</BLOCKS>
+ <SHOWINRESOURCEVIEWER>0</SHOWINRESOURCEVIEWER>
+ <LATENCY>0</LATENCY>
+</FUNIT>
+<FUNIT>
+ <FUNAME>ChannelIn</FUNAME>
+ <FUTYPE>PORTIN</FUTYPE>
+ <LUT4>0</LUT4>
+ <MULT>0</MULT>
+ <BITS>0</BITS>
+ <BLOCKS>0</BLOCKS>
+ <SHOWINRESOURCEVIEWER>0</SHOWINRESOURCEVIEWER>
+ <LATENCY>0</LATENCY>
+ <DELAY_CORRECTION>0</DELAY_CORRECTION>
+</FUNIT>
+<FUNIT>
+ <FUNAME>ChannelOut</FUNAME>
+ <FUTYPE>PORTOUT</FUTYPE>
+ <LUT4>0</LUT4>
+ <MULT>0</MULT>
+ <BITS>0</BITS>
+ <BLOCKS>0</BLOCKS>
+ <SHOWINRESOURCEVIEWER>0</SHOWINRESOURCEVIEWER>
+ <LATENCY>1</LATENCY>
+ <DELAY_CORRECTION>0</DELAY_CORRECTION>
+</FUNIT>
+<TOTAL>
+ <LUT4>0</LUT4>
+ <MULT>0</MULT>
+ <BITS>0</BITS>
+ <BLOCKS>0</BLOCKS>
+</TOTAL>
+</RESOURCES>
+
+</MODEL>

@@ -1,0 +1,21 @@
+<?xml version='1.0'?>
+<island simulinkPath='acoustic_delay_buffer/adb/AStOutput' topLevelEntity='acoustic_delay_buffer_adb_AStOutput'>
+    <port name='clk' dir='in' role='clock'/>
+    <port name='areset' dir='in' clock='clk' role='resetHigh'/>
+    <port name='in_1_avalonIfaceRole_valid_output_valid' clock='clk' reset='areset' width='1' dir='in' role='valid' qsys_role='valid_in_1_avalonIfaceRole_valid_output_valid' stm='acoustic_delay_buffer/acoustic_delay_buffer_adb_AStOutput_ChannelIn.stm' highLevelName='output_valid' highLevelIndex='1' vector='0' complex='0'/>
+    <port name='in_2_avalonIfaceRole_channel_output_channel' clock='clk' reset='areset' width='8' dir='in' role='channel' qsys_role='channel_in_2_avalonIfaceRole_channel_output_channel' stm='acoustic_delay_buffer/acoustic_delay_buffer_adb_AStOutput_ChannelIn.stm' highLevelName='output_channel' highLevelIndex='2' vector='0' complex='0'/>
+    <port name='in_3_avalonIfaceRole_data_output_data' clock='clk' reset='areset' width='32' dir='in' role='data' qsys_role='data_in_3_avalonIfaceRole_data_output_data' stm='acoustic_delay_buffer/acoustic_delay_buffer_adb_AStOutput_ChannelIn.stm' highLevelName='output_data' highLevelIndex='3' vector='0' complex='0'/>
+    <port name='out_1_avalonIfaceRole_valid_source_valid' clock='clk' reset='areset' width='1' dir='out' role='valid' qsys_role='valid_out_1_avalonIfaceRole_valid_source_valid' stm='acoustic_delay_buffer/acoustic_delay_buffer_adb_AStOutput_ChannelOut.stm' highLevelName='source_valid' highLevelIndex='1' vector='0' complex='0'/>
+    <port name='out_2_avalonIfaceRole_channel_source_channel' clock='clk' reset='areset' width='8' dir='out' role='channel' qsys_role='channel_out_2_avalonIfaceRole_channel_source_channel' stm='acoustic_delay_buffer/acoustic_delay_buffer_adb_AStOutput_ChannelOut.stm' highLevelName='source_channel' highLevelIndex='2' vector='0' complex='0'/>
+    <port name='out_3_avalonIfaceRole_data_source_data' clock='clk' reset='areset' width='32' dir='out' role='data' qsys_role='data_out_3_avalonIfaceRole_data_source_data' stm='acoustic_delay_buffer/acoustic_delay_buffer_adb_AStOutput_ChannelOut.stm' highLevelName='source_data' highLevelIndex='3' vector='0' complex='0'/>
+    <file path='eda/sim_lib/altera_primitives_components.vhd' base='quartus' type='vhdl' usage='simOnly' lib='altera'/>
+    <file path='eda/sim_lib/altera_mf_components.vhd' base='quartus' type='vhdl' usage='simOnly' lib='altera_mf'/>
+    <file path='eda/sim_lib/altera_mf.vhd' base='quartus' type='vhdl' usage='simOnly' lib='altera_mf'/>
+    <file path='eda/sim_lib/220pack.vhd' base='quartus' type='vhdl' usage='simOnly' lib='lpm'/>
+    <file path='eda/sim_lib/220model.vhd' base='quartus' type='vhdl' usage='simOnly' lib='lpm'/>
+    <file path='eda/sim_lib/altera_lnsim_components.vhd' base='quartus' type='vhdl' usage='simOnly' lib='altera_lnsim'/>
+    <file path='eda/sim_lib/altera_lnsim.sv' base='quartus' type='vhdl' usage='simOnly' lib='altera_lnsim'/>
+    <file path='eda/sim_lib/twentynm_atoms.vhd' base='quartus' type='vhdl' usage='simOnly' lib='twentynm'/>
+    <file path='eda/sim_lib/twentynm_components.vhd' base='quartus' type='vhdl' usage='simOnly' lib='twentynm'/>
+    <file path='eda/sim_lib/mentor/twentynm_atoms_ncrypt.v' base='quartus' type='vhdl' usage='simOnly' lib='twentynm'/>
+</island>
