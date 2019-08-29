@@ -1,0 +1,69 @@
+%% Compares outputs of the model to that of the Definitive Algorithm
+% Justin Williams
+% Flat Earth Inc
+
+%% Extract data from model outputs
+ensigLength = get(ensig_Out_Work);
+ensigLength = ensigLength.Length;
+ensigFrame  = getdatasamples(ensig_Out_Work, 1:ensigLength);
+
+countLength = get(countWork);
+countLength = countLength.Length;
+countFrame  = getdatasamples(countWork, 1:countLength);
+
+frameMagLength = get(frameMagWork);
+frameMagLength = frameMagLength.Length;
+magFrame       = getdatasamples(frameMagWork, 1:frameMagLength);
+
+frameLength = get(frameWork);
+frameLength = frameLength.Length;
+mFrame      = getdatasamples(frameWork, 1:frameLength);
+
+hwL = get(hwWork);
+hwL = hwL.Length;
+hwFrame = getdatasamples(hwWork, 1:hwL);
+
+ksiL = get(ksiWork);
+ksiL = ksiL.Length;
+ksiFrame = getdatasamples(ksiWork, ksiL);
+
+N_L = get(N_Work);
+N_L = N_L.Length;
+NFrame = getdatasamples(N_Work, 1:N_L);
+
+noisePowL = get(noisePowWork);
+noisePowL = noisePowL.Length;
+noisePowFrame = getdatasamples(noisePowWork, 1:noisePowL);
+
+noiseVarL = get(noiseVarWork);
+noiseVarL = noiseVarL.Length;
+noiseVarFrame = getdatasamples(noiseVarWork, 1:noiseVarL);
+
+postSNRL = get(postSNRWork);
+postSNRL = postSNRL.Length;
+postSNRFrame = getdatasamples(postSNRWork, 1:postSNRL);
+
+sigModL = get(sigModOutWork);
+sigModL = sigModL.Length;
+sigModFrame = getdatasamples(sigModOutWork, 1:sigModL);
+
+XkprevL = get(XkPrevWork);
+XkprevL = XkprevL.Length;
+XkprevFrame = getdatasamples(XkPrevWork, 1:XkprevL);
+
+%% Plot Certain Frames Together For Comparison
+% Constants 
+FFT_size = 64;
+frmInd = 
+for n = 1:log2(FFT_size)
+    
+end
+
+
+
+
+
+
+
+
+

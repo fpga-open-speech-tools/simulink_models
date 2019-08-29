@@ -1,0 +1,3 @@
+Linear_Approximation/LSL(N) --> LSL_N
+Linear_Approximation/LSR(N) --> LSR_N
+Linear_Approximation --> Linear_Approximation
