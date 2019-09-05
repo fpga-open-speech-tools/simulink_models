@@ -1,139 +1,143 @@
 %--------------------------------------------------------------------------
 % HDL Workflow Script
-% Generated with MATLAB 9.6 (R2019a) at 13:44:46 on 20/06/2019
+% Generated with MATLAB 9.6 (R2019a) at 16:46:30 on 05/09/2019
 % This script was generated using the following parameter values:
-%     Filename  : 'E:\git\nih_simulinklib\simple_gain\hdlworkflow.m'
+%     Filename  : '/mnt/data/NIH/simulink_models/models/simple_gain/hdlworkflow.m'
 %     Overwrite : true
 %     Comments  : true
 %     Headers   : true
-%     DUT       : [model '/' dataplane_name
+%     DUT       : 'SG/SG_DataPlane'
 % To view changes after modifying the workflow, run the following command:
-% >> hWC.export('DUT',[model '/' dataplane_name);
+% >> hWC.export('DUT','SG/SG_DataPlane');
 %--------------------------------------------------------------------------
-
 
 %% Load the Model
 model = mp.model_abbreviation;
-dataplane_name = [mp.model_abbreviation '_DataPlane'];
+dataplane_name = [model '_DataPlane'];
 load_system(model);
 
-%% Restore the Model to default HDL parameters
-%hdlrestoreparams([model '/' dataplane_name);
-
 %% Model HDL Parameters
-%% Set Model model HDL parameters
-hdlset_param(model, 'CriticalPathEstimation', 'on');
-hdlset_param(model, 'HDLGenerateWebview', 'on');
-hdlset_param(model, 'HDLSubsystem', [model '/' dataplane_name]);
-hdlset_param(model, 'OptimizationReport', 'on');
-hdlset_param(model, 'ResourceReport', 'on');
-hdlset_param(model, 'SynthesisTool', 'Altera QUARTUS II');
-hdlset_param(model, 'SynthesisToolChipFamily', 'Cyclone V');
-hdlset_param(model, 'SynthesisToolDeviceName', '5CSXFC6D6F31C8');
-hdlset_param(model, 'SynthesisToolPackageName', '');
-hdlset_param(model, 'SynthesisToolSpeedValue', '');
-hdlset_param(model, 'TargetDirectory', 'hdl_prj\hdlsrc');
-hdlset_param(model, 'TargetPlatform', 'Generic Altera Platform');
-hdlset_param(model, 'Workflow', 'IP Core Generation');
+%% Set Model 'SG' HDL parameters
+hdlset_param('SG', 'CriticalPathEstimation', 'off');
+hdlset_param('SG', 'GenerateHDLTestBench', 'off');
+hdlset_param('SG','HDLCodingStandardCustomizations',hdlcodingstd.IndustryCustomizations());
+hdlset_param('SG', 'HDLGenerateWebview', 'on');
+hdlset_param('SG', 'HDLSubsystem', 'SG/SG_DataPlane');
+hdlset_param('SG', 'OptimizationReport', 'on');
+hdlset_param('SG', 'ResourceReport', 'on');
+hdlset_param('SG', 'SynthesisTool', 'Altera QUARTUS II');
+hdlset_param('SG', 'SynthesisToolChipFamily', 'Cyclone V');
+hdlset_param('SG', 'SynthesisToolDeviceName', '5CSEBA6U23I7');
+hdlset_param('SG', 'SynthesisToolPackageName', '');
+hdlset_param('SG', 'SynthesisToolSpeedValue', '');
+hdlset_param('SG', 'UseRisingEdge', 'on');
+
+% XXX: Matlab refuses to put the code anywhere except hdlsrc, no matter
+%      what directory I put here... >:(
+hdlset_param('SG', 'TargetDirectory', './hdlsrc');
 
 % Set SubSystem HDL parameters
-hdlset_param([model '/' dataplane_name], 'IPCoreName', dataplane_name);
-hdlset_param([model '/' dataplane_name], 'ProcessorFPGASynchronization', 'Free running');
+hdlset_param('SG/SG_DataPlane', 'IPCoreName', 'SG_DataPlane');
+hdlset_param('SG/SG_DataPlane', 'ProcessorFPGASynchronization', 'Free running');
 
 % Set Inport HDL parameters
-hdlset_param([model '/' dataplane_name '/avalon_sink_valid'], 'IOInterface', 'External Port');
-hdlset_param([model '/' dataplane_name '/avalon_sink_valid'], 'IOInterfaceMapping', '');
+hdlset_param('SG/SG_DataPlane/avalon_sink_valid', 'IOInterface', 'External Port');
+hdlset_param('SG/SG_DataPlane/avalon_sink_valid', 'IOInterfaceMapping', '');
 
 % Set Inport HDL parameters
-hdlset_param([model '/' dataplane_name '/avalon_sink_data'], 'IOInterface', 'External Port');
-hdlset_param([model '/' dataplane_name '/avalon_sink_data'], 'IOInterfaceMapping', '');
+hdlset_param('SG/SG_DataPlane/avalon_sink_data', 'IOInterface', 'External Port');
+hdlset_param('SG/SG_DataPlane/avalon_sink_data', 'IOInterfaceMapping', '');
 
 % Set Inport HDL parameters
-hdlset_param([model '/' dataplane_name '/avalon_sink_channel'], 'IOInterface', 'External Port');
-hdlset_param([model '/' dataplane_name '/avalon_sink_channel'], 'IOInterfaceMapping', '');
+hdlset_param('SG/SG_DataPlane/avalon_sink_channel', 'IOInterface', 'External Port');
+hdlset_param('SG/SG_DataPlane/avalon_sink_channel', 'IOInterfaceMapping', '');
 
 % Set Inport HDL parameters
-hdlset_param([model '/' dataplane_name '/avalon_sink_error'], 'IOInterface', 'External Port');
-hdlset_param([model '/' dataplane_name '/avalon_sink_error'], 'IOInterfaceMapping', '');
+hdlset_param('SG/SG_DataPlane/avalon_sink_error', 'IOInterface', 'External Port');
+hdlset_param('SG/SG_DataPlane/avalon_sink_error', 'IOInterfaceMapping', '');
 
 % Set Inport HDL parameters
-hdlset_param([model '/' dataplane_name '/register_control_left_gain'], 'IOInterface', 'External Port');
-hdlset_param([model '/' dataplane_name '/register_control_left_gain'], 'IOInterfaceMapping', '');
+hdlset_param('SG/SG_DataPlane/register_control_left_gain', 'IOInterface', 'External Port');
+hdlset_param('SG/SG_DataPlane/register_control_left_gain', 'IOInterfaceMapping', '');
 
 % Set Inport HDL parameters
-hdlset_param([model '/' dataplane_name '/register_control_right_gain'], 'IOInterface', 'External Port');
-hdlset_param([model '/' dataplane_name '/register_control_right_gain'], 'IOInterfaceMapping', '');
+hdlset_param('SG/SG_DataPlane/register_control_right_gain', 'IOInterface', 'External Port');
+hdlset_param('SG/SG_DataPlane/register_control_right_gain', 'IOInterfaceMapping', '');
 
 % Set Inport HDL parameters
-hdlset_param([model '/' dataplane_name '/Avalon Data Processing/Sink_Data'], 'IOInterface', 'External Port');
-hdlset_param([model '/' dataplane_name '/Avalon Data Processing/Sink_Data'], 'IOInterfaceMapping', '');
+hdlset_param('SG/SG_DataPlane/Avalon Data Processing/Sink_Data', 'IOInterface', 'External Port');
+hdlset_param('SG/SG_DataPlane/Avalon Data Processing/Sink_Data', 'IOInterfaceMapping', '');
 
 % Set Inport HDL parameters
-hdlset_param([model '/' dataplane_name '/Avalon Data Processing/Sink_Channel'], 'IOInterface', 'External Port');
-hdlset_param([model '/' dataplane_name '/Avalon Data Processing/Sink_Channel'], 'IOInterfaceMapping', '');
+hdlset_param('SG/SG_DataPlane/Avalon Data Processing/Sink_Channel', 'IOInterface', 'External Port');
+hdlset_param('SG/SG_DataPlane/Avalon Data Processing/Sink_Channel', 'IOInterfaceMapping', '');
 
 % Set Outport HDL parameters
-hdlset_param([model '/' dataplane_name '/Avalon Data Processing/Source_Data'], 'IOInterface', 'External Port');
-hdlset_param([model '/' dataplane_name '/Avalon Data Processing/Source_Data'], 'IOInterfaceMapping', '');
+hdlset_param('SG/SG_DataPlane/Avalon Data Processing/Source_Data', 'IOInterface', 'External Port');
+hdlset_param('SG/SG_DataPlane/Avalon Data Processing/Source_Data', 'IOInterfaceMapping', '');
 
 % Set Outport HDL parameters
-hdlset_param([model '/' dataplane_name '/Avalon Data Processing/Source_Channel'], 'IOInterface', 'External Port');
-hdlset_param([model '/' dataplane_name '/Avalon Data Processing/Source_Channel'], 'IOInterfaceMapping', '');
+hdlset_param('SG/SG_DataPlane/Avalon Data Processing/Source_Channel', 'IOInterface', 'External Port');
+hdlset_param('SG/SG_DataPlane/Avalon Data Processing/Source_Channel', 'IOInterfaceMapping', '');
 
 % Set Outport HDL parameters
-hdlset_param([model '/' dataplane_name '/avalon_source_valid'], 'IOInterface', 'External Port');
-hdlset_param([model '/' dataplane_name '/avalon_source_valid'], 'IOInterfaceMapping', '');
+hdlset_param('SG/SG_DataPlane/avalon_source_valid', 'IOInterface', 'External Port');
+hdlset_param('SG/SG_DataPlane/avalon_source_valid', 'IOInterfaceMapping', '');
 
 % Set Outport HDL parameters
-hdlset_param([model '/' dataplane_name '/avalon_source_data'], 'IOInterface', 'External Port');
-hdlset_param([model '/' dataplane_name '/avalon_source_data'], 'IOInterfaceMapping', '');
+hdlset_param('SG/SG_DataPlane/avalon_source_data', 'IOInterface', 'External Port');
+hdlset_param('SG/SG_DataPlane/avalon_source_data', 'IOInterfaceMapping', '');
 
 % Set Outport HDL parameters
-hdlset_param([model '/' dataplane_name '/avalon_source_channel'], 'IOInterface', 'External Port');
-hdlset_param([model '/' dataplane_name '/avalon_source_channel'], 'IOInterfaceMapping', '');
+hdlset_param('SG/SG_DataPlane/avalon_source_channel', 'IOInterface', 'External Port');
+hdlset_param('SG/SG_DataPlane/avalon_source_channel', 'IOInterfaceMapping', '');
 
 % Set Outport HDL parameters
-hdlset_param([model '/' dataplane_name '/avalon_source_error'], 'IOInterface', 'External Port');
-hdlset_param([model '/' dataplane_name '/avalon_source_error'], 'IOInterfaceMapping', '');
+hdlset_param('SG/SG_DataPlane/avalon_source_error', 'IOInterface', 'External Port');
+hdlset_param('SG/SG_DataPlane/avalon_source_error', 'IOInterfaceMapping', '');
 
 
 %% Workflow Configuration Settings
 % Construct the Workflow Configuration Object with default settings
-hWC = hdlcoder.WorkflowConfig('SynthesisTool','Altera QUARTUS II','TargetWorkflow','IP Core Generation');
+hWC = hdlcoder.WorkflowConfig('SynthesisTool','Altera QUARTUS II','TargetWorkflow','Generic ASIC/FPGA');
 
 % Specify the top level project directory
-hWC.ProjectFolder = 'hdl_prj';
-hWC.ReferenceDesignToolVersion = '';
-hWC.IgnoreToolVersionMismatch = false;
+hWC.ProjectFolder = '.';
 
 % Set Workflow tasks to run
-hWC.RunTaskGenerateRTLCodeAndIPCore = true;
+hWC.RunTaskGenerateRTLCodeAndTestbench = true;
+hWC.RunTaskVerifyWithHDLCosimulation = false;
 hWC.RunTaskCreateProject = false;
-hWC.RunTaskGenerateSoftwareInterfaceModel = false;
-hWC.RunTaskBuildFPGABitstream = false;
-hWC.RunTaskProgramTargetDevice = false;
+hWC.RunTaskPerformLogicSynthesis = false;
+hWC.RunTaskPerformMapping = false;
+hWC.RunTaskPerformPlaceAndRoute = false;
+hWC.RunTaskAnnotateModelWithSynthesisResult = false;
 
-% Set properties related to 'RunTaskGenerateRTLCodeAndIPCore' Task
-hWC.IPCoreRepository = '';
-hWC.GenerateIPCoreReport = true;
+% Set properties related to 'RunTaskGenerateRTLCodeAndTestbench' Task
+hWC.GenerateRTLCode = true;
+hWC.GenerateTestbench = false;
+hWC.GenerateValidationModel = false;
 
 % Set properties related to 'RunTaskCreateProject' Task
 hWC.Objective = hdlcoder.Objective.None;
 hWC.AdditionalProjectCreationTclFiles = '';
 
-% Set properties related to 'RunTaskGenerateSoftwareInterfaceModel' Task
-hWC.OperatingSystem = '';
+% Set properties related to 'RunTaskPerformMapping' Task
+hWC.SkipPreRouteTimingAnalysis = false;
 
-% Set properties related to 'RunTaskBuildFPGABitstream' Task
-hWC.RunExternalBuild = false;
-hWC.TclFileForSynthesisBuild = hdlcoder.BuildOption.Default;
-hWC.CustomBuildTclFile = '';
+% Set properties related to 'RunTaskPerformPlaceAndRoute' Task
+hWC.IgnorePlaceAndRouteErrors = false;
 
-% Set properties related to 'RunTaskProgramTargetDevice' Task
-hWC.ProgrammingMethod = hdlcoder.ProgrammingMethod.JTAG;
+% Set properties related to 'RunTaskAnnotateModelWithSynthesisResult' Task
+hWC.CriticalPathSource = 'pre-route';
+hWC.CriticalPathNumber =  1;
+hWC.ShowAllPaths = false;
+hWC.ShowDelayData = false;
+hWC.ShowUniquePaths = false;
+hWC.ShowEndsOnly = false;
 
 % Validate the Workflow Configuration Object
 hWC.validate;
 
 %% Run the workflow
-hdlcoder.runWorkflow([model '/' dataplane_name], hWC);
+hdlcoder.runWorkflow('SG/SG_DataPlane', hWC);
