@@ -27,11 +27,11 @@ architecture SG_DataPlane_avalon_arch of SG_DataPlane_avalon is
   signal left_gain                 : std_logic_vector(31  downto 0) :=  "00000000000000010000000000000000";
   signal right_gain                : std_logic_vector(31  downto 0) :=  "00000000000000010000000000000000";
 
-component SG_DataPlane_dut
+component SG_DataPlane
   port(
     clk                         : in  std_logic; -- clk_freq = 1 Hz, period = 0.1
-    dut_enable                  : in  std_logic;
     reset                       : in  std_logic;
+    clk_enable                  : in  std_logic;
     avalon_sink_valid           : in  std_logic;                              -- boolean
     avalon_sink_data            : in  std_logic_vector(31  downto 0);         -- sfix32_En28
     avalon_sink_channel         : in  std_logic_vector(1   downto 0);         -- ufix2
@@ -48,11 +48,11 @@ end component;
 
 begin
 
-u_SG_DataPlane_dut : SG_DataPlane_dut
+u_SG_DataPlane : SG_DataPlane
   port map(
     clk                         =>  clk,
-    dut_enable                  =>  '1',
     reset                       =>  reset,
+    clk_enable                  =>  '1',
     avalon_sink_valid           =>  avalon_sink_valid,               -- boolean
     avalon_sink_data            =>  avalon_sink_data,                -- sfix32_En28
     avalon_sink_channel         =>  avalon_sink_channel,             -- ufix2
