@@ -2,7 +2,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-entity SG_DataPlane_avalon is
+entity SG_dataplane_avalon is
   port (
     clk                       : in  std_logic;
     reset                     : in  std_logic;
@@ -20,14 +20,14 @@ entity SG_DataPlane_avalon is
     avalon_slave_write        : in  std_logic;
     avalon_slave_writedata    : in  std_logic_vector(31  downto 0)
   );
-end entity SG_DataPlane_avalon;
+end entity SG_dataplane_avalon;
 
-architecture SG_DataPlane_avalon_arch of SG_DataPlane_avalon is
+architecture SG_dataplane_avalon_arch of SG_dataplane_avalon is
 
   signal left_gain                 : std_logic_vector(31  downto 0) :=  "00000000000000010000000000000000";
   signal right_gain                : std_logic_vector(31  downto 0) :=  "00000000000000010000000000000000";
 
-component SG_DataPlane
+component SG_dataplane
   port(
     clk                         : in  std_logic; -- clk_freq = 1 Hz, period = 0.1
     reset                       : in  std_logic;
@@ -48,7 +48,7 @@ end component;
 
 begin
 
-u_SG_DataPlane : SG_DataPlane
+u_SG_dataplane : SG_dataplane
   port map(
     clk                         =>  clk,
     reset                       =>  reset,
