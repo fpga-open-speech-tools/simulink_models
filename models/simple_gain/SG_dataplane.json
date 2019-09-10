@@ -41,7 +41,7 @@
                 "default_value": 1, 
                 "name": "left_gain", 
                 "data_type": "sfix32_En28", 
-                "reg_num": 1, 
+                "reg_num": 0, 
                 "max_value": 1, 
                 "min_value": 0
             }, 
@@ -49,7 +49,7 @@
                 "default_value": 1, 
                 "name": "right_gain", 
                 "data_type": "sfix32_En28", 
-                "reg_num": 2, 
+                "reg_num": 1, 
                 "max_value": 1, 
                 "min_value": 0
             }
