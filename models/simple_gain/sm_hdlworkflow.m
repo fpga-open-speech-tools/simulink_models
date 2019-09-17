@@ -11,6 +11,8 @@
 % >> hWC.export('DUT',[model '\' dataplane_name]);
 %--------------------------------------------------------------------------
 
+% TODO: remove timestamps from generated file headers; this a pain for source control...
+
 %% Load the Model
 model = mp.model_abbreviation;
 dataplane_name = [model '_dataplane'];
@@ -35,70 +37,6 @@ hdlset_param(model, 'UseRisingEdge', 'on');
 % XXX: Matlab refuses to put the code anywhere except hdlsrc, no matter
 %      what directory I put here... >:(
 hdlset_param('SG', 'TargetDirectory', './hdlsrc');
-
-% NOTE: It looks like the hdl workflow works fine without all these hdlset_param calls. I'll delete this once mroe testing has occured.
-% Set SubSystem HDL parameters
-% hdlset_param([model '/' dataplane_name], 'IPCoreName', [model '/' dataplane_name]);
-% hdlset_param([model '/' dataplane_name], 'ProcessorFPGASynchronization', 'Free running');
-
-% Set Inport HDL parameters
-% hdlset_param([model '/' dataplane_name '/avalon_sink_valid'], 'IOInterface', 'External Port');
-% hdlset_param([model '/' dataplane_name '/avalon_sink_valid'], 'IOInterfaceMapping', '');
-%
-% % Set Inport HDL parameters
-% hdlset_param([model '/' dataplane_name '/avalon_sink_data'], 'IOInterface', 'External Port');
-% hdlset_param([model '/' dataplane_name '/avalon_sink_data'], 'IOInterfaceMapping', '');
-%
-% % Set Inport HDL parameters
-% hdlset_param([model '/' dataplane_name '/avalon_sink_channel'], 'IOInterface', 'External Port');
-% hdlset_param([model '/' dataplane_name '/avalon_sink_channel'], 'IOInterfaceMapping', '');
-%
-% % Set Inport HDL parameters
-% hdlset_param([model '/' dataplane_name '/avalon_sink_error'], 'IOInterface', 'External Port');
-% hdlset_param([model '/' dataplane_name '/avalon_sink_error'], 'IOInterfaceMapping', '');
-%
-%
-% % TODO: autogenerate the hdlset_param calls for the registers. registers should be the only thing that changes between designs; the avalon streaming interface should always be the same
-% % Set Inport HDL parameters
-% hdlset_param([model '/' dataplane_name '/register_control_left_gain'], 'IOInterface', 'External Port');
-% hdlset_param([model '/' dataplane_name '/register_control_left_gain'], 'IOInterfaceMapping', '');
-%
-% % Set Inport HDL parameters
-% hdlset_param([model '/' dataplane_name '/register_control_right_gain'], 'IOInterface', 'External Port');
-% hdlset_param([model '/' dataplane_name '/register_control_right_gain'], 'IOInterfaceMapping', '');
-%
-% % Set Inport HDL parameters
-% hdlset_param([model '/' dataplane_name '/Avalon Data Processing/Sink_Data'], 'IOInterface', 'External Port');
-% hdlset_param([model '/' dataplane_name '/Avalon Data Processing/Sink_Data'], 'IOInterfaceMapping', '');
-%
-% % Set Inport HDL parameters
-% hdlset_param([model '/' dataplane_name '/Avalon Data Processing/Sink_Channel'], 'IOInterface', 'External Port');
-% hdlset_param([model '/' dataplane_name '/Avalon Data Processing/Sink_Channel'], 'IOInterfaceMapping', '');
-%
-% % Set Outport HDL parameters
-% hdlset_param([model '/' dataplane_name '/Avalon Data Processing/Source_Data'], 'IOInterface', 'External Port');
-% hdlset_param([model '/' dataplane_name '/Avalon Data Processing/Source_Data'], 'IOInterfaceMapping', '');
-%
-% % Set Outport HDL parameters
-% hdlset_param([model '/' dataplane_name '/Avalon Data Processing/Source_Channel'], 'IOInterface', 'External Port');
-% hdlset_param([model '/' dataplane_name '/Avalon Data Processing/Source_Channel'], 'IOInterfaceMapping', '');
-%
-% % Set Outport HDL parameters
-% hdlset_param([model '/' dataplane_name '/avalon_source_valid'], 'IOInterface', 'External Port');
-% hdlset_param([model '/' dataplane_name '/avalon_source_valid'], 'IOInterfaceMapping', '');
-%
-% % Set Outport HDL parameters
-% hdlset_param([model '/' dataplane_name '/avalon_source_data'], 'IOInterface', 'External Port');
-% hdlset_param([model '/' dataplane_name '/avalon_source_data'], 'IOInterfaceMapping', '');
-%
-% % Set Outport HDL parameters
-% hdlset_param([model '/' dataplane_name '/avalon_source_channel'], 'IOInterface', 'External Port');
-% hdlset_param([model '/' dataplane_name '/avalon_source_channel'], 'IOInterfaceMapping', '');
-%
-% % Set Outport HDL parameters
-% hdlset_param([model '/' dataplane_name '/avalon_source_error'], 'IOInterface', 'External Port');
-% hdlset_param([model '/' dataplane_name '/avalon_source_error'], 'IOInterfaceMapping', '');
-
 
 %% Workflow Configuration Settings
 % Construct the Workflow Configuration Object with default settings

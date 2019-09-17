@@ -51,10 +51,9 @@ mp.test_signals_path = [pwd filesep '..' filesep '..' filesep 'test_signals'];
 mp.config_path = [pwd filesep '..' filesep '..' filesep 'config'];
 mp.vhdl_codegen_path = [pwd filesep '..' filesep '..' ...
     filesep '..' filesep 'simulink_codegen' filesep 'vhdl'];
-mp.driver_codegen_path = [pwd filesep '..' filesep '..' ... 
+mp.driver_codegen_path = [pwd filesep '..' filesep '..' ...
     filesep '..' filesep 'simulink_codegen' filesep 'device_drivers'];
-mp.quartus_project_path = '/mnt/data/NIH/de10nano_projects/simple_gain';
-mp.quartus_path = '/usr/local/intelFPGA_lite/18.0/quartus/bin';
+mp.quartus_path = '/usr/local/intelFPGA/18.0/quartus/bin';
 
 % TODO: remove python path and version information. All of the code should be python3 and python2 compatible. If not, we should make it python2/3 compatible if possible.
 % mp.python_path = 'F:\Python\Python37\python.exe';
@@ -89,7 +88,6 @@ end
 disp(['Please wait while the Simulink Model: '  mp.model_name  ' is being opened.'])
 disp(['Note: Before generating VHDL, you will need to run a model simulation.'])
 open_system([mp.model_abbreviation])
-% display popup reminder message 
+% display popup reminder message
 helpdlg(sprintf(['NOTE: You will need to first run the Simulation for model ' mp.model_name ' to initialize variables in the Matlab workspace before converting to VHDL.']),'Reminder Message')
 mp.sim_prompts = 1;  % turn on the simulation prompts/comments (these will be turned off when the HDL conversion process starts).
-
