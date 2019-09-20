@@ -1,3 +1,4 @@
+# binary files
 *.mlx -crlf -diff -merge
 *.mat -crlf -diff -merge
 *.fig -crlf -diff -merge
@@ -16,4 +17,5 @@
 *.jpg -crlf -diff -merge
 *.png -crlf -diff -merge
 
-
+# normalize line endings on checkin
+* text=auto
