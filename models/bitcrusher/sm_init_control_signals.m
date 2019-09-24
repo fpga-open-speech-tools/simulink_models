@@ -34,7 +34,7 @@ function mp = sm_init_control_signals(mp)
 
 %% Create left gain control signal
 mp.register(1).name       = 'Left_Bits';  % control signal name
-mp.register(1).value      = 20;          % value control signal will take during simulation
+mp.register(1).value      = 8;          % value control signal will take during simulation
 mp.register(1).min        =  0;          % The minimum value the control signal will ever take
 mp.register(1).max        = 32;          % The maximum value the control signal will ever take
 mp.register(1).default    = 32;          % default (initial) value
@@ -43,7 +43,7 @@ mp.register(1).widget_display_units = 'bits';
 
 %% Create right gain control signal
 mp.register(2).name       = 'Right_Bits';  % control signal name
-mp.register(2).value      = 9;          % value control signal will take during simulation
+mp.register(2).value      = 8;          % value control signal will take during simulation
 mp.register(2).min        =  0;          % The minimum value the control signal will ever take
 mp.register(2).max        = 32;          % The maximum value the control signal will ever take
 mp.register(2).default    = 32;          % default (initial) value

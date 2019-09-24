@@ -36,14 +36,23 @@ hdlset_param(model, 'UseRisingEdge', 'on');
 
 % XXX: Matlab refuses to put the code anywhere except hdlsrc, no matter
 %      what directory I put here... >:(
-hdlset_param(model, 'TargetDirectory', './hdlsrc');
+if isunix
+    hdlset_param(model, 'TargetDirectory', './hdlsrc');
+elseif ispc
+    hdlset_param(model, 'TargetDirectory', [mp.model_path '\hdlsrc']);
+end
 
 %% Workflow Configuration Settings
 % Construct the Workflow Configuration Object with default settings
 hWC = hdlcoder.WorkflowConfig('SynthesisTool','Altera QUARTUS II','TargetWorkflow','Generic ASIC/FPGA');
 
 % Specify the top level project directory
-hWC.ProjectFolder = '.';
+if isunix
+    hWC.ProjectFolder = '.';
+elseif ispc
+    hWC.ProjectFolder = mp.model_path;
+end
+
 
 % Set Workflow tasks to run
 hWC.RunTaskGenerateRTLCodeAndTestbench = true;

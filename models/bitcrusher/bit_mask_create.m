@@ -8,10 +8,10 @@ fid = fopen('bit_mask_code.txt','w');
 
 
 sline = ['function bitmask = getbitmask(bitlevel)']; fprintf(fid,'%s\n',sline);
-sline = ['bitmask=fi(0,1,32,28);']; fprintf(fid,'%s\n',sline);
+sline = ['bitmask=fi(0,0,32,28);']; fprintf(fid,'%s\n',sline);
 sline = ['switch(bitlevel)']; fprintf(fid,'%s\n',sline);
 
-bitmask=fi(0,1,32,28);
+bitmask=fi(0,0,32,28);
 for i=0:32
     switch(i)
         case 32
@@ -84,7 +84,7 @@ for i=0:32
     
     sline = [blanks(4) 'case ' num2str(i)]; fprintf(fid,'%s\n',sline);
     %sline = [blanks(8) 'bitmask = ' num2str(bitmask,'%10d') ';']; fprintf(fid,'%s\n',sline);
-    sline = [blanks(8) 'bitmask = fi(' num2str(bitmask,'%4.28f') ',1,32,28);']; fprintf(fid,'%s\n',sline);
+    sline = [blanks(8) 'bitmask = fi(' num2str(bitmask,'%4.28f') ',0,32,28);']; fprintf(fid,'%s\n',sline);
     
     %eval(['b = fi(' num2str(bitmask,'%4.28f') ',1,32,28);']);
     %b.bin
