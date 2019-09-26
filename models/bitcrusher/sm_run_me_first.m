@@ -45,23 +45,11 @@ mp.linux_device_version = '18.0';
 
 %% Setup the directory paths & tool settings
 % TODO: these paths should ideally be contained in a toolbox. the one exception is the model path, which is many cases is the pwd, though it doesn't have to be.
+addpath('../../config');
 if isunix  % setup for a Linux platform
-    mp.model_path = pwd;
-    mp.test_signals_path = [pwd filesep '..' filesep '..' filesep 'test_signals'];
-    mp.config_path = [pwd filesep '..' filesep '..' filesep 'config'];
-    mp.vhdl_codegen_path = [pwd filesep '..' filesep '..' ...
-        filesep '..' filesep 'simulink_codegen' filesep 'vhdl'];
-    mp.driver_codegen_path = [pwd filesep '..' filesep '..' ...
-        filesep '..' filesep 'simulink_codegen' filesep 'device_drivers'];
-    mp.quartus_path = '/usr/local/intelFPGA/18.0/quartus/bin';
+    path_setup_linux;
 elseif ispc % setup for a Windows platform
-    local_git_path         = 'E:\GitHub';
-    mp.model_path          = [local_git_path '\simulink_models\models\' mp.model_name];
-    mp.test_signals_path   = [local_git_path '\simulink_models\test_signals'];
-    mp.config_path         = [local_git_path '\simulink_models\config'];
-    mp.vhdl_codegen_path   = [local_git_path '\simulink_codegen\vhdl'];
-    mp.driver_codegen_path = [local_git_path '\simulink_codegen\device_drivers'];
-    mp.quartus_path        = 'F:\intelFPGA_lite\18.0\quartus\bin64';    
+    path_setup_windows;  
 end
 
 % TODO: remove python path and version information. All of the code should be python3 and python2 compatible. If not, we should make it python2/3 compatible if possible.

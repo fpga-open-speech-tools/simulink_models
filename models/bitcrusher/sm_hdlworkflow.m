@@ -50,7 +50,7 @@ hWC = hdlcoder.WorkflowConfig('SynthesisTool','Altera QUARTUS II','TargetWorkflo
 if isunix
     hWC.ProjectFolder = '.';
 elseif ispc
-    hWC.ProjectFolder = mp.model_path;
+    hWC.ProjectFolder = 'hdlsrc';
 end
 
 
