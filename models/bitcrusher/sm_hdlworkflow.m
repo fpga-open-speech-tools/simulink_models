@@ -19,7 +19,6 @@ dataplane_name = [model '_dataplane'];
 load_system(model);
 
 %% Model HDL Parameters
-%% Set Model 'SG' HDL parameters
 hdlset_param(model, 'CriticalPathEstimation', 'off');
 hdlset_param(model, 'GenerateHDLTestBench', 'off');
 hdlset_param(model,'HDLCodingStandardCustomizations',hdlcodingstd.IndustryCustomizations());
@@ -33,26 +32,14 @@ hdlset_param(model, 'SynthesisToolDeviceName', '5CSEBA6U23I7');
 hdlset_param(model, 'SynthesisToolPackageName', '');
 hdlset_param(model, 'SynthesisToolSpeedValue', '');
 hdlset_param(model, 'UseRisingEdge', 'on');
-
-% XXX: Matlab refuses to put the code anywhere except hdlsrc, no matter
-%      what directory I put here... >:(
-if isunix
-    hdlset_param(model, 'TargetDirectory', './hdlsrc');
-elseif ispc
-    hdlset_param(model, 'TargetDirectory', [mp.model_path '\hdlsrc']);
-end
+hdlset_param(model, 'TargetDirectory', [mp.model_path filesep 'hdlsrc']);
 
 %% Workflow Configuration Settings
 % Construct the Workflow Configuration Object with default settings
 hWC = hdlcoder.WorkflowConfig('SynthesisTool','Altera QUARTUS II','TargetWorkflow','Generic ASIC/FPGA');
 
 % Specify the top level project directory
-if isunix
-    hWC.ProjectFolder = '.';
-elseif ispc
-    hWC.ProjectFolder = 'hdlsrc';
-end
-
+hWC.ProjectFolder = mp.model_path;
 
 % Set Workflow tasks to run
 hWC.RunTaskGenerateRTLCodeAndTestbench = true;
