@@ -85,12 +85,12 @@ u_SG_dataplane_with_DPRAM : SG_dataplane_with_DPRAM
 		  
         -- WIP, needs testing and likely fixing or adding extra ports to dataplane component
 		  when "0" => -- read from DPRAM
-						  DPRAM_address <= avalon_slave_address(avalon_slave_address'left-1 downto 0)	-- get all but MSB
 						  --DPRAM_RW_bit <= '0';
-						  avalon_slave_readdata <= DPRAM_data;		-- read from 
+						  DPRAM_address <= avalon_slave_address(avalon_slave_address'left-1 downto 0)	-- get all but MSB (I think this works?)
+						  avalon_slave_readdata <= DPRAM_data;		-- read from data like an output?
 						  
 		  when "1" => -- read from registers instead
-			  case avalon_slaveaddress(avalon_slave_address'left-1 downto 0)
+			  case avalon_slaveaddress(0)
 				  when "0" => avalon_slave_readdata <= left_gain;
 				  when "1" => avalon_slave_readdata <= right_gain;
 			  end case;
@@ -100,17 +100,34 @@ u_SG_dataplane_with_DPRAM : SG_dataplane_with_DPRAM
     end if;
   end process;
 
+  
+  
   bus_write : process(clk, reset)
   begin
     if reset = '1' then
       left_gain                 <=  "00010000000000000000000000000000"; -- 1
       right_gain                <=  "00010000000000000000000000000000"; -- 1
+		DPRAM_data					  <=  (others => '0');
+		DPRAM_address				  <=	(others => '0');
+		
     elsif rising_edge(clk) and avalon_slave_write = '1' then
       case avalon_slave_address(avalon_slave_address'left) is
-        when "0" => left_gain <= avalon_slave_writedata;
-        when "1" => right_gain <= avalon_slave_writedata;
+        -- WIP, needs testing and likely fixing or adding extra ports to dataplane component
+		  when "0" => -- write to DPRAM
+						  --DPRAM_RW_bit <= '1';
+						  DPRAM_address <= avalon_slave_address(avalon_slave_address'left-1 downto 0)	-- get all but MSB
+						  DPRAM_data <= avalon_slave_writedata;		 
+						  
+		  when "1" => -- write to registers instead
+			  case avalon_slaveaddress(0)
+					when "0" => left_gain <= avalon_slave_writedata;		-- find out how to generalize this 
+					when "1" => right_gain <= avalon_slave_writedata;		-- for any number of bits in address
+			  end case;
+			  
         when others => null;
       end case;
+		
+
     end if;
   end process;
 
