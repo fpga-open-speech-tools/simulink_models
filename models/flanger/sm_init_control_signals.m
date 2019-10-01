@@ -55,7 +55,7 @@ mp.register(2).widget_display_units = 'hz';
 
 %% Create regen control signal
 mp.register(3).name       = 'regen';
-mp.register(3).value      = 0.3;          % value control signal will take during simulation
+mp.register(3).value      = 0.0;          % value control signal will take during simulation
 mp.register(3).min        = 0;          % The minimum value the control signal will ever take
 mp.register(3).max        = 0.9;          % The maximum value the control signal will ever take
 mp.register(3).default    = 0.5;          % default (initial) value

@@ -30,7 +30,7 @@
 
 function mp = sm_init_test_signals(mp)
 
-signal_option = 1;  % set which test signal to use
+signal_option = 4;  % set which test signal to use
 
 switch signal_option
     case 1 % Simple tones
@@ -70,6 +70,16 @@ switch signal_option
         mp.test_signal.right = y_resampled(1:mp.test_signal.Nsamples);
         mp.test_signal.Nsamples = length(mp.test_signal.left);
         mp.test_signal.duration = mp.test_signal.Nsamples * mp.Ts;
+    case 4 % Simple tones
+        mp.test_signal.duration = 0.5;  % duration of tone in seconds
+        Nsamples = round(mp.test_signal.duration*mp.Fs);
+        if mp.fastsim_flag == 1 % perform fast simulation by reducing the number of samples
+           mp.test_signal.Nsamples = min(Nsamples, mp.fastsim_Nsamples);
+        else
+           mp.test_signal.Nsamples = mp.fastsim_Nsamples;
+        end
+        mp.test_signal.left  = [1 zeros(1, mp.test_signal.Nsamples - 1)];
+        mp.test_signal.right = [1 zeros(1, mp.test_signal.Nsamples - 1)];
     otherwise
         error('Please choose a viable option for the test signal (see sm_init_test_signals)')
 end
