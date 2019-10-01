@@ -59,6 +59,7 @@ mp.nco_accumulator_bits = ceil(log2(mp.Fs/mp.register(2).min));
 
 %% Set parameters for the delay line
 mp.delay_max = mp.nco_max;
+mp.dpram_addr_size = ceil(log2(mp.delay_max));
 
 %% Create test signals for the left and right channels
 mp = sm_init_test_signals(mp);  % create the test signals that will go through the model

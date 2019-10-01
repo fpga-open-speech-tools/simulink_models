@@ -46,7 +46,7 @@ mp.register(1).widget_display_units = 'bypass';
 
 %% Create rate control signal
 mp.register(2).name       = 'rate';
-mp.register(2).value      = 0.8;          % value control signal will take during simulation
+mp.register(2).value      = 0.4;          % value control signal will take during simulation
 mp.register(2).min        = 0.1;          % The minimum value the control signal will ever take
 mp.register(2).max        = 5;          % The maximum value the control signal will ever take
 mp.register(2).default    = 50;          % default (initial) value

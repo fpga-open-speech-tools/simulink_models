@@ -30,7 +30,7 @@
 
 function mp = sm_init_test_signals(mp)
 
-signal_option = 3;  % set which test signal to use
+signal_option = 1;  % set which test signal to use
 
 switch signal_option
     case 1 % Simple tones
@@ -51,7 +51,7 @@ switch signal_option
         if mp.fastsim_flag == 1 % perform fast simulation by reducing the number of samples
            mp.test_signal.Nsamples = min(Nsamples, mp.fastsim_Nsamples);
         else
-           mp.test_signal.Nsamples = Nsamples;
+           mp.test_signal.Nsamples = mp.fastsim_Nsample;
         end
         mp.test_signal.left  = y_resampled(1:mp.test_signal.Nsamples);
         mp.test_signal.right = y_resampled(1:mp.test_signal.Nsamples);
