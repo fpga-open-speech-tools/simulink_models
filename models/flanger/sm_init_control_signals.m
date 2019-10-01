@@ -35,7 +35,7 @@ function mp = sm_init_control_signals(mp)
 % \simulink_models\config\widget_list_display.m
 %
 
-%% Create left bypass control signal
+%% Create bypass control signal
 mp.register(1).name       = 'bypass';
 mp.register(1).value      = 0;          % value control signal will take during simulation
 mp.register(1).min        = 0;          % The minimum value the control signal will ever take
@@ -46,7 +46,7 @@ mp.register(1).widget_display_units = 'bypass';
 
 %% Create rate control signal
 mp.register(2).name       = 'rate';
-mp.register(2).value      = 4.3;          % value control signal will take during simulation
+mp.register(2).value      = 0.8;          % value control signal will take during simulation
 mp.register(2).min        = 0.1;          % The minimum value the control signal will ever take
 mp.register(2).max        = 5;          % The maximum value the control signal will ever take
 mp.register(2).default    = 50;          % default (initial) value
@@ -55,7 +55,7 @@ mp.register(2).widget_display_units = 'hz';
 
 %% Create regen control signal
 mp.register(3).name       = 'regen';
-mp.register(3).value      = 0.9;          % value control signal will take during simulation
+mp.register(3).value      = 0.3;          % value control signal will take during simulation
 mp.register(3).min        = 0;          % The minimum value the control signal will ever take
 mp.register(3).max        = 0.9;          % The maximum value the control signal will ever take
 mp.register(3).default    = 0.5;          % default (initial) value
