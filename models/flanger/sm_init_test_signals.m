@@ -30,7 +30,7 @@
 
 function mp = sm_init_test_signals(mp)
 
-signal_option = 4;  % set which test signal to use
+signal_option = 3;  % set which test signal to use
 
 switch signal_option
     case 1 % Simple tones

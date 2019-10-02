@@ -46,16 +46,16 @@ mp.register(1).widget_display_units = 'bypass';
 
 %% Create rate control signal
 mp.register(2).name       = 'rate';
-mp.register(2).value      = 0.4;          % value control signal will take during simulation
+mp.register(2).value      = 2.7;          % value control signal will take during simulation
 mp.register(2).min        = 0.1;          % The minimum value the control signal will ever take
 mp.register(2).max        = 5;          % The maximum value the control signal will ever take
-mp.register(2).default    = 50;          % default (initial) value
+mp.register(2).default    = 1;          % default (initial) value
 mp.register(2).widget_type          = 'slider';
 mp.register(2).widget_display_units = 'hz';
 
 %% Create regen control signal
 mp.register(3).name       = 'regen';
-mp.register(3).value      = 0.0;          % value control signal will take during simulation
+mp.register(3).value      = 0.7;          % value control signal will take during simulation
 mp.register(3).min        = 0;          % The minimum value the control signal will ever take
 mp.register(3).max        = 0.9;          % The maximum value the control signal will ever take
 mp.register(3).default    = 0.5;          % default (initial) value

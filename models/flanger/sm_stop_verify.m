@@ -29,14 +29,14 @@
 
 function mp = sm_stop_verify(mp)
 
-figure(1)
-plot(mp.test_signal.left); hold on
-plot(mp.left_data_out)
-title(['Rate = ' num2str(mp.register(2).value) '  Regen = ' num2str(mp.register(3).value)])
-legend('input', 'output')
+% figure(1)
+% plot(mp.test_signal.left); hold on
+% plot(mp.left_data_out)
+% title(['Rate = ' num2str(mp.register(2).value) '  Regen = ' num2str(mp.register(3).value)])
+% legend('input', 'output')
 
-original_audio = [mp.test_signal.left(:) mp.test_signal.right(:)];
+% original_audio = [mp.test_signal.left(:) mp.test_signal.right(:)];
 processed_audio = [mp.left_data_out(:) mp.right_data_out(:)];
-soundsc(original_audio, mp.Fs);
-pause(mp.test_signal.duration*1.1);
+% soundsc(original_audio, mp.Fs);
+% pause(mp.test_signal.duration*1.1);
 soundsc(processed_audio, mp.Fs);
