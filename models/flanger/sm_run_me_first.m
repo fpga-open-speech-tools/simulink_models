@@ -73,12 +73,12 @@ eval(['cd ' mp.model_path])  % change the working directory to the model directo
 %     disp(['Setting Python to version ' python_version])
 % end
 % add the codegen_path to python's search path
-if count(py.sys.path,mp.vhdl_codegen_path) == 0
-    insert(py.sys.path,int32(0),mp.vhdl_codegen_path);
-end
-if count(py.sys.path,mp.driver_codegen_path) == 0
-    insert(py.sys.path,int32(0),mp.driver_codegen_path);
-end
+% if count(py.sys.path,mp.vhdl_codegen_path) == 0
+%     insert(py.sys.path,int32(0),mp.vhdl_codegen_path);
+% end
+% if count(py.sys.path,mp.driver_codegen_path) == 0
+%     insert(py.sys.path,int32(0),mp.driver_codegen_path);
+% end
 
 
 %% Open the model
