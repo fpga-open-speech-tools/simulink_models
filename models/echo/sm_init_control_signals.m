@@ -46,12 +46,12 @@ mp.register(ri).default    = 0;         % default (initial) value
 mp.register(ri).widget_type          = 'toggle';
 mp.register(ri).widget_display_units = 'bypass';
 
-%% Create delay control signal (in samples [0 Fs] => delay 0 to 1 seconds)
+%% Create delay control signal (in samples)   [0 Fs] => delay 0 to 1 seconds
 ri = ri + 1;  % register index
 mp.register(ri).name       = 'Delay';  % control signal name
 mp.register(ri).value      = 500;    % value control signal will take during simulation
 mp.register(ri).min        =  0;       % The minimum value the control signal will ever take
-mp.register(ri).max        = 48000;    % The maximum value the control signal will ever take
+mp.register(ri).max        = mp.max_delay;    % The maximum value the control signal will ever take
 mp.register(ri).default    = 24000;    % default (initial) value
 mp.register(ri).widget_type          = 'slider';
 mp.register(ri).widget_display_units = 'seconds';

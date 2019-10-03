@@ -28,6 +28,10 @@ end
 mp.Fs = 48000;    % sample rate frequency of AD1939 codec in Hz
 mp.Ts = 1/mp.Fs;  % sample period
 
+%% Set size of Dual Port Memory
+mp.max_delay = mp.Fs;   % max delay in samples, i.e. mp.Fs = 1 second max delay
+mp.dpram_addr_size = ceil(log2(mp.max_delay));
+
 %% Set the FPGA system clock frequency (frequency of the FPGA fabric)
 % The system clock frequency should be an integer multiple of the Audio codec AD1939 Mclk frequency (12.288 MHz)
 if mp.fastsim_flag == 0
@@ -60,6 +64,7 @@ end
 %% Put the test signals into the Avalon Streaming Bus format
 % i.e. put the test signals into the data-channel-valid protocol
 mp = sm_init_avalon_signals(mp);  % create the avalon streaming signals 
+
 
 %% place variables into workspace directly (debug)
 % Avalon_Source_Data    = SG.Avalon_Source_Data;    % place into workspace directly so that the "From Workspace" blocks can read from these variables

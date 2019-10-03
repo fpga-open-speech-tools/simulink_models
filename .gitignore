@@ -3,3 +3,5 @@ slprj
 hdlprj
 hdlsrc
 gm_*.slx
+config/path_setup_windows.m
+*.asv

@@ -1,4 +1,4 @@
-local_git_path         = 'C:\Users\bugsbunny\NIH';
+local_git_path         = 'E:\GitHub';
 mp.model_path          = [local_git_path '\simulink_models\models\' mp.model_name];
 mp.test_signals_path   = [local_git_path '\simulink_models\test_signals'];
 mp.config_path         = [local_git_path '\simulink_models\config'];

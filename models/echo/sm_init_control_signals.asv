@@ -46,20 +46,30 @@ mp.register(ri).default    = 0;         % default (initial) value
 mp.register(ri).widget_type          = 'toggle';
 mp.register(ri).widget_display_units = 'bypass';
 
-%% Create bit control signal
+%% Create delay control signal (in samples [0 Fs] => delay 0 to 1 seconds)
 ri = ri + 1;  % register index
-mp.register(ri).name       = 'Bits';   % control signal name
-mp.register(ri).value      = 8;        % value control signal will take during simulation
+mp.register(ri).name       = 'Delay';  % control signal name
+mp.register(ri).value      = 500;    % value control signal will take during simulation
 mp.register(ri).min        =  0;       % The minimum value the control signal will ever take
-mp.register(ri).max        = 32;       % The maximum value the control signal will ever take
-mp.register(ri).default    = 32;       % default (initial) value
+mp.register(ri).max        = mp.max_delay;    % The maximum value the control signal will ever take
+mp.register(ri).default    = 24000;    % default (initial) value
 mp.register(ri).widget_type          = 'slider';
-mp.register(ri).widget_display_units = 'bits';
+mp.register(ri).widget_display_units = 'seconds';
+
+%% Create decay control signal (must be less than one)
+ri = ri + 1;  % register index
+mp.register(ri).name       = 'Decay';  % control signal name
+mp.register(ri).value      = 0.5;      % value control signal will take during simulation
+mp.register(ri).min        = 0;        % The minimum value the control signal will ever take
+mp.register(ri).max        = 1;        % The maximum value the control signal will ever take
+mp.register(ri).default    = 0.8;      % default (initial) value
+mp.register(ri).widget_type          = 'slider';
+mp.register(ri).widget_display_units = 'weight';
 
 %% Create wet_dry_mix signal
 ri = ri + 1;  % register index
 mp.register(ri).name       = 'Wet_Dry_Mix';   % control signal name   Note:  wet_gain=wet_dry_mix; dry_gain=1?wet_dry_mix
-mp.register(ri).value      = 0.5;             % value control signal will take during simulation
+mp.register(ri).value      = 0.9;             % value control signal will take during simulation
 mp.register(ri).min        = 0;               % The minimum value the control signal will ever take
 mp.register(ri).max        = 1;               % The maximum value the control signal will ever take
 mp.register(ri).default    = 0.5;             % default (initial) value
