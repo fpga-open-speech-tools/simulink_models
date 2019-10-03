@@ -49,7 +49,7 @@ mp.register(ri).widget_display_units = 'bypass';
 %% Create bit control signal
 ri = ri + 1;  % register index
 mp.register(ri).name       = 'Bits';   % control signal name
-mp.register(ri).value      = 8;        % value control signal will take during simulation
+mp.register(ri).value      = 4;        % value control signal will take during simulation
 mp.register(ri).min        =  0;       % The minimum value the control signal will ever take
 mp.register(ri).max        = 32;       % The maximum value the control signal will ever take
 mp.register(ri).default    = 32;       % default (initial) value
@@ -58,8 +58,8 @@ mp.register(ri).widget_display_units = 'bits';
 
 %% Create wet_dry_mix signal
 ri = ri + 1;  % register index
-mp.register(ri).name       = 'Wet_Dry_Mix';   % control signal name   Note:  wet_gain=wet_dry_mix; dry_gain=1?wet_dry_mix
-mp.register(ri).value      = 0.8;             % value control signal will take during simulation
+mp.register(ri).name       = 'Wet_Dry_Mix';   % control signal name   Note:  wet_gain=wet_dry_mix; dry_gain=1-wet_dry_mix
+mp.register(ri).value      = 1;             % value control signal will take during simulation
 mp.register(ri).min        = 0;               % The minimum value the control signal will ever take
 mp.register(ri).max        = 1;               % The maximum value the control signal will ever take
 mp.register(ri).default    = 0.5;             % default (initial) value
