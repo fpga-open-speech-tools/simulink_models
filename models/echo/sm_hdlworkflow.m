@@ -32,7 +32,8 @@ hdlset_param(model, 'SynthesisToolDeviceName', '5CSEBA6U23I7');
 hdlset_param(model, 'SynthesisToolPackageName', '');
 hdlset_param(model, 'SynthesisToolSpeedValue', '');
 hdlset_param(model, 'UseRisingEdge', 'on');
-hdlset_param(model, 'TargetDirectory', [mp.model_path filesep 'hdlsrc']);
+hdlset_param(model, 'TargetDirectory', 'hdlsrc');
+hdlset_param(model, 'TargetFrequency', mp.Fs_system);
 
 %% Workflow Configuration Settings
 % Construct the Workflow Configuration Object with default settings
