@@ -23,7 +23,7 @@ ENTITY SE_echo_block IS
         reset                             :   IN    std_logic;
         enb                               :   IN    std_logic;
         input                             :   IN    std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
-        delay                             :   IN    std_logic_vector(15 DOWNTO 0);  -- uint16
+        delay                             :   IN    std_logic_vector(14 DOWNTO 0);  -- ufix15
         decay                             :   IN    std_logic_vector(4 DOWNTO 0);  -- ufix5_En4
         Enable_out6                       :   IN    std_logic;
         output                            :   OUT   std_logic_vector(31 DOWNTO 0)  -- sfix32_En28
@@ -41,7 +41,7 @@ ARCHITECTURE rtl OF SE_echo_block IS
           reset                           :   IN    std_logic;
           enb                             :   IN    std_logic;
           data_in                         :   IN    std_logic_vector(32 DOWNTO 0);  -- sfix33_En28
-          delay                           :   IN    std_logic_vector(15 DOWNTO 0);  -- uint16
+          delay                           :   IN    std_logic_vector(14 DOWNTO 0);  -- ufix15
           Enable_out6                     :   IN    std_logic;
           data_out                        :   OUT   std_logic_vector(32 DOWNTO 0)  -- sfix33_En28
           );
@@ -70,7 +70,7 @@ BEGIN
               reset => reset,
               enb => enb,
               data_in => std_logic_vector(Sum_out1),  -- sfix33_En28
-              delay => delay,  -- uint16
+              delay => delay,  -- ufix15
               Enable_out6 => Enable_out6,
               data_out => variable_delay_out1  -- sfix33_En28
               );

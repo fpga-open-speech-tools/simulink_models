@@ -23,7 +23,7 @@ ENTITY SE_variable_delay IS
         reset                             :   IN    std_logic;
         enb                               :   IN    std_logic;
         data_in                           :   IN    std_logic_vector(32 DOWNTO 0);  -- sfix33_En28
-        delay                             :   IN    std_logic_vector(15 DOWNTO 0);  -- uint16
+        delay                             :   IN    std_logic_vector(14 DOWNTO 0);  -- ufix15
         Enable_out6                       :   IN    std_logic;
         data_out                          :   OUT   std_logic_vector(32 DOWNTO 0)  -- sfix33_En28
         );
@@ -39,10 +39,10 @@ ARCHITECTURE rtl OF SE_variable_delay IS
     PORT( clk                             :   IN    std_logic;
           reset                           :   IN    std_logic;
           enb                             :   IN    std_logic;
-          delay                           :   IN    std_logic_vector(15 DOWNTO 0);  -- uint16
-          write_addr                      :   IN    std_logic_vector(15 DOWNTO 0);  -- uint16
+          delay                           :   IN    std_logic_vector(14 DOWNTO 0);  -- ufix15
+          write_addr                      :   IN    std_logic_vector(14 DOWNTO 0);  -- ufix15
           Enable_out6                     :   IN    std_logic;
-          read_addr                       :   OUT   std_logic_vector(15 DOWNTO 0)  -- uint16
+          read_addr                       :   OUT   std_logic_vector(14 DOWNTO 0)  -- ufix15
           );
   END COMPONENT;
 
@@ -69,9 +69,9 @@ ARCHITECTURE rtl OF SE_variable_delay IS
 
   -- Signals
   SIGNAL enb_gated                        : std_logic;
-  SIGNAL write_address_generator_out1     : unsigned(15 DOWNTO 0);  -- uint16
+  SIGNAL write_address_generator_out1     : unsigned(14 DOWNTO 0);  -- ufix15
   SIGNAL Constant_out1                    : std_logic;
-  SIGNAL read_address_generator_out1      : std_logic_vector(15 DOWNTO 0);  -- ufix16
+  SIGNAL read_address_generator_out1      : std_logic_vector(14 DOWNTO 0);  -- ufix15
   SIGNAL enb_gated_1                      : std_logic;
   SIGNAL Simple_Dual_Port_RAM_out1        : std_logic_vector(32 DOWNTO 0);  -- ufix33
 
@@ -80,14 +80,14 @@ BEGIN
     PORT MAP( clk => clk,
               reset => reset,
               enb => enb,
-              delay => delay,  -- uint16
-              write_addr => std_logic_vector(write_address_generator_out1),  -- uint16
+              delay => delay,  -- ufix15
+              write_addr => std_logic_vector(write_address_generator_out1),  -- ufix15
               Enable_out6 => Enable_out6,
-              read_addr => read_address_generator_out1  -- uint16
+              read_addr => read_address_generator_out1  -- ufix15
               );
 
   u_Simple_Dual_Port_RAM : SE_SimpleDualPortRAM_generic
-    GENERIC MAP( AddrWidth => 16,
+    GENERIC MAP( AddrWidth => 15,
                  DataWidth => 33
                  )
     PORT MAP( clk => clk,
@@ -104,15 +104,15 @@ BEGIN
   -- Count limited, Unsigned Counter
   --  initial value   = 0
   --  step value      = 1
-  --  count to value  = 65535
+  --  count to value  = 32767
   -- 
   write_address_generator_process : PROCESS (clk, reset)
   BEGIN
     IF reset = '1' THEN
-      write_address_generator_out1 <= to_unsigned(16#0000#, 16);
+      write_address_generator_out1 <= to_unsigned(16#0000#, 15);
     ELSIF rising_edge(clk) THEN
       IF enb_gated = '1' THEN
-        write_address_generator_out1 <= write_address_generator_out1 + to_unsigned(16#0001#, 16);
+        write_address_generator_out1 <= write_address_generator_out1 + to_unsigned(16#0001#, 15);
       END IF;
     END IF;
   END PROCESS write_address_generator_process;

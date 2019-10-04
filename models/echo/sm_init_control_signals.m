@@ -52,7 +52,7 @@ mp.register(ri).name       = 'Delay';  % control signal name
 mp.register(ri).value      = 10000;    % value control signal will take during simulation
 mp.register(ri).min        =  0;       % The minimum value the control signal will ever take
 mp.register(ri).max        = mp.max_delay;    % The maximum value the control signal will ever take
-mp.register(ri).default    = 24000;    % default (initial) value
+mp.register(ri).default    = 12000;    % default (initial) value
 mp.register(ri).widget_type          = 'slider';
 mp.register(ri).widget_display_units = 'seconds';
 

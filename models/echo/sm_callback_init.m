@@ -29,7 +29,7 @@ mp.Fs = 48000;    % sample rate frequency of AD1939 codec in Hz
 mp.Ts = 1/mp.Fs;  % sample period
 
 %% Set size of Dual Port Memory
-mp.max_delay = mp.Fs;   % max delay in samples, i.e. mp.Fs = 1 second max delay
+mp.max_delay = mp.Fs*1/2;   % max delay in samples, i.e. mp.Fs = 1 second max delay
 mp.dpram_addr_size = ceil(log2(mp.max_delay));
 
 %% Set the FPGA system clock frequency (frequency of the FPGA fabric)

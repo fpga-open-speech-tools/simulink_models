@@ -25,7 +25,7 @@ ENTITY SE_Right_Channel_Processing IS
         enb                               :   IN    std_logic;
         Right_Data_In                     :   IN    std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
         Right_Bypass                      :   IN    std_logic;
-        Right_Delay                       :   IN    std_logic_vector(15 DOWNTO 0);  -- uint16
+        Right_Delay                       :   IN    std_logic_vector(14 DOWNTO 0);  -- ufix15
         Right_Decay                       :   IN    std_logic_vector(4 DOWNTO 0);  -- ufix5_En4
         Right_Wet_Dry_Mix                 :   IN    std_logic_vector(4 DOWNTO 0);  -- ufix5_En4
         Enable                            :   IN    std_logic;
@@ -44,7 +44,7 @@ ARCHITECTURE rtl OF SE_Right_Channel_Processing IS
           reset                           :   IN    std_logic;
           enb                             :   IN    std_logic;
           input                           :   IN    std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
-          delay                           :   IN    std_logic_vector(15 DOWNTO 0);  -- uint16
+          delay                           :   IN    std_logic_vector(14 DOWNTO 0);  -- ufix15
           decay                           :   IN    std_logic_vector(4 DOWNTO 0);  -- ufix5_En4
           Enable_out6                     :   IN    std_logic;
           output                          :   OUT   std_logic_vector(31 DOWNTO 0)  -- sfix32_En28
@@ -95,7 +95,7 @@ BEGIN
               reset => reset,
               enb => enb,
               input => Right_Data_In,  -- sfix32_En28
-              delay => Right_Delay,  -- uint16
+              delay => Right_Delay,  -- ufix15
               decay => Right_Decay,  -- ufix5_En4
               Enable_out6 => Enable_out6,
               output => echo_out1  -- sfix32_En28

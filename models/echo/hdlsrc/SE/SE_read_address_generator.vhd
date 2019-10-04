@@ -22,10 +22,10 @@ ENTITY SE_read_address_generator IS
   PORT( clk                               :   IN    std_logic;
         reset                             :   IN    std_logic;
         enb                               :   IN    std_logic;
-        delay                             :   IN    std_logic_vector(15 DOWNTO 0);  -- uint16
-        write_addr                        :   IN    std_logic_vector(15 DOWNTO 0);  -- uint16
+        delay                             :   IN    std_logic_vector(14 DOWNTO 0);  -- ufix15
+        write_addr                        :   IN    std_logic_vector(14 DOWNTO 0);  -- ufix15
         Enable_out6                       :   IN    std_logic;
-        read_addr                         :   OUT   std_logic_vector(15 DOWNTO 0)  -- uint16
+        read_addr                         :   OUT   std_logic_vector(14 DOWNTO 0)  -- ufix15
         );
 END SE_read_address_generator;
 
@@ -35,21 +35,21 @@ ARCHITECTURE rtl OF SE_read_address_generator IS
   ATTRIBUTE multstyle : string;
 
   -- Signals
-  SIGNAL delay_unsigned                   : unsigned(15 DOWNTO 0);  -- uint16
+  SIGNAL delay_unsigned                   : unsigned(14 DOWNTO 0);  -- ufix15
   SIGNAL enb_gated                        : std_logic;
-  SIGNAL Memory_out1                      : unsigned(15 DOWNTO 0);  -- uint16
-  SIGNAL write_addr_unsigned              : unsigned(15 DOWNTO 0);  -- uint16
-  SIGNAL Subtract_stage2_sub_cast         : signed(17 DOWNTO 0);  -- sfix18
-  SIGNAL Subtract_stage2_sub_cast_1       : signed(17 DOWNTO 0);  -- sfix18
-  SIGNAL Subtract_op_stage2               : signed(17 DOWNTO 0);  -- sfix18
+  SIGNAL Memory_out1                      : unsigned(14 DOWNTO 0);  -- ufix15
+  SIGNAL write_addr_unsigned              : unsigned(14 DOWNTO 0);  -- ufix15
+  SIGNAL Subtract_stage2_sub_cast         : signed(16 DOWNTO 0);  -- sfix17
+  SIGNAL Subtract_stage2_sub_cast_1       : signed(16 DOWNTO 0);  -- sfix17
+  SIGNAL Subtract_op_stage2               : signed(16 DOWNTO 0);  -- sfix17
   SIGNAL Relational_Operator_relop1       : std_logic;
   SIGNAL delay_changed                    : std_logic;
-  SIGNAL Constant_out1                    : unsigned(15 DOWNTO 0);  -- uint16
-  SIGNAL Subtract_stage3_add_cast         : signed(17 DOWNTO 0);  -- sfix18
-  SIGNAL Subtract_stage3_add_temp         : signed(17 DOWNTO 0);  -- sfix18
-  SIGNAL Subtract_out1                    : unsigned(15 DOWNTO 0);  -- uint16
+  SIGNAL Constant_out1                    : unsigned(14 DOWNTO 0);  -- ufix15
+  SIGNAL Subtract_stage3_add_cast         : signed(16 DOWNTO 0);  -- sfix17
+  SIGNAL Subtract_stage3_add_temp         : signed(16 DOWNTO 0);  -- sfix17
+  SIGNAL Subtract_out1                    : unsigned(14 DOWNTO 0);  -- ufix15
   SIGNAL enb_gated_1                      : std_logic;
-  SIGNAL read_address_counter_out1        : unsigned(15 DOWNTO 0);  -- uint16
+  SIGNAL read_address_counter_out1        : unsigned(14 DOWNTO 0);  -- ufix15
 
 BEGIN
   -- read address should trail the write address by "delay" number of samples.
@@ -67,7 +67,7 @@ BEGIN
   Memory_process : PROCESS (clk, reset)
   BEGIN
     IF reset = '1' THEN
-      Memory_out1 <= to_unsigned(16#0000#, 16);
+      Memory_out1 <= to_unsigned(16#0000#, 15);
     ELSIF rising_edge(clk) THEN
       IF enb_gated = '1' THEN
         Memory_out1 <= delay_unsigned;
@@ -78,8 +78,8 @@ BEGIN
 
   write_addr_unsigned <= unsigned(write_addr);
 
-  Subtract_stage2_sub_cast <= signed(resize(write_addr_unsigned, 18));
-  Subtract_stage2_sub_cast_1 <= signed(resize(delay_unsigned, 18));
+  Subtract_stage2_sub_cast <= signed(resize(write_addr_unsigned, 17));
+  Subtract_stage2_sub_cast_1 <= signed(resize(delay_unsigned, 17));
   Subtract_op_stage2 <= Subtract_stage2_sub_cast - Subtract_stage2_sub_cast_1;
 
   
@@ -88,29 +88,29 @@ BEGIN
 
   delay_changed <= Relational_Operator_relop1;
 
-  Constant_out1 <= to_unsigned(16#0002#, 16);
+  Constant_out1 <= to_unsigned(16#0002#, 15);
 
-  Subtract_stage3_add_cast <= signed(resize(Constant_out1, 18));
+  Subtract_stage3_add_cast <= signed(resize(Constant_out1, 17));
   Subtract_stage3_add_temp <= Subtract_op_stage2 + Subtract_stage3_add_cast;
-  Subtract_out1 <= unsigned(Subtract_stage3_add_temp(15 DOWNTO 0));
+  Subtract_out1 <= unsigned(Subtract_stage3_add_temp(14 DOWNTO 0));
 
   enb_gated_1 <= Enable_out6 AND enb;
 
   -- Count limited, Unsigned Counter
   --  initial value   = 0
   --  step value      = 1
-  --  count to value  = 65535
+  --  count to value  = 32767
   -- 
   read_address_counter_process : PROCESS (clk, reset)
   BEGIN
     IF reset = '1' THEN
-      read_address_counter_out1 <= to_unsigned(16#0000#, 16);
+      read_address_counter_out1 <= to_unsigned(16#0000#, 15);
     ELSIF rising_edge(clk) THEN
       IF enb_gated_1 = '1' THEN
         IF delay_changed = '1' THEN 
           read_address_counter_out1 <= Subtract_out1;
         ELSE 
-          read_address_counter_out1 <= read_address_counter_out1 + to_unsigned(16#0001#, 16);
+          read_address_counter_out1 <= read_address_counter_out1 + to_unsigned(16#0001#, 15);
         END IF;
       END IF;
     END IF;
