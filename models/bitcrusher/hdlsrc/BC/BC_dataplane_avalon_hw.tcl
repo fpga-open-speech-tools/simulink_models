@@ -11,11 +11,11 @@ package require -exact qsys 16.1
 # # # # # # # # # # # # # # # # #
 
 set_module_property DESCRIPTION ""
-set_module_property NAME "flanger"
+set_module_property NAME "bitcrusher"
 set_module_property VERSION 1.0
 set_module_property OPAQUE_ADDRESS_MAP true
 set_module_property AUTHOR ""
-set_module_property DISPLAY_NAME "flanger"
+set_module_property DISPLAY_NAME "bitcrusher"
 set_module_property INSTANTIATE_IN_SYSTEM_MODULE true
 set_module_property EDITABLE true
 set_module_property REPORT_TO_TALKBACK false
@@ -30,30 +30,17 @@ set_module_property REPORT_HIERARCHY false
 # # # # # # # # # # # # # # # # # #
 
 add_fileset QUARTUS_SYNTH QUARTUS_SYNTH "" ""
-add_fileset_file flanger_LFO.vhd VHDL PATH flanger_LFO.vhd
-add_fileset_file flanger_LookUpTableGen_block.vhd VHDL PATH flanger_LookUpTableGen_block.vhd
-add_fileset_file flanger_NCO_HDL_Optimized_block.vhd VHDL PATH flanger_NCO_HDL_Optimized_block.vhd
-add_fileset_file flanger_WaveformGen_block.vhd VHDL PATH flanger_WaveformGen_block.vhd
-add_fileset_file flanger_Right_Channel_Processing.vhd VHDL PATH flanger_Right_Channel_Processing.vhd
-add_fileset_file flanger_DitherGen.vhd VHDL PATH flanger_DitherGen.vhd
-add_fileset_file flanger_LookUpTableGen.vhd VHDL PATH flanger_LookUpTableGen.vhd
-add_fileset_file flanger_dataplane_pkg.vhd VHDL PATH flanger_dataplane_pkg.vhd
-add_fileset_file flanger_variable_delay.vhd VHDL PATH flanger_variable_delay.vhd
-add_fileset_file flanger_Avalon_Data_Processing.vhd VHDL PATH flanger_Avalon_Data_Processing.vhd
-add_fileset_file flanger_SimpleDualPortRAM_generic.vhd VHDL PATH flanger_SimpleDualPortRAM_generic.vhd
-add_fileset_file flanger_NCO_HDL_Optimized.vhd VHDL PATH flanger_NCO_HDL_Optimized.vhd
-add_fileset_file flanger_read_address_generator_block.vhd VHDL PATH flanger_read_address_generator_block.vhd
-add_fileset_file flanger_read_address_generator.vhd VHDL PATH flanger_read_address_generator.vhd
-add_fileset_file flanger_dataplane.vhd VHDL PATH flanger_dataplane.vhd
-add_fileset_file flanger_WaveformGen.vhd VHDL PATH flanger_WaveformGen.vhd
-add_fileset_file flanger_DitherGen_block.vhd VHDL PATH flanger_DitherGen_block.vhd
-add_fileset_file flanger_variable_delay_block.vhd VHDL PATH flanger_variable_delay_block.vhd
-add_fileset_file flanger_Left_Channel_Processing.vhd VHDL PATH flanger_Left_Channel_Processing.vhd
-add_fileset_file flanger_LFO_block.vhd VHDL PATH flanger_LFO_block.vhd
-set_fileset_property QUARTUS_SYNTH TOP_LEVEL flanger_dataplane_avalon
+add_fileset_file BC_Left_Channel_Processing.vhd VHDL PATH BC_Left_Channel_Processing.vhd
+add_fileset_file BC_Right_Channel_Processing.vhd VHDL PATH BC_Right_Channel_Processing.vhd
+add_fileset_file BC_dataplane.vhd VHDL PATH BC_dataplane.vhd
+add_fileset_file BC_getbitmask.vhd VHDL PATH BC_getbitmask.vhd
+add_fileset_file BC_Avalon_Data_Processing.vhd VHDL PATH BC_Avalon_Data_Processing.vhd
+add_fileset_file BC_mixer.vhd VHDL PATH BC_mixer.vhd
+add_fileset_file BC_mixer_block.vhd VHDL PATH BC_mixer_block.vhd
+set_fileset_property QUARTUS_SYNTH TOP_LEVEL BC_dataplane_avalon
 set_fileset_property QUARTUS_SYNTH ENABLE_RELATIVE_INCLUDE_PATHS false
 set_fileset_property QUARTUS_SYNTH ENABLE_FILE_OVERWRITE_MODE false
-add_fileset_file flanger_dataplane_avalon.vhd VHDL PATH flanger_dataplane_avalon.vhd TOP_LEVEL_FILE
+add_fileset_file BC_dataplane_avalon.vhd VHDL PATH BC_dataplane_avalon.vhd TOP_LEVEL_FILE
 # end create_file_sets
 
 
@@ -61,8 +48,8 @@ add_fileset_file flanger_dataplane_avalon.vhd VHDL PATH flanger_dataplane_avalon
 # Created in create_module_assignments
 # # # # # # # # # # # # # # # # # # # #
 
-set_module_assignment embeddedsw.dts.compatible dev,fe-flanger
-set_module_assignment embeddedsw.dts.group flanger
+set_module_assignment embeddedsw.dts.compatible dev,fe-bitcrusher
+set_module_assignment embeddedsw.dts.group bitcrusher
 set_module_assignment embeddedsw.dts.vendor fe
 # End create_module_assignments
 
