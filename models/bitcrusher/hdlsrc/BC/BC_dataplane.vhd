@@ -50,7 +50,7 @@ ENTITY BC_dataplane IS
         avalon_sink_channel               :   IN    std_logic_vector(1 DOWNTO 0);  -- ufix2
         avalon_sink_error                 :   IN    std_logic_vector(1 DOWNTO 0);  -- ufix2
         register_control_bypass           :   IN    std_logic;
-        register_control_bits             :   IN    std_logic_vector(4 DOWNTO 0);  -- ufix5
+        register_control_bits             :   IN    std_logic_vector(5 DOWNTO 0);  -- ufix6
         register_control_wet_dry_mix      :   IN    std_logic_vector(4 DOWNTO 0);  -- ufix5_En4
         ce_out                            :   OUT   std_logic;
         avalon_source_valid               :   OUT   std_logic;
@@ -71,10 +71,10 @@ ARCHITECTURE rtl OF BC_dataplane IS
           Sink_Data                       :   IN    std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
           Sink_Channel                    :   IN    std_logic_vector(1 DOWNTO 0);  -- ufix2
           Left_Bypass                     :   IN    std_logic;
-          Left_Bits                       :   IN    std_logic_vector(4 DOWNTO 0);  -- ufix5
+          Left_Bits                       :   IN    std_logic_vector(5 DOWNTO 0);  -- ufix6
           Left_Wet_Dry_Mix                :   IN    std_logic_vector(4 DOWNTO 0);  -- ufix5_En4
           Right_Bypass                    :   IN    std_logic;
-          Right_Bits                      :   IN    std_logic_vector(4 DOWNTO 0);  -- ufix5
+          Right_Bits                      :   IN    std_logic_vector(5 DOWNTO 0);  -- ufix6
           Right_Wet_Dry_Mix               :   IN    std_logic_vector(4 DOWNTO 0);  -- ufix5_En4
           Enable                          :   IN    std_logic;
           Source_Data                     :   OUT   std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
@@ -126,10 +126,10 @@ BEGIN
               Sink_Data => avalon_sink_data,  -- sfix32_En28
               Sink_Channel => avalon_sink_channel,  -- ufix2
               Left_Bypass => register_control_bypass,
-              Left_Bits => register_control_bits,  -- ufix5
+              Left_Bits => register_control_bits,  -- ufix6
               Left_Wet_Dry_Mix => register_control_wet_dry_mix,  -- ufix5_En4
               Right_Bypass => register_control_bypass,
-              Right_Bits => register_control_bits,  -- ufix5
+              Right_Bits => register_control_bits,  -- ufix6
               Right_Wet_Dry_Mix => register_control_wet_dry_mix,  -- ufix5_En4
               Enable => avalon_sink_valid,
               Source_Data => Avalon_Data_Processing_out1,  -- sfix32_En28

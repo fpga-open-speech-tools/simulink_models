@@ -25,7 +25,7 @@ ENTITY BC_Right_Channel_Processing IS
         enb                               :   IN    std_logic;
         Right_Data_In                     :   IN    std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
         Right_Bypass                      :   IN    std_logic;
-        Right_Bits                        :   IN    std_logic_vector(4 DOWNTO 0);  -- ufix5
+        Right_Bits                        :   IN    std_logic_vector(5 DOWNTO 0);  -- ufix6
         Right_Wet_Dry_Mix                 :   IN    std_logic_vector(4 DOWNTO 0);  -- ufix5_En4
         Enable                            :   IN    std_logic;
         Right_Data_Out                    :   OUT   std_logic_vector(31 DOWNTO 0)  -- sfix32_En28
@@ -39,7 +39,7 @@ ARCHITECTURE rtl OF BC_Right_Channel_Processing IS
 
   -- Component Declarations
   COMPONENT BC_getbitmask
-    PORT( bitlevel                        :   IN    std_logic_vector(4 DOWNTO 0);  -- ufix5
+    PORT( bitlevel                        :   IN    std_logic_vector(5 DOWNTO 0);  -- ufix6
           bitmask                         :   OUT   std_logic_vector(31 DOWNTO 0)  -- ufix32_En28
           );
   END COMPONENT;
@@ -97,7 +97,7 @@ BEGIN
   -- 
 
   u_getbitmask : BC_getbitmask
-    PORT MAP( bitlevel => Right_Bits,  -- ufix5
+    PORT MAP( bitlevel => Right_Bits,  -- ufix6
               bitmask => getbitmask_out1  -- ufix32_En28
               );
 

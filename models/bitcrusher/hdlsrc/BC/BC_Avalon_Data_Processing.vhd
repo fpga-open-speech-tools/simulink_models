@@ -26,10 +26,10 @@ ENTITY BC_Avalon_Data_Processing IS
         Sink_Data                         :   IN    std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
         Sink_Channel                      :   IN    std_logic_vector(1 DOWNTO 0);  -- ufix2
         Left_Bypass                       :   IN    std_logic;
-        Left_Bits                         :   IN    std_logic_vector(4 DOWNTO 0);  -- ufix5
+        Left_Bits                         :   IN    std_logic_vector(5 DOWNTO 0);  -- ufix6
         Left_Wet_Dry_Mix                  :   IN    std_logic_vector(4 DOWNTO 0);  -- ufix5_En4
         Right_Bypass                      :   IN    std_logic;
-        Right_Bits                        :   IN    std_logic_vector(4 DOWNTO 0);  -- ufix5
+        Right_Bits                        :   IN    std_logic_vector(5 DOWNTO 0);  -- ufix6
         Right_Wet_Dry_Mix                 :   IN    std_logic_vector(4 DOWNTO 0);  -- ufix5_En4
         Enable                            :   IN    std_logic;
         Source_Data                       :   OUT   std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
@@ -49,7 +49,7 @@ ARCHITECTURE rtl OF BC_Avalon_Data_Processing IS
           enb                             :   IN    std_logic;
           Left_Data_In                    :   IN    std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
           Left_Bypass                     :   IN    std_logic;
-          Left_Bits                       :   IN    std_logic_vector(4 DOWNTO 0);  -- ufix5
+          Left_Bits                       :   IN    std_logic_vector(5 DOWNTO 0);  -- ufix6
           Left_Wet_Dry_Mix                :   IN    std_logic_vector(4 DOWNTO 0);  -- ufix5_En4
           Enable                          :   IN    std_logic;
           Left_Data_Out                   :   OUT   std_logic_vector(31 DOWNTO 0)  -- sfix32_En28
@@ -62,7 +62,7 @@ ARCHITECTURE rtl OF BC_Avalon_Data_Processing IS
           enb                             :   IN    std_logic;
           Right_Data_In                   :   IN    std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
           Right_Bypass                    :   IN    std_logic;
-          Right_Bits                      :   IN    std_logic_vector(4 DOWNTO 0);  -- ufix5
+          Right_Bits                      :   IN    std_logic_vector(5 DOWNTO 0);  -- ufix6
           Right_Wet_Dry_Mix               :   IN    std_logic_vector(4 DOWNTO 0);  -- ufix5_En4
           Enable                          :   IN    std_logic;
           Right_Data_Out                  :   OUT   std_logic_vector(31 DOWNTO 0)  -- sfix32_En28
@@ -128,7 +128,7 @@ BEGIN
               enb => enb,
               Left_Data_In => Sink_Data,  -- sfix32_En28
               Left_Bypass => Left_Bypass,
-              Left_Bits => Left_Bits,  -- ufix5
+              Left_Bits => Left_Bits,  -- ufix6
               Left_Wet_Dry_Mix => Left_Wet_Dry_Mix,  -- ufix5_En4
               Enable => Compare_To_Constant2_out1_1,
               Left_Data_Out => Left_Channel_Processing_out1  -- sfix32_En28
@@ -140,7 +140,7 @@ BEGIN
               enb => enb,
               Right_Data_In => Sink_Data,  -- sfix32_En28
               Right_Bypass => Right_Bypass,
-              Right_Bits => Right_Bits,  -- ufix5
+              Right_Bits => Right_Bits,  -- ufix6
               Right_Wet_Dry_Mix => Right_Wet_Dry_Mix,  -- ufix5_En4
               Enable => Compare_To_Constant1_out1_1,
               Right_Data_Out => Right_Channel_Processing_out1  -- sfix32_En28
