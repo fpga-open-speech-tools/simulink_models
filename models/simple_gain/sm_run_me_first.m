@@ -30,7 +30,7 @@ clc         % clear command window
 % It also reduces the number of stimulus samples.  This allow for faster
 % development iterations when developing the simulink model.
 mp.fastsim_flag = 1;     % perform fast simulation  Note: fast simulation will be turned off when generating VHDL code since we need to run at the system clock rate.
-mp.fastsim_Fs_system_N = 2;     % (typical value 2 or 4) Simulate a much slower system clock than what is specified in sm_callback_init.m   - The reduce rate will be a multiple of the sample rate, i.e. mp.Fs_system = mp.Fs*mp.fastsim_Fs_system_N
+mp.fastsim_Fs_system_N = 8;     % (typical value 2 or 4) Simulate a much slower system clock than what is specified in sm_callback_init.m   - The reduce rate will be a multiple of the sample rate, i.e. mp.Fs_system = mp.Fs*mp.fastsim_Fs_system_N
 mp.fastsim_Nsamples = 12000; % set to the string 'all' to use all the samples from the input signal specified in sm_init_test_signals.m
 
 
@@ -45,15 +45,12 @@ mp.linux_device_version = '18.0';
 
 %% Setup the directory paths & tool settings
 % TODO: these paths should ideally be contained in a toolbox. the one exception is the model path, which is many cases is the pwd, though it doesn't have to be.
-
-mp.model_path = pwd;
-mp.test_signals_path = [pwd filesep '..' filesep '..' filesep 'test_signals'];
-mp.config_path = [pwd filesep '..' filesep '..' filesep 'config'];
-mp.vhdl_codegen_path = [pwd filesep '..' filesep '..' ...
-    filesep '..' filesep 'simulink_codegen' filesep 'vhdl'];
-mp.driver_codegen_path = [pwd filesep '..' filesep '..' ...
-    filesep '..' filesep 'simulink_codegen' filesep 'device_drivers'];
-mp.quartus_path = '/usr/local/intelFPGA/18.0/quartus/bin';
+addpath('../../config');
+if isunix  % setup for a Linux platform
+    path_setup_linux;
+elseif ispc % setup for a Windows platform
+    path_setup_windows;  
+end
 
 % TODO: remove python path and version information. All of the code should be python3 and python2 compatible. If not, we should make it python2/3 compatible if possible.
 % mp.python_path = 'F:\Python\Python37\python.exe';

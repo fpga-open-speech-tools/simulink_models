@@ -24,8 +24,8 @@ end entity SG_dataplane_avalon;
 
 architecture SG_dataplane_avalon_arch of SG_dataplane_avalon is
 
-  signal left_gain                 : std_logic_vector(31  downto 0) :=  "00010000000000000000000000000000"; -- 1
-  signal right_gain                : std_logic_vector(31  downto 0) :=  "00010000000000000000000000000000"; -- 1
+  signal left_gain                 : std_logic_vector(31  downto 0) :=  "00000100110011001100110011001101"; -- 0.3
+  signal right_gain                : std_logic_vector(31  downto 0) :=  "00000100110011001100110011001101"; -- 0.3
 
 component SG_dataplane
   port(
@@ -79,12 +79,12 @@ u_SG_dataplane : SG_dataplane
   bus_write : process(clk, reset)
   begin
     if reset = '1' then
-      left_gain                 <=  "00010000000000000000000000000000"; -- 1
-      right_gain                <=  "00010000000000000000000000000000"; -- 1
+      left_gain                 <=  "00000100110011001100110011001101"; -- 0.3
+      right_gain                <=  "00000100110011001100110011001101"; -- 0.3
     elsif rising_edge(clk) and avalon_slave_write = '1' then
       case avalon_slave_address is
-        when "0" => left_gain <= avalon_slave_writedata;
-        when "1" => right_gain <= avalon_slave_writedata;
+        when "0" => left_gain <= avalon_slave_writedata(31 downto 0);
+        when "1" => right_gain <= avalon_slave_writedata(31 downto 0);
         when others => null;
       end case;
     end if;

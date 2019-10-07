@@ -30,20 +30,20 @@ set_module_property REPORT_HIERARCHY false
 # # # # # # # # # # # # # # # # # #
 
 add_fileset QUARTUS_SYNTH QUARTUS_SYNTH "" ""
-add_fileset_file SE_read_address_generator.vhd VHDL PATH SE_read_address_generator.vhd
 add_fileset_file SE_Avalon_Data_Processing.vhd VHDL PATH SE_Avalon_Data_Processing.vhd
-add_fileset_file SE_variable_delay_block.vhd VHDL PATH SE_variable_delay_block.vhd
-add_fileset_file SE_read_address_generator_block.vhd VHDL PATH SE_read_address_generator_block.vhd
-add_fileset_file SE_mixer_block.vhd VHDL PATH SE_mixer_block.vhd
-add_fileset_file SE_Right_Channel_Processing.vhd VHDL PATH SE_Right_Channel_Processing.vhd
+add_fileset_file SE_dataplane.vhd VHDL PATH SE_dataplane.vhd
+add_fileset_file SE_dataplane_pkg.vhd VHDL PATH SE_dataplane_pkg.vhd
 add_fileset_file SE_echo.vhd VHDL PATH SE_echo.vhd
 add_fileset_file SE_echo_block.vhd VHDL PATH SE_echo_block.vhd
-add_fileset_file SE_mixer.vhd VHDL PATH SE_mixer.vhd
-add_fileset_file SE_dataplane.vhd VHDL PATH SE_dataplane.vhd
-add_fileset_file SE_variable_delay.vhd VHDL PATH SE_variable_delay.vhd
-add_fileset_file SE_dataplane_pkg.vhd VHDL PATH SE_dataplane_pkg.vhd
-add_fileset_file SE_SimpleDualPortRAM_generic.vhd VHDL PATH SE_SimpleDualPortRAM_generic.vhd
 add_fileset_file SE_Left_Channel_Processing.vhd VHDL PATH SE_Left_Channel_Processing.vhd
+add_fileset_file SE_mixer.vhd VHDL PATH SE_mixer.vhd
+add_fileset_file SE_mixer_block.vhd VHDL PATH SE_mixer_block.vhd
+add_fileset_file SE_read_address_generator.vhd VHDL PATH SE_read_address_generator.vhd
+add_fileset_file SE_read_address_generator_block.vhd VHDL PATH SE_read_address_generator_block.vhd
+add_fileset_file SE_Right_Channel_Processing.vhd VHDL PATH SE_Right_Channel_Processing.vhd
+add_fileset_file SE_SimpleDualPortRAM_generic.vhd VHDL PATH SE_SimpleDualPortRAM_generic.vhd
+add_fileset_file SE_variable_delay.vhd VHDL PATH SE_variable_delay.vhd
+add_fileset_file SE_variable_delay_block.vhd VHDL PATH SE_variable_delay_block.vhd
 set_fileset_property QUARTUS_SYNTH TOP_LEVEL SE_dataplane_avalon
 set_fileset_property QUARTUS_SYNTH ENABLE_RELATIVE_INCLUDE_PATHS false
 set_fileset_property QUARTUS_SYNTH ENABLE_FILE_OVERWRITE_MODE false

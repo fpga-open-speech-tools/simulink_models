@@ -30,13 +30,14 @@ set_module_property REPORT_HIERARCHY false
 # # # # # # # # # # # # # # # # # #
 
 add_fileset QUARTUS_SYNTH QUARTUS_SYNTH "" ""
-add_fileset_file BC_Left_Channel_Processing.vhd VHDL PATH BC_Left_Channel_Processing.vhd
-add_fileset_file BC_Right_Channel_Processing.vhd VHDL PATH BC_Right_Channel_Processing.vhd
-add_fileset_file BC_dataplane.vhd VHDL PATH BC_dataplane.vhd
-add_fileset_file BC_getbitmask.vhd VHDL PATH BC_getbitmask.vhd
 add_fileset_file BC_Avalon_Data_Processing.vhd VHDL PATH BC_Avalon_Data_Processing.vhd
+add_fileset_file BC_dataplane.vhd VHDL PATH BC_dataplane.vhd
+add_fileset_file BC_dataplane_pkg.vhd VHDL PATH BC_dataplane_pkg.vhd
+add_fileset_file BC_getbitmask.vhd VHDL PATH BC_getbitmask.vhd
+add_fileset_file BC_Left_Channel_Processing.vhd VHDL PATH BC_Left_Channel_Processing.vhd
 add_fileset_file BC_mixer.vhd VHDL PATH BC_mixer.vhd
 add_fileset_file BC_mixer_block.vhd VHDL PATH BC_mixer_block.vhd
+add_fileset_file BC_Right_Channel_Processing.vhd VHDL PATH BC_Right_Channel_Processing.vhd
 set_fileset_property QUARTUS_SYNTH TOP_LEVEL BC_dataplane_avalon
 set_fileset_property QUARTUS_SYNTH ENABLE_RELATIVE_INCLUDE_PATHS false
 set_fileset_property QUARTUS_SYNTH ENABLE_FILE_OVERWRITE_MODE false
@@ -141,10 +142,10 @@ set_interface_property avalon_streaming_sink EXPORT_OF ""
 set_interface_property avalon_streaming_sink PORT_NAME_MAP ""
 set_interface_property avalon_streaming_sink CMSIS_SVD_VARIABLES ""
 set_interface_property avalon_streaming_sink SVD_ADDRESS_GROUP ""
+add_interface_port avalon_streaming_sink avalon_sink_valid valid Input 1
 add_interface_port avalon_streaming_sink avalon_sink_data data Input 32
 add_interface_port avalon_streaming_sink avalon_sink_channel channel Input 2
 add_interface_port avalon_streaming_sink avalon_sink_error error Input 2
-add_interface_port avalon_streaming_sink avalon_sink_valid valid Input 1
 # End create_sink_connection_point
 
 
@@ -165,10 +166,10 @@ set_interface_property avalon_streaming_source EXPORT_OF ""
 set_interface_property avalon_streaming_source PORT_NAME_MAP ""
 set_interface_property avalon_streaming_source CMSIS_SVD_VARIABLES ""
 set_interface_property avalon_streaming_source SVD_ADDRESS_GROUP ""
+add_interface_port avalon_streaming_source avalon_source_valid valid Output 1
+add_interface_port avalon_streaming_source avalon_source_data data Output 32
 add_interface_port avalon_streaming_source avalon_source_channel channel Output 2
 add_interface_port avalon_streaming_source avalon_source_error error Output 2
-add_interface_port avalon_streaming_source avalon_source_data data Output 32
-add_interface_port avalon_streaming_source avalon_source_valid valid Output 1
 # End create_sink_connection_point
 
 
