@@ -31,6 +31,7 @@ set_module_property REPORT_HIERARCHY false
 
 add_fileset QUARTUS_SYNTH QUARTUS_SYNTH "" ""
 add_fileset_file BC_Left_Channel_Processing.vhd VHDL PATH BC_Left_Channel_Processing.vhd
+add_fileset_file BC_dataplane_pkg.vhd VHDL PATH BC_dataplane_pkg.vhd
 add_fileset_file BC_Right_Channel_Processing.vhd VHDL PATH BC_Right_Channel_Processing.vhd
 add_fileset_file BC_dataplane.vhd VHDL PATH BC_dataplane.vhd
 add_fileset_file BC_getbitmask.vhd VHDL PATH BC_getbitmask.vhd

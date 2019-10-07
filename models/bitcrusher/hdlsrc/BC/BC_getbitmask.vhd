@@ -19,7 +19,7 @@ USE IEEE.std_logic_1164.ALL;
 USE IEEE.numeric_std.ALL;
 
 ENTITY BC_getbitmask IS
-  PORT( bitlevel                          :   IN    std_logic_vector(4 DOWNTO 0);  -- ufix5
+  PORT( bitlevel                          :   IN    std_logic_vector(5 DOWNTO 0);  -- ufix6
         bitmask                           :   OUT   std_logic_vector(31 DOWNTO 0)  -- ufix32_En28
         );
 END BC_getbitmask;
@@ -30,117 +30,115 @@ ARCHITECTURE rtl OF BC_getbitmask IS
   ATTRIBUTE multstyle : string;
 
   -- Signals
-  SIGNAL bitlevel_unsigned                : unsigned(4 DOWNTO 0);  -- ufix5
+  SIGNAL bitlevel_unsigned                : unsigned(5 DOWNTO 0);  -- ufix6
   SIGNAL bitmask_tmp                      : unsigned(31 DOWNTO 0);  -- ufix32_En28
 
 BEGIN
   bitlevel_unsigned <= unsigned(bitlevel);
 
   getbitmask_output : PROCESS (bitlevel_unsigned)
-    VARIABLE extend_temp : signed(31 DOWNTO 0);
   BEGIN
     --MATLAB Function 'dataplane/Avalon Data Processing/Left Channel Processing/getbitmask': '<S11>:1'
     --'<S11>:1:2'
     bitmask_tmp <= to_unsigned(0, 32);
-    extend_temp := signed(resize(bitlevel_unsigned, 32));
-    CASE extend_temp IS
-      WHEN "00000000000000000000000000000000" =>
+    CASE bitlevel_unsigned IS
+      WHEN "000000" =>
         --'<S11>:1:5'
         bitmask_tmp <= to_unsigned(0, 32);
-      WHEN "00000000000000000000000000000001" =>
+      WHEN "000001" =>
         --'<S11>:1:7'
         bitmask_tmp <= unsigned'(X"80000000");
-      WHEN "00000000000000000000000000000010" =>
+      WHEN "000010" =>
         --'<S11>:1:9'
         bitmask_tmp <= unsigned'(X"C0000000");
-      WHEN "00000000000000000000000000000011" =>
+      WHEN "000011" =>
         --'<S11>:1:11'
         bitmask_tmp <= unsigned'(X"E0000000");
-      WHEN "00000000000000000000000000000100" =>
+      WHEN "000100" =>
         --'<S11>:1:13'
         bitmask_tmp <= unsigned'(X"F0000000");
-      WHEN "00000000000000000000000000000101" =>
+      WHEN "000101" =>
         --'<S11>:1:15'
         bitmask_tmp <= unsigned'(X"F8000000");
-      WHEN "00000000000000000000000000000110" =>
+      WHEN "000110" =>
         --'<S11>:1:17'
         bitmask_tmp <= unsigned'(X"FC000000");
-      WHEN "00000000000000000000000000000111" =>
+      WHEN "000111" =>
         --'<S11>:1:19'
         bitmask_tmp <= unsigned'(X"FE000000");
-      WHEN "00000000000000000000000000001000" =>
+      WHEN "001000" =>
         --'<S11>:1:21'
         bitmask_tmp <= unsigned'(X"FF000000");
-      WHEN "00000000000000000000000000001001" =>
+      WHEN "001001" =>
         --'<S11>:1:23'
         bitmask_tmp <= unsigned'(X"FF800000");
-      WHEN "00000000000000000000000000001010" =>
+      WHEN "001010" =>
         --'<S11>:1:25'
         bitmask_tmp <= unsigned'(X"FFC00000");
-      WHEN "00000000000000000000000000001011" =>
+      WHEN "001011" =>
         --'<S11>:1:27'
         bitmask_tmp <= unsigned'(X"FFE00000");
-      WHEN "00000000000000000000000000001100" =>
+      WHEN "001100" =>
         --'<S11>:1:29'
         bitmask_tmp <= unsigned'(X"FFF00000");
-      WHEN "00000000000000000000000000001101" =>
+      WHEN "001101" =>
         --'<S11>:1:31'
         bitmask_tmp <= unsigned'(X"FFF80000");
-      WHEN "00000000000000000000000000001110" =>
+      WHEN "001110" =>
         --'<S11>:1:33'
         bitmask_tmp <= unsigned'(X"FFFC0000");
-      WHEN "00000000000000000000000000001111" =>
+      WHEN "001111" =>
         --'<S11>:1:35'
         bitmask_tmp <= unsigned'(X"FFFE0000");
-      WHEN "00000000000000000000000000010000" =>
+      WHEN "010000" =>
         --'<S11>:1:37'
         bitmask_tmp <= unsigned'(X"FFFF0000");
-      WHEN "00000000000000000000000000010001" =>
+      WHEN "010001" =>
         --'<S11>:1:39'
         bitmask_tmp <= unsigned'(X"FFFF8000");
-      WHEN "00000000000000000000000000010010" =>
+      WHEN "010010" =>
         --'<S11>:1:41'
         bitmask_tmp <= unsigned'(X"FFFFC000");
-      WHEN "00000000000000000000000000010011" =>
+      WHEN "010011" =>
         --'<S11>:1:43'
         bitmask_tmp <= unsigned'(X"FFFFE000");
-      WHEN "00000000000000000000000000010100" =>
+      WHEN "010100" =>
         --'<S11>:1:45'
         bitmask_tmp <= unsigned'(X"FFFFF000");
-      WHEN "00000000000000000000000000010101" =>
+      WHEN "010101" =>
         --'<S11>:1:47'
         bitmask_tmp <= unsigned'(X"FFFFF800");
-      WHEN "00000000000000000000000000010110" =>
+      WHEN "010110" =>
         --'<S11>:1:49'
         bitmask_tmp <= unsigned'(X"FFFFFC00");
-      WHEN "00000000000000000000000000010111" =>
+      WHEN "010111" =>
         --'<S11>:1:51'
         bitmask_tmp <= unsigned'(X"FFFFFE00");
-      WHEN "00000000000000000000000000011000" =>
+      WHEN "011000" =>
         --'<S11>:1:53'
         bitmask_tmp <= unsigned'(X"FFFFFF00");
-      WHEN "00000000000000000000000000011001" =>
+      WHEN "011001" =>
         --'<S11>:1:55'
         bitmask_tmp <= unsigned'(X"FFFFFF80");
-      WHEN "00000000000000000000000000011010" =>
+      WHEN "011010" =>
         --'<S11>:1:57'
         bitmask_tmp <= unsigned'(X"FFFFFFC0");
-      WHEN "00000000000000000000000000011011" =>
+      WHEN "011011" =>
         --'<S11>:1:59'
         bitmask_tmp <= unsigned'(X"FFFFFFE0");
-      WHEN "00000000000000000000000000011100" =>
+      WHEN "011100" =>
         --'<S11>:1:61'
         bitmask_tmp <= unsigned'(X"FFFFFFF0");
-      WHEN "00000000000000000000000000011101" =>
+      WHEN "011101" =>
         --'<S11>:1:63'
         bitmask_tmp <= unsigned'(X"FFFFFFF8");
-      WHEN "00000000000000000000000000011110" =>
+      WHEN "011110" =>
         --'<S11>:1:65'
         bitmask_tmp <= unsigned'(X"FFFFFFFC");
-      WHEN "00000000000000000000000000011111" =>
+      WHEN "011111" =>
         --'<S11>:1:67'
         bitmask_tmp <= unsigned'(X"FFFFFFFE");
-      WHEN "00000000000000000000000000100000" =>
+      WHEN "100000" =>
         --'<S11>:1:69'
         bitmask_tmp <= unsigned'(X"FFFFFFFF");
       WHEN OTHERS => 
