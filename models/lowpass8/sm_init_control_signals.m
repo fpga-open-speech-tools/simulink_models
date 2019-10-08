@@ -46,11 +46,11 @@ mp.register(1).widget_display_units = 'bits';
 
 %% Create left bypass control signal
 mp.register(2).name       = 'Bypass';  % control signal name
-mp.register(2).value      = 0;          % value control signal will take during simulation
-mp.register(2).min        = 0;          % The minimum value the control signal will ever take
-mp.register(2).max        = 1;          % The maximum value the control signal will ever take
-mp.register(2).default    = 0;          % default (initial) value
-mp.register(2).widget_type          = 'toggle';
+mp.register(2).value      = 1;          % value control signal will take during simulation
+mp.register(2).min        = 1;          % The minimum value the control signal will ever take
+mp.register(2).max        = 2;          % The maximum value the control signal will ever take
+mp.register(2).default    = 1;          % default (initial) value
+mp.register(2).widget_type          = 'dial';
 mp.register(2).widget_display_units = 'bypass';
 
 

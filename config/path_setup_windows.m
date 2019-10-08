@@ -16,5 +16,3 @@ disp(['VHDL Codegen path            = ' mp.vhdl_codegen_path])
 disp(['Driver Codegen path          = ' mp.driver_codegen_path])
 disp(['Quartus path                 = ' mp.quartus_path])
 disp(['------------------------------------------------'])
-
-

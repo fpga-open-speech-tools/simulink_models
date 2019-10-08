@@ -36,8 +36,8 @@ mp.fastsim_Nsamples = 12000; % set to the string 'all' to use all the samples fr
 
 %% Model parameters
 % Model parameters are placed in a data structure called mp that can be passed to functions
-mp.model_name = 'bitcrusher';
-mp.model_abbreviation = 'BC';
+mp.model_name = 'lowpass8';
+mp.model_abbreviation = 'LP8';
 
 % Device driver version for the Linux device tree. Typically set as the Quartus version
 mp.linux_device_name = mp.model_name;
