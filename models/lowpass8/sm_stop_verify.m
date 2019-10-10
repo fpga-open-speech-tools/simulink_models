@@ -36,11 +36,11 @@ figure(1)
 subplot(2,1,1)
 plot(mp.test_signal.left); hold on
 plot(mp.left_data_out)
-title(['Left Bits = ' num2str(mp.register(1).value) ' Bypass = ' num2str(mp.register(2).value)])
+title(['Left Choice = ' num2str(mp.register(2).value) ' Bypass = ' num2str(mp.register(1).value)])
 
 subplot(2,1,2)
 plot(mp.test_signal.right); hold on
 plot(mp.right_data_out)
-title(['Right Bits = ' num2str(mp.register(1).value) ' Bypass = ' num2str(mp.register(2).value)])
+title(['Right Choice = ' num2str(mp.register(2).value) ' Bypass = ' num2str(mp.register(1).value)])
 
 

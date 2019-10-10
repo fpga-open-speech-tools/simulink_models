@@ -35,23 +35,24 @@ function mp = sm_init_control_signals(mp)
 % \simulink_models\config\widget_list_display.m
 %
 
-%% Create left bit control signal
-mp.register(1).name       = 'Bits';  % control signal name
-mp.register(1).value      = 8;          % value control signal will take during simulation
-mp.register(1).min        =  0;          % The minimum value the control signal will ever take
-mp.register(1).max        = 32;          % The maximum value the control signal will ever take
-mp.register(1).default    = 32;          % default (initial) value
-mp.register(1).widget_type          = 'slider';
-mp.register(1).widget_display_units = 'bits';
 
 %% Create left bypass control signal
-mp.register(2).name       = 'Bypass';  % control signal name
-mp.register(2).value      = 1;          % value control signal will take during simulation
-mp.register(2).min        = 1;          % The minimum value the control signal will ever take
-mp.register(2).max        = 2;          % The maximum value the control signal will ever take
-mp.register(2).default    = 1;          % default (initial) value
+mp.register(1).name       = 'Bypass';  % control signal name
+mp.register(1).value      = 0;          % value control signal will take during simulation
+mp.register(1).min        = 0;          % The minimum value the control signal will ever take
+mp.register(1).max        = 1;          % The maximum value the control signal will ever take
+mp.register(1).default    = 1;          % default (initial) value
+mp.register(1).widget_type          = 'dial';
+mp.register(1).widget_display_units = 'bypass';
+
+%% Create left bit control signal
+mp.register(2).name       = 'Bits';  % control signal name
+mp.register(2).value      = 16;          % value control signal will take during simulation
+mp.register(2).min        = 0;          % The minimum value the control signal will ever take
+mp.register(2).max        = 16;          % The maximum value the control signal will ever take
+mp.register(2).default    = 8;          % default (initial) value
 mp.register(2).widget_type          = 'dial';
-mp.register(2).widget_display_units = 'bypass';
+mp.register(2).widget_display_units = 'int';
 
 
 % Any other register control signals should be created in a similar manner
