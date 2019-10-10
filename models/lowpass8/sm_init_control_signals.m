@@ -46,7 +46,7 @@ mp.register(1).widget_type          = 'dial';
 mp.register(1).widget_display_units = 'bypass';
 
 %% Create left bit control signal
-mp.register(2).name       = 'Bits';  % control signal name
+mp.register(2).name       = 'choice';  % control signal name
 mp.register(2).value      = 16;          % value control signal will take during simulation
 mp.register(2).min        = 0;          % The minimum value the control signal will ever take
 mp.register(2).max        = 16;          % The maximum value the control signal will ever take
