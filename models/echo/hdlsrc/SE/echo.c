@@ -277,7 +277,7 @@ static ssize_t bypass_write(struct device *dev, struct device_attribute *attr, c
 
 static ssize_t delay_read(struct device *dev, struct device_attribute *attr, char *buf) {
   fe_echo_dev_t * devp = (fe_echo_dev_t *)dev_get_drvdata(dev);
-  fp_to_string(buf, devp->delay, 0, false, 9);
+  fp_to_string(buf, devp->delay, 0, false, 0);
   strcat2(buf,"\n");
   return strlen(buf);
 }
@@ -303,7 +303,7 @@ static ssize_t delay_write(struct device *dev, struct device_attribute *attr, co
 
 static ssize_t decay_read(struct device *dev, struct device_attribute *attr, char *buf) {
   fe_echo_dev_t * devp = (fe_echo_dev_t *)dev_get_drvdata(dev);
-  fp_to_string(buf, devp->decay, 4, false, 9);
+  fp_to_string(buf, devp->decay, 7, false, 9);
   strcat2(buf,"\n");
   return strlen(buf);
 }
@@ -321,7 +321,7 @@ static ssize_t decay_write(struct device *dev, struct device_attribute *attr, co
     }
   }
   substring[substring_count] = 0;
-  tempValue = set_fixed_num(substring, 4, false);
+  tempValue = set_fixed_num(substring, 7, false);
   devp->decay = tempValue;
   iowrite32(devp->decay, (u32 *)devp->regs + 2);
   return count;
@@ -329,7 +329,7 @@ static ssize_t decay_write(struct device *dev, struct device_attribute *attr, co
 
 static ssize_t wet_dry_mix_read(struct device *dev, struct device_attribute *attr, char *buf) {
   fe_echo_dev_t * devp = (fe_echo_dev_t *)dev_get_drvdata(dev);
-  fp_to_string(buf, devp->wet_dry_mix, 4, false, 9);
+  fp_to_string(buf, devp->wet_dry_mix, 7, false, 9);
   strcat2(buf,"\n");
   return strlen(buf);
 }
@@ -347,7 +347,7 @@ static ssize_t wet_dry_mix_write(struct device *dev, struct device_attribute *at
     }
   }
   substring[substring_count] = 0;
-  tempValue = set_fixed_num(substring, 4, false);
+  tempValue = set_fixed_num(substring, 7, false);
   devp->wet_dry_mix = tempValue;
   iowrite32(devp->wet_dry_mix, (u32 *)devp->regs + 3);
   return count;

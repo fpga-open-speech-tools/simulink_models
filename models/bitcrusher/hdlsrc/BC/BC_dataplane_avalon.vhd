@@ -26,7 +26,7 @@ architecture BC_dataplane_avalon_arch of BC_dataplane_avalon is
 
   signal bypass                    : std_logic :=  '0'; -- 0
   signal bits                      : std_logic_vector(5  downto 0) :=  std_logic_vector(to_unsigned(32, 6)); -- 32
-  signal wet_dry_mix               : std_logic_vector(4  downto 0) :=  "01000"; -- 0.5
+  signal wet_dry_mix               : std_logic_vector(7  downto 0) :=  "01000000"; -- 0.5
 
 component BC_dataplane
   port(
@@ -39,7 +39,7 @@ component BC_dataplane
     avalon_sink_error           : in  std_logic_vector(1   downto 0);         -- ufix2
     register_control_bypass     : in  std_logic;                              -- boolean
     register_control_bits       : in  std_logic_vector(5   downto 0);         -- ufix6
-    register_control_wet_dry_mix: in  std_logic_vector(4   downto 0);         -- ufix5_En4
+    register_control_wet_dry_mix: in  std_logic_vector(7   downto 0);         -- ufix8_En7
     ce_out                      : out std_logic;
     avalon_source_valid         : out std_logic;                              -- boolean
     avalon_source_data          : out std_logic_vector(31  downto 0);         -- sfix32_En28
@@ -74,7 +74,7 @@ u_BC_dataplane : BC_dataplane
       case avalon_slave_address is
         when "00" => avalon_slave_readdata <= (31 downto 1 => '0') & bypass;
         when "01" => avalon_slave_readdata <= (31 downto 6 => '0') & bits;
-        when "10" => avalon_slave_readdata <= (31 downto 5 => '0') & wet_dry_mix;
+        when "10" => avalon_slave_readdata <= (31 downto 8 => '0') & wet_dry_mix;
         when others => avalon_slave_readdata <= (others => '0');
       end case;
     end if;
@@ -85,12 +85,12 @@ u_BC_dataplane : BC_dataplane
     if reset = '1' then
       bypass                    <=  '0'; -- 0
       bits                      <=  std_logic_vector(to_unsigned(32, 6)); -- 32
-      wet_dry_mix               <=  "01000"; -- 0.5
+      wet_dry_mix               <=  "01000000"; -- 0.5
     elsif rising_edge(clk) and avalon_slave_write = '1' then
       case avalon_slave_address is
         when "00" => bypass <= avalon_slave_writedata(0);
         when "01" => bits <= avalon_slave_writedata(5 downto 0);
-        when "10" => wet_dry_mix <= avalon_slave_writedata(4 downto 0);
+        when "10" => wet_dry_mix <= avalon_slave_writedata(7 downto 0);
         when others => null;
       end case;
     end if;

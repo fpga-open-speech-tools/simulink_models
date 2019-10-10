@@ -26,8 +26,8 @@ architecture SE_dataplane_avalon_arch of SE_dataplane_avalon is
 
   signal bypass                    : std_logic :=  '0'; -- 0
   signal delay                     : std_logic_vector(14  downto 0) :=  std_logic_vector(to_unsigned(12000, 15)); -- 12000
-  signal decay                     : std_logic_vector(4  downto 0) :=  "01101"; -- 0.8
-  signal wet_dry_mix               : std_logic_vector(4  downto 0) :=  "01000"; -- 0.5
+  signal decay                     : std_logic_vector(7  downto 0) :=  "01100110"; -- 0.8
+  signal wet_dry_mix               : std_logic_vector(7  downto 0) :=  "01000000"; -- 0.5
 
 component SE_dataplane
   port(
@@ -40,8 +40,8 @@ component SE_dataplane
     avalon_sink_error           : in  std_logic_vector(1   downto 0);         -- ufix2
     register_control_bypass     : in  std_logic;                              -- boolean
     register_control_delay      : in  std_logic_vector(14  downto 0);         -- ufix15
-    register_control_decay      : in  std_logic_vector(4   downto 0);         -- ufix5_En4
-    register_control_wet_dry_mix: in  std_logic_vector(4   downto 0);         -- ufix5_En4
+    register_control_decay      : in  std_logic_vector(7   downto 0);         -- ufix8_En7
+    register_control_wet_dry_mix: in  std_logic_vector(7   downto 0);         -- ufix8_En7
     ce_out                      : out std_logic;
     avalon_source_valid         : out std_logic;                              -- boolean
     avalon_source_data          : out std_logic_vector(31  downto 0);         -- sfix32_En28
@@ -77,8 +77,8 @@ u_SE_dataplane : SE_dataplane
       case avalon_slave_address is
         when "00" => avalon_slave_readdata <= (31 downto 1 => '0') & bypass;
         when "01" => avalon_slave_readdata <= (31 downto 15 => '0') & delay;
-        when "10" => avalon_slave_readdata <= (31 downto 5 => '0') & decay;
-        when "11" => avalon_slave_readdata <= (31 downto 5 => '0') & wet_dry_mix;
+        when "10" => avalon_slave_readdata <= (31 downto 8 => '0') & decay;
+        when "11" => avalon_slave_readdata <= (31 downto 8 => '0') & wet_dry_mix;
         when others => avalon_slave_readdata <= (others => '0');
       end case;
     end if;
@@ -89,14 +89,14 @@ u_SE_dataplane : SE_dataplane
     if reset = '1' then
       bypass                    <=  '0'; -- 0
       delay                     <=  std_logic_vector(to_unsigned(12000, 15)); -- 12000
-      decay                     <=  "01101"; -- 0.8
-      wet_dry_mix               <=  "01000"; -- 0.5
+      decay                     <=  "01100110"; -- 0.8
+      wet_dry_mix               <=  "01000000"; -- 0.5
     elsif rising_edge(clk) and avalon_slave_write = '1' then
       case avalon_slave_address is
         when "00" => bypass <= avalon_slave_writedata(0);
         when "01" => delay <= avalon_slave_writedata(14 downto 0);
-        when "10" => decay <= avalon_slave_writedata(4 downto 0);
-        when "11" => wet_dry_mix <= avalon_slave_writedata(4 downto 0);
+        when "10" => decay <= avalon_slave_writedata(7 downto 0);
+        when "11" => wet_dry_mix <= avalon_slave_writedata(7 downto 0);
         when others => null;
       end case;
     end if;
