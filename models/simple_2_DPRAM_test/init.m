@@ -45,24 +45,71 @@ else
     Fs_system = 50000000; % 50 MHz, this is the clock rate we expect of the DE10
 end
 Ts_system = 1/Fs_system;
-W_bits = 32; F_bits = 28;
+W_Bits = 32; F_Bits = 28;
 
 
 % THINGS WE CAN MESS AROUND WITH
-Addr_bits = 4;
+Addr_Bits = 4;
 Sel_Bits = 1; % 1, since there are two RAM blocks
 RAM_0_SEL = 0; RAM_1_SEL = 1;
 LED_Bits = 8; % there are 8 LEDs we can output to. Might as well use them all.
 
 %% Setting up model inputs:
-tt_system = (0:Ts_system:Ts_system*20)';    %%%% NOTE: set low because simplicity of model
-tt_inputs = (0:Ts:Ts_system*20)';
+steps = 64;
+stop_time = Ts_system*steps;  %%%% NOTE: set low because simplicity of model
+tt_system = (0:Ts_system:stop_time)';   
+tt_inputs = (0:Ts_system:stop_time)';
+
 % Avalon Control Signals:
+% Avalon Processing Block only executes when valid == 1
 Avalon_Source_Valid = [tt_system, ones(length(tt_system), 1)];
+
+% Avalon Data is used as the input read address and select.
+%  must be 32 bit unsigned int. Addr is bottom Addr_Bits. Sel is next Sel_Bits
+%  originally this is fixdt(1,32,28), but for this test its easier to use unisigned ints.
 Avalon_Source_Data = [tt_system, ones(length(tt_system), 1)];
+
+% For now, the system is only implemented on the left channel. So all 0s.
 Avalon_Source_Channel = [tt_system, zeros(length(tt_system), 1)];
+
+% Error isn't implemented fully. Set to 0s. 
 Avalon_Source_Error = [tt_system, zeros(length(tt_system), 1)];
 
 % Register Control Signals:
+% These registers will let us actually write to the RAM blocks. 
+% Register_Data will control the 8-bit LED output if Avalon asks for that
+% specific Sel & Addr code. 32 bit signed int, but we only care about 8.
 Register_Data = [tt_system, ones(length(tt_system), 1)];
+% Register_Addr sets which RAM to write to and where. 32 bit uint   
 Register_Addr = [tt_system, ones(length(tt_system), 1)];
+
+%% Here, we mess around with model inputs for testing purposes.
+% first, set up the registers to fill the tables.
+i = 1;
+for ix = 2^Addr_Bits : -1 : 1
+    % first lookup table is a forward count
+    Register_Data(i,2) = i;
+    Register_Addr(i,2) = i-1;
+    i = i+1;
+end
+
+for ix = 2^Addr_Bits : -1 : 1
+    % first lookup table is a forward count
+    Register_Data(i,2) = ix;
+    Register_Addr(i,2) = i-1;
+    i = i+1;
+end
+
+%% now that we've filled the tables, lets try reading from them!
+Avalon_Source_Data(:,2) = Register_Addr(:,2) +1;
+% starting at i = 33
+addr = 0;
+% say, read from addr 0 in table 0. and go up from there.
+while(i < steps+2)
+    Avalon_Source_Data(i,2) = addr;
+    addr = addr + 1;
+    
+    i = i+1; 
+end
+% NOTE: expecting addr of 32 to be seen as address 0, but there's a z-delay
+% so we shouldn't see that anyways. 
