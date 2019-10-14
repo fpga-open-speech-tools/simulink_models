@@ -40,7 +40,7 @@ Fs = 48000; % Hz, this is the standard input rate of the audio codec
 Ts = 1/Fs;
 
 if (MODEL_NOT_REAL)
-    Fs_system = Fs*5;   % this is here solely to use up less space
+    Fs_system = 1;   % this is here solely to use up less space
 else
     Fs_system = 50000000; % 50 MHz, this is the clock rate we expect of the DE10
 end
@@ -50,7 +50,7 @@ W_Bits = 32; F_Bits = 28;
 
 % THINGS WE CAN MESS AROUND WITH
 Addr_Bits = 4;
-Sel_Bits = 1; % 1, since there are two RAM blocks
+Sel_Bits = 2; % 2, since there are two RAM blocks and we want a state where we don't write to either
 RAM_0_SEL = 0; RAM_1_SEL = 1;
 LED_Bits = 8; % there are 8 LEDs we can output to. Might as well use them all.
 
@@ -100,8 +100,10 @@ for ix = 2^Addr_Bits : -1 : 1
     i = i+1;
 end
 
+Register_Addr(33:end, 2) = 32; %this sets sel to 2, nullifying the writes to both RAM_0 and RAM_1
 %% now that we've filled the tables, lets try reading from them!
-Avalon_Source_Data(:,2) = Register_Addr(:,2) +1;
+Avalon_Source_Data(:,2) = 32; % this is outside the range. 
+Avalon_Source_Data(:,2);
 % starting at i = 33
 addr = 0;
 % say, read from addr 0 in table 0. and go up from there.
