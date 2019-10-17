@@ -51,7 +51,7 @@ W_Bits = 32; F_Bits = 28;
 % THINGS WE CAN MESS AROUND WITH
 Addr_Bits = 4;
 Sel_Bits = 2; % 2, since there are two RAM blocks and we want a state where we don't write to either
-RAM_0_SEL = 0; RAM_1_SEL = 1;
+RAM_0_SEL = 0; RAM_1_SEL = 1; RAM_NULL_SEL = 2;
 LED_Bits = 8; % there are 8 LEDs we can output to. Might as well use them all.
 
 %% Setting up model inputs:
