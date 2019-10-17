@@ -82,7 +82,8 @@ Avalon_Source_Error = [tt_system, zeros(length(tt_system), 1)];
 Register_Data = [tt_system, ones(length(tt_system), 1)];
 % Register_Addr sets which RAM to write to and where. 32 bit uint   
 Register_Addr = [tt_system, ones(length(tt_system), 1)];
-
+% This controls whether or not we write to any of the RAMs
+Register_WrEn = [tt_system, zeros(length(tt_system), 1)];
 %% Here, we mess around with model inputs for testing purposes.
 % first, set up the registers to fill the tables.
 i = 1;
@@ -90,6 +91,7 @@ for ix = 2^Addr_Bits : -1 : 1
     % first lookup table is a forward count
     Register_Data(i,2) = i;
     Register_Addr(i,2) = i-1;
+    Register_WrEn(i,2) = 1;
     i = i+1;
 end
 
@@ -97,6 +99,7 @@ for ix = 2^Addr_Bits : -1 : 1
     % first lookup table is a forward count
     Register_Data(i,2) = ix;
     Register_Addr(i,2) = i-1;
+    Register_WrEn(i,2) = 1;
     i = i+1;
 end
 
@@ -109,6 +112,11 @@ addr = 0;
 % say, read from addr 0 in table 0. and go up from there.
 while(i < steps+2)
     Avalon_Source_Data(i,2) = addr;
+    % these two lines cause the registers to try a read from the location
+    % source is reading from. should result in the same answer, with no
+    % changes to the tables.
+    Register_Addr(i,2) = addr;
+    Register_WrEn(i,2) = 0;
     addr = addr + 1;
     
     i = i+1; 
