@@ -40,7 +40,7 @@ Fs = 48000; % Hz, this is the standard input rate of the audio codec
 Ts = 1/Fs;
 
 if (MODEL_NOT_REAL)
-    Fs_system = 1;   % this is here solely to use up less space
+    Fs_system = Fs;   % this is here solely to use up less space
 else
     Fs_system = 50000000; % 50 MHz, this is the clock rate we expect of the DE10
 end
@@ -56,10 +56,10 @@ LED_Bits = 8; % there are 8 LEDs we can output to. Might as well use them all.
 
 %% Setting up model inputs:
 steps = 64;
-stop_time = Ts_system*steps;  %%%% NOTE: set low because simplicity of model
-tt_system = (0:Ts_system:stop_time)';   
-tt_inputs = (0:Ts_system:stop_time)';
-
+%stop_time = Ts_system*steps;  %%%% NOTE: set low because simplicity of model
+tt_system = (0:steps)'.*Ts_system;   
+tt_inputs = (0:steps)'.*Ts;
+stop_time = tt_system(end);
 % Avalon Control Signals:
 % Avalon Processing Block only executes when valid == 1
 Avalon_Source_Valid = [tt_system, ones(length(tt_system), 1)];
