@@ -33,7 +33,7 @@
 %% To do: set up these model things as an object mp (model parameters)
 clear; clc;
 
-MODEL_NOT_REAL = 1;
+MODEL_NOT_REAL = 0;
 
 %% Setting up model parameters:
 Fs = 48000; % Hz, this is the standard input rate of the audio codec
