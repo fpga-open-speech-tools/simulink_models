@@ -1,7 +1,49 @@
-local_git_path         = 'C:\Users\bugsbunny\NIH';
-mp.model_path          = [local_git_path '\simulink_models\models\' mp.model_name];
-mp.test_signals_path   = [local_git_path '\simulink_models\test_signals'];
-mp.config_path         = [local_git_path '\simulink_models\config'];
-mp.vhdl_codegen_path   = [local_git_path '\simulink_codegen\vhdl'];
-mp.driver_codegen_path = [local_git_path '\simulink_codegen\device_drivers'];
-mp.quartus_path        = 'C:\intelFPGA_lite\18.0\quartus\bin64';
+%--------------------------------------------------------------------------
+% Git Repository Setup
+% Add your git path to the cell array selection below so it will be found
+% the next time you run Simulink.
+% The first directory that Matlab finds that exists will be used.
+%--------------------------------------------------------------------------
+local_git_path{1}         = 'C:\Users\bugsbunny\NIH';
+local_git_path{2}         = 'V:\MSU\GitHub\';
+valid_index = 0;
+for index=1:length(local_git_path)
+    if exist(local_git_path{index},'dir') 
+        valid_index = index;
+    end
+end
+if valid_index > 0
+    git_path = local_git_path{valid_index};
+else
+    disp('Local Git Repository not found.  Please add your Git path to path_setup_windows.m');
+end
+%git_path
+
+mp.model_path          = [git_path '\simulink_models\models\' mp.model_name];
+mp.test_signals_path   = [git_path '\simulink_models\test_signals'];
+mp.config_path         = [git_path '\simulink_models\config'];
+mp.vhdl_codegen_path   = [git_path '\simulink_codegen\vhdl'];
+mp.driver_codegen_path = [git_path '\simulink_codegen\device_drivers'];
+
+%--------------------------------------------------------------------------
+% Quartus Setup
+% Add your Quartus path to the cell array selection below so it will be found
+% the next time you run Simulink.
+% The first directory that Matlab finds that exists will be used.
+%--------------------------------------------------------------------------
+local_quartus_path{1}         = 'C:\intelFPGA_lite\18.0\quartus\bin64';
+local_quartus_path{2}         = 'D:\intelFPGA_lite\18.1\quartus\bin64';
+valid_index = 0;
+for index=1:length(local_quartus_path)
+    if exist(local_quartus_path{index},'dir') 
+        valid_index = index;
+    end
+end
+if valid_index > 0
+    quartus_path = local_quartus_path{valid_index};
+else
+    disp('Local Quartus Install not found.  Please add your Quartus path to path_setup_windows.m');
+end
+%quartus_path
+
+mp.quartus_path        = quartus_path;
