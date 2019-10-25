@@ -42,8 +42,9 @@ mp.model_abbreviation   = 'sm_DynamicCompression';                             %
 mp.linux_device_version = '18.0';                                              % string that describes device version (typically set as Quartus version)
 
 cd ..;  % temporarily move up a folder
-
 mp.model_path           =  [pwd, '\Dynamic_Compression_Model'];                 % path to the model directory
+
+cd ..;  % move out of the models folder
 mp.test_signals_path    =  [pwd, '\test_signals'];                              % path to test signals folder
 %mp.utility_path         =  ; %'E:\git\nih_simulinklib\matlab';                  % path to test signals folder
 mp.config_path          =  [pwd, '\config'];                                    % path to configuration folder (widget and register field definitions)
