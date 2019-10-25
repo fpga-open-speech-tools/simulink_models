@@ -69,5 +69,7 @@ mp = sm_init_avalon_signals(mp);  % create the avalon streaming signals
 % Ts_system = SG.Ts_system;
 % W_bits = SG.W_bits;
 % F_bits = SG.F_bits;
-
+TABLE_SEL_BYPASS_ENABLE = 0; % 1 means the compression blocks will output 0s until Register_Addr is greater than 4, meaning the tables are not being programmed.
+% this will be refactored as a top-level bypass of the system's output while the RAMs or pFIRs are being programmed.
+% NOTE: in it's current iteration, this prevents us from writing to RAMs during runtime.
 sm_compression_init;
