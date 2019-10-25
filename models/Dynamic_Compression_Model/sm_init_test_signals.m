@@ -30,7 +30,7 @@
 
 function mp = sm_init_test_signals(mp)
 
-signal_option = 3;  % set which test signal to use
+signal_option = 4;  % set which test signal to use
 
 switch signal_option
     case 1 % Simple tones        
@@ -58,6 +58,19 @@ switch signal_option
         mp.test_signal.Nsamples = length(mp.test_signal.left);
         mp.test_signal.duration = mp.test_signal.Nsamples * mp.Ts;
     case 3 % user supplied music
+        [y,Fs] = audioread([mp.test_signals_path '\' 'Urban_Light_HedaMusic_Creative_Commons.mp3']); 
+        y_resampled = resample(y,mp.Fs,Fs);  % resample to change the sample rate to SG.Fs
+        Nsamples = length(y_resampled);
+        if mp.fastsim_flag == 1 % perform fast simulation by reducing the number of samples
+           mp.test_signal.Nsamples = min(Nsamples, mp.fastsim_Nsamples);
+        else
+           mp.test_signal.Nsamples = mp.fastsim_Nsamples;
+        end     
+        mp.test_signal.left  = y_resampled(1:mp.test_signal.Nsamples);
+        mp.test_signal.right = y_resampled(1:mp.test_signal.Nsamples);
+        mp.test_signal.Nsamples = length(mp.test_signal.left);
+        mp.test_signal.duration = mp.test_signal.Nsamples * mp.Ts;
+    case 4 % user chooses a file to test
         [y,Fs] = audioread([mp.test_signals_path '\' 'Urban_Light_HedaMusic_Creative_Commons.mp3']); 
         y_resampled = resample(y,mp.Fs,Fs);  % resample to change the sample rate to SG.Fs
         Nsamples = length(y_resampled);

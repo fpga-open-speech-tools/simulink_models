@@ -41,6 +41,11 @@ mp.model_name           = 'DynamicCompressionWithRx';                           
 mp.model_abbreviation   = 'sm_DynamicCompression';                             % model initials
 mp.linux_device_version = '18.0';                                              % string that describes device version (typically set as Quartus version)
 
+localSanityLocCheck = pwd;
+if ( ~strcmp(localSanityLocCheck, 'C:\Users\Balad\Documents\FlatEarth\simulink_models\models\Dynamic_Compression_Model') )
+    disp('Run from the DCM folder. Moving there for you.');
+    cd 'C:\Users\Balad\Documents\FlatEarth\simulink_models\models\Dynamic_Compression_Model';
+end
 cd ..;  % temporarily move up a folder
 mp.model_path           =  [pwd, '\Dynamic_Compression_Model'];                 % path to the model directory
 
@@ -53,7 +58,7 @@ mp.quartus_path         =  'C:\intelFPGA_lite\18.1\quartus\bin64\quartus.exe';  
 mp.python_path          =  'C:\Python\python.exe';                              % path to Python executable.
 mp.linux_device_name    = mp.model_name;                                        % device driver name that Linux will see
 
-cd Dynamic_Compression_Model;   % return to where this was run
+cd models/Dynamic_Compression_Model;   % return to where this was run
 %% Set up the paths
 % Note: addpath() only sets the paths for the current Matlab session
 addpath(mp.model_path)
