@@ -11,7 +11,8 @@ end
 registers = mp.register;
 Nsr = length(registers);
 
-rf = readjson(['register_control_fields.json']);
+rf = readjson('register_control_fields.json');
+
 Nrf = length(rf);
 
 %% check for field names
