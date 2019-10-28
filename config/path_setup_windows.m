@@ -47,3 +47,14 @@ end
 %quartus_path
 
 mp.quartus_path        = quartus_path;
+
+disp(['------------------------------------------------'])
+disp(['Setting up the the following path parameters'])
+disp(['Local GitHub repository path = ' local_git_path])
+disp(['Simulink model path          = ' mp.model_path])
+disp(['Test signals path            = ' mp.test_signals_path])
+disp(['Config path                  = ' mp.config_path])
+disp(['VHDL Codegen path            = ' mp.vhdl_codegen_path])
+disp(['Driver Codegen path          = ' mp.driver_codegen_path])
+disp(['Quartus path                 = ' mp.quartus_path])
+disp(['------------------------------------------------'])

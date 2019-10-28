@@ -35,24 +35,36 @@ function mp = sm_init_control_signals(mp)
 % \simulink_models\config\widget_list_display.m
 %
 
-%% Create left bit control signal
-mp.register(1).name       = 'Bits';  % control signal name
-mp.register(1).value      = 8;          % value control signal will take during simulation
-mp.register(1).min        =  0;          % The minimum value the control signal will ever take
-mp.register(1).max        = 32;          % The maximum value the control signal will ever take
-mp.register(1).default    = 32;          % default (initial) value
-mp.register(1).widget_type          = 'slider';
-mp.register(1).widget_display_units = 'bits';
 
-%% Create left bypass control signal
-mp.register(2).name       = 'Bypass';  % control signal name
-mp.register(2).value      = 0;          % value control signal will take during simulation
-mp.register(2).min        = 0;          % The minimum value the control signal will ever take
-mp.register(2).max        = 1;          % The maximum value the control signal will ever take
-mp.register(2).default    = 0;          % default (initial) value
-mp.register(2).widget_type          = 'toggle';
-mp.register(2).widget_display_units = 'bypass';
+%% Create bypass control signal
+ri = 1;   % register index
+mp.register(ri).name       = 'Bypass';  % control signal name
+mp.register(ri).value      = 0;         % value control signal will take during simulation
+mp.register(ri).min        = 0;         % The minimum value the control signal will ever take
+mp.register(ri).max        = 1;         % The maximum value the control signal will ever take
+mp.register(ri).default    = 0;         % default (initial) value
+mp.register(ri).widget_type          = 'toggle';
+mp.register(ri).widget_display_units = 'bypass';
 
+%% Create bit control signal
+ri = ri + 1;  % register index
+mp.register(ri).name       = 'Bits';   % control signal name
+mp.register(ri).value      = 4;        % value control signal will take during simulation
+mp.register(ri).min        =  0;       % The minimum value the control signal will ever take
+mp.register(ri).max        = 32;       % The maximum value the control signal will ever take
+mp.register(ri).default    = 32;       % default (initial) value
+mp.register(ri).widget_type          = 'slider';
+mp.register(ri).widget_display_units = 'bits';
+
+%% Create wet_dry_mix signal
+ri = ri + 1;  % register index
+mp.register(ri).name       = 'Wet_Dry_Mix';   % control signal name   Note:  wet_gain=wet_dry_mix; dry_gain=1-wet_dry_mix
+mp.register(ri).value      = 1;             % value control signal will take during simulation
+mp.register(ri).min        = 0;               % The minimum value the control signal will ever take
+mp.register(ri).max        = 1;               % The maximum value the control signal will ever take
+mp.register(ri).default    = 0.5;             % default (initial) value
+mp.register(ri).widget_type          = 'slider';
+mp.register(ri).widget_display_units = 'ratio';
 
 % Any other register control signals should be created in a similar manner
 

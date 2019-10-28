@@ -1,6 +1,7 @@
 *.slxc
 slprj
 hdlprj
-hdlsrc
 gm_*.slx
 *.asv
+*.bak
+
