@@ -1,8 +1,0 @@
-Simple_2_DPRAM_test/SG_DataPlane/Avalon Data Processing/Left Channel Processing/DPRAM_Blocks/Addr_Splitter_input --> Addr_Splitter_input
-Simple_2_DPRAM_test/SG_DataPlane/Avalon Data Processing/Left Channel Processing/DPRAM_Blocks/Addr_Splitter_register --> Addr_Splitter_register
-Simple_2_DPRAM_test/SG_DataPlane/Avalon Data Processing/Left Channel Processing/DPRAM_Blocks/DualPortRAM_generic --> DualPortRAM_generic
-Simple_2_DPRAM_test/SG_DataPlane/Avalon Data Processing/Left Channel Processing/DPRAM_Blocks --> DPRAM_Blocks
-Simple_2_DPRAM_test/SG_DataPlane/Avalon Data Processing/Left Channel Processing --> Left_Channel_Processing
-Simple_2_DPRAM_test/SG_DataPlane/Avalon Data Processing/Right Channel Processing --> Right_Channel_Processing
-Simple_2_DPRAM_test/SG_DataPlane/Avalon Data Processing --> Avalon_Data_Processing
-Simple_2_DPRAM_test/SG_DataPlane --> SG_DataPlane

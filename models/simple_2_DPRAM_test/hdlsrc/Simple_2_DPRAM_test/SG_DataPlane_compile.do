@@ -1,9 +1,0 @@
-vlib work
-vcom  Addr_Splitter_input.vhd
-vcom  Addr_Splitter_register.vhd
-vcom  DualPortRAM_generic.vhd
-vcom  DPRAM_Blocks.vhd
-vcom  Left_Channel_Processing.vhd
-vcom  Right_Channel_Processing.vhd
-vcom  Avalon_Data_Processing.vhd
-vcom  SG_DataPlane.vhd
