@@ -20,4 +20,31 @@ t = 0 : Ts : Ts * length(noisyAudio);
 t = t(1:length(t)-1)';
 
 %% Driver
-sn = adaptiveWienerFilt(noisyAudio, 15e-3);
+wins = [2e-3 1.5e-3 1e-3 0.5e-3];
+sn   = zeros(4, length(noisyAudio));
+
+for j = 1:4
+    sn(j,:) = adaptiveWienerFilt(noisyAudio, Fs, wins(j));
+end
+%% Plot signals with respect to different windows
+t = t';
+figure;
+subplot(411);
+plot(t, sn(1,:))
+xlabel('Time');
+title('Filtered Signal - Win == 2ms');
+
+subplot(412);
+plot(t, sn(2,:))
+xlabel('Time');
+title('Filtered Signal - Win == 1.5ms');
+
+subplot(413);
+plot(t, sn(3,:))
+xlabel('Time');
+title('Filtered Signal - Win == 1ms');
+
+subplot(414);
+plot(t, sn(4,:))
+xlabel('Time');
+title('Filtered Signal - Win == 0.5ms');
