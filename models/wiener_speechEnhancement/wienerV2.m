@@ -19,13 +19,5 @@ Ts = 1/Fs;
 t = 0 : Ts : Ts * length(noisyAudio);
 t = t(1:length(t)-1)';
 
-% Plot Signal & Spectrogram
-figure;
-subplot(211);
-plot(t, noisyAudio, '--k', 'LineWidth', 0.25);
-title('Noisy Audio -- Speech Signal');
-xlabel('Time [sec]');
-
-subplot(212);
-spectrogram(noisyAudio,256,240,256,Fs,'yaxis')
-ylim([0, 10]); % Limit to 10 kHz (no speech above that)
+%% Driver
+sn = adaptiveWienerFilt(noisyAudio, 15e-3);

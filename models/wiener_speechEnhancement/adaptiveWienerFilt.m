@@ -14,14 +14,26 @@ function [sn] = adaptiveWienerFilt(noisyAudio, windowSize)
 %           windowSize  - Size of Window [0 20] ms
 % Outputs:
 %           sn          - Filtered Output Signal
-[~, Fs] = audioread(noisyAudio);
+[~, Fs] = audioread('sp03.wav');
 
 % Init Sound File
 Ts = 1 / Fs;
 t  = 0 : Ts : length(noisyAudio)*Ts;
-sn = zeros(1, length(noisyAudio));
+t  = t(1:(end-1))';
+sn = zeros(length(noisyAudio),1 );
 winSize = windowSize / Ts;
 lkBehindWin = zeros(1, winSize);        % Init look-behind-window
+
+% Plot Signal & Spectrogram
+figure;
+subplot(211);
+plot(t, noisyAudio, '--k', 'LineWidth', 0.25);
+title('Noisy Audio -- Speech Signal');
+xlabel('Time [sec]');
+
+subplot(212);
+spectrogram(noisyAudio,256,240,256,Fs,'yaxis')
+ylim([0, 10]); % Limit to 10 kHz (no speech above that)
 
 % begin Filter Process
 for n = 1:length(noisyAudio)
@@ -29,6 +41,16 @@ for n = 1:length(noisyAudio)
         lkWinMean   = mean(lkBehindWin);
         lkWinSTD    = std(lkBehindWin);
         winNoisePow = 1 / winSize * (sum((lkBehindWin - lkWinMean).^2));
+        
+        % Filter Based on Non-full lkBehindWin
+        if winNoisePow > lkWinSTD
+            winNoise = winNoisePow - lkWinSTD;
+        else
+            winNoise = 0;
+        end
+        
+        sn(n) = lkWinMean + winNoise / (winNoise + lkWinSTD) *  ... 
+                (noisyAudio(n) - lkWinMean);
     else
         curWin      = lkBehindWin((n - winSize):(n + winSize));
         lkWinMean   = mean(curWin);
