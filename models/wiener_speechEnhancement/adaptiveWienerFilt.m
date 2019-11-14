@@ -57,6 +57,4 @@ end
             winNoise = 0;
         end % end if
     end % end fcn
-
-
 end
