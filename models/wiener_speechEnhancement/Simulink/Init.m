@@ -34,15 +34,18 @@ noisyAudio = cleanAudio + noise;
 Ts = 1/Fs;
 t = 0 : Ts : Ts * length(noisyAudio);
 t = t(1:length(t)-1)';
-
+stopTime = t(length(t));
 winSize = round(windowSize / Ts);
 win     = zeros(winSize, 1);
+
+%% Constant Inputs
 mean_denom = 1 / length(winSize); 
 % Used for finding the mean and not have 
         % more than necessary divides in our model
 noise_std = stddev;
 % For the purposes of this model, the noise will have static standard dev
 
+%% Avalon Inputs
 % Load Audio Signal
 Sink_Data = [t, noisyAudio];
 
@@ -50,5 +53,6 @@ Sink_Data = [t, noisyAudio];
 Sink_Channel = ones(length(Sink_Data), 1);
 Left_Win     = win;
 Right_Win    = win;
+Avalon_Sink_Valid = ones(length(Sink_Data), 1);
 
 
