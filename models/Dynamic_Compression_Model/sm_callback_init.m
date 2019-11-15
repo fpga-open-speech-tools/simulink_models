@@ -73,3 +73,8 @@ TABLE_SEL_BYPASS_ENABLE = 0; % 1 means the compression blocks will output 0s unt
 % this will be refactored as a top-level bypass of the system's output while the RAMs or pFIRs are being programmed.
 % NOTE: in it's current iteration, this prevents us from writing to RAMs during runtime.
 sm_compression_init;
+
+FIR_0_Size = (ceil(log2(length(calib_bpfs(2:calib_bpfs(1,1)+1 ,1)'))));
+FIR_0_Uprate = 2^FIR_0_Size;
+B_k_0_init = zeros(1,FIR_0_Uprate);
+B_k_0_init(1:calib_bpfs(1,1)) = calib_bpfs(2:calib_bpfs(1,1)+1 ,1)';

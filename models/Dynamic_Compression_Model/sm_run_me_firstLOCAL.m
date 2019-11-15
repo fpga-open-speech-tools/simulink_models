@@ -42,10 +42,10 @@ mp.model_abbreviation   = 'sm_DynamicCompression';                             %
 mp.linux_device_version = '18.0';                                              % string that describes device version (typically set as Quartus version)
 
 localSanityLocCheck = pwd;
-if ( ~strcmp(localSanityLocCheck, 'C:\Users\Balad\Documents\FlatEarth\simulink_models\models\Dynamic_Compression_Model') )
-    disp('Run from the DCM folder. Moving there for you.');
-    cd 'C:\Users\Balad\Documents\FlatEarth\simulink_models\models\Dynamic_Compression_Model';
-end
+% if ( ~strcmp(localSanityLocCheck, 'C:\Users\Balad\Documents\FlatEarth\simulink_models\models\Dynamic_Compression_Model') )
+%     disp('Run from the DCM folder. Moving there for you.');
+%     cd 'C:\Users\Balad\Documents\FlatEarth\simulink_models\models\Dynamic_Compression_Model';
+% end
 cd ..;  % temporarily move up a folder
 mp.model_path           =  [pwd, '\Dynamic_Compression_Model'];                 % path to the model directory
 
