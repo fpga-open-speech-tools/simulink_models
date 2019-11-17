@@ -55,7 +55,7 @@ mp.test_signals_path    =  [pwd, '\test_signals'];                              
 mp.config_path          =  [pwd, '\config'];                                    % path to configuration folder (widget and register field definitions)
 mp.codegen_path         =  [pwd, '\utilities\vhdl_codegen'];                              % path to \vhdl_codegen folder
 mp.quartus_path         =  'C:\intelFPGA_lite\18.1\quartus\bin64\quartus.exe';  % path to the Quartus executable
-mp.python_path          =  'C:\Python\python.exe';                              % path to Python executable.
+mp.python_path          =  'C:\Users\mc_gr\AppData\Local\Programs\Python\Python36\python.exe';                              % path to Python executable.
 mp.linux_device_name    = mp.model_name;                                        % device driver name that Linux will see
 
 cd models/Dynamic_Compression_Model;   % return to where this was run
