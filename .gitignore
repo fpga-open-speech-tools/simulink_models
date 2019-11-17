@@ -2,6 +2,6 @@
 slprj
 gm_*.slx
 *.bak
-sm_run_me_firstLOCAL.m
+*sm_run_me_firstLOCAL.m
 *.asv
 *.autosave

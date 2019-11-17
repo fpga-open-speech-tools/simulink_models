@@ -77,15 +77,15 @@ switch signal_option
         [y,Fs] = audioread(strcat(newpath,newfile)); 
         y_resampled = resample(y,mp.Fs,Fs);  % resample to change the sample rate to SG.Fs
         Nsamples = length(y_resampled);
-%         if mp.fastsim_flag == 1 % perform fast simulation by reducing the number of samples
-%            mp.test_signal.Nsamples = min(Nsamples, mp.fastsim_Nsamples);
-%         else
+        if mp.fastsim_flag == 1 % perform fast simulation by reducing the number of samples
+           mp.test_signal.Nsamples = min(Nsamples, mp.fastsim_Nsamples);
+        else
            mp.test_signal.Nsamples = Nsamples;
-%         end     
+        end     
         mp.test_signal.left  = y_resampled(1:mp.test_signal.Nsamples);
         mp.test_signal.right = y_resampled(1:mp.test_signal.Nsamples);
         mp.test_signal.Nsamples = length(mp.test_signal.left);
-        mp.test_signal.duration = mp.test_signal.Nsamples * mp.Ts;
+        mp.test_signal.duration = min(0.02, mp.test_signal.Nsamples * mp.Ts);
         cd(curDir);
     otherwise
         error('Please choose a viable option for the test signal (see sm_init_test_signals)')

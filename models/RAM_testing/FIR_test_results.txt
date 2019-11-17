@@ -40,3 +40,5 @@ Valid always set to 1, though this is within a triggered subsystem.
 		It takes up about 50% of our total latency budget (at 10+ msec the delay is noticable)
 	64289 ALMs (682%). 62890 registers.  36 (100%) DSP blocks. 
 	
+	
+Now, I'll set up a circular buffer to take samples in, a block of memory for b_k, and use a higher rate to read out N past states during 1 sample cycle. 
