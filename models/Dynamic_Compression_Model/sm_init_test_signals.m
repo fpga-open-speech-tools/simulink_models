@@ -85,7 +85,7 @@ switch signal_option
         mp.test_signal.left  = y_resampled(1:mp.test_signal.Nsamples);
         mp.test_signal.right = y_resampled(1:mp.test_signal.Nsamples);
         mp.test_signal.Nsamples = length(mp.test_signal.left);
-        mp.test_signal.duration = min(0.02, mp.test_signal.Nsamples * mp.Ts);
+        mp.test_signal.duration = min(0.0002, mp.test_signal.Nsamples * mp.Ts);
         cd(curDir);
     otherwise
         error('Please choose a viable option for the test signal (see sm_init_test_signals)')
