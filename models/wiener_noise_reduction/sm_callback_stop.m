@@ -34,13 +34,13 @@ if mp.sim_prompts == 1  % sim_prompts is set in Run_me_first.m   This is turned 
 end
 
 %% Plot some stuff
-snPlay = double(Avalon_Sink_Data.data);
-figure;
-subplot(211);
-plot(Avalon_Sink_Data);
-title('Filtered Signal');
-subplot(212);
-plot(mp.Avalon_Source_Data);
-title('Noisy Speech Signal');
+% snPlay = double(Avalon_Sink_Data.data);
+% figure;
+% subplot(211);
+% plot(mp.Avalon_Sink_Data);
+% title('Filtered Signal');
+% subplot(212);
+% plot(mp.Avalon_Source_Data);
+% title('Noisy Speech Signal');
 
 

@@ -61,8 +61,8 @@ addpath(mp.driver_codegen_path)
 addpath(mp.vhdl_codegen_path)
 addpath(mp.config_path)
 hdlsetuptoolpath('ToolName', 'Altera Quartus II', 'ToolPath', mp.quartus_path);  % setup the HDL toochain path that needs to be set before calling HDL workflow process
-eval(['cd ' mp.model_path])  % change the working directory to the model directory
-
+% eval(['cd ' mp.model_path])  % change the working directory to the model directory
+cd(mp.model_path);
 %% python
 % [python_version, python_exe, python_loaded] = pyversion;
 % if  python_loaded
