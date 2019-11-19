@@ -1,61 +1,61 @@
 {
-    "avalon_memorymapped_flag": 0, 
-    "conduit_input_flag": 0, 
-    "linux_device_version": "18.0", 
-    "avalon_source_flag": 1, 
-    "entity": "wiener_dataplane", 
-    "conduit_output": [], 
-    "clocks": {
-        "sample_frequency_Hz": 48000, 
-        "system_frequency_Hz": 384000, 
-        "sample_period_seconds": 2.0833333333333333e-05, 
-        "system_period_seconds": 2.6041666666666666e-06
-    }, 
-    "linux_device_name": "wiener_noise_reduction", 
-    "avalon_sink_flag": 1, 
+    "avalon_sink_flag": 1,
+    "entity": "wiener_dataplane",
     "avalon_sink": {
         "signal": [
             {
-                "name": "avalon_sink_valid", 
+                "name": "avalon_sink_valid",
                 "data_type": "boolean"
-            }, 
+            },
             {
-                "name": "avalon_sink_data", 
+                "name": "avalon_sink_data",
                 "data_type": "sfix32_En28"
-            }, 
+            },
             {
-                "name": "avalon_sink_channel", 
+                "name": "avalon_sink_channel",
                 "data_type": "ufix2"
-            }, 
+            },
             {
-                "name": "avalon_sink_error", 
+                "name": "avalon_sink_error",
                 "data_type": "ufix2"
             }
         ]
-    }, 
-    "conduit_output_flag": 0, 
-    "conduit_input": [], 
-    "avalon_memorymapped": [], 
-    "model_abbreviation": "wiener", 
-    "model_name": "wiener_noise_reduction", 
+    },
+    "avalon_source_flag": 1,
     "avalon_source": {
         "signal": [
             {
-                "name": "avalon_source_valid", 
+                "name": "avalon_source_valid",
                 "data_type": "boolean"
-            }, 
+            },
             {
-                "name": "avalon_source_data", 
+                "name": "avalon_source_data",
                 "data_type": "sfix32_En28"
-            }, 
+            },
             {
-                "name": "avalon_source_channel", 
+                "name": "avalon_source_channel",
                 "data_type": "ufix2"
-            }, 
+            },
             {
-                "name": "avalon_source_error", 
+                "name": "avalon_source_error",
                 "data_type": "ufix2"
             }
         ]
-    }
+    },
+    "avalon_memorymapped_flag": 0,
+    "avalon_memorymapped": [],
+    "conduit_input_flag": 0,
+    "conduit_input": [],
+    "conduit_output_flag": 0,
+    "conduit_output": [],
+    "clocks": {
+        "sample_frequency_Hz": 48000,
+        "sample_period_seconds": 2.0833333333333333e-05,
+        "system_frequency_Hz": 98304000.0,
+        "system_period_seconds": 1.0172526041666666e-08
+    },
+    "model_name": "wiener_noise_reduction",
+    "model_abbreviation": "wiener",
+    "linux_device_name": "wiener_noise_reduction",
+    "linux_device_version": "18.0"
 }
