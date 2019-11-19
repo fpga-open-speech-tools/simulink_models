@@ -30,7 +30,7 @@
 
 function mp = sm_init_test_signals(mp)
 
-signal_option = 4;  % set which test signal to use
+signal_option = 3;  % set which test signal to use
 
 switch signal_option
     case 1 % Simple tones        
@@ -58,7 +58,8 @@ switch signal_option
         mp.test_signal.Nsamples = length(mp.test_signal.left);
         mp.test_signal.duration = mp.test_signal.Nsamples * mp.Ts;
     case 3 % user supplied music
-        [y,Fs] = audioread([mp.test_signals_path '\' 'Urban_Light_HedaMusic_Creative_Commons.mp3']); 
+        %[y,Fs] = audioread([mp.test_signals_path '\' 'Urban_Light_HedaMusic_Creative_Commons.mp3']);
+        [y,Fs] = audioread([mp.test_signals_path '\' 'Sweep60dBA.wav']); % TEMP THING I DON'T WANT TO KEEP CLICKING but want a short signal
         y_resampled = resample(y,mp.Fs,Fs);  % resample to change the sample rate to SG.Fs
         Nsamples = length(y_resampled);
         if mp.fastsim_flag == 1 % perform fast simulation by reducing the number of samples
@@ -69,7 +70,8 @@ switch signal_option
         mp.test_signal.left  = y_resampled(1:mp.test_signal.Nsamples);
         mp.test_signal.right = y_resampled(1:mp.test_signal.Nsamples);
         mp.test_signal.Nsamples = length(mp.test_signal.left);
-        mp.test_signal.duration = mp.test_signal.Nsamples * mp.Ts;
+        mp.test_signal.duration = min(0.0002, mp.test_signal.Nsamples * mp.Ts);
+        mp.test_signal.Nsamples = ceil(mp.test_signal.duration * mp.Fs);
     case 4 % user chooses a file to test
         curDir = pwd;
         cd(mp.test_signals_path);
@@ -86,6 +88,7 @@ switch signal_option
         mp.test_signal.right = y_resampled(1:mp.test_signal.Nsamples);
         mp.test_signal.Nsamples = length(mp.test_signal.left);
         mp.test_signal.duration = min(0.0002, mp.test_signal.Nsamples * mp.Ts);
+        mp.test_signal.Nsamples = ceil(mp.test_signal.duration * mp.Fs);
         cd(curDir);
     otherwise
         error('Please choose a viable option for the test signal (see sm_init_test_signals)')

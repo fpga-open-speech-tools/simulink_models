@@ -1,0 +1,10 @@
+vlib work
+vcom  Static_pFIR_pkg.vhd
+vcom  Addr_Gen.vhd
+vcom  Data_Type_Conversion_Inherited_B.vhd
+vcom  B_k_Memory_Block2.vhd
+vcom  Data_Type_Conversion_Inherited_B_block.vhd
+vcom  Input_Data_Circular_Buffer.vhd
+vcom  Multiply_And_Sum.vhd
+vcom  Static_pFIR_tc.vhd
+vcom  Static_pFIR.vhd
