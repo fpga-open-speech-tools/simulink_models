@@ -21,6 +21,7 @@
 %% Make sure that sm_run_me_first has actually been run first.
 % if not, run it first since it sets up paths and toolchains
 if isfield(mp,'sim_prompts') == 0
+    cd ..
     sm_run_me_firstLOCAL;
 end
 
@@ -30,12 +31,12 @@ mp.Ts = 1/mp.Fs;  % sample period
 
 %% Set the FPGA system clock frequency (frequency of the FPGA fabric)
 % The system clock frequency should be an integer multiple of the Audio codec AD1939 Mclk frequency (12.288 MHz)
-if mp.fastsim_flag == 0
+if mp.fastsim_flag == 1
     mp.Fs_system = 98304000;        % System clock frequency in Hz of Avalon Interface  Mclk*8 = 12.288MHz*8=98304000
 else
     mp.Fs_system = mp.Fs * mp.fastsim_Fs_system_N;          % Note: For faster development runs (faster sim times), reduce the number of system clocks between samples.  mp.fastsim_Fs_system_N is set in sm_run_me_first.m
 end
-mp.Ts_system = 1/mp.Fs_system;         % System clock period
+mp.Ts_system   = 1/mp.Fs_system;         % System clock period
 mp.rate_change = mp.Fs_system/mp.Fs;   % how much faster the system clock is to the sample clock
 
 %% Set the data type for audio signal (left and right channels) in data plane

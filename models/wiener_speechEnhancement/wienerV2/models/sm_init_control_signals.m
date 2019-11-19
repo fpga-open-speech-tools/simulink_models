@@ -32,26 +32,43 @@ function mp = sm_init_control_signals(mp)
 % support@flatearthinc.com
 
 
-%% Create left gain control signal
-mp.register(1).name       = 'Left_Gain';  % control signal name
-mp.register(1).value      = 1.0;          % value control signal will take during simulation
-mp.register(1).min        =   0;          % The minimum value the control signal will ever take
-mp.register(1).max        = 1.0;          % The maximum value the control signal will ever take
-mp.register(1).default    = 0.3;          % default (initial) value
-mp.register(1).widget_type          = 'slider';
-mp.register(1).widget_display_units = 'dB';
-
-%% Create right gain control signal
-mp.register(2).name       = 'Right_Gain';  % control signal name
-mp.register(2).value      = 1.0;          % value control signal will take during simulation
-mp.register(2).min        =   0;          % The minimum value the control signal will ever take
-mp.register(2).max        = 1.0;          % The maximum value the control signal will ever take
-mp.register(2).default    = 0.3;          % default (initial) value
-mp.register(2).widget_type          = 'slider';
-mp.register(2).widget_display_units = 'dB';
+% %% Create left gain control signal
+% mp.register(1).name       = 'Left_Gain';  % control signal name
+% mp.register(1).value      = 1.0;          % value control signal will take during simulation
+% mp.register(1).min        =   0;          % The minimum value the control signal will ever take
+% mp.register(1).max        = 1.0;          % The maximum value the control signal will ever take
+% mp.register(1).default    = 0.3;          % default (initial) value
+% mp.register(1).widget_type          = 'slider';
+% mp.register(1).widget_display_units = 'dB';
+% 
+% %% Create right gain control signal
+% mp.register(2).name       = 'Right_Gain';  % control signal name
+% mp.register(2).value      = 1.0;          % value control signal will take during simulation
+% mp.register(2).min        =   0;          % The minimum value the control signal will ever take
+% mp.register(2).max        = 1.0;          % The maximum value the control signal will ever take
+% mp.register(2).default    = 0.3;          % default (initial) value
+% mp.register(2).widget_type          = 'slider';
+% mp.register(2).widget_display_units = 'dB';
 
 % Any other register control signals should be created in a similar manner
+%% Create left gain control signal
+mp.register(1).name       = 'Window_Size';  % control signal name
+mp.register(1).value      = 32.0;           % value control signal will take during simulation
+mp.register(1).min        = 16;             % The minimum value the control signal will ever take
+mp.register(1).max        = 256;            % The maximum value the control signal will ever take
+mp.register(1).increment  = 2;              % Increment by multiples of 2
+mp.register(1).default    = 0.3;            % default (initial) value
+mp.register(1).widget_type          = 'slider';
+mp.register(1).widget_display_units = ' ';
 
+%% Create Noise Standad-Deviation Register
+mp.register(2).name       = 'noise_STD';  % control signal name
+mp.register(2).value      = 0.1/6;        % value control signal will take during simulation (Between [-0.05 , 0.05])
+mp.register(2).min        =   0;          % The minimum value the control signal will ever take
+mp.register(2).max        = 0.3/6;        % The maximum value the control signal will ever take
+mp.register(2).default    = 0.1/6;        % default (initial) value
+mp.register(2).widget_type          = 'slider';
+mp.register(2).widget_display_units = 'magnitude';
 
 %% convert to time series data
 for i=1:length(mp.register)
@@ -59,5 +76,5 @@ for i=1:length(mp.register)
 end
 
 %% Check if the control signals have valid entries
-sm_check_control_signals(mp)
+% sm_check_control_signals(mp) %UNCOMMENT LATER
 

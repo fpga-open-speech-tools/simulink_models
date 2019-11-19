@@ -26,13 +26,13 @@ close all   % close all open Matlab windows
 clc         % clear command window
 %% temporarily move up a folder
 cd models\
-mp.model_path           =  [pwd];                 % path to the model directory
+mp.model_path           =  [pwd];                                               % path to the model directory
 cd ..; % move out of models folder
 
-mp.test_signals_path    =  [pwd];                              % path to test signals folder
-%mp.utility_path         =  ; %'E:\git\nih_simulinklib\matlab';                  % path to test signals folder
+mp.test_signals_path    =  [pwd];                                               % path to test signals folder
+mp.utility_path         =  [pwd, 'utilities']; %'E:\git\nih_simulinklib\matlab';                % path to test signals folder
 mp.config_path          =  [pwd, '\config'];                                    % path to configuration folder (widget and register field definitions)
-mp.vhdl_codegen_path         =  [pwd, '\utilities\vhdl_codegen'];                              % path to \vhdl_codegen folder
+mp.vhdl_codegen_path    =  [pwd, '\utilities\vhdl_codegen'];                    % path to \vhdl_codegen folder
 mp.driver_codegen_path  =  [pwd, '\utilities\driver_code_gen'];
 mp.quartus_path         =  'E:\intelFPGA_lite\18.1\quartus\bin64\quartus.exe';  % path to the Quartus executable
 mp.python_path          =  'C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Python 3.7.exe';                              % path to Python executable.
@@ -41,16 +41,16 @@ mp.python_path          =  'C:\ProgramData\Microsoft\Windows\Start Menu\Programs
 % simulated clock cycles between each sample in the Avalon bus signals.
 % It also reduces the number of stimulus samples.  This allow for faster
 % development iterations when developing the simulink model.
-mp.fastsim_flag = 1;     % perform fast simulation  Note: fast simulation will be turned off when generating VHDL code since we need to run at the system clock rate.
-mp.fastsim_Fs_system_N = 8;     % (typical value 2 or 4) Simulate a much slower system clock than what is specified in sm_callback_init.m   - The reduce rate will be a multiple of the sample rate, i.e. mp.Fs_system = mp.Fs*mp.fastsim_Fs_system_N
-mp.fastsim_Nsamples = 12000; % set to the string 'all' to use all the samples from the input signal specified in sm_init_test_signals.m
+mp.fastsim_flag = 0;            % perform fast simulation  Note: fast simulation will be turned off when generating VHDL code since we need to run at the system clock rate.
+mp.fastsim_Fs_system_N = 4;     % (typical value 2 or 4) Simulate a much slower system clock than what is specified in sm_callback_init.m   - The reduce rate will be a multiple of the sample rate, i.e. mp.Fs_system = mp.Fs*mp.fastsim_Fs_system_N
+mp.fastsim_Nsamples = 12000;    % set to the string 'all' to use all the samples from the input signal specified in sm_init_test_signals.m
 
 
 %% Model parameters
 % Model parameters are placed in a data structure called mp that can be passed to functions
 mp.model_name = 'Adaptive Wiener Filter - Speech Enhancement';
 mp.model_abbreviation = 'wienerV2';
-mp.linux_device_name    = mp.model_name;                                        % device driver name that Linux will see
+mp.linux_device_name    = mp.model_name;        % device driver name that Linux will see
 
 % Device driver version for the Linux device tree. Typically set as the Quartus version
 mp.linux_device_name = mp.model_name;
