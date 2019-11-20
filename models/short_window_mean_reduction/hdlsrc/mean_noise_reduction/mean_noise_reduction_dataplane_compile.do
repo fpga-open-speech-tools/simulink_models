@@ -1,8 +1,0 @@
-vlib work
-vcom  mean_noise_reduction_dataplane_pkg.vhd
-vcom  mean_noise_reduction_Grab_the_Look_behind_Window_and_Calculate_the_Mean.vhd
-vcom  mean_noise_reduction_Right_Channel_Processing.vhd
-vcom  mean_noise_reduction_Grab_the_Look_behind_Window_and_Calculate_the_Mean_block.vhd
-vcom  mean_noise_reduction_Right_Channel_Processing1.vhd
-vcom  mean_noise_reduction_Adaptive_Wiener_Filter_Sample_Based_Filtering.vhd
-vcom  mean_noise_reduction_dataplane.vhd

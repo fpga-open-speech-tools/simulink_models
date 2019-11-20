@@ -53,13 +53,13 @@ function mp = sm_init_control_signals(mp)
 % Any other register control signals should be created in a similar manner
 
 %% Create Noise Standad-Deviation Register
-mp.register(2).name       = 'enable';       % control signal name
-mp.register(2).value      = 1;              % value control signal will take during simulation
-mp.register(2).min        = 0;              % The minimum value the control signal will ever take
-mp.register(2).max        = 1;              % The maximum value the control signal will ever take
-mp.register(2).default    = 1;              % default (initial) value
-mp.register(2).widget_type          = 'slider';
-mp.register(2).widget_display_units = ' ';
+mp.register(1).name       = 'enable';       % control signal name
+mp.register(1).value      = 1;              % value control signal will take during simulation
+mp.register(1).min        = 0;              % The minimum value the control signal will ever take
+mp.register(1).max        = 1;              % The maximum value the control signal will ever take
+mp.register(1).default    = 1;              % default (initial) value
+mp.register(1).widget_type          = 'slider';
+mp.register(1).widget_display_units = ' ';
 
 %% convert to time series data
 for i=1:length(mp.register)

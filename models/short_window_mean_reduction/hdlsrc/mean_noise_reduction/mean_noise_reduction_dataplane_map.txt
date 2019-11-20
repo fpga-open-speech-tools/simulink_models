@@ -1,7 +1,0 @@
- --> mean_noise_reduction_dataplane_pkg
-mean_noise_reduction/dataplane/Adaptive_Wiener_Filter Sample Based Filtering/Right Channel Processing/Grab the Look-behind Window and Calculate the Mean --> mean_noise_reduction_Grab_the_Look_behind_Window_and_Calculate_the_Mean
-mean_noise_reduction/dataplane/Adaptive_Wiener_Filter Sample Based Filtering/Right Channel Processing --> mean_noise_reduction_Right_Channel_Processing
-mean_noise_reduction/dataplane/Adaptive_Wiener_Filter Sample Based Filtering/Right Channel Processing1/Grab the Look-behind Window and Calculate the Mean --> mean_noise_reduction_Grab_the_Look_behind_Window_and_Calculate_the_Mean_block
-mean_noise_reduction/dataplane/Adaptive_Wiener_Filter Sample Based Filtering/Right Channel Processing1 --> mean_noise_reduction_Right_Channel_Processing1
-mean_noise_reduction/dataplane/Adaptive_Wiener_Filter Sample Based Filtering --> mean_noise_reduction_Adaptive_Wiener_Filter_Sample_Based_Filtering
-mean_noise_reduction/dataplane --> mean_noise_reduction_dataplane
