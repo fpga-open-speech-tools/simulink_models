@@ -1,7 +1,7 @@
 *.slxc
 slprj
+hdlprj
 gm_*.slx
-*.bak
-*sm_run_me_firstLOCAL.m
-*.asv
 *.autosave
+*.asv
+*.bak
