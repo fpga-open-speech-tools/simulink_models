@@ -56,7 +56,7 @@ end
 
 
 %% Check if the widget name is correct
-wl = readjson([mp.config_path '\widget_list.json']);
+wl = readjson([mp.config_path '/widget_list.json']);
 Nw = length(wl);
 
 error_flag = 0;

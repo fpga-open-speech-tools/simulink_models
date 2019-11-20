@@ -20,7 +20,7 @@
 
 %% Make sure that sm_run_me_first has actually been run first.
 % if not, run it first since it sets up paths and toolchains
-if isfield(mp,'sim_prompts') == 0
+if isfield(mp, 'sim_prompts') == 0
     sm_run_me_first;
 end
 
@@ -78,3 +78,28 @@ FIR_0_Size = (ceil(log2(length(calib_bpfs(2:calib_bpfs(1,1)+1 ,1)'))));
 FIR_0_Uprate = 2^FIR_0_Size;
 B_k_0_init = zeros(1,FIR_0_Uprate);
 B_k_0_init(1:calib_bpfs(1,1)) = calib_bpfs(2:calib_bpfs(1,1)+1 ,1)';
+
+FIR_1_Size = (ceil(log2(length(calib_bpfs(2:calib_bpfs(1,2)+1 ,2)'))));
+FIR_1_Uprate = 2^FIR_0_Size;
+B_k_1_init = zeros(1,FIR_0_Uprate);
+B_k_1_init(1:calib_bpfs(1,2)) = calib_bpfs(2:calib_bpfs(1,2)+1 ,2)';
+
+FIR_2_Size = (ceil(log2(length(calib_bpfs(2:calib_bpfs(1,3)+1 ,3)'))));
+FIR_2_Uprate = 2^FIR_0_Size;
+B_k_2_init = zeros(1,FIR_0_Uprate);
+B_k_2_init(1:calib_bpfs(1,3)) = calib_bpfs(2:calib_bpfs(1,3)+1 ,3)';
+
+FIR_3_Size = (ceil(log2(length(calib_bpfs(2:calib_bpfs(1,4)+1 ,4)'))));
+FIR_3_Uprate = 2^FIR_0_Size;
+B_k_3_init = zeros(1,FIR_0_Uprate);
+B_k_3_init(1:calib_bpfs(1,4)) = calib_bpfs(2:calib_bpfs(1,4)+1 ,4)';
+
+FIR_4_Size = (ceil(log2(length(calib_bpfs(2:calib_bpfs(1,5)+1 ,5)'))));
+FIR_4_Uprate = 2^FIR_0_Size;
+B_k_4_init = zeros(1,FIR_0_Uprate);
+B_k_4_init(1:calib_bpfs(1,5)) = calib_bpfs(2:calib_bpfs(1,5)+1 ,5)';
+
+FIR_5_Size = (ceil(log2(length(ig_eq))));
+FIR_5_Uprate = 2^FIR_0_Size;
+B_k_5_init = zeros(1,FIR_0_Uprate);
+B_k_5_init(1:length(ig_eq)) = ig_eq;

@@ -59,7 +59,7 @@ switch signal_option
         mp.test_signal.duration = mp.test_signal.Nsamples * mp.Ts;
     case 3 % user supplied music
         %[y,Fs] = audioread([mp.test_signals_path '\' 'Urban_Light_HedaMusic_Creative_Commons.mp3']);
-        [y,Fs] = audioread([mp.test_signals_path '\' 'Sweep60dBA.wav']); % TEMP THING I DON'T WANT TO KEEP CLICKING but want a short signal
+        [y,Fs] = audioread([mp.test_signals_path '/' 'Sweep80dBA.wav']); % TEMP THING I DON'T WANT TO KEEP CLICKING but want a short signal
         y_resampled = resample(y,mp.Fs,Fs);  % resample to change the sample rate to SG.Fs
         Nsamples = length(y_resampled);
         if mp.fastsim_flag == 1 % perform fast simulation by reducing the number of samples

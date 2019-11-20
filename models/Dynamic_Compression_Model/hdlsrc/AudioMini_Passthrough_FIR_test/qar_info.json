@@ -1,0 +1,7 @@
+{
+	"common_dir" : "/home/cb54103/Documents/fpga-open-speech-tools/",
+	"acds_version" : "Version 18.1.0",
+	"platform" : "linux",
+	"os" : "KDE neon",
+	"qpf" : "de10nano_projects/AudioMini_Passthrough/DE10Nano_System.qpf"
+}

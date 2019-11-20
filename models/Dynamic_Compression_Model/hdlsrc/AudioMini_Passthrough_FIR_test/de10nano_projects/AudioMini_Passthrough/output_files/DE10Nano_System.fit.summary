@@ -1,0 +1,20 @@
+Fitter Status : Successful - Tue Nov 19 14:34:11 2019
+Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+Revision Name : DE10Nano_System
+Top-level Entity Name : Static_pFIR
+Family : Cyclone V
+Device : 5CSEBA6U23I7
+Timing Models : Final
+Logic utilization (in ALMs) : 302 / 41,910 ( < 1 % )
+Total registers : 116
+Total pins : 69 / 314 ( 22 % )
+Total virtual pins : 0
+Total block memory bits : 32,768 / 5,662,720 ( < 1 % )
+Total RAM Blocks : 4 / 553 ( < 1 % )
+Total DSP Blocks : 3 / 112 ( 3 % )
+Total HSSI RX PCSs : 0
+Total HSSI PMA RX Deserializers : 0
+Total HSSI TX PCSs : 0
+Total HSSI PMA TX Serializers : 0
+Total PLLs : 0 / 6 ( 0 % )
+Total DLLs : 0 / 4 ( 0 % )
