@@ -191,7 +191,7 @@
   },
   "obj_viewer":{
    "code":"function y = fcn(u, lidx, ridx)\n%#codegen\n\ny = bitsliceget(cast_to_fi(u), lidx+1, ridx+1);",
-   "code_sid":"sm_DynamicCompression:5253:472:1"
+   "code_sid":"sm_DynamicCompression:6321:472:1"
   },
   "finder":{
    "blocktype":"SubSystem",

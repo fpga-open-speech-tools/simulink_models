@@ -1082,7 +1082,7 @@
     "SampleTime"
    ],
    "values":[
-    "u2 >= Threshold",
+    "u2 ~= 0",
     "0",
     "on",
     "off",
@@ -1113,6 +1113,53 @@
   ],
   "finder":{
    "blocktype":"Switch",
+   "masktype":""
+  }
+ },
+ {
+  "sid":"sm_DynamicCompression:6567",
+  "className":"Simulink.DataTypeConversion",
+  "icon":"sm_DynamicCompression_2333",
+  "name":"Data Type Conversion",
+  "label":"Data Type Conversion",
+  "parent":"sm_DynamicCompression:434",
+  "inspector":{
+   "params":[
+    "OutMin",
+    "OutMax",
+    "OutDataTypeStr",
+    "LockScale",
+    "ConvertRealWorld",
+    "RndMeth",
+    "SaturateOnIntegerOverflow",
+    "SampleTime"
+   ],
+   "values":[
+    "[]",
+    "[]",
+    "boolean",
+    "off",
+    "Real World Value (RWV)",
+    "Floor",
+    "off",
+    "-1"
+   ],
+   "tabs":[
+    "Parameter Attributes",
+    "-Other"
+   ],
+   "tabs_idx":[
+    0,
+    7
+   ]
+  },
+  "viewer":{
+   "jshandler":"webview/handlers/ElementHandler"
+  },
+  "obj_viewer":[
+  ],
+  "finder":{
+   "blocktype":"DataTypeConversion",
    "masktype":""
   }
  },
@@ -1832,6 +1879,57 @@
  },
  {
   "sid":"sm_DynamicCompression:5559#out:1",
+  "className":"Simulink.Line",
+  "icon":"sm_DynamicCompression_2334",
+  "name":"",
+  "label":"",
+  "parent":"sm_DynamicCompression:434",
+  "inspector":{
+   "params":[
+    "SignalNameFromLabel",
+    "MustResolveToSignal",
+    "ShowPropagatedSignal",
+    "DataLogging",
+    "TestPoint",
+    "SignalObjectPackage",
+    "StorageClass",
+    "Description",
+    "documentLink"
+   ],
+   "values":[
+    "",
+    "off",
+    "off",
+    "off",
+    "off",
+    "Simulink",
+    "Auto",
+    "",
+    ""
+   ],
+   "tabs":[
+    "Parameter Attributes",
+    "Logging and Accessibility",
+    "Code Generation",
+    "Documentation"
+   ],
+   "tabs_idx":[
+    0,
+    3,
+    5,
+    7
+   ]
+  },
+  "viewer":{
+   "jshandler":"webview/handlers/ElementHandler"
+  },
+  "obj_viewer":[
+  ],
+  "finder":[
+  ]
+ },
+ {
+  "sid":"sm_DynamicCompression:6567#out:1",
   "className":"Simulink.Line",
   "icon":"sm_DynamicCompression_2334",
   "name":"",

@@ -98,11 +98,11 @@
   ]
  },
  {
-  "sid":"sm_DynamicCompression:5266",
+  "sid":"sm_DynamicCompression:1460",
   "className":"Simulink.Annotation",
   "icon":"sm_DynamicCompression_2332",
-  "name":"Delay to account for Comp_Gain_Calc and Compression_Envelope",
-  "label":"Delay to account for Comp_Gain_Calc and Compression_Envelope",
+  "name":"Calculate Compression Gain Needed",
+  "label":"Calculate Compression Gain Needed",
   "parent":"sm_DynamicCompression:1074",
   "inspector":{
    "params":[
@@ -120,7 +120,7 @@
     "ClickFcn"
    ],
    "values":[
-    "Delay to account for Comp_Gain_Calc and Compression_Envelope",
+    "Calculate Compression Gain Needed",
     "off",
     "off",
     "auto",
@@ -147,11 +147,11 @@
   ]
  },
  {
-  "sid":"sm_DynamicCompression:1460",
+  "sid":"sm_DynamicCompression:5266",
   "className":"Simulink.Annotation",
   "icon":"sm_DynamicCompression_2332",
-  "name":"Calculate Compression Gain Needed",
-  "label":"Calculate Compression Gain Needed",
+  "name":"Delay to account for Comp_Gain_Calc and Compression_Envelope",
+  "label":"Delay to account for Comp_Gain_Calc and Compression_Envelope",
   "parent":"sm_DynamicCompression:1074",
   "inspector":{
    "params":[
@@ -169,7 +169,7 @@
     "ClickFcn"
    ],
    "values":[
-    "Calculate Compression Gain Needed",
+    "Delay to account for Comp_Gain_Calc and Compression_Envelope",
     "off",
     "off",
     "auto",

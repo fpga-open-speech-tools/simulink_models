@@ -65,7 +65,7 @@
    4,
    5,
    6,
-   459
+   498
   ],
   "name":"Avalon Data Processing",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing",
@@ -195,6 +195,7 @@
    ":5248",
    ":5324",
    ":5559",
+   ":6567",
    ":1043#out:1",
    ":1044#out:1",
    ":1042#out:1",
@@ -209,7 +210,8 @@
    ":1013#out:1",
    ":5248#out:1",
    ":5324#out:1",
-   ":5559#out:1"
+   ":5559#out:1",
+   ":6567#out:1"
   ],
   "sameAsElement":true
  },
@@ -222,7 +224,7 @@
    8,
    9,
    10,
-   442
+   481
   ],
   "name":"recalculate",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate",
@@ -326,17 +328,17 @@
   "parent":7,
   "children":[
    11,
-   12,
-   15,
-   85,
-   153,
-   221,
-   289,
-   357,
-   374,
-   391,
-   408,
-   425
+   19,
+   22,
+   124,
+   192,
+   260,
+   328,
+   396,
+   413,
+   430,
+   447,
+   464
   ],
   "name":"Nchan_FbankAGC_AID",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID",
@@ -349,12 +351,12 @@
    ":2961",
    ":2962",
    ":2963",
-   ":5269",
-   ":5264",
    ":2964",
-   ":5272",
+   ":5264",
+   ":5269",
    ":5268",
    ":2965",
+   ":5272",
    ":2960",
    ":1059",
    ":2948",
@@ -425,6 +427,9 @@
   "esid":"sm_DynamicCompression:1061",
   "parent":10,
   "children":[
+   12,
+   13,
+   14
   ],
   "name":"Addr_Organizer",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Addr_Organizer",
@@ -459,12 +464,239 @@
  },
  {
   "hid":12,
+  "sid":"sm_DynamicCompression:1064",
+  "esid":"sm_DynamicCompression:1064",
+  "parent":11,
+  "children":[
+  ],
+  "name":"Bit Slice",
+  "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Addr_Organizer/Bit Slice",
+  "label":"Bit Slice",
+  "icon":"sm_DynamicCompression_2333",
+  "svg":"support/slwebview_files/sm_DynamicCompression_1064_d.svg",
+  "thumbnail":"support/slwebview_files/sm_DynamicCompression_1064_d.png",
+  "backingUrl":"support/slwebview_files/sm_DynamicCompression_1064_d.json",
+  "elements":[
+   ":1064:473",
+   ":1064:472",
+   ":1064:471",
+   ":1064:472#out:1",
+   ":1064:471#out:1"
+  ],
+  "sameAsElement":true
+ },
+ {
+  "hid":13,
+  "sid":"sm_DynamicCompression:1065",
+  "esid":"sm_DynamicCompression:1065",
+  "parent":11,
+  "children":[
+  ],
+  "name":"Bit Slice1",
+  "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Addr_Organizer/Bit Slice1",
+  "label":"Bit Slice1",
+  "icon":"sm_DynamicCompression_2333",
+  "svg":"support/slwebview_files/sm_DynamicCompression_1065_d.svg",
+  "thumbnail":"support/slwebview_files/sm_DynamicCompression_1065_d.png",
+  "backingUrl":"support/slwebview_files/sm_DynamicCompression_1065_d.json",
+  "elements":[
+   ":1065:473",
+   ":1065:472",
+   ":1065:471",
+   ":1065:472#out:1",
+   ":1065:471#out:1"
+  ],
+  "sameAsElement":true
+ },
+ {
+  "hid":14,
+  "sid":"sm_DynamicCompression:1066",
+  "esid":"sm_DynamicCompression:1066",
+  "parent":11,
+  "children":[
+   15,
+   16,
+   17,
+   18
+  ],
+  "name":"Counter_up_to_320",
+  "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Addr_Organizer/Counter_up_to_320",
+  "label":"Counter_up_to_320",
+  "icon":"sm_DynamicCompression_2333",
+  "svg":"support/slwebview_files/sm_DynamicCompression_1066_d.svg",
+  "thumbnail":"support/slwebview_files/sm_DynamicCompression_1066_d.png",
+  "backingUrl":"support/slwebview_files/sm_DynamicCompression_1066_d.json",
+  "elements":[
+   ":1066:41",
+   ":1066:39",
+   ":1066:38",
+   ":1066:36",
+   ":1066:35",
+   ":1066:34",
+   ":1066:33",
+   ":1066:32",
+   ":1066:31",
+   ":1066:30",
+   ":1066:22",
+   ":1066:21",
+   ":1066:20",
+   ":1066:19",
+   ":1066:18",
+   ":1066:17",
+   ":1066:12",
+   ":1066:11",
+   ":1066:10",
+   ":1066:9",
+   ":1066:1",
+   ":1066:210",
+   ":1066:211",
+   ":1066:212",
+   ":1066:30#out:1",
+   ":1066:18#out:1",
+   ":1066:211#out:1",
+   ":1066:34#out:1",
+   ":1066:9#out:1",
+   ":1066:32#out:1",
+   ":1066:38#out:1",
+   ":1066:39#out:1",
+   ":1066:31#out:1",
+   ":1066:212#out:1",
+   ":1066:36#out:1",
+   ":1066:21#out:1",
+   ":1066:35#out:1",
+   ":1066:20#out:1",
+   ":1066:19#out:1",
+   ":1066:33#out:1",
+   ":1066:17#out:1",
+   ":1066:10#out:1",
+   ":1066:1#out:1",
+   ":1066:22#out:1",
+   ":1066:12#out:1",
+   ":1066:11#out:1",
+   ":1066:210#out:1"
+  ],
+  "sameAsElement":true
+ },
+ {
+  "hid":15,
+  "sid":"sm_DynamicCompression:1066:1",
+  "esid":"sm_DynamicCompression:1066:1",
+  "parent":14,
+  "children":[
+  ],
+  "name":"Add_wrap",
+  "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Addr_Organizer/Counter_up_to_320/Add_wrap",
+  "label":"Add_wrap",
+  "icon":"sm_DynamicCompression_2331",
+  "svg":"support/slwebview_files/sm_DynamicCompression_1066_1_d.svg",
+  "thumbnail":"support/slwebview_files/sm_DynamicCompression_1066_1_d.png",
+  "backingUrl":"support/slwebview_files/sm_DynamicCompression_1066_1_d.json",
+  "elements":[
+   ":1066:8",
+   ":1066:7",
+   ":1066:6",
+   ":1066:5",
+   ":1066:4",
+   ":1066:3",
+   ":1066:2",
+   ":1066:2#out:1",
+   ":1066:6#out:1",
+   ":1066:3#out:1",
+   ":1066:7#out:1",
+   ":1066:4#out:1",
+   ":1066:5#out:1"
+  ],
+  "sameAsElement":true
+ },
+ {
+  "hid":16,
+  "sid":"sm_DynamicCompression:1066:12",
+  "esid":"sm_DynamicCompression:1066:12",
+  "parent":14,
+  "children":[
+  ],
+  "name":"Dir_logic",
+  "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Addr_Organizer/Counter_up_to_320/Dir_logic",
+  "label":"Dir_logic",
+  "icon":"sm_DynamicCompression_2331",
+  "svg":"support/slwebview_files/sm_DynamicCompression_1066_12_d.svg",
+  "thumbnail":"support/slwebview_files/sm_DynamicCompression_1066_12_d.png",
+  "backingUrl":"support/slwebview_files/sm_DynamicCompression_1066_12_d.json",
+  "elements":[
+   ":1066:16",
+   ":1066:15",
+   ":1066:14",
+   ":1066:13",
+   ":1066:14#out:1",
+   ":1066:15#out:1",
+   ":1066:13#out:1"
+  ],
+  "sameAsElement":true
+ },
+ {
+  "hid":17,
+  "sid":"sm_DynamicCompression:1066:20",
+  "esid":"sm_DynamicCompression:1066:20",
+  "parent":14,
+  "children":[
+  ],
+  "name":"Max_value",
+  "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Addr_Organizer/Counter_up_to_320/Max_value",
+  "label":"Max_value",
+  "icon":"sm_DynamicCompression_2333",
+  "svg":"support/slwebview_files/sm_DynamicCompression_1066_20_d.svg",
+  "thumbnail":"support/slwebview_files/sm_DynamicCompression_1066_20_d.png",
+  "backingUrl":"support/slwebview_files/sm_DynamicCompression_1066_20_d.json",
+  "elements":[
+   ":1066:20:4",
+   ":1066:20:3",
+   ":1066:20:2",
+   ":1066:20:1",
+   ":1066:20:1#out:1",
+   ":1066:20:3#out:1",
+   ":1066:20:2#out:1"
+  ],
+  "sameAsElement":true
+ },
+ {
+  "hid":18,
+  "sid":"sm_DynamicCompression:1066:22",
+  "esid":"sm_DynamicCompression:1066:22",
+  "parent":14,
+  "children":[
+  ],
+  "name":"Sub_wrap",
+  "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Addr_Organizer/Counter_up_to_320/Sub_wrap",
+  "label":"Sub_wrap",
+  "icon":"sm_DynamicCompression_2331",
+  "svg":"support/slwebview_files/sm_DynamicCompression_1066_22_d.svg",
+  "thumbnail":"support/slwebview_files/sm_DynamicCompression_1066_22_d.png",
+  "backingUrl":"support/slwebview_files/sm_DynamicCompression_1066_22_d.json",
+  "elements":[
+   ":1066:29",
+   ":1066:28",
+   ":1066:27",
+   ":1066:26",
+   ":1066:25",
+   ":1066:24",
+   ":1066:23",
+   ":1066:24#out:1",
+   ":1066:27#out:1",
+   ":1066:23#out:1",
+   ":1066:25#out:1",
+   ":1066:26#out:1",
+   ":1066:28#out:1"
+  ],
+  "sameAsElement":true
+ },
+ {
+  "hid":19,
   "sid":"sm_DynamicCompression:5250",
   "esid":"sm_DynamicCompression:5250",
   "parent":10,
   "children":[
-   13,
-   14
+   20,
+   21
   ],
   "name":"Addr_Splitter",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Addr_Splitter",
@@ -501,10 +733,10 @@
   "sameAsElement":true
  },
  {
-  "hid":13,
+  "hid":20,
   "sid":"sm_DynamicCompression:5253",
   "esid":"sm_DynamicCompression:5253",
-  "parent":12,
+  "parent":19,
   "children":[
   ],
   "name":"Bit Slice",
@@ -524,10 +756,10 @@
   "sameAsElement":true
  },
  {
-  "hid":14,
+  "hid":21,
   "sid":"sm_DynamicCompression:5254",
   "esid":"sm_DynamicCompression:5254",
-  "parent":12,
+  "parent":19,
   "children":[
   ],
   "name":"Bit Slice1",
@@ -547,14 +779,14 @@
   "sameAsElement":true
  },
  {
-  "hid":15,
+  "hid":22,
   "sid":"sm_DynamicCompression:1074",
   "esid":"sm_DynamicCompression:1074",
   "parent":10,
   "children":[
-   16,
-   17,
-   21
+   23,
+   24,
+   28
   ],
   "name":"Compression_1",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_1",
@@ -566,8 +798,8 @@
   "elements":[
    ":5265",
    ":1459",
-   ":5266",
    ":1460",
+   ":5266",
    ":1080",
    ":1457",
    ":1455",
@@ -603,10 +835,10 @@
   "sameAsElement":true
  },
  {
-  "hid":16,
+  "hid":23,
   "sid":"sm_DynamicCompression:1079",
   "esid":"sm_DynamicCompression:1079",
-  "parent":15,
+  "parent":22,
   "children":[
   ],
   "name":"Compare\nTo Constant",
@@ -628,14 +860,14 @@
   "sameAsElement":true
  },
  {
-  "hid":17,
+  "hid":24,
   "sid":"sm_DynamicCompression:1080",
   "esid":"sm_DynamicCompression:1080",
-  "parent":15,
+  "parent":22,
   "children":[
-   18,
-   19,
-   20
+   25,
+   26,
+   27
   ],
   "name":"Compression_Envelope",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_1/Compression_Envelope",
@@ -668,10 +900,10 @@
   "sameAsElement":true
  },
  {
-  "hid":18,
+  "hid":25,
   "sid":"sm_DynamicCompression:1083",
   "esid":"sm_DynamicCompression:1083",
-  "parent":17,
+  "parent":24,
   "children":[
   ],
   "name":"Attack_Envelope",
@@ -701,10 +933,10 @@
   "sameAsElement":true
  },
  {
-  "hid":19,
+  "hid":26,
   "sid":"sm_DynamicCompression:1093",
   "esid":"sm_DynamicCompression:1093",
-  "parent":17,
+  "parent":24,
   "children":[
   ],
   "name":"Compare\nTo Zero",
@@ -726,10 +958,10 @@
   "sameAsElement":true
  },
  {
-  "hid":20,
+  "hid":27,
   "sid":"sm_DynamicCompression:1095",
   "esid":"sm_DynamicCompression:1095",
-  "parent":17,
+  "parent":24,
   "children":[
   ],
   "name":"Release_Envelope",
@@ -759,15 +991,15 @@
   "sameAsElement":true
  },
  {
-  "hid":21,
+  "hid":28,
   "sid":"sm_DynamicCompression:1110",
   "esid":"sm_DynamicCompression:1110",
-  "parent":15,
+  "parent":22,
   "children":[
-   22,
-   23,
-   60,
-   84
+   29,
+   30,
+   67,
+   123
   ],
   "name":"Compression_Gain_Calc",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_1/Compression_Gain_Calc",
@@ -816,10 +1048,10 @@
   "sameAsElement":true
  },
  {
-  "hid":22,
+  "hid":29,
   "sid":"sm_DynamicCompression:2974",
   "esid":"sm_DynamicCompression:2974",
-  "parent":21,
+  "parent":28,
   "children":[
   ],
   "name":"High_Gain_Table",
@@ -866,17 +1098,17 @@
   "sameAsElement":true
  },
  {
-  "hid":23,
+  "hid":30,
   "sid":"sm_DynamicCompression:1118",
   "esid":"sm_DynamicCompression:1118",
-  "parent":21,
+  "parent":28,
   "children":[
-   24,
-   25,
-   26,
-   27,
-   28,
-   44
+   31,
+   32,
+   33,
+   34,
+   35,
+   51
   ],
   "name":"Linear_Approximation",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_1/Compression_Gain_Calc/Linear_Approximation",
@@ -941,10 +1173,10 @@
   "sameAsElement":true
  },
  {
-  "hid":24,
+  "hid":31,
   "sid":"sm_DynamicCompression:1123",
   "esid":"sm_DynamicCompression:1123",
-  "parent":23,
+  "parent":30,
   "children":[
   ],
   "name":"Bit Rotate1",
@@ -964,10 +1196,10 @@
   "sameAsElement":true
  },
  {
-  "hid":25,
+  "hid":32,
   "sid":"sm_DynamicCompression:1124",
   "esid":"sm_DynamicCompression:1124",
-  "parent":23,
+  "parent":30,
   "children":[
   ],
   "name":"Bit Slice",
@@ -987,10 +1219,10 @@
   "sameAsElement":true
  },
  {
-  "hid":26,
+  "hid":33,
   "sid":"sm_DynamicCompression:1125",
   "esid":"sm_DynamicCompression:1125",
-  "parent":23,
+  "parent":30,
   "children":[
   ],
   "name":"Bit Slice1",
@@ -1010,10 +1242,10 @@
   "sameAsElement":true
  },
  {
-  "hid":27,
+  "hid":34,
   "sid":"sm_DynamicCompression:1127",
   "esid":"sm_DynamicCompression:1127",
-  "parent":23,
+  "parent":30,
   "children":[
   ],
   "name":"Compare\nTo Constant",
@@ -1035,18 +1267,11 @@
   "sameAsElement":true
  },
  {
-  "hid":28,
+  "hid":35,
   "sid":"sm_DynamicCompression:1132",
   "esid":"sm_DynamicCompression:1132",
-  "parent":23,
+  "parent":30,
   "children":[
-   29,
-   30,
-   31,
-   32,
-   33,
-   34,
-   35,
    36,
    37,
    38,
@@ -1054,7 +1279,14 @@
    40,
    41,
    42,
-   43
+   43,
+   44,
+   45,
+   46,
+   47,
+   48,
+   49,
+   50
   ],
   "name":"LSL(N)",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_1/Compression_Gain_Calc/Linear_Approximation/LSL(N)",
@@ -1105,10 +1337,10 @@
   "sameAsElement":true
  },
  {
-  "hid":29,
+  "hid":36,
   "sid":"sm_DynamicCompression:1135",
   "esid":"sm_DynamicCompression:1135",
-  "parent":28,
+  "parent":35,
   "children":[
   ],
   "name":"Bit Rotate",
@@ -1128,10 +1360,10 @@
   "sameAsElement":true
  },
  {
-  "hid":30,
+  "hid":37,
   "sid":"sm_DynamicCompression:1136",
   "esid":"sm_DynamicCompression:1136",
-  "parent":28,
+  "parent":35,
   "children":[
   ],
   "name":"Bit Rotate1",
@@ -1151,10 +1383,10 @@
   "sameAsElement":true
  },
  {
-  "hid":31,
+  "hid":38,
   "sid":"sm_DynamicCompression:1137",
   "esid":"sm_DynamicCompression:1137",
-  "parent":28,
+  "parent":35,
   "children":[
   ],
   "name":"Bit Rotate10",
@@ -1174,10 +1406,10 @@
   "sameAsElement":true
  },
  {
-  "hid":32,
+  "hid":39,
   "sid":"sm_DynamicCompression:1138",
   "esid":"sm_DynamicCompression:1138",
-  "parent":28,
+  "parent":35,
   "children":[
   ],
   "name":"Bit Rotate11",
@@ -1197,10 +1429,10 @@
   "sameAsElement":true
  },
  {
-  "hid":33,
+  "hid":40,
   "sid":"sm_DynamicCompression:1139",
   "esid":"sm_DynamicCompression:1139",
-  "parent":28,
+  "parent":35,
   "children":[
   ],
   "name":"Bit Rotate12",
@@ -1220,10 +1452,10 @@
   "sameAsElement":true
  },
  {
-  "hid":34,
+  "hid":41,
   "sid":"sm_DynamicCompression:1140",
   "esid":"sm_DynamicCompression:1140",
-  "parent":28,
+  "parent":35,
   "children":[
   ],
   "name":"Bit Rotate13",
@@ -1243,10 +1475,10 @@
   "sameAsElement":true
  },
  {
-  "hid":35,
+  "hid":42,
   "sid":"sm_DynamicCompression:1141",
   "esid":"sm_DynamicCompression:1141",
-  "parent":28,
+  "parent":35,
   "children":[
   ],
   "name":"Bit Rotate14",
@@ -1266,10 +1498,10 @@
   "sameAsElement":true
  },
  {
-  "hid":36,
+  "hid":43,
   "sid":"sm_DynamicCompression:1142",
   "esid":"sm_DynamicCompression:1142",
-  "parent":28,
+  "parent":35,
   "children":[
   ],
   "name":"Bit Rotate2",
@@ -1289,10 +1521,10 @@
   "sameAsElement":true
  },
  {
-  "hid":37,
+  "hid":44,
   "sid":"sm_DynamicCompression:1143",
   "esid":"sm_DynamicCompression:1143",
-  "parent":28,
+  "parent":35,
   "children":[
   ],
   "name":"Bit Rotate3",
@@ -1312,10 +1544,10 @@
   "sameAsElement":true
  },
  {
-  "hid":38,
+  "hid":45,
   "sid":"sm_DynamicCompression:1144",
   "esid":"sm_DynamicCompression:1144",
-  "parent":28,
+  "parent":35,
   "children":[
   ],
   "name":"Bit Rotate4",
@@ -1335,10 +1567,10 @@
   "sameAsElement":true
  },
  {
-  "hid":39,
+  "hid":46,
   "sid":"sm_DynamicCompression:1145",
   "esid":"sm_DynamicCompression:1145",
-  "parent":28,
+  "parent":35,
   "children":[
   ],
   "name":"Bit Rotate5",
@@ -1358,10 +1590,10 @@
   "sameAsElement":true
  },
  {
-  "hid":40,
+  "hid":47,
   "sid":"sm_DynamicCompression:1146",
   "esid":"sm_DynamicCompression:1146",
-  "parent":28,
+  "parent":35,
   "children":[
   ],
   "name":"Bit Rotate6",
@@ -1381,10 +1613,10 @@
   "sameAsElement":true
  },
  {
-  "hid":41,
+  "hid":48,
   "sid":"sm_DynamicCompression:1147",
   "esid":"sm_DynamicCompression:1147",
-  "parent":28,
+  "parent":35,
   "children":[
   ],
   "name":"Bit Rotate7",
@@ -1404,10 +1636,10 @@
   "sameAsElement":true
  },
  {
-  "hid":42,
+  "hid":49,
   "sid":"sm_DynamicCompression:1148",
   "esid":"sm_DynamicCompression:1148",
-  "parent":28,
+  "parent":35,
   "children":[
   ],
   "name":"Bit Rotate8",
@@ -1427,10 +1659,10 @@
   "sameAsElement":true
  },
  {
-  "hid":43,
+  "hid":50,
   "sid":"sm_DynamicCompression:1149",
   "esid":"sm_DynamicCompression:1149",
-  "parent":28,
+  "parent":35,
   "children":[
   ],
   "name":"Bit Rotate9",
@@ -1450,18 +1682,11 @@
   "sameAsElement":true
  },
  {
-  "hid":44,
+  "hid":51,
   "sid":"sm_DynamicCompression:1152",
   "esid":"sm_DynamicCompression:1152",
-  "parent":23,
+  "parent":30,
   "children":[
-   45,
-   46,
-   47,
-   48,
-   49,
-   50,
-   51,
    52,
    53,
    54,
@@ -1469,7 +1694,14 @@
    56,
    57,
    58,
-   59
+   59,
+   60,
+   61,
+   62,
+   63,
+   64,
+   65,
+   66
   ],
   "name":"LSR(N)",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_1/Compression_Gain_Calc/Linear_Approximation/LSR(N)",
@@ -1520,10 +1752,10 @@
   "sameAsElement":true
  },
  {
-  "hid":45,
+  "hid":52,
   "sid":"sm_DynamicCompression:1155",
   "esid":"sm_DynamicCompression:1155",
-  "parent":44,
+  "parent":51,
   "children":[
   ],
   "name":"Bit Rotate",
@@ -1543,10 +1775,10 @@
   "sameAsElement":true
  },
  {
-  "hid":46,
+  "hid":53,
   "sid":"sm_DynamicCompression:1156",
   "esid":"sm_DynamicCompression:1156",
-  "parent":44,
+  "parent":51,
   "children":[
   ],
   "name":"Bit Rotate1",
@@ -1566,10 +1798,10 @@
   "sameAsElement":true
  },
  {
-  "hid":47,
+  "hid":54,
   "sid":"sm_DynamicCompression:1157",
   "esid":"sm_DynamicCompression:1157",
-  "parent":44,
+  "parent":51,
   "children":[
   ],
   "name":"Bit Rotate10",
@@ -1589,10 +1821,10 @@
   "sameAsElement":true
  },
  {
-  "hid":48,
+  "hid":55,
   "sid":"sm_DynamicCompression:1158",
   "esid":"sm_DynamicCompression:1158",
-  "parent":44,
+  "parent":51,
   "children":[
   ],
   "name":"Bit Rotate11",
@@ -1612,10 +1844,10 @@
   "sameAsElement":true
  },
  {
-  "hid":49,
+  "hid":56,
   "sid":"sm_DynamicCompression:1159",
   "esid":"sm_DynamicCompression:1159",
-  "parent":44,
+  "parent":51,
   "children":[
   ],
   "name":"Bit Rotate12",
@@ -1635,10 +1867,10 @@
   "sameAsElement":true
  },
  {
-  "hid":50,
+  "hid":57,
   "sid":"sm_DynamicCompression:1160",
   "esid":"sm_DynamicCompression:1160",
-  "parent":44,
+  "parent":51,
   "children":[
   ],
   "name":"Bit Rotate13",
@@ -1658,10 +1890,10 @@
   "sameAsElement":true
  },
  {
-  "hid":51,
+  "hid":58,
   "sid":"sm_DynamicCompression:1161",
   "esid":"sm_DynamicCompression:1161",
-  "parent":44,
+  "parent":51,
   "children":[
   ],
   "name":"Bit Rotate14",
@@ -1681,10 +1913,10 @@
   "sameAsElement":true
  },
  {
-  "hid":52,
+  "hid":59,
   "sid":"sm_DynamicCompression:1162",
   "esid":"sm_DynamicCompression:1162",
-  "parent":44,
+  "parent":51,
   "children":[
   ],
   "name":"Bit Rotate2",
@@ -1704,10 +1936,10 @@
   "sameAsElement":true
  },
  {
-  "hid":53,
+  "hid":60,
   "sid":"sm_DynamicCompression:1163",
   "esid":"sm_DynamicCompression:1163",
-  "parent":44,
+  "parent":51,
   "children":[
   ],
   "name":"Bit Rotate3",
@@ -1727,10 +1959,10 @@
   "sameAsElement":true
  },
  {
-  "hid":54,
+  "hid":61,
   "sid":"sm_DynamicCompression:1164",
   "esid":"sm_DynamicCompression:1164",
-  "parent":44,
+  "parent":51,
   "children":[
   ],
   "name":"Bit Rotate4",
@@ -1750,10 +1982,10 @@
   "sameAsElement":true
  },
  {
-  "hid":55,
+  "hid":62,
   "sid":"sm_DynamicCompression:1165",
   "esid":"sm_DynamicCompression:1165",
-  "parent":44,
+  "parent":51,
   "children":[
   ],
   "name":"Bit Rotate5",
@@ -1773,10 +2005,10 @@
   "sameAsElement":true
  },
  {
-  "hid":56,
+  "hid":63,
   "sid":"sm_DynamicCompression:1166",
   "esid":"sm_DynamicCompression:1166",
-  "parent":44,
+  "parent":51,
   "children":[
   ],
   "name":"Bit Rotate6",
@@ -1796,10 +2028,10 @@
   "sameAsElement":true
  },
  {
-  "hid":57,
+  "hid":64,
   "sid":"sm_DynamicCompression:1167",
   "esid":"sm_DynamicCompression:1167",
-  "parent":44,
+  "parent":51,
   "children":[
   ],
   "name":"Bit Rotate7",
@@ -1819,10 +2051,10 @@
   "sameAsElement":true
  },
  {
-  "hid":58,
+  "hid":65,
   "sid":"sm_DynamicCompression:1168",
   "esid":"sm_DynamicCompression:1168",
-  "parent":44,
+  "parent":51,
   "children":[
   ],
   "name":"Bit Rotate8",
@@ -1842,10 +2074,10 @@
   "sameAsElement":true
  },
  {
-  "hid":59,
+  "hid":66,
   "sid":"sm_DynamicCompression:1169",
   "esid":"sm_DynamicCompression:1169",
-  "parent":44,
+  "parent":51,
   "children":[
   ],
   "name":"Bit Rotate9",
@@ -1865,17 +2097,17 @@
   "sameAsElement":true
  },
  {
-  "hid":60,
+  "hid":67,
   "sid":"sm_DynamicCompression:1184",
   "esid":"sm_DynamicCompression:1184",
-  "parent":21,
+  "parent":28,
   "children":[
-   61,
-   63,
-   64,
-   65,
-   66,
-   82
+   68,
+   70,
+   71,
+   72,
+   73,
+   89
   ],
   "name":"LogAddressing",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_1/Compression_Gain_Calc/LogAddressing",
@@ -1924,12 +2156,12 @@
   "sameAsElement":true
  },
  {
-  "hid":61,
+  "hid":68,
   "sid":"sm_DynamicCompression:1186",
   "esid":"sm_DynamicCompression:1186",
-  "parent":60,
+  "parent":67,
   "children":[
-   62
+   69
   ],
   "name":"Bit Concat",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_1/Compression_Gain_Calc/LogAddressing/Bit Concat",
@@ -1950,10 +2182,10 @@
   "sameAsElement":true
  },
  {
-  "hid":62,
+  "hid":69,
   "sid":"sm_DynamicCompression:1186:2",
   "esid":"sm_DynamicCompression:1186:2",
-  "parent":61,
+  "parent":68,
   "children":[
   ],
   "name":"Bit Concat2",
@@ -1975,10 +2207,10 @@
   "sameAsElement":true
  },
  {
-  "hid":63,
+  "hid":70,
   "sid":"sm_DynamicCompression:1187",
   "esid":"sm_DynamicCompression:1187",
-  "parent":60,
+  "parent":67,
   "children":[
   ],
   "name":"Bit Slice",
@@ -1998,10 +2230,10 @@
   "sameAsElement":true
  },
  {
-  "hid":64,
+  "hid":71,
   "sid":"sm_DynamicCompression:1188",
   "esid":"sm_DynamicCompression:1188",
-  "parent":60,
+  "parent":67,
   "children":[
   ],
   "name":"Bit Slice1",
@@ -2021,10 +2253,10 @@
   "sameAsElement":true
  },
  {
-  "hid":65,
+  "hid":72,
   "sid":"sm_DynamicCompression:1190",
   "esid":"sm_DynamicCompression:1190",
-  "parent":60,
+  "parent":67,
   "children":[
   ],
   "name":"Compare\nTo Constant1",
@@ -2046,18 +2278,11 @@
   "sameAsElement":true
  },
  {
-  "hid":66,
+  "hid":73,
   "sid":"sm_DynamicCompression:1195",
   "esid":"sm_DynamicCompression:1195",
-  "parent":60,
+  "parent":67,
   "children":[
-   67,
-   68,
-   69,
-   70,
-   71,
-   72,
-   73,
    74,
    75,
    76,
@@ -2065,7 +2290,14 @@
    78,
    79,
    80,
-   81
+   81,
+   82,
+   83,
+   84,
+   85,
+   86,
+   87,
+   88
   ],
   "name":"LSL(N)",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_1/Compression_Gain_Calc/LogAddressing/LSL(N)",
@@ -2116,10 +2348,10 @@
   "sameAsElement":true
  },
  {
-  "hid":67,
+  "hid":74,
   "sid":"sm_DynamicCompression:1198",
   "esid":"sm_DynamicCompression:1198",
-  "parent":66,
+  "parent":73,
   "children":[
   ],
   "name":"Bit Rotate",
@@ -2139,10 +2371,10 @@
   "sameAsElement":true
  },
  {
-  "hid":68,
+  "hid":75,
   "sid":"sm_DynamicCompression:1199",
   "esid":"sm_DynamicCompression:1199",
-  "parent":66,
+  "parent":73,
   "children":[
   ],
   "name":"Bit Rotate1",
@@ -2162,10 +2394,10 @@
   "sameAsElement":true
  },
  {
-  "hid":69,
+  "hid":76,
   "sid":"sm_DynamicCompression:1200",
   "esid":"sm_DynamicCompression:1200",
-  "parent":66,
+  "parent":73,
   "children":[
   ],
   "name":"Bit Rotate10",
@@ -2185,10 +2417,10 @@
   "sameAsElement":true
  },
  {
-  "hid":70,
+  "hid":77,
   "sid":"sm_DynamicCompression:1201",
   "esid":"sm_DynamicCompression:1201",
-  "parent":66,
+  "parent":73,
   "children":[
   ],
   "name":"Bit Rotate11",
@@ -2208,10 +2440,10 @@
   "sameAsElement":true
  },
  {
-  "hid":71,
+  "hid":78,
   "sid":"sm_DynamicCompression:1202",
   "esid":"sm_DynamicCompression:1202",
-  "parent":66,
+  "parent":73,
   "children":[
   ],
   "name":"Bit Rotate12",
@@ -2231,10 +2463,10 @@
   "sameAsElement":true
  },
  {
-  "hid":72,
+  "hid":79,
   "sid":"sm_DynamicCompression:1203",
   "esid":"sm_DynamicCompression:1203",
-  "parent":66,
+  "parent":73,
   "children":[
   ],
   "name":"Bit Rotate13",
@@ -2254,10 +2486,10 @@
   "sameAsElement":true
  },
  {
-  "hid":73,
+  "hid":80,
   "sid":"sm_DynamicCompression:1204",
   "esid":"sm_DynamicCompression:1204",
-  "parent":66,
+  "parent":73,
   "children":[
   ],
   "name":"Bit Rotate14",
@@ -2277,10 +2509,10 @@
   "sameAsElement":true
  },
  {
-  "hid":74,
+  "hid":81,
   "sid":"sm_DynamicCompression:1205",
   "esid":"sm_DynamicCompression:1205",
-  "parent":66,
+  "parent":73,
   "children":[
   ],
   "name":"Bit Rotate2",
@@ -2300,10 +2532,10 @@
   "sameAsElement":true
  },
  {
-  "hid":75,
+  "hid":82,
   "sid":"sm_DynamicCompression:1206",
   "esid":"sm_DynamicCompression:1206",
-  "parent":66,
+  "parent":73,
   "children":[
   ],
   "name":"Bit Rotate3",
@@ -2323,10 +2555,10 @@
   "sameAsElement":true
  },
  {
-  "hid":76,
+  "hid":83,
   "sid":"sm_DynamicCompression:1207",
   "esid":"sm_DynamicCompression:1207",
-  "parent":66,
+  "parent":73,
   "children":[
   ],
   "name":"Bit Rotate4",
@@ -2346,10 +2578,10 @@
   "sameAsElement":true
  },
  {
-  "hid":77,
+  "hid":84,
   "sid":"sm_DynamicCompression:1208",
   "esid":"sm_DynamicCompression:1208",
-  "parent":66,
+  "parent":73,
   "children":[
   ],
   "name":"Bit Rotate5",
@@ -2369,10 +2601,10 @@
   "sameAsElement":true
  },
  {
-  "hid":78,
+  "hid":85,
   "sid":"sm_DynamicCompression:1209",
   "esid":"sm_DynamicCompression:1209",
-  "parent":66,
+  "parent":73,
   "children":[
   ],
   "name":"Bit Rotate6",
@@ -2392,10 +2624,10 @@
   "sameAsElement":true
  },
  {
-  "hid":79,
+  "hid":86,
   "sid":"sm_DynamicCompression:1210",
   "esid":"sm_DynamicCompression:1210",
-  "parent":66,
+  "parent":73,
   "children":[
   ],
   "name":"Bit Rotate7",
@@ -2415,10 +2647,10 @@
   "sameAsElement":true
  },
  {
-  "hid":80,
+  "hid":87,
   "sid":"sm_DynamicCompression:1211",
   "esid":"sm_DynamicCompression:1211",
-  "parent":66,
+  "parent":73,
   "children":[
   ],
   "name":"Bit Rotate8",
@@ -2438,10 +2670,10 @@
   "sameAsElement":true
  },
  {
-  "hid":81,
+  "hid":88,
   "sid":"sm_DynamicCompression:1212",
   "esid":"sm_DynamicCompression:1212",
-  "parent":66,
+  "parent":73,
   "children":[
   ],
   "name":"Bit Rotate9",
@@ -2461,12 +2693,12 @@
   "sameAsElement":true
  },
  {
-  "hid":82,
+  "hid":89,
   "sid":"sm_DynamicCompression:1318",
   "esid":"sm_DynamicCompression:1318",
-  "parent":60,
+  "parent":67,
   "children":[
-   83
+   90
   ],
   "name":"fxpt_lzc_W32",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_1/Compression_Gain_Calc/LogAddressing/fxpt_lzc_W32",
@@ -2487,11 +2719,43 @@
   "sameAsElement":true
  },
  {
-  "hid":83,
+  "hid":90,
   "sid":"sm_DynamicCompression:1321",
   "esid":"sm_DynamicCompression:1321",
-  "parent":82,
+  "parent":89,
   "children":[
+   91,
+   92,
+   93,
+   94,
+   95,
+   96,
+   97,
+   98,
+   99,
+   100,
+   101,
+   102,
+   103,
+   104,
+   105,
+   106,
+   107,
+   108,
+   109,
+   110,
+   111,
+   112,
+   113,
+   114,
+   115,
+   116,
+   117,
+   118,
+   119,
+   120,
+   121,
+   122
   ],
   "name":"LZC32",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_1/Compression_Gain_Calc/LogAddressing/fxpt_lzc_W32/LZC32",
@@ -2704,10 +2968,874 @@
   "sameAsElement":true
  },
  {
-  "hid":84,
+  "hid":91,
+  "sid":"sm_DynamicCompression:1357",
+  "esid":"sm_DynamicCompression:1357",
+  "parent":90,
+  "children":[
+  ],
+  "name":"Extract Bits",
+  "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_1/Compression_Gain_Calc/LogAddressing/fxpt_lzc_W32/LZC32/Extract Bits",
+  "label":"Extract Bits",
+  "icon":"sm_DynamicCompression_2333",
+  "svg":"support/slwebview_files/sm_DynamicCompression_1357_d.svg",
+  "thumbnail":"support/slwebview_files/sm_DynamicCompression_1357_d.png",
+  "backingUrl":"support/slwebview_files/sm_DynamicCompression_1357_d.json",
+  "elements":[
+   ":1357:6",
+   ":1357:5",
+   ":1357:4",
+   ":1357:3",
+   ":1357:2",
+   ":1357:1",
+   ":1357:5#out:1",
+   ":1357:1#out:1",
+   ":1357:4#out:1"
+  ],
+  "sameAsElement":true
+ },
+ {
+  "hid":92,
+  "sid":"sm_DynamicCompression:1358",
+  "esid":"sm_DynamicCompression:1358",
+  "parent":90,
+  "children":[
+  ],
+  "name":"Extract Bits1",
+  "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_1/Compression_Gain_Calc/LogAddressing/fxpt_lzc_W32/LZC32/Extract Bits1",
+  "label":"Extract Bits1",
+  "icon":"sm_DynamicCompression_2333",
+  "svg":"support/slwebview_files/sm_DynamicCompression_1358_d.svg",
+  "thumbnail":"support/slwebview_files/sm_DynamicCompression_1358_d.png",
+  "backingUrl":"support/slwebview_files/sm_DynamicCompression_1358_d.json",
+  "elements":[
+   ":1358:6",
+   ":1358:5",
+   ":1358:4",
+   ":1358:3",
+   ":1358:2",
+   ":1358:1",
+   ":1358:5#out:1",
+   ":1358:1#out:1",
+   ":1358:4#out:1"
+  ],
+  "sameAsElement":true
+ },
+ {
+  "hid":93,
+  "sid":"sm_DynamicCompression:1359",
+  "esid":"sm_DynamicCompression:1359",
+  "parent":90,
+  "children":[
+  ],
+  "name":"Extract Bits10",
+  "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_1/Compression_Gain_Calc/LogAddressing/fxpt_lzc_W32/LZC32/Extract Bits10",
+  "label":"Extract Bits10",
+  "icon":"sm_DynamicCompression_2333",
+  "svg":"support/slwebview_files/sm_DynamicCompression_1359_d.svg",
+  "thumbnail":"support/slwebview_files/sm_DynamicCompression_1359_d.png",
+  "backingUrl":"support/slwebview_files/sm_DynamicCompression_1359_d.json",
+  "elements":[
+   ":1359:6",
+   ":1359:5",
+   ":1359:4",
+   ":1359:3",
+   ":1359:2",
+   ":1359:1",
+   ":1359:5#out:1",
+   ":1359:1#out:1",
+   ":1359:4#out:1"
+  ],
+  "sameAsElement":true
+ },
+ {
+  "hid":94,
+  "sid":"sm_DynamicCompression:1360",
+  "esid":"sm_DynamicCompression:1360",
+  "parent":90,
+  "children":[
+  ],
+  "name":"Extract Bits11",
+  "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_1/Compression_Gain_Calc/LogAddressing/fxpt_lzc_W32/LZC32/Extract Bits11",
+  "label":"Extract Bits11",
+  "icon":"sm_DynamicCompression_2333",
+  "svg":"support/slwebview_files/sm_DynamicCompression_1360_d.svg",
+  "thumbnail":"support/slwebview_files/sm_DynamicCompression_1360_d.png",
+  "backingUrl":"support/slwebview_files/sm_DynamicCompression_1360_d.json",
+  "elements":[
+   ":1360:6",
+   ":1360:5",
+   ":1360:4",
+   ":1360:3",
+   ":1360:2",
+   ":1360:1",
+   ":1360:5#out:1",
+   ":1360:1#out:1",
+   ":1360:4#out:1"
+  ],
+  "sameAsElement":true
+ },
+ {
+  "hid":95,
+  "sid":"sm_DynamicCompression:1361",
+  "esid":"sm_DynamicCompression:1361",
+  "parent":90,
+  "children":[
+  ],
+  "name":"Extract Bits12",
+  "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_1/Compression_Gain_Calc/LogAddressing/fxpt_lzc_W32/LZC32/Extract Bits12",
+  "label":"Extract Bits12",
+  "icon":"sm_DynamicCompression_2333",
+  "svg":"support/slwebview_files/sm_DynamicCompression_1361_d.svg",
+  "thumbnail":"support/slwebview_files/sm_DynamicCompression_1361_d.png",
+  "backingUrl":"support/slwebview_files/sm_DynamicCompression_1361_d.json",
+  "elements":[
+   ":1361:6",
+   ":1361:5",
+   ":1361:4",
+   ":1361:3",
+   ":1361:2",
+   ":1361:1",
+   ":1361:5#out:1",
+   ":1361:1#out:1",
+   ":1361:4#out:1"
+  ],
+  "sameAsElement":true
+ },
+ {
+  "hid":96,
+  "sid":"sm_DynamicCompression:1362",
+  "esid":"sm_DynamicCompression:1362",
+  "parent":90,
+  "children":[
+  ],
+  "name":"Extract Bits13",
+  "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_1/Compression_Gain_Calc/LogAddressing/fxpt_lzc_W32/LZC32/Extract Bits13",
+  "label":"Extract Bits13",
+  "icon":"sm_DynamicCompression_2333",
+  "svg":"support/slwebview_files/sm_DynamicCompression_1362_d.svg",
+  "thumbnail":"support/slwebview_files/sm_DynamicCompression_1362_d.png",
+  "backingUrl":"support/slwebview_files/sm_DynamicCompression_1362_d.json",
+  "elements":[
+   ":1362:6",
+   ":1362:5",
+   ":1362:4",
+   ":1362:3",
+   ":1362:2",
+   ":1362:1",
+   ":1362:5#out:1",
+   ":1362:1#out:1",
+   ":1362:4#out:1"
+  ],
+  "sameAsElement":true
+ },
+ {
+  "hid":97,
+  "sid":"sm_DynamicCompression:1363",
+  "esid":"sm_DynamicCompression:1363",
+  "parent":90,
+  "children":[
+  ],
+  "name":"Extract Bits14",
+  "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_1/Compression_Gain_Calc/LogAddressing/fxpt_lzc_W32/LZC32/Extract Bits14",
+  "label":"Extract Bits14",
+  "icon":"sm_DynamicCompression_2333",
+  "svg":"support/slwebview_files/sm_DynamicCompression_1363_d.svg",
+  "thumbnail":"support/slwebview_files/sm_DynamicCompression_1363_d.png",
+  "backingUrl":"support/slwebview_files/sm_DynamicCompression_1363_d.json",
+  "elements":[
+   ":1363:6",
+   ":1363:5",
+   ":1363:4",
+   ":1363:3",
+   ":1363:2",
+   ":1363:1",
+   ":1363:5#out:1",
+   ":1363:1#out:1",
+   ":1363:4#out:1"
+  ],
+  "sameAsElement":true
+ },
+ {
+  "hid":98,
+  "sid":"sm_DynamicCompression:1364",
+  "esid":"sm_DynamicCompression:1364",
+  "parent":90,
+  "children":[
+  ],
+  "name":"Extract Bits15",
+  "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_1/Compression_Gain_Calc/LogAddressing/fxpt_lzc_W32/LZC32/Extract Bits15",
+  "label":"Extract Bits15",
+  "icon":"sm_DynamicCompression_2333",
+  "svg":"support/slwebview_files/sm_DynamicCompression_1364_d.svg",
+  "thumbnail":"support/slwebview_files/sm_DynamicCompression_1364_d.png",
+  "backingUrl":"support/slwebview_files/sm_DynamicCompression_1364_d.json",
+  "elements":[
+   ":1364:6",
+   ":1364:5",
+   ":1364:4",
+   ":1364:3",
+   ":1364:2",
+   ":1364:1",
+   ":1364:5#out:1",
+   ":1364:1#out:1",
+   ":1364:4#out:1"
+  ],
+  "sameAsElement":true
+ },
+ {
+  "hid":99,
+  "sid":"sm_DynamicCompression:1365",
+  "esid":"sm_DynamicCompression:1365",
+  "parent":90,
+  "children":[
+  ],
+  "name":"Extract Bits16",
+  "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_1/Compression_Gain_Calc/LogAddressing/fxpt_lzc_W32/LZC32/Extract Bits16",
+  "label":"Extract Bits16",
+  "icon":"sm_DynamicCompression_2333",
+  "svg":"support/slwebview_files/sm_DynamicCompression_1365_d.svg",
+  "thumbnail":"support/slwebview_files/sm_DynamicCompression_1365_d.png",
+  "backingUrl":"support/slwebview_files/sm_DynamicCompression_1365_d.json",
+  "elements":[
+   ":1365:6",
+   ":1365:5",
+   ":1365:4",
+   ":1365:3",
+   ":1365:2",
+   ":1365:1",
+   ":1365:5#out:1",
+   ":1365:1#out:1",
+   ":1365:4#out:1"
+  ],
+  "sameAsElement":true
+ },
+ {
+  "hid":100,
+  "sid":"sm_DynamicCompression:1366",
+  "esid":"sm_DynamicCompression:1366",
+  "parent":90,
+  "children":[
+  ],
+  "name":"Extract Bits17",
+  "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_1/Compression_Gain_Calc/LogAddressing/fxpt_lzc_W32/LZC32/Extract Bits17",
+  "label":"Extract Bits17",
+  "icon":"sm_DynamicCompression_2333",
+  "svg":"support/slwebview_files/sm_DynamicCompression_1366_d.svg",
+  "thumbnail":"support/slwebview_files/sm_DynamicCompression_1366_d.png",
+  "backingUrl":"support/slwebview_files/sm_DynamicCompression_1366_d.json",
+  "elements":[
+   ":1366:6",
+   ":1366:5",
+   ":1366:4",
+   ":1366:3",
+   ":1366:2",
+   ":1366:1",
+   ":1366:5#out:1",
+   ":1366:1#out:1",
+   ":1366:4#out:1"
+  ],
+  "sameAsElement":true
+ },
+ {
+  "hid":101,
+  "sid":"sm_DynamicCompression:1367",
+  "esid":"sm_DynamicCompression:1367",
+  "parent":90,
+  "children":[
+  ],
+  "name":"Extract Bits18",
+  "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_1/Compression_Gain_Calc/LogAddressing/fxpt_lzc_W32/LZC32/Extract Bits18",
+  "label":"Extract Bits18",
+  "icon":"sm_DynamicCompression_2333",
+  "svg":"support/slwebview_files/sm_DynamicCompression_1367_d.svg",
+  "thumbnail":"support/slwebview_files/sm_DynamicCompression_1367_d.png",
+  "backingUrl":"support/slwebview_files/sm_DynamicCompression_1367_d.json",
+  "elements":[
+   ":1367:6",
+   ":1367:5",
+   ":1367:4",
+   ":1367:3",
+   ":1367:2",
+   ":1367:1",
+   ":1367:5#out:1",
+   ":1367:1#out:1",
+   ":1367:4#out:1"
+  ],
+  "sameAsElement":true
+ },
+ {
+  "hid":102,
+  "sid":"sm_DynamicCompression:1368",
+  "esid":"sm_DynamicCompression:1368",
+  "parent":90,
+  "children":[
+  ],
+  "name":"Extract Bits19",
+  "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_1/Compression_Gain_Calc/LogAddressing/fxpt_lzc_W32/LZC32/Extract Bits19",
+  "label":"Extract Bits19",
+  "icon":"sm_DynamicCompression_2333",
+  "svg":"support/slwebview_files/sm_DynamicCompression_1368_d.svg",
+  "thumbnail":"support/slwebview_files/sm_DynamicCompression_1368_d.png",
+  "backingUrl":"support/slwebview_files/sm_DynamicCompression_1368_d.json",
+  "elements":[
+   ":1368:6",
+   ":1368:5",
+   ":1368:4",
+   ":1368:3",
+   ":1368:2",
+   ":1368:1",
+   ":1368:5#out:1",
+   ":1368:1#out:1",
+   ":1368:4#out:1"
+  ],
+  "sameAsElement":true
+ },
+ {
+  "hid":103,
+  "sid":"sm_DynamicCompression:1369",
+  "esid":"sm_DynamicCompression:1369",
+  "parent":90,
+  "children":[
+  ],
+  "name":"Extract Bits2",
+  "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_1/Compression_Gain_Calc/LogAddressing/fxpt_lzc_W32/LZC32/Extract Bits2",
+  "label":"Extract Bits2",
+  "icon":"sm_DynamicCompression_2333",
+  "svg":"support/slwebview_files/sm_DynamicCompression_1369_d.svg",
+  "thumbnail":"support/slwebview_files/sm_DynamicCompression_1369_d.png",
+  "backingUrl":"support/slwebview_files/sm_DynamicCompression_1369_d.json",
+  "elements":[
+   ":1369:6",
+   ":1369:5",
+   ":1369:4",
+   ":1369:3",
+   ":1369:2",
+   ":1369:1",
+   ":1369:5#out:1",
+   ":1369:1#out:1",
+   ":1369:4#out:1"
+  ],
+  "sameAsElement":true
+ },
+ {
+  "hid":104,
+  "sid":"sm_DynamicCompression:1370",
+  "esid":"sm_DynamicCompression:1370",
+  "parent":90,
+  "children":[
+  ],
+  "name":"Extract Bits20",
+  "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_1/Compression_Gain_Calc/LogAddressing/fxpt_lzc_W32/LZC32/Extract Bits20",
+  "label":"Extract Bits20",
+  "icon":"sm_DynamicCompression_2333",
+  "svg":"support/slwebview_files/sm_DynamicCompression_1370_d.svg",
+  "thumbnail":"support/slwebview_files/sm_DynamicCompression_1370_d.png",
+  "backingUrl":"support/slwebview_files/sm_DynamicCompression_1370_d.json",
+  "elements":[
+   ":1370:6",
+   ":1370:5",
+   ":1370:4",
+   ":1370:3",
+   ":1370:2",
+   ":1370:1",
+   ":1370:5#out:1",
+   ":1370:1#out:1",
+   ":1370:4#out:1"
+  ],
+  "sameAsElement":true
+ },
+ {
+  "hid":105,
+  "sid":"sm_DynamicCompression:1371",
+  "esid":"sm_DynamicCompression:1371",
+  "parent":90,
+  "children":[
+  ],
+  "name":"Extract Bits21",
+  "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_1/Compression_Gain_Calc/LogAddressing/fxpt_lzc_W32/LZC32/Extract Bits21",
+  "label":"Extract Bits21",
+  "icon":"sm_DynamicCompression_2333",
+  "svg":"support/slwebview_files/sm_DynamicCompression_1371_d.svg",
+  "thumbnail":"support/slwebview_files/sm_DynamicCompression_1371_d.png",
+  "backingUrl":"support/slwebview_files/sm_DynamicCompression_1371_d.json",
+  "elements":[
+   ":1371:6",
+   ":1371:5",
+   ":1371:4",
+   ":1371:3",
+   ":1371:2",
+   ":1371:1",
+   ":1371:5#out:1",
+   ":1371:1#out:1",
+   ":1371:4#out:1"
+  ],
+  "sameAsElement":true
+ },
+ {
+  "hid":106,
+  "sid":"sm_DynamicCompression:1372",
+  "esid":"sm_DynamicCompression:1372",
+  "parent":90,
+  "children":[
+  ],
+  "name":"Extract Bits22",
+  "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_1/Compression_Gain_Calc/LogAddressing/fxpt_lzc_W32/LZC32/Extract Bits22",
+  "label":"Extract Bits22",
+  "icon":"sm_DynamicCompression_2333",
+  "svg":"support/slwebview_files/sm_DynamicCompression_1372_d.svg",
+  "thumbnail":"support/slwebview_files/sm_DynamicCompression_1372_d.png",
+  "backingUrl":"support/slwebview_files/sm_DynamicCompression_1372_d.json",
+  "elements":[
+   ":1372:6",
+   ":1372:5",
+   ":1372:4",
+   ":1372:3",
+   ":1372:2",
+   ":1372:1",
+   ":1372:5#out:1",
+   ":1372:1#out:1",
+   ":1372:4#out:1"
+  ],
+  "sameAsElement":true
+ },
+ {
+  "hid":107,
+  "sid":"sm_DynamicCompression:1373",
+  "esid":"sm_DynamicCompression:1373",
+  "parent":90,
+  "children":[
+  ],
+  "name":"Extract Bits23",
+  "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_1/Compression_Gain_Calc/LogAddressing/fxpt_lzc_W32/LZC32/Extract Bits23",
+  "label":"Extract Bits23",
+  "icon":"sm_DynamicCompression_2333",
+  "svg":"support/slwebview_files/sm_DynamicCompression_1373_d.svg",
+  "thumbnail":"support/slwebview_files/sm_DynamicCompression_1373_d.png",
+  "backingUrl":"support/slwebview_files/sm_DynamicCompression_1373_d.json",
+  "elements":[
+   ":1373:6",
+   ":1373:5",
+   ":1373:4",
+   ":1373:3",
+   ":1373:2",
+   ":1373:1",
+   ":1373:5#out:1",
+   ":1373:1#out:1",
+   ":1373:4#out:1"
+  ],
+  "sameAsElement":true
+ },
+ {
+  "hid":108,
+  "sid":"sm_DynamicCompression:1374",
+  "esid":"sm_DynamicCompression:1374",
+  "parent":90,
+  "children":[
+  ],
+  "name":"Extract Bits24",
+  "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_1/Compression_Gain_Calc/LogAddressing/fxpt_lzc_W32/LZC32/Extract Bits24",
+  "label":"Extract Bits24",
+  "icon":"sm_DynamicCompression_2333",
+  "svg":"support/slwebview_files/sm_DynamicCompression_1374_d.svg",
+  "thumbnail":"support/slwebview_files/sm_DynamicCompression_1374_d.png",
+  "backingUrl":"support/slwebview_files/sm_DynamicCompression_1374_d.json",
+  "elements":[
+   ":1374:6",
+   ":1374:5",
+   ":1374:4",
+   ":1374:3",
+   ":1374:2",
+   ":1374:1",
+   ":1374:5#out:1",
+   ":1374:1#out:1",
+   ":1374:4#out:1"
+  ],
+  "sameAsElement":true
+ },
+ {
+  "hid":109,
+  "sid":"sm_DynamicCompression:1375",
+  "esid":"sm_DynamicCompression:1375",
+  "parent":90,
+  "children":[
+  ],
+  "name":"Extract Bits25",
+  "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_1/Compression_Gain_Calc/LogAddressing/fxpt_lzc_W32/LZC32/Extract Bits25",
+  "label":"Extract Bits25",
+  "icon":"sm_DynamicCompression_2333",
+  "svg":"support/slwebview_files/sm_DynamicCompression_1375_d.svg",
+  "thumbnail":"support/slwebview_files/sm_DynamicCompression_1375_d.png",
+  "backingUrl":"support/slwebview_files/sm_DynamicCompression_1375_d.json",
+  "elements":[
+   ":1375:6",
+   ":1375:5",
+   ":1375:4",
+   ":1375:3",
+   ":1375:2",
+   ":1375:1",
+   ":1375:5#out:1",
+   ":1375:1#out:1",
+   ":1375:4#out:1"
+  ],
+  "sameAsElement":true
+ },
+ {
+  "hid":110,
+  "sid":"sm_DynamicCompression:1376",
+  "esid":"sm_DynamicCompression:1376",
+  "parent":90,
+  "children":[
+  ],
+  "name":"Extract Bits26",
+  "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_1/Compression_Gain_Calc/LogAddressing/fxpt_lzc_W32/LZC32/Extract Bits26",
+  "label":"Extract Bits26",
+  "icon":"sm_DynamicCompression_2333",
+  "svg":"support/slwebview_files/sm_DynamicCompression_1376_d.svg",
+  "thumbnail":"support/slwebview_files/sm_DynamicCompression_1376_d.png",
+  "backingUrl":"support/slwebview_files/sm_DynamicCompression_1376_d.json",
+  "elements":[
+   ":1376:6",
+   ":1376:5",
+   ":1376:4",
+   ":1376:3",
+   ":1376:2",
+   ":1376:1",
+   ":1376:5#out:1",
+   ":1376:1#out:1",
+   ":1376:4#out:1"
+  ],
+  "sameAsElement":true
+ },
+ {
+  "hid":111,
+  "sid":"sm_DynamicCompression:1377",
+  "esid":"sm_DynamicCompression:1377",
+  "parent":90,
+  "children":[
+  ],
+  "name":"Extract Bits27",
+  "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_1/Compression_Gain_Calc/LogAddressing/fxpt_lzc_W32/LZC32/Extract Bits27",
+  "label":"Extract Bits27",
+  "icon":"sm_DynamicCompression_2333",
+  "svg":"support/slwebview_files/sm_DynamicCompression_1377_d.svg",
+  "thumbnail":"support/slwebview_files/sm_DynamicCompression_1377_d.png",
+  "backingUrl":"support/slwebview_files/sm_DynamicCompression_1377_d.json",
+  "elements":[
+   ":1377:6",
+   ":1377:5",
+   ":1377:4",
+   ":1377:3",
+   ":1377:2",
+   ":1377:1",
+   ":1377:5#out:1",
+   ":1377:1#out:1",
+   ":1377:4#out:1"
+  ],
+  "sameAsElement":true
+ },
+ {
+  "hid":112,
+  "sid":"sm_DynamicCompression:1378",
+  "esid":"sm_DynamicCompression:1378",
+  "parent":90,
+  "children":[
+  ],
+  "name":"Extract Bits28",
+  "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_1/Compression_Gain_Calc/LogAddressing/fxpt_lzc_W32/LZC32/Extract Bits28",
+  "label":"Extract Bits28",
+  "icon":"sm_DynamicCompression_2333",
+  "svg":"support/slwebview_files/sm_DynamicCompression_1378_d.svg",
+  "thumbnail":"support/slwebview_files/sm_DynamicCompression_1378_d.png",
+  "backingUrl":"support/slwebview_files/sm_DynamicCompression_1378_d.json",
+  "elements":[
+   ":1378:6",
+   ":1378:5",
+   ":1378:4",
+   ":1378:3",
+   ":1378:2",
+   ":1378:1",
+   ":1378:5#out:1",
+   ":1378:1#out:1",
+   ":1378:4#out:1"
+  ],
+  "sameAsElement":true
+ },
+ {
+  "hid":113,
+  "sid":"sm_DynamicCompression:1379",
+  "esid":"sm_DynamicCompression:1379",
+  "parent":90,
+  "children":[
+  ],
+  "name":"Extract Bits29",
+  "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_1/Compression_Gain_Calc/LogAddressing/fxpt_lzc_W32/LZC32/Extract Bits29",
+  "label":"Extract Bits29",
+  "icon":"sm_DynamicCompression_2333",
+  "svg":"support/slwebview_files/sm_DynamicCompression_1379_d.svg",
+  "thumbnail":"support/slwebview_files/sm_DynamicCompression_1379_d.png",
+  "backingUrl":"support/slwebview_files/sm_DynamicCompression_1379_d.json",
+  "elements":[
+   ":1379:6",
+   ":1379:5",
+   ":1379:4",
+   ":1379:3",
+   ":1379:2",
+   ":1379:1",
+   ":1379:5#out:1",
+   ":1379:1#out:1",
+   ":1379:4#out:1"
+  ],
+  "sameAsElement":true
+ },
+ {
+  "hid":114,
+  "sid":"sm_DynamicCompression:1380",
+  "esid":"sm_DynamicCompression:1380",
+  "parent":90,
+  "children":[
+  ],
+  "name":"Extract Bits3",
+  "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_1/Compression_Gain_Calc/LogAddressing/fxpt_lzc_W32/LZC32/Extract Bits3",
+  "label":"Extract Bits3",
+  "icon":"sm_DynamicCompression_2333",
+  "svg":"support/slwebview_files/sm_DynamicCompression_1380_d.svg",
+  "thumbnail":"support/slwebview_files/sm_DynamicCompression_1380_d.png",
+  "backingUrl":"support/slwebview_files/sm_DynamicCompression_1380_d.json",
+  "elements":[
+   ":1380:6",
+   ":1380:5",
+   ":1380:4",
+   ":1380:3",
+   ":1380:2",
+   ":1380:1",
+   ":1380:5#out:1",
+   ":1380:1#out:1",
+   ":1380:4#out:1"
+  ],
+  "sameAsElement":true
+ },
+ {
+  "hid":115,
+  "sid":"sm_DynamicCompression:1381",
+  "esid":"sm_DynamicCompression:1381",
+  "parent":90,
+  "children":[
+  ],
+  "name":"Extract Bits30",
+  "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_1/Compression_Gain_Calc/LogAddressing/fxpt_lzc_W32/LZC32/Extract Bits30",
+  "label":"Extract Bits30",
+  "icon":"sm_DynamicCompression_2333",
+  "svg":"support/slwebview_files/sm_DynamicCompression_1381_d.svg",
+  "thumbnail":"support/slwebview_files/sm_DynamicCompression_1381_d.png",
+  "backingUrl":"support/slwebview_files/sm_DynamicCompression_1381_d.json",
+  "elements":[
+   ":1381:6",
+   ":1381:5",
+   ":1381:4",
+   ":1381:3",
+   ":1381:2",
+   ":1381:1",
+   ":1381:5#out:1",
+   ":1381:1#out:1",
+   ":1381:4#out:1"
+  ],
+  "sameAsElement":true
+ },
+ {
+  "hid":116,
+  "sid":"sm_DynamicCompression:1382",
+  "esid":"sm_DynamicCompression:1382",
+  "parent":90,
+  "children":[
+  ],
+  "name":"Extract Bits31",
+  "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_1/Compression_Gain_Calc/LogAddressing/fxpt_lzc_W32/LZC32/Extract Bits31",
+  "label":"Extract Bits31",
+  "icon":"sm_DynamicCompression_2333",
+  "svg":"support/slwebview_files/sm_DynamicCompression_1382_d.svg",
+  "thumbnail":"support/slwebview_files/sm_DynamicCompression_1382_d.png",
+  "backingUrl":"support/slwebview_files/sm_DynamicCompression_1382_d.json",
+  "elements":[
+   ":1382:6",
+   ":1382:5",
+   ":1382:4",
+   ":1382:3",
+   ":1382:2",
+   ":1382:1",
+   ":1382:5#out:1",
+   ":1382:1#out:1",
+   ":1382:4#out:1"
+  ],
+  "sameAsElement":true
+ },
+ {
+  "hid":117,
+  "sid":"sm_DynamicCompression:1383",
+  "esid":"sm_DynamicCompression:1383",
+  "parent":90,
+  "children":[
+  ],
+  "name":"Extract Bits4",
+  "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_1/Compression_Gain_Calc/LogAddressing/fxpt_lzc_W32/LZC32/Extract Bits4",
+  "label":"Extract Bits4",
+  "icon":"sm_DynamicCompression_2333",
+  "svg":"support/slwebview_files/sm_DynamicCompression_1383_d.svg",
+  "thumbnail":"support/slwebview_files/sm_DynamicCompression_1383_d.png",
+  "backingUrl":"support/slwebview_files/sm_DynamicCompression_1383_d.json",
+  "elements":[
+   ":1383:6",
+   ":1383:5",
+   ":1383:4",
+   ":1383:3",
+   ":1383:2",
+   ":1383:1",
+   ":1383:5#out:1",
+   ":1383:1#out:1",
+   ":1383:4#out:1"
+  ],
+  "sameAsElement":true
+ },
+ {
+  "hid":118,
+  "sid":"sm_DynamicCompression:1384",
+  "esid":"sm_DynamicCompression:1384",
+  "parent":90,
+  "children":[
+  ],
+  "name":"Extract Bits5",
+  "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_1/Compression_Gain_Calc/LogAddressing/fxpt_lzc_W32/LZC32/Extract Bits5",
+  "label":"Extract Bits5",
+  "icon":"sm_DynamicCompression_2333",
+  "svg":"support/slwebview_files/sm_DynamicCompression_1384_d.svg",
+  "thumbnail":"support/slwebview_files/sm_DynamicCompression_1384_d.png",
+  "backingUrl":"support/slwebview_files/sm_DynamicCompression_1384_d.json",
+  "elements":[
+   ":1384:6",
+   ":1384:5",
+   ":1384:4",
+   ":1384:3",
+   ":1384:2",
+   ":1384:1",
+   ":1384:5#out:1",
+   ":1384:1#out:1",
+   ":1384:4#out:1"
+  ],
+  "sameAsElement":true
+ },
+ {
+  "hid":119,
+  "sid":"sm_DynamicCompression:1385",
+  "esid":"sm_DynamicCompression:1385",
+  "parent":90,
+  "children":[
+  ],
+  "name":"Extract Bits6",
+  "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_1/Compression_Gain_Calc/LogAddressing/fxpt_lzc_W32/LZC32/Extract Bits6",
+  "label":"Extract Bits6",
+  "icon":"sm_DynamicCompression_2333",
+  "svg":"support/slwebview_files/sm_DynamicCompression_1385_d.svg",
+  "thumbnail":"support/slwebview_files/sm_DynamicCompression_1385_d.png",
+  "backingUrl":"support/slwebview_files/sm_DynamicCompression_1385_d.json",
+  "elements":[
+   ":1385:6",
+   ":1385:5",
+   ":1385:4",
+   ":1385:3",
+   ":1385:2",
+   ":1385:1",
+   ":1385:5#out:1",
+   ":1385:1#out:1",
+   ":1385:4#out:1"
+  ],
+  "sameAsElement":true
+ },
+ {
+  "hid":120,
+  "sid":"sm_DynamicCompression:1386",
+  "esid":"sm_DynamicCompression:1386",
+  "parent":90,
+  "children":[
+  ],
+  "name":"Extract Bits7",
+  "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_1/Compression_Gain_Calc/LogAddressing/fxpt_lzc_W32/LZC32/Extract Bits7",
+  "label":"Extract Bits7",
+  "icon":"sm_DynamicCompression_2333",
+  "svg":"support/slwebview_files/sm_DynamicCompression_1386_d.svg",
+  "thumbnail":"support/slwebview_files/sm_DynamicCompression_1386_d.png",
+  "backingUrl":"support/slwebview_files/sm_DynamicCompression_1386_d.json",
+  "elements":[
+   ":1386:6",
+   ":1386:5",
+   ":1386:4",
+   ":1386:3",
+   ":1386:2",
+   ":1386:1",
+   ":1386:5#out:1",
+   ":1386:1#out:1",
+   ":1386:4#out:1"
+  ],
+  "sameAsElement":true
+ },
+ {
+  "hid":121,
+  "sid":"sm_DynamicCompression:1387",
+  "esid":"sm_DynamicCompression:1387",
+  "parent":90,
+  "children":[
+  ],
+  "name":"Extract Bits8",
+  "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_1/Compression_Gain_Calc/LogAddressing/fxpt_lzc_W32/LZC32/Extract Bits8",
+  "label":"Extract Bits8",
+  "icon":"sm_DynamicCompression_2333",
+  "svg":"support/slwebview_files/sm_DynamicCompression_1387_d.svg",
+  "thumbnail":"support/slwebview_files/sm_DynamicCompression_1387_d.png",
+  "backingUrl":"support/slwebview_files/sm_DynamicCompression_1387_d.json",
+  "elements":[
+   ":1387:6",
+   ":1387:5",
+   ":1387:4",
+   ":1387:3",
+   ":1387:2",
+   ":1387:1",
+   ":1387:5#out:1",
+   ":1387:1#out:1",
+   ":1387:4#out:1"
+  ],
+  "sameAsElement":true
+ },
+ {
+  "hid":122,
+  "sid":"sm_DynamicCompression:1388",
+  "esid":"sm_DynamicCompression:1388",
+  "parent":90,
+  "children":[
+  ],
+  "name":"Extract Bits9",
+  "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_1/Compression_Gain_Calc/LogAddressing/fxpt_lzc_W32/LZC32/Extract Bits9",
+  "label":"Extract Bits9",
+  "icon":"sm_DynamicCompression_2333",
+  "svg":"support/slwebview_files/sm_DynamicCompression_1388_d.svg",
+  "thumbnail":"support/slwebview_files/sm_DynamicCompression_1388_d.png",
+  "backingUrl":"support/slwebview_files/sm_DynamicCompression_1388_d.json",
+  "elements":[
+   ":1388:6",
+   ":1388:5",
+   ":1388:4",
+   ":1388:3",
+   ":1388:2",
+   ":1388:1",
+   ":1388:5#out:1",
+   ":1388:1#out:1",
+   ":1388:4#out:1"
+  ],
+  "sameAsElement":true
+ },
+ {
+  "hid":123,
   "sid":"sm_DynamicCompression:2975",
   "esid":"sm_DynamicCompression:2975",
-  "parent":21,
+  "parent":28,
   "children":[
   ],
   "name":"Low_Gain_Table",
@@ -2755,14 +3883,14 @@
   "sameAsElement":true
  },
  {
-  "hid":85,
+  "hid":124,
   "sid":"sm_DynamicCompression:1461",
   "esid":"sm_DynamicCompression:1461",
   "parent":10,
   "children":[
-   86,
-   87,
-   91
+   125,
+   126,
+   130
   ],
   "name":"Compression_2",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_2",
@@ -2809,10 +3937,10 @@
   "sameAsElement":true
  },
  {
-  "hid":86,
+  "hid":125,
   "sid":"sm_DynamicCompression:1466",
   "esid":"sm_DynamicCompression:1466",
-  "parent":85,
+  "parent":124,
   "children":[
   ],
   "name":"Compare\nTo Constant",
@@ -2834,14 +3962,14 @@
   "sameAsElement":true
  },
  {
-  "hid":87,
+  "hid":126,
   "sid":"sm_DynamicCompression:1467",
   "esid":"sm_DynamicCompression:1467",
-  "parent":85,
+  "parent":124,
   "children":[
-   88,
-   89,
-   90
+   127,
+   128,
+   129
   ],
   "name":"Compression_Envelope",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_2/Compression_Envelope",
@@ -2874,10 +4002,10 @@
   "sameAsElement":true
  },
  {
-  "hid":88,
+  "hid":127,
   "sid":"sm_DynamicCompression:1470",
   "esid":"sm_DynamicCompression:1470",
-  "parent":87,
+  "parent":126,
   "children":[
   ],
   "name":"Attack_Envelope",
@@ -2907,10 +4035,10 @@
   "sameAsElement":true
  },
  {
-  "hid":89,
+  "hid":128,
   "sid":"sm_DynamicCompression:1480",
   "esid":"sm_DynamicCompression:1480",
-  "parent":87,
+  "parent":126,
   "children":[
   ],
   "name":"Compare\nTo Zero",
@@ -2932,10 +4060,10 @@
   "sameAsElement":true
  },
  {
-  "hid":90,
+  "hid":129,
   "sid":"sm_DynamicCompression:1482",
   "esid":"sm_DynamicCompression:1482",
-  "parent":87,
+  "parent":126,
   "children":[
   ],
   "name":"Release_Envelope",
@@ -2965,15 +4093,15 @@
   "sameAsElement":true
  },
  {
-  "hid":91,
+  "hid":130,
   "sid":"sm_DynamicCompression:2976",
   "esid":"sm_DynamicCompression:2976",
-  "parent":85,
+  "parent":124,
   "children":[
-   92,
-   93,
-   130,
-   152
+   131,
+   132,
+   169,
+   191
   ],
   "name":"Compression_Gain_Calc",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_2/Compression_Gain_Calc",
@@ -3022,10 +4150,10 @@
   "sameAsElement":true
  },
  {
-  "hid":92,
+  "hid":131,
   "sid":"sm_DynamicCompression:2983",
   "esid":"sm_DynamicCompression:2983",
-  "parent":91,
+  "parent":130,
   "children":[
   ],
   "name":"High_Gain_Table",
@@ -3072,17 +4200,17 @@
   "sameAsElement":true
  },
  {
-  "hid":93,
+  "hid":132,
   "sid":"sm_DynamicCompression:2984",
   "esid":"sm_DynamicCompression:2984",
-  "parent":91,
+  "parent":130,
   "children":[
-   94,
-   95,
-   96,
-   97,
-   98,
-   114
+   133,
+   134,
+   135,
+   136,
+   137,
+   153
   ],
   "name":"Linear_Approximation",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_2/Compression_Gain_Calc/Linear_Approximation",
@@ -3147,10 +4275,10 @@
   "sameAsElement":true
  },
  {
-  "hid":94,
+  "hid":133,
   "sid":"sm_DynamicCompression:2989",
   "esid":"sm_DynamicCompression:2989",
-  "parent":93,
+  "parent":132,
   "children":[
   ],
   "name":"Bit Rotate1",
@@ -3170,10 +4298,10 @@
   "sameAsElement":true
  },
  {
-  "hid":95,
+  "hid":134,
   "sid":"sm_DynamicCompression:2990",
   "esid":"sm_DynamicCompression:2990",
-  "parent":93,
+  "parent":132,
   "children":[
   ],
   "name":"Bit Slice",
@@ -3193,10 +4321,10 @@
   "sameAsElement":true
  },
  {
-  "hid":96,
+  "hid":135,
   "sid":"sm_DynamicCompression:2991",
   "esid":"sm_DynamicCompression:2991",
-  "parent":93,
+  "parent":132,
   "children":[
   ],
   "name":"Bit Slice1",
@@ -3216,10 +4344,10 @@
   "sameAsElement":true
  },
  {
-  "hid":97,
+  "hid":136,
   "sid":"sm_DynamicCompression:2993",
   "esid":"sm_DynamicCompression:2993",
-  "parent":93,
+  "parent":132,
   "children":[
   ],
   "name":"Compare\nTo Constant",
@@ -3241,26 +4369,26 @@
   "sameAsElement":true
  },
  {
-  "hid":98,
+  "hid":137,
   "sid":"sm_DynamicCompression:2998",
   "esid":"sm_DynamicCompression:2998",
-  "parent":93,
+  "parent":132,
   "children":[
-   99,
-   100,
-   101,
-   102,
-   103,
-   104,
-   105,
-   106,
-   107,
-   108,
-   109,
-   110,
-   111,
-   112,
-   113
+   138,
+   139,
+   140,
+   141,
+   142,
+   143,
+   144,
+   145,
+   146,
+   147,
+   148,
+   149,
+   150,
+   151,
+   152
   ],
   "name":"LSL(N)",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_2/Compression_Gain_Calc/Linear_Approximation/LSL(N)",
@@ -3311,10 +4439,10 @@
   "sameAsElement":true
  },
  {
-  "hid":99,
+  "hid":138,
   "sid":"sm_DynamicCompression:3001",
   "esid":"sm_DynamicCompression:3001",
-  "parent":98,
+  "parent":137,
   "children":[
   ],
   "name":"Bit Rotate",
@@ -3334,10 +4462,10 @@
   "sameAsElement":true
  },
  {
-  "hid":100,
+  "hid":139,
   "sid":"sm_DynamicCompression:3002",
   "esid":"sm_DynamicCompression:3002",
-  "parent":98,
+  "parent":137,
   "children":[
   ],
   "name":"Bit Rotate1",
@@ -3357,10 +4485,10 @@
   "sameAsElement":true
  },
  {
-  "hid":101,
+  "hid":140,
   "sid":"sm_DynamicCompression:3003",
   "esid":"sm_DynamicCompression:3003",
-  "parent":98,
+  "parent":137,
   "children":[
   ],
   "name":"Bit Rotate10",
@@ -3380,10 +4508,10 @@
   "sameAsElement":true
  },
  {
-  "hid":102,
+  "hid":141,
   "sid":"sm_DynamicCompression:3004",
   "esid":"sm_DynamicCompression:3004",
-  "parent":98,
+  "parent":137,
   "children":[
   ],
   "name":"Bit Rotate11",
@@ -3403,10 +4531,10 @@
   "sameAsElement":true
  },
  {
-  "hid":103,
+  "hid":142,
   "sid":"sm_DynamicCompression:3005",
   "esid":"sm_DynamicCompression:3005",
-  "parent":98,
+  "parent":137,
   "children":[
   ],
   "name":"Bit Rotate12",
@@ -3426,10 +4554,10 @@
   "sameAsElement":true
  },
  {
-  "hid":104,
+  "hid":143,
   "sid":"sm_DynamicCompression:3006",
   "esid":"sm_DynamicCompression:3006",
-  "parent":98,
+  "parent":137,
   "children":[
   ],
   "name":"Bit Rotate13",
@@ -3449,10 +4577,10 @@
   "sameAsElement":true
  },
  {
-  "hid":105,
+  "hid":144,
   "sid":"sm_DynamicCompression:3007",
   "esid":"sm_DynamicCompression:3007",
-  "parent":98,
+  "parent":137,
   "children":[
   ],
   "name":"Bit Rotate14",
@@ -3472,10 +4600,10 @@
   "sameAsElement":true
  },
  {
-  "hid":106,
+  "hid":145,
   "sid":"sm_DynamicCompression:3008",
   "esid":"sm_DynamicCompression:3008",
-  "parent":98,
+  "parent":137,
   "children":[
   ],
   "name":"Bit Rotate2",
@@ -3495,10 +4623,10 @@
   "sameAsElement":true
  },
  {
-  "hid":107,
+  "hid":146,
   "sid":"sm_DynamicCompression:3009",
   "esid":"sm_DynamicCompression:3009",
-  "parent":98,
+  "parent":137,
   "children":[
   ],
   "name":"Bit Rotate3",
@@ -3518,10 +4646,10 @@
   "sameAsElement":true
  },
  {
-  "hid":108,
+  "hid":147,
   "sid":"sm_DynamicCompression:3010",
   "esid":"sm_DynamicCompression:3010",
-  "parent":98,
+  "parent":137,
   "children":[
   ],
   "name":"Bit Rotate4",
@@ -3541,10 +4669,10 @@
   "sameAsElement":true
  },
  {
-  "hid":109,
+  "hid":148,
   "sid":"sm_DynamicCompression:3011",
   "esid":"sm_DynamicCompression:3011",
-  "parent":98,
+  "parent":137,
   "children":[
   ],
   "name":"Bit Rotate5",
@@ -3564,10 +4692,10 @@
   "sameAsElement":true
  },
  {
-  "hid":110,
+  "hid":149,
   "sid":"sm_DynamicCompression:3012",
   "esid":"sm_DynamicCompression:3012",
-  "parent":98,
+  "parent":137,
   "children":[
   ],
   "name":"Bit Rotate6",
@@ -3587,10 +4715,10 @@
   "sameAsElement":true
  },
  {
-  "hid":111,
+  "hid":150,
   "sid":"sm_DynamicCompression:3013",
   "esid":"sm_DynamicCompression:3013",
-  "parent":98,
+  "parent":137,
   "children":[
   ],
   "name":"Bit Rotate7",
@@ -3610,10 +4738,10 @@
   "sameAsElement":true
  },
  {
-  "hid":112,
+  "hid":151,
   "sid":"sm_DynamicCompression:3014",
   "esid":"sm_DynamicCompression:3014",
-  "parent":98,
+  "parent":137,
   "children":[
   ],
   "name":"Bit Rotate8",
@@ -3633,10 +4761,10 @@
   "sameAsElement":true
  },
  {
-  "hid":113,
+  "hid":152,
   "sid":"sm_DynamicCompression:3015",
   "esid":"sm_DynamicCompression:3015",
-  "parent":98,
+  "parent":137,
   "children":[
   ],
   "name":"Bit Rotate9",
@@ -3656,26 +4784,26 @@
   "sameAsElement":true
  },
  {
-  "hid":114,
+  "hid":153,
   "sid":"sm_DynamicCompression:3018",
   "esid":"sm_DynamicCompression:3018",
-  "parent":93,
+  "parent":132,
   "children":[
-   115,
-   116,
-   117,
-   118,
-   119,
-   120,
-   121,
-   122,
-   123,
-   124,
-   125,
-   126,
-   127,
-   128,
-   129
+   154,
+   155,
+   156,
+   157,
+   158,
+   159,
+   160,
+   161,
+   162,
+   163,
+   164,
+   165,
+   166,
+   167,
+   168
   ],
   "name":"LSR(N)",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_2/Compression_Gain_Calc/Linear_Approximation/LSR(N)",
@@ -3726,10 +4854,10 @@
   "sameAsElement":true
  },
  {
-  "hid":115,
+  "hid":154,
   "sid":"sm_DynamicCompression:3021",
   "esid":"sm_DynamicCompression:3021",
-  "parent":114,
+  "parent":153,
   "children":[
   ],
   "name":"Bit Rotate",
@@ -3749,10 +4877,10 @@
   "sameAsElement":true
  },
  {
-  "hid":116,
+  "hid":155,
   "sid":"sm_DynamicCompression:3022",
   "esid":"sm_DynamicCompression:3022",
-  "parent":114,
+  "parent":153,
   "children":[
   ],
   "name":"Bit Rotate1",
@@ -3772,10 +4900,10 @@
   "sameAsElement":true
  },
  {
-  "hid":117,
+  "hid":156,
   "sid":"sm_DynamicCompression:3023",
   "esid":"sm_DynamicCompression:3023",
-  "parent":114,
+  "parent":153,
   "children":[
   ],
   "name":"Bit Rotate10",
@@ -3795,10 +4923,10 @@
   "sameAsElement":true
  },
  {
-  "hid":118,
+  "hid":157,
   "sid":"sm_DynamicCompression:3024",
   "esid":"sm_DynamicCompression:3024",
-  "parent":114,
+  "parent":153,
   "children":[
   ],
   "name":"Bit Rotate11",
@@ -3818,10 +4946,10 @@
   "sameAsElement":true
  },
  {
-  "hid":119,
+  "hid":158,
   "sid":"sm_DynamicCompression:3025",
   "esid":"sm_DynamicCompression:3025",
-  "parent":114,
+  "parent":153,
   "children":[
   ],
   "name":"Bit Rotate12",
@@ -3841,10 +4969,10 @@
   "sameAsElement":true
  },
  {
-  "hid":120,
+  "hid":159,
   "sid":"sm_DynamicCompression:3026",
   "esid":"sm_DynamicCompression:3026",
-  "parent":114,
+  "parent":153,
   "children":[
   ],
   "name":"Bit Rotate13",
@@ -3864,10 +4992,10 @@
   "sameAsElement":true
  },
  {
-  "hid":121,
+  "hid":160,
   "sid":"sm_DynamicCompression:3027",
   "esid":"sm_DynamicCompression:3027",
-  "parent":114,
+  "parent":153,
   "children":[
   ],
   "name":"Bit Rotate14",
@@ -3887,10 +5015,10 @@
   "sameAsElement":true
  },
  {
-  "hid":122,
+  "hid":161,
   "sid":"sm_DynamicCompression:3028",
   "esid":"sm_DynamicCompression:3028",
-  "parent":114,
+  "parent":153,
   "children":[
   ],
   "name":"Bit Rotate2",
@@ -3910,10 +5038,10 @@
   "sameAsElement":true
  },
  {
-  "hid":123,
+  "hid":162,
   "sid":"sm_DynamicCompression:3029",
   "esid":"sm_DynamicCompression:3029",
-  "parent":114,
+  "parent":153,
   "children":[
   ],
   "name":"Bit Rotate3",
@@ -3933,10 +5061,10 @@
   "sameAsElement":true
  },
  {
-  "hid":124,
+  "hid":163,
   "sid":"sm_DynamicCompression:3030",
   "esid":"sm_DynamicCompression:3030",
-  "parent":114,
+  "parent":153,
   "children":[
   ],
   "name":"Bit Rotate4",
@@ -3956,10 +5084,10 @@
   "sameAsElement":true
  },
  {
-  "hid":125,
+  "hid":164,
   "sid":"sm_DynamicCompression:3031",
   "esid":"sm_DynamicCompression:3031",
-  "parent":114,
+  "parent":153,
   "children":[
   ],
   "name":"Bit Rotate5",
@@ -3979,10 +5107,10 @@
   "sameAsElement":true
  },
  {
-  "hid":126,
+  "hid":165,
   "sid":"sm_DynamicCompression:3032",
   "esid":"sm_DynamicCompression:3032",
-  "parent":114,
+  "parent":153,
   "children":[
   ],
   "name":"Bit Rotate6",
@@ -4002,10 +5130,10 @@
   "sameAsElement":true
  },
  {
-  "hid":127,
+  "hid":166,
   "sid":"sm_DynamicCompression:3033",
   "esid":"sm_DynamicCompression:3033",
-  "parent":114,
+  "parent":153,
   "children":[
   ],
   "name":"Bit Rotate7",
@@ -4025,10 +5153,10 @@
   "sameAsElement":true
  },
  {
-  "hid":128,
+  "hid":167,
   "sid":"sm_DynamicCompression:3034",
   "esid":"sm_DynamicCompression:3034",
-  "parent":114,
+  "parent":153,
   "children":[
   ],
   "name":"Bit Rotate8",
@@ -4048,10 +5176,10 @@
   "sameAsElement":true
  },
  {
-  "hid":129,
+  "hid":168,
   "sid":"sm_DynamicCompression:3035",
   "esid":"sm_DynamicCompression:3035",
-  "parent":114,
+  "parent":153,
   "children":[
   ],
   "name":"Bit Rotate9",
@@ -4071,16 +5199,16 @@
   "sameAsElement":true
  },
  {
-  "hid":130,
+  "hid":169,
   "sid":"sm_DynamicCompression:5582",
   "esid":"sm_DynamicCompression:5582",
-  "parent":91,
+  "parent":130,
   "children":[
-   131,
-   133,
-   134,
-   135,
-   136
+   170,
+   172,
+   173,
+   174,
+   175
   ],
   "name":"LogAddressing",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_2/Compression_Gain_Calc/LogAddressing",
@@ -4128,12 +5256,12 @@
   "sameAsElement":true
  },
  {
-  "hid":131,
+  "hid":170,
   "sid":"sm_DynamicCompression:5584",
   "esid":"sm_DynamicCompression:5584",
-  "parent":130,
+  "parent":169,
   "children":[
-   132
+   171
   ],
   "name":"Bit Concat",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_2/Compression_Gain_Calc/LogAddressing/Bit Concat",
@@ -4154,10 +5282,10 @@
   "sameAsElement":true
  },
  {
-  "hid":132,
+  "hid":171,
   "sid":"sm_DynamicCompression:5584:2",
   "esid":"sm_DynamicCompression:5584:2",
-  "parent":131,
+  "parent":170,
   "children":[
   ],
   "name":"Bit Concat2",
@@ -4179,10 +5307,10 @@
   "sameAsElement":true
  },
  {
-  "hid":133,
+  "hid":172,
   "sid":"sm_DynamicCompression:5585",
   "esid":"sm_DynamicCompression:5585",
-  "parent":130,
+  "parent":169,
   "children":[
   ],
   "name":"Bit Slice",
@@ -4202,10 +5330,10 @@
   "sameAsElement":true
  },
  {
-  "hid":134,
+  "hid":173,
   "sid":"sm_DynamicCompression:5586",
   "esid":"sm_DynamicCompression:5586",
-  "parent":130,
+  "parent":169,
   "children":[
   ],
   "name":"Bit Slice1",
@@ -4225,10 +5353,10 @@
   "sameAsElement":true
  },
  {
-  "hid":135,
+  "hid":174,
   "sid":"sm_DynamicCompression:5588",
   "esid":"sm_DynamicCompression:5588",
-  "parent":130,
+  "parent":169,
   "children":[
   ],
   "name":"Compare\nTo Constant1",
@@ -4250,26 +5378,26 @@
   "sameAsElement":true
  },
  {
-  "hid":136,
+  "hid":175,
   "sid":"sm_DynamicCompression:5594",
   "esid":"sm_DynamicCompression:5594",
-  "parent":130,
+  "parent":169,
   "children":[
-   137,
-   138,
-   139,
-   140,
-   141,
-   142,
-   143,
-   144,
-   145,
-   146,
-   147,
-   148,
-   149,
-   150,
-   151
+   176,
+   177,
+   178,
+   179,
+   180,
+   181,
+   182,
+   183,
+   184,
+   185,
+   186,
+   187,
+   188,
+   189,
+   190
   ],
   "name":"LSL(N)",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_2/Compression_Gain_Calc/LogAddressing/LSL(N)",
@@ -4320,10 +5448,10 @@
   "sameAsElement":true
  },
  {
-  "hid":137,
+  "hid":176,
   "sid":"sm_DynamicCompression:5597",
   "esid":"sm_DynamicCompression:5597",
-  "parent":136,
+  "parent":175,
   "children":[
   ],
   "name":"Bit Rotate",
@@ -4343,10 +5471,10 @@
   "sameAsElement":true
  },
  {
-  "hid":138,
+  "hid":177,
   "sid":"sm_DynamicCompression:5598",
   "esid":"sm_DynamicCompression:5598",
-  "parent":136,
+  "parent":175,
   "children":[
   ],
   "name":"Bit Rotate1",
@@ -4366,10 +5494,10 @@
   "sameAsElement":true
  },
  {
-  "hid":139,
+  "hid":178,
   "sid":"sm_DynamicCompression:5599",
   "esid":"sm_DynamicCompression:5599",
-  "parent":136,
+  "parent":175,
   "children":[
   ],
   "name":"Bit Rotate10",
@@ -4389,10 +5517,10 @@
   "sameAsElement":true
  },
  {
-  "hid":140,
+  "hid":179,
   "sid":"sm_DynamicCompression:5600",
   "esid":"sm_DynamicCompression:5600",
-  "parent":136,
+  "parent":175,
   "children":[
   ],
   "name":"Bit Rotate11",
@@ -4412,10 +5540,10 @@
   "sameAsElement":true
  },
  {
-  "hid":141,
+  "hid":180,
   "sid":"sm_DynamicCompression:5601",
   "esid":"sm_DynamicCompression:5601",
-  "parent":136,
+  "parent":175,
   "children":[
   ],
   "name":"Bit Rotate12",
@@ -4435,10 +5563,10 @@
   "sameAsElement":true
  },
  {
-  "hid":142,
+  "hid":181,
   "sid":"sm_DynamicCompression:5602",
   "esid":"sm_DynamicCompression:5602",
-  "parent":136,
+  "parent":175,
   "children":[
   ],
   "name":"Bit Rotate13",
@@ -4458,10 +5586,10 @@
   "sameAsElement":true
  },
  {
-  "hid":143,
+  "hid":182,
   "sid":"sm_DynamicCompression:5603",
   "esid":"sm_DynamicCompression:5603",
-  "parent":136,
+  "parent":175,
   "children":[
   ],
   "name":"Bit Rotate14",
@@ -4481,10 +5609,10 @@
   "sameAsElement":true
  },
  {
-  "hid":144,
+  "hid":183,
   "sid":"sm_DynamicCompression:5604",
   "esid":"sm_DynamicCompression:5604",
-  "parent":136,
+  "parent":175,
   "children":[
   ],
   "name":"Bit Rotate2",
@@ -4504,10 +5632,10 @@
   "sameAsElement":true
  },
  {
-  "hid":145,
+  "hid":184,
   "sid":"sm_DynamicCompression:5605",
   "esid":"sm_DynamicCompression:5605",
-  "parent":136,
+  "parent":175,
   "children":[
   ],
   "name":"Bit Rotate3",
@@ -4527,10 +5655,10 @@
   "sameAsElement":true
  },
  {
-  "hid":146,
+  "hid":185,
   "sid":"sm_DynamicCompression:5606",
   "esid":"sm_DynamicCompression:5606",
-  "parent":136,
+  "parent":175,
   "children":[
   ],
   "name":"Bit Rotate4",
@@ -4550,10 +5678,10 @@
   "sameAsElement":true
  },
  {
-  "hid":147,
+  "hid":186,
   "sid":"sm_DynamicCompression:5607",
   "esid":"sm_DynamicCompression:5607",
-  "parent":136,
+  "parent":175,
   "children":[
   ],
   "name":"Bit Rotate5",
@@ -4573,10 +5701,10 @@
   "sameAsElement":true
  },
  {
-  "hid":148,
+  "hid":187,
   "sid":"sm_DynamicCompression:5608",
   "esid":"sm_DynamicCompression:5608",
-  "parent":136,
+  "parent":175,
   "children":[
   ],
   "name":"Bit Rotate6",
@@ -4596,10 +5724,10 @@
   "sameAsElement":true
  },
  {
-  "hid":149,
+  "hid":188,
   "sid":"sm_DynamicCompression:5609",
   "esid":"sm_DynamicCompression:5609",
-  "parent":136,
+  "parent":175,
   "children":[
   ],
   "name":"Bit Rotate7",
@@ -4619,10 +5747,10 @@
   "sameAsElement":true
  },
  {
-  "hid":150,
+  "hid":189,
   "sid":"sm_DynamicCompression:5610",
   "esid":"sm_DynamicCompression:5610",
-  "parent":136,
+  "parent":175,
   "children":[
   ],
   "name":"Bit Rotate8",
@@ -4642,10 +5770,10 @@
   "sameAsElement":true
  },
  {
-  "hid":151,
+  "hid":190,
   "sid":"sm_DynamicCompression:5611",
   "esid":"sm_DynamicCompression:5611",
-  "parent":136,
+  "parent":175,
   "children":[
   ],
   "name":"Bit Rotate9",
@@ -4665,10 +5793,10 @@
   "sameAsElement":true
  },
  {
-  "hid":152,
+  "hid":191,
   "sid":"sm_DynamicCompression:3291",
   "esid":"sm_DynamicCompression:3291",
-  "parent":91,
+  "parent":130,
   "children":[
   ],
   "name":"Low_Gain_Table",
@@ -4715,14 +5843,14 @@
   "sameAsElement":true
  },
  {
-  "hid":153,
+  "hid":192,
   "sid":"sm_DynamicCompression:1831",
   "esid":"sm_DynamicCompression:1831",
   "parent":10,
   "children":[
-   154,
-   155,
-   159
+   193,
+   194,
+   198
   ],
   "name":"Compression_3",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_3",
@@ -4769,10 +5897,10 @@
   "sameAsElement":true
  },
  {
-  "hid":154,
+  "hid":193,
   "sid":"sm_DynamicCompression:1836",
   "esid":"sm_DynamicCompression:1836",
-  "parent":153,
+  "parent":192,
   "children":[
   ],
   "name":"Compare\nTo Constant",
@@ -4794,14 +5922,14 @@
   "sameAsElement":true
  },
  {
-  "hid":155,
+  "hid":194,
   "sid":"sm_DynamicCompression:1837",
   "esid":"sm_DynamicCompression:1837",
-  "parent":153,
+  "parent":192,
   "children":[
-   156,
-   157,
-   158
+   195,
+   196,
+   197
   ],
   "name":"Compression_Envelope",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_3/Compression_Envelope",
@@ -4834,10 +5962,10 @@
   "sameAsElement":true
  },
  {
-  "hid":156,
+  "hid":195,
   "sid":"sm_DynamicCompression:1840",
   "esid":"sm_DynamicCompression:1840",
-  "parent":155,
+  "parent":194,
   "children":[
   ],
   "name":"Attack_Envelope",
@@ -4867,10 +5995,10 @@
   "sameAsElement":true
  },
  {
-  "hid":157,
+  "hid":196,
   "sid":"sm_DynamicCompression:1850",
   "esid":"sm_DynamicCompression:1850",
-  "parent":155,
+  "parent":194,
   "children":[
   ],
   "name":"Compare\nTo Zero",
@@ -4892,10 +6020,10 @@
   "sameAsElement":true
  },
  {
-  "hid":158,
+  "hid":197,
   "sid":"sm_DynamicCompression:1852",
   "esid":"sm_DynamicCompression:1852",
-  "parent":155,
+  "parent":194,
   "children":[
   ],
   "name":"Release_Envelope",
@@ -4925,15 +6053,15 @@
   "sameAsElement":true
  },
  {
-  "hid":159,
+  "hid":198,
   "sid":"sm_DynamicCompression:3301",
   "esid":"sm_DynamicCompression:3301",
-  "parent":153,
+  "parent":192,
   "children":[
-   160,
-   161,
-   198,
-   220
+   199,
+   200,
+   237,
+   259
   ],
   "name":"Compression_Gain_Calc",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_3/Compression_Gain_Calc",
@@ -4982,10 +6110,10 @@
   "sameAsElement":true
  },
  {
-  "hid":160,
+  "hid":199,
   "sid":"sm_DynamicCompression:3308",
   "esid":"sm_DynamicCompression:3308",
-  "parent":159,
+  "parent":198,
   "children":[
   ],
   "name":"High_Gain_Table",
@@ -5032,17 +6160,17 @@
   "sameAsElement":true
  },
  {
-  "hid":161,
+  "hid":200,
   "sid":"sm_DynamicCompression:3309",
   "esid":"sm_DynamicCompression:3309",
-  "parent":159,
+  "parent":198,
   "children":[
-   162,
-   163,
-   164,
-   165,
-   166,
-   182
+   201,
+   202,
+   203,
+   204,
+   205,
+   221
   ],
   "name":"Linear_Approximation",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_3/Compression_Gain_Calc/Linear_Approximation",
@@ -5107,10 +6235,10 @@
   "sameAsElement":true
  },
  {
-  "hid":162,
+  "hid":201,
   "sid":"sm_DynamicCompression:3314",
   "esid":"sm_DynamicCompression:3314",
-  "parent":161,
+  "parent":200,
   "children":[
   ],
   "name":"Bit Rotate1",
@@ -5130,10 +6258,10 @@
   "sameAsElement":true
  },
  {
-  "hid":163,
+  "hid":202,
   "sid":"sm_DynamicCompression:3315",
   "esid":"sm_DynamicCompression:3315",
-  "parent":161,
+  "parent":200,
   "children":[
   ],
   "name":"Bit Slice",
@@ -5153,10 +6281,10 @@
   "sameAsElement":true
  },
  {
-  "hid":164,
+  "hid":203,
   "sid":"sm_DynamicCompression:3316",
   "esid":"sm_DynamicCompression:3316",
-  "parent":161,
+  "parent":200,
   "children":[
   ],
   "name":"Bit Slice1",
@@ -5176,10 +6304,10 @@
   "sameAsElement":true
  },
  {
-  "hid":165,
+  "hid":204,
   "sid":"sm_DynamicCompression:3318",
   "esid":"sm_DynamicCompression:3318",
-  "parent":161,
+  "parent":200,
   "children":[
   ],
   "name":"Compare\nTo Constant",
@@ -5201,26 +6329,26 @@
   "sameAsElement":true
  },
  {
-  "hid":166,
+  "hid":205,
   "sid":"sm_DynamicCompression:3323",
   "esid":"sm_DynamicCompression:3323",
-  "parent":161,
+  "parent":200,
   "children":[
-   167,
-   168,
-   169,
-   170,
-   171,
-   172,
-   173,
-   174,
-   175,
-   176,
-   177,
-   178,
-   179,
-   180,
-   181
+   206,
+   207,
+   208,
+   209,
+   210,
+   211,
+   212,
+   213,
+   214,
+   215,
+   216,
+   217,
+   218,
+   219,
+   220
   ],
   "name":"LSL(N)",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_3/Compression_Gain_Calc/Linear_Approximation/LSL(N)",
@@ -5271,10 +6399,10 @@
   "sameAsElement":true
  },
  {
-  "hid":167,
+  "hid":206,
   "sid":"sm_DynamicCompression:3326",
   "esid":"sm_DynamicCompression:3326",
-  "parent":166,
+  "parent":205,
   "children":[
   ],
   "name":"Bit Rotate",
@@ -5294,10 +6422,10 @@
   "sameAsElement":true
  },
  {
-  "hid":168,
+  "hid":207,
   "sid":"sm_DynamicCompression:3327",
   "esid":"sm_DynamicCompression:3327",
-  "parent":166,
+  "parent":205,
   "children":[
   ],
   "name":"Bit Rotate1",
@@ -5317,10 +6445,10 @@
   "sameAsElement":true
  },
  {
-  "hid":169,
+  "hid":208,
   "sid":"sm_DynamicCompression:3328",
   "esid":"sm_DynamicCompression:3328",
-  "parent":166,
+  "parent":205,
   "children":[
   ],
   "name":"Bit Rotate10",
@@ -5340,10 +6468,10 @@
   "sameAsElement":true
  },
  {
-  "hid":170,
+  "hid":209,
   "sid":"sm_DynamicCompression:3329",
   "esid":"sm_DynamicCompression:3329",
-  "parent":166,
+  "parent":205,
   "children":[
   ],
   "name":"Bit Rotate11",
@@ -5363,10 +6491,10 @@
   "sameAsElement":true
  },
  {
-  "hid":171,
+  "hid":210,
   "sid":"sm_DynamicCompression:3330",
   "esid":"sm_DynamicCompression:3330",
-  "parent":166,
+  "parent":205,
   "children":[
   ],
   "name":"Bit Rotate12",
@@ -5386,10 +6514,10 @@
   "sameAsElement":true
  },
  {
-  "hid":172,
+  "hid":211,
   "sid":"sm_DynamicCompression:3331",
   "esid":"sm_DynamicCompression:3331",
-  "parent":166,
+  "parent":205,
   "children":[
   ],
   "name":"Bit Rotate13",
@@ -5409,10 +6537,10 @@
   "sameAsElement":true
  },
  {
-  "hid":173,
+  "hid":212,
   "sid":"sm_DynamicCompression:3332",
   "esid":"sm_DynamicCompression:3332",
-  "parent":166,
+  "parent":205,
   "children":[
   ],
   "name":"Bit Rotate14",
@@ -5432,10 +6560,10 @@
   "sameAsElement":true
  },
  {
-  "hid":174,
+  "hid":213,
   "sid":"sm_DynamicCompression:3333",
   "esid":"sm_DynamicCompression:3333",
-  "parent":166,
+  "parent":205,
   "children":[
   ],
   "name":"Bit Rotate2",
@@ -5455,10 +6583,10 @@
   "sameAsElement":true
  },
  {
-  "hid":175,
+  "hid":214,
   "sid":"sm_DynamicCompression:3334",
   "esid":"sm_DynamicCompression:3334",
-  "parent":166,
+  "parent":205,
   "children":[
   ],
   "name":"Bit Rotate3",
@@ -5478,10 +6606,10 @@
   "sameAsElement":true
  },
  {
-  "hid":176,
+  "hid":215,
   "sid":"sm_DynamicCompression:3335",
   "esid":"sm_DynamicCompression:3335",
-  "parent":166,
+  "parent":205,
   "children":[
   ],
   "name":"Bit Rotate4",
@@ -5501,10 +6629,10 @@
   "sameAsElement":true
  },
  {
-  "hid":177,
+  "hid":216,
   "sid":"sm_DynamicCompression:3336",
   "esid":"sm_DynamicCompression:3336",
-  "parent":166,
+  "parent":205,
   "children":[
   ],
   "name":"Bit Rotate5",
@@ -5524,10 +6652,10 @@
   "sameAsElement":true
  },
  {
-  "hid":178,
+  "hid":217,
   "sid":"sm_DynamicCompression:3337",
   "esid":"sm_DynamicCompression:3337",
-  "parent":166,
+  "parent":205,
   "children":[
   ],
   "name":"Bit Rotate6",
@@ -5547,10 +6675,10 @@
   "sameAsElement":true
  },
  {
-  "hid":179,
+  "hid":218,
   "sid":"sm_DynamicCompression:3338",
   "esid":"sm_DynamicCompression:3338",
-  "parent":166,
+  "parent":205,
   "children":[
   ],
   "name":"Bit Rotate7",
@@ -5570,10 +6698,10 @@
   "sameAsElement":true
  },
  {
-  "hid":180,
+  "hid":219,
   "sid":"sm_DynamicCompression:3339",
   "esid":"sm_DynamicCompression:3339",
-  "parent":166,
+  "parent":205,
   "children":[
   ],
   "name":"Bit Rotate8",
@@ -5593,10 +6721,10 @@
   "sameAsElement":true
  },
  {
-  "hid":181,
+  "hid":220,
   "sid":"sm_DynamicCompression:3340",
   "esid":"sm_DynamicCompression:3340",
-  "parent":166,
+  "parent":205,
   "children":[
   ],
   "name":"Bit Rotate9",
@@ -5616,26 +6744,26 @@
   "sameAsElement":true
  },
  {
-  "hid":182,
+  "hid":221,
   "sid":"sm_DynamicCompression:3343",
   "esid":"sm_DynamicCompression:3343",
-  "parent":161,
+  "parent":200,
   "children":[
-   183,
-   184,
-   185,
-   186,
-   187,
-   188,
-   189,
-   190,
-   191,
-   192,
-   193,
-   194,
-   195,
-   196,
-   197
+   222,
+   223,
+   224,
+   225,
+   226,
+   227,
+   228,
+   229,
+   230,
+   231,
+   232,
+   233,
+   234,
+   235,
+   236
   ],
   "name":"LSR(N)",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_3/Compression_Gain_Calc/Linear_Approximation/LSR(N)",
@@ -5686,10 +6814,10 @@
   "sameAsElement":true
  },
  {
-  "hid":183,
+  "hid":222,
   "sid":"sm_DynamicCompression:3346",
   "esid":"sm_DynamicCompression:3346",
-  "parent":182,
+  "parent":221,
   "children":[
   ],
   "name":"Bit Rotate",
@@ -5709,10 +6837,10 @@
   "sameAsElement":true
  },
  {
-  "hid":184,
+  "hid":223,
   "sid":"sm_DynamicCompression:3347",
   "esid":"sm_DynamicCompression:3347",
-  "parent":182,
+  "parent":221,
   "children":[
   ],
   "name":"Bit Rotate1",
@@ -5732,10 +6860,10 @@
   "sameAsElement":true
  },
  {
-  "hid":185,
+  "hid":224,
   "sid":"sm_DynamicCompression:3348",
   "esid":"sm_DynamicCompression:3348",
-  "parent":182,
+  "parent":221,
   "children":[
   ],
   "name":"Bit Rotate10",
@@ -5755,10 +6883,10 @@
   "sameAsElement":true
  },
  {
-  "hid":186,
+  "hid":225,
   "sid":"sm_DynamicCompression:3349",
   "esid":"sm_DynamicCompression:3349",
-  "parent":182,
+  "parent":221,
   "children":[
   ],
   "name":"Bit Rotate11",
@@ -5778,10 +6906,10 @@
   "sameAsElement":true
  },
  {
-  "hid":187,
+  "hid":226,
   "sid":"sm_DynamicCompression:3350",
   "esid":"sm_DynamicCompression:3350",
-  "parent":182,
+  "parent":221,
   "children":[
   ],
   "name":"Bit Rotate12",
@@ -5801,10 +6929,10 @@
   "sameAsElement":true
  },
  {
-  "hid":188,
+  "hid":227,
   "sid":"sm_DynamicCompression:3351",
   "esid":"sm_DynamicCompression:3351",
-  "parent":182,
+  "parent":221,
   "children":[
   ],
   "name":"Bit Rotate13",
@@ -5824,10 +6952,10 @@
   "sameAsElement":true
  },
  {
-  "hid":189,
+  "hid":228,
   "sid":"sm_DynamicCompression:3352",
   "esid":"sm_DynamicCompression:3352",
-  "parent":182,
+  "parent":221,
   "children":[
   ],
   "name":"Bit Rotate14",
@@ -5847,10 +6975,10 @@
   "sameAsElement":true
  },
  {
-  "hid":190,
+  "hid":229,
   "sid":"sm_DynamicCompression:3353",
   "esid":"sm_DynamicCompression:3353",
-  "parent":182,
+  "parent":221,
   "children":[
   ],
   "name":"Bit Rotate2",
@@ -5870,10 +6998,10 @@
   "sameAsElement":true
  },
  {
-  "hid":191,
+  "hid":230,
   "sid":"sm_DynamicCompression:3354",
   "esid":"sm_DynamicCompression:3354",
-  "parent":182,
+  "parent":221,
   "children":[
   ],
   "name":"Bit Rotate3",
@@ -5893,10 +7021,10 @@
   "sameAsElement":true
  },
  {
-  "hid":192,
+  "hid":231,
   "sid":"sm_DynamicCompression:3355",
   "esid":"sm_DynamicCompression:3355",
-  "parent":182,
+  "parent":221,
   "children":[
   ],
   "name":"Bit Rotate4",
@@ -5916,10 +7044,10 @@
   "sameAsElement":true
  },
  {
-  "hid":193,
+  "hid":232,
   "sid":"sm_DynamicCompression:3356",
   "esid":"sm_DynamicCompression:3356",
-  "parent":182,
+  "parent":221,
   "children":[
   ],
   "name":"Bit Rotate5",
@@ -5939,10 +7067,10 @@
   "sameAsElement":true
  },
  {
-  "hid":194,
+  "hid":233,
   "sid":"sm_DynamicCompression:3357",
   "esid":"sm_DynamicCompression:3357",
-  "parent":182,
+  "parent":221,
   "children":[
   ],
   "name":"Bit Rotate6",
@@ -5962,10 +7090,10 @@
   "sameAsElement":true
  },
  {
-  "hid":195,
+  "hid":234,
   "sid":"sm_DynamicCompression:3358",
   "esid":"sm_DynamicCompression:3358",
-  "parent":182,
+  "parent":221,
   "children":[
   ],
   "name":"Bit Rotate7",
@@ -5985,10 +7113,10 @@
   "sameAsElement":true
  },
  {
-  "hid":196,
+  "hid":235,
   "sid":"sm_DynamicCompression:3359",
   "esid":"sm_DynamicCompression:3359",
-  "parent":182,
+  "parent":221,
   "children":[
   ],
   "name":"Bit Rotate8",
@@ -6008,10 +7136,10 @@
   "sameAsElement":true
  },
  {
-  "hid":197,
+  "hid":236,
   "sid":"sm_DynamicCompression:3360",
   "esid":"sm_DynamicCompression:3360",
-  "parent":182,
+  "parent":221,
   "children":[
   ],
   "name":"Bit Rotate9",
@@ -6031,16 +7159,16 @@
   "sameAsElement":true
  },
  {
-  "hid":198,
+  "hid":237,
   "sid":"sm_DynamicCompression:5827",
   "esid":"sm_DynamicCompression:5827",
-  "parent":159,
+  "parent":198,
   "children":[
-   199,
-   201,
-   202,
-   203,
-   204
+   238,
+   240,
+   241,
+   242,
+   243
   ],
   "name":"LogAddressing",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_3/Compression_Gain_Calc/LogAddressing",
@@ -6088,12 +7216,12 @@
   "sameAsElement":true
  },
  {
-  "hid":199,
+  "hid":238,
   "sid":"sm_DynamicCompression:5829",
   "esid":"sm_DynamicCompression:5829",
-  "parent":198,
+  "parent":237,
   "children":[
-   200
+   239
   ],
   "name":"Bit Concat",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_3/Compression_Gain_Calc/LogAddressing/Bit Concat",
@@ -6114,10 +7242,10 @@
   "sameAsElement":true
  },
  {
-  "hid":200,
+  "hid":239,
   "sid":"sm_DynamicCompression:5829:2",
   "esid":"sm_DynamicCompression:5829:2",
-  "parent":199,
+  "parent":238,
   "children":[
   ],
   "name":"Bit Concat2",
@@ -6139,10 +7267,10 @@
   "sameAsElement":true
  },
  {
-  "hid":201,
+  "hid":240,
   "sid":"sm_DynamicCompression:5830",
   "esid":"sm_DynamicCompression:5830",
-  "parent":198,
+  "parent":237,
   "children":[
   ],
   "name":"Bit Slice",
@@ -6162,10 +7290,10 @@
   "sameAsElement":true
  },
  {
-  "hid":202,
+  "hid":241,
   "sid":"sm_DynamicCompression:5831",
   "esid":"sm_DynamicCompression:5831",
-  "parent":198,
+  "parent":237,
   "children":[
   ],
   "name":"Bit Slice1",
@@ -6185,10 +7313,10 @@
   "sameAsElement":true
  },
  {
-  "hid":203,
+  "hid":242,
   "sid":"sm_DynamicCompression:5833",
   "esid":"sm_DynamicCompression:5833",
-  "parent":198,
+  "parent":237,
   "children":[
   ],
   "name":"Compare\nTo Constant1",
@@ -6210,26 +7338,26 @@
   "sameAsElement":true
  },
  {
-  "hid":204,
+  "hid":243,
   "sid":"sm_DynamicCompression:5839",
   "esid":"sm_DynamicCompression:5839",
-  "parent":198,
+  "parent":237,
   "children":[
-   205,
-   206,
-   207,
-   208,
-   209,
-   210,
-   211,
-   212,
-   213,
-   214,
-   215,
-   216,
-   217,
-   218,
-   219
+   244,
+   245,
+   246,
+   247,
+   248,
+   249,
+   250,
+   251,
+   252,
+   253,
+   254,
+   255,
+   256,
+   257,
+   258
   ],
   "name":"LSL(N)",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_3/Compression_Gain_Calc/LogAddressing/LSL(N)",
@@ -6280,10 +7408,10 @@
   "sameAsElement":true
  },
  {
-  "hid":205,
+  "hid":244,
   "sid":"sm_DynamicCompression:5842",
   "esid":"sm_DynamicCompression:5842",
-  "parent":204,
+  "parent":243,
   "children":[
   ],
   "name":"Bit Rotate",
@@ -6303,10 +7431,10 @@
   "sameAsElement":true
  },
  {
-  "hid":206,
+  "hid":245,
   "sid":"sm_DynamicCompression:5843",
   "esid":"sm_DynamicCompression:5843",
-  "parent":204,
+  "parent":243,
   "children":[
   ],
   "name":"Bit Rotate1",
@@ -6326,10 +7454,10 @@
   "sameAsElement":true
  },
  {
-  "hid":207,
+  "hid":246,
   "sid":"sm_DynamicCompression:5844",
   "esid":"sm_DynamicCompression:5844",
-  "parent":204,
+  "parent":243,
   "children":[
   ],
   "name":"Bit Rotate10",
@@ -6349,10 +7477,10 @@
   "sameAsElement":true
  },
  {
-  "hid":208,
+  "hid":247,
   "sid":"sm_DynamicCompression:5845",
   "esid":"sm_DynamicCompression:5845",
-  "parent":204,
+  "parent":243,
   "children":[
   ],
   "name":"Bit Rotate11",
@@ -6372,10 +7500,10 @@
   "sameAsElement":true
  },
  {
-  "hid":209,
+  "hid":248,
   "sid":"sm_DynamicCompression:5846",
   "esid":"sm_DynamicCompression:5846",
-  "parent":204,
+  "parent":243,
   "children":[
   ],
   "name":"Bit Rotate12",
@@ -6395,10 +7523,10 @@
   "sameAsElement":true
  },
  {
-  "hid":210,
+  "hid":249,
   "sid":"sm_DynamicCompression:5847",
   "esid":"sm_DynamicCompression:5847",
-  "parent":204,
+  "parent":243,
   "children":[
   ],
   "name":"Bit Rotate13",
@@ -6418,10 +7546,10 @@
   "sameAsElement":true
  },
  {
-  "hid":211,
+  "hid":250,
   "sid":"sm_DynamicCompression:5848",
   "esid":"sm_DynamicCompression:5848",
-  "parent":204,
+  "parent":243,
   "children":[
   ],
   "name":"Bit Rotate14",
@@ -6441,10 +7569,10 @@
   "sameAsElement":true
  },
  {
-  "hid":212,
+  "hid":251,
   "sid":"sm_DynamicCompression:5849",
   "esid":"sm_DynamicCompression:5849",
-  "parent":204,
+  "parent":243,
   "children":[
   ],
   "name":"Bit Rotate2",
@@ -6464,10 +7592,10 @@
   "sameAsElement":true
  },
  {
-  "hid":213,
+  "hid":252,
   "sid":"sm_DynamicCompression:5850",
   "esid":"sm_DynamicCompression:5850",
-  "parent":204,
+  "parent":243,
   "children":[
   ],
   "name":"Bit Rotate3",
@@ -6487,10 +7615,10 @@
   "sameAsElement":true
  },
  {
-  "hid":214,
+  "hid":253,
   "sid":"sm_DynamicCompression:5851",
   "esid":"sm_DynamicCompression:5851",
-  "parent":204,
+  "parent":243,
   "children":[
   ],
   "name":"Bit Rotate4",
@@ -6510,10 +7638,10 @@
   "sameAsElement":true
  },
  {
-  "hid":215,
+  "hid":254,
   "sid":"sm_DynamicCompression:5852",
   "esid":"sm_DynamicCompression:5852",
-  "parent":204,
+  "parent":243,
   "children":[
   ],
   "name":"Bit Rotate5",
@@ -6533,10 +7661,10 @@
   "sameAsElement":true
  },
  {
-  "hid":216,
+  "hid":255,
   "sid":"sm_DynamicCompression:5853",
   "esid":"sm_DynamicCompression:5853",
-  "parent":204,
+  "parent":243,
   "children":[
   ],
   "name":"Bit Rotate6",
@@ -6556,10 +7684,10 @@
   "sameAsElement":true
  },
  {
-  "hid":217,
+  "hid":256,
   "sid":"sm_DynamicCompression:5854",
   "esid":"sm_DynamicCompression:5854",
-  "parent":204,
+  "parent":243,
   "children":[
   ],
   "name":"Bit Rotate7",
@@ -6579,10 +7707,10 @@
   "sameAsElement":true
  },
  {
-  "hid":218,
+  "hid":257,
   "sid":"sm_DynamicCompression:5855",
   "esid":"sm_DynamicCompression:5855",
-  "parent":204,
+  "parent":243,
   "children":[
   ],
   "name":"Bit Rotate8",
@@ -6602,10 +7730,10 @@
   "sameAsElement":true
  },
  {
-  "hid":219,
+  "hid":258,
   "sid":"sm_DynamicCompression:5856",
   "esid":"sm_DynamicCompression:5856",
-  "parent":204,
+  "parent":243,
   "children":[
   ],
   "name":"Bit Rotate9",
@@ -6625,10 +7753,10 @@
   "sameAsElement":true
  },
  {
-  "hid":220,
+  "hid":259,
   "sid":"sm_DynamicCompression:3616",
   "esid":"sm_DynamicCompression:3616",
-  "parent":159,
+  "parent":198,
   "children":[
   ],
   "name":"Low_Gain_Table",
@@ -6675,14 +7803,14 @@
   "sameAsElement":true
  },
  {
-  "hid":221,
+  "hid":260,
   "sid":"sm_DynamicCompression:2201",
   "esid":"sm_DynamicCompression:2201",
   "parent":10,
   "children":[
-   222,
-   223,
-   227
+   261,
+   262,
+   266
   ],
   "name":"Compression_4",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_4",
@@ -6729,10 +7857,10 @@
   "sameAsElement":true
  },
  {
-  "hid":222,
+  "hid":261,
   "sid":"sm_DynamicCompression:2206",
   "esid":"sm_DynamicCompression:2206",
-  "parent":221,
+  "parent":260,
   "children":[
   ],
   "name":"Compare\nTo Constant",
@@ -6754,14 +7882,14 @@
   "sameAsElement":true
  },
  {
-  "hid":223,
+  "hid":262,
   "sid":"sm_DynamicCompression:2207",
   "esid":"sm_DynamicCompression:2207",
-  "parent":221,
+  "parent":260,
   "children":[
-   224,
-   225,
-   226
+   263,
+   264,
+   265
   ],
   "name":"Compression_Envelope",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_4/Compression_Envelope",
@@ -6794,10 +7922,10 @@
   "sameAsElement":true
  },
  {
-  "hid":224,
+  "hid":263,
   "sid":"sm_DynamicCompression:2210",
   "esid":"sm_DynamicCompression:2210",
-  "parent":223,
+  "parent":262,
   "children":[
   ],
   "name":"Attack_Envelope",
@@ -6827,10 +7955,10 @@
   "sameAsElement":true
  },
  {
-  "hid":225,
+  "hid":264,
   "sid":"sm_DynamicCompression:2220",
   "esid":"sm_DynamicCompression:2220",
-  "parent":223,
+  "parent":262,
   "children":[
   ],
   "name":"Compare\nTo Zero",
@@ -6852,10 +7980,10 @@
   "sameAsElement":true
  },
  {
-  "hid":226,
+  "hid":265,
   "sid":"sm_DynamicCompression:2222",
   "esid":"sm_DynamicCompression:2222",
-  "parent":223,
+  "parent":262,
   "children":[
   ],
   "name":"Release_Envelope",
@@ -6885,15 +8013,15 @@
   "sameAsElement":true
  },
  {
-  "hid":227,
+  "hid":266,
   "sid":"sm_DynamicCompression:3626",
   "esid":"sm_DynamicCompression:3626",
-  "parent":221,
+  "parent":260,
   "children":[
-   228,
-   229,
-   266,
-   288
+   267,
+   268,
+   305,
+   327
   ],
   "name":"Compression_Gain_Calc",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_4/Compression_Gain_Calc",
@@ -6942,10 +8070,10 @@
   "sameAsElement":true
  },
  {
-  "hid":228,
+  "hid":267,
   "sid":"sm_DynamicCompression:3633",
   "esid":"sm_DynamicCompression:3633",
-  "parent":227,
+  "parent":266,
   "children":[
   ],
   "name":"High_Gain_Table",
@@ -6992,17 +8120,17 @@
   "sameAsElement":true
  },
  {
-  "hid":229,
+  "hid":268,
   "sid":"sm_DynamicCompression:3634",
   "esid":"sm_DynamicCompression:3634",
-  "parent":227,
+  "parent":266,
   "children":[
-   230,
-   231,
-   232,
-   233,
-   234,
-   250
+   269,
+   270,
+   271,
+   272,
+   273,
+   289
   ],
   "name":"Linear_Approximation",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_4/Compression_Gain_Calc/Linear_Approximation",
@@ -7067,10 +8195,10 @@
   "sameAsElement":true
  },
  {
-  "hid":230,
+  "hid":269,
   "sid":"sm_DynamicCompression:3639",
   "esid":"sm_DynamicCompression:3639",
-  "parent":229,
+  "parent":268,
   "children":[
   ],
   "name":"Bit Rotate1",
@@ -7090,10 +8218,10 @@
   "sameAsElement":true
  },
  {
-  "hid":231,
+  "hid":270,
   "sid":"sm_DynamicCompression:3640",
   "esid":"sm_DynamicCompression:3640",
-  "parent":229,
+  "parent":268,
   "children":[
   ],
   "name":"Bit Slice",
@@ -7113,10 +8241,10 @@
   "sameAsElement":true
  },
  {
-  "hid":232,
+  "hid":271,
   "sid":"sm_DynamicCompression:3641",
   "esid":"sm_DynamicCompression:3641",
-  "parent":229,
+  "parent":268,
   "children":[
   ],
   "name":"Bit Slice1",
@@ -7136,10 +8264,10 @@
   "sameAsElement":true
  },
  {
-  "hid":233,
+  "hid":272,
   "sid":"sm_DynamicCompression:3643",
   "esid":"sm_DynamicCompression:3643",
-  "parent":229,
+  "parent":268,
   "children":[
   ],
   "name":"Compare\nTo Constant",
@@ -7161,26 +8289,26 @@
   "sameAsElement":true
  },
  {
-  "hid":234,
+  "hid":273,
   "sid":"sm_DynamicCompression:3648",
   "esid":"sm_DynamicCompression:3648",
-  "parent":229,
+  "parent":268,
   "children":[
-   235,
-   236,
-   237,
-   238,
-   239,
-   240,
-   241,
-   242,
-   243,
-   244,
-   245,
-   246,
-   247,
-   248,
-   249
+   274,
+   275,
+   276,
+   277,
+   278,
+   279,
+   280,
+   281,
+   282,
+   283,
+   284,
+   285,
+   286,
+   287,
+   288
   ],
   "name":"LSL(N)",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_4/Compression_Gain_Calc/Linear_Approximation/LSL(N)",
@@ -7231,10 +8359,10 @@
   "sameAsElement":true
  },
  {
-  "hid":235,
+  "hid":274,
   "sid":"sm_DynamicCompression:3651",
   "esid":"sm_DynamicCompression:3651",
-  "parent":234,
+  "parent":273,
   "children":[
   ],
   "name":"Bit Rotate",
@@ -7254,10 +8382,10 @@
   "sameAsElement":true
  },
  {
-  "hid":236,
+  "hid":275,
   "sid":"sm_DynamicCompression:3652",
   "esid":"sm_DynamicCompression:3652",
-  "parent":234,
+  "parent":273,
   "children":[
   ],
   "name":"Bit Rotate1",
@@ -7277,10 +8405,10 @@
   "sameAsElement":true
  },
  {
-  "hid":237,
+  "hid":276,
   "sid":"sm_DynamicCompression:3653",
   "esid":"sm_DynamicCompression:3653",
-  "parent":234,
+  "parent":273,
   "children":[
   ],
   "name":"Bit Rotate10",
@@ -7300,10 +8428,10 @@
   "sameAsElement":true
  },
  {
-  "hid":238,
+  "hid":277,
   "sid":"sm_DynamicCompression:3654",
   "esid":"sm_DynamicCompression:3654",
-  "parent":234,
+  "parent":273,
   "children":[
   ],
   "name":"Bit Rotate11",
@@ -7323,10 +8451,10 @@
   "sameAsElement":true
  },
  {
-  "hid":239,
+  "hid":278,
   "sid":"sm_DynamicCompression:3655",
   "esid":"sm_DynamicCompression:3655",
-  "parent":234,
+  "parent":273,
   "children":[
   ],
   "name":"Bit Rotate12",
@@ -7346,10 +8474,10 @@
   "sameAsElement":true
  },
  {
-  "hid":240,
+  "hid":279,
   "sid":"sm_DynamicCompression:3656",
   "esid":"sm_DynamicCompression:3656",
-  "parent":234,
+  "parent":273,
   "children":[
   ],
   "name":"Bit Rotate13",
@@ -7369,10 +8497,10 @@
   "sameAsElement":true
  },
  {
-  "hid":241,
+  "hid":280,
   "sid":"sm_DynamicCompression:3657",
   "esid":"sm_DynamicCompression:3657",
-  "parent":234,
+  "parent":273,
   "children":[
   ],
   "name":"Bit Rotate14",
@@ -7392,10 +8520,10 @@
   "sameAsElement":true
  },
  {
-  "hid":242,
+  "hid":281,
   "sid":"sm_DynamicCompression:3658",
   "esid":"sm_DynamicCompression:3658",
-  "parent":234,
+  "parent":273,
   "children":[
   ],
   "name":"Bit Rotate2",
@@ -7415,10 +8543,10 @@
   "sameAsElement":true
  },
  {
-  "hid":243,
+  "hid":282,
   "sid":"sm_DynamicCompression:3659",
   "esid":"sm_DynamicCompression:3659",
-  "parent":234,
+  "parent":273,
   "children":[
   ],
   "name":"Bit Rotate3",
@@ -7438,10 +8566,10 @@
   "sameAsElement":true
  },
  {
-  "hid":244,
+  "hid":283,
   "sid":"sm_DynamicCompression:3660",
   "esid":"sm_DynamicCompression:3660",
-  "parent":234,
+  "parent":273,
   "children":[
   ],
   "name":"Bit Rotate4",
@@ -7461,10 +8589,10 @@
   "sameAsElement":true
  },
  {
-  "hid":245,
+  "hid":284,
   "sid":"sm_DynamicCompression:3661",
   "esid":"sm_DynamicCompression:3661",
-  "parent":234,
+  "parent":273,
   "children":[
   ],
   "name":"Bit Rotate5",
@@ -7484,10 +8612,10 @@
   "sameAsElement":true
  },
  {
-  "hid":246,
+  "hid":285,
   "sid":"sm_DynamicCompression:3662",
   "esid":"sm_DynamicCompression:3662",
-  "parent":234,
+  "parent":273,
   "children":[
   ],
   "name":"Bit Rotate6",
@@ -7507,10 +8635,10 @@
   "sameAsElement":true
  },
  {
-  "hid":247,
+  "hid":286,
   "sid":"sm_DynamicCompression:3663",
   "esid":"sm_DynamicCompression:3663",
-  "parent":234,
+  "parent":273,
   "children":[
   ],
   "name":"Bit Rotate7",
@@ -7530,10 +8658,10 @@
   "sameAsElement":true
  },
  {
-  "hid":248,
+  "hid":287,
   "sid":"sm_DynamicCompression:3664",
   "esid":"sm_DynamicCompression:3664",
-  "parent":234,
+  "parent":273,
   "children":[
   ],
   "name":"Bit Rotate8",
@@ -7553,10 +8681,10 @@
   "sameAsElement":true
  },
  {
-  "hid":249,
+  "hid":288,
   "sid":"sm_DynamicCompression:3665",
   "esid":"sm_DynamicCompression:3665",
-  "parent":234,
+  "parent":273,
   "children":[
   ],
   "name":"Bit Rotate9",
@@ -7576,26 +8704,26 @@
   "sameAsElement":true
  },
  {
-  "hid":250,
+  "hid":289,
   "sid":"sm_DynamicCompression:3668",
   "esid":"sm_DynamicCompression:3668",
-  "parent":229,
+  "parent":268,
   "children":[
-   251,
-   252,
-   253,
-   254,
-   255,
-   256,
-   257,
-   258,
-   259,
-   260,
-   261,
-   262,
-   263,
-   264,
-   265
+   290,
+   291,
+   292,
+   293,
+   294,
+   295,
+   296,
+   297,
+   298,
+   299,
+   300,
+   301,
+   302,
+   303,
+   304
   ],
   "name":"LSR(N)",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_4/Compression_Gain_Calc/Linear_Approximation/LSR(N)",
@@ -7646,10 +8774,10 @@
   "sameAsElement":true
  },
  {
-  "hid":251,
+  "hid":290,
   "sid":"sm_DynamicCompression:3671",
   "esid":"sm_DynamicCompression:3671",
-  "parent":250,
+  "parent":289,
   "children":[
   ],
   "name":"Bit Rotate",
@@ -7669,10 +8797,10 @@
   "sameAsElement":true
  },
  {
-  "hid":252,
+  "hid":291,
   "sid":"sm_DynamicCompression:3672",
   "esid":"sm_DynamicCompression:3672",
-  "parent":250,
+  "parent":289,
   "children":[
   ],
   "name":"Bit Rotate1",
@@ -7692,10 +8820,10 @@
   "sameAsElement":true
  },
  {
-  "hid":253,
+  "hid":292,
   "sid":"sm_DynamicCompression:3673",
   "esid":"sm_DynamicCompression:3673",
-  "parent":250,
+  "parent":289,
   "children":[
   ],
   "name":"Bit Rotate10",
@@ -7715,10 +8843,10 @@
   "sameAsElement":true
  },
  {
-  "hid":254,
+  "hid":293,
   "sid":"sm_DynamicCompression:3674",
   "esid":"sm_DynamicCompression:3674",
-  "parent":250,
+  "parent":289,
   "children":[
   ],
   "name":"Bit Rotate11",
@@ -7738,10 +8866,10 @@
   "sameAsElement":true
  },
  {
-  "hid":255,
+  "hid":294,
   "sid":"sm_DynamicCompression:3675",
   "esid":"sm_DynamicCompression:3675",
-  "parent":250,
+  "parent":289,
   "children":[
   ],
   "name":"Bit Rotate12",
@@ -7761,10 +8889,10 @@
   "sameAsElement":true
  },
  {
-  "hid":256,
+  "hid":295,
   "sid":"sm_DynamicCompression:3676",
   "esid":"sm_DynamicCompression:3676",
-  "parent":250,
+  "parent":289,
   "children":[
   ],
   "name":"Bit Rotate13",
@@ -7784,10 +8912,10 @@
   "sameAsElement":true
  },
  {
-  "hid":257,
+  "hid":296,
   "sid":"sm_DynamicCompression:3677",
   "esid":"sm_DynamicCompression:3677",
-  "parent":250,
+  "parent":289,
   "children":[
   ],
   "name":"Bit Rotate14",
@@ -7807,10 +8935,10 @@
   "sameAsElement":true
  },
  {
-  "hid":258,
+  "hid":297,
   "sid":"sm_DynamicCompression:3678",
   "esid":"sm_DynamicCompression:3678",
-  "parent":250,
+  "parent":289,
   "children":[
   ],
   "name":"Bit Rotate2",
@@ -7830,10 +8958,10 @@
   "sameAsElement":true
  },
  {
-  "hid":259,
+  "hid":298,
   "sid":"sm_DynamicCompression:3679",
   "esid":"sm_DynamicCompression:3679",
-  "parent":250,
+  "parent":289,
   "children":[
   ],
   "name":"Bit Rotate3",
@@ -7853,10 +8981,10 @@
   "sameAsElement":true
  },
  {
-  "hid":260,
+  "hid":299,
   "sid":"sm_DynamicCompression:3680",
   "esid":"sm_DynamicCompression:3680",
-  "parent":250,
+  "parent":289,
   "children":[
   ],
   "name":"Bit Rotate4",
@@ -7876,10 +9004,10 @@
   "sameAsElement":true
  },
  {
-  "hid":261,
+  "hid":300,
   "sid":"sm_DynamicCompression:3681",
   "esid":"sm_DynamicCompression:3681",
-  "parent":250,
+  "parent":289,
   "children":[
   ],
   "name":"Bit Rotate5",
@@ -7899,10 +9027,10 @@
   "sameAsElement":true
  },
  {
-  "hid":262,
+  "hid":301,
   "sid":"sm_DynamicCompression:3682",
   "esid":"sm_DynamicCompression:3682",
-  "parent":250,
+  "parent":289,
   "children":[
   ],
   "name":"Bit Rotate6",
@@ -7922,10 +9050,10 @@
   "sameAsElement":true
  },
  {
-  "hid":263,
+  "hid":302,
   "sid":"sm_DynamicCompression:3683",
   "esid":"sm_DynamicCompression:3683",
-  "parent":250,
+  "parent":289,
   "children":[
   ],
   "name":"Bit Rotate7",
@@ -7945,10 +9073,10 @@
   "sameAsElement":true
  },
  {
-  "hid":264,
+  "hid":303,
   "sid":"sm_DynamicCompression:3684",
   "esid":"sm_DynamicCompression:3684",
-  "parent":250,
+  "parent":289,
   "children":[
   ],
   "name":"Bit Rotate8",
@@ -7968,10 +9096,10 @@
   "sameAsElement":true
  },
  {
-  "hid":265,
+  "hid":304,
   "sid":"sm_DynamicCompression:3685",
   "esid":"sm_DynamicCompression:3685",
-  "parent":250,
+  "parent":289,
   "children":[
   ],
   "name":"Bit Rotate9",
@@ -7991,16 +9119,16 @@
   "sameAsElement":true
  },
  {
-  "hid":266,
+  "hid":305,
   "sid":"sm_DynamicCompression:6072",
   "esid":"sm_DynamicCompression:6072",
-  "parent":227,
+  "parent":266,
   "children":[
-   267,
-   269,
-   270,
-   271,
-   272
+   306,
+   308,
+   309,
+   310,
+   311
   ],
   "name":"LogAddressing",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_4/Compression_Gain_Calc/LogAddressing",
@@ -8048,12 +9176,12 @@
   "sameAsElement":true
  },
  {
-  "hid":267,
+  "hid":306,
   "sid":"sm_DynamicCompression:6074",
   "esid":"sm_DynamicCompression:6074",
-  "parent":266,
+  "parent":305,
   "children":[
-   268
+   307
   ],
   "name":"Bit Concat",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_4/Compression_Gain_Calc/LogAddressing/Bit Concat",
@@ -8074,10 +9202,10 @@
   "sameAsElement":true
  },
  {
-  "hid":268,
+  "hid":307,
   "sid":"sm_DynamicCompression:6074:2",
   "esid":"sm_DynamicCompression:6074:2",
-  "parent":267,
+  "parent":306,
   "children":[
   ],
   "name":"Bit Concat2",
@@ -8099,10 +9227,10 @@
   "sameAsElement":true
  },
  {
-  "hid":269,
+  "hid":308,
   "sid":"sm_DynamicCompression:6075",
   "esid":"sm_DynamicCompression:6075",
-  "parent":266,
+  "parent":305,
   "children":[
   ],
   "name":"Bit Slice",
@@ -8122,10 +9250,10 @@
   "sameAsElement":true
  },
  {
-  "hid":270,
+  "hid":309,
   "sid":"sm_DynamicCompression:6076",
   "esid":"sm_DynamicCompression:6076",
-  "parent":266,
+  "parent":305,
   "children":[
   ],
   "name":"Bit Slice1",
@@ -8145,10 +9273,10 @@
   "sameAsElement":true
  },
  {
-  "hid":271,
+  "hid":310,
   "sid":"sm_DynamicCompression:6078",
   "esid":"sm_DynamicCompression:6078",
-  "parent":266,
+  "parent":305,
   "children":[
   ],
   "name":"Compare\nTo Constant1",
@@ -8170,26 +9298,26 @@
   "sameAsElement":true
  },
  {
-  "hid":272,
+  "hid":311,
   "sid":"sm_DynamicCompression:6084",
   "esid":"sm_DynamicCompression:6084",
-  "parent":266,
+  "parent":305,
   "children":[
-   273,
-   274,
-   275,
-   276,
-   277,
-   278,
-   279,
-   280,
-   281,
-   282,
-   283,
-   284,
-   285,
-   286,
-   287
+   312,
+   313,
+   314,
+   315,
+   316,
+   317,
+   318,
+   319,
+   320,
+   321,
+   322,
+   323,
+   324,
+   325,
+   326
   ],
   "name":"LSL(N)",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_4/Compression_Gain_Calc/LogAddressing/LSL(N)",
@@ -8240,10 +9368,10 @@
   "sameAsElement":true
  },
  {
-  "hid":273,
+  "hid":312,
   "sid":"sm_DynamicCompression:6087",
   "esid":"sm_DynamicCompression:6087",
-  "parent":272,
+  "parent":311,
   "children":[
   ],
   "name":"Bit Rotate",
@@ -8263,10 +9391,10 @@
   "sameAsElement":true
  },
  {
-  "hid":274,
+  "hid":313,
   "sid":"sm_DynamicCompression:6088",
   "esid":"sm_DynamicCompression:6088",
-  "parent":272,
+  "parent":311,
   "children":[
   ],
   "name":"Bit Rotate1",
@@ -8286,10 +9414,10 @@
   "sameAsElement":true
  },
  {
-  "hid":275,
+  "hid":314,
   "sid":"sm_DynamicCompression:6089",
   "esid":"sm_DynamicCompression:6089",
-  "parent":272,
+  "parent":311,
   "children":[
   ],
   "name":"Bit Rotate10",
@@ -8309,10 +9437,10 @@
   "sameAsElement":true
  },
  {
-  "hid":276,
+  "hid":315,
   "sid":"sm_DynamicCompression:6090",
   "esid":"sm_DynamicCompression:6090",
-  "parent":272,
+  "parent":311,
   "children":[
   ],
   "name":"Bit Rotate11",
@@ -8332,10 +9460,10 @@
   "sameAsElement":true
  },
  {
-  "hid":277,
+  "hid":316,
   "sid":"sm_DynamicCompression:6091",
   "esid":"sm_DynamicCompression:6091",
-  "parent":272,
+  "parent":311,
   "children":[
   ],
   "name":"Bit Rotate12",
@@ -8355,10 +9483,10 @@
   "sameAsElement":true
  },
  {
-  "hid":278,
+  "hid":317,
   "sid":"sm_DynamicCompression:6092",
   "esid":"sm_DynamicCompression:6092",
-  "parent":272,
+  "parent":311,
   "children":[
   ],
   "name":"Bit Rotate13",
@@ -8378,10 +9506,10 @@
   "sameAsElement":true
  },
  {
-  "hid":279,
+  "hid":318,
   "sid":"sm_DynamicCompression:6093",
   "esid":"sm_DynamicCompression:6093",
-  "parent":272,
+  "parent":311,
   "children":[
   ],
   "name":"Bit Rotate14",
@@ -8401,10 +9529,10 @@
   "sameAsElement":true
  },
  {
-  "hid":280,
+  "hid":319,
   "sid":"sm_DynamicCompression:6094",
   "esid":"sm_DynamicCompression:6094",
-  "parent":272,
+  "parent":311,
   "children":[
   ],
   "name":"Bit Rotate2",
@@ -8424,10 +9552,10 @@
   "sameAsElement":true
  },
  {
-  "hid":281,
+  "hid":320,
   "sid":"sm_DynamicCompression:6095",
   "esid":"sm_DynamicCompression:6095",
-  "parent":272,
+  "parent":311,
   "children":[
   ],
   "name":"Bit Rotate3",
@@ -8447,10 +9575,10 @@
   "sameAsElement":true
  },
  {
-  "hid":282,
+  "hid":321,
   "sid":"sm_DynamicCompression:6096",
   "esid":"sm_DynamicCompression:6096",
-  "parent":272,
+  "parent":311,
   "children":[
   ],
   "name":"Bit Rotate4",
@@ -8470,10 +9598,10 @@
   "sameAsElement":true
  },
  {
-  "hid":283,
+  "hid":322,
   "sid":"sm_DynamicCompression:6097",
   "esid":"sm_DynamicCompression:6097",
-  "parent":272,
+  "parent":311,
   "children":[
   ],
   "name":"Bit Rotate5",
@@ -8493,10 +9621,10 @@
   "sameAsElement":true
  },
  {
-  "hid":284,
+  "hid":323,
   "sid":"sm_DynamicCompression:6098",
   "esid":"sm_DynamicCompression:6098",
-  "parent":272,
+  "parent":311,
   "children":[
   ],
   "name":"Bit Rotate6",
@@ -8516,10 +9644,10 @@
   "sameAsElement":true
  },
  {
-  "hid":285,
+  "hid":324,
   "sid":"sm_DynamicCompression:6099",
   "esid":"sm_DynamicCompression:6099",
-  "parent":272,
+  "parent":311,
   "children":[
   ],
   "name":"Bit Rotate7",
@@ -8539,10 +9667,10 @@
   "sameAsElement":true
  },
  {
-  "hid":286,
+  "hid":325,
   "sid":"sm_DynamicCompression:6100",
   "esid":"sm_DynamicCompression:6100",
-  "parent":272,
+  "parent":311,
   "children":[
   ],
   "name":"Bit Rotate8",
@@ -8562,10 +9690,10 @@
   "sameAsElement":true
  },
  {
-  "hid":287,
+  "hid":326,
   "sid":"sm_DynamicCompression:6101",
   "esid":"sm_DynamicCompression:6101",
-  "parent":272,
+  "parent":311,
   "children":[
   ],
   "name":"Bit Rotate9",
@@ -8585,10 +9713,10 @@
   "sameAsElement":true
  },
  {
-  "hid":288,
+  "hid":327,
   "sid":"sm_DynamicCompression:3941",
   "esid":"sm_DynamicCompression:3941",
-  "parent":227,
+  "parent":266,
   "children":[
   ],
   "name":"Low_Gain_Table",
@@ -8635,14 +9763,14 @@
   "sameAsElement":true
  },
  {
-  "hid":289,
+  "hid":328,
   "sid":"sm_DynamicCompression:2571",
   "esid":"sm_DynamicCompression:2571",
   "parent":10,
   "children":[
-   290,
-   291,
-   295
+   329,
+   330,
+   334
   ],
   "name":"Compression_5",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_5",
@@ -8689,10 +9817,10 @@
   "sameAsElement":true
  },
  {
-  "hid":290,
+  "hid":329,
   "sid":"sm_DynamicCompression:2576",
   "esid":"sm_DynamicCompression:2576",
-  "parent":289,
+  "parent":328,
   "children":[
   ],
   "name":"Compare\nTo Constant",
@@ -8714,14 +9842,14 @@
   "sameAsElement":true
  },
  {
-  "hid":291,
+  "hid":330,
   "sid":"sm_DynamicCompression:2577",
   "esid":"sm_DynamicCompression:2577",
-  "parent":289,
+  "parent":328,
   "children":[
-   292,
-   293,
-   294
+   331,
+   332,
+   333
   ],
   "name":"Compression_Envelope",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_5/Compression_Envelope",
@@ -8754,10 +9882,10 @@
   "sameAsElement":true
  },
  {
-  "hid":292,
+  "hid":331,
   "sid":"sm_DynamicCompression:2580",
   "esid":"sm_DynamicCompression:2580",
-  "parent":291,
+  "parent":330,
   "children":[
   ],
   "name":"Attack_Envelope",
@@ -8787,10 +9915,10 @@
   "sameAsElement":true
  },
  {
-  "hid":293,
+  "hid":332,
   "sid":"sm_DynamicCompression:2590",
   "esid":"sm_DynamicCompression:2590",
-  "parent":291,
+  "parent":330,
   "children":[
   ],
   "name":"Compare\nTo Zero",
@@ -8812,10 +9940,10 @@
   "sameAsElement":true
  },
  {
-  "hid":294,
+  "hid":333,
   "sid":"sm_DynamicCompression:2592",
   "esid":"sm_DynamicCompression:2592",
-  "parent":291,
+  "parent":330,
   "children":[
   ],
   "name":"Release_Envelope",
@@ -8845,15 +9973,15 @@
   "sameAsElement":true
  },
  {
-  "hid":295,
+  "hid":334,
   "sid":"sm_DynamicCompression:3951",
   "esid":"sm_DynamicCompression:3951",
-  "parent":289,
+  "parent":328,
   "children":[
-   296,
-   297,
-   334,
-   356
+   335,
+   336,
+   373,
+   395
   ],
   "name":"Compression_Gain_Calc",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_5/Compression_Gain_Calc",
@@ -8902,10 +10030,10 @@
   "sameAsElement":true
  },
  {
-  "hid":296,
+  "hid":335,
   "sid":"sm_DynamicCompression:3958",
   "esid":"sm_DynamicCompression:3958",
-  "parent":295,
+  "parent":334,
   "children":[
   ],
   "name":"High_Gain_Table",
@@ -8952,17 +10080,17 @@
   "sameAsElement":true
  },
  {
-  "hid":297,
+  "hid":336,
   "sid":"sm_DynamicCompression:3959",
   "esid":"sm_DynamicCompression:3959",
-  "parent":295,
+  "parent":334,
   "children":[
-   298,
-   299,
-   300,
-   301,
-   302,
-   318
+   337,
+   338,
+   339,
+   340,
+   341,
+   357
   ],
   "name":"Linear_Approximation",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_5/Compression_Gain_Calc/Linear_Approximation",
@@ -9027,10 +10155,10 @@
   "sameAsElement":true
  },
  {
-  "hid":298,
+  "hid":337,
   "sid":"sm_DynamicCompression:3964",
   "esid":"sm_DynamicCompression:3964",
-  "parent":297,
+  "parent":336,
   "children":[
   ],
   "name":"Bit Rotate1",
@@ -9050,10 +10178,10 @@
   "sameAsElement":true
  },
  {
-  "hid":299,
+  "hid":338,
   "sid":"sm_DynamicCompression:3965",
   "esid":"sm_DynamicCompression:3965",
-  "parent":297,
+  "parent":336,
   "children":[
   ],
   "name":"Bit Slice",
@@ -9073,10 +10201,10 @@
   "sameAsElement":true
  },
  {
-  "hid":300,
+  "hid":339,
   "sid":"sm_DynamicCompression:3966",
   "esid":"sm_DynamicCompression:3966",
-  "parent":297,
+  "parent":336,
   "children":[
   ],
   "name":"Bit Slice1",
@@ -9096,10 +10224,10 @@
   "sameAsElement":true
  },
  {
-  "hid":301,
+  "hid":340,
   "sid":"sm_DynamicCompression:3968",
   "esid":"sm_DynamicCompression:3968",
-  "parent":297,
+  "parent":336,
   "children":[
   ],
   "name":"Compare\nTo Constant",
@@ -9121,26 +10249,26 @@
   "sameAsElement":true
  },
  {
-  "hid":302,
+  "hid":341,
   "sid":"sm_DynamicCompression:3973",
   "esid":"sm_DynamicCompression:3973",
-  "parent":297,
+  "parent":336,
   "children":[
-   303,
-   304,
-   305,
-   306,
-   307,
-   308,
-   309,
-   310,
-   311,
-   312,
-   313,
-   314,
-   315,
-   316,
-   317
+   342,
+   343,
+   344,
+   345,
+   346,
+   347,
+   348,
+   349,
+   350,
+   351,
+   352,
+   353,
+   354,
+   355,
+   356
   ],
   "name":"LSL(N)",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_5/Compression_Gain_Calc/Linear_Approximation/LSL(N)",
@@ -9191,10 +10319,10 @@
   "sameAsElement":true
  },
  {
-  "hid":303,
+  "hid":342,
   "sid":"sm_DynamicCompression:3976",
   "esid":"sm_DynamicCompression:3976",
-  "parent":302,
+  "parent":341,
   "children":[
   ],
   "name":"Bit Rotate",
@@ -9214,10 +10342,10 @@
   "sameAsElement":true
  },
  {
-  "hid":304,
+  "hid":343,
   "sid":"sm_DynamicCompression:3977",
   "esid":"sm_DynamicCompression:3977",
-  "parent":302,
+  "parent":341,
   "children":[
   ],
   "name":"Bit Rotate1",
@@ -9237,10 +10365,10 @@
   "sameAsElement":true
  },
  {
-  "hid":305,
+  "hid":344,
   "sid":"sm_DynamicCompression:3978",
   "esid":"sm_DynamicCompression:3978",
-  "parent":302,
+  "parent":341,
   "children":[
   ],
   "name":"Bit Rotate10",
@@ -9260,10 +10388,10 @@
   "sameAsElement":true
  },
  {
-  "hid":306,
+  "hid":345,
   "sid":"sm_DynamicCompression:3979",
   "esid":"sm_DynamicCompression:3979",
-  "parent":302,
+  "parent":341,
   "children":[
   ],
   "name":"Bit Rotate11",
@@ -9283,10 +10411,10 @@
   "sameAsElement":true
  },
  {
-  "hid":307,
+  "hid":346,
   "sid":"sm_DynamicCompression:3980",
   "esid":"sm_DynamicCompression:3980",
-  "parent":302,
+  "parent":341,
   "children":[
   ],
   "name":"Bit Rotate12",
@@ -9306,10 +10434,10 @@
   "sameAsElement":true
  },
  {
-  "hid":308,
+  "hid":347,
   "sid":"sm_DynamicCompression:3981",
   "esid":"sm_DynamicCompression:3981",
-  "parent":302,
+  "parent":341,
   "children":[
   ],
   "name":"Bit Rotate13",
@@ -9329,10 +10457,10 @@
   "sameAsElement":true
  },
  {
-  "hid":309,
+  "hid":348,
   "sid":"sm_DynamicCompression:3982",
   "esid":"sm_DynamicCompression:3982",
-  "parent":302,
+  "parent":341,
   "children":[
   ],
   "name":"Bit Rotate14",
@@ -9352,10 +10480,10 @@
   "sameAsElement":true
  },
  {
-  "hid":310,
+  "hid":349,
   "sid":"sm_DynamicCompression:3983",
   "esid":"sm_DynamicCompression:3983",
-  "parent":302,
+  "parent":341,
   "children":[
   ],
   "name":"Bit Rotate2",
@@ -9375,10 +10503,10 @@
   "sameAsElement":true
  },
  {
-  "hid":311,
+  "hid":350,
   "sid":"sm_DynamicCompression:3984",
   "esid":"sm_DynamicCompression:3984",
-  "parent":302,
+  "parent":341,
   "children":[
   ],
   "name":"Bit Rotate3",
@@ -9398,10 +10526,10 @@
   "sameAsElement":true
  },
  {
-  "hid":312,
+  "hid":351,
   "sid":"sm_DynamicCompression:3985",
   "esid":"sm_DynamicCompression:3985",
-  "parent":302,
+  "parent":341,
   "children":[
   ],
   "name":"Bit Rotate4",
@@ -9421,10 +10549,10 @@
   "sameAsElement":true
  },
  {
-  "hid":313,
+  "hid":352,
   "sid":"sm_DynamicCompression:3986",
   "esid":"sm_DynamicCompression:3986",
-  "parent":302,
+  "parent":341,
   "children":[
   ],
   "name":"Bit Rotate5",
@@ -9444,10 +10572,10 @@
   "sameAsElement":true
  },
  {
-  "hid":314,
+  "hid":353,
   "sid":"sm_DynamicCompression:3987",
   "esid":"sm_DynamicCompression:3987",
-  "parent":302,
+  "parent":341,
   "children":[
   ],
   "name":"Bit Rotate6",
@@ -9467,10 +10595,10 @@
   "sameAsElement":true
  },
  {
-  "hid":315,
+  "hid":354,
   "sid":"sm_DynamicCompression:3988",
   "esid":"sm_DynamicCompression:3988",
-  "parent":302,
+  "parent":341,
   "children":[
   ],
   "name":"Bit Rotate7",
@@ -9490,10 +10618,10 @@
   "sameAsElement":true
  },
  {
-  "hid":316,
+  "hid":355,
   "sid":"sm_DynamicCompression:3989",
   "esid":"sm_DynamicCompression:3989",
-  "parent":302,
+  "parent":341,
   "children":[
   ],
   "name":"Bit Rotate8",
@@ -9513,10 +10641,10 @@
   "sameAsElement":true
  },
  {
-  "hid":317,
+  "hid":356,
   "sid":"sm_DynamicCompression:3990",
   "esid":"sm_DynamicCompression:3990",
-  "parent":302,
+  "parent":341,
   "children":[
   ],
   "name":"Bit Rotate9",
@@ -9536,26 +10664,26 @@
   "sameAsElement":true
  },
  {
-  "hid":318,
+  "hid":357,
   "sid":"sm_DynamicCompression:3993",
   "esid":"sm_DynamicCompression:3993",
-  "parent":297,
+  "parent":336,
   "children":[
-   319,
-   320,
-   321,
-   322,
-   323,
-   324,
-   325,
-   326,
-   327,
-   328,
-   329,
-   330,
-   331,
-   332,
-   333
+   358,
+   359,
+   360,
+   361,
+   362,
+   363,
+   364,
+   365,
+   366,
+   367,
+   368,
+   369,
+   370,
+   371,
+   372
   ],
   "name":"LSR(N)",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_5/Compression_Gain_Calc/Linear_Approximation/LSR(N)",
@@ -9606,10 +10734,10 @@
   "sameAsElement":true
  },
  {
-  "hid":319,
+  "hid":358,
   "sid":"sm_DynamicCompression:3996",
   "esid":"sm_DynamicCompression:3996",
-  "parent":318,
+  "parent":357,
   "children":[
   ],
   "name":"Bit Rotate",
@@ -9629,10 +10757,10 @@
   "sameAsElement":true
  },
  {
-  "hid":320,
+  "hid":359,
   "sid":"sm_DynamicCompression:3997",
   "esid":"sm_DynamicCompression:3997",
-  "parent":318,
+  "parent":357,
   "children":[
   ],
   "name":"Bit Rotate1",
@@ -9652,10 +10780,10 @@
   "sameAsElement":true
  },
  {
-  "hid":321,
+  "hid":360,
   "sid":"sm_DynamicCompression:3998",
   "esid":"sm_DynamicCompression:3998",
-  "parent":318,
+  "parent":357,
   "children":[
   ],
   "name":"Bit Rotate10",
@@ -9675,10 +10803,10 @@
   "sameAsElement":true
  },
  {
-  "hid":322,
+  "hid":361,
   "sid":"sm_DynamicCompression:3999",
   "esid":"sm_DynamicCompression:3999",
-  "parent":318,
+  "parent":357,
   "children":[
   ],
   "name":"Bit Rotate11",
@@ -9698,10 +10826,10 @@
   "sameAsElement":true
  },
  {
-  "hid":323,
+  "hid":362,
   "sid":"sm_DynamicCompression:4000",
   "esid":"sm_DynamicCompression:4000",
-  "parent":318,
+  "parent":357,
   "children":[
   ],
   "name":"Bit Rotate12",
@@ -9721,10 +10849,10 @@
   "sameAsElement":true
  },
  {
-  "hid":324,
+  "hid":363,
   "sid":"sm_DynamicCompression:4001",
   "esid":"sm_DynamicCompression:4001",
-  "parent":318,
+  "parent":357,
   "children":[
   ],
   "name":"Bit Rotate13",
@@ -9744,10 +10872,10 @@
   "sameAsElement":true
  },
  {
-  "hid":325,
+  "hid":364,
   "sid":"sm_DynamicCompression:4002",
   "esid":"sm_DynamicCompression:4002",
-  "parent":318,
+  "parent":357,
   "children":[
   ],
   "name":"Bit Rotate14",
@@ -9767,10 +10895,10 @@
   "sameAsElement":true
  },
  {
-  "hid":326,
+  "hid":365,
   "sid":"sm_DynamicCompression:4003",
   "esid":"sm_DynamicCompression:4003",
-  "parent":318,
+  "parent":357,
   "children":[
   ],
   "name":"Bit Rotate2",
@@ -9790,10 +10918,10 @@
   "sameAsElement":true
  },
  {
-  "hid":327,
+  "hid":366,
   "sid":"sm_DynamicCompression:4004",
   "esid":"sm_DynamicCompression:4004",
-  "parent":318,
+  "parent":357,
   "children":[
   ],
   "name":"Bit Rotate3",
@@ -9813,10 +10941,10 @@
   "sameAsElement":true
  },
  {
-  "hid":328,
+  "hid":367,
   "sid":"sm_DynamicCompression:4005",
   "esid":"sm_DynamicCompression:4005",
-  "parent":318,
+  "parent":357,
   "children":[
   ],
   "name":"Bit Rotate4",
@@ -9836,10 +10964,10 @@
   "sameAsElement":true
  },
  {
-  "hid":329,
+  "hid":368,
   "sid":"sm_DynamicCompression:4006",
   "esid":"sm_DynamicCompression:4006",
-  "parent":318,
+  "parent":357,
   "children":[
   ],
   "name":"Bit Rotate5",
@@ -9859,10 +10987,10 @@
   "sameAsElement":true
  },
  {
-  "hid":330,
+  "hid":369,
   "sid":"sm_DynamicCompression:4007",
   "esid":"sm_DynamicCompression:4007",
-  "parent":318,
+  "parent":357,
   "children":[
   ],
   "name":"Bit Rotate6",
@@ -9882,10 +11010,10 @@
   "sameAsElement":true
  },
  {
-  "hid":331,
+  "hid":370,
   "sid":"sm_DynamicCompression:4008",
   "esid":"sm_DynamicCompression:4008",
-  "parent":318,
+  "parent":357,
   "children":[
   ],
   "name":"Bit Rotate7",
@@ -9905,10 +11033,10 @@
   "sameAsElement":true
  },
  {
-  "hid":332,
+  "hid":371,
   "sid":"sm_DynamicCompression:4009",
   "esid":"sm_DynamicCompression:4009",
-  "parent":318,
+  "parent":357,
   "children":[
   ],
   "name":"Bit Rotate8",
@@ -9928,10 +11056,10 @@
   "sameAsElement":true
  },
  {
-  "hid":333,
+  "hid":372,
   "sid":"sm_DynamicCompression:4010",
   "esid":"sm_DynamicCompression:4010",
-  "parent":318,
+  "parent":357,
   "children":[
   ],
   "name":"Bit Rotate9",
@@ -9951,16 +11079,16 @@
   "sameAsElement":true
  },
  {
-  "hid":334,
+  "hid":373,
   "sid":"sm_DynamicCompression:6317",
   "esid":"sm_DynamicCompression:6317",
-  "parent":295,
+  "parent":334,
   "children":[
-   335,
-   337,
-   338,
-   339,
-   340
+   374,
+   376,
+   377,
+   378,
+   379
   ],
   "name":"LogAddressing",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_5/Compression_Gain_Calc/LogAddressing",
@@ -10008,12 +11136,12 @@
   "sameAsElement":true
  },
  {
-  "hid":335,
+  "hid":374,
   "sid":"sm_DynamicCompression:6319",
   "esid":"sm_DynamicCompression:6319",
-  "parent":334,
+  "parent":373,
   "children":[
-   336
+   375
   ],
   "name":"Bit Concat",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_5/Compression_Gain_Calc/LogAddressing/Bit Concat",
@@ -10034,10 +11162,10 @@
   "sameAsElement":true
  },
  {
-  "hid":336,
+  "hid":375,
   "sid":"sm_DynamicCompression:6319:2",
   "esid":"sm_DynamicCompression:6319:2",
-  "parent":335,
+  "parent":374,
   "children":[
   ],
   "name":"Bit Concat2",
@@ -10059,10 +11187,10 @@
   "sameAsElement":true
  },
  {
-  "hid":337,
+  "hid":376,
   "sid":"sm_DynamicCompression:6320",
   "esid":"sm_DynamicCompression:6320",
-  "parent":334,
+  "parent":373,
   "children":[
   ],
   "name":"Bit Slice",
@@ -10082,10 +11210,10 @@
   "sameAsElement":true
  },
  {
-  "hid":338,
+  "hid":377,
   "sid":"sm_DynamicCompression:6321",
   "esid":"sm_DynamicCompression:6321",
-  "parent":334,
+  "parent":373,
   "children":[
   ],
   "name":"Bit Slice1",
@@ -10105,10 +11233,10 @@
   "sameAsElement":true
  },
  {
-  "hid":339,
+  "hid":378,
   "sid":"sm_DynamicCompression:6323",
   "esid":"sm_DynamicCompression:6323",
-  "parent":334,
+  "parent":373,
   "children":[
   ],
   "name":"Compare\nTo Constant1",
@@ -10130,26 +11258,26 @@
   "sameAsElement":true
  },
  {
-  "hid":340,
+  "hid":379,
   "sid":"sm_DynamicCompression:6329",
   "esid":"sm_DynamicCompression:6329",
-  "parent":334,
+  "parent":373,
   "children":[
-   341,
-   342,
-   343,
-   344,
-   345,
-   346,
-   347,
-   348,
-   349,
-   350,
-   351,
-   352,
-   353,
-   354,
-   355
+   380,
+   381,
+   382,
+   383,
+   384,
+   385,
+   386,
+   387,
+   388,
+   389,
+   390,
+   391,
+   392,
+   393,
+   394
   ],
   "name":"LSL(N)",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Compression_5/Compression_Gain_Calc/LogAddressing/LSL(N)",
@@ -10200,10 +11328,10 @@
   "sameAsElement":true
  },
  {
-  "hid":341,
+  "hid":380,
   "sid":"sm_DynamicCompression:6332",
   "esid":"sm_DynamicCompression:6332",
-  "parent":340,
+  "parent":379,
   "children":[
   ],
   "name":"Bit Rotate",
@@ -10223,10 +11351,10 @@
   "sameAsElement":true
  },
  {
-  "hid":342,
+  "hid":381,
   "sid":"sm_DynamicCompression:6333",
   "esid":"sm_DynamicCompression:6333",
-  "parent":340,
+  "parent":379,
   "children":[
   ],
   "name":"Bit Rotate1",
@@ -10246,10 +11374,10 @@
   "sameAsElement":true
  },
  {
-  "hid":343,
+  "hid":382,
   "sid":"sm_DynamicCompression:6334",
   "esid":"sm_DynamicCompression:6334",
-  "parent":340,
+  "parent":379,
   "children":[
   ],
   "name":"Bit Rotate10",
@@ -10269,10 +11397,10 @@
   "sameAsElement":true
  },
  {
-  "hid":344,
+  "hid":383,
   "sid":"sm_DynamicCompression:6335",
   "esid":"sm_DynamicCompression:6335",
-  "parent":340,
+  "parent":379,
   "children":[
   ],
   "name":"Bit Rotate11",
@@ -10292,10 +11420,10 @@
   "sameAsElement":true
  },
  {
-  "hid":345,
+  "hid":384,
   "sid":"sm_DynamicCompression:6336",
   "esid":"sm_DynamicCompression:6336",
-  "parent":340,
+  "parent":379,
   "children":[
   ],
   "name":"Bit Rotate12",
@@ -10315,10 +11443,10 @@
   "sameAsElement":true
  },
  {
-  "hid":346,
+  "hid":385,
   "sid":"sm_DynamicCompression:6337",
   "esid":"sm_DynamicCompression:6337",
-  "parent":340,
+  "parent":379,
   "children":[
   ],
   "name":"Bit Rotate13",
@@ -10338,10 +11466,10 @@
   "sameAsElement":true
  },
  {
-  "hid":347,
+  "hid":386,
   "sid":"sm_DynamicCompression:6338",
   "esid":"sm_DynamicCompression:6338",
-  "parent":340,
+  "parent":379,
   "children":[
   ],
   "name":"Bit Rotate14",
@@ -10361,10 +11489,10 @@
   "sameAsElement":true
  },
  {
-  "hid":348,
+  "hid":387,
   "sid":"sm_DynamicCompression:6339",
   "esid":"sm_DynamicCompression:6339",
-  "parent":340,
+  "parent":379,
   "children":[
   ],
   "name":"Bit Rotate2",
@@ -10384,10 +11512,10 @@
   "sameAsElement":true
  },
  {
-  "hid":349,
+  "hid":388,
   "sid":"sm_DynamicCompression:6340",
   "esid":"sm_DynamicCompression:6340",
-  "parent":340,
+  "parent":379,
   "children":[
   ],
   "name":"Bit Rotate3",
@@ -10407,10 +11535,10 @@
   "sameAsElement":true
  },
  {
-  "hid":350,
+  "hid":389,
   "sid":"sm_DynamicCompression:6341",
   "esid":"sm_DynamicCompression:6341",
-  "parent":340,
+  "parent":379,
   "children":[
   ],
   "name":"Bit Rotate4",
@@ -10430,10 +11558,10 @@
   "sameAsElement":true
  },
  {
-  "hid":351,
+  "hid":390,
   "sid":"sm_DynamicCompression:6342",
   "esid":"sm_DynamicCompression:6342",
-  "parent":340,
+  "parent":379,
   "children":[
   ],
   "name":"Bit Rotate5",
@@ -10453,10 +11581,10 @@
   "sameAsElement":true
  },
  {
-  "hid":352,
+  "hid":391,
   "sid":"sm_DynamicCompression:6343",
   "esid":"sm_DynamicCompression:6343",
-  "parent":340,
+  "parent":379,
   "children":[
   ],
   "name":"Bit Rotate6",
@@ -10476,10 +11604,10 @@
   "sameAsElement":true
  },
  {
-  "hid":353,
+  "hid":392,
   "sid":"sm_DynamicCompression:6344",
   "esid":"sm_DynamicCompression:6344",
-  "parent":340,
+  "parent":379,
   "children":[
   ],
   "name":"Bit Rotate7",
@@ -10499,10 +11627,10 @@
   "sameAsElement":true
  },
  {
-  "hid":354,
+  "hid":393,
   "sid":"sm_DynamicCompression:6345",
   "esid":"sm_DynamicCompression:6345",
-  "parent":340,
+  "parent":379,
   "children":[
   ],
   "name":"Bit Rotate8",
@@ -10522,10 +11650,10 @@
   "sameAsElement":true
  },
  {
-  "hid":355,
+  "hid":394,
   "sid":"sm_DynamicCompression:6346",
   "esid":"sm_DynamicCompression:6346",
-  "parent":340,
+  "parent":379,
   "children":[
   ],
   "name":"Bit Rotate9",
@@ -10545,10 +11673,10 @@
   "sameAsElement":true
  },
  {
-  "hid":356,
+  "hid":395,
   "sid":"sm_DynamicCompression:4266",
   "esid":"sm_DynamicCompression:4266",
-  "parent":295,
+  "parent":334,
   "children":[
   ],
   "name":"Low_Gain_Table",
@@ -10595,16 +11723,16 @@
   "sameAsElement":true
  },
  {
-  "hid":357,
+  "hid":396,
   "sid":"sm_DynamicCompression:5327",
   "esid":"sm_DynamicCompression:5327",
   "parent":10,
   "children":[
-   358,
-   366,
-   370,
-   371,
-   372
+   397,
+   405,
+   409,
+   410,
+   411
   ],
   "name":"Static_pFIR",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Static_pFIR",
@@ -10658,14 +11786,14 @@
   "sameAsElement":true
  },
  {
-  "hid":358,
+  "hid":397,
   "sid":"sm_DynamicCompression:5330",
   "esid":"sm_DynamicCompression:5330",
-  "parent":357,
+  "parent":396,
   "children":[
-   359,
-   360,
-   363
+   398,
+   399,
+   402
   ],
   "name":"Addr_Gen\n",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Static_pFIR/Addr_Gen ",
@@ -10700,10 +11828,10 @@
   "sameAsElement":true
  },
  {
-  "hid":359,
+  "hid":398,
   "sid":"sm_DynamicCompression:5332",
   "esid":"sm_DynamicCompression:5332",
-  "parent":358,
+  "parent":397,
   "children":[
   ],
   "name":"Compare\nTo Zero",
@@ -10725,13 +11853,13 @@
   "sameAsElement":true
  },
  {
-  "hid":360,
+  "hid":399,
   "sid":"sm_DynamicCompression:5334",
   "esid":"sm_DynamicCompression:5334",
-  "parent":358,
+  "parent":397,
   "children":[
-   361,
-   362
+   400,
+   401
   ],
   "name":"Counter 0 to |b_k|-1",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Static_pFIR/Addr_Gen /Counter 0 to |b_k|-1",
@@ -10755,10 +11883,10 @@
   "sameAsElement":true
  },
  {
-  "hid":361,
+  "hid":400,
   "sid":"sm_DynamicCompression:5334:3",
   "esid":"sm_DynamicCompression:5334:3",
-  "parent":360,
+  "parent":399,
   "children":[
   ],
   "name":"Increment\nReal World",
@@ -10781,10 +11909,10 @@
   "sameAsElement":true
  },
  {
-  "hid":362,
+  "hid":401,
   "sid":"sm_DynamicCompression:5334:5",
   "esid":"sm_DynamicCompression:5334:5",
-  "parent":360,
+  "parent":399,
   "children":[
   ],
   "name":"Wrap To Zero",
@@ -10808,13 +11936,13 @@
   "sameAsElement":true
  },
  {
-  "hid":363,
+  "hid":402,
   "sid":"sm_DynamicCompression:5335",
   "esid":"sm_DynamicCompression:5335",
-  "parent":358,
+  "parent":397,
   "children":[
-   364,
-   365
+   403,
+   404
   ],
   "name":"Input_Addr_Counter",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Static_pFIR/Addr_Gen /Input_Addr_Counter",
@@ -10838,10 +11966,10 @@
   "sameAsElement":true
  },
  {
-  "hid":364,
+  "hid":403,
   "sid":"sm_DynamicCompression:5335:3",
   "esid":"sm_DynamicCompression:5335:3",
-  "parent":363,
+  "parent":402,
   "children":[
   ],
   "name":"Increment\nReal World",
@@ -10864,10 +11992,10 @@
   "sameAsElement":true
  },
  {
-  "hid":365,
+  "hid":404,
   "sid":"sm_DynamicCompression:5335:5",
   "esid":"sm_DynamicCompression:5335:5",
-  "parent":363,
+  "parent":402,
   "children":[
   ],
   "name":"Wrap To Zero",
@@ -10891,14 +12019,14 @@
   "sameAsElement":true
  },
  {
-  "hid":366,
+  "hid":405,
   "sid":"sm_DynamicCompression:5346",
   "esid":"sm_DynamicCompression:5346",
-  "parent":357,
+  "parent":396,
   "children":[
-   367,
-   368,
-   369
+   406,
+   407,
+   408
   ],
   "name":"B_k_Memory_Block",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Static_pFIR/B_k_Memory_Block",
@@ -10969,10 +12097,10 @@
   "sameAsElement":true
  },
  {
-  "hid":367,
+  "hid":406,
   "sid":"sm_DynamicCompression:5346:35",
   "esid":"sm_DynamicCompression:5346:35",
-  "parent":366,
+  "parent":405,
   "children":[
   ],
   "name":"Compare\nTo Zero",
@@ -10994,10 +12122,10 @@
   "sameAsElement":true
  },
  {
-  "hid":368,
+  "hid":407,
   "sid":"sm_DynamicCompression:5346:36",
   "esid":"sm_DynamicCompression:5346:36",
-  "parent":366,
+  "parent":405,
   "children":[
   ],
   "name":"Data Type\nConversion\nInherited A",
@@ -11020,10 +12148,10 @@
   "sameAsElement":true
  },
  {
-  "hid":369,
+  "hid":408,
   "sid":"sm_DynamicCompression:5346:37",
   "esid":"sm_DynamicCompression:5346:37",
-  "parent":366,
+  "parent":405,
   "children":[
   ],
   "name":"Data Type\nConversion\nInherited B",
@@ -11046,10 +12174,10 @@
   "sameAsElement":true
  },
  {
-  "hid":370,
+  "hid":409,
   "sid":"sm_DynamicCompression:5347",
   "esid":"sm_DynamicCompression:5347",
-  "parent":357,
+  "parent":396,
   "children":[
   ],
   "name":"Input_Data_Circular_Buffer",
@@ -11091,10 +12219,10 @@
   "sameAsElement":true
  },
  {
-  "hid":371,
+  "hid":410,
   "sid":"sm_DynamicCompression:5348",
   "esid":"sm_DynamicCompression:5348",
-  "parent":357,
+  "parent":396,
   "children":[
   ],
   "name":"Input_Data_Circular_Buffer_old",
@@ -11168,12 +12296,12 @@
   "sameAsElement":true
  },
  {
-  "hid":372,
+  "hid":411,
   "sid":"sm_DynamicCompression:5349",
   "esid":"sm_DynamicCompression:5349",
-  "parent":357,
+  "parent":396,
   "children":[
-   373
+   412
   ],
   "name":"Multiply_And_Sum",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Static_pFIR/Multiply_And_Sum",
@@ -11207,10 +12335,10 @@
   "sameAsElement":true
  },
  {
-  "hid":373,
+  "hid":412,
   "sid":"sm_DynamicCompression:5355",
   "esid":"sm_DynamicCompression:5355",
-  "parent":372,
+  "parent":411,
   "children":[
   ],
   "name":"Multiply-Add",
@@ -11236,16 +12364,16 @@
   "sameAsElement":true
  },
  {
-  "hid":374,
+  "hid":413,
   "sid":"sm_DynamicCompression:5373",
   "esid":"sm_DynamicCompression:5373",
   "parent":10,
   "children":[
-   375,
-   383,
-   387,
-   388,
-   389
+   414,
+   422,
+   426,
+   427,
+   428
   ],
   "name":"Static_pFIR1",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Static_pFIR1",
@@ -11298,14 +12426,14 @@
   "sameAsElement":true
  },
  {
-  "hid":375,
+  "hid":414,
   "sid":"sm_DynamicCompression:5376",
   "esid":"sm_DynamicCompression:5376",
-  "parent":374,
+  "parent":413,
   "children":[
-   376,
-   377,
-   380
+   415,
+   416,
+   419
   ],
   "name":"Addr_Gen\n",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Static_pFIR1/Addr_Gen ",
@@ -11340,10 +12468,10 @@
   "sameAsElement":true
  },
  {
-  "hid":376,
+  "hid":415,
   "sid":"sm_DynamicCompression:5378",
   "esid":"sm_DynamicCompression:5378",
-  "parent":375,
+  "parent":414,
   "children":[
   ],
   "name":"Compare\nTo Zero",
@@ -11365,13 +12493,13 @@
   "sameAsElement":true
  },
  {
-  "hid":377,
+  "hid":416,
   "sid":"sm_DynamicCompression:5380",
   "esid":"sm_DynamicCompression:5380",
-  "parent":375,
+  "parent":414,
   "children":[
-   378,
-   379
+   417,
+   418
   ],
   "name":"Counter 0 to |b_k|-1",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Static_pFIR1/Addr_Gen /Counter 0 to |b_k|-1",
@@ -11395,10 +12523,10 @@
   "sameAsElement":true
  },
  {
-  "hid":378,
+  "hid":417,
   "sid":"sm_DynamicCompression:5380:3",
   "esid":"sm_DynamicCompression:5380:3",
-  "parent":377,
+  "parent":416,
   "children":[
   ],
   "name":"Increment\nReal World",
@@ -11421,10 +12549,10 @@
   "sameAsElement":true
  },
  {
-  "hid":379,
+  "hid":418,
   "sid":"sm_DynamicCompression:5380:5",
   "esid":"sm_DynamicCompression:5380:5",
-  "parent":377,
+  "parent":416,
   "children":[
   ],
   "name":"Wrap To Zero",
@@ -11448,13 +12576,13 @@
   "sameAsElement":true
  },
  {
-  "hid":380,
+  "hid":419,
   "sid":"sm_DynamicCompression:5381",
   "esid":"sm_DynamicCompression:5381",
-  "parent":375,
+  "parent":414,
   "children":[
-   381,
-   382
+   420,
+   421
   ],
   "name":"Input_Addr_Counter",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Static_pFIR1/Addr_Gen /Input_Addr_Counter",
@@ -11478,10 +12606,10 @@
   "sameAsElement":true
  },
  {
-  "hid":381,
+  "hid":420,
   "sid":"sm_DynamicCompression:5381:3",
   "esid":"sm_DynamicCompression:5381:3",
-  "parent":380,
+  "parent":419,
   "children":[
   ],
   "name":"Increment\nReal World",
@@ -11504,10 +12632,10 @@
   "sameAsElement":true
  },
  {
-  "hid":382,
+  "hid":421,
   "sid":"sm_DynamicCompression:5381:5",
   "esid":"sm_DynamicCompression:5381:5",
-  "parent":380,
+  "parent":419,
   "children":[
   ],
   "name":"Wrap To Zero",
@@ -11531,14 +12659,14 @@
   "sameAsElement":true
  },
  {
-  "hid":383,
+  "hid":422,
   "sid":"sm_DynamicCompression:5392",
   "esid":"sm_DynamicCompression:5392",
-  "parent":374,
+  "parent":413,
   "children":[
-   384,
-   385,
-   386
+   423,
+   424,
+   425
   ],
   "name":"B_k_Memory_Block",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Static_pFIR1/B_k_Memory_Block",
@@ -11609,10 +12737,10 @@
   "sameAsElement":true
  },
  {
-  "hid":384,
+  "hid":423,
   "sid":"sm_DynamicCompression:5392:35",
   "esid":"sm_DynamicCompression:5392:35",
-  "parent":383,
+  "parent":422,
   "children":[
   ],
   "name":"Compare\nTo Zero",
@@ -11634,10 +12762,10 @@
   "sameAsElement":true
  },
  {
-  "hid":385,
+  "hid":424,
   "sid":"sm_DynamicCompression:5392:36",
   "esid":"sm_DynamicCompression:5392:36",
-  "parent":383,
+  "parent":422,
   "children":[
   ],
   "name":"Data Type\nConversion\nInherited A",
@@ -11660,10 +12788,10 @@
   "sameAsElement":true
  },
  {
-  "hid":386,
+  "hid":425,
   "sid":"sm_DynamicCompression:5392:37",
   "esid":"sm_DynamicCompression:5392:37",
-  "parent":383,
+  "parent":422,
   "children":[
   ],
   "name":"Data Type\nConversion\nInherited B",
@@ -11686,10 +12814,10 @@
   "sameAsElement":true
  },
  {
-  "hid":387,
+  "hid":426,
   "sid":"sm_DynamicCompression:5393",
   "esid":"sm_DynamicCompression:5393",
-  "parent":374,
+  "parent":413,
   "children":[
   ],
   "name":"Input_Data_Circular_Buffer",
@@ -11731,10 +12859,10 @@
   "sameAsElement":true
  },
  {
-  "hid":388,
+  "hid":427,
   "sid":"sm_DynamicCompression:5394",
   "esid":"sm_DynamicCompression:5394",
-  "parent":374,
+  "parent":413,
   "children":[
   ],
   "name":"Input_Data_Circular_Buffer_old",
@@ -11808,12 +12936,12 @@
   "sameAsElement":true
  },
  {
-  "hid":389,
+  "hid":428,
   "sid":"sm_DynamicCompression:5395",
   "esid":"sm_DynamicCompression:5395",
-  "parent":374,
+  "parent":413,
   "children":[
-   390
+   429
   ],
   "name":"Multiply_And_Sum",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Static_pFIR1/Multiply_And_Sum",
@@ -11847,10 +12975,10 @@
   "sameAsElement":true
  },
  {
-  "hid":390,
+  "hid":429,
   "sid":"sm_DynamicCompression:5401",
   "esid":"sm_DynamicCompression:5401",
-  "parent":389,
+  "parent":428,
   "children":[
   ],
   "name":"Multiply-Add",
@@ -11876,16 +13004,16 @@
   "sameAsElement":true
  },
  {
-  "hid":391,
+  "hid":430,
   "sid":"sm_DynamicCompression:5419",
   "esid":"sm_DynamicCompression:5419",
   "parent":10,
   "children":[
-   392,
-   400,
-   404,
-   405,
-   406
+   431,
+   439,
+   443,
+   444,
+   445
   ],
   "name":"Static_pFIR2",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Static_pFIR2",
@@ -11938,14 +13066,14 @@
   "sameAsElement":true
  },
  {
-  "hid":392,
+  "hid":431,
   "sid":"sm_DynamicCompression:5422",
   "esid":"sm_DynamicCompression:5422",
-  "parent":391,
+  "parent":430,
   "children":[
-   393,
-   394,
-   397
+   432,
+   433,
+   436
   ],
   "name":"Addr_Gen\n",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Static_pFIR2/Addr_Gen ",
@@ -11980,10 +13108,10 @@
   "sameAsElement":true
  },
  {
-  "hid":393,
+  "hid":432,
   "sid":"sm_DynamicCompression:5424",
   "esid":"sm_DynamicCompression:5424",
-  "parent":392,
+  "parent":431,
   "children":[
   ],
   "name":"Compare\nTo Zero",
@@ -12005,13 +13133,13 @@
   "sameAsElement":true
  },
  {
-  "hid":394,
+  "hid":433,
   "sid":"sm_DynamicCompression:5426",
   "esid":"sm_DynamicCompression:5426",
-  "parent":392,
+  "parent":431,
   "children":[
-   395,
-   396
+   434,
+   435
   ],
   "name":"Counter 0 to |b_k|-1",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Static_pFIR2/Addr_Gen /Counter 0 to |b_k|-1",
@@ -12035,10 +13163,10 @@
   "sameAsElement":true
  },
  {
-  "hid":395,
+  "hid":434,
   "sid":"sm_DynamicCompression:5426:3",
   "esid":"sm_DynamicCompression:5426:3",
-  "parent":394,
+  "parent":433,
   "children":[
   ],
   "name":"Increment\nReal World",
@@ -12061,10 +13189,10 @@
   "sameAsElement":true
  },
  {
-  "hid":396,
+  "hid":435,
   "sid":"sm_DynamicCompression:5426:5",
   "esid":"sm_DynamicCompression:5426:5",
-  "parent":394,
+  "parent":433,
   "children":[
   ],
   "name":"Wrap To Zero",
@@ -12088,13 +13216,13 @@
   "sameAsElement":true
  },
  {
-  "hid":397,
+  "hid":436,
   "sid":"sm_DynamicCompression:5427",
   "esid":"sm_DynamicCompression:5427",
-  "parent":392,
+  "parent":431,
   "children":[
-   398,
-   399
+   437,
+   438
   ],
   "name":"Input_Addr_Counter",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Static_pFIR2/Addr_Gen /Input_Addr_Counter",
@@ -12118,10 +13246,10 @@
   "sameAsElement":true
  },
  {
-  "hid":398,
+  "hid":437,
   "sid":"sm_DynamicCompression:5427:3",
   "esid":"sm_DynamicCompression:5427:3",
-  "parent":397,
+  "parent":436,
   "children":[
   ],
   "name":"Increment\nReal World",
@@ -12144,10 +13272,10 @@
   "sameAsElement":true
  },
  {
-  "hid":399,
+  "hid":438,
   "sid":"sm_DynamicCompression:5427:5",
   "esid":"sm_DynamicCompression:5427:5",
-  "parent":397,
+  "parent":436,
   "children":[
   ],
   "name":"Wrap To Zero",
@@ -12171,14 +13299,14 @@
   "sameAsElement":true
  },
  {
-  "hid":400,
+  "hid":439,
   "sid":"sm_DynamicCompression:5438",
   "esid":"sm_DynamicCompression:5438",
-  "parent":391,
+  "parent":430,
   "children":[
-   401,
-   402,
-   403
+   440,
+   441,
+   442
   ],
   "name":"B_k_Memory_Block",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Static_pFIR2/B_k_Memory_Block",
@@ -12249,10 +13377,10 @@
   "sameAsElement":true
  },
  {
-  "hid":401,
+  "hid":440,
   "sid":"sm_DynamicCompression:5438:35",
   "esid":"sm_DynamicCompression:5438:35",
-  "parent":400,
+  "parent":439,
   "children":[
   ],
   "name":"Compare\nTo Zero",
@@ -12274,10 +13402,10 @@
   "sameAsElement":true
  },
  {
-  "hid":402,
+  "hid":441,
   "sid":"sm_DynamicCompression:5438:36",
   "esid":"sm_DynamicCompression:5438:36",
-  "parent":400,
+  "parent":439,
   "children":[
   ],
   "name":"Data Type\nConversion\nInherited A",
@@ -12300,10 +13428,10 @@
   "sameAsElement":true
  },
  {
-  "hid":403,
+  "hid":442,
   "sid":"sm_DynamicCompression:5438:37",
   "esid":"sm_DynamicCompression:5438:37",
-  "parent":400,
+  "parent":439,
   "children":[
   ],
   "name":"Data Type\nConversion\nInherited B",
@@ -12326,10 +13454,10 @@
   "sameAsElement":true
  },
  {
-  "hid":404,
+  "hid":443,
   "sid":"sm_DynamicCompression:5439",
   "esid":"sm_DynamicCompression:5439",
-  "parent":391,
+  "parent":430,
   "children":[
   ],
   "name":"Input_Data_Circular_Buffer",
@@ -12371,10 +13499,10 @@
   "sameAsElement":true
  },
  {
-  "hid":405,
+  "hid":444,
   "sid":"sm_DynamicCompression:5440",
   "esid":"sm_DynamicCompression:5440",
-  "parent":391,
+  "parent":430,
   "children":[
   ],
   "name":"Input_Data_Circular_Buffer_old",
@@ -12448,12 +13576,12 @@
   "sameAsElement":true
  },
  {
-  "hid":406,
+  "hid":445,
   "sid":"sm_DynamicCompression:5441",
   "esid":"sm_DynamicCompression:5441",
-  "parent":391,
+  "parent":430,
   "children":[
-   407
+   446
   ],
   "name":"Multiply_And_Sum",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Static_pFIR2/Multiply_And_Sum",
@@ -12487,10 +13615,10 @@
   "sameAsElement":true
  },
  {
-  "hid":407,
+  "hid":446,
   "sid":"sm_DynamicCompression:5447",
   "esid":"sm_DynamicCompression:5447",
-  "parent":406,
+  "parent":445,
   "children":[
   ],
   "name":"Multiply-Add",
@@ -12516,16 +13644,16 @@
   "sameAsElement":true
  },
  {
-  "hid":408,
+  "hid":447,
   "sid":"sm_DynamicCompression:5465",
   "esid":"sm_DynamicCompression:5465",
   "parent":10,
   "children":[
-   409,
-   417,
-   421,
-   422,
-   423
+   448,
+   456,
+   460,
+   461,
+   462
   ],
   "name":"Static_pFIR3",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Static_pFIR3",
@@ -12578,14 +13706,14 @@
   "sameAsElement":true
  },
  {
-  "hid":409,
+  "hid":448,
   "sid":"sm_DynamicCompression:5468",
   "esid":"sm_DynamicCompression:5468",
-  "parent":408,
+  "parent":447,
   "children":[
-   410,
-   411,
-   414
+   449,
+   450,
+   453
   ],
   "name":"Addr_Gen\n",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Static_pFIR3/Addr_Gen ",
@@ -12620,10 +13748,10 @@
   "sameAsElement":true
  },
  {
-  "hid":410,
+  "hid":449,
   "sid":"sm_DynamicCompression:5470",
   "esid":"sm_DynamicCompression:5470",
-  "parent":409,
+  "parent":448,
   "children":[
   ],
   "name":"Compare\nTo Zero",
@@ -12645,13 +13773,13 @@
   "sameAsElement":true
  },
  {
-  "hid":411,
+  "hid":450,
   "sid":"sm_DynamicCompression:5472",
   "esid":"sm_DynamicCompression:5472",
-  "parent":409,
+  "parent":448,
   "children":[
-   412,
-   413
+   451,
+   452
   ],
   "name":"Counter 0 to |b_k|-1",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Static_pFIR3/Addr_Gen /Counter 0 to |b_k|-1",
@@ -12675,10 +13803,10 @@
   "sameAsElement":true
  },
  {
-  "hid":412,
+  "hid":451,
   "sid":"sm_DynamicCompression:5472:3",
   "esid":"sm_DynamicCompression:5472:3",
-  "parent":411,
+  "parent":450,
   "children":[
   ],
   "name":"Increment\nReal World",
@@ -12701,10 +13829,10 @@
   "sameAsElement":true
  },
  {
-  "hid":413,
+  "hid":452,
   "sid":"sm_DynamicCompression:5472:5",
   "esid":"sm_DynamicCompression:5472:5",
-  "parent":411,
+  "parent":450,
   "children":[
   ],
   "name":"Wrap To Zero",
@@ -12728,13 +13856,13 @@
   "sameAsElement":true
  },
  {
-  "hid":414,
+  "hid":453,
   "sid":"sm_DynamicCompression:5473",
   "esid":"sm_DynamicCompression:5473",
-  "parent":409,
+  "parent":448,
   "children":[
-   415,
-   416
+   454,
+   455
   ],
   "name":"Input_Addr_Counter",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Static_pFIR3/Addr_Gen /Input_Addr_Counter",
@@ -12758,10 +13886,10 @@
   "sameAsElement":true
  },
  {
-  "hid":415,
+  "hid":454,
   "sid":"sm_DynamicCompression:5473:3",
   "esid":"sm_DynamicCompression:5473:3",
-  "parent":414,
+  "parent":453,
   "children":[
   ],
   "name":"Increment\nReal World",
@@ -12784,10 +13912,10 @@
   "sameAsElement":true
  },
  {
-  "hid":416,
+  "hid":455,
   "sid":"sm_DynamicCompression:5473:5",
   "esid":"sm_DynamicCompression:5473:5",
-  "parent":414,
+  "parent":453,
   "children":[
   ],
   "name":"Wrap To Zero",
@@ -12811,14 +13939,14 @@
   "sameAsElement":true
  },
  {
-  "hid":417,
+  "hid":456,
   "sid":"sm_DynamicCompression:5484",
   "esid":"sm_DynamicCompression:5484",
-  "parent":408,
+  "parent":447,
   "children":[
-   418,
-   419,
-   420
+   457,
+   458,
+   459
   ],
   "name":"B_k_Memory_Block",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Static_pFIR3/B_k_Memory_Block",
@@ -12889,10 +14017,10 @@
   "sameAsElement":true
  },
  {
-  "hid":418,
+  "hid":457,
   "sid":"sm_DynamicCompression:5484:35",
   "esid":"sm_DynamicCompression:5484:35",
-  "parent":417,
+  "parent":456,
   "children":[
   ],
   "name":"Compare\nTo Zero",
@@ -12914,10 +14042,10 @@
   "sameAsElement":true
  },
  {
-  "hid":419,
+  "hid":458,
   "sid":"sm_DynamicCompression:5484:36",
   "esid":"sm_DynamicCompression:5484:36",
-  "parent":417,
+  "parent":456,
   "children":[
   ],
   "name":"Data Type\nConversion\nInherited A",
@@ -12940,10 +14068,10 @@
   "sameAsElement":true
  },
  {
-  "hid":420,
+  "hid":459,
   "sid":"sm_DynamicCompression:5484:37",
   "esid":"sm_DynamicCompression:5484:37",
-  "parent":417,
+  "parent":456,
   "children":[
   ],
   "name":"Data Type\nConversion\nInherited B",
@@ -12966,10 +14094,10 @@
   "sameAsElement":true
  },
  {
-  "hid":421,
+  "hid":460,
   "sid":"sm_DynamicCompression:5485",
   "esid":"sm_DynamicCompression:5485",
-  "parent":408,
+  "parent":447,
   "children":[
   ],
   "name":"Input_Data_Circular_Buffer",
@@ -13011,10 +14139,10 @@
   "sameAsElement":true
  },
  {
-  "hid":422,
+  "hid":461,
   "sid":"sm_DynamicCompression:5486",
   "esid":"sm_DynamicCompression:5486",
-  "parent":408,
+  "parent":447,
   "children":[
   ],
   "name":"Input_Data_Circular_Buffer_old",
@@ -13088,12 +14216,12 @@
   "sameAsElement":true
  },
  {
-  "hid":423,
+  "hid":462,
   "sid":"sm_DynamicCompression:5487",
   "esid":"sm_DynamicCompression:5487",
-  "parent":408,
+  "parent":447,
   "children":[
-   424
+   463
   ],
   "name":"Multiply_And_Sum",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Static_pFIR3/Multiply_And_Sum",
@@ -13127,10 +14255,10 @@
   "sameAsElement":true
  },
  {
-  "hid":424,
+  "hid":463,
   "sid":"sm_DynamicCompression:5493",
   "esid":"sm_DynamicCompression:5493",
-  "parent":423,
+  "parent":462,
   "children":[
   ],
   "name":"Multiply-Add",
@@ -13156,16 +14284,16 @@
   "sameAsElement":true
  },
  {
-  "hid":425,
+  "hid":464,
   "sid":"sm_DynamicCompression:5511",
   "esid":"sm_DynamicCompression:5511",
   "parent":10,
   "children":[
-   426,
-   434,
-   438,
-   439,
-   440
+   465,
+   473,
+   477,
+   478,
+   479
   ],
   "name":"Static_pFIR4",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Static_pFIR4",
@@ -13218,14 +14346,14 @@
   "sameAsElement":true
  },
  {
-  "hid":426,
+  "hid":465,
   "sid":"sm_DynamicCompression:5514",
   "esid":"sm_DynamicCompression:5514",
-  "parent":425,
+  "parent":464,
   "children":[
-   427,
-   428,
-   431
+   466,
+   467,
+   470
   ],
   "name":"Addr_Gen\n",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Static_pFIR4/Addr_Gen ",
@@ -13260,10 +14388,10 @@
   "sameAsElement":true
  },
  {
-  "hid":427,
+  "hid":466,
   "sid":"sm_DynamicCompression:5516",
   "esid":"sm_DynamicCompression:5516",
-  "parent":426,
+  "parent":465,
   "children":[
   ],
   "name":"Compare\nTo Zero",
@@ -13285,13 +14413,13 @@
   "sameAsElement":true
  },
  {
-  "hid":428,
+  "hid":467,
   "sid":"sm_DynamicCompression:5518",
   "esid":"sm_DynamicCompression:5518",
-  "parent":426,
+  "parent":465,
   "children":[
-   429,
-   430
+   468,
+   469
   ],
   "name":"Counter 0 to |b_k|-1",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Static_pFIR4/Addr_Gen /Counter 0 to |b_k|-1",
@@ -13315,10 +14443,10 @@
   "sameAsElement":true
  },
  {
-  "hid":429,
+  "hid":468,
   "sid":"sm_DynamicCompression:5518:3",
   "esid":"sm_DynamicCompression:5518:3",
-  "parent":428,
+  "parent":467,
   "children":[
   ],
   "name":"Increment\nReal World",
@@ -13341,10 +14469,10 @@
   "sameAsElement":true
  },
  {
-  "hid":430,
+  "hid":469,
   "sid":"sm_DynamicCompression:5518:5",
   "esid":"sm_DynamicCompression:5518:5",
-  "parent":428,
+  "parent":467,
   "children":[
   ],
   "name":"Wrap To Zero",
@@ -13368,13 +14496,13 @@
   "sameAsElement":true
  },
  {
-  "hid":431,
+  "hid":470,
   "sid":"sm_DynamicCompression:5519",
   "esid":"sm_DynamicCompression:5519",
-  "parent":426,
+  "parent":465,
   "children":[
-   432,
-   433
+   471,
+   472
   ],
   "name":"Input_Addr_Counter",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Static_pFIR4/Addr_Gen /Input_Addr_Counter",
@@ -13398,10 +14526,10 @@
   "sameAsElement":true
  },
  {
-  "hid":432,
+  "hid":471,
   "sid":"sm_DynamicCompression:5519:3",
   "esid":"sm_DynamicCompression:5519:3",
-  "parent":431,
+  "parent":470,
   "children":[
   ],
   "name":"Increment\nReal World",
@@ -13424,10 +14552,10 @@
   "sameAsElement":true
  },
  {
-  "hid":433,
+  "hid":472,
   "sid":"sm_DynamicCompression:5519:5",
   "esid":"sm_DynamicCompression:5519:5",
-  "parent":431,
+  "parent":470,
   "children":[
   ],
   "name":"Wrap To Zero",
@@ -13451,14 +14579,14 @@
   "sameAsElement":true
  },
  {
-  "hid":434,
+  "hid":473,
   "sid":"sm_DynamicCompression:5530",
   "esid":"sm_DynamicCompression:5530",
-  "parent":425,
+  "parent":464,
   "children":[
-   435,
-   436,
-   437
+   474,
+   475,
+   476
   ],
   "name":"B_k_Memory_Block",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Static_pFIR4/B_k_Memory_Block",
@@ -13529,10 +14657,10 @@
   "sameAsElement":true
  },
  {
-  "hid":435,
+  "hid":474,
   "sid":"sm_DynamicCompression:5530:35",
   "esid":"sm_DynamicCompression:5530:35",
-  "parent":434,
+  "parent":473,
   "children":[
   ],
   "name":"Compare\nTo Zero",
@@ -13554,10 +14682,10 @@
   "sameAsElement":true
  },
  {
-  "hid":436,
+  "hid":475,
   "sid":"sm_DynamicCompression:5530:36",
   "esid":"sm_DynamicCompression:5530:36",
-  "parent":434,
+  "parent":473,
   "children":[
   ],
   "name":"Data Type\nConversion\nInherited A",
@@ -13580,10 +14708,10 @@
   "sameAsElement":true
  },
  {
-  "hid":437,
+  "hid":476,
   "sid":"sm_DynamicCompression:5530:37",
   "esid":"sm_DynamicCompression:5530:37",
-  "parent":434,
+  "parent":473,
   "children":[
   ],
   "name":"Data Type\nConversion\nInherited B",
@@ -13606,10 +14734,10 @@
   "sameAsElement":true
  },
  {
-  "hid":438,
+  "hid":477,
   "sid":"sm_DynamicCompression:5531",
   "esid":"sm_DynamicCompression:5531",
-  "parent":425,
+  "parent":464,
   "children":[
   ],
   "name":"Input_Data_Circular_Buffer",
@@ -13651,10 +14779,10 @@
   "sameAsElement":true
  },
  {
-  "hid":439,
+  "hid":478,
   "sid":"sm_DynamicCompression:5532",
   "esid":"sm_DynamicCompression:5532",
-  "parent":425,
+  "parent":464,
   "children":[
   ],
   "name":"Input_Data_Circular_Buffer_old",
@@ -13728,12 +14856,12 @@
   "sameAsElement":true
  },
  {
-  "hid":440,
+  "hid":479,
   "sid":"sm_DynamicCompression:5533",
   "esid":"sm_DynamicCompression:5533",
-  "parent":425,
+  "parent":464,
   "children":[
-   441
+   480
   ],
   "name":"Multiply_And_Sum",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Nchan_FbankAGC_AID/Static_pFIR4/Multiply_And_Sum",
@@ -13767,10 +14895,10 @@
   "sameAsElement":true
  },
  {
-  "hid":441,
+  "hid":480,
   "sid":"sm_DynamicCompression:5539",
   "esid":"sm_DynamicCompression:5539",
-  "parent":440,
+  "parent":479,
   "children":[
   ],
   "name":"Multiply-Add",
@@ -13796,16 +14924,16 @@
   "sameAsElement":true
  },
  {
-  "hid":442,
+  "hid":481,
   "sid":"sm_DynamicCompression:5276",
   "esid":"sm_DynamicCompression:5276",
   "parent":7,
   "children":[
-   443,
-   451,
-   455,
-   456,
-   457
+   482,
+   490,
+   494,
+   495,
+   496
   ],
   "name":"Static_pFIR",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Static_pFIR",
@@ -13858,14 +14986,14 @@
   "sameAsElement":true
  },
  {
-  "hid":443,
+  "hid":482,
   "sid":"sm_DynamicCompression:5279",
   "esid":"sm_DynamicCompression:5279",
-  "parent":442,
+  "parent":481,
   "children":[
-   444,
-   445,
-   448
+   483,
+   484,
+   487
   ],
   "name":"Addr_Gen\n",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Static_pFIR/Addr_Gen ",
@@ -13900,10 +15028,10 @@
   "sameAsElement":true
  },
  {
-  "hid":444,
+  "hid":483,
   "sid":"sm_DynamicCompression:5281",
   "esid":"sm_DynamicCompression:5281",
-  "parent":443,
+  "parent":482,
   "children":[
   ],
   "name":"Compare\nTo Zero",
@@ -13925,13 +15053,13 @@
   "sameAsElement":true
  },
  {
-  "hid":445,
+  "hid":484,
   "sid":"sm_DynamicCompression:5283",
   "esid":"sm_DynamicCompression:5283",
-  "parent":443,
+  "parent":482,
   "children":[
-   446,
-   447
+   485,
+   486
   ],
   "name":"Counter 0 to |b_k|-1",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Static_pFIR/Addr_Gen /Counter 0 to |b_k|-1",
@@ -13955,10 +15083,10 @@
   "sameAsElement":true
  },
  {
-  "hid":446,
+  "hid":485,
   "sid":"sm_DynamicCompression:5283:3",
   "esid":"sm_DynamicCompression:5283:3",
-  "parent":445,
+  "parent":484,
   "children":[
   ],
   "name":"Increment\nReal World",
@@ -13981,10 +15109,10 @@
   "sameAsElement":true
  },
  {
-  "hid":447,
+  "hid":486,
   "sid":"sm_DynamicCompression:5283:5",
   "esid":"sm_DynamicCompression:5283:5",
-  "parent":445,
+  "parent":484,
   "children":[
   ],
   "name":"Wrap To Zero",
@@ -14008,13 +15136,13 @@
   "sameAsElement":true
  },
  {
-  "hid":448,
+  "hid":487,
   "sid":"sm_DynamicCompression:5284",
   "esid":"sm_DynamicCompression:5284",
-  "parent":443,
+  "parent":482,
   "children":[
-   449,
-   450
+   488,
+   489
   ],
   "name":"Input_Addr_Counter",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Static_pFIR/Addr_Gen /Input_Addr_Counter",
@@ -14038,10 +15166,10 @@
   "sameAsElement":true
  },
  {
-  "hid":449,
+  "hid":488,
   "sid":"sm_DynamicCompression:5284:3",
   "esid":"sm_DynamicCompression:5284:3",
-  "parent":448,
+  "parent":487,
   "children":[
   ],
   "name":"Increment\nReal World",
@@ -14064,10 +15192,10 @@
   "sameAsElement":true
  },
  {
-  "hid":450,
+  "hid":489,
   "sid":"sm_DynamicCompression:5284:5",
   "esid":"sm_DynamicCompression:5284:5",
-  "parent":448,
+  "parent":487,
   "children":[
   ],
   "name":"Wrap To Zero",
@@ -14091,14 +15219,14 @@
   "sameAsElement":true
  },
  {
-  "hid":451,
+  "hid":490,
   "sid":"sm_DynamicCompression:5295",
   "esid":"sm_DynamicCompression:5295",
-  "parent":442,
+  "parent":481,
   "children":[
-   452,
-   453,
-   454
+   491,
+   492,
+   493
   ],
   "name":"B_k_Memory_Block2",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Static_pFIR/B_k_Memory_Block2",
@@ -14169,10 +15297,10 @@
   "sameAsElement":true
  },
  {
-  "hid":452,
+  "hid":491,
   "sid":"sm_DynamicCompression:5295:35",
   "esid":"sm_DynamicCompression:5295:35",
-  "parent":451,
+  "parent":490,
   "children":[
   ],
   "name":"Compare\nTo Zero",
@@ -14194,10 +15322,10 @@
   "sameAsElement":true
  },
  {
-  "hid":453,
+  "hid":492,
   "sid":"sm_DynamicCompression:5295:36",
   "esid":"sm_DynamicCompression:5295:36",
-  "parent":451,
+  "parent":490,
   "children":[
   ],
   "name":"Data Type\nConversion\nInherited A",
@@ -14220,10 +15348,10 @@
   "sameAsElement":true
  },
  {
-  "hid":454,
+  "hid":493,
   "sid":"sm_DynamicCompression:5295:37",
   "esid":"sm_DynamicCompression:5295:37",
-  "parent":451,
+  "parent":490,
   "children":[
   ],
   "name":"Data Type\nConversion\nInherited B",
@@ -14246,10 +15374,10 @@
   "sameAsElement":true
  },
  {
-  "hid":455,
+  "hid":494,
   "sid":"sm_DynamicCompression:5296",
   "esid":"sm_DynamicCompression:5296",
-  "parent":442,
+  "parent":481,
   "children":[
   ],
   "name":"Input_Data_Circular_Buffer",
@@ -14291,10 +15419,10 @@
   "sameAsElement":true
  },
  {
-  "hid":456,
+  "hid":495,
   "sid":"sm_DynamicCompression:5297",
   "esid":"sm_DynamicCompression:5297",
-  "parent":442,
+  "parent":481,
   "children":[
   ],
   "name":"Input_Data_Circular_Buffer_old",
@@ -14368,12 +15496,12 @@
   "sameAsElement":true
  },
  {
-  "hid":457,
+  "hid":496,
   "sid":"sm_DynamicCompression:5298",
   "esid":"sm_DynamicCompression:5298",
-  "parent":442,
+  "parent":481,
   "children":[
-   458
+   497
   ],
   "name":"Multiply_And_Sum",
   "fullname":"sm_DynamicCompression/dataplane/Avalon Data Processing/Left Channel Processing/recalculate/Static_pFIR/Multiply_And_Sum",
@@ -14409,10 +15537,10 @@
   "sameAsElement":true
  },
  {
-  "hid":458,
+  "hid":497,
   "sid":"sm_DynamicCompression:5304",
   "esid":"sm_DynamicCompression:5304",
-  "parent":457,
+  "parent":496,
   "children":[
   ],
   "name":"Multiply-Add",
@@ -14438,7 +15566,7 @@
   "sameAsElement":true
  },
  {
-  "hid":459,
+  "hid":498,
   "sid":"sm_DynamicCompression:446",
   "esid":"sm_DynamicCompression:446",
   "parent":3,

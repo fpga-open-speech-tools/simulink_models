@@ -185,11 +185,11 @@
           <g data-tags="portannotationpanel PortDataTypeString">
             <defs>
               <clipPath id="clip15">
-                <path d="M-230.531,-46 L574,-46 L574,248 L-230.531,248 L-230.531,-46 z"/>
+                <path d="M-331.531,-64 L473,-64 L473,230 L-331.531,230 L-331.531,-64 z"/>
               </clipPath>
             </defs>
-            <g clip-path="url(#clip15)" fill="none" opacity="1" stroke="#e60000" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,251,82)">
-              <text fill="#e60000" fill-opacity="1" font-family="Liberation Sans" font-size="9" font-style="normal" font-weight="400" stroke="none" textLength="15" x="1" xml:space="preserve" y="10">512</text>
+            <g clip-path="url(#clip15)" fill="none" opacity="1" stroke="#e60000" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,352,100)">
+              <text fill="#e60000" fill-opacity="1" font-family="Liberation Sans" font-size="9" font-style="normal" font-weight="400" stroke="none" textLength="86.9375" x="1" xml:space="preserve" y="10">sfix32_En28 (512) D1</text>
             </g>
             <!--RAWSTRING-->
           </g>
@@ -197,11 +197,11 @@
           <g data-tags="portannotationpanel PortDataTypeString">
             <defs>
               <clipPath id="clip16">
-                <path d="M-331.531,-64 L473,-64 L473,230 L-331.531,230 L-331.531,-64 z"/>
+                <path d="M-230.531,-46 L574,-46 L574,248 L-230.531,248 L-230.531,-46 z"/>
               </clipPath>
             </defs>
-            <g clip-path="url(#clip16)" fill="none" opacity="1" stroke="#e60000" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,352,100)">
-              <text fill="#e60000" fill-opacity="1" font-family="Liberation Sans" font-size="9" font-style="normal" font-weight="400" stroke="none" textLength="86.9375" x="1" xml:space="preserve" y="10">sfix32_En28 (512) D1</text>
+            <g clip-path="url(#clip16)" fill="none" opacity="1" stroke="#e60000" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,251,82)">
+              <text fill="#e60000" fill-opacity="1" font-family="Liberation Sans" font-size="9" font-style="normal" font-weight="400" stroke="none" textLength="15" x="1" xml:space="preserve" y="10">512</text>
             </g>
             <!--RAWSTRING-->
           </g>
@@ -487,11 +487,11 @@
           <g data-tags="portannotationpanel PortDataTypeString">
             <defs>
               <clipPath id="clip63">
-                <path d="M-390.531,-81 L414,-81 L414,213 L-390.531,213 L-390.531,-81 z"/>
+                <path d="M-441.531,-84 L363,-84 L363,210 L-441.531,210 L-441.531,-84 z"/>
               </clipPath>
             </defs>
-            <g clip-path="url(#clip63)" fill="none" opacity="1" stroke="#e60000" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,411,117)">
-              <text fill="#e60000" fill-opacity="1" font-family="Liberation Sans" font-size="9" font-style="normal" font-weight="400" stroke="none" textLength="15" x="1" xml:space="preserve" y="10">512</text>
+            <g clip-path="url(#clip63)" fill="none" opacity="1" stroke="#e60000" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,462,120)">
+              <text fill="#e60000" fill-opacity="1" font-family="Liberation Sans" font-size="9" font-style="normal" font-weight="400" stroke="none" textLength="86.9375" x="1" xml:space="preserve" y="10">sfix32_En28 (512) D1</text>
             </g>
             <!--RAWSTRING-->
           </g>
@@ -499,10 +499,10 @@
           <g data-tags="portannotationpanel PortDataTypeString">
             <defs>
               <clipPath id="clip64">
-                <path d="M-390.531,-121 L414,-121 L414,173 L-390.531,173 L-390.531,-121 z"/>
+                <path d="M-390.531,-81 L414,-81 L414,213 L-390.531,213 L-390.531,-81 z"/>
               </clipPath>
             </defs>
-            <g clip-path="url(#clip64)" fill="none" opacity="1" stroke="#e60000" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,411,157)">
+            <g clip-path="url(#clip64)" fill="none" opacity="1" stroke="#e60000" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,411,117)">
               <text fill="#e60000" fill-opacity="1" font-family="Liberation Sans" font-size="9" font-style="normal" font-weight="400" stroke="none" textLength="15" x="1" xml:space="preserve" y="10">512</text>
             </g>
             <!--RAWSTRING-->
@@ -511,11 +511,11 @@
           <g data-tags="portannotationpanel PortDataTypeString">
             <defs>
               <clipPath id="clip65">
-                <path d="M-441.531,-84 L363,-84 L363,210 L-441.531,210 L-441.531,-84 z"/>
+                <path d="M-390.531,-121 L414,-121 L414,173 L-390.531,173 L-390.531,-121 z"/>
               </clipPath>
             </defs>
-            <g clip-path="url(#clip65)" fill="none" opacity="1" stroke="#e60000" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,462,120)">
-              <text fill="#e60000" fill-opacity="1" font-family="Liberation Sans" font-size="9" font-style="normal" font-weight="400" stroke="none" textLength="86.9375" x="1" xml:space="preserve" y="10">sfix32_En28 (512) D1</text>
+            <g clip-path="url(#clip65)" fill="none" opacity="1" stroke="#e60000" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,411,157)">
+              <text fill="#e60000" fill-opacity="1" font-family="Liberation Sans" font-size="9" font-style="normal" font-weight="400" stroke="none" textLength="15" x="1" xml:space="preserve" y="10">512</text>
             </g>
             <!--RAWSTRING-->
           </g>
@@ -1596,13 +1596,13 @@
           </g>
           <!--RAWSTRING-->
         </g>
+        <g clip-path="none" fill="#e60000" fill-opacity="1" opacity="1" stroke="none" stroke-opacity="0" transform="matrix(1,0,0,1,580,135)">
+          <path d="M2.5,0 C2.5,1.38071 1.38071,2.5 0,2.5 C-1.38071,2.5 -2.5,1.38071 -2.5,0 C-2.5,-1.38071 -1.38071,-2.5 0,-2.5 C1.38071,-2.5 2.5,-1.38071 2.5,0 z" fill-rule="evenodd" vector-effect="none"/>
+        </g>
         <g clip-path="none" fill="#e60000" fill-opacity="1" opacity="1" stroke="none" stroke-opacity="0" transform="matrix(1,0,0,1,595,135)">
           <path d="M2.5,0 C2.5,1.38071 1.38071,2.5 0,2.5 C-1.38071,2.5 -2.5,1.38071 -2.5,0 C-2.5,-1.38071 -1.38071,-2.5 0,-2.5 C1.38071,-2.5 2.5,-1.38071 2.5,0 z" fill-rule="evenodd" vector-effect="none"/>
         </g>
         <g clip-path="none" fill="#e60000" fill-opacity="1" opacity="1" stroke="none" stroke-opacity="0" transform="matrix(1,0,0,1,610,135)">
-          <path d="M2.5,0 C2.5,1.38071 1.38071,2.5 0,2.5 C-1.38071,2.5 -2.5,1.38071 -2.5,0 C-2.5,-1.38071 -1.38071,-2.5 0,-2.5 C1.38071,-2.5 2.5,-1.38071 2.5,0 z" fill-rule="evenodd" vector-effect="none"/>
-        </g>
-        <g clip-path="none" fill="#e60000" fill-opacity="1" opacity="1" stroke="none" stroke-opacity="0" transform="matrix(1,0,0,1,580,135)">
           <path d="M2.5,0 C2.5,1.38071 1.38071,2.5 0,2.5 C-1.38071,2.5 -2.5,1.38071 -2.5,0 C-2.5,-1.38071 -1.38071,-2.5 0,-2.5 C1.38071,-2.5 2.5,-1.38071 2.5,0 z" fill-rule="evenodd" vector-effect="none"/>
         </g>
         <!--RAWSTRING-->
@@ -1680,5 +1680,5 @@
       <!--RAWSTRING-->
     </g>
   </g>
-  <!--generated on neon @ 2019-11-20 16:30:05 MST-->
+  <!--generated on neon @ 2019-11-20 20:09:16 MST-->
 </svg>

@@ -246,41 +246,57 @@
  },
  {
   "sid":"sm_DynamicCompression:1066",
-  "className":"Simulink.Reference",
+  "className":"HDL Counter",
   "icon":"sm_DynamicCompression_2333",
   "name":"Counter_up_to_320",
   "label":"Counter_up_to_320",
   "parent":"sm_DynamicCompression:1061",
   "inspector":{
    "params":[
-    "SourceBlock",
-    "SourceType",
-    "SourceProductBaseCode",
-    "SourceProductName"
+    "CountType",
+    "CountInit",
+    "CountStep",
+    "CountMax",
+    "CountFromType",
+    "CountFrom",
+    "CountResetPort",
+    "CountLoadPort",
+    "CountEnbPort",
+    "CountDirPort",
+    "CountDataType",
+    "CountWordLen",
+    "CountFracLen",
+    "CountSampTime"
    ],
    "values":[
-    "hdlsllib/Sources/HDL Counter",
-    "HDL Counter",
-    "SL",
-    "Simulink"
+    "Count limited",
+    "5*2^(4+M_Bits)",
+    "1",
+    "5*2^(4+M_Bits)+1",
+    "Initial value",
+    "5*2^(4+M_Bits)",
+    "on",
+    "off",
+    "on",
+    "off",
+    "Unsigned",
+    "7+M_Bits",
+    "0",
+    "1"
    ],
    "tabs":[
-    "Parameter Attributes",
-    "-Other"
    ],
    "tabs_idx":[
-    0,
-    2
    ]
   },
   "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
+   "jshandler":"webview/handlers/ContainerHandler"
   },
   "obj_viewer":[
   ],
   "finder":{
-   "blocktype":"Reference",
-   "masktype":""
+   "blocktype":"SubSystem",
+   "masktype":"HDL Counter"
   }
  },
  {
@@ -479,80 +495,64 @@
  },
  {
   "sid":"sm_DynamicCompression:1064",
-  "className":"Simulink.Reference",
+  "className":"Bit Slice",
   "icon":"sm_DynamicCompression_2333",
   "name":"Bit Slice",
   "label":"Bit Slice",
   "parent":"sm_DynamicCompression:1061",
   "inspector":{
    "params":[
-    "SourceBlock",
-    "SourceType",
-    "SourceProductBaseCode",
-    "SourceProductName"
+    "lidx",
+    "ridx"
    ],
    "values":[
-    "hdlsllib/Logic and Bit\nOperations/Bit Slice",
-    "Bit Slice",
-    "SL",
-    "Simulink"
+    "3+M_bits",
+    "0"
    ],
    "tabs":[
-    "Parameter Attributes",
-    "-Other"
    ],
    "tabs_idx":[
-    0,
-    2
    ]
   },
   "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
+   "jshandler":"webview/handlers/ContainerHandler"
   },
   "obj_viewer":[
   ],
   "finder":{
-   "blocktype":"Reference",
-   "masktype":""
+   "blocktype":"SubSystem",
+   "masktype":"Bit Slice"
   }
  },
  {
   "sid":"sm_DynamicCompression:1065",
-  "className":"Simulink.Reference",
+  "className":"Bit Slice",
   "icon":"sm_DynamicCompression_2333",
   "name":"Bit Slice1",
   "label":"Bit Slice1",
   "parent":"sm_DynamicCompression:1061",
   "inspector":{
    "params":[
-    "SourceBlock",
-    "SourceType",
-    "SourceProductBaseCode",
-    "SourceProductName"
+    "lidx",
+    "ridx"
    ],
    "values":[
-    "hdlsllib/Logic and Bit\nOperations/Bit Slice",
-    "Bit Slice",
-    "SL",
-    "Simulink"
+    "6+M_bits",
+    "4+M_bits"
    ],
    "tabs":[
-    "Parameter Attributes",
-    "-Other"
    ],
    "tabs_idx":[
-    0,
-    2
    ]
   },
   "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
+   "jshandler":"webview/handlers/ContainerHandler"
   },
   "obj_viewer":[
   ],
   "finder":{
-   "blocktype":"Reference",
-   "masktype":""
+   "blocktype":"SubSystem",
+   "masktype":"Bit Slice"
   }
  },
  {

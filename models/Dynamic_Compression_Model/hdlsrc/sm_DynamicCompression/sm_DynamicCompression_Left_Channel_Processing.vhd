@@ -57,9 +57,9 @@ ARCHITECTURE rtl OF sm_DynamicCompression_Left_Channel_Processing IS
 
   -- Signals
   SIGNAL Register_System_Enable_signed    : signed(31 DOWNTO 0);  -- sfix32_En28
-  SIGNAL delayMatch_reg                   : vector_of_signed32(0 TO 2049);  -- sfix32 [2050]
-  SIGNAL Register_System_Enable_1         : signed(31 DOWNTO 0);  -- sfix32_En28
-  SIGNAL switch_compare_1                 : std_logic;
+  SIGNAL Data_Type_Conversion_out1        : std_logic;
+  SIGNAL delayMatch_reg                   : std_logic_vector(0 TO 2049);  -- ufix1 [2050]
+  SIGNAL Data_Type_Conversion_out1_1      : std_logic;
   SIGNAL Left_Data_In_signed              : signed(31 DOWNTO 0);  -- sfix32_En28
   SIGNAL delayMatch1_reg                  : vector_of_signed32(0 TO 2049);  -- sfix32 [2050]
   SIGNAL Left_Data_In_1                   : signed(31 DOWNTO 0);  -- sfix32_En28
@@ -85,23 +85,23 @@ BEGIN
 
   Register_System_Enable_signed <= signed(Register_System_Enable);
 
+  
+  Data_Type_Conversion_out1 <= '1' WHEN Register_System_Enable_signed /= to_signed(0, 32) ELSE
+      '0';
+
   delayMatch_process : PROCESS (clk, reset)
   BEGIN
     IF reset = '1' THEN
-      delayMatch_reg <= (OTHERS => to_signed(0, 32));
+      delayMatch_reg <= (OTHERS => '0');
     ELSIF rising_edge(clk) THEN
       IF enb = '1' THEN
-        delayMatch_reg(0) <= Register_System_Enable_signed;
+        delayMatch_reg(0) <= Data_Type_Conversion_out1;
         delayMatch_reg(1 TO 2049) <= delayMatch_reg(0 TO 2048);
       END IF;
     END IF;
   END PROCESS delayMatch_process;
 
-  Register_System_Enable_1 <= delayMatch_reg(2049);
-
-  
-  switch_compare_1 <= '1' WHEN Register_System_Enable_1 >= to_signed(0, 32) ELSE
-      '0';
+  Data_Type_Conversion_out1_1 <= delayMatch_reg(2049);
 
   Left_Data_In_signed <= signed(Left_Data_In);
 
@@ -122,7 +122,7 @@ BEGIN
   recalculate_out1_signed <= signed(recalculate_out1);
 
   
-  Switch_out1 <= Left_Data_In_1 WHEN switch_compare_1 = '0' ELSE
+  Switch_out1 <= Left_Data_In_1 WHEN Data_Type_Conversion_out1_1 = '0' ELSE
       recalculate_out1_signed;
 
   Left_Data_Out <= std_logic_vector(Switch_out1);

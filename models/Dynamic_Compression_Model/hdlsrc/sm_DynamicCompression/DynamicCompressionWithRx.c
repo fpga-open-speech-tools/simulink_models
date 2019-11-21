@@ -125,7 +125,7 @@ static const struct file_operations fe_DynamicCompressionWithRx_fops = {
 Generated in CreateInitFunction
 *********************************************************/
 static int DynamicCompressionWithRx_init(void) {
-  printk(KERN_ALERT "FUNCTION AUTO GENERATED AT: 2019-11-20 16:30\n");
+  printk(KERN_ALERT "FUNCTION AUTO GENERATED AT: 2019-11-20 20:10\n");
   int ret_val = 0;
   pr_info("Initializing the Flat Earth DynamicCompressionWithRx module\n");
   // Register our driver with the "Platform Driver" bus

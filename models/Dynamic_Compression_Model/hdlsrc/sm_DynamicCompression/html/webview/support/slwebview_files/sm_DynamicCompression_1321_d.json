@@ -1,236 +1,212 @@
 [
  {
   "sid":"sm_DynamicCompression:1357",
-  "className":"Simulink.Reference",
+  "className":"Extract Bits",
   "icon":"sm_DynamicCompression_2333",
   "name":"Extract Bits",
   "label":"Extract Bits",
   "parent":"sm_DynamicCompression:1321",
   "inspector":{
    "params":[
-    "SourceBlock",
-    "SourceType",
-    "SourceProductBaseCode",
-    "SourceProductName"
+    "bitsToExtract",
+    "numBits",
+    "bitIdxRange",
+    "outScalingMode"
    ],
    "values":[
-    "simulink/Logic and Bit\nOperations/Extract Bits",
-    "Extract Bits",
-    "SL",
-    "Simulink"
+    "Range of bits",
+    "8",
+    "[31 31]",
+    "Treat bit field as an integer"
    ],
    "tabs":[
-    "Parameter Attributes",
-    "-Other"
    ],
    "tabs_idx":[
-    0,
-    2
    ]
   },
   "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
+   "jshandler":"webview/handlers/ContainerHandler"
   },
   "obj_viewer":[
   ],
   "finder":{
-   "blocktype":"Reference",
-   "masktype":""
+   "blocktype":"SubSystem",
+   "masktype":"Extract Bits"
   }
  },
  {
   "sid":"sm_DynamicCompression:1358",
-  "className":"Simulink.Reference",
+  "className":"Extract Bits",
   "icon":"sm_DynamicCompression_2333",
   "name":"Extract Bits1",
   "label":"Extract Bits1",
   "parent":"sm_DynamicCompression:1321",
   "inspector":{
    "params":[
-    "SourceBlock",
-    "SourceType",
-    "SourceProductBaseCode",
-    "SourceProductName"
+    "bitsToExtract",
+    "numBits",
+    "bitIdxRange",
+    "outScalingMode"
    ],
    "values":[
-    "simulink/Logic and Bit\nOperations/Extract Bits",
-    "Extract Bits",
-    "SL",
-    "Simulink"
+    "Range of bits",
+    "8",
+    "[30 30]",
+    "Treat bit field as an integer"
    ],
    "tabs":[
-    "Parameter Attributes",
-    "-Other"
    ],
    "tabs_idx":[
-    0,
-    2
    ]
   },
   "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
+   "jshandler":"webview/handlers/ContainerHandler"
   },
   "obj_viewer":[
   ],
   "finder":{
-   "blocktype":"Reference",
-   "masktype":""
+   "blocktype":"SubSystem",
+   "masktype":"Extract Bits"
   }
  },
  {
   "sid":"sm_DynamicCompression:1369",
-  "className":"Simulink.Reference",
+  "className":"Extract Bits",
   "icon":"sm_DynamicCompression_2333",
   "name":"Extract Bits2",
   "label":"Extract Bits2",
   "parent":"sm_DynamicCompression:1321",
   "inspector":{
    "params":[
-    "SourceBlock",
-    "SourceType",
-    "SourceProductBaseCode",
-    "SourceProductName"
+    "bitsToExtract",
+    "numBits",
+    "bitIdxRange",
+    "outScalingMode"
    ],
    "values":[
-    "simulink/Logic and Bit\nOperations/Extract Bits",
-    "Extract Bits",
-    "SL",
-    "Simulink"
+    "Range of bits",
+    "8",
+    "[29 29]",
+    "Treat bit field as an integer"
    ],
    "tabs":[
-    "Parameter Attributes",
-    "-Other"
    ],
    "tabs_idx":[
-    0,
-    2
    ]
   },
   "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
+   "jshandler":"webview/handlers/ContainerHandler"
   },
   "obj_viewer":[
   ],
   "finder":{
-   "blocktype":"Reference",
-   "masktype":""
+   "blocktype":"SubSystem",
+   "masktype":"Extract Bits"
   }
  },
  {
   "sid":"sm_DynamicCompression:1380",
-  "className":"Simulink.Reference",
+  "className":"Extract Bits",
   "icon":"sm_DynamicCompression_2333",
   "name":"Extract Bits3",
   "label":"Extract Bits3",
   "parent":"sm_DynamicCompression:1321",
   "inspector":{
    "params":[
-    "SourceBlock",
-    "SourceType",
-    "SourceProductBaseCode",
-    "SourceProductName"
+    "bitsToExtract",
+    "numBits",
+    "bitIdxRange",
+    "outScalingMode"
    ],
    "values":[
-    "simulink/Logic and Bit\nOperations/Extract Bits",
-    "Extract Bits",
-    "SL",
-    "Simulink"
+    "Range of bits",
+    "8",
+    "[28 28]",
+    "Treat bit field as an integer"
    ],
    "tabs":[
-    "Parameter Attributes",
-    "-Other"
    ],
    "tabs_idx":[
-    0,
-    2
    ]
   },
   "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
+   "jshandler":"webview/handlers/ContainerHandler"
   },
   "obj_viewer":[
   ],
   "finder":{
-   "blocktype":"Reference",
-   "masktype":""
+   "blocktype":"SubSystem",
+   "masktype":"Extract Bits"
   }
  },
  {
   "sid":"sm_DynamicCompression:1383",
-  "className":"Simulink.Reference",
+  "className":"Extract Bits",
   "icon":"sm_DynamicCompression_2333",
   "name":"Extract Bits4",
   "label":"Extract Bits4",
   "parent":"sm_DynamicCompression:1321",
   "inspector":{
    "params":[
-    "SourceBlock",
-    "SourceType",
-    "SourceProductBaseCode",
-    "SourceProductName"
+    "bitsToExtract",
+    "numBits",
+    "bitIdxRange",
+    "outScalingMode"
    ],
    "values":[
-    "simulink/Logic and Bit\nOperations/Extract Bits",
-    "Extract Bits",
-    "SL",
-    "Simulink"
+    "Range of bits",
+    "8",
+    "[27 27]",
+    "Treat bit field as an integer"
    ],
    "tabs":[
-    "Parameter Attributes",
-    "-Other"
    ],
    "tabs_idx":[
-    0,
-    2
    ]
   },
   "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
+   "jshandler":"webview/handlers/ContainerHandler"
   },
   "obj_viewer":[
   ],
   "finder":{
-   "blocktype":"Reference",
-   "masktype":""
+   "blocktype":"SubSystem",
+   "masktype":"Extract Bits"
   }
  },
  {
   "sid":"sm_DynamicCompression:1384",
-  "className":"Simulink.Reference",
+  "className":"Extract Bits",
   "icon":"sm_DynamicCompression_2333",
   "name":"Extract Bits5",
   "label":"Extract Bits5",
   "parent":"sm_DynamicCompression:1321",
   "inspector":{
    "params":[
-    "SourceBlock",
-    "SourceType",
-    "SourceProductBaseCode",
-    "SourceProductName"
+    "bitsToExtract",
+    "numBits",
+    "bitIdxRange",
+    "outScalingMode"
    ],
    "values":[
-    "simulink/Logic and Bit\nOperations/Extract Bits",
-    "Extract Bits",
-    "SL",
-    "Simulink"
+    "Range of bits",
+    "8",
+    "[26 26]",
+    "Treat bit field as an integer"
    ],
    "tabs":[
-    "Parameter Attributes",
-    "-Other"
    ],
    "tabs_idx":[
-    0,
-    2
    ]
   },
   "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
+   "jshandler":"webview/handlers/ContainerHandler"
   },
   "obj_viewer":[
   ],
   "finder":{
-   "blocktype":"Reference",
-   "masktype":""
+   "blocktype":"SubSystem",
+   "masktype":"Extract Bits"
   }
  },
  {
@@ -3676,1016 +3652,912 @@
  },
  {
   "sid":"sm_DynamicCompression:1386",
-  "className":"Simulink.Reference",
+  "className":"Extract Bits",
   "icon":"sm_DynamicCompression_2333",
   "name":"Extract Bits7",
   "label":"Extract Bits7",
   "parent":"sm_DynamicCompression:1321",
   "inspector":{
    "params":[
-    "SourceBlock",
-    "SourceType",
-    "SourceProductBaseCode",
-    "SourceProductName"
+    "bitsToExtract",
+    "numBits",
+    "bitIdxRange",
+    "outScalingMode"
    ],
    "values":[
-    "simulink/Logic and Bit\nOperations/Extract Bits",
-    "Extract Bits",
-    "SL",
-    "Simulink"
+    "Range of bits",
+    "8",
+    "[25 25]",
+    "Treat bit field as an integer"
    ],
    "tabs":[
-    "Parameter Attributes",
-    "-Other"
    ],
    "tabs_idx":[
-    0,
-    2
    ]
   },
   "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
+   "jshandler":"webview/handlers/ContainerHandler"
   },
   "obj_viewer":[
   ],
   "finder":{
-   "blocktype":"Reference",
-   "masktype":""
+   "blocktype":"SubSystem",
+   "masktype":"Extract Bits"
   }
  },
  {
   "sid":"sm_DynamicCompression:1387",
-  "className":"Simulink.Reference",
+  "className":"Extract Bits",
   "icon":"sm_DynamicCompression_2333",
   "name":"Extract Bits8",
   "label":"Extract Bits8",
   "parent":"sm_DynamicCompression:1321",
   "inspector":{
    "params":[
-    "SourceBlock",
-    "SourceType",
-    "SourceProductBaseCode",
-    "SourceProductName"
+    "bitsToExtract",
+    "numBits",
+    "bitIdxRange",
+    "outScalingMode"
    ],
    "values":[
-    "simulink/Logic and Bit\nOperations/Extract Bits",
-    "Extract Bits",
-    "SL",
-    "Simulink"
+    "Range of bits",
+    "8",
+    "[24 24]",
+    "Treat bit field as an integer"
    ],
    "tabs":[
-    "Parameter Attributes",
-    "-Other"
    ],
    "tabs_idx":[
-    0,
-    2
    ]
   },
   "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
+   "jshandler":"webview/handlers/ContainerHandler"
   },
   "obj_viewer":[
   ],
   "finder":{
-   "blocktype":"Reference",
-   "masktype":""
+   "blocktype":"SubSystem",
+   "masktype":"Extract Bits"
   }
  },
  {
   "sid":"sm_DynamicCompression:1388",
-  "className":"Simulink.Reference",
+  "className":"Extract Bits",
   "icon":"sm_DynamicCompression_2333",
   "name":"Extract Bits9",
   "label":"Extract Bits9",
   "parent":"sm_DynamicCompression:1321",
   "inspector":{
    "params":[
-    "SourceBlock",
-    "SourceType",
-    "SourceProductBaseCode",
-    "SourceProductName"
+    "bitsToExtract",
+    "numBits",
+    "bitIdxRange",
+    "outScalingMode"
    ],
    "values":[
-    "simulink/Logic and Bit\nOperations/Extract Bits",
-    "Extract Bits",
-    "SL",
-    "Simulink"
+    "Range of bits",
+    "8",
+    "[23 23]",
+    "Treat bit field as an integer"
    ],
    "tabs":[
-    "Parameter Attributes",
-    "-Other"
    ],
    "tabs_idx":[
-    0,
-    2
    ]
   },
   "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
+   "jshandler":"webview/handlers/ContainerHandler"
   },
   "obj_viewer":[
   ],
   "finder":{
-   "blocktype":"Reference",
-   "masktype":""
+   "blocktype":"SubSystem",
+   "masktype":"Extract Bits"
   }
  },
  {
   "sid":"sm_DynamicCompression:1359",
-  "className":"Simulink.Reference",
+  "className":"Extract Bits",
   "icon":"sm_DynamicCompression_2333",
   "name":"Extract Bits10",
   "label":"Extract Bits10",
   "parent":"sm_DynamicCompression:1321",
   "inspector":{
    "params":[
-    "SourceBlock",
-    "SourceType",
-    "SourceProductBaseCode",
-    "SourceProductName"
+    "bitsToExtract",
+    "numBits",
+    "bitIdxRange",
+    "outScalingMode"
    ],
    "values":[
-    "simulink/Logic and Bit\nOperations/Extract Bits",
-    "Extract Bits",
-    "SL",
-    "Simulink"
+    "Range of bits",
+    "8",
+    "[22 22]",
+    "Treat bit field as an integer"
    ],
    "tabs":[
-    "Parameter Attributes",
-    "-Other"
    ],
    "tabs_idx":[
-    0,
-    2
    ]
   },
   "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
+   "jshandler":"webview/handlers/ContainerHandler"
   },
   "obj_viewer":[
   ],
   "finder":{
-   "blocktype":"Reference",
-   "masktype":""
+   "blocktype":"SubSystem",
+   "masktype":"Extract Bits"
   }
  },
  {
   "sid":"sm_DynamicCompression:1360",
-  "className":"Simulink.Reference",
+  "className":"Extract Bits",
   "icon":"sm_DynamicCompression_2333",
   "name":"Extract Bits11",
   "label":"Extract Bits11",
   "parent":"sm_DynamicCompression:1321",
   "inspector":{
    "params":[
-    "SourceBlock",
-    "SourceType",
-    "SourceProductBaseCode",
-    "SourceProductName"
+    "bitsToExtract",
+    "numBits",
+    "bitIdxRange",
+    "outScalingMode"
    ],
    "values":[
-    "simulink/Logic and Bit\nOperations/Extract Bits",
-    "Extract Bits",
-    "SL",
-    "Simulink"
+    "Range of bits",
+    "8",
+    "[21 21]",
+    "Treat bit field as an integer"
    ],
    "tabs":[
-    "Parameter Attributes",
-    "-Other"
    ],
    "tabs_idx":[
-    0,
-    2
    ]
   },
   "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
+   "jshandler":"webview/handlers/ContainerHandler"
   },
   "obj_viewer":[
   ],
   "finder":{
-   "blocktype":"Reference",
-   "masktype":""
+   "blocktype":"SubSystem",
+   "masktype":"Extract Bits"
   }
  },
  {
   "sid":"sm_DynamicCompression:1361",
-  "className":"Simulink.Reference",
+  "className":"Extract Bits",
   "icon":"sm_DynamicCompression_2333",
   "name":"Extract Bits12",
   "label":"Extract Bits12",
   "parent":"sm_DynamicCompression:1321",
   "inspector":{
    "params":[
-    "SourceBlock",
-    "SourceType",
-    "SourceProductBaseCode",
-    "SourceProductName"
+    "bitsToExtract",
+    "numBits",
+    "bitIdxRange",
+    "outScalingMode"
    ],
    "values":[
-    "simulink/Logic and Bit\nOperations/Extract Bits",
-    "Extract Bits",
-    "SL",
-    "Simulink"
+    "Range of bits",
+    "8",
+    "[20 20]",
+    "Treat bit field as an integer"
    ],
    "tabs":[
-    "Parameter Attributes",
-    "-Other"
    ],
    "tabs_idx":[
-    0,
-    2
    ]
   },
   "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
+   "jshandler":"webview/handlers/ContainerHandler"
   },
   "obj_viewer":[
   ],
   "finder":{
-   "blocktype":"Reference",
-   "masktype":""
+   "blocktype":"SubSystem",
+   "masktype":"Extract Bits"
   }
  },
  {
   "sid":"sm_DynamicCompression:1362",
-  "className":"Simulink.Reference",
+  "className":"Extract Bits",
   "icon":"sm_DynamicCompression_2333",
   "name":"Extract Bits13",
   "label":"Extract Bits13",
   "parent":"sm_DynamicCompression:1321",
   "inspector":{
    "params":[
-    "SourceBlock",
-    "SourceType",
-    "SourceProductBaseCode",
-    "SourceProductName"
+    "bitsToExtract",
+    "numBits",
+    "bitIdxRange",
+    "outScalingMode"
    ],
    "values":[
-    "simulink/Logic and Bit\nOperations/Extract Bits",
-    "Extract Bits",
-    "SL",
-    "Simulink"
+    "Range of bits",
+    "8",
+    "[19 19]",
+    "Treat bit field as an integer"
    ],
    "tabs":[
-    "Parameter Attributes",
-    "-Other"
    ],
    "tabs_idx":[
-    0,
-    2
    ]
   },
   "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
+   "jshandler":"webview/handlers/ContainerHandler"
   },
   "obj_viewer":[
   ],
   "finder":{
-   "blocktype":"Reference",
-   "masktype":""
+   "blocktype":"SubSystem",
+   "masktype":"Extract Bits"
   }
  },
  {
   "sid":"sm_DynamicCompression:1366",
-  "className":"Simulink.Reference",
+  "className":"Extract Bits",
   "icon":"sm_DynamicCompression_2333",
   "name":"Extract Bits17",
   "label":"Extract Bits17",
   "parent":"sm_DynamicCompression:1321",
   "inspector":{
    "params":[
-    "SourceBlock",
-    "SourceType",
-    "SourceProductBaseCode",
-    "SourceProductName"
+    "bitsToExtract",
+    "numBits",
+    "bitIdxRange",
+    "outScalingMode"
    ],
    "values":[
-    "simulink/Logic and Bit\nOperations/Extract Bits",
-    "Extract Bits",
-    "SL",
-    "Simulink"
+    "Range of bits",
+    "8",
+    "[18 18]",
+    "Treat bit field as an integer"
    ],
    "tabs":[
-    "Parameter Attributes",
-    "-Other"
    ],
    "tabs_idx":[
-    0,
-    2
    ]
   },
   "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
+   "jshandler":"webview/handlers/ContainerHandler"
   },
   "obj_viewer":[
   ],
   "finder":{
-   "blocktype":"Reference",
-   "masktype":""
+   "blocktype":"SubSystem",
+   "masktype":"Extract Bits"
   }
  },
  {
   "sid":"sm_DynamicCompression:1385",
-  "className":"Simulink.Reference",
+  "className":"Extract Bits",
   "icon":"sm_DynamicCompression_2333",
   "name":"Extract Bits6",
   "label":"Extract Bits6",
   "parent":"sm_DynamicCompression:1321",
   "inspector":{
    "params":[
-    "SourceBlock",
-    "SourceType",
-    "SourceProductBaseCode",
-    "SourceProductName"
+    "bitsToExtract",
+    "numBits",
+    "bitIdxRange",
+    "outScalingMode"
    ],
    "values":[
-    "simulink/Logic and Bit\nOperations/Extract Bits",
-    "Extract Bits",
-    "SL",
-    "Simulink"
+    "Range of bits",
+    "8",
+    "[17 17]",
+    "Treat bit field as an integer"
    ],
    "tabs":[
-    "Parameter Attributes",
-    "-Other"
    ],
    "tabs_idx":[
-    0,
-    2
    ]
   },
   "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
+   "jshandler":"webview/handlers/ContainerHandler"
   },
   "obj_viewer":[
   ],
   "finder":{
-   "blocktype":"Reference",
-   "masktype":""
+   "blocktype":"SubSystem",
+   "masktype":"Extract Bits"
   }
  },
  {
   "sid":"sm_DynamicCompression:1363",
-  "className":"Simulink.Reference",
+  "className":"Extract Bits",
   "icon":"sm_DynamicCompression_2333",
   "name":"Extract Bits14",
   "label":"Extract Bits14",
   "parent":"sm_DynamicCompression:1321",
   "inspector":{
    "params":[
-    "SourceBlock",
-    "SourceType",
-    "SourceProductBaseCode",
-    "SourceProductName"
+    "bitsToExtract",
+    "numBits",
+    "bitIdxRange",
+    "outScalingMode"
    ],
    "values":[
-    "simulink/Logic and Bit\nOperations/Extract Bits",
-    "Extract Bits",
-    "SL",
-    "Simulink"
+    "Range of bits",
+    "8",
+    "[16 16]",
+    "Treat bit field as an integer"
    ],
    "tabs":[
-    "Parameter Attributes",
-    "-Other"
    ],
    "tabs_idx":[
-    0,
-    2
    ]
   },
   "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
+   "jshandler":"webview/handlers/ContainerHandler"
   },
   "obj_viewer":[
   ],
   "finder":{
-   "blocktype":"Reference",
-   "masktype":""
+   "blocktype":"SubSystem",
+   "masktype":"Extract Bits"
   }
  },
  {
   "sid":"sm_DynamicCompression:1364",
-  "className":"Simulink.Reference",
+  "className":"Extract Bits",
   "icon":"sm_DynamicCompression_2333",
   "name":"Extract Bits15",
   "label":"Extract Bits15",
   "parent":"sm_DynamicCompression:1321",
   "inspector":{
    "params":[
-    "SourceBlock",
-    "SourceType",
-    "SourceProductBaseCode",
-    "SourceProductName"
+    "bitsToExtract",
+    "numBits",
+    "bitIdxRange",
+    "outScalingMode"
    ],
    "values":[
-    "simulink/Logic and Bit\nOperations/Extract Bits",
-    "Extract Bits",
-    "SL",
-    "Simulink"
+    "Range of bits",
+    "8",
+    "[15 15]",
+    "Treat bit field as an integer"
    ],
    "tabs":[
-    "Parameter Attributes",
-    "-Other"
    ],
    "tabs_idx":[
-    0,
-    2
    ]
   },
   "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
+   "jshandler":"webview/handlers/ContainerHandler"
   },
   "obj_viewer":[
   ],
   "finder":{
-   "blocktype":"Reference",
-   "masktype":""
+   "blocktype":"SubSystem",
+   "masktype":"Extract Bits"
   }
  },
  {
   "sid":"sm_DynamicCompression:1365",
-  "className":"Simulink.Reference",
+  "className":"Extract Bits",
   "icon":"sm_DynamicCompression_2333",
   "name":"Extract Bits16",
   "label":"Extract Bits16",
   "parent":"sm_DynamicCompression:1321",
   "inspector":{
    "params":[
-    "SourceBlock",
-    "SourceType",
-    "SourceProductBaseCode",
-    "SourceProductName"
+    "bitsToExtract",
+    "numBits",
+    "bitIdxRange",
+    "outScalingMode"
    ],
    "values":[
-    "simulink/Logic and Bit\nOperations/Extract Bits",
-    "Extract Bits",
-    "SL",
-    "Simulink"
+    "Range of bits",
+    "8",
+    "[14 14]",
+    "Treat bit field as an integer"
    ],
    "tabs":[
-    "Parameter Attributes",
-    "-Other"
    ],
    "tabs_idx":[
-    0,
-    2
    ]
   },
   "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
+   "jshandler":"webview/handlers/ContainerHandler"
   },
   "obj_viewer":[
   ],
   "finder":{
-   "blocktype":"Reference",
-   "masktype":""
+   "blocktype":"SubSystem",
+   "masktype":"Extract Bits"
   }
  },
  {
   "sid":"sm_DynamicCompression:1367",
-  "className":"Simulink.Reference",
+  "className":"Extract Bits",
   "icon":"sm_DynamicCompression_2333",
   "name":"Extract Bits18",
   "label":"Extract Bits18",
   "parent":"sm_DynamicCompression:1321",
   "inspector":{
    "params":[
-    "SourceBlock",
-    "SourceType",
-    "SourceProductBaseCode",
-    "SourceProductName"
+    "bitsToExtract",
+    "numBits",
+    "bitIdxRange",
+    "outScalingMode"
    ],
    "values":[
-    "simulink/Logic and Bit\nOperations/Extract Bits",
-    "Extract Bits",
-    "SL",
-    "Simulink"
+    "Range of bits",
+    "8",
+    "[13 13]",
+    "Treat bit field as an integer"
    ],
    "tabs":[
-    "Parameter Attributes",
-    "-Other"
    ],
    "tabs_idx":[
-    0,
-    2
    ]
   },
   "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
+   "jshandler":"webview/handlers/ContainerHandler"
   },
   "obj_viewer":[
   ],
   "finder":{
-   "blocktype":"Reference",
-   "masktype":""
+   "blocktype":"SubSystem",
+   "masktype":"Extract Bits"
   }
  },
  {
   "sid":"sm_DynamicCompression:1372",
-  "className":"Simulink.Reference",
+  "className":"Extract Bits",
   "icon":"sm_DynamicCompression_2333",
   "name":"Extract Bits22",
   "label":"Extract Bits22",
   "parent":"sm_DynamicCompression:1321",
   "inspector":{
    "params":[
-    "SourceBlock",
-    "SourceType",
-    "SourceProductBaseCode",
-    "SourceProductName"
+    "bitsToExtract",
+    "numBits",
+    "bitIdxRange",
+    "outScalingMode"
    ],
    "values":[
-    "simulink/Logic and Bit\nOperations/Extract Bits",
-    "Extract Bits",
-    "SL",
-    "Simulink"
+    "Range of bits",
+    "8",
+    "[12 12]",
+    "Treat bit field as an integer"
    ],
    "tabs":[
-    "Parameter Attributes",
-    "-Other"
    ],
    "tabs_idx":[
-    0,
-    2
    ]
   },
   "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
+   "jshandler":"webview/handlers/ContainerHandler"
   },
   "obj_viewer":[
   ],
   "finder":{
-   "blocktype":"Reference",
-   "masktype":""
+   "blocktype":"SubSystem",
+   "masktype":"Extract Bits"
   }
  },
  {
   "sid":"sm_DynamicCompression:1373",
-  "className":"Simulink.Reference",
+  "className":"Extract Bits",
   "icon":"sm_DynamicCompression_2333",
   "name":"Extract Bits23",
   "label":"Extract Bits23",
   "parent":"sm_DynamicCompression:1321",
   "inspector":{
    "params":[
-    "SourceBlock",
-    "SourceType",
-    "SourceProductBaseCode",
-    "SourceProductName"
+    "bitsToExtract",
+    "numBits",
+    "bitIdxRange",
+    "outScalingMode"
    ],
    "values":[
-    "simulink/Logic and Bit\nOperations/Extract Bits",
-    "Extract Bits",
-    "SL",
-    "Simulink"
+    "Range of bits",
+    "8",
+    "[11 11]",
+    "Treat bit field as an integer"
    ],
    "tabs":[
-    "Parameter Attributes",
-    "-Other"
    ],
    "tabs_idx":[
-    0,
-    2
    ]
   },
   "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
+   "jshandler":"webview/handlers/ContainerHandler"
   },
   "obj_viewer":[
   ],
   "finder":{
-   "blocktype":"Reference",
-   "masktype":""
+   "blocktype":"SubSystem",
+   "masktype":"Extract Bits"
   }
  },
  {
   "sid":"sm_DynamicCompression:1368",
-  "className":"Simulink.Reference",
+  "className":"Extract Bits",
   "icon":"sm_DynamicCompression_2333",
   "name":"Extract Bits19",
   "label":"Extract Bits19",
   "parent":"sm_DynamicCompression:1321",
   "inspector":{
    "params":[
-    "SourceBlock",
-    "SourceType",
-    "SourceProductBaseCode",
-    "SourceProductName"
+    "bitsToExtract",
+    "numBits",
+    "bitIdxRange",
+    "outScalingMode"
    ],
    "values":[
-    "simulink/Logic and Bit\nOperations/Extract Bits",
-    "Extract Bits",
-    "SL",
-    "Simulink"
+    "Range of bits",
+    "8",
+    "[10 10]",
+    "Treat bit field as an integer"
    ],
    "tabs":[
-    "Parameter Attributes",
-    "-Other"
    ],
    "tabs_idx":[
-    0,
-    2
    ]
   },
   "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
+   "jshandler":"webview/handlers/ContainerHandler"
   },
   "obj_viewer":[
   ],
   "finder":{
-   "blocktype":"Reference",
-   "masktype":""
+   "blocktype":"SubSystem",
+   "masktype":"Extract Bits"
   }
  },
  {
   "sid":"sm_DynamicCompression:1370",
-  "className":"Simulink.Reference",
+  "className":"Extract Bits",
   "icon":"sm_DynamicCompression_2333",
   "name":"Extract Bits20",
   "label":"Extract Bits20",
   "parent":"sm_DynamicCompression:1321",
   "inspector":{
    "params":[
-    "SourceBlock",
-    "SourceType",
-    "SourceProductBaseCode",
-    "SourceProductName"
+    "bitsToExtract",
+    "numBits",
+    "bitIdxRange",
+    "outScalingMode"
    ],
    "values":[
-    "simulink/Logic and Bit\nOperations/Extract Bits",
-    "Extract Bits",
-    "SL",
-    "Simulink"
+    "Range of bits",
+    "8",
+    "[9 9]",
+    "Treat bit field as an integer"
    ],
    "tabs":[
-    "Parameter Attributes",
-    "-Other"
    ],
    "tabs_idx":[
-    0,
-    2
    ]
   },
   "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
+   "jshandler":"webview/handlers/ContainerHandler"
   },
   "obj_viewer":[
   ],
   "finder":{
-   "blocktype":"Reference",
-   "masktype":""
+   "blocktype":"SubSystem",
+   "masktype":"Extract Bits"
   }
  },
  {
   "sid":"sm_DynamicCompression:1371",
-  "className":"Simulink.Reference",
+  "className":"Extract Bits",
   "icon":"sm_DynamicCompression_2333",
   "name":"Extract Bits21",
   "label":"Extract Bits21",
   "parent":"sm_DynamicCompression:1321",
   "inspector":{
    "params":[
-    "SourceBlock",
-    "SourceType",
-    "SourceProductBaseCode",
-    "SourceProductName"
+    "bitsToExtract",
+    "numBits",
+    "bitIdxRange",
+    "outScalingMode"
    ],
    "values":[
-    "simulink/Logic and Bit\nOperations/Extract Bits",
-    "Extract Bits",
-    "SL",
-    "Simulink"
+    "Range of bits",
+    "8",
+    "[8 8]",
+    "Treat bit field as an integer"
    ],
    "tabs":[
-    "Parameter Attributes",
-    "-Other"
    ],
    "tabs_idx":[
-    0,
-    2
    ]
   },
   "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
+   "jshandler":"webview/handlers/ContainerHandler"
   },
   "obj_viewer":[
   ],
   "finder":{
-   "blocktype":"Reference",
-   "masktype":""
+   "blocktype":"SubSystem",
+   "masktype":"Extract Bits"
   }
  },
  {
   "sid":"sm_DynamicCompression:1374",
-  "className":"Simulink.Reference",
+  "className":"Extract Bits",
   "icon":"sm_DynamicCompression_2333",
   "name":"Extract Bits24",
   "label":"Extract Bits24",
   "parent":"sm_DynamicCompression:1321",
   "inspector":{
    "params":[
-    "SourceBlock",
-    "SourceType",
-    "SourceProductBaseCode",
-    "SourceProductName"
+    "bitsToExtract",
+    "numBits",
+    "bitIdxRange",
+    "outScalingMode"
    ],
    "values":[
-    "simulink/Logic and Bit\nOperations/Extract Bits",
-    "Extract Bits",
-    "SL",
-    "Simulink"
+    "Range of bits",
+    "8",
+    "[7 7]",
+    "Treat bit field as an integer"
    ],
    "tabs":[
-    "Parameter Attributes",
-    "-Other"
    ],
    "tabs_idx":[
-    0,
-    2
    ]
   },
   "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
+   "jshandler":"webview/handlers/ContainerHandler"
   },
   "obj_viewer":[
   ],
   "finder":{
-   "blocktype":"Reference",
-   "masktype":""
+   "blocktype":"SubSystem",
+   "masktype":"Extract Bits"
   }
  },
  {
   "sid":"sm_DynamicCompression:1375",
-  "className":"Simulink.Reference",
+  "className":"Extract Bits",
   "icon":"sm_DynamicCompression_2333",
   "name":"Extract Bits25",
   "label":"Extract Bits25",
   "parent":"sm_DynamicCompression:1321",
   "inspector":{
    "params":[
-    "SourceBlock",
-    "SourceType",
-    "SourceProductBaseCode",
-    "SourceProductName"
+    "bitsToExtract",
+    "numBits",
+    "bitIdxRange",
+    "outScalingMode"
    ],
    "values":[
-    "simulink/Logic and Bit\nOperations/Extract Bits",
-    "Extract Bits",
-    "SL",
-    "Simulink"
+    "Range of bits",
+    "8",
+    "[6 6]",
+    "Treat bit field as an integer"
    ],
    "tabs":[
-    "Parameter Attributes",
-    "-Other"
    ],
    "tabs_idx":[
-    0,
-    2
    ]
   },
   "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
+   "jshandler":"webview/handlers/ContainerHandler"
   },
   "obj_viewer":[
   ],
   "finder":{
-   "blocktype":"Reference",
-   "masktype":""
+   "blocktype":"SubSystem",
+   "masktype":"Extract Bits"
   }
  },
  {
   "sid":"sm_DynamicCompression:1376",
-  "className":"Simulink.Reference",
+  "className":"Extract Bits",
   "icon":"sm_DynamicCompression_2333",
   "name":"Extract Bits26",
   "label":"Extract Bits26",
   "parent":"sm_DynamicCompression:1321",
   "inspector":{
    "params":[
-    "SourceBlock",
-    "SourceType",
-    "SourceProductBaseCode",
-    "SourceProductName"
+    "bitsToExtract",
+    "numBits",
+    "bitIdxRange",
+    "outScalingMode"
    ],
    "values":[
-    "simulink/Logic and Bit\nOperations/Extract Bits",
-    "Extract Bits",
-    "SL",
-    "Simulink"
+    "Range of bits",
+    "8",
+    "[5 5]",
+    "Treat bit field as an integer"
    ],
    "tabs":[
-    "Parameter Attributes",
-    "-Other"
    ],
    "tabs_idx":[
-    0,
-    2
    ]
   },
   "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
+   "jshandler":"webview/handlers/ContainerHandler"
   },
   "obj_viewer":[
   ],
   "finder":{
-   "blocktype":"Reference",
-   "masktype":""
+   "blocktype":"SubSystem",
+   "masktype":"Extract Bits"
   }
  },
  {
   "sid":"sm_DynamicCompression:1377",
-  "className":"Simulink.Reference",
+  "className":"Extract Bits",
   "icon":"sm_DynamicCompression_2333",
   "name":"Extract Bits27",
   "label":"Extract Bits27",
   "parent":"sm_DynamicCompression:1321",
   "inspector":{
    "params":[
-    "SourceBlock",
-    "SourceType",
-    "SourceProductBaseCode",
-    "SourceProductName"
+    "bitsToExtract",
+    "numBits",
+    "bitIdxRange",
+    "outScalingMode"
    ],
    "values":[
-    "simulink/Logic and Bit\nOperations/Extract Bits",
-    "Extract Bits",
-    "SL",
-    "Simulink"
+    "Range of bits",
+    "8",
+    "[4 4]",
+    "Treat bit field as an integer"
    ],
    "tabs":[
-    "Parameter Attributes",
-    "-Other"
    ],
    "tabs_idx":[
-    0,
-    2
    ]
   },
   "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
+   "jshandler":"webview/handlers/ContainerHandler"
   },
   "obj_viewer":[
   ],
   "finder":{
-   "blocktype":"Reference",
-   "masktype":""
+   "blocktype":"SubSystem",
+   "masktype":"Extract Bits"
   }
  },
  {
   "sid":"sm_DynamicCompression:1378",
-  "className":"Simulink.Reference",
+  "className":"Extract Bits",
   "icon":"sm_DynamicCompression_2333",
   "name":"Extract Bits28",
   "label":"Extract Bits28",
   "parent":"sm_DynamicCompression:1321",
   "inspector":{
    "params":[
-    "SourceBlock",
-    "SourceType",
-    "SourceProductBaseCode",
-    "SourceProductName"
+    "bitsToExtract",
+    "numBits",
+    "bitIdxRange",
+    "outScalingMode"
    ],
    "values":[
-    "simulink/Logic and Bit\nOperations/Extract Bits",
-    "Extract Bits",
-    "SL",
-    "Simulink"
+    "Range of bits",
+    "8",
+    "[3 3]",
+    "Treat bit field as an integer"
    ],
    "tabs":[
-    "Parameter Attributes",
-    "-Other"
    ],
    "tabs_idx":[
-    0,
-    2
    ]
   },
   "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
+   "jshandler":"webview/handlers/ContainerHandler"
   },
   "obj_viewer":[
   ],
   "finder":{
-   "blocktype":"Reference",
-   "masktype":""
+   "blocktype":"SubSystem",
+   "masktype":"Extract Bits"
   }
  },
  {
   "sid":"sm_DynamicCompression:1379",
-  "className":"Simulink.Reference",
+  "className":"Extract Bits",
   "icon":"sm_DynamicCompression_2333",
   "name":"Extract Bits29",
   "label":"Extract Bits29",
   "parent":"sm_DynamicCompression:1321",
   "inspector":{
    "params":[
-    "SourceBlock",
-    "SourceType",
-    "SourceProductBaseCode",
-    "SourceProductName"
+    "bitsToExtract",
+    "numBits",
+    "bitIdxRange",
+    "outScalingMode"
    ],
    "values":[
-    "simulink/Logic and Bit\nOperations/Extract Bits",
-    "Extract Bits",
-    "SL",
-    "Simulink"
+    "Range of bits",
+    "8",
+    "[2 2]",
+    "Treat bit field as an integer"
    ],
    "tabs":[
-    "Parameter Attributes",
-    "-Other"
    ],
    "tabs_idx":[
-    0,
-    2
    ]
   },
   "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
+   "jshandler":"webview/handlers/ContainerHandler"
   },
   "obj_viewer":[
   ],
   "finder":{
-   "blocktype":"Reference",
-   "masktype":""
+   "blocktype":"SubSystem",
+   "masktype":"Extract Bits"
   }
  },
  {
   "sid":"sm_DynamicCompression:1381",
-  "className":"Simulink.Reference",
+  "className":"Extract Bits",
   "icon":"sm_DynamicCompression_2333",
   "name":"Extract Bits30",
   "label":"Extract Bits30",
   "parent":"sm_DynamicCompression:1321",
   "inspector":{
    "params":[
-    "SourceBlock",
-    "SourceType",
-    "SourceProductBaseCode",
-    "SourceProductName"
+    "bitsToExtract",
+    "numBits",
+    "bitIdxRange",
+    "outScalingMode"
    ],
    "values":[
-    "simulink/Logic and Bit\nOperations/Extract Bits",
-    "Extract Bits",
-    "SL",
-    "Simulink"
+    "Range of bits",
+    "8",
+    "[1 1]",
+    "Treat bit field as an integer"
    ],
    "tabs":[
-    "Parameter Attributes",
-    "-Other"
    ],
    "tabs_idx":[
-    0,
-    2
    ]
   },
   "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
+   "jshandler":"webview/handlers/ContainerHandler"
   },
   "obj_viewer":[
   ],
   "finder":{
-   "blocktype":"Reference",
-   "masktype":""
+   "blocktype":"SubSystem",
+   "masktype":"Extract Bits"
   }
  },
  {
   "sid":"sm_DynamicCompression:1382",
-  "className":"Simulink.Reference",
+  "className":"Extract Bits",
   "icon":"sm_DynamicCompression_2333",
   "name":"Extract Bits31",
   "label":"Extract Bits31",
   "parent":"sm_DynamicCompression:1321",
   "inspector":{
    "params":[
-    "SourceBlock",
-    "SourceType",
-    "SourceProductBaseCode",
-    "SourceProductName"
+    "bitsToExtract",
+    "numBits",
+    "bitIdxRange",
+    "outScalingMode"
    ],
    "values":[
-    "simulink/Logic and Bit\nOperations/Extract Bits",
-    "Extract Bits",
-    "SL",
-    "Simulink"
+    "Range of bits",
+    "8",
+    "[0 0]",
+    "Treat bit field as an integer"
    ],
    "tabs":[
-    "Parameter Attributes",
-    "-Other"
    ],
    "tabs_idx":[
-    0,
-    2
    ]
   },
   "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
+   "jshandler":"webview/handlers/ContainerHandler"
   },
   "obj_viewer":[
   ],
   "finder":{
-   "blocktype":"Reference",
-   "masktype":""
+   "blocktype":"SubSystem",
+   "masktype":"Extract Bits"
   }
  },
  {

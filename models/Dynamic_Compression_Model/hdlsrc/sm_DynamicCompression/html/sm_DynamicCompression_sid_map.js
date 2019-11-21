@@ -41,6 +41,7 @@ function RTW_SidParentMap() {
     this.sidParentMap["sm_DynamicCompression:1040"] = "sm_DynamicCompression:434";
     this.sidParentMap["sm_DynamicCompression:1041"] = "sm_DynamicCompression:434";
     this.sidParentMap["sm_DynamicCompression:4282"] = "sm_DynamicCompression:434";
+    this.sidParentMap["sm_DynamicCompression:6567"] = "sm_DynamicCompression:434";
     this.sidParentMap["sm_DynamicCompression:1042"] = "sm_DynamicCompression:434";
     this.sidParentMap["sm_DynamicCompression:1043"] = "sm_DynamicCompression:434";
     this.sidParentMap["sm_DynamicCompression:1044"] = "sm_DynamicCompression:434";

@@ -28,6 +28,8 @@ Switch */
 	this.urlHashMap["sm_DynamicCompression:433:3"] = "msg=rtwMsg_notTraceable&block=sm_DynamicCompression:433:3";
 	/* <S9>/Constant2 */
 	this.urlHashMap["sm_DynamicCompression:4282"] = "msg=rtwMsg_notTraceable&block=sm_DynamicCompression:4282";
+	/* <S9>/Data Type Conversion */
+	this.urlHashMap["sm_DynamicCompression:6567"] = "msg=&block=sm_DynamicCompression:6567";
 	/* <S9>/Switch */
 	this.urlHashMap["sm_DynamicCompression:5559"] = "msg=rtwMsg_notTraceable&block=sm_DynamicCompression:5559";
 	/* <S10>/Data Type Conversion */
@@ -3600,6 +3602,8 @@ function RTW_rtwnameSIDMap() {
 	this.sidHashMap["sm_DynamicCompression:1041"] = {rtwname: "<S9>/Cast To fp(1,32,28)1"};
 	this.rtwnameHashMap["<S9>/Constant2"] = {sid: "sm_DynamicCompression:4282"};
 	this.sidHashMap["sm_DynamicCompression:4282"] = {rtwname: "<S9>/Constant2"};
+	this.rtwnameHashMap["<S9>/Data Type Conversion"] = {sid: "sm_DynamicCompression:6567"};
+	this.sidHashMap["sm_DynamicCompression:6567"] = {rtwname: "<S9>/Data Type Conversion"};
 	this.rtwnameHashMap["<S9>/From Workspace"] = {sid: "sm_DynamicCompression:1042"};
 	this.sidHashMap["sm_DynamicCompression:1042"] = {rtwname: "<S9>/From Workspace"};
 	this.rtwnameHashMap["<S9>/From Workspace1"] = {sid: "sm_DynamicCompression:1043"};

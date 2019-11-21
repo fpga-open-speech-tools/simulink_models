@@ -147,11 +147,11 @@
   ]
  },
  {
-  "sid":"sm_DynamicCompression:5269",
+  "sid":"sm_DynamicCompression:2964",
   "className":"Simulink.Annotation",
   "icon":"sm_DynamicCompression_2332",
-  "name":"Commenting this out for now, have to deal with \"in programming case\" elsewhere.",
-  "label":"Commenting this out for now, have to deal with \"in programming case\" elsewhere.",
+  "name":"Fast or slow compression should be chosen based  on Speech Recognition or SNR aware binary decision",
+  "label":"Fast or slow compression should be chosen based  on Speech Recognition or SNR aware binary decision",
   "parent":"sm_DynamicCompression:1056",
   "inspector":{
    "params":[
@@ -169,7 +169,7 @@
     "ClickFcn"
    ],
    "values":[
-    "Commenting this out for now, have to deal with \"in programming case\" elsewhere.",
+    "Fast or slow compression\nshould be chosen based \non Speech Recognition or\nSNR aware binary decision",
     "off",
     "off",
     "auto",
@@ -245,11 +245,11 @@
   ]
  },
  {
-  "sid":"sm_DynamicCompression:2964",
+  "sid":"sm_DynamicCompression:5269",
   "className":"Simulink.Annotation",
   "icon":"sm_DynamicCompression_2332",
-  "name":"Fast or slow compression should be chosen based  on Speech Recognition or SNR aware binary decision",
-  "label":"Fast or slow compression should be chosen based  on Speech Recognition or SNR aware binary decision",
+  "name":"Commenting this out for now, have to deal with \"in programming case\" elsewhere.",
+  "label":"Commenting this out for now, have to deal with \"in programming case\" elsewhere.",
   "parent":"sm_DynamicCompression:1056",
   "inspector":{
    "params":[
@@ -267,56 +267,7 @@
     "ClickFcn"
    ],
    "values":[
-    "Fast or slow compression\nshould be chosen based \non Speech Recognition or\nSNR aware binary decision",
-    "off",
-    "off",
-    "auto",
-    "auto",
-    -1,
-    "auto",
-    "black",
-    "white",
-    "left",
-    "off",
-    ""
-   ],
-   "tabs":[
-   ],
-   "tabs_idx":[
-   ]
-  },
-  "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
-  },
-  "obj_viewer":[
-  ],
-  "finder":[
-  ]
- },
- {
-  "sid":"sm_DynamicCompression:5272",
-  "className":"Simulink.Annotation",
-  "icon":"sm_DynamicCompression_2332",
-  "name":"LOOK INSIDE",
-  "label":"LOOK INSIDE",
-  "parent":"sm_DynamicCompression:1056",
-  "inspector":{
-   "params":[
-    "Text",
-    "DropShadow",
-    "Interpreter",
-    "FontName",
-    "FontWeight",
-    "FontSize",
-    "FontAngle",
-    "ForegroundColor",
-    "BackgroundColor",
-    "HorizontalAlignment",
-    "UseDisplayTextAsClickCallback",
-    "ClickFcn"
-   ],
-   "values":[
-    "LOOK INSIDE",
+    "Commenting this out for now, have to deal with \"in programming case\" elsewhere.",
     "off",
     "off",
     "auto",
@@ -415,6 +366,55 @@
    ],
    "values":[
     "Apply Recombining Gain to Smooth Output",
+    "off",
+    "off",
+    "auto",
+    "auto",
+    -1,
+    "auto",
+    "black",
+    "white",
+    "left",
+    "off",
+    ""
+   ],
+   "tabs":[
+   ],
+   "tabs_idx":[
+   ]
+  },
+  "viewer":{
+   "jshandler":"webview/handlers/ElementHandler"
+  },
+  "obj_viewer":[
+  ],
+  "finder":[
+  ]
+ },
+ {
+  "sid":"sm_DynamicCompression:5272",
+  "className":"Simulink.Annotation",
+  "icon":"sm_DynamicCompression_2332",
+  "name":"LOOK INSIDE",
+  "label":"LOOK INSIDE",
+  "parent":"sm_DynamicCompression:1056",
+  "inspector":{
+   "params":[
+    "Text",
+    "DropShadow",
+    "Interpreter",
+    "FontName",
+    "FontWeight",
+    "FontSize",
+    "FontAngle",
+    "ForegroundColor",
+    "BackgroundColor",
+    "HorizontalAlignment",
+    "UseDisplayTextAsClickCallback",
+    "ClickFcn"
+   ],
+   "values":[
+    "LOOK INSIDE",
     "off",
     "off",
     "auto",

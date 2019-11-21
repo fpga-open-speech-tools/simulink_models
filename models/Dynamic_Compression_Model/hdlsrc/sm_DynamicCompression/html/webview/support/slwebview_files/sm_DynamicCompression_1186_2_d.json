@@ -191,7 +191,7 @@
   },
   "obj_viewer":{
    "code":"function y = fcn(u1, u2)\n%#codegen\n\ny = bitconcat(cast_to_fi(u1), cast_to_fi(u2));\n\nend\n\n",
-   "code_sid":"sm_DynamicCompression:1186:2:106:1"
+   "code_sid":"sm_DynamicCompression:6319:2:106:1"
   },
   "finder":{
    "blocktype":"SubSystem",
