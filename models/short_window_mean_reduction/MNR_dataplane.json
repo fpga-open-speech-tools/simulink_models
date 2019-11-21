@@ -6,9 +6,9 @@
     "entity": "MNR_dataplane", 
     "conduit_output": [], 
     "clocks": {
-        "sample_frequency_Hz": 48000, 
+        "sample_frequency_Hz": 49152000.0, 
         "system_frequency_Hz": 98304000.0, 
-        "sample_period_seconds": 2.0833333333333333e-05, 
+        "sample_period_seconds": 2.0345052083333333e-08, 
         "system_period_seconds": 1.0172526041666666e-08
     }, 
     "linux_device_name": "mean_noise_reduction", 
