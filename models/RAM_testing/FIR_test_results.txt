@@ -1,0 +1,44 @@
+Board synthesized for: 5CSEBA6U23I7
+Coefficient set: 
+	Lowpass filter, total of 577 coefficients, 577 are nonzero. 
+
+The goal of this test is to identify the resource usage, RAM block usage, and latency of different types of FIR filters.
+There will need to be a set of 3 possible filter coefficient sets, each defined before runtime.
+
+These FIRs will need to be programmable. Current ideas are:
+Discretized FIR filter:
+	Use 3 filter blocks, with predefined coefficients.
+	OR
+	Use 1 filter, with 3 RAM blocks (or something similar) containing the coefficient sets, 
+	 and a demultiplexer to choose one bus to send as the input to the filter. 
+	
+Discrete FIR filter HDL optimized:
+	Use 3 filter blocks with predefined coefficients.
+	OR
+	Use 1 filter, with 3 RAM blocks (or something similar) containing the coefficient sets, 
+	 and a demultiplexer to choose one bus to send as the input to the filter. 
+	 
+Use a FIFO and a predefined bus of constants:
+	1 FIFO, 1 of 3 sets of coefficients sent into a demux sent into a dot multiply block with the FIFO.
+		- Define a vertical constant for the coefficient sets?
+
+
+Initial testing: 1 set of coefficients. No RAMs.
+
+Using the Discretized FIR filter:
+	Using 1 filter block, no RAMs.
+	Shown to not fit on device. Utilized 987% of board ALMs (logic utilization).
+	This is seemingly due to the Discre_FIR_Filter_1.vhd file being so massive it can't fit. Even in such a simple implementation, 
+		having each coefficient maintain it's own multiply, delay_pipeline signal, product and coefficient variable is not efficient enough.
+	I'd like to point out it took over 11 minutes to fail 30% through compilation in Quartus, where the fitter threw an error (too large).
+	93,000 ALMs. 18530 registers. 0 block memory or RAM blocks. 
+		
+Switching over to the HDL optimized Discrete FIR Filter:
+Valid always set to 1, though this is within a triggered subsystem.
+	Latency: 296 (6.1667 msec at 48 kHz)
+		This is a very high latency, high enough to be concerning. 
+		It takes up about 50% of our total latency budget (at 10+ msec the delay is noticable)
+	64289 ALMs (682%). 62890 registers.  36 (100%) DSP blocks. 
+	
+	
+Now, I'll set up a circular buffer to take samples in, a block of memory for b_k, and use a higher rate to read out N past states during 1 sample cycle. 

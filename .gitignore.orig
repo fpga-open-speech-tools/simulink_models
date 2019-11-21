@@ -1,0 +1,6 @@
+*.slxc
+slprj
+gm_*.slx
+*.bak
+sm_run_me_firstLOCAL.m
+*.asv
