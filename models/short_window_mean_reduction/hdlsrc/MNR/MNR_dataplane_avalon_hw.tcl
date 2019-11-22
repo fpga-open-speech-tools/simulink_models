@@ -59,7 +59,7 @@ set_module_assignment embeddedsw.dts.vendor fe
 # # # # # # # # # # # # # # # # # # # # # #
 
 add_interface clock clock end
-set_interface_property clock clockRate 98304000.0
+set_interface_property clock clockRate 49152000.0
 set_interface_property clock ENABLED true
 set_interface_property clock EXPORT_OF ""
 set_interface_property clock PORT_NAME_MAP ""
@@ -112,7 +112,7 @@ set_interface_property avalon_slave PORT_NAME_MAP ""
 set_interface_property avalon_slave CMSIS_SVD_VARIABLES ""
 set_interface_property avalon_slave SVD_ADDRESS_GROUP ""
 
-add_interface_port avalon_slave avalon_slave_address address Input 0
+add_interface_port avalon_slave avalon_slave_address address Input 1
 add_interface_port avalon_slave avalon_slave_read read Input 1
 add_interface_port avalon_slave avalon_slave_readdata readdata Output 32
 add_interface_port avalon_slave avalon_slave_write write Input 1
