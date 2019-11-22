@@ -147,11 +147,11 @@
   ]
  },
  {
-  "sid":"MNR:1029",
+  "sid":"MNR:467",
   "className":"Simulink.Annotation",
   "icon":"MNR_2332",
-  "name":"Control Signals that will be coming from Linux via memory mapped registers need to have names  containing the prefix \"register_control_\" (all lower case)",
-  "label":"Control Signals that will be coming from Linux via memory mapped registers need to have names  containing the prefix \"register_control_\" (all lower case)",
+  "name":"The Avalon Data Processing Block performs DSP on the left and right channels.",
+  "label":"The Avalon Data Processing Block performs DSP on the left and right channels.",
   "parent":"MNR:233",
   "inspector":{
    "params":[
@@ -169,7 +169,7 @@
     "ClickFcn"
    ],
    "values":[
-    "Control Signals that will be coming from Linux via\nmemory mapped registers need to have names \ncontaining the prefix \"register_control_\"\n(all lower case)",
+    "The Avalon Data Processing Block\nperforms DSP on the left and right channels.",
     "off",
     "off",
     "auto",
@@ -196,11 +196,11 @@
   ]
  },
  {
-  "sid":"MNR:467",
+  "sid":"MNR:1029",
   "className":"Simulink.Annotation",
   "icon":"MNR_2332",
-  "name":"The Avalon Data Processing Block performs DSP on the left and right channels.",
-  "label":"The Avalon Data Processing Block performs DSP on the left and right channels.",
+  "name":"Control Signals that will be coming from Linux via memory mapped registers need to have names  containing the prefix \"register_control_\" (all lower case)",
+  "label":"Control Signals that will be coming from Linux via memory mapped registers need to have names  containing the prefix \"register_control_\" (all lower case)",
   "parent":"MNR:233",
   "inspector":{
    "params":[
@@ -218,7 +218,7 @@
     "ClickFcn"
    ],
    "values":[
-    "The Avalon Data Processing Block\nperforms DSP on the left and right channels.",
+    "Control Signals that will be coming from Linux via\nmemory mapped registers need to have names \ncontaining the prefix \"register_control_\"\n(all lower case)",
     "off",
     "off",
     "auto",

@@ -14,7 +14,7 @@ entity MNR_dataplane_avalon is
     avalon_source_data        : out std_logic_vector(31  downto 0); --sfix32_En28
     avalon_source_channel     : out std_logic_vector(1   downto 0); --ufix2
     avalon_source_error       : out std_logic_vector(1   downto 0); --ufix2
-    avalon_slave_address      : in  std_logic_vector(0  downto 0);            
+    avalon_slave_address      : in  std_logic_vector(-1  downto 0);            
     avalon_slave_read         : in  std_logic;
     avalon_slave_readdata     : out std_logic_vector(31  downto 0);
     avalon_slave_write        : in  std_logic;

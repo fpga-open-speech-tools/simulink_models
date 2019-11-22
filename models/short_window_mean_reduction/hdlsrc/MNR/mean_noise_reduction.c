@@ -121,7 +121,7 @@ static const struct file_operations fe_mean_noise_reduction_fops = {
 Generated in CreateInitFunction
 *********************************************************/
 static int mean_noise_reduction_init(void) {
-  printk(KERN_ALERT "FUNCTION AUTO GENERATED AT: 2019-11-19 20:23\n");
+  printk(KERN_ALERT "FUNCTION AUTO GENERATED AT: 2019-11-21 15:46\n");
   int ret_val = 0;
   pr_info("Initializing the Flat Earth mean_noise_reduction module\n");
   // Register our driver with the "Platform Driver" bus

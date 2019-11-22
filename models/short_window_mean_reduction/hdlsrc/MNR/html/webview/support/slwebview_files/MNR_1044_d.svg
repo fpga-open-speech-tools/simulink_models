@@ -121,7 +121,7 @@
         <!--RAWSTRING-->
         <g id="MNR:1044:2">
           <g clip-path="none" fill="none" opacity="0.65098" stroke="#000000" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,164,15)">
-            <image height="84" preserveAspectRatio="none" width="51" x="0" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADMAAABUCAYAAAAvUA/IAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAB9klEQVR4nO2bzUrDQBRGT6W6MIu60I0bVz6MD+zTqKAbf7BIqljFonVxZ2iaH+00JnzEe+AyIZT0Hu4kmSQzI2C3FHuFbQUWIT4K2zHWGGNJ7wNZqd3vKdnfmId4LbWNMhkwAQ5CxG0FcmAW2jzsq4jAemUOgKMQh6FV4BGYsur2C6w6FcbYOZKxkjkuhAIZliOYyByrVIViZSZYRY6BkxAKxIp8YBXJabg41XWzKHPaeZqbE7vWDOt2tTI7fWbUNS6jisuo4jKqDEpmnPj7c2AUYhOWIb6wO/gbduN7AO5C3GNjr+vEXCqkylyyuUhkCXxid/EoEwePU+AJeE48Zi19y8yxxOOQ/hl4CftbkypzwXYyxW5WfMB6A95peD5Jpe/K1MVX4vEaSZW5+qs/7oJBXZpdRhWXUcVlVHEZVVxGldSx2bKTLP6IQVXGZVRxGVVcRpVt3s50Resvddu8nemK3mW6rMxZ2wMoVaY1SpVpzb+ujLTMoO4zLqOKy6jiMqq4jCouo4rLqOIyqriMKoOS8Y9NqriMKi6jisuoMmY13zjHJk9n6Cw4BbgBbrHcchrWaMK6zAybAV5ceafAbYgpluOPMnWr7OI+BeJU+1iZVyy/CuVuBusr7xQor6D9tZvFKpTPHwXq1jbXyowY0Kpzx3H+Md8znZ5NJGvN1QAAAABJRU5ErkJggg==" y="0"/>
+            <image height="84" preserveAspectRatio="none" width="51" x="0" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADMAAABUCAYAAAAvUA/IAAAACXBIWXMAAA7EAAAOxAGVKw4bAAACKElEQVR4nO2bS07DMBBAX1FhQRZFAjZsWPUMnIE7cE1OA0iw4SMKSkEtCARlMbaa5kPr/DSYedLIUVol8zRunLjxANjOxU5mWwOfLj4y2z5WGCJJ7wJJrt3tKdl1zF3Mcm2lTAKMgD0XflsDKTB1ber2FURgtTJ7wKGLA9dq4BGYsOz2n0h1CgyR30jCUuYoExpIkBxBROZIpQpkKzNCKnIEHLvQgK/IB1KRlIqLU1k38zLjztPcHN+1pki3K5XZ6jOjrjEZrZiMVkxGK1HJDAO/fw4MXGzCwsU3MoK/IQPfA3Dn4h6597oOzKVAqMwlm4t4FsAXMop7GX/zOAGegZfAY5bSt8wcSdzf0r8Ar25/Y0JlLqgnk+1m2QesN+CdiueTUPquTFl8Bx6vklCZq7ZO3AVRXZpNRismoxWT0YrJaMVktBJ6b7boJIuWiKoyJqMVk9GKyWilzuxMVzT+p67O7ExX9C7TZWVOmx5AU2Uao6kyjfnXlVEtE9U4YzJaMRmtmIxWopLpa6rpAhlw822rg3BUlTEZrZiMVqKSCb00P635fL9uIm3Q9sPZn5JZNwdwUjeRNgiVOat5nrGLxtNJvxHVBcBktGIyWjEZrQxZvm+cIi9PJ+hZcApwA9wiuaVUrNGEVZkp8gZ4duWdBm5dTJAcf5UpW2Xn92nAv2rvKzND8iuQ72awuvJOA/kVtGu7ma9C/vejgbK1zaUyAyJadW4Yxj/mB0AHqEZwVisQAAAAAElFTkSuQmCC" y="0"/>
           </g>
           <g clip-path="none" fill="#ffffff" fill-opacity="1" opacity="1" stroke="none" stroke-opacity="0" transform="matrix(1,0,0,1,165,16)">
             <path d="M0,0 L40,0 L40,73 L0,73 L0,0 z" fill-rule="evenodd" vector-effect="none"/>
@@ -299,5 +299,5 @@
       <!--RAWSTRING-->
     </g>
   </g>
-  <!--generated on ubuntu @ 2019-11-19 20:23:53 MST-->
+  <!--generated on ubuntu @ 2019-11-21 15:46:36 MST-->
 </svg>
