@@ -77,7 +77,7 @@ X_thresh = X_ref*10^(0.05*(X_low_thresh_dB-ref_dB));
 safe_lv_dB = 85; %dB
 safe_max = X_ref*10^(0.05*(safe_lv_dB-ref_dB));
 
-% Define a 64 point log2 spaced range of inputs, from 2^-15 to almost 2, 
+% Define a N point log2 spaced range of inputs, from 2^-15 to almost 2, 
 % this effectively covers an input bound from -85dBA to 1.
 X_in = zeros(1, 2^(M_bits+4));
 addr = 1;

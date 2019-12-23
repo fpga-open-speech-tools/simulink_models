@@ -6,30 +6,29 @@ function [G_lookup_out, Comp_Ratio] = Populate_Band_Compression_Lookup_Gain_V2 .
 %
 % This function is designed to populate a lookup table for a single band in
 % an applied prescription dynamic compression system. Currently, the design
-% applies a prescription gain FIR filter before band compression, however
-% testing will be done in the reverse order to see if this affects the
-% output. 
+% applies a prescription gain FIR filter after band compression, with
+% knowledge of Rx FIR max band gain.
 % This function is wrapped by another function to prepare its inputs from a
 % known prescription and reference dBA of the signal. For example, 
 % max_output should be tied to a value representing ~80-85 dBA.
 %
 % Applying prescription aware compression BEFORE a prescription gain FIR 
-% may help to avoid potential clipping of the audio from the prescription 
-% gain, but could also cause more rounding error on low volume sound, 
-% decreasing audio quality.
+% may helps to avoid potential clipping of the audio from the prescription 
+% gain, with minimal effect on accuracy of the signal processing. Error in
+% the system is mainly due to lookup-table error, therefore the effect of
+% changing the order of compression and Rx application is negligible.
 %
 % Note that all inputs are in real values, not dB or dBA equivalents.
-% Another plan for future improvement is to design a function to use a
-% reference dBA <-> digital input value to define thresholds of minimum
-% audible threshold and maximum output threshold.
+% The wrapper uses to use a reference dBA <-> digital input value to 
+% define thresholds of minimum audible threshold and maximum output threshold.
 %
 % Inputs:  
-%   Xp_in: The array of possible input volumes after prescription and 
-%       bandpass filtering are applied. The same result should be achieved 
-%       whether compression is applied before or after prescription FIR.
+%   X_in: The array of possible input volumes after prescription and 
+%       bandpass filtering are applied. 
 %       Inputs shoud be log2 spaced, as the FPGA fabric expects
 %       log2 spaced data points for G_out hash function.
-%       Bounded from 0 <= Xp_in <= X_in_max
+%       Bounded from 0 <= Xp_in <= X_in_max, as an abs is used when finding
+%       lookup table address
 %
 %   X_in_max: the maximum digital value the compressor can expect, before
 %       applying the prescription. Must be positive for expected operation.
@@ -56,7 +55,6 @@ function [G_lookup_out, Comp_Ratio] = Populate_Band_Compression_Lookup_Gain_V2 .
 %       dual port RAM corresponding to the desired signal band.
 %       Bounded by (min_audible_floor*Prescribed_Band_Gain)<|Y|<max_output
 
-%% Error checking
 
 X_in = abs(X_in);
 
