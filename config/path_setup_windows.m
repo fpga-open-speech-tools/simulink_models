@@ -6,6 +6,7 @@
 %--------------------------------------------------------------------------
 local_git_path{1}         = 'C:\Users\bugsbunny\NIH';
 local_git_path{2}         = 'V:\MSU\GitHub\';
+local_git_path{3}         = 'C:\Git';
 valid_index = 0;
 for index=1:length(local_git_path)
     if exist(local_git_path{index},'dir') 
@@ -33,6 +34,8 @@ mp.driver_codegen_path = [git_path '\simulink_codegen\device_drivers'];
 %--------------------------------------------------------------------------
 local_quartus_path{1}         = 'C:\intelFPGA_lite\18.0\quartus\bin64';
 local_quartus_path{2}         = 'D:\intelFPGA_lite\18.1\quartus\bin64';
+local_quartus_path{3}         = 'C:\intelFPGA_lite\18.1\quartus\bin64';
+
 valid_index = 0;
 for index=1:length(local_quartus_path)
     if exist(local_quartus_path{index},'dir') 

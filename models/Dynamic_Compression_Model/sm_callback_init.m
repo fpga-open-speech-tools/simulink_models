@@ -78,28 +78,34 @@ FIR_0_Size = (ceil(log2(length(calib_bpfs(2:calib_bpfs(1,1)+1 ,1)'))));
 FIR_0_Uprate = 2^FIR_0_Size;
 B_k_0_init = zeros(1,FIR_0_Uprate);
 B_k_0_init(1:calib_bpfs(1,1)) = calib_bpfs(2:calib_bpfs(1,1)+1 ,1)';
+testCell = {FIR_0_Size, FIR_0_Uprate, B_k_0_init};
 
 FIR_1_Size = (ceil(log2(length(calib_bpfs(2:calib_bpfs(1,2)+1 ,2)'))));
 FIR_1_Uprate = 2^FIR_0_Size;
 B_k_1_init = zeros(1,FIR_0_Uprate);
 B_k_1_init(1:calib_bpfs(1,2)) = calib_bpfs(2:calib_bpfs(1,2)+1 ,2)';
+testCell(2,:) = {FIR_0_Size, FIR_0_Uprate, B_k_1_init};
 
 FIR_2_Size = (ceil(log2(length(calib_bpfs(2:calib_bpfs(1,3)+1 ,3)'))));
 FIR_2_Uprate = 2^FIR_0_Size;
 B_k_2_init = zeros(1,FIR_0_Uprate);
 B_k_2_init(1:calib_bpfs(1,3)) = calib_bpfs(2:calib_bpfs(1,3)+1 ,3)';
+testCell(3,:) = {FIR_0_Size, FIR_0_Uprate, B_k_2_init};
 
 FIR_3_Size = (ceil(log2(length(calib_bpfs(2:calib_bpfs(1,4)+1 ,4)'))));
 FIR_3_Uprate = 2^FIR_0_Size;
 B_k_3_init = zeros(1,FIR_0_Uprate);
 B_k_3_init(1:calib_bpfs(1,4)) = calib_bpfs(2:calib_bpfs(1,4)+1 ,4)';
+testCell(4,:) = {FIR_0_Size, FIR_0_Uprate, B_k_3_init};
 
 FIR_4_Size = (ceil(log2(length(calib_bpfs(2:calib_bpfs(1,5)+1 ,5)'))));
 FIR_4_Uprate = 2^FIR_0_Size;
 B_k_4_init = zeros(1,FIR_0_Uprate);
 B_k_4_init(1:calib_bpfs(1,5)) = calib_bpfs(2:calib_bpfs(1,5)+1 ,5)';
+testCell(5,:) = {FIR_0_Size, FIR_0_Uprate, B_k_4_init};
 
 FIR_5_Size = (ceil(log2(length(ig_eq))));
 FIR_5_Uprate = 2^FIR_0_Size;
 B_k_5_init = zeros(1,FIR_0_Uprate);
 B_k_5_init(1:length(ig_eq)) = ig_eq;
+testCell(6,:) = {FIR_0_Size, FIR_0_Uprate, B_k_5_init};

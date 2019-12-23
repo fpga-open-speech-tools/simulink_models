@@ -48,14 +48,14 @@ localSanityLocCheck = pwd;
 % end
 % cd ..;  % temporarily move up a folder
 cd ..;
-mp.model_path           =  [pwd, '/Dynamic_Compression_Model']; 
+mp.model_path           =  [pwd, '\Dynamic_Compression_Model']; 
 cd ..;  % move out of the models folder
-mp.test_signals_path    =  [pwd, '/test_signals'];                              % path to test signals folder
+mp.test_signals_path    =  [pwd, '\test_signals'];                              % path to test signals folder
 %mp.utility_path         =  ; %'E:\git\nih_simulinklib\matlab';                  % path to test signals folder
-mp.config_path          =  [pwd, '/config'];                                    % path to configuration folder (widget and register field definitions)
-mp.codegen_path         =  [pwd, '/utilities/vhdl_codegen'];                              % path to \vhdl_codegen folder
-mp.quartus_path         =  '/usr/local/intelFPGAlite/18.1/quartus/bin/quartus';  % path to the Quartus executable
-mp.python_path          =  '/usr/bin/python3';                              % path to Python executable.
+mp.config_path          =  [pwd, '\config'];                                    % path to configuration folder (widget and register field definitions)
+mp.codegen_path         =  [pwd, '\utilities\vhdl_codegen'];                              % path to \vhdl_codegen folder
+mp.quartus_path         =  'C:\intelFPGA_lite\18.1\quartus\bin64';  % path to the Quartus executable
+mp.python_path          =  'C:\Python';                              % path to Python executable.
 mp.linux_device_name    = mp.model_name;                                        % device driver name that Linux will see
 
 cd models/Dynamic_Compression_Model;   % return to where this was run
