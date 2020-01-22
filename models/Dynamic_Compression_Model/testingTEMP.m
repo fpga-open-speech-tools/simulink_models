@@ -1,13 +1,7 @@
-function blkStruct = 
-		% This function specifies that the library should appear
-		% in the Library Browser
-		% and be cached in the browser repository
+x_in = 0:0.001:1;
 
-		Browser.Library = 'DSP_FPGA_Accelerated_Toolbox';
-		% 'mylib' is the name of the library
+tt = 0:1000;
+tt = tt./48000;
 
-		Browser.Name = 'DSP FPGA Accelerated Toolbox';
-		% 'My Library' is the library name that appears 
-             % in the Library Browser
-
-		blkStruct.Browser = Browser; 
+simin = [tt',x_in'];
+stop_time = tt(end);
