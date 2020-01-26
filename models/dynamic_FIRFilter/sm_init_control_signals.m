@@ -61,22 +61,6 @@ mp.register(1).default    = 1;              % default (initial) value
 mp.register(1).widget_type      = 'slider';
 mp.register(1).widget_display_units = ' ';
 
-mp.register(2).name       = 'noisePower';       % control signal name
-mp.register(2).value      = 0.1/6;              % value control signal will take during simulation
-mp.register(2).min        = -0.08;              % The minimum value the control signal will ever take
-mp.register(2).max        =  0.08;              % The maximum value the control signal will ever take
-mp.register(2).default    = 0.1/6;              % default (initial) value
-mp.register(2).widget_type      = 'slider';
-mp.register(2).widget_display_units = ' ';
-
-mp.register(3).name       = 'window';       % control signal name
-mp.register(3).value      = 3;              % value control signal will take during simulation
-mp.register(3).min        = 1;              % The minimum value the control signal will ever take
-mp.register(3).max        = 5;              % The maximum value the control signal will ever take
-mp.register(3).default    = 3;              % default (initial) value
-mp.register(3).widget_type      = 'slider';
-mp.register(3).widget_display_units = ' ';
-
 %% convert to time series data
 for i=1:length(mp.register)
     mp.register(i).timeseries = timeseries(mp.register(i).value,0);  % timeseries(datavals,timevals);  % A timeseries data format is needed for the from workspace block     
