@@ -7,6 +7,7 @@
 local_git_path{1}         = 'C:\Users\bugsbunny\NIH';
 local_git_path{2}         = 'V:\MSU\GitHub\';
 local_git_path{3}         = 'C:\Git';
+local_git_path{4}         = 'D:\Git_repos\';
 valid_index = 0;
 for index=1:length(local_git_path)
     if exist(local_git_path{index},'dir') 
