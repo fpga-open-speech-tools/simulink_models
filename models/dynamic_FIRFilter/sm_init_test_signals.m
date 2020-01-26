@@ -71,7 +71,7 @@ switch signal_option
         mp.test_signal.Nsamples = length(mp.test_signal.left);
         mp.test_signal.duration = mp.test_signal.Nsamples * mp.Ts;
     case 4 % Justin Supplied Speech Signal
-        [y, Fs] = audioread([mp.test_signals_path filesep 'noisySpeech.wav']);
+        [y, Fs] = audioread([mp.test_signals_path filesep 'testchirp.wav']);
         y_resampled = resample(y,mp.Fs,Fs);  % resample to change the sample rate to SG.Fs
         Nsamples = length(y_resampled);
         if mp.fastsim_flag == 1 % perform fast simulation by reducing the number of samples

@@ -4,7 +4,7 @@
 % Company: Flat Earth Inc.
 % Date:    1/19/2020
 % 
-clc; close all; clear;
+% clc; close all; clear;
 %% HPF Filter Design
 hpFilt = designfilt('highpassfir', ...
                     'FilterOrder', 511, ...
