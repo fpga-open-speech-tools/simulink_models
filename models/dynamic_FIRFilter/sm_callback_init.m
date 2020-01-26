@@ -70,3 +70,8 @@ mp = sm_init_avalon_signals(mp);  % create the avalon streaming signals
 % W_bits = SG.W_bits;
 % F_bits = SG.F_bits;
 
+%% Justin -> Added Filter Signals
+load('test_filters.mat');
+mp.LPF = b_k_LPF;
+mp.HPF = b_k_HPF;
+
