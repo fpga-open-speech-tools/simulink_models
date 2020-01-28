@@ -5,11 +5,33 @@
 [x,Fs] = audioread('acoustic.wav'); 
 
 % read the impulse response waveform
-%filename = 'impulse_room.wav'; 
-[imp,Fsimp] = audioread(filename);
+[imp_room, Fsimp] = audioread('impulse_room.wav');
+[imp_box, Fsimp] = audioread('STRANGEBOX-2.wav');
+[imp_cave, Fsimp] = audioread('DAMPED CAVE E001 M2S.wav');
+[imp_hall, Fsimp] = audioread('BIG HALL E001 M2S.wav');
+[imp_hall, Fsimp] = audioread('PIPE & CARPET E001 M2S.wav');
 
 % Do convolution with FFT
-y = fconv(x,imp);
+y = fconv(x,imp_room);
 
 % write output
-audiowrite(y,Fs,'out_IRreverb.wav')
+audiowrite('out_IRreverb00.wav', y, Fs);
+
+% Do convolution with FFT
+y = fconv(x,imp_box);
+
+% write output
+audiowrite('out_IRreverb01.wav', y, Fs);
+
+% Do convolution with FFT
+y = fconv(x,imp_cave);
+
+% write output
+audiowrite('out_IRreverb02.wav', y, Fs);
+
+% Do convolution with FFT
+y = fconv(x,imp_hall);
+
+% write output
+audiowrite('out_IRreverb03.wav', y, Fs);
+
