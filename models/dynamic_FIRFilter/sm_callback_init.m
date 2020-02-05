@@ -26,7 +26,7 @@ if isfield(mp,'sim_prompts') == 0
 end
 
 %% Set Audio Data Sample Rate
-mp.Fs = 1024*48000;    % sample rate frequency of AD1939 codec in Hz
+mp.Fs = 48000;    % sample rate frequency of AD1939 codec in Hz
 mp.Ts = 1/mp.Fs;  % sample period
 
 %% Set the FPGA system clock frequency (frequency of the FPGA fabric)
