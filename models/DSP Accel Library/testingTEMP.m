@@ -1,9 +1,9 @@
 
 %% Before Running
 x_in = 0:0.001:3;
-
+ts = 1/48000;
 tt = 0:length(x_in)-1;
-tt = tt./48000;
+tt = tt.*ts;
 
 simin_Data_In = [tt',x_in'];
 simin_Table_Wr_Data = [tt',x_in'];
@@ -11,7 +11,33 @@ simin_Table_Wr_Addr = [tt',x_in'];
 simin_Wr_En = [tt',x_in'];
 stop_time = tt(end);
 
+maxInput = 1;
+M_bits = 4; N_bits = 4;
+d = ceil(log2(maxInput));
+X_in = zeros(1, 2^(M_bits+N_bits));
+addr = 1;
 
+for NShifts = 2^N_bits-1:-1:0
+    for M = 0:2^M_bits - 1
+        X_in(addr) = 2^(d-NShifts) + M*2^(d-NShifts-M_bits);
+        addr = addr+1;
+    end
+end
+
+Y_out = tanh(X_in); 
+
+Table_Wr_Data = [zeros(1,length(x_in)), Y_out, zeros(1,length(x_in))];
+tt = 0:length(Table_Wr_Data)-1;
+tt = tt.*ts;
+Data_In = [x_in, zeros(1,length(Y_out)), x_in];
+Table_Wr_Addr = [zeros(1,length(x_in)), 0:length(Y_out)-1, zeros(1,length(x_in))];
+Wr_En = [zeros(1,length(x_in)), ones(1,length(Y_out)), zeros(1,length(x_in))];
+
+simin_Data_In = [tt',Data_In'];
+simin_Table_Wr_Data = [tt',Table_Wr_Data'];
+simin_Table_Wr_Addr = [tt',Table_Wr_Addr'];
+simin_Wr_En = [tt',Wr_En'];
+stop_time = tt(end);
 
 %% After Running
 
