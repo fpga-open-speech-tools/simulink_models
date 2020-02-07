@@ -43,8 +43,12 @@ mp.register(ri).value      = 0;         % value control signal will take during 
 mp.register(ri).min        = 0;         % The minimum value the control signal will ever take
 mp.register(ri).max        = 1;         % The maximum value the control signal will ever take
 mp.register(ri).default    = 0;         % default (initial) value
+mp.register(ri).dataType = fixdt('boolean');
 mp.register(ri).widget_type          = 'toggle';
 mp.register(ri).widget_display_units = 'bypass';
+mp.register(ri).widget_style = 'default';
+mp.register(ri).uiPageName = 'main';
+mp.register(ri).uiPanelName = 'bitcrusher';
 
 %% Create bit control signal
 ri = ri + 1;  % register index
@@ -53,8 +57,12 @@ mp.register(ri).value      = 4;        % value control signal will take during s
 mp.register(ri).min        =  0;       % The minimum value the control signal will ever take
 mp.register(ri).max        = 32;       % The maximum value the control signal will ever take
 mp.register(ri).default    = 32;       % default (initial) value
+mp.register(ri).dataType = fixdt(0, log2(mp.W_bits) + 1, 0);
 mp.register(ri).widget_type          = 'slider';
 mp.register(ri).widget_display_units = 'bits';
+mp.register(ri).widget_style = 'default';
+mp.register(ri).uiPageName = 'main';
+mp.register(ri).uiPanelName = 'bitcrusher';
 
 %% Create wet_dry_mix signal
 ri = ri + 1;  % register index
@@ -63,8 +71,12 @@ mp.register(ri).value      = 1;             % value control signal will take dur
 mp.register(ri).min        = 0;               % The minimum value the control signal will ever take
 mp.register(ri).max        = 1;               % The maximum value the control signal will ever take
 mp.register(ri).default    = 0.5;             % default (initial) value
+mp.register(ri).dataType = fixdt(0, 8, 7);
 mp.register(ri).widget_type          = 'slider';
 mp.register(ri).widget_display_units = 'ratio';
+mp.register(ri).widget_style = 'default';
+mp.register(ri).uiPageName = 'main';
+mp.register(ri).uiPanelName = 'bitcrusher';
 
 % Any other register control signals should be created in a similar manner
 
