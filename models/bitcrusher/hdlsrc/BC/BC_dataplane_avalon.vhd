@@ -24,9 +24,9 @@ end entity BC_dataplane_avalon;
 
 architecture BC_dataplane_avalon_arch of BC_dataplane_avalon is
 
-  signal bypass                    : std_logic :=  '0'; -- 0
-  signal bits                      : std_logic_vector(5  downto 0) :=  std_logic_vector(to_unsigned(32, 6)); -- 32
-  signal wet_dry_mix               : std_logic_vector(7  downto 0) :=  "01000000"; -- 0.5
+  signal bypass                    : std_logic :=  '0'; -- 0 (boolean)
+  signal bits                      : std_logic_vector(5  downto 0) :=  "100000"; -- 32 (ufix6)
+  signal wet_dry_mix               : std_logic_vector(7  downto 0) :=  "01000000"; -- 0.5 (ufix8_En7)
 
 component BC_dataplane
   port(
@@ -60,8 +60,8 @@ u_BC_dataplane : BC_dataplane
     avalon_sink_channel         =>  avalon_sink_channel,             -- ufix2
     avalon_sink_error           =>  avalon_sink_error,               -- ufix2
     register_control_bypass     =>  bypass,                          -- boolean
-    register_control_bits       =>  bits,                            -- sfix32_En28
-    register_control_wet_dry_mix=>  wet_dry_mix,                     -- ufix2
+    register_control_bits       =>  bits,                            -- ufix6
+    register_control_wet_dry_mix=>  wet_dry_mix,                     -- ufix8_En7
     avalon_source_valid         =>  avalon_source_valid,             -- boolean
     avalon_source_data          =>  avalon_source_data,              -- sfix32_En28
     avalon_source_channel       =>  avalon_source_channel,           -- ufix2
@@ -83,9 +83,9 @@ u_BC_dataplane : BC_dataplane
   bus_write : process(clk, reset)
   begin
     if reset = '1' then
-      bypass                    <=  '0'; -- 0
-      bits                      <=  std_logic_vector(to_unsigned(32, 6)); -- 32
-      wet_dry_mix               <=  "01000000"; -- 0.5
+      bypass                    <=  '0'; -- 0 (boolean)
+      bits                      <=  "100000"; -- 32 (ufix6)
+      wet_dry_mix               <=  "01000000"; -- 0.5 (ufix8_En7)
     elsif rising_edge(clk) and avalon_slave_write = '1' then
       case avalon_slave_address is
         when "00" => bypass <= avalon_slave_writedata(0);

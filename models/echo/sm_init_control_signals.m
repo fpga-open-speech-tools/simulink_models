@@ -43,8 +43,12 @@ mp.register(ri).value      = 0;         % value control signal will take during 
 mp.register(ri).min        = 0;         % The minimum value the control signal will ever take
 mp.register(ri).max        = 1;         % The maximum value the control signal will ever take
 mp.register(ri).default    = 0;         % default (initial) value
-mp.register(ri).widget_type          = 'toggle';
-mp.register(ri).widget_display_units = 'bypass';
+mp.register(ri).dataType = fixdt('boolean');
+mp.register(ri).widgetType          = 'toggle';
+mp.register(ri).widgetDisplayUnits = 'bypass';
+mp.register(ri).widgetStyle = 'default';
+mp.register(ri).uiPageName = 'main';
+mp.register(ri).uiPanelName = 'echo';
 
 %% Create delay control signal (in samples)   [0 Fs] => delay 0 to 1 seconds
 ri = ri + 1;  % register index
@@ -53,8 +57,12 @@ mp.register(ri).value      = 10000;    % value control signal will take during s
 mp.register(ri).min        =  0;       % The minimum value the control signal will ever take
 mp.register(ri).max        = mp.max_delay;    % The maximum value the control signal will ever take
 mp.register(ri).default    = 12000;    % default (initial) value
-mp.register(ri).widget_type          = 'slider';
-mp.register(ri).widget_display_units = 'seconds';
+mp.register(ri).dataType = fixdt(0,mp.dpram_addr_size,0);
+mp.register(ri).widgetType          = 'slider';
+mp.register(ri).widgetDisplayUnits = 'seconds';
+mp.register(ri).widgetStyle = 'default';
+mp.register(ri).uiPageName = 'main';
+mp.register(ri).uiPanelName = 'echo';
 
 %% Create decay control signal (must be less than one)
 ri = ri + 1;  % register index
@@ -63,8 +71,12 @@ mp.register(ri).value      = 0.3;      % value control signal will take during s
 mp.register(ri).min        = 0;        % The minimum value the control signal will ever take
 mp.register(ri).max        = 1;        % The maximum value the control signal will ever take
 mp.register(ri).default    = 0.8;      % default (initial) value
-mp.register(ri).widget_type          = 'slider';
-mp.register(ri).widget_display_units = 'weight';
+mp.register(ri).dataType = fixdt(0,8,7);
+mp.register(ri).widgetType          = 'slider';
+mp.register(ri).widgetDisplayUnits = 'weight';
+mp.register(ri).widgetStyle = 'default';
+mp.register(ri).uiPageName = 'main';
+mp.register(ri).uiPanelName = 'echo';
 
 %% Create wet_dry_mix signal
 ri = ri + 1;  % register index
@@ -73,8 +85,12 @@ mp.register(ri).value      = 0.9;             % value control signal will take d
 mp.register(ri).min        = 0;               % The minimum value the control signal will ever take
 mp.register(ri).max        = 1;               % The maximum value the control signal will ever take
 mp.register(ri).default    = 0.5;             % default (initial) value
-mp.register(ri).widget_type          = 'slider';
-mp.register(ri).widget_display_units = 'ratio';
+mp.register(ri).dataType = fixdt(0,8,7);
+mp.register(ri).widgetType          = 'slider';
+mp.register(ri).widgetDisplayUnits = 'ratio';
+mp.register(ri).widgetStyle = 'default';
+mp.register(ri).uiPageName = 'main';
+mp.register(ri).uiPanelName = 'echo';
 
 % Any other register control signals should be created in a similar manner
 
