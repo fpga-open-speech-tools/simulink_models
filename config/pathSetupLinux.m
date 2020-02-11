@@ -32,7 +32,7 @@ end
 if validIndex > 0
     gitPath = localGitPath{validIndex};
 else
-    disp('Local Git Repository not found.  Please add your Git path to path_setup_windows.m');
+    disp('Local Git Repository not found.  Please add your Git path to pathSetupLinux.m');
 end
 
 %% Setup Matlab/Simulink paths
@@ -44,7 +44,6 @@ end
 %       is used all over the place, so this will require some global refactoring
 mp.model_path           = [gitPath filesep 'simulink_models' filesep 'models' filesep mp.model_name];
 mp.test_signals_path    = [gitPath filesep 'simulink_models' filesep 'test_signals'];
-mp.config_path          = [gitPath filesep 'simulink_models' filesep 'config'];
 mp.vhdl_codegen_path    = [gitPath filesep 'simulink_codegen' filesep 'vhdl'];
 mp.driver_codegen_path  = [gitPath filesep 'simulink_codegen' filesep 'device_drivers'];
 mp.ui_codegen_path      = [gitPath filesep 'simulink_codegen' filesep 'ui'];
@@ -63,7 +62,7 @@ end
 if validIndex > 0
     quartusPath = localQuartusPath{validIndex};
 else
-    disp('Local Quartus Install not found.  Please add your Quartus path to path_setup_windows.m');
+    disp('Local Quartus install not found.  Please add your Quartus path to pathSetupLinux.m');
 end
 
 mp.quartus_path = quartusPath;
@@ -92,7 +91,6 @@ disp(['Setting up the the following path parameters'])
 disp(['Local GitHub repository path = ' localGitPath])
 disp(['Simulink model path          = ' mp.model_path])
 disp(['Test signals path            = ' mp.test_signals_path])
-disp(['Config path                  = ' mp.config_path])
 disp(['VHDL Codegen path            = ' mp.vhdl_codegen_path])
 disp(['Driver Codegen path          = ' mp.driver_codegen_path])
 disp(['UI Codegen path              = ' mp.ui_codegen_path])

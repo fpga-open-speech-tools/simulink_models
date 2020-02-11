@@ -22,7 +22,7 @@
 % Add your git path to the cell array selection below so it will be found
 % the next time you run Simulink.
 % The first directory that Matlab finds that exists will be used.
-localGitPath{1} = 'C:\Users\bugsbunny\NIH';
+localGitPath{1} = 'C:\Users\bugsbunny\research\NIH';
 localGitPath{2} = 'V:\MSU\GitHub\';
 validIndex = 0;
 for index=1:length(localGitPath)
@@ -33,7 +33,7 @@ end
 if validIndex > 0
     gitPath = localGitPath{validIndex};
 else
-    disp('Local Git Repository not found.  Please add your Git path to path_setup_windows.m');
+    error('Local Git repository not found.  Please add your Git path to pathSetupWindows.m');
 end
 
 %% Setup Matlab/Simulink paths
@@ -53,7 +53,7 @@ mp.ui_codegen_path      = [gitPath '\simulink_codegen\ui'];
 % Add your Quartus path to the cell array selection below so it will be found
 % the next time you run Simulink.
 % The first directory that Matlab finds that exists will be used.
-localQuartusPath{1} = 'C:\intelFPGA_lite\18.0\quartus\bin64';
+localQuartusPath{1} = 'C:\intelFPGA_lite\18.1\quartus\bin64';
 localQuartusPath{2} = 'D:\intelFPGA_lite\18.1\quartus\bin64';
 validIndex = 0;
 for index=1:length(localQuartusPath)
@@ -64,7 +64,7 @@ end
 if validIndex > 0
     quartusPath = localQuartusPath{validIndex};
 else
-    disp('Local Quartus Install not found.  Please add your Quartus path to path_setup_windows.m');
+    error('Local Quartus install not found.  Please add your Quartus path to pathSetupWindows.m');
 end
 mp.quartus_path = quartusPath;
 
@@ -72,7 +72,8 @@ mp.quartus_path = quartusPath;
 % Add your Python path to the cell array selection below so it will be found
 % the next time you run Simulink.
 % The first directory that Matlab finds that exists will be used.
-localPythonPath{1} = 'F:\Python\Python37\python.exe';
+localPythonPath{1} = 'F:\Python\Python37';
+localPythonPath{2} = 'C:\Anaconda3';
 validIndex = 0;
 for index=1:length(localPythonPath)
     if exist(localPythonPath{index},'dir') 
@@ -82,7 +83,7 @@ end
 if validIndex > 0
     pythonPath = localPythonPath{validIndex};
 else
-    disp('Local Quartus Install not found.  Please add your Quartus path to path_setup_windows.m');
+    error('Local python path not found. Please add your python path to pathSetupWindows.m');
 end
 mp.pythonPath = pythonPath;
 
@@ -92,7 +93,7 @@ if  pythonLoaded
     disp(['Using Python version ' pythonVersion])
 else
     % NOTE: if the version changes from what is already loaded in Matlab, you will need to restart 
-    pyversion(mp.pythonPath);
+    pyversion([mp.pythonPath, '\python.exe']);
     [pythonVersion, pythonExe, pythonLoaded] = pyversion;
     disp(['Setting Python to version ' pythonVersion])
 end
@@ -119,7 +120,6 @@ disp(['Setting up the the following path parameters'])
 disp(['Local GitHub repository path = ' localGitPath])
 disp(['Simulink model path          = ' mp.model_path])
 disp(['Test signals path            = ' mp.test_signals_path])
-disp(['Config path                  = ' mp.config_path])
 disp(['VHDL Codegen path            = ' mp.vhdl_codegen_path])
 disp(['Driver Codegen path          = ' mp.driver_codegen_path])
 disp(['UI Codegen path              = ' mp.ui_codegen_path])
