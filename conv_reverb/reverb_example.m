@@ -15,8 +15,8 @@
 % write output
 % audiowrite('room_reverb.wav', y, Fs);
 
-w = 32;
-f = 28;
+w = 16;
+f = w - 2;
 
 h = imp_cave(:,1); % impulse response
 
@@ -39,7 +39,7 @@ fiaccel conv_fixedpt... % function
     -nargout 1 % number of outputs
 toc
 
-disp('Convolution w/ FFT');
+disp('Convolution w/ FFT and w/o fixed points');
 tic
 y = fconv(x,h);
 toc
