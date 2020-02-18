@@ -11,15 +11,14 @@
 [imp_hall, Fsimp] = audioread('BIG HALL E001 M2S.wav');
 [imp_pipe, Fsimp] = audioread('PIPE & CARPET E001 M2S.wav');
 
-% Do convolution with FFT
-y = fconv(x,imp_room);
 
 % write output
-audiowrite('room_reverb.wav', y, Fs);
+% audiowrite('room_reverb.wav', y, Fs);
 
 w = 32;
 f = 28;
-h = imp_box(:,1); % impulse response
+
+h = imp_cave(:,1); % impulse response
 
 % define fixed point
 Fm = fimath('RoundingMethod','Floor',...
@@ -40,6 +39,11 @@ fiaccel conv_fixedpt... % function
     -nargout 1 % number of outputs
 toc
 
+disp('Convolution w/ FFT');
+tic
+y = fconv(x,h);
+toc
+
 disp('Convolution w/o fixed points');
 tic 
 y_conv = conv(x,h);
@@ -52,8 +56,8 @@ toc
 
 
 %% do not do unless you have a lot of time
-tic
-disp('Convolution w fixed points');
-tic
-y_fi_slow = conv(fi(x, 1, w, f, Fm) , fi(h, 1, w, f, Fm)); 
-toc
+% tic
+% disp('Convolution w fixed points');
+% tic
+% y_fi_slow = conv(fi(x, 1, w, f, Fm) , fi(h, 1, w, f, Fm)); 
+% toc
