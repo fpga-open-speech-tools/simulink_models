@@ -1,7 +1,7 @@
 % reverb_convolution_eg.m
 % Script to call implement Convolution Reverb
 % read the sample waveform
-%filename = 'acoustic.wav';
+% filename = 'acoustic.wav';
 [x,Fs] = audioread('acoustic.wav'); 
 
 % read the impulse response waveform
@@ -9,29 +9,51 @@
 [imp_box, Fsimp] = audioread('STRANGEBOX-2.wav');
 [imp_cave, Fsimp] = audioread('DAMPED CAVE E001 M2S.wav');
 [imp_hall, Fsimp] = audioread('BIG HALL E001 M2S.wav');
-[imp_hall, Fsimp] = audioread('PIPE & CARPET E001 M2S.wav');
+[imp_pipe, Fsimp] = audioread('PIPE & CARPET E001 M2S.wav');
 
 % Do convolution with FFT
 y = fconv(x,imp_room);
 
 % write output
-audiowrite('out_IRreverb00.wav', y, Fs);
+audiowrite('room_reverb.wav', y, Fs);
 
-% Do convolution with FFT
-y = fconv(x,imp_box);
+w = 32;
+f = 28;
+h = imp_box(:,1); % impulse response
 
-% write output
-audiowrite('out_IRreverb01.wav', y, Fs);
+% define fixed point
+Fm = fimath('RoundingMethod','Floor',...
+        'OverflowAction','Wrap',...
+        'ProductMode','SpecifyPrecision',...
+        'ProductWordLength',w,...
+        'ProductFractionLength',f,...
+        'SumMode','SpecifyPrecision',...
+        'SumWordLength',w,...
+        'SumFractionLength',f);
 
-% Do convolution with FFT
-y = fconv(x,imp_cave);
 
-% write output
-audiowrite('out_IRreverb02.wav', y, Fs);
+disp('c compile');
+tic
+argsIn = {x,h};
+fiaccel conv_fixedpt... % function
+    -args argsIn... % number and argumanets in
+    -nargout 1 % number of outputs
+toc
 
-% Do convolution with FFT
-y = fconv(x,imp_hall);
+disp('Convolution w/o fixed points');
+tic 
+y_conv = conv(x,h);
+toc
 
-% write output
-audiowrite('out_IRreverb03.wav', y, Fs);
+disp('Convolution w fixed points and c');
+tic
+y_fi = conv_fixedpt_mex(x, h); 
+toc
 
+
+%% do not do unless you have a lot of time
+tic
+disp('Convolution w fixed points');
+tic
+y_fi_slow = conv(fi(x, 1, w, f, Fm) , fi(h, 1, w, f, Fm)); 
+toc

@@ -1,7 +1,7 @@
-% reverb_convolution_eg.m
+% reverb_example.m
 % Script to call implement Convolution Reverb
 % read the sample waveform
-%filename = 'acoustic.wav';
+% filename = 'acoustic.wav';
 [x,Fs] = audioread('acoustic.wav'); 
 
 % read the impulse response waveform
@@ -17,38 +17,43 @@ y = fconv(x,imp_room);
 % write output
 audiowrite('room_reverb.wav', y, Fs);
 
+w = 32;
+f = 28;
+h = imp_box(:,1); % impulse response
 
-% box
-y = fconv(x,imp_box);
-audiowrite('box_reverb.wav', y, Fs);
-figure();
-plot(imp_box);
-title('Box Impulse Response')
-print('box.png', '-dpng')
-
-% cave
-y = fconv(x,imp_cave);
-audiowrite('cave_reverb.wav', y, Fs);
-figure();
-plot(imp_cave);
-title('Cave Impulse Response')
-print('cave.png', '-dpng')
+% define fixed point
+Fm = fimath('RoundingMethod','Floor',...
+        'OverflowAction','Wrap',...
+        'ProductMode','SpecifyPrecision',...
+        'ProductWordLength',w,...
+        'ProductFractionLength',f,...
+        'SumMode','SpecifyPrecision',...
+        'SumWordLength',w,...
+        'SumFractionLength',f);
 
 
-% hall
-y = fconv(x,imp_hall);
-audiowrite('hall_reverb.wav', y, Fs);
-figure();
-plot(imp_hall);
-title('Big Hall Impulse Response')
-print('hall.png', '-dpng')
+disp('c compile');
+tic
+argsIn = {x,h};
+fiaccel conv_fixedpt... % function
+    -args argsIn... % number and argumanets in
+    -nargout 1 % number of outputs
+toc
 
-% pipe 
-y = fconv(x,imp_pipe);
-audiowrite('pipe_reverb.wav', y, Fs);
-figure();
-plot(imp_pipe);
-title('Pipe Impulse Response')
-print('pipe.png', '-dpng')
+disp('Convolution w/o fixed points');
+tic 
+y_conv = conv(x,h);
+toc
+
+disp('Convolution w fixed points and c');
+tic
+y_fi = conv_fixedpt_mex(x, h); 
+toc
 
 
+%% do not do unless you have a lot of time
+tic
+disp('Convolution w fixed points');
+tic
+y_fi_slow = conv(fi(x, 1, w, f, Fm) , fi(h, 1, w, f, Fm)); 
+toc
