@@ -24,7 +24,7 @@ fiaccel  conv_fixedpt_32... % function
         -nargout 1  % number of outputs
 
 % Convolution w fixed points and c
-y_fi = conv_fixedpt_mex(x, h); 
+y_fi = conv_fixedpt_32_mex(x, h); 
     
 % normalize and type cast
 y = double(y_fi/max(abs(y_fi)));
@@ -40,7 +40,7 @@ fiaccel  conv_fixedpt_28... % function
         -nargout 1  % number of outputs
 
 % Convolution w fixed points and c
-y_fi = conv_fixedpt_mex(x, h); 
+y_fi = conv_fixedpt_28_mex(x, h); 
     
 % normalize and type cast
 y = double(y_fi/max(abs(y_fi)));
@@ -56,7 +56,7 @@ fiaccel  conv_fixedpt_24... % function
         -nargout 1  % number of outputs
 
 % Convolution w fixed points and c
-y_fi = conv_fixedpt_mex(x, h); 
+y_fi = conv_fixedpt_24_mex(x, h); 
     
 % normalize and type cast
 y = double(y_fi/max(abs(y_fi)));
@@ -72,7 +72,7 @@ fiaccel  conv_fixedpt_20... % function
         -nargout 1  % number of outputs
 
 % Convolution w fixed points and c
-y_fi = conv_fixedpt_mex(x, h); 
+y_fi = conv_fixedpt_20_mex(x, h); 
     
 % normalize and type cast
 y = double(y_fi/max(abs(y_fi)));
@@ -88,7 +88,7 @@ fiaccel  conv_fixedpt_16... % function
         -nargout 1  % number of outputs
 
 % Convolution w fixed points and c
-y_fi = conv_fixedpt_mex(x, h); 
+y_fi = conv_fixedpt_16_mex(x, h); 
     
 % normalize and type cast
 y = double(y_fi/max(abs(y_fi)));
@@ -104,7 +104,7 @@ fiaccel  conv_fixedpt_12... % function
         -nargout 1  % number of outputs
 
 % Convolution w fixed points and c
-y_fi = conv_fixedpt_mex(x, h); 
+y_fi = conv_fixedpt_12_mex(x, h); 
     
 % normalize and type cast
 y = double(y_fi/max(abs(y_fi)));
@@ -120,7 +120,7 @@ fiaccel  conv_fixedpt_08... % function
         -nargout 1  % number of outputs
 
 % Convolution w fixed points and c
-y_fi = conv_fixedpt_mex(x, h); 
+y_fi = conv_fixedpt_08_mex(x, h); 
     
 % normalize and type cast
 y = double(y_fi/max(abs(y_fi)));
