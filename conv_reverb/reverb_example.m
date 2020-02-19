@@ -11,128 +11,33 @@
 [imp_cave, Fsimp] = audioread('DAMPED CAVE E001 M2S.wav');
 [imp_hall, Fsimp] = audioread('BIG HALL E001 M2S.wav');
 [imp_pipe, Fsimp] = audioread('PIPE & CARPET E001 M2S.wav');
+h = imp_cave(:,1); % impulse response
+
 tic
-i = 32
-name = ['room_reverb_w_' int2str(i) '.wav'] % name of the file
-
-h = imp_room(:,1); % impulse response
-
-% compile the c code
-argsIn = {x, h};
-fiaccel  conv_fixedpt_32... % function
-        -args argsIn... % number and argumanets in
-        -nargout 1  % number of outputs
-
-% Convolution w fixed points and c
-y_fi = conv_fixedpt_32_mex(x, h); 
+for i = 32:-1:10
+    width = i
+    frac = width - 8;
+    name = ['cave_reverb_w_' int2str(i) '.wav'] % name of the file
+    Fm = fimath('RoundingMethod','Floor',...
+        'OverflowAction','Wrap',...
+        'ProductMode','SpecifyPrecision',...
+        'ProductWordLength',width,...
+        'ProductFractionLength',frac,...
+        'SumMode','SpecifyPrecision',...
+        'SumWordLength',width,...
+        'SumFractionLength',frac);
     
-% normalize and type cast
-y = double(y_fi/max(abs(y_fi)));
+    x_fi = fi(x, 1, width, frac, Fm);
+    h_fi = fi(h, 1, width, frac, Fm);
+
+    argsIn = {x_fi, h_fi};
+    fiaccel  fi_conv... % function
+            -args argsIn... % number and argumanets in
+            -nargout 1  % number of outputs
+        
+    y_fi = fi_conv_mex(x_fi, h_fi);
+    y = double(y_fi);
+    y = y ./ max(abs(y));
     audiowrite(name, y, Fs);
-  
-i = 28    
-name = ['room_reverb_w_' int2str(i) '.wav'] % name of the file
-
-% compile the c code
-argsIn = {x, h};
-fiaccel  conv_fixedpt_28... % function
-        -args argsIn... % number and argumanets in
-        -nargout 1  % number of outputs
-
-% Convolution w fixed points and c
-y_fi = conv_fixedpt_28_mex(x, h); 
-    
-% normalize and type cast
-y = double(y_fi/max(abs(y_fi)));
-    audiowrite(name, y, Fs);
-    
-i = 24    
-name = ['room_reverb_w_' int2str(i) '.wav'] % name of the file
-
-% compile the c code
-argsIn = {x, h};
-fiaccel  conv_fixedpt_24... % function
-        -args argsIn... % number and argumanets in
-        -nargout 1  % number of outputs
-
-% Convolution w fixed points and c
-y_fi = conv_fixedpt_24_mex(x, h); 
-    
-% normalize and type cast
-y = double(y_fi/max(abs(y_fi)));
-    audiowrite(name, y, Fs);
-
-i = 20    
-name = ['room_reverb_w_' int2str(i) '.wav'] % name of the file
-
-% compile the c code
-argsIn = {x, h};
-fiaccel  conv_fixedpt_20... % function
-        -args argsIn... % number and argumanets in
-        -nargout 1  % number of outputs
-
-% Convolution w fixed points and c
-y_fi = conv_fixedpt_20_mex(x, h); 
-    
-% normalize and type cast
-y = double(y_fi/max(abs(y_fi)));
-    audiowrite(name, y, Fs);
-    
-i = 16   
-name = ['room_reverb_w_' int2str(i) '.wav'] % name of the file
-
-% compile the c code
-argsIn = {x, h};
-fiaccel  conv_fixedpt_16... % function
-        -args argsIn... % number and argumanets in
-        -nargout 1  % number of outputs
-
-% Convolution w fixed points and c
-y_fi = conv_fixedpt_16_mex(x, h); 
-    
-% normalize and type cast
-y = double(y_fi/max(abs(y_fi)));
-    audiowrite(name, y, Fs);
-
-i = 12
-name = ['room_reverb_w_' int2str(i) '.wav'] % name of the file
-
-% compile the c code
-argsIn = {x, h};
-fiaccel  conv_fixedpt_12... % function
-        -args argsIn... % number and argumanets in
-        -nargout 1  % number of outputs
-
-% Convolution w fixed points and c
-y_fi = conv_fixedpt_12_mex(x, h); 
-    
-% normalize and type cast
-y = double(y_fi/max(abs(y_fi)));
-    audiowrite(name, y, Fs);
-
-i = 8   
-name = ['room_reverb_w_0' int2str(i) '.wav'] % name of the file
-
-% compile the c code
-argsIn = {x, h};
-fiaccel  conv_fixedpt_08... % function
-        -args argsIn... % number and argumanets in
-        -nargout 1  % number of outputs
-
-% Convolution w fixed points and c
-y_fi = conv_fixedpt_08_mex(x, h); 
-    
-% normalize and type cast
-y = double(y_fi/max(abs(y_fi)));
-    audiowrite(name, y, Fs);
-
-
-    
+end
 toc
-
-%% do not do unless you have a lot of time
-% tic
-% disp('Convolution w fixed points');
-% tic
-% y_fi_slow = conv(fi(x, 1, w, f, Fm) , fi(h, 1, w, f, Fm)); 
-% toc
