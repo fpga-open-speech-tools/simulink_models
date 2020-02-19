@@ -101,7 +101,12 @@ megainmax=2;
 [tone,fs] = audioread('AN_test_tone.wav');
 
 % Assign to variable used in model
-RxSignal = tone;
+% *** Changed to Single Precision by Matthew Blunt 02/13/2020
+RxSignal = single(tone);
+
+% Add doubles chirp signal for test/verification
+% *** Added by Matthew Blunt 02/13/2020
+RxSignalDouble = tone;
 
 % Find test time, which is set in model
 testtime = length(RxSignal)/Fs

@@ -304,6 +304,8 @@ end
 
 norm_gainc1 = (sqrt(C1gain_norm))/((sqrt(CF^2+rzero^2))^order_of_zero);
 
+    % ??? This line was added by Matthew Blunt on 1/23/2020
+    norm_gainc1 = single(norm_gainc1);
 
 %% NL BEFORE PLA FUNCTION PARAMETERS
 
@@ -424,56 +426,67 @@ slow_coeffs = [slow_b0_1*0.2 slow_b1_1*0.2 slow_b2_1*0.2 slow_a0_1 slow_a1_1 slo
 %% SPIKE GENERATOR PARAMETERS
 
 % Original spike generation input parameters
-nSites = 4;
-t_rd_rest = 14.0e-3;
-t_rd_jump = 0.4e-3;
-t_rd_init = t_rd_rest + 0.02e-3*spont - t_rd_jump;
-tau = 60e-3;
+    % ??? Changed to single precision by Matthew Blunt 01/23/2020
+nSites = single(4);
+t_rd_rest = single(14.0e-3);
+t_rd_jump = single(0.4e-3);
+t_rd_init = single(t_rd_rest + 0.02e-3*spont - t_rd_jump);
+tau = single(60e-3);
 
 % Calculate model parameter values
 
 % Initialized elapsed_times, one for each synaptic docking site
-elapsed_time1 = tdres * randi(floor(Fs * t_rd_init));
-elapsed_time2 = tdres * randi(floor(Fs * t_rd_init));
-elapsed_time3 = tdres * randi(floor(Fs * t_rd_init));
-elapsed_time4 = tdres * randi(floor(Fs * t_rd_init));
+    % ??? Changed to single precision by Matthew Blunt 01/23/2020
+elapsed_time1 = single(tdres * randi(floor(Fs * t_rd_init)));
+elapsed_time2 = single(tdres * randi(floor(Fs * t_rd_init)));
+elapsed_time3 = single(tdres * randi(floor(Fs * t_rd_init)));
+elapsed_time4 = single(tdres * randi(floor(Fs * t_rd_init)));
 
 % Initialized input sensing sums, one for each synaptic docking site
-Xsum1 = 0;
-Xsum2 = 0;
-Xsum3 = 0;
-Xsum4 = 0;
+    % ??? Changed to single precision by Matthew Blunt 01/23/2020
+Xsum1 = single(0);
+Xsum2 = single(0);
+Xsum3 = single(0);
+Xsum4 = single(0);
 
 % Initialized threshold values, one for each synaptic docking site
-unitRateInterval1 = -log(rand(1))/tdres;
-unitRateInterval2 = -log(rand(1))/tdres;
-unitRateInterval3 = -log(rand(1))/tdres;
-unitRateInterval4 = -log(rand(1))/tdres;
+    % ??? Changed to single precision by Matthew Blunt 01/23/2020
+unitRateInterval1 = single(-log(rand(1))/tdres);
+unitRateInterval2 = single(-log(rand(1))/tdres);
+unitRateInterval3 = single(-log(rand(1))/tdres);
+unitRateInterval4 = single(-log(rand(1))/tdres);
 
 % Initialized redocking time, one for each synaptic docking site
-oneSiteRedock1 = -t_rd_init * log(rand(1));
-oneSiteRedock2 = -t_rd_init * log(rand(1));
-oneSiteRedock3 = -t_rd_init * log(rand(1));
-oneSiteRedock4 = -t_rd_init * log(rand(1));
+    % ??? Changed to single precision by Matthew Blunt 01/23/2020
+oneSiteRedock1 = single(-t_rd_init * log(rand(1)));
+oneSiteRedock2 = single(-t_rd_init * log(rand(1)));
+oneSiteRedock3 = single(-t_rd_init * log(rand(1)));
+oneSiteRedock4 = single(-t_rd_init * log(rand(1)));
 
 % Initialized refractory period
-Tref = tabs - trel*log(rand(1));
+    % ??? Changed to single precision by Matthew Blunt 01/23/2020
+Tref = single(tabs - trel*log(rand(1)));
 
 % Initialized refractory time
-refractory_time = 0;
+    % ??? Changed to single precision by Matthew Blunt 01/23/2020
+refractory_time = single(0);
 
 % Initialized spike time
-sptime = 0;
+    % ??? Changed to single precision by Matthew Blunt 01/23/2020
+sptime = single(0);
 
 % Initialized spike count
-spCount = 0;
+    % ??? Changed to single precision by Matthew Blunt 01/23/2020
+spCount = single(0);
 
 % Initialized redocking periods
-previous_redocking_period = t_rd_init;
-current_redocking_period = previous_redocking_period;
+    % ??? Changed to single precision by Matthew Blunt 01/23/2020
+previous_redocking_period = single(t_rd_init);
+current_redocking_period = single(previous_redocking_period);
 
 % Initialized redocking period output vector
-trd_vector = current_redocking_period;
+    % ??? Changed to single precision by Matthew Blunt 01/23/2020
+trd_vector = single(current_redocking_period);
 
 
 %% TEST SIGNAL
@@ -515,7 +528,8 @@ testtime = length(RxSignal)/Fs;
 %% RANDOMLY GENERATED NUMBER VECTOR AND NOISE SIGNAL
 
 % Get random vector
-randNums = rand(size(RxSignal));
+    % ??? Changed to single precision by Matthew Blunt 01/23/2020
+randNums = single(rand(size(RxSignal)));
 
 % Find input signal length for testing
 totalstim = length(RxSignal);
@@ -535,5 +549,7 @@ spont = 100;
 % Law Adaptation
 noise = ffGn(totalstim, tdres, Hinput, noiseType, spont);
 
-
+    % ??? This line was added by Matthew Blunt on 01/23/2020
+    noise = single(noise);
+    
 % end of script

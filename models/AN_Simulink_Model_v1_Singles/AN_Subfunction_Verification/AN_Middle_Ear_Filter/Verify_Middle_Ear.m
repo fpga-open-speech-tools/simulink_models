@@ -35,18 +35,42 @@ plot(mearout);
 title('Middle Ear Filter Output - Source Code')
 xlabel('Sample Number');
 subplot(2,1,2)
-plot(out.mearout)
-title('Middle Ear Filter Output - Simulink Model')
+plot(out.mearoutdouble)
+title('Middle Ear Filter Output - Simulink Model Double Precision')
+xlabel('Sample Number');
+
+
+% *** Figure added for test/verification of double to single precision
+% *** Added by Matthew Blunt 02/13/2020
+figure()
+subplot(2,1,1)
+plot(out.mearout);
+title('Simulink Middle Ear Filter Output - Double Precision')
+xlabel('Sample Number');
+subplot(2,1,2)
+plot(out.mearoutdouble)
+title('Simulink Middle Ear Filter Output - Single Precision')
 xlabel('Sample Number');
 
 %% ERROR CALCULATION
 
-% Compares output vectors of MATLAB and Simulink model outputs
-modelerror = norm(mearout-out.mearout(1:end-1));
+% Compares output vectors of MATLAB and Simulink Double model outputs
+% *** Modified for new output vector names Matthew Blunt 02/13/2020
+modelerror = norm(mearout-out.mearoutdouble(1:end-1));
 
-% Display in Simulink Diagnostics menu
+% Compares output vectors of Simulink single precision to double precision
+% outputs
+% *** Added by Matthew Blunt 02/13/2020
+conversionerror = norm(out.mearout-out.mearoutdouble);
+
+% Display Model Error in Simulink Diagnostics menu
 disp('Model error = ')
 disp(modelerror)
+
+% Display Conversion Error in Simulink Diagnostics menu
+% *** Added by Matthew Blunt 02/13/2020
+disp('Conversion error = ')
+disp(conversionerror)
 
 % end of script
 
