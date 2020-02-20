@@ -44,11 +44,11 @@ xlabel('Sample Number');
 % *** Added by Matthew Blunt 02/13/2020
 figure()
 subplot(2,1,1)
-plot(out.mearout);
+plot(out.mearoutdouble);
 title('Simulink Middle Ear Filter Output - Double Precision')
 xlabel('Sample Number');
 subplot(2,1,2)
-plot(out.mearoutdouble)
+plot(out.mearout)
 title('Simulink Middle Ear Filter Output - Single Precision')
 xlabel('Sample Number');
 

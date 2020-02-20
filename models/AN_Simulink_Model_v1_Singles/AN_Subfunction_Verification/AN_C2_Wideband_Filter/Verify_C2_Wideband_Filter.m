@@ -41,17 +41,36 @@ plot(C2filterout);
 title('C2 Filter Output - C Source Code')
 xlabel('Sample Number');
 subplot(2,1,2)
+plot(out.C2filterout_doubles)
+title('C2 Filter Output - Simulink Model Double Precision')
+xlabel('Sample Number');
+
+figure()
+subplot(2,1,1)
+plot(out.C2filterout_doubles);
+title('C2 Filter Output - Simulink Model Double Precision')
+xlabel('Sample Number');
+subplot(2,1,2)
 plot(out.C2filterout)
-title('C2 Filter Output - Simulink Model')
+title('C2 Filter Output - Simulink Model Single Precision')
 xlabel('Sample Number');
 
 %% ERROR CALCULATION
 
-% Compares output vectors of MATLAB and Simulink model outputs
-C2modelerror = norm(C2filterout(1:end)-out.C2filterout(1:end-1));
+% Compares output vectors of MATLAB and Simulink Double Precision Model outputs
+% *** Modified for new output vector names by Hezekiah Austin 02/20/2020
+C2modelerror = norm(C2filterout(1:end)-out.C2filterout_doubles(1:end-1));
+
+% Compares output vectors of Simulink Single Precision and Double Precision Model outputs
+% *** Added by Hezekiah Austin 02/20/2020
+C2conversionerror = norm(out.C2filterout(1:end)-out.C2filterout_doubles(1:end));
 
 % Display in Simulink Diagnostics menu
 disp('C2 Wideband Filter Model Error =');
 disp(C2modelerror);
+
+% Display in Simulink Diagnostics menu
+disp('C2 Wideband Filter Conversion Error =');
+disp(C2conversionerror);
 
 % end of script

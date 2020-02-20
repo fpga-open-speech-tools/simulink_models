@@ -78,7 +78,12 @@ fcohcc2 = 1;
 [tone,fs] = audioread('AN_test_tone.wav');
 
 % Assign to variable used in model
-RxSignal = tone;
+% *** Changed to single precision by Hezekiah Austin 02/20/2020
+RxSignal = single(tone);
+
+% Added a doubles signal of test/verification of singles
+% *** Added by Hezekiah Austin 02/20/2020
+RxSignal_doubles = tone;
 
 % Find test time, which is set in model
 testtime = length(RxSignal)/Fs
