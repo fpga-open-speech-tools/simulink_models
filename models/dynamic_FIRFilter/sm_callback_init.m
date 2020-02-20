@@ -61,17 +61,14 @@ end
 %% Put the test signals into the Avalon Streaming Bus format
 % i.e. put the test signals into the data-channel-valid protocol
 mp = sm_init_avalon_signals(mp);  % create the avalon streaming signals 
-%% place variables into workspace directly (debug)
-% Avalon_Source_Data    = SG.Avalon_Source_Data;    % place into workspace directly so that the "From Workspace" blocks can read from these variables
-% Avalon_Source_Valid   = SG.Avalon_Source_Valid;    
-% Avalon_Source_Channel = SG.Avalon_Source_Channel;  
-% Avalon_Source_Error   = SG.Avalon_Source_Error;    
-% Ts_system = SG.Ts_system;
-% W_bits = SG.W_bits;
-% F_bits = SG.F_bits;
 
-%% Justin -> Added Filter Signals
+%% Add Filter Signals
+% i.e. Add any filter coefficient files to use in the FIR Filter block
 load('test_filters.mat');
 mp.LPF = b_k_LPF;
 mp.HPF = b_k_HPF;
+
+% Convention:
+% mp.FILTER_IDENTIFIER = [COEFFICIENT_VECTOR]
+
 
