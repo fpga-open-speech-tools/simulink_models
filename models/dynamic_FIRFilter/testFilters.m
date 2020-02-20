@@ -14,11 +14,23 @@
 clc; close all; clear;
 
 %% Global Variable Declaration
+% Fixed point properties
 W_bits = 32;            % Word length
 F_bits = 16;            % Fractional length
+Fm = fimath('CastBeforeSum', 1, ...
+            'OverflowAction', 'Wrap', ...
+            'ProductFractionLength', F_bits, ...
+            'ProductMode', 'SpecifyPrecision', ...
+            'ProductWordLength', W_bits, ...
+            'RoundingMethod', 'Zero', ...
+            'SumFractionLength', F_bits, ...
+            'SumMode', 'SpecifyPrecision', ...
+            'SumWordLength', W_bits);
+% Normal Variables
 Fs     = 48000;
 Ts     = 1/Fs;
 t      = 0 : Ts : 2;    % Signal duration
+tFi   = fi(t, 1, W_bits, F_bits, Fm);
 
 %% HPF Filter Design
 % This section designs a 512-order FIR filter with cutoff frequency of 140
@@ -31,7 +43,7 @@ hpFilt = designfilt('highpassfir', ...
                         'SampleRate', Fs, ...
                         'DesignMethod', 'window', 'Window', 'hamming', ...
                         'ScalePassband', false);
-hpFiltFi = ufi(hpFilt.Coefficients, W_bits, F_bits);
+hpFiltFi = fi(hpFilt.Coefficients, 1, W_bits, F_bits, Fm);
 %% LPF Filter Design
 % This section designs a 128-order FIR filter with cutoff frequency of 140
 % Hz. The filter coefficients are then represented using an unsigned
@@ -45,7 +57,7 @@ lpFilt = designfilt('lowpassfir', ...                           % Response type
                        'PassbandWeight',1, ...                  % Design method options
                        'StopbandWeight',2, ...
                        'SampleRate',Fs);                        % Sample rate
-lpFiltFi = ufi(lpFilt.Coefficients, W_bits, F_bits);
+lpFiltFi = fi(lpFilt.Coefficients, 1, W_bits, F_bits, Fm);
 
 %% Test Chirp Signal
 %  This section lays out the chirp signal. The chirp signal was decided to
@@ -55,6 +67,7 @@ lpFiltFi = ufi(lpFilt.Coefficients, W_bits, F_bits);
 
 % Chirp signal, frequency ranging between 80 to 180 Hz.
 y  = chirp(t, 80, 2, 180);
+yFi = fi(y, 1, W_bits, F_bits, Fm);
 figure;
 subplot(211);
 plot(t,y); xlabel('Time [sec]'); title('Speech Signal Chirp');
@@ -69,6 +82,7 @@ print('speech_chirp_signal', '-dpng');
 
 % HPF Filtered Chirp Signal
 y_hpf = filter(hpFilt.Coefficients, ones(1, 1), y);
+y_hpfFi = filter(hpFiltFi, fi(1, 1, W_bits, F_bits, Fm), yFi);
 figure;
 subplot(211);
 plot(t, y_hpf); xlabel('Time [sec]'); ylabel('Magnitude'); title('Filtered Speech Chirp');
