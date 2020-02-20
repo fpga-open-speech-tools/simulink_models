@@ -300,7 +300,11 @@ for i = 1:order_of_pole
 end
 
     % ??? This line was added by Hezekiah Austin on 2019-11-26
-    C1gain_norm = single(C1gain_norm);
+    % *** This line was commented out by Matthew Blunt on 02/20/2020
+    % *** NOTE: Commented out because change to single precision is both
+    % unnecessary as the variable is not directly used by the Simulink
+    % model, but also yields an infinite value due to loss in precision
+    % C1gain_norm = single(C1gain_norm);
 
 norm_gainc1 = (sqrt(C1gain_norm))/((sqrt(CF^2+rzero^2))^order_of_zero);
 
