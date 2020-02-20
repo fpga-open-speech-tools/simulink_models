@@ -1,4 +1,4 @@
-% Copyright 2020 Flat Earth Inc
+% Copyright 2019 Flat Earth Inc
 %
 % THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
 % INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
@@ -14,7 +14,7 @@
 
 % Auditory Nerve Simulink Model Code
 % Auditory Nerve Simulink Model Version 1 readme.txt File
-% 02/19/2020
+% 08/02/2019
 
 -------------------------------------------------------------------------------
 
