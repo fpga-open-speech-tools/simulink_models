@@ -45,8 +45,8 @@ switch signal_option
             % simulation for the entire signal duration, rather than 12
             % seconds - making debugging easier.
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%            mp.test_signal.Nsamples = min(Nsamples, mp.fastsim_Nsamples);
-            mp.test_signal.Nsamples = Nsamples;
+           mp.test_signal.Nsamples = min(Nsamples, mp.fastsim_Nsamples);
+%             mp.test_signal.Nsamples = Nsamples;
         else
            mp.test_signal.Nsamples = mp.fastsim_Nsamples;
         end
