@@ -24,7 +24,7 @@ ENTITY SE_Right_Channel_Processing IS
         reset                             :   IN    std_logic;
         enb                               :   IN    std_logic;
         Right_Data_In                     :   IN    std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
-        Right_Bypass                      :   IN    std_logic;
+        Right_enable                      :   IN    std_logic;
         Right_Delay                       :   IN    std_logic_vector(14 DOWNTO 0);  -- ufix15
         Right_Decay                       :   IN    std_logic_vector(7 DOWNTO 0);  -- ufix8_En7
         Right_Wet_Dry_Mix                 :   IN    std_logic_vector(7 DOWNTO 0);  -- ufix8_En7
@@ -73,14 +73,15 @@ ARCHITECTURE rtl OF SE_Right_Channel_Processing IS
   SIGNAL Enable_out6                      : std_logic;
   SIGNAL delayMatch2_reg                  : std_logic_vector(0 TO 1);  -- ufix1 [2]
   SIGNAL Enable_out6_1                    : std_logic;
+  SIGNAL delayMatch_reg                   : std_logic_vector(0 TO 1);  -- ufix1 [2]
+  SIGNAL Right_enable_1                   : std_logic;
+  SIGNAL switch_compare_1                 : std_logic;
+  SIGNAL Right_Data_In_signed             : signed(31 DOWNTO 0);  -- sfix32_En28
   SIGNAL echo_out1                        : std_logic_vector(31 DOWNTO 0);  -- ufix32
-  SIGNAL delayMatch1_reg                  : std_logic_vector(0 TO 1);  -- ufix1 [2]
-  SIGNAL Right_Bypass_1                   : std_logic;
+  SIGNAL delayMatch1_reg                  : vector_of_signed32(0 TO 1);  -- sfix32 [2]
+  SIGNAL Right_Data_In_1                  : signed(31 DOWNTO 0);  -- sfix32_En28
   SIGNAL mixer_out1                       : std_logic_vector(31 DOWNTO 0);  -- ufix32
   SIGNAL mixer_out1_signed                : signed(31 DOWNTO 0);  -- sfix32_En28
-  SIGNAL Right_Data_In_signed             : signed(31 DOWNTO 0);  -- sfix32_En28
-  SIGNAL delayMatch_reg                   : vector_of_signed32(0 TO 1);  -- sfix32 [2]
-  SIGNAL Right_Data_In_1                  : signed(31 DOWNTO 0);  -- sfix32_En28
   SIGNAL Switch_out1                      : signed(31 DOWNTO 0);  -- sfix32_En28
   SIGNAL Switch_out1_bypass               : signed(31 DOWNTO 0);  -- sfix32_En28
   SIGNAL Switch_out1_last_value           : signed(31 DOWNTO 0);  -- sfix32_En28
@@ -127,41 +128,45 @@ BEGIN
 
   Enable_out6_1 <= delayMatch2_reg(1);
 
-  delayMatch1_process : PROCESS (clk, reset)
-  BEGIN
-    IF reset = '1' THEN
-      delayMatch1_reg <= (OTHERS => '0');
-    ELSIF rising_edge(clk) THEN
-      IF enb = '1' THEN
-        delayMatch1_reg(0) <= Right_Bypass;
-        delayMatch1_reg(1) <= delayMatch1_reg(0);
-      END IF;
-    END IF;
-  END PROCESS delayMatch1_process;
-
-  Right_Bypass_1 <= delayMatch1_reg(1);
-
-  mixer_out1_signed <= signed(mixer_out1);
-
-  Right_Data_In_signed <= signed(Right_Data_In);
-
   delayMatch_process : PROCESS (clk, reset)
   BEGIN
     IF reset = '1' THEN
-      delayMatch_reg <= (OTHERS => to_signed(0, 32));
+      delayMatch_reg <= (OTHERS => '0');
     ELSIF rising_edge(clk) THEN
       IF enb = '1' THEN
-        delayMatch_reg(0) <= Right_Data_In_signed;
+        delayMatch_reg(0) <= Right_enable;
         delayMatch_reg(1) <= delayMatch_reg(0);
       END IF;
     END IF;
   END PROCESS delayMatch_process;
 
-  Right_Data_In_1 <= delayMatch_reg(1);
+  Right_enable_1 <= delayMatch_reg(1);
 
   
-  Switch_out1 <= mixer_out1_signed WHEN Right_Bypass_1 = '0' ELSE
-      Right_Data_In_1;
+  switch_compare_1 <= '1' WHEN Right_enable_1 = '1' ELSE
+      '0';
+
+  Right_Data_In_signed <= signed(Right_Data_In);
+
+  delayMatch1_process : PROCESS (clk, reset)
+  BEGIN
+    IF reset = '1' THEN
+      delayMatch1_reg <= (OTHERS => to_signed(0, 32));
+    ELSIF rising_edge(clk) THEN
+      IF enb = '1' THEN
+        delayMatch1_reg(0) <= Right_Data_In_signed;
+        delayMatch1_reg(1) <= delayMatch1_reg(0);
+      END IF;
+    END IF;
+  END PROCESS delayMatch1_process;
+
+  Right_Data_In_1 <= delayMatch1_reg(1);
+
+  mixer_out1_signed <= signed(mixer_out1);
+
+  
+  Switch_out1 <= Right_Data_In_1 WHEN switch_compare_1 = '0' ELSE
+      mixer_out1_signed;
 
   Right_Data_Out_bypass_process : PROCESS (clk, reset)
   BEGIN

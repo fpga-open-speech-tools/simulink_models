@@ -35,24 +35,24 @@ for i=1:Nsr
 end
 
 %% check for empty fields
-error_flag = zeros(1,Nsr);
-for i=1:Nsr
-    supplied_fields = fieldnames(registers(i));
-    Nsf = length(supplied_fields);
-    for j=1:Nsf
-        a = registers(i).(supplied_fields{j});
-        if isempty(a)
-            if error_flag(i) == 0
-                disp(['The following fields are missing for control register ' num2str(i) ': ' mp.register(i).name])
-            end
-            error_flag(i) = 1;
-            disp(['    ' supplied_fields{j}])
-        end
-    end
-end
-if error_flag == 1
-    error('Register fields are missing.  Please add them in sm_init_control_signals.m')
-end
+% error_flag = zeros(1,Nsr);
+% for i=1:Nsr
+%     supplied_fields = fieldnames(registers(i));
+%     Nsf = length(supplied_fields);
+%     for j=1:Nsf
+%         a = registers(i).(supplied_fields{j});
+%         if isempty(a)
+%             if error_flag(i) == 0
+%                 disp(['The following fields are missing for control register ' num2str(i) ': ' mp.register(i).name])
+%             end
+%             error_flag(i) = 1;
+%             disp(['    ' supplied_fields{j}])
+%         end
+%     end
+% end
+% if error_flag == 1
+%     error('Register fields are missing.  Please add them in sm_init_control_signals.m')
+% end
 
 
 %% Check if the widget name is correct

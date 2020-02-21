@@ -24,7 +24,7 @@ end entity BC_dataplane_avalon;
 
 architecture BC_dataplane_avalon_arch of BC_dataplane_avalon is
 
-  signal bypass                    : std_logic :=  '0'; -- 0 (boolean)
+  signal enable                    : std_logic :=  '1'; -- 1 (boolean)
   signal bits                      : std_logic_vector(5  downto 0) :=  "100000"; -- 32 (ufix6)
   signal wet_dry_mix               : std_logic_vector(7  downto 0) :=  "01000000"; -- 0.5 (ufix8_En7)
 
@@ -37,7 +37,7 @@ component BC_dataplane
     avalon_sink_data            : in  std_logic_vector(31  downto 0);         -- sfix32_En28
     avalon_sink_channel         : in  std_logic_vector(1   downto 0);         -- ufix2
     avalon_sink_error           : in  std_logic_vector(1   downto 0);         -- ufix2
-    register_control_bypass     : in  std_logic;                              -- boolean
+    register_control_enable     : in  std_logic;                              -- boolean
     register_control_bits       : in  std_logic_vector(5   downto 0);         -- ufix6
     register_control_wet_dry_mix: in  std_logic_vector(7   downto 0);         -- ufix8_En7
     ce_out                      : out std_logic;
@@ -59,7 +59,7 @@ u_BC_dataplane : BC_dataplane
     avalon_sink_data            =>  avalon_sink_data,                -- sfix32_En28
     avalon_sink_channel         =>  avalon_sink_channel,             -- ufix2
     avalon_sink_error           =>  avalon_sink_error,               -- ufix2
-    register_control_bypass     =>  bypass,                          -- boolean
+    register_control_enable     =>  enable,                          -- boolean
     register_control_bits       =>  bits,                            -- ufix6
     register_control_wet_dry_mix=>  wet_dry_mix,                     -- ufix8_En7
     avalon_source_valid         =>  avalon_source_valid,             -- boolean
@@ -72,7 +72,7 @@ u_BC_dataplane : BC_dataplane
   begin
     if rising_edge(clk) and avalon_slave_read = '1' then
       case avalon_slave_address is
-        when "00" => avalon_slave_readdata <= (31 downto 1 => '0') & bypass;
+        when "00" => avalon_slave_readdata <= (31 downto 1 => '0') & enable;
         when "01" => avalon_slave_readdata <= (31 downto 6 => '0') & bits;
         when "10" => avalon_slave_readdata <= (31 downto 8 => '0') & wet_dry_mix;
         when others => avalon_slave_readdata <= (others => '0');
@@ -83,12 +83,12 @@ u_BC_dataplane : BC_dataplane
   bus_write : process(clk, reset)
   begin
     if reset = '1' then
-      bypass                    <=  '0'; -- 0 (boolean)
+      enable                    <=  '1'; -- 1 (boolean)
       bits                      <=  "100000"; -- 32 (ufix6)
       wet_dry_mix               <=  "01000000"; -- 0.5 (ufix8_En7)
     elsif rising_edge(clk) and avalon_slave_write = '1' then
       case avalon_slave_address is
-        when "00" => bypass <= avalon_slave_writedata(0);
+        when "00" => enable <= avalon_slave_writedata(0);
         when "01" => bits <= avalon_slave_writedata(5 downto 0);
         when "10" => wet_dry_mix <= avalon_slave_writedata(7 downto 0);
         when others => null;
