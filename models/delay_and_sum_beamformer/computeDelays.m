@@ -6,6 +6,7 @@ SPEED_OF_SOUND = fi(343, 0); % meters/second
 NUM_ELEMENTS_Y = fi(4, 1, 32, 28);
 NUM_ELEMENTS_Z = fi(4, 1, 32, 28);
 DEG_TO_RAD = fi(pi/180, 0, 10, 9);
+SAMPLING_RATE = 48e3;
 
 delays = fi(zeros(4,4), 1, 32, 28); 
 
@@ -20,8 +21,8 @@ zDistanceFromPhaseCenter = ELEMENT_SPACING * (zElementIdx - (NUM_ELEMENTS_Z - 1)
 
 for y = yElementIdx + 1
     for z = zElementIdx + 1
-        delays(y,z) = yDistanceFromPhaseCenter(y) * sin(azimuthRadians) * cos(elevationRadians) + ...
-            zDistanceFromPhaseCenter(z) * sin(elevationRadians);
+        delays(y,z) = SAMPLING_RATE/SPEED_OF_SOUND  * (yDistanceFromPhaseCenter(y) * sin(azimuthRadians) * cos(elevationRadians) + ...
+            zDistanceFromPhaseCenter(z) * sin(elevationRadians));
     end
 end
 end
