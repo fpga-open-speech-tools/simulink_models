@@ -43,6 +43,13 @@ mp.model_abbreviation = 'DSBF';
 mp.linux_device_name = mp.model_name;
 mp.linux_device_version = '18.0';
 
+mp.arraySpacing = 25e-3;
+mp.arraySize = [4,4];
+mp.maxDelay = sqrt(((mp.arraySize(1) - 1)*mp.arraySpacing).^2 + ((mp.arraySize(2) - 1)*mp.arraySpacing).^2)*48e3/343;
+% buffer size to accomodate max delay; buffer size is a power of 2
+mp.bufferSize = 2^ceil(log2(floor(mp.maxDelay)));
+
+
 %% Setup the directory paths & tool settings
 % TODO: these paths should ideally be contained in a toolbox. the one exception is the model path, which is many cases is the pwd, though it doesn't have to be.
 addpath('../../config');
