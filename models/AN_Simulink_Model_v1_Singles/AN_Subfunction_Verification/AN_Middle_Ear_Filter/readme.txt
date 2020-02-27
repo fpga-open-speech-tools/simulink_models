@@ -14,7 +14,7 @@
 
 % Auditory Nerve Simulink Model Code
 % Middle Ear Filter readme.txt File
-% 06/26/2019
+% 02/27/2020
 
 The AN_Middle_Ear_Filter folder contains all the files necessary for
 testing/verification of the Middle Ear Filter Simulink model, a part of the AN
