@@ -29,14 +29,14 @@ clc         % clear command window
 % simulated clock cycles between each sample in the Avalon bus signals.
 % It also reduces the number of stimulus samples.  This allow for faster
 % development iterations when developing the simulink model.
-mp.fastsim_flag = 0;     % perform fast simulation  Note: fast simulation will be turned off when generating VHDL code since we need to run at the system clock rate.
+mp.fastsim_flag = 1;     % perform fast simulation  Note: fast simulation will be turned off when generating VHDL code since we need to run at the system clock rate.
 mp.fastsim_Fs_system_N = 8;     % (typical value 2 or 4) Simulate a much slower system clock than what is specified in sm_callback_init.m   - The reduce rate will be a multiple of the sample rate, i.e. mp.Fs_system = mp.Fs*mp.fastsim_Fs_system_N
 mp.fastsim_Nsamples = 12000; % set to the string 'all' to use all the samples from the input signal specified in sm_init_test_signals.m
 
 
 %% Model parameters
 % Model parameters are placed in a data structure called mp that can be passed to functions
-mp.model_name           = 'DynamicCompressionWithRx';                                       % model name initials
+mp.model_name           = 'Dynamic_Compression_Model';   % has Rx              % model name initials
 mp.model_abbreviation   = 'sm_DynamicCompression';                             % model initials
 
 % Device driver version for the Linux device tree. Typically set as the Quartus version
@@ -73,12 +73,12 @@ eval(['cd ' mp.model_path])  % change the working directory to the model directo
 %     disp(['Setting Python to version ' python_version])
 % end
 % add the codegen_path to python's search path
-if count(py.sys.path,mp.vhdl_codegen_path) == 0
-    insert(py.sys.path,int32(0),mp.vhdl_codegen_path);
-end
-if count(py.sys.path,mp.driver_codegen_path) == 0
-    insert(py.sys.path,int32(0),mp.driver_codegen_path);
-end
+% if count(py.sys.path,mp.vhdl_codegen_path) == 0
+%     insert(py.sys.path,int32(0),mp.vhdl_codegen_path);
+% end
+% if count(py.sys.path,mp.driver_codegen_path) == 0
+%     insert(py.sys.path,int32(0),mp.driver_codegen_path);
+% end
 
 
 %% Open the model

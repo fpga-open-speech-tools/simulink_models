@@ -1,4 +1,7 @@
 %% script [AidSettingsXChans.m] where X is [1, 3, 5, 8, 12, 16, or 22]
+% E. Bailey Galacci, 10/2019
+%
+
 %function [aligndelaymsec, chan_cfs, chan_crs, chan_thrs, pcact, t_atts, ta_lim, tr_lim] = AidSettingsXChans(NChans)
 function [chan_cfs, chan_thrs, t_atts, t_rels] = InitializeCompressionSettings(NChans) %[aligndelaymsec]
 
