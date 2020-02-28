@@ -1,40 +1,39 @@
-%% TESTING ONLY, USER DEFINED VARS
+%% TESTING OF Programmable Look-Up Table (PLUT) MASK INIT SCRIPT 
+% USER DEFINED VARS %%%
 clear;
-TableFn = "log(X_in)";
-maxInput = 1;
-floor_in_tab = 2^-12;
-error_cap_tab = 0.001;
-ERR_DIAG = true;
-N_bits_tab = 4;
-M_bits_tab = 5;
-igotthis = false;
-W_bits = 32;
-F_bits = 28;
+TableFn = "log(X_in)";	% function the LUT is to represent 
+maxInput = 1;			% highest expected input to the PLUT
+floor_in_tab = 2^-12;	% lowest input cared about in the PLUT
+error_cap_tab = 0.001;	% allowed error after linear interpolation 
+ERR_DIAG = true;		% flag to show graphs and init steps
+N_bits_tab = 4;			% bits of LZC if manual flag set 
+M_bits_tab = 5;			% number of bits added to address to increase table precision
+igotthis = false;		% manual settings flag 
+W_bits = 32;			% fixed-point word size 
+F_bits = 28;			% fixed-point fractional bit count 
+%%%%%%%%%%%%%%%%%%%%%%%
+% things to display on mask surface: table size, min valid input, max valid input, max error of output when in input range
+% things to figure out within the script: M_bits, N_bits, Min_val, X_in table, Y_out table, max_error, ram_size, table_size 
 
-% things to display: table size, floor input?, max input, accuracy
-% things to figure out: M_bits, N_bits, Min_val, X_in table, Y_out table,
-% max_error, ram_size, table_size 
-
-d = ceil(log2(maxInput));
-if(igotthis)
-    N_bits = N_bits_tab;
-    M_bits = M_bits_tab;
+d = ceil(log2(maxInput));	% offset used for some binary tricks later, based on Max input
+if(igotthis)	% manual table declaration
+    N_bits = N_bits_tab;	% bits of the Leading Zero Counter (LZC)
+    M_bits = M_bits_tab;	% bits used to add precision to the table after LZC
 else
-    N_bits = ceil(log2(d-log2(floor_in_tab)+1));
+    N_bits = ceil(log2(d-log2(floor_in_tab)+1));	% ensure LZC is big enough to meet expected input specs
     % M_bits needs to be defined later, as it must be just enough to meet
     % accuracy standards defined by user, with linear interpolation
-    M_bits = 1; %this will be updated later as needed
+    M_bits = 1; %this will be updated later as needed, larger : more memory with more accuracy 
 end;
 
-repeatFlag = true;
+repeatFlag = true; 
 while(repeatFlag)
-    % Define a N point log2 spaced range of inputs, from 2^(d-(2^N_bits -1)) to almost 2^(d+1), 
-    % this effectively covers the user defined input range, down to a floor
-    % value.
-    X_in = zeros(1, 2^(M_bits+N_bits));
+    % Define a N point log2 spaced range of inputs, from 2^(d-(2^N_bits -1)) to 2^(d+1)-2^(d-M_bits), 
+    % this effectively covers the user defined input range, with some padding above and below.
+    X_in = zeros(1, 2^(M_bits+N_bits));	% inputs mapped to memory addresses of PLUT
     addr = 1;
-    for NShifts = 2^N_bits-1:-1:0
-        for M = 0:2^M_bits - 1
+    for NShifts = 2^N_bits-1:-1:0		% number of LSL of the binary string until x_in>= 2^d
+        for M = 0:2^M_bits - 1			% the value of the M_bits bits after the first 1 in the binary string of x_in
             X_in(addr) = 2^(d-NShifts) + M*2^(d-NShifts-M_bits);
             addr = addr+1;
         end
@@ -45,32 +44,32 @@ while(repeatFlag)
     % must be Y_out.
     Y_out = eval(TableFn);
 
-    ram_size = N_bits+M_bits;
-    Table_init = Y_out;
-    max_val = 2^d+ (2^M_bits -1)*2^(d-M_bits);
-    min_val = 2^(d-(2^N_bits-1));
-    %set_param(gcb,'MaskDisplay',"disp(sprintf('Programmable Look-up Table\nMemory Used = %d samples and coeffs\nClock Rate Needed = %d Hz', FIR_Uprate*2, Max_Rate)); port_label('input',1,'data'); port_label('input',2,'valid'); port_label('input',3,'Wr_Data'); port_label('input',4,'Wr_Addr'); port_label('input',5,'Wr_En'); port_label('output',1,'data'); port_label('output',2,'valid'); port_label('output',3,'RW_Dout');")
-
+    ram_size = N_bits+M_bits; 			% size of address line into the PLUT
+    Table_init = Y_out;					% initial values of the PLUT memory 
+    max_val = 2^(d+1) - 2^(d-M_bits);	% max valid input to the PLUT
+    min_val = 2^(d-(2^N_bits-1));		% min valid input to the PLUT
+    
     %%%%%%%%%% check and identify error %%%%%%%%%%%
-    % Make some values for an "ideal" lookup table with log spaced points
+    % Make some values that cover the expected input range with log spaced points
     X_in_Ideal = logspace(log10(min_val), log10(max_val), 2^(ram_size+2));
-    X_temp = X_in;
+    X_LUT = X_in; % temporarily move X_in so the user-defined function can be evaluated on X_in_Ideal
     X_in = X_in_Ideal;
     % identify the values of the function at X_in_Ideal
-    Y_out_Ideal = eval(TableFn);
+    Y_out_Ideal = eval(TableFn);		% eval necessary since user inputs a string representing the desired function, with X_in as the input 
 
-    % Get values for lookup table (already have X_in)
-    X_in = X_temp;
+    % Set X_in to input values for the lookup table (already have X_LUT)
+    X_in = X_LUT;
 
     % Find lookup addresses for each point in X_in_Ideal
     x_addr = zeros(1,length(X_in_Ideal));
     for it = 1:length(X_in_Ideal)
         x_addr(it) = 2^ram_size;
-        X_Shift = X_in_Ideal(it);
-        while(X_Shift < X_in(x_addr(it)) && x_addr(it) ~= 1)
+        X_Shift = X_in_Ideal(it); 
+		% find the address in X_in less than X_in_Ideal(it), the table value nearest below our test input
+        while(X_Shift < X_in(x_addr(it)) && x_addr(it) ~= 1) % ensures address doesn't go to 0, where MATLAB would throw an error reading from matrix location 0 
             x_addr(it) = x_addr(it) - 1;
         end
-        if(x_addr(it)==0)
+        if(x_addr(it)==0) % a more primitive sanity check to make sure address doesn't go to 0
             x_addr(it) = 1;
         end
     end
