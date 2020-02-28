@@ -72,6 +72,9 @@ end
 b_k = [-alpha*ones(1,N);    d*(1-alpha);   ones(1,N)];
 a_k = [zeros(1,N);          -d*(1-alpha);  alpha*ones(1,N)];
 
+b_kFI = fi(b_k, 1, W_bits, F_bits);
+a_kFI = fi(a_k, 1, W_bits, F_bits);
+save('PeakSetup.mat', 'b_kFI', 'a_kFI', 'H_0');
 
 % Write out the files, containing data and address to write to.
 for(i = 1:N)
