@@ -75,8 +75,6 @@ for i = 32:-1:8
     y = y ./ max(abs(y));
     audiowrite(name, y, Fs);
 end
-toc / 60
-
 
 %%
 % This takes a i7 4790k over 5 minutes to run
