@@ -1,8 +1,8 @@
 % reverb_example.m
-% Script to call implement Convolution Reverb
-% read the sample waveform
-% filename = 'acoustic.wav';
+% Script to call implement Convolution Reverb with fixed point 
 
+
+% read the input waveform
 [x,Fs] = audioread('acoustic.wav'); 
 
 % read the impulse response waveform
@@ -13,8 +13,7 @@
 [imp_pipe, Fsimp] = audioread('PIPE & CARPET E001 M2S.wav');
 
 %%
-% takes over 2 hours
-tic
+% This takes a i7 4790k over 2 hours to run
 disp('cave')
 h = imp_cave(:,1); % impulse response
 for i = 32:-1:10
@@ -43,10 +42,10 @@ for i = 32:-1:10
     y = y ./ max(abs(y));
     audiowrite(name, y, Fs);
 end
-toc
 
 %%
-% takes over 1 min
+% This takes a i7 4790k over 2 minutes to run
+
 tic
 disp('room')
 h = imp_room(:,1); % impulse response
@@ -76,11 +75,11 @@ for i = 32:-1:8
     y = y ./ max(abs(y));
     audiowrite(name, y, Fs);
 end
-toc
+toc / 60
 
 
 %%
-% takes over 5 min
+% This takes a i7 4790k over 5 minutes to run
 tic
 disp('box')
 h = imp_box(:,1); % impulse response
@@ -110,12 +109,9 @@ for i = 32:-1:8
     y = y ./ max(abs(y));
     audiowrite(name, y, Fs);
 end
-toc
-
 
 %%
-% takes over 15 min
-tic
+% This takes a i7 4790k over 15 minutes to run
 disp('pipe')
 h = imp_pipe(:,1); % impulse response
 for i = 32:-1:8
@@ -144,11 +140,9 @@ for i = 32:-1:8
     y = y ./ max(abs(y));
     audiowrite(name, y, Fs);
 end
-toc
 
 %%
-% takes over 10 min
-tic
+% This takes a i7 4790k over 10 minutes to run
 disp('hall')
 h = imp_hall(:,1); % impulse response
 for i = 32:-1:8
@@ -177,4 +171,3 @@ for i = 32:-1:8
     y = y ./ max(abs(y));
     audiowrite(name, y, Fs);
 end
-toc
