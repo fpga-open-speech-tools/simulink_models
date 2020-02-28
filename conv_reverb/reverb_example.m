@@ -13,6 +13,7 @@
 [imp_pipe, Fsimp] = audioread('PIPE & CARPET E001 M2S.wav');
 
 %%
+% takes over 2 hours
 tic
 disp('cave')
 h = imp_cave(:,1); % impulse response
@@ -28,7 +29,7 @@ for i = 32:-1:10
         'SumMode','SpecifyPrecision',...
         'SumWordLength',width,...
         'SumFractionLength',frac);
-    
+  
     x_fi = fi(x, 1, width, frac, Fm);
     h_fi = fi(h, 1, width, frac, Fm);
 
@@ -45,6 +46,7 @@ end
 toc
 
 %%
+% takes over 1 min
 tic
 disp('room')
 h = imp_room(:,1); % impulse response
@@ -78,6 +80,7 @@ toc
 
 
 %%
+% takes over 5 min
 tic
 disp('box')
 h = imp_box(:,1); % impulse response
@@ -111,6 +114,7 @@ toc
 
 
 %%
+% takes over 15 min
 tic
 disp('pipe')
 h = imp_pipe(:,1); % impulse response
@@ -143,6 +147,7 @@ end
 toc
 
 %%
+% takes over 10 min
 tic
 disp('hall')
 h = imp_hall(:,1); % impulse response
