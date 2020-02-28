@@ -28,15 +28,46 @@
 % Define system constants
 clear;
 fs = 48000; % sample rate
-G = 10;     % dB gain of center frequency
-fb = 100;   % bandwidth of boosted or cut frequencies
-N = 10;     % Number of filters to define
 
-% Define address setup variables
-addrW = 4;  % address width
-b_kAddr = 0;% b_k starting address
-a_kAddr = 4;% a_k starting address
 
+%% Global Variable Declaration
+W_bits = 32;            % Word length
+F_bits = 28;            % Fractional length
+Fs     = 48000;
+Ts     = 1/Fs;
+t      = 0 : Ts : 2;    % Signal duration
+
+%% HPF Filter Design
+% This section designs a 512-order FIR filter with cutoff frequency of 140
+% Hz. The filter coefficients are then represented using an unsigned
+% fixed-point number system. 
+
+hpFilt = designfilt('highpassfir', ...
+                        'FilterOrder', 511, ...
+                        'PassbandFrequency',200, ...
+                        'StopbandFrequency', 140, ... 
+                        'SampleRate', Fs, ...
+                        'DesignMethod', 'equiripple');
+hpFiltFi = fi(hpFilt.Coefficients, 1, W_bits, F_bits);
+
+%% LPF Filter Design
+% This section designs a 128-order FIR filter with cutoff frequency of 140
+% Hz. The filter coefficients are then represented using an unsigned
+% fixed-point number system.
+
+lpFilt = designfilt('lowpassfir', ...                           % Response type
+                       'FilterOrder',511, ...                   % Filter order
+                       'PassbandFrequency',130, ...             % Frequency constraints
+                       'StopbandFrequency',180, ...
+                       'DesignMethod','ls', ...                 % Design method
+                       'PassbandWeight',1, ...                  % Design method options
+                       'StopbandWeight',2, ...
+                       'SampleRate',Fs);                        % Sample rate
+lpFiltFi = ufi(lpFilt.Coefficients, W_bits, F_bits);
+
+
+%% Write files contaning filter data
+addrW = ceil(log2(length(lpFiltFi(:))));
 % Define address counting math
 Fm_addr = fimath('RoundingMethod','Floor',...
     'OverflowAction','Wrap',...
@@ -47,56 +78,52 @@ Fm_addr = fimath('RoundingMethod','Floor',...
     'SumWordLength',addrW,...
     'SumFractionLength',0);
 
+% Define address setup variables
+  % address width
+b_kAddr = 0;% b_k starting address
+
 W_bits = 32;    % Coefficient memory size 
 F_bits = 28;    % Coefficient fractional size
 %ts = 1/fs;
 
 % Define center frequencies
-fLow = 293.66; fHigh = 1174.66; % D4 to D6
-fc = logspace(log10(fLow), log10(fHigh), N);    
-d = -cos(2*pi*fc/fs);
+%fLow = 293.66; fHigh = 1174.66; % D4 to D6
+%fc = logspace(log10(fLow), log10(fHigh), N);    
 
-% Define H_0 to apply center frequency gain 
-V_0 = 10^(G/20);
-H_0 = V_0 - 1;
-
-% Define alpha, the boost or cut coefficient
-if(G <= 0)  % a is cutting 
-    alpha = (tan(2*pi*fb/fs)-V_0)/(tan(2*pi*fb/fs)+V_0); % Need to double check this, reference seems to have a typo
-else        % a is boosting
-    alpha = (tan(2*pi*fb/fs)-1)/(tan(2*pi*fb/fs)+1);
-end
-
-% Define IIR coefficient set. Note a_k(0) is 0, not 1. This is for
-% implementation reasons. 
-b_k = [-alpha*ones(1,N);    d*(1-alpha);   ones(1,N)];
-a_k = [zeros(1,N);          -d*(1-alpha);  alpha*ones(1,N)];
-
-b_kFI = fi(b_k, 1, W_bits, F_bits);
-a_kFI = fi(a_k, 1, W_bits, F_bits);
-save('PeakSetup.mat', 'b_kFI', 'a_kFI', 'H_0');
+lpFiltFi = lpFiltFi';
+hpFiltFi = hpFiltFi';
+save('FIRSetup.mat', 'lpFiltFi');
 
 % Write out the files, containing data and address to write to.
-for(i = 1:N)
-    write = fopen(sprintf('PeakCoeff_%d.txt', i), 'w');
-    
-    % set up strings and addresses for b_k memory
-    addr = fi(b_kAddr, 0, addrW, 0, Fm_addr);                      
-    lineFI = fi(b_k(:,i), 1, W_bits, F_bits);
-    for(j = 1:3)
-        line = sprintf( [addr.hex ',' lineFI.hex(j,:) '\n']);
-        fprintf(write, '%s', line);
-        addr = addr+1;
-    end
-    
-    % set up strings and addresses for a_k memory
-    addr = fi(a_kAddr, 0, addrW, 0, Fm_addr);
-    lineFI = fi(a_k(:,i), 1, W_bits, F_bits);
-    for(j = 1:3)
-        line = sprintf( [addr.hex ',' lineFI.hex(j,:) '\n']);
-        fprintf(write, '%s', line);
-        addr = addr+1;
-    end
-    
-    fclose(write);
+
+
+
+%% set up strings and addresses for b_k memory files
+% Lowpass 
+write = fopen(sprintf('LPF_Coeff.txt'), 'w');
+addr = fi(b_kAddr, 0, addrW, 0, Fm_addr);                      
+lineFI = fi(lpFiltFi, 1, W_bits, F_bits);
+for(j = 1:length(lpFiltFi))
+    line = sprintf( [addr.hex ',' lineFI.hex(j,:) '\n']);
+    fprintf(write, '%s', line);
+    addr = addr+1;
 end
+
+fclose(write);
+
+
+% Highpass 
+write = fopen(sprintf('HPF_Coeff.txt'), 'w');
+addr = fi(b_kAddr, 0, addrW, 0, Fm_addr);                      
+lineFI = fi(hpFiltFi, 1, W_bits, F_bits);
+for(j = 1:length(hpFiltFi))
+    line = sprintf( [addr.hex ',' lineFI.hex(j,:) '\n']);
+    fprintf(write, '%s', line);
+    addr = addr+1;
+end
+
+fclose(write);
+
+
+
+
