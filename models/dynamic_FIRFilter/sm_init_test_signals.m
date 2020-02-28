@@ -23,6 +23,7 @@
 % ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 %
 % Ross K. Snider
+% Justin P. Williams
 % Flat Earth Inc
 % 985 Technology Blvd
 % Bozeman, MT 59718
@@ -30,61 +31,28 @@
 
 function mp = sm_init_test_signals(mp)
 
-signal_option = 4;  % set which test signal to use
-
+signal_option = 1;  % set which test signal to use
 switch signal_option
-    case 1 % Simple tones        
-        mp.test_signal.duration = 1;  % duration of tone in seconds
-        Nsamples = round(mp.test_signal.duration*mp.Fs);
-        if mp.fastsim_flag == 1 % perform fast simulation by reducing the number of samples
-           mp.test_signal.Nsamples = min(Nsamples, mp.fastsim_Nsamples);
-        else
-           mp.test_signal.Nsamples = mp.fastsim_Nsamples;
-        end
-        sample_times = [0 1:(mp.test_signal.Nsamples-1)]*mp.Ts;
-        mp.test_signal.left  = cos(2*pi*2000*sample_times);
-        mp.test_signal.right = cos(2*pi*3000*sample_times);
-    case 2  % speech 
-        [y,Fs] = audioread('SpeechDFT-16-8-mono-5secs.wav');  % speech sample found in the Matlab Audio Toolbox 
-        y_resampled = resample(y,mp.Fs,Fs);  % resample to change the sample rate to SG.Fs
-        Nsamples = length(y_resampled);
-        if mp.fastsim_flag == 1 % perform fast simulation by reducing the number of samples
-           mp.test_signal.Nsamples = min(Nsamples, mp.fastsim_Nsamples);
-        else
-           mp.test_signal.Nsamples = mp.fastsim_Nsamples;
-        end
-        mp.test_signal.left  = y_resampled(1:mp.test_signal.Nsamples);
-        mp.test_signal.right = y_resampled(1:mp.test_signal.Nsamples);
-        mp.test_signal.Nsamples = length(mp.test_signal.left);
-        mp.test_signal.duration = mp.test_signal.Nsamples * mp.Ts;
-    case 3 % user supplied music
-        [y,Fs] = audioread([mp.test_signals_path filesep 'Urban_Light_HedaMusic_Creative_Commons.mp3']); 
-        y_resampled = resample(y,mp.Fs,Fs);  % resample to change the sample rate to SG.Fs
-        Nsamples = length(y_resampled);
-        if mp.fastsim_flag == 1 % perform fast simulation by reducing the number of samples
-           mp.test_signal.Nsamples = min(Nsamples, mp.fastsim_Nsamples);
-        else
-           mp.test_signal.Nsamples = mp.fastsim_Nsamples;
-        end     
-        mp.test_signal.left  = y_resampled(1:mp.test_signal.Nsamples);
-        mp.test_signal.right = y_resampled(1:mp.test_signal.Nsamples);
-        mp.test_signal.Nsamples = length(mp.test_signal.left);
-        mp.test_signal.duration = mp.test_signal.Nsamples * mp.Ts;
-    case 4 % Justin Supplied Speech Signal
+    case 1 % Justin Supplied Speech Signal
         [y, Fs] = audioread([mp.test_signals_path filesep 'testchirp.wav']);
         y_resampled = resample(y,mp.Fs,Fs);  % resample to change the sample rate to SG.Fs
         Nsamples = length(y_resampled);
         if mp.fastsim_flag == 1 % perform fast simulation by reducing the number of samples
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            % Determine which one works better
+            %
+            % I find that line 48 is more beneficial as you can run the
+            % simulation for the entire signal duration, rather than 12
+            % seconds - making debugging easier.
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
            mp.test_signal.Nsamples = min(Nsamples, mp.fastsim_Nsamples);
+%             mp.test_signal.Nsamples = Nsamples;
         else
            mp.test_signal.Nsamples = mp.fastsim_Nsamples;
         end
         mp.test_signal.left  = y_resampled(1:mp.test_signal.Nsamples);
         mp.test_signal.right = y_resampled(1:mp.test_signal.Nsamples);
-        mp.test_signal.Nsamples = length(mp.test_signal.left);
         mp.test_signal.duration = mp.test_signal.Nsamples * mp.Ts;
-        mp.win = 32; % WINDOW SIZE -- POWER OF 2
-        mp.noise_std = 0.1/6;
     otherwise
         error('Please choose a viable option for the test signal (see sm_init_test_signals)')
 end

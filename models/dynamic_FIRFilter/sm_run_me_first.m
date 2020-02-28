@@ -24,14 +24,16 @@
 clear all   % clear all workspace variables
 close all   % close all open Matlab windows
 clc         % clear command window
-
+%% Add DSP blocks to the path
+addpath([pwd '/../../../simulink_library/']);
+%add_library_to_path;
 %% Fast simulation
 % Fast simulation reduces the Fs_system clock rate to reduce the number of
 % simulated clock cycles between each sample in the Avalon bus signals.
 % It also reduces the number of stimulus samples.  This allow for faster
 % development iterations when developing the simulink model.
 mp.fastsim_flag        = 1;     % perform fast simulation  Note: fast simulation will be turned off when generating VHDL code since we need to run at the system clock rate.
-mp.fastsim_Fs_system_N = 4;     % (typical value 2 or 4) Simulate a much slower system clock than what is specified in sm_callback_init.m   - The reduce rate will be a multiple of the sample rate, i.e. mp.Fs_system = mp.Fs*mp.fastsim_Fs_system_N
+mp.fastsim_Fs_system_N = 8;     % (typical value 2 or 4) Simulate a much slower system clock than what is specified in sm_callback_init.m   - The reduce rate will be a multiple of the sample rate, i.e. mp.Fs_system = mp.Fs*mp.fastsim_Fs_system_N
 mp.fastsim_Nsamples    = 12000; % set to the string 'all' to use all the samples from the input signal specified in sm_init_test_signals.m
 
 
@@ -39,6 +41,7 @@ mp.fastsim_Nsamples    = 12000; % set to the string 'all' to use all the samples
 % Model parameters are placed in a data structure called mp that can be passed to functions
 mp.model_name = 'pFIR_HPF_testing_and_analysis';
 mp.model_abbreviation = 'pFIR_HPF';
+mp.model_abbreviation = 'pFIR_HPF_testing_and_analysis';
 
 % Device driver version for the Linux device tree. Typically set as the Quartus version
 mp.linux_device_name = mp.model_name;
