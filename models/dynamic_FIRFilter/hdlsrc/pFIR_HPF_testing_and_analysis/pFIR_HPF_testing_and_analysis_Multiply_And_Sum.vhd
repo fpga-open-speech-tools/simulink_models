@@ -22,7 +22,7 @@ USE IEEE.numeric_std.ALL;
 ENTITY pFIR_HPF_testing_and_analysis_Multiply_And_Sum IS
   PORT( clk                               :   IN    std_logic;
         reset                             :   IN    std_logic;
-        enb_1_16_0                        :   IN    std_logic;
+        enb_1_2_0                         :   IN    std_logic;
         x_n_i                             :   IN    std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
         End_of_sample_calc                :   IN    std_logic;
         b_i                               :   IN    std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
@@ -62,7 +62,7 @@ BEGIN
     IF reset = '1' THEN
       Bitwise_Operator_out1_1 <= '0';
     ELSIF rising_edge(clk) THEN
-      IF enb_1_16_0 = '1' THEN
+      IF enb_1_2_0 = '1' THEN
         Bitwise_Operator_out1_1 <= Bitwise_Operator_out1;
       END IF;
     END IF;
@@ -80,7 +80,7 @@ BEGIN
     IF reset = '1' THEN
       b_i_1 <= to_signed(0, 32);
     ELSIF rising_edge(clk) THEN
-      IF enb_1_16_0 = '1' THEN
+      IF enb_1_2_0 = '1' THEN
         b_i_1 <= b_i_signed;
       END IF;
     END IF;
@@ -102,7 +102,7 @@ BEGIN
     IF reset = '1' THEN
       Sum_memory_out1 <= to_signed(0, 32);
     ELSIF rising_edge(clk) THEN
-      IF enb_1_16_0 = '1' THEN
+      IF enb_1_2_0 = '1' THEN
         Sum_memory_out1 <= Multiply_Add_out1;
       END IF;
     END IF;

@@ -36,8 +36,8 @@
 </span><span><a class="LN" id="23">   23   </a>  <span class="KW">PORT</span>( clk                               :   <span class="KW">IN</span>    std_logic;
 </span><span><a class="LN" id="24">   24   </a>        reset                             :   <span class="KW">IN</span>    std_logic;
 </span><span><a class="LN" id="25">   25   </a>        enb                               :   <span class="KW">IN</span>    std_logic;
-</span><span><a class="LN" id="26">   26   </a>        enb_1_16_0                        :   <span class="KW">IN</span>    std_logic;
-</span><span><a class="LN" id="27">   27   </a>        enb_1_16_1                        :   <span class="KW">IN</span>    std_logic;
+</span><span><a class="LN" id="26">   26   </a>        enb_1_2_0                         :   <span class="KW">IN</span>    std_logic;
+</span><span><a class="LN" id="27">   27   </a>        enb_1_2_1                         :   <span class="KW">IN</span>    std_logic;
 </span><span><a class="LN" id="28">   28   </a>        enb_1_2048_0                      :   <span class="KW">IN</span>    std_logic;
 </span><span><a class="LN" id="29">   29   </a>        Sink_Valid                        :   <span class="KW">IN</span>    std_logic;
 </span><span><a class="LN" id="30">   30   </a>        Sink_Data                         :   <span class="KW">IN</span>    std_logic_vector(31 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- sfix32_En28</span>
@@ -56,8 +56,8 @@
 </span><span><a class="LN" id="43">   43   </a>    <span class="KW">PORT</span>( clk                             :   <span class="KW">IN</span>    std_logic;
 </span><span><a class="LN" id="44">   44   </a>          reset                           :   <span class="KW">IN</span>    std_logic;
 </span><span><a class="LN" id="45">   45   </a>          enb                             :   <span class="KW">IN</span>    std_logic;
-</span><span><a class="LN" id="46">   46   </a>          enb_1_16_0                      :   <span class="KW">IN</span>    std_logic;
-</span><span><a class="LN" id="47">   47   </a>          enb_1_16_1                      :   <span class="KW">IN</span>    std_logic;
+</span><span><a class="LN" id="46">   46   </a>          enb_1_2_0                       :   <span class="KW">IN</span>    std_logic;
+</span><span><a class="LN" id="47">   47   </a>          enb_1_2_1                       :   <span class="KW">IN</span>    std_logic;
 </span><span><a class="LN" id="48">   48   </a>          enb_1_2048_0                    :   <span class="KW">IN</span>    std_logic;
 </span><span><a class="LN" id="49">   49   </a>          Left_Data_Sink                  :   <span class="KW">IN</span>    std_logic_vector(31 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- sfix32_En28</span>
 </span><span><a class="LN" id="50">   50   </a>          register_control_enable         :   <span class="KW">IN</span>    std_logic_vector(31 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- sfix32_En28</span>
@@ -70,8 +70,8 @@
 </span><span><a class="LN" id="57">   57   </a>    <span class="KW">PORT</span>( clk                             :   <span class="KW">IN</span>    std_logic;
 </span><span><a class="LN" id="58">   58   </a>          reset                           :   <span class="KW">IN</span>    std_logic;
 </span><span><a class="LN" id="59">   59   </a>          enb                             :   <span class="KW">IN</span>    std_logic;
-</span><span><a class="LN" id="60">   60   </a>          enb_1_16_0                      :   <span class="KW">IN</span>    std_logic;
-</span><span><a class="LN" id="61">   61   </a>          enb_1_16_1                      :   <span class="KW">IN</span>    std_logic;
+</span><span><a class="LN" id="60">   60   </a>          enb_1_2_0                       :   <span class="KW">IN</span>    std_logic;
+</span><span><a class="LN" id="61">   61   </a>          enb_1_2_1                       :   <span class="KW">IN</span>    std_logic;
 </span><span><a class="LN" id="62">   62   </a>          enb_1_2048_0                    :   <span class="KW">IN</span>    std_logic;
 </span><span><a class="LN" id="63">   63   </a>          Right_Data_Sink                 :   <span class="KW">IN</span>    std_logic_vector(31 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- sfix32_En28</span>
 </span><span><a class="LN" id="64">   64   </a>          register_control_enable         :   <span class="KW">IN</span>    std_logic_vector(31 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- sfix32_En28</span>
@@ -93,14 +93,14 @@
 </span><span><a class="LN" id="80">   80   </a>  <span class="KW">SIGNAL</span> Logical_Operator_out1            : std_logic;
 </span><span><a class="LN" id="81">   81   </a>  <span class="KW">SIGNAL</span> rightEnable                      : std_logic;
 </span><span><a class="LN" id="82">   82   </a>  <span class="KW">SIGNAL</span> Logical_Operator1_out1           : std_logic;
-</span><span><a class="LN" id="83">   83   </a>  <span class="KW">SIGNAL</span> delayMatch_reg                   : vector_of_unsigned2(0 <span class="KW">TO</span> 15);  <span class="CT">-- ufix2 [16]</span>
+</span><span><a class="LN" id="83">   83   </a>  <span class="KW">SIGNAL</span> delayMatch_reg                   : vector_of_unsigned2(0 <span class="KW">TO</span> 1);  <span class="CT">-- ufix2 [2]</span>
 </span><span><a class="LN" id="84">   84   </a>  <span class="KW">SIGNAL</span> Sink_Channel_1                   : unsigned(1 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- ufix2</span>
 </span><span><a class="LN" id="85">   85   </a>  <span class="KW">SIGNAL</span> Left_Channel_Processing_out1     : std_logic_vector(31 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- ufix32</span>
 </span><span><a class="LN" id="86">   86   </a>  <span class="KW">SIGNAL</span> Left_Channel_Processing_out1_signed : signed(31 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- sfix32_En28</span>
 </span><span><a class="LN" id="87">   87   </a>  <span class="KW">SIGNAL</span> Right_Channel_Processing_out1    : std_logic_vector(31 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- ufix32</span>
 </span><span><a class="LN" id="88">   88   </a>  <span class="KW">SIGNAL</span> Right_Channel_Processing_out1_signed : signed(31 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- sfix32_En28</span>
 </span><span><a class="LN" id="89">   89   </a>  <span class="KW">SIGNAL</span> Sink_Data_signed                 : signed(31 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- sfix32_En28</span>
-</span><span><a class="LN" id="90">   90   </a>  <span class="KW">SIGNAL</span> delayMatch1_reg                  : vector_of_signed32(0 <span class="KW">TO</span> 15);  <span class="CT">-- sfix32 [16]</span>
+</span><span><a class="LN" id="90">   90   </a>  <span class="KW">SIGNAL</span> delayMatch1_reg                  : vector_of_signed32(0 <span class="KW">TO</span> 1);  <span class="CT">-- sfix32 [2]</span>
 </span><span><a class="LN" id="91">   91   </a>  <span class="KW">SIGNAL</span> Sink_Data_1                      : signed(31 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- sfix32_En28</span>
 </span><span><a class="LN" id="92">   92   </a>  <span class="KW">SIGNAL</span> Multiport_Switch_out1            : signed(31 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- sfix32_En28</span>
 </span><span><a class="LN" id="93">   93   </a>
@@ -127,8 +127,8 @@
 </span><span><a class="LN" id="114">  114   </a>    <span class="KW">PORT</span> <span class="KW">MAP</span>( clk =&gt; clk,
 </span><span><a class="LN" id="115">  115   </a>              reset =&gt; reset,
 </span><span><a class="LN" id="116">  116   </a>              enb =&gt; enb,
-</span><span><a class="LN" id="117">  117   </a>              enb_1_16_0 =&gt; enb_1_16_0,
-</span><span><a class="LN" id="118">  118   </a>              enb_1_16_1 =&gt; enb_1_16_1,
+</span><span><a class="LN" id="117">  117   </a>              enb_1_2_0 =&gt; enb_1_2_0,
+</span><span><a class="LN" id="118">  118   </a>              enb_1_2_1 =&gt; enb_1_2_1,
 </span><span><a class="LN" id="119">  119   </a>              enb_1_2048_0 =&gt; enb_1_2048_0,
 </span><span><a class="LN" id="120">  120   </a>              Left_Data_Sink =&gt; Sink_Data,  <span class="CT">-- sfix32_En28</span>
 </span><span><a class="LN" id="121">  121   </a>              register_control_enable =&gt; register_control_enable,  <span class="CT">-- sfix32_En28</span>
@@ -141,8 +141,8 @@
 </span><span><a class="LN" id="128">  128   </a>    <span class="KW">PORT</span> <span class="KW">MAP</span>( clk =&gt; clk,
 </span><span><a class="LN" id="129">  129   </a>              reset =&gt; reset,
 </span><span><a class="LN" id="130">  130   </a>              enb =&gt; enb,
-</span><span><a class="LN" id="131">  131   </a>              enb_1_16_0 =&gt; enb_1_16_0,
-</span><span><a class="LN" id="132">  132   </a>              enb_1_16_1 =&gt; enb_1_16_1,
+</span><span><a class="LN" id="131">  131   </a>              enb_1_2_0 =&gt; enb_1_2_0,
+</span><span><a class="LN" id="132">  132   </a>              enb_1_2_1 =&gt; enb_1_2_1,
 </span><span><a class="LN" id="133">  133   </a>              enb_1_2048_0 =&gt; enb_1_2048_0,
 </span><span><a class="LN" id="134">  134   </a>              Right_Data_Sink =&gt; Sink_Data,  <span class="CT">-- sfix32_En28</span>
 </span><span><a class="LN" id="135">  135   </a>              register_control_enable =&gt; register_control_enable,  <span class="CT">-- sfix32_En28</span>
@@ -175,12 +175,12 @@
 </span><span><a class="LN" id="162">  162   </a>    <span class="KW">ELSIF</span> rising_edge(clk) <span class="KW">THEN</span>
 </span><span><a class="LN" id="163">  163   </a>      <span class="KW">IF</span> enb = '1' <span class="KW">THEN</span>
 </span><span><a class="LN" id="164">  164   </a>        delayMatch_reg(0) &lt;= Sink_Channel_unsigned;
-</span><span><a class="LN" id="165">  165   </a>        delayMatch_reg(1 <span class="KW">TO</span> 15) &lt;= delayMatch_reg(0 <span class="KW">TO</span> 14);
+</span><span><a class="LN" id="165">  165   </a>        delayMatch_reg(1) &lt;= delayMatch_reg(0);
 </span><span><a class="LN" id="166">  166   </a>      <span class="KW">END</span> <span class="KW">IF</span>;
 </span><span><a class="LN" id="167">  167   </a>    <span class="KW">END</span> <span class="KW">IF</span>;
 </span><span><a class="LN" id="168">  168   </a>  <span class="KW">END</span> <span class="KW">PROCESS</span> delayMatch_process;
 </span><span><a class="LN" id="169">  169   </a>
-</span><span><a class="LN" id="170">  170   </a>  Sink_Channel_1 &lt;= delayMatch_reg(15);
+</span><span><a class="LN" id="170">  170   </a>  Sink_Channel_1 &lt;= delayMatch_reg(1);
 </span><span><a class="LN" id="171">  171   </a>
 </span><span><a class="LN" id="172">  172   </a>  Left_Channel_Processing_out1_signed &lt;= signed(Left_Channel_Processing_out1);
 </span><span><a class="LN" id="173">  173   </a>
@@ -195,12 +195,12 @@
 </span><span><a class="LN" id="182">  182   </a>    <span class="KW">ELSIF</span> rising_edge(clk) <span class="KW">THEN</span>
 </span><span><a class="LN" id="183">  183   </a>      <span class="KW">IF</span> enb = '1' <span class="KW">THEN</span>
 </span><span><a class="LN" id="184">  184   </a>        delayMatch1_reg(0) &lt;= Sink_Data_signed;
-</span><span><a class="LN" id="185">  185   </a>        delayMatch1_reg(1 <span class="KW">TO</span> 15) &lt;= delayMatch1_reg(0 <span class="KW">TO</span> 14);
+</span><span><a class="LN" id="185">  185   </a>        delayMatch1_reg(1) &lt;= delayMatch1_reg(0);
 </span><span><a class="LN" id="186">  186   </a>      <span class="KW">END</span> <span class="KW">IF</span>;
 </span><span><a class="LN" id="187">  187   </a>    <span class="KW">END</span> <span class="KW">IF</span>;
 </span><span><a class="LN" id="188">  188   </a>  <span class="KW">END</span> <span class="KW">PROCESS</span> delayMatch1_process;
 </span><span><a class="LN" id="189">  189   </a>
-</span><span><a class="LN" id="190">  190   </a>  Sink_Data_1 &lt;= delayMatch1_reg(15);
+</span><span><a class="LN" id="190">  190   </a>  Sink_Data_1 &lt;= delayMatch1_reg(1);
 </span><span><a class="LN" id="191">  191   </a>
 </span><span><a class="LN" id="192">  192   </a>  <span class="CT">-- <a href="matlab:coder.internal.code2model('pFIR_HPF_testing_and_analysis:1058')" name="code2model"><font color="#117755"><i>&lt;S6&gt;/Multiport Switch</i></font></a></span>
 </span><span><a class="LN" id="193">  193   </a>

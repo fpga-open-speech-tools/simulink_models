@@ -48,7 +48,7 @@ title('Filtered Chirp Signal');
 % Spectrogram
 subplot(212);
 spectrogram(data,8192,7800,8192,mp.Fs, 'yaxis');   % Display the spectrogram.
-ylim([0 0.3]);  
+ylim([1 2]);  
 title('HPF Filtered Speech Signal Chirp Spectrogram');
 print('lpfFilt_speech_chirp_signal', '-dpng');
 

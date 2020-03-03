@@ -65,7 +65,9 @@ mp = sm_init_avalon_signals(mp);  % create the avalon streaming signals
 %% Add Filter Signals
 % i.e. Add any filter coefficient files to use in the FIR Filter block
 load('test_filters.mat');
+load('LPF_PB1000_SB1300.mat');
 mp.LPF = b_k_LPF;
+mp.LPF_1000 = LPF_PB1000_SB1300;
 mp.HPF = b_k_HPF;
 
 % Convention:

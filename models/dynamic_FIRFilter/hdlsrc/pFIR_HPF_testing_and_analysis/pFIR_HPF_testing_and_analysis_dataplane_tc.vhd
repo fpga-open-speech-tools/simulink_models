@@ -17,8 +17,8 @@
 -- 
 -- enb         : identical to clk_enable
 -- enb_1_1_1   : identical to clk_enable
--- enb_1_16_0  : 16x slower than clk with last phase
--- enb_1_16_1  : 16x slower than clk with phase 1
+-- enb_1_2_0   : 2x slower than clk with last phase
+-- enb_1_2_1   : 2x slower than clk with phase 1
 -- enb_1_2048_0: 2048x slower than clk with last phase
 -- 
 -- -------------------------------------------------------------
@@ -32,8 +32,8 @@ ENTITY pFIR_HPF_testing_and_analysis_dataplane_tc IS
         clk_enable                        :   IN    std_logic;
         enb                               :   OUT   std_logic;
         enb_1_1_1                         :   OUT   std_logic;
-        enb_1_16_0                        :   OUT   std_logic;
-        enb_1_16_1                        :   OUT   std_logic;
+        enb_1_2_0                         :   OUT   std_logic;
+        enb_1_2_1                         :   OUT   std_logic;
         enb_1_2048_0                      :   OUT   std_logic
         );
 END pFIR_HPF_testing_and_analysis_dataplane_tc;
@@ -42,7 +42,7 @@ END pFIR_HPF_testing_and_analysis_dataplane_tc;
 ARCHITECTURE rtl OF pFIR_HPF_testing_and_analysis_dataplane_tc IS
 
   -- Signals
-  SIGNAL count16                          : unsigned(3 DOWNTO 0);  -- ufix4
+  SIGNAL count2                           : std_logic;
   SIGNAL phase_0                          : std_logic;
   SIGNAL phase_0_tmp                      : std_logic;
   SIGNAL phase_1                          : std_logic;
@@ -53,20 +53,16 @@ ARCHITECTURE rtl OF pFIR_HPF_testing_and_analysis_dataplane_tc IS
   SIGNAL phase_0_tmp_1                    : std_logic;
 
 BEGIN
-  Counter16 : PROCESS (clk, reset)
+  Counter2 : PROCESS (clk, reset)
   BEGIN
     IF reset = '1' THEN
-      count16 <= to_unsigned(1, 4);
+      count2 <= '1';
     ELSIF rising_edge(clk) THEN
       IF clk_enable = '1' THEN
-        IF count16 >= to_unsigned(15, 4) THEN
-          count16 <= to_unsigned(0, 4);
-        ELSE
-          count16 <= count16 + to_unsigned(1, 4);
-        END IF;
+          count2 <= NOT count2;
       END IF;
     END IF; 
-  END PROCESS Counter16;
+  END PROCESS Counter2;
 
   temp_process1 : PROCESS (clk, reset)
   BEGIN
@@ -79,7 +75,7 @@ BEGIN
     END IF; 
   END PROCESS temp_process1;
 
-  phase_0_tmp <= '1' WHEN count16 = to_unsigned(15, 4) AND clk_enable = '1' ELSE '0';
+  phase_0_tmp <= '1' WHEN count2 = '1' AND clk_enable = '1' ELSE '0';
 
   temp_process2 : PROCESS (clk, reset)
   BEGIN
@@ -92,7 +88,7 @@ BEGIN
     END IF; 
   END PROCESS temp_process2;
 
-  phase_1_tmp <= '1' WHEN count16 = to_unsigned(0, 4) AND clk_enable = '1' ELSE '0';
+  phase_1_tmp <= '1' WHEN count2 = '0' AND clk_enable = '1' ELSE '0';
 
   Counter2048 : PROCESS (clk, reset)
   BEGIN
@@ -128,9 +124,9 @@ BEGIN
 
   enb_1_1_1 <=  phase_all AND clk_enable;
 
-  enb_1_16_0 <=  phase_0 AND clk_enable;
+  enb_1_2_0 <=  phase_0 AND clk_enable;
 
-  enb_1_16_1 <=  phase_1 AND clk_enable;
+  enb_1_2_1 <=  phase_1 AND clk_enable;
 
   enb_1_2048_0 <=  phase_0_1 AND clk_enable;
 

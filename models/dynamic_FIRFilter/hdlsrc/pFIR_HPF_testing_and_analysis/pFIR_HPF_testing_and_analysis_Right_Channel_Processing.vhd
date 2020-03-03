@@ -24,8 +24,8 @@ ENTITY pFIR_HPF_testing_and_analysis_Right_Channel_Processing IS
   PORT( clk                               :   IN    std_logic;
         reset                             :   IN    std_logic;
         enb                               :   IN    std_logic;
-        enb_1_16_0                        :   IN    std_logic;
-        enb_1_16_1                        :   IN    std_logic;
+        enb_1_2_0                         :   IN    std_logic;
+        enb_1_2_1                         :   IN    std_logic;
         enb_1_2048_0                      :   IN    std_logic;
         Right_Data_Sink                   :   IN    std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
         register_control_enable           :   IN    std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
@@ -41,8 +41,8 @@ ARCHITECTURE rtl OF pFIR_HPF_testing_and_analysis_Right_Channel_Processing IS
   COMPONENT pFIR_HPF_testing_and_analysis_Static_Upclocked_FIR_block
     PORT( clk                             :   IN    std_logic;
           reset                           :   IN    std_logic;
-          enb_1_16_0                      :   IN    std_logic;
-          enb_1_16_1                      :   IN    std_logic;
+          enb_1_2_0                       :   IN    std_logic;
+          enb_1_2_1                       :   IN    std_logic;
           enb_1_2048_0                    :   IN    std_logic;
           Data_In                         :   IN    std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
           Valid_in                        :   IN    std_logic;
@@ -56,11 +56,11 @@ ARCHITECTURE rtl OF pFIR_HPF_testing_and_analysis_Right_Channel_Processing IS
 
   -- Signals
   SIGNAL register_control_enable_signed   : signed(31 DOWNTO 0);  -- sfix32_En28
-  SIGNAL delayMatch_reg                   : vector_of_signed32(0 TO 15);  -- sfix32 [16]
+  SIGNAL delayMatch_reg                   : vector_of_signed32(0 TO 1);  -- sfix32 [2]
   SIGNAL register_control_enable_1        : signed(31 DOWNTO 0);  -- sfix32_En28
   SIGNAL switch_compare_1                 : std_logic;
   SIGNAL Right_Data_Sink_signed           : signed(31 DOWNTO 0);  -- sfix32_En28
-  SIGNAL delayMatch1_reg                  : vector_of_signed32(0 TO 15);  -- sfix32 [16]
+  SIGNAL delayMatch1_reg                  : vector_of_signed32(0 TO 1);  -- sfix32 [2]
   SIGNAL right_data_sinksource_passthrough : signed(31 DOWNTO 0);  -- sfix32_En28
   SIGNAL filter_data                      : std_logic_vector(31 DOWNTO 0);  -- ufix32
   SIGNAL filter_data_signed               : signed(31 DOWNTO 0);  -- sfix32_En28
@@ -73,8 +73,8 @@ BEGIN
   u_Static_Upclocked_FIR : pFIR_HPF_testing_and_analysis_Static_Upclocked_FIR_block
     PORT MAP( clk => clk,
               reset => reset,
-              enb_1_16_0 => enb_1_16_0,
-              enb_1_16_1 => enb_1_16_1,
+              enb_1_2_0 => enb_1_2_0,
+              enb_1_2_1 => enb_1_2_1,
               enb_1_2048_0 => enb_1_2048_0,
               Data_In => Right_Data_Sink,  -- sfix32_En28
               Valid_in => right_data_valid,
@@ -90,12 +90,12 @@ BEGIN
     ELSIF rising_edge(clk) THEN
       IF enb = '1' THEN
         delayMatch_reg(0) <= register_control_enable_signed;
-        delayMatch_reg(1 TO 15) <= delayMatch_reg(0 TO 14);
+        delayMatch_reg(1) <= delayMatch_reg(0);
       END IF;
     END IF;
   END PROCESS delayMatch_process;
 
-  register_control_enable_1 <= delayMatch_reg(15);
+  register_control_enable_1 <= delayMatch_reg(1);
 
   
   switch_compare_1 <= '1' WHEN register_control_enable_1 >= to_signed(268435456, 32) ELSE
@@ -110,12 +110,12 @@ BEGIN
     ELSIF rising_edge(clk) THEN
       IF enb = '1' THEN
         delayMatch1_reg(0) <= Right_Data_Sink_signed;
-        delayMatch1_reg(1 TO 15) <= delayMatch1_reg(0 TO 14);
+        delayMatch1_reg(1) <= delayMatch1_reg(0);
       END IF;
     END IF;
   END PROCESS delayMatch1_process;
 
-  right_data_sinksource_passthrough <= delayMatch1_reg(15);
+  right_data_sinksource_passthrough <= delayMatch1_reg(1);
 
   filter_data_signed <= signed(filter_data);
 
