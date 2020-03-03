@@ -35,23 +35,48 @@ end
 
 %% COMPARISON PLOT
 
+% *** Changed C1 filter Simulink output name after update
+% *** By Matthew Blunt 03/03/2020
 figure()
 subplot(2,1,1)
 plot(C1filterout);
 title('C1 Chirp Filter Output - C Source Code')
 xlabel('Sample Number');
 subplot(2,1,2)
-plot(out.C1filterout)
+plot(out.C1filteroutdouble)
 title('C1 Chirp Filter Output - Simulink Model')
 xlabel('Sample Number');
 
+% *** Comparison Plot for Double and Single Precision Simulink Results
+% *** Added by Matthew Blunt 03/03/2020
+figure()
+subplot(2,1,1)
+plot(out.C1filteroutdouble);
+title('C1 Chirp Filter Output - Double Precision Simulink')
+xlabel('Sample Number');
+subplot(2,1,2)
+plot(out.C1filterout)
+title('C1 Chirp Filter Output - Single Precision Simulink')
+xlabel('Sample Number');
+
+
 %% ERROR CALCULATION
 
-% Compares output vectors of MATLAB and Simulink model outputs
-C1modelerror = norm(C1filterout(1:end)-out.C1filterout(1:end-1));
+% Compares output vectors of MATLAB and Simulink Double Precision model outputs
+% *** Changed output names after update by Matthew Blunt 03/03/2020
+C1modelerror = norm(C1filterout(1:end)-out.C1filteroutdouble(1:end-1));
+
+% Compares output vectors of Simulink Double and Single Precision Outputs
+% *** Added by Matthew Blunt 03/03/2020
+C1conversionerror = norm(out.C1filteroutdouble(1:end)-out.C1filterout(1:end));
 
 % Display in Simulink Diagnostics menu
 disp('C1 Chirp Filter Model Error =');
 disp(C1modelerror);
+
+% Display in Simulink Diagnostics menu
+% *** Added by Matthew Blunt 03/03/2020
+disp('C1 Chirp Filter Conversion Error =');
+disp(C1conversionerror);
 
 % end of script
