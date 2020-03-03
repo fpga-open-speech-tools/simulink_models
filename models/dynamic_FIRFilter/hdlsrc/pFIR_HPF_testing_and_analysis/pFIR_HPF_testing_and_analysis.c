@@ -121,7 +121,7 @@ static const struct file_operations fe_pFIR_HPF_testing_and_analysis_fops = {
 Generated in CreateInitFunction
 *********************************************************/
 static int pFIR_HPF_testing_and_analysis_init(void) {
-  printk(KERN_ALERT "FUNCTION AUTO GENERATED AT: 2020-02-19 21:20\n");
+  printk(KERN_ALERT "FUNCTION AUTO GENERATED AT: 2020-03-03 15:21\n");
   int ret_val = 0;
   pr_info("Initializing the Flat Earth pFIR_HPF_testing_and_analysis module\n");
   // Register our driver with the "Platform Driver" bus

@@ -484,7 +484,7 @@
     "maxRate"
    ],
    "values":[
-    "mp.LPF",
+    "mp.LPF_1000",
     "mp.Ts",
     "mp.Ts_system",
     "0",

@@ -22,8 +22,8 @@ USE IEEE.numeric_std.ALL;
 ENTITY pFIR_HPF_testing_and_analysis_Static_Upclocked_FIR_block IS
   PORT( clk                               :   IN    std_logic;
         reset                             :   IN    std_logic;
-        enb_1_16_0                        :   IN    std_logic;
-        enb_1_16_1                        :   IN    std_logic;
+        enb_1_2_0                         :   IN    std_logic;
+        enb_1_2_1                         :   IN    std_logic;
         enb_1_2048_0                      :   IN    std_logic;
         Data_In                           :   IN    std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
         Valid_in                          :   IN    std_logic;
@@ -40,12 +40,12 @@ ARCHITECTURE rtl OF pFIR_HPF_testing_and_analysis_Static_Upclocked_FIR_block IS
   COMPONENT pFIR_HPF_testing_and_analysis_Addr_Gen_block
     PORT( clk                             :   IN    std_logic;
           reset                           :   IN    std_logic;
-          enb_1_16_0                      :   IN    std_logic;
+          enb_1_2_0                       :   IN    std_logic;
           enb_1_2048_0                    :   IN    std_logic;
-          Input_Addr                      :   OUT   std_logic_vector(6 DOWNTO 0);  -- ufix7
-          Data_History_Rd_addr            :   OUT   std_logic_vector(6 DOWNTO 0);  -- ufix7
+          Input_Addr                      :   OUT   std_logic_vector(9 DOWNTO 0);  -- ufix10
+          Data_History_Rd_addr            :   OUT   std_logic_vector(9 DOWNTO 0);  -- ufix10
           End_of_sample_calc              :   OUT   std_logic;
-          b_k_addr                        :   OUT   std_logic_vector(6 DOWNTO 0)  -- ufix7
+          b_k_addr                        :   OUT   std_logic_vector(9 DOWNTO 0)  -- ufix10
           );
   END COMPONENT;
 
@@ -54,7 +54,7 @@ ARCHITECTURE rtl OF pFIR_HPF_testing_and_analysis_Static_Upclocked_FIR_block IS
              DataWidth                    : integer
              );
     PORT( clk                             :   IN    std_logic;
-          enb_1_16_0                      :   IN    std_logic;
+          enb_1_2_0                       :   IN    std_logic;
           wr_din                          :   IN    std_logic_vector(DataWidth - 1 DOWNTO 0);  -- generic width
           wr_addr                         :   IN    std_logic_vector(AddrWidth - 1 DOWNTO 0);  -- generic width
           wr_en                           :   IN    std_logic;
@@ -66,12 +66,12 @@ ARCHITECTURE rtl OF pFIR_HPF_testing_and_analysis_Static_Upclocked_FIR_block IS
   COMPONENT pFIR_HPF_testing_and_analysis_B_k_Memory_Block_block
     PORT( clk                             :   IN    std_logic;
           reset                           :   IN    std_logic;
-          enb_1_16_0                      :   IN    std_logic;
+          enb_1_2_0                       :   IN    std_logic;
           din_A                           :   IN    std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
-          addr_A                          :   IN    std_logic_vector(6 DOWNTO 0);  -- ufix7
+          addr_A                          :   IN    std_logic_vector(9 DOWNTO 0);  -- ufix10
           we_A                            :   IN    std_logic;
           din_B                           :   IN    std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
-          addr_B                          :   IN    std_logic_vector(6 DOWNTO 0);  -- ufix7
+          addr_B                          :   IN    std_logic_vector(9 DOWNTO 0);  -- ufix10
           we_B                            :   IN    std_logic;
           dout_A                          :   OUT   std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
           dout_B                          :   OUT   std_logic_vector(31 DOWNTO 0)  -- sfix32_En28
@@ -81,7 +81,7 @@ ARCHITECTURE rtl OF pFIR_HPF_testing_and_analysis_Static_Upclocked_FIR_block IS
   COMPONENT pFIR_HPF_testing_and_analysis_Multiply_And_Sum_block
     PORT( clk                             :   IN    std_logic;
           reset                           :   IN    std_logic;
-          enb_1_16_0                      :   IN    std_logic;
+          enb_1_2_0                       :   IN    std_logic;
           x_n_i                           :   IN    std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
           End_of_sample_calc              :   IN    std_logic;
           b_i                             :   IN    std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
@@ -106,22 +106,22 @@ ARCHITECTURE rtl OF pFIR_HPF_testing_and_analysis_Static_Upclocked_FIR_block IS
   -- Signals
   SIGNAL Data_In_signed                   : signed(31 DOWNTO 0);  -- sfix32_En28
   SIGNAL Rate_Transition1_out1            : signed(31 DOWNTO 0);  -- sfix32_En28
-  SIGNAL Addr_Gen_out1                    : std_logic_vector(6 DOWNTO 0);  -- ufix7
-  SIGNAL Addr_Gen_out2                    : std_logic_vector(6 DOWNTO 0);  -- ufix7
+  SIGNAL Addr_Gen_out1                    : std_logic_vector(9 DOWNTO 0);  -- ufix10
+  SIGNAL Addr_Gen_out2                    : std_logic_vector(9 DOWNTO 0);  -- ufix10
   SIGNAL Addr_Gen_out3                    : std_logic;
-  SIGNAL Addr_Gen_out4                    : std_logic_vector(6 DOWNTO 0);  -- ufix7
-  SIGNAL Addr_Gen_out1_unsigned           : unsigned(6 DOWNTO 0);  -- ufix7
+  SIGNAL Addr_Gen_out4                    : std_logic_vector(9 DOWNTO 0);  -- ufix10
+  SIGNAL Addr_Gen_out1_unsigned           : unsigned(9 DOWNTO 0);  -- ufix10
   SIGNAL Rate_Transition2_out1            : std_logic;
-  SIGNAL Addr_Gen_out2_unsigned           : unsigned(6 DOWNTO 0);  -- ufix7
+  SIGNAL Addr_Gen_out2_unsigned           : unsigned(9 DOWNTO 0);  -- ufix10
   SIGNAL Rate_Transition1_out1_1          : signed(31 DOWNTO 0);  -- sfix32_En28
-  SIGNAL Addr_Gen_out1_1                  : unsigned(6 DOWNTO 0);  -- ufix7
+  SIGNAL Addr_Gen_out1_1                  : unsigned(9 DOWNTO 0);  -- ufix10
   SIGNAL Rate_Transition2_out1_1          : std_logic;
   SIGNAL Data_Type_Conversion1_out1       : std_logic;
-  SIGNAL Addr_Gen_out2_1                  : unsigned(6 DOWNTO 0);  -- ufix7
+  SIGNAL Addr_Gen_out2_1                  : unsigned(9 DOWNTO 0);  -- ufix10
   SIGNAL x_n_i                            : std_logic_vector(31 DOWNTO 0);  -- ufix32
   SIGNAL Alignment_Delay_out1             : std_logic;
   SIGNAL READ_ONLY_1_out1                 : signed(31 DOWNTO 0);  -- sfix32_En28
-  SIGNAL READ_ONLY_2_out1                 : unsigned(6 DOWNTO 0);  -- ufix7
+  SIGNAL READ_ONLY_2_out1                 : unsigned(9 DOWNTO 0);  -- ufix10
   SIGNAL READ_ONLY_3_out1                 : std_logic;
   SIGNAL Never_write_B2_out1              : signed(31 DOWNTO 0);  -- sfix32_En28
   SIGNAL Always_read_B2_out1              : std_logic;
@@ -144,20 +144,20 @@ BEGIN
   u_Addr_Gen : pFIR_HPF_testing_and_analysis_Addr_Gen_block
     PORT MAP( clk => clk,
               reset => reset,
-              enb_1_16_0 => enb_1_16_0,
+              enb_1_2_0 => enb_1_2_0,
               enb_1_2048_0 => enb_1_2048_0,
-              Input_Addr => Addr_Gen_out1,  -- ufix7
-              Data_History_Rd_addr => Addr_Gen_out2,  -- ufix7
+              Input_Addr => Addr_Gen_out1,  -- ufix10
+              Data_History_Rd_addr => Addr_Gen_out2,  -- ufix10
               End_of_sample_calc => Addr_Gen_out3,
-              b_k_addr => Addr_Gen_out4  -- ufix7
+              b_k_addr => Addr_Gen_out4  -- ufix10
               );
 
   u_Input_Data_Circular_Buffer : pFIR_HPF_testing_and_analysis_SimpleDualPortRAM_generic
-    GENERIC MAP( AddrWidth => 7,
+    GENERIC MAP( AddrWidth => 10,
                  DataWidth => 32
                  )
     PORT MAP( clk => clk,
-              enb_1_16_0 => enb_1_16_0,
+              enb_1_2_0 => enb_1_2_0,
               wr_din => std_logic_vector(Rate_Transition1_out1_1),
               wr_addr => std_logic_vector(Addr_Gen_out1_1),
               wr_en => Data_Type_Conversion1_out1,
@@ -168,12 +168,12 @@ BEGIN
   u_B_k_Memory_Block : pFIR_HPF_testing_and_analysis_B_k_Memory_Block_block
     PORT MAP( clk => clk,
               reset => reset,
-              enb_1_16_0 => enb_1_16_0,
+              enb_1_2_0 => enb_1_2_0,
               din_A => std_logic_vector(READ_ONLY_1_out1),  -- sfix32_En28
-              addr_A => std_logic_vector(READ_ONLY_2_out1),  -- ufix7
+              addr_A => std_logic_vector(READ_ONLY_2_out1),  -- ufix10
               we_A => READ_ONLY_3_out1,
               din_B => std_logic_vector(Never_write_B2_out1),  -- sfix32_En28
-              addr_B => Addr_Gen_out4,  -- ufix7
+              addr_B => Addr_Gen_out4,  -- ufix10
               we_B => Always_read_B2_out1,
               dout_A => B_k_Memory_Block_out1,  -- sfix32_En28
               dout_B => b_i  -- sfix32_En28
@@ -184,7 +184,7 @@ BEGIN
   u_Multiply_And_Sum : pFIR_HPF_testing_and_analysis_Multiply_And_Sum_block
     PORT MAP( clk => clk,
               reset => reset,
-              enb_1_16_0 => enb_1_16_0,
+              enb_1_2_0 => enb_1_2_0,
               x_n_i => x_n_i,  -- sfix32_En28
               End_of_sample_calc => Alignment_Delay_out1,
               b_i => b_i,  -- sfix32_En28
@@ -199,7 +199,7 @@ BEGIN
     IF reset = '1' THEN
       Rate_Transition1_out1 <= to_signed(0, 32);
     ELSIF rising_edge(clk) THEN
-      IF enb_1_16_1 = '1' THEN
+      IF enb_1_2_1 = '1' THEN
         Rate_Transition1_out1 <= Data_In_signed;
       END IF;
     END IF;
@@ -213,7 +213,7 @@ BEGIN
     IF reset = '1' THEN
       Rate_Transition2_out1 <= '0';
     ELSIF rising_edge(clk) THEN
-      IF enb_1_16_1 = '1' THEN
+      IF enb_1_2_1 = '1' THEN
         Rate_Transition2_out1 <= Valid_in;
       END IF;
     END IF;
@@ -227,7 +227,7 @@ BEGIN
     IF reset = '1' THEN
       Rate_Transition1_out1_1 <= to_signed(0, 32);
     ELSIF rising_edge(clk) THEN
-      IF enb_1_16_0 = '1' THEN
+      IF enb_1_2_0 = '1' THEN
         Rate_Transition1_out1_1 <= Rate_Transition1_out1;
       END IF;
     END IF;
@@ -237,9 +237,9 @@ BEGIN
   delayMatch_process : PROCESS (clk, reset)
   BEGIN
     IF reset = '1' THEN
-      Addr_Gen_out1_1 <= to_unsigned(16#00#, 7);
+      Addr_Gen_out1_1 <= to_unsigned(16#000#, 10);
     ELSIF rising_edge(clk) THEN
-      IF enb_1_16_0 = '1' THEN
+      IF enb_1_2_0 = '1' THEN
         Addr_Gen_out1_1 <= Addr_Gen_out1_unsigned;
       END IF;
     END IF;
@@ -251,7 +251,7 @@ BEGIN
     IF reset = '1' THEN
       Rate_Transition2_out1_1 <= '0';
     ELSIF rising_edge(clk) THEN
-      IF enb_1_16_0 = '1' THEN
+      IF enb_1_2_0 = '1' THEN
         Rate_Transition2_out1_1 <= Rate_Transition2_out1;
       END IF;
     END IF;
@@ -265,9 +265,9 @@ BEGIN
   delayMatch1_process : PROCESS (clk, reset)
   BEGIN
     IF reset = '1' THEN
-      Addr_Gen_out2_1 <= to_unsigned(16#00#, 7);
+      Addr_Gen_out2_1 <= to_unsigned(16#000#, 10);
     ELSIF rising_edge(clk) THEN
-      IF enb_1_16_0 = '1' THEN
+      IF enb_1_2_0 = '1' THEN
         Addr_Gen_out2_1 <= Addr_Gen_out2_unsigned;
       END IF;
     END IF;
@@ -279,7 +279,7 @@ BEGIN
     IF reset = '1' THEN
       Alignment_Delay_out1 <= '0';
     ELSIF rising_edge(clk) THEN
-      IF enb_1_16_0 = '1' THEN
+      IF enb_1_2_0 = '1' THEN
         Alignment_Delay_out1 <= Addr_Gen_out3;
       END IF;
     END IF;
@@ -288,7 +288,7 @@ BEGIN
 
   READ_ONLY_1_out1 <= to_signed(0, 32);
 
-  READ_ONLY_2_out1 <= to_unsigned(16#00#, 7);
+  READ_ONLY_2_out1 <= to_unsigned(16#000#, 10);
 
   READ_ONLY_3_out1 <= '0';
 
@@ -301,7 +301,7 @@ BEGIN
     IF reset = '1' THEN
       Multiply_And_Sum_out2_1 <= '0';
     ELSIF rising_edge(clk) THEN
-      IF enb_1_16_0 = '1' THEN
+      IF enb_1_2_0 = '1' THEN
         Multiply_And_Sum_out2_1 <= Multiply_And_Sum_out2;
       END IF;
     END IF;
@@ -319,7 +319,7 @@ BEGIN
     IF reset = '1' THEN
       Output_memory_out1 <= to_signed(0, 32);
     ELSIF rising_edge(clk) THEN
-      IF enb_1_16_0 = '1' THEN
+      IF enb_1_2_0 = '1' THEN
         Output_memory_out1 <= Reset_Switch_out1;
       END IF;
     END IF;
@@ -331,7 +331,7 @@ BEGIN
     IF reset = '1' THEN
       Rate_Transition_out1 <= to_signed(0, 32);
     ELSIF rising_edge(clk) THEN
-      IF enb_1_16_0 = '1' THEN
+      IF enb_1_2_0 = '1' THEN
         Rate_Transition_out1 <= Output_memory_out1;
       END IF;
     END IF;

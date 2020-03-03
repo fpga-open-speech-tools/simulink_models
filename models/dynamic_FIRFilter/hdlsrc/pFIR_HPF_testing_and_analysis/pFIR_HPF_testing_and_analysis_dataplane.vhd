@@ -68,8 +68,8 @@ ARCHITECTURE rtl OF pFIR_HPF_testing_and_analysis_dataplane IS
           clk_enable                      :   IN    std_logic;
           enb                             :   OUT   std_logic;
           enb_1_1_1                       :   OUT   std_logic;
-          enb_1_16_0                      :   OUT   std_logic;
-          enb_1_16_1                      :   OUT   std_logic;
+          enb_1_2_0                       :   OUT   std_logic;
+          enb_1_2_1                       :   OUT   std_logic;
           enb_1_2048_0                    :   OUT   std_logic
           );
   END COMPONENT;
@@ -78,8 +78,8 @@ ARCHITECTURE rtl OF pFIR_HPF_testing_and_analysis_dataplane IS
     PORT( clk                             :   IN    std_logic;
           reset                           :   IN    std_logic;
           enb                             :   IN    std_logic;
-          enb_1_16_0                      :   IN    std_logic;
-          enb_1_16_1                      :   IN    std_logic;
+          enb_1_2_0                       :   IN    std_logic;
+          enb_1_2_1                       :   IN    std_logic;
           enb_1_2048_0                    :   IN    std_logic;
           Sink_Valid                      :   IN    std_logic;
           Sink_Data                       :   IN    std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
@@ -99,19 +99,19 @@ ARCHITECTURE rtl OF pFIR_HPF_testing_and_analysis_dataplane IS
 
   -- Signals
   SIGNAL enb                              : std_logic;
-  SIGNAL enb_1_16_0                       : std_logic;
-  SIGNAL enb_1_16_1                       : std_logic;
+  SIGNAL enb_1_2_0                        : std_logic;
+  SIGNAL enb_1_2_1                        : std_logic;
   SIGNAL enb_1_2048_0                     : std_logic;
   SIGNAL enb_1_1_1                        : std_logic;
-  SIGNAL delayMatch_reg                   : std_logic_vector(0 TO 15);  -- ufix1 [16]
+  SIGNAL delayMatch_reg                   : std_logic_vector(0 TO 1);  -- ufix1 [2]
   SIGNAL avalon_sink_valid_1              : std_logic;
   SIGNAL Test_FIR_with_Custom_FIR_Libraries_Sample_Based_Filtering_out1 : std_logic_vector(31 DOWNTO 0);  -- ufix32
   SIGNAL Test_FIR_with_Custom_FIR_Libraries_Sample_Based_Filtering_out2 : std_logic_vector(1 DOWNTO 0);  -- ufix2
   SIGNAL Test_FIR_with_Custom_FIR_Libraries_Sample_Based_Filtering_out2_unsigned : unsigned(1 DOWNTO 0);  -- ufix2
-  SIGNAL delayMatch1_reg                  : vector_of_unsigned2(0 TO 15);  -- ufix2 [16]
+  SIGNAL delayMatch1_reg                  : vector_of_unsigned2(0 TO 1);  -- ufix2 [2]
   SIGNAL Test_FIR_with_Custom_FIR_Libraries_Sample_Based_Filtering_out2_1 : unsigned(1 DOWNTO 0);  -- ufix2
   SIGNAL avalon_sink_error_unsigned       : unsigned(1 DOWNTO 0);  -- ufix2
-  SIGNAL delayMatch2_reg                  : vector_of_unsigned2(0 TO 15);  -- ufix2 [16]
+  SIGNAL delayMatch2_reg                  : vector_of_unsigned2(0 TO 1);  -- ufix2 [2]
   SIGNAL avalon_sink_error_1              : unsigned(1 DOWNTO 0);  -- ufix2
 
 BEGIN
@@ -136,8 +136,8 @@ BEGIN
               clk_enable => clk_enable,
               enb => enb,
               enb_1_1_1 => enb_1_1_1,
-              enb_1_16_0 => enb_1_16_0,
-              enb_1_16_1 => enb_1_16_1,
+              enb_1_2_0 => enb_1_2_0,
+              enb_1_2_1 => enb_1_2_1,
               enb_1_2048_0 => enb_1_2048_0
               );
 
@@ -145,8 +145,8 @@ BEGIN
     PORT MAP( clk => clk,
               reset => reset,
               enb => enb,
-              enb_1_16_0 => enb_1_16_0,
-              enb_1_16_1 => enb_1_16_1,
+              enb_1_2_0 => enb_1_2_0,
+              enb_1_2_1 => enb_1_2_1,
               enb_1_2048_0 => enb_1_2048_0,
               Sink_Valid => avalon_sink_valid,
               Sink_Data => avalon_sink_data,  -- sfix32_En28
@@ -163,12 +163,12 @@ BEGIN
     ELSIF rising_edge(clk) THEN
       IF enb = '1' THEN
         delayMatch_reg(0) <= avalon_sink_valid;
-        delayMatch_reg(1 TO 15) <= delayMatch_reg(0 TO 14);
+        delayMatch_reg(1) <= delayMatch_reg(0);
       END IF;
     END IF;
   END PROCESS delayMatch_process;
 
-  avalon_sink_valid_1 <= delayMatch_reg(15);
+  avalon_sink_valid_1 <= delayMatch_reg(1);
 
   Test_FIR_with_Custom_FIR_Libraries_Sample_Based_Filtering_out2_unsigned <= unsigned(Test_FIR_with_Custom_FIR_Libraries_Sample_Based_Filtering_out2);
 
@@ -179,12 +179,12 @@ BEGIN
     ELSIF rising_edge(clk) THEN
       IF enb = '1' THEN
         delayMatch1_reg(0) <= Test_FIR_with_Custom_FIR_Libraries_Sample_Based_Filtering_out2_unsigned;
-        delayMatch1_reg(1 TO 15) <= delayMatch1_reg(0 TO 14);
+        delayMatch1_reg(1) <= delayMatch1_reg(0);
       END IF;
     END IF;
   END PROCESS delayMatch1_process;
 
-  Test_FIR_with_Custom_FIR_Libraries_Sample_Based_Filtering_out2_1 <= delayMatch1_reg(15);
+  Test_FIR_with_Custom_FIR_Libraries_Sample_Based_Filtering_out2_1 <= delayMatch1_reg(1);
 
   avalon_source_channel <= std_logic_vector(Test_FIR_with_Custom_FIR_Libraries_Sample_Based_Filtering_out2_1);
 
@@ -197,12 +197,12 @@ BEGIN
     ELSIF rising_edge(clk) THEN
       IF enb = '1' THEN
         delayMatch2_reg(0) <= avalon_sink_error_unsigned;
-        delayMatch2_reg(1 TO 15) <= delayMatch2_reg(0 TO 14);
+        delayMatch2_reg(1) <= delayMatch2_reg(0);
       END IF;
     END IF;
   END PROCESS delayMatch2_process;
 
-  avalon_sink_error_1 <= delayMatch2_reg(15);
+  avalon_sink_error_1 <= delayMatch2_reg(1);
 
   avalon_source_error <= std_logic_vector(avalon_sink_error_1);
 

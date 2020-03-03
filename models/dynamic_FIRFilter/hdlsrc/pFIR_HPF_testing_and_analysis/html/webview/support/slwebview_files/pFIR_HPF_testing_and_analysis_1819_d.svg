@@ -500,7 +500,7 @@
         <!--RAWSTRING-->
         <g id="pFIR_HPF_testing_and_analysis:1850">
           <g clip-path="none" fill="none" opacity="0.65098" stroke="#000000" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,139,6)">
-            <image height="127" preserveAspectRatio="none" width="301" x="0" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAS0AAAB/CAYAAAC60pSmAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAEsElEQVR4nO3dQXPbRBgG4LdM2gM5tAe49MKF/Bf4wfwZGg69BJhkwCkkZZKBcliJOG5S5NqW8knPM7MjJ3WqtRu9/laVdp8leb7RXqw9BhjDbddu1h737Z6jtHD6MsnxxvbLkToLcN21q43to6F1nORlkldd6x8DjGGV5LLbrrrvfRRYyf1K61WSr7v2VbcFGMN5kovcnZa6Tau2PnKUdg7rOHeh9XqtAYzhOC2LkhZY12mV10fWK62XaRXW6yTfdA1gDH2FdZNWYa3yyH8GPjQ87EPr5ODdBLjTDwkv04aLD4bWF2P2CGBXQgsoRWgBpQgtoBShBZQitIBShBZQitACSjna8vk/JHnWtSE+dO2ftCtd36ddOPZrkp+79kvaPUe/J/mze+6Qv3fTmySnD2xPB/Z1iH3v98cdfnafHnpdyX7f0zH2MRdzfq8ee22DbRtapxkeWL0PSf5Ou9q1D63+5siLJL8leZfkrwwLLGDBxg6t67SA6qegeJfkjzwybw7Apm1D600+L7TWh4frE3y9T6uwbrOHshGYv7ErrYeaISEw2Lah9dNBegEwkEsegFKEFlCK0AJKEVpAKUILKEVoAaUILaAUoQWUsu3FpW61ASal0gJKEVpAKUILKEVoAaUILaAUoQWUIrSAUoQWUIrQAkoRWkApn7Maz1P1NslZ2pqKq1iWDGbpc1bjearOunaRtq6i0IIZmlOl1a9a3VdaV2lrLQIzMqdKa5W7lasND2Gm5lRpXef+6tVXEVowO3OqtPoVq29yfwVrYEbmFFrAArhOCyhFaAGlCC2gFKEFlCK0gFKEFlCK0AJKEVpAKUILKEVoAaUILaAUoQWUIrSAUoQWUIrQAkoRWkApQgsoRWgBpQgtoBShBZQitIBShBZQStXQ+naCfX6YYJ/AhqqhBSyU0AJKEVpAKVVD63bqDgDTEFpAKVVD62bqDgDTqBpaKi1YqKMtn//dQXrxadddu9rYAgu0bWidHqQXn3bbtZu1xyotWKgKoQXwn6rntICFElpAKUILKEVoAaUILaAUoQWUIrSAUoQWUMq2F5dWM+cpkp/6axujf0/9PeAAVFpAKUILKEVoAaVse07LOQRgUiotoBShBZQitIBS5n6dFtN5s/H1yQj7mLu3Sc6SnCdZpU07vrhZfIUWh7I5y+0hQmtpM+mede0iyWWEFuzVZhX0/Qj7mLvztMDqK62rLHA5PaFV1xgH7C7DkTGqoKVVWqu0CmsVw8PBlvbJNsRU5xnGOGB3GY6M8buytN/Hh5bTE1r/Y2mfbENMdZ5hjAN2l+GISmv/LKcXldY+THWeYYwDdpfhiNDiIFRau5vqPMMYHyCGIzw5Kq3dTXVgj/EBYjjCk6PS2t1UB7Z/CxZJaAGluPcQKMV8WtM7yWGuFq/iJN4DtqDSAkoRWkApQgsoRWgBpQgtoBShBZQitIBSjtJuOblOu9n3PMlxkudTdgpYnMHz0q2H1mXaFCsvuj9zYywwlsHz0h2l3eh7lZZufYXVfw9gDIPnpdscHqb7+iot7QDGMHheuj60+qpq8/wWwBgGz0v3LG1IuN5erD0GGMNj89I5tw4AAAAAAGP6F+fgiBMirRT0AAAAAElFTkSuQmCC" y="0"/>
+            <image height="127" preserveAspectRatio="none" width="301" x="0" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAS0AAAB/CAYAAAC60pSmAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAC30lEQVR4nO3ZsU4bQRiF0UtkKOICiqShSZX3f6Y0aaAwhSlwQYrZFRtjIhBioyvOkX7tYhY01aeZ9VmS86O5WNwDrOEwzcPifp6/bDLi9DXJ9uj6daXFAtxPsz+6vhitbZLLJFfTzPcAa9gluZuuu+mzZ8FK/t5pXSX5Ps236Qqwhpskt3l6LXXI2G09s8l4h7XNU7SuFwOwhm1Gi5IRrPuMndczy53WZcYO6zrJj2kA1jDvsB4ydli7vPBl4Knj4Rytnx++TIAn85HwLuO4eDJaX9ZcEcB7iRZQRbSAKqIFVBEtoIpoAVVEC6giWkCVzRufP/uQVQCfxeN7/4GdFlBFtIAqogVUES2gimgBVUQLqCJaQBXRAqqIFlBFtIAqogVUES2gimgBVUQLqCJaQBXRAqqIFlBFtIAqogVUES2gimgBVUQLqCJaQBXRAqqIFlBFtIAqogVUES2gimgBVUQLqCJaQBXRAqqIFlBFtIAqogVUES2gimgBVUQLqCJaQBXRAqqIFlBFtIAqogVUES2gimgBVUQLqCJaQBXRAqqIFlBFtIAqogVUES2gimgBVUQLqCJaQBXRAqqIFlBFtIAqogVUES2gimgBVUQLqCJaQBXRAqqIFlBFtIAqogVUES2gimgBVUQLqCJaQBXRAqqIFlBFtIAqogVUES2gimgBVUQLqCJaQBXRAqqIFlBFtIAqogVUES2gimgBVUQLqCJaQBXRAqqIFlBFtIAqogVUES2gyuaNzz9+yCoAXslOC6giWkAV0QKqiBZQRbSAKqIFVBEtoMomySHJfZJdkpsk2yTn/3NRwKfzK8nvjAbtMpp0OPXgMlp3SW6TXEy/O/kHAB/g9zS3GS36Z7Qekuwz6jbvsObPANZwkxGseae1z+jQM8fHw0w/7zNqB7CGXUZzdnnl8XDeVR2/3wJYw/00+8X1ZLTOMo6Ey7lY3AOs4TDNw+J+HgAAAAAAYC1/ALa/YfTSbDDAAAAAAElFTkSuQmCC" y="0"/>
           </g>
           <g clip-path="none" fill="#ffffff" fill-opacity="1" opacity="1" stroke="none" stroke-opacity="0" transform="matrix(1,0,0,1,140,7)">
             <path d="M0,0 L290,0 L290,116 L0,116 L0,0 z" fill-rule="evenodd" vector-effect="none"/>
@@ -521,7 +521,7 @@
               </clipPath>
             </defs>
             <g clip-path="url(#clip46)" fill="none" opacity="1" stroke="#e8d152" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,285,65)">
-              <text fill="#e8d152" fill-opacity="1" font-family="Liberation Sans" font-size="10" font-style="normal" font-weight="400" stroke="none" textLength="118" x="-58.375" xml:space="preserve" y="3.5">Memory Used = 8192 bits</text>
+              <text fill="#e8d152" fill-opacity="1" font-family="Liberation Sans" font-size="10" font-style="normal" font-weight="400" stroke="none" textLength="124" x="-61.1562" xml:space="preserve" y="3.5">Memory Used = 65536 bits</text>
             </g>
             <defs>
               <clipPath id="clip47">
@@ -529,7 +529,7 @@
               </clipPath>
             </defs>
             <g clip-path="url(#clip47)" fill="none" opacity="1" stroke="#e8d152" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,285,77)">
-              <text fill="#e8d152" fill-opacity="1" font-family="Liberation Sans" font-size="10" font-style="normal" font-weight="400" stroke="none" textLength="151.719" x="-75.8594" xml:space="preserve" y="3.5">Clock Rate Needed = 6144000 Hz</text>
+              <text fill="#e8d152" fill-opacity="1" font-family="Liberation Sans" font-size="10" font-style="normal" font-weight="400" stroke="none" textLength="157.266" x="-78.625" xml:space="preserve" y="3.5">Clock Rate Needed = 49152000 Hz</text>
             </g>
             <defs>
               <clipPath id="clip48">
@@ -787,5 +787,5 @@
       <!--RAWSTRING-->
     </g>
   </g>
-  <!--generated on ubuntu @ 2020-02-19 21:20:34 MST-->
+  <!--generated on ubuntu @ 2020-03-03 15:20:50 MST-->
 </svg>

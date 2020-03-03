@@ -81,8 +81,8 @@
 </span><span><a class="LN" id="68">   68   </a>          clk_enable                      :   <span class="KW">IN</span>    std_logic;
 </span><span><a class="LN" id="69">   69   </a>          enb                             :   <span class="KW">OUT</span>   std_logic;
 </span><span><a class="LN" id="70">   70   </a>          enb_1_1_1                       :   <span class="KW">OUT</span>   std_logic;
-</span><span><a class="LN" id="71">   71   </a>          enb_1_16_0                      :   <span class="KW">OUT</span>   std_logic;
-</span><span><a class="LN" id="72">   72   </a>          enb_1_16_1                      :   <span class="KW">OUT</span>   std_logic;
+</span><span><a class="LN" id="71">   71   </a>          enb_1_2_0                       :   <span class="KW">OUT</span>   std_logic;
+</span><span><a class="LN" id="72">   72   </a>          enb_1_2_1                       :   <span class="KW">OUT</span>   std_logic;
 </span><span><a class="LN" id="73">   73   </a>          enb_1_2048_0                    :   <span class="KW">OUT</span>   std_logic
 </span><span><a class="LN" id="74">   74   </a>          );
 </span><span><a class="LN" id="75">   75   </a>  <span class="KW">END</span> <span class="KW">COMPONENT</span>;
@@ -91,8 +91,8 @@
 </span><span><a class="LN" id="78">   78   </a>    <span class="KW">PORT</span>( clk                             :   <span class="KW">IN</span>    std_logic;
 </span><span><a class="LN" id="79">   79   </a>          reset                           :   <span class="KW">IN</span>    std_logic;
 </span><span><a class="LN" id="80">   80   </a>          enb                             :   <span class="KW">IN</span>    std_logic;
-</span><span><a class="LN" id="81">   81   </a>          enb_1_16_0                      :   <span class="KW">IN</span>    std_logic;
-</span><span><a class="LN" id="82">   82   </a>          enb_1_16_1                      :   <span class="KW">IN</span>    std_logic;
+</span><span><a class="LN" id="81">   81   </a>          enb_1_2_0                       :   <span class="KW">IN</span>    std_logic;
+</span><span><a class="LN" id="82">   82   </a>          enb_1_2_1                       :   <span class="KW">IN</span>    std_logic;
 </span><span><a class="LN" id="83">   83   </a>          enb_1_2048_0                    :   <span class="KW">IN</span>    std_logic;
 </span><span><a class="LN" id="84">   84   </a>          Sink_Valid                      :   <span class="KW">IN</span>    std_logic;
 </span><span><a class="LN" id="85">   85   </a>          Sink_Data                       :   <span class="KW">IN</span>    std_logic_vector(31 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- sfix32_En28</span>
@@ -112,19 +112,19 @@
 </span><span><a class="LN" id="99">   99   </a>
 </span><span><a class="LN" id="100">  100   </a>  <span class="CT">-- Signals</span>
 </span><span><a class="LN" id="101">  101   </a>  <span class="KW">SIGNAL</span> enb                              : std_logic;
-</span><span><a class="LN" id="102">  102   </a>  <span class="KW">SIGNAL</span> enb_1_16_0                       : std_logic;
-</span><span><a class="LN" id="103">  103   </a>  <span class="KW">SIGNAL</span> enb_1_16_1                       : std_logic;
+</span><span><a class="LN" id="102">  102   </a>  <span class="KW">SIGNAL</span> enb_1_2_0                        : std_logic;
+</span><span><a class="LN" id="103">  103   </a>  <span class="KW">SIGNAL</span> enb_1_2_1                        : std_logic;
 </span><span><a class="LN" id="104">  104   </a>  <span class="KW">SIGNAL</span> enb_1_2048_0                     : std_logic;
 </span><span><a class="LN" id="105">  105   </a>  <span class="KW">SIGNAL</span> enb_1_1_1                        : std_logic;
-</span><span><a class="LN" id="106">  106   </a>  <span class="KW">SIGNAL</span> delayMatch_reg                   : std_logic_vector(0 <span class="KW">TO</span> 15);  <span class="CT">-- ufix1 [16]</span>
+</span><span><a class="LN" id="106">  106   </a>  <span class="KW">SIGNAL</span> delayMatch_reg                   : std_logic_vector(0 <span class="KW">TO</span> 1);  <span class="CT">-- ufix1 [2]</span>
 </span><span><a class="LN" id="107">  107   </a>  <span class="KW">SIGNAL</span> avalon_sink_valid_1              : std_logic;
 </span><span><a class="LN" id="108">  108   </a>  <span class="KW">SIGNAL</span> Test_FIR_with_Custom_FIR_Libraries_Sample_Based_Filtering_out1 : std_logic_vector(31 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- ufix32</span>
 </span><span><a class="LN" id="109">  109   </a>  <span class="KW">SIGNAL</span> Test_FIR_with_Custom_FIR_Libraries_Sample_Based_Filtering_out2 : std_logic_vector(1 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- ufix2</span>
 </span><span><a class="LN" id="110">  110   </a>  <span class="KW">SIGNAL</span> Test_FIR_with_Custom_FIR_Libraries_Sample_Based_Filtering_out2_unsigned : unsigned(1 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- ufix2</span>
-</span><span><a class="LN" id="111">  111   </a>  <span class="KW">SIGNAL</span> delayMatch1_reg                  : vector_of_unsigned2(0 <span class="KW">TO</span> 15);  <span class="CT">-- ufix2 [16]</span>
+</span><span><a class="LN" id="111">  111   </a>  <span class="KW">SIGNAL</span> delayMatch1_reg                  : vector_of_unsigned2(0 <span class="KW">TO</span> 1);  <span class="CT">-- ufix2 [2]</span>
 </span><span><a class="LN" id="112">  112   </a>  <span class="KW">SIGNAL</span> Test_FIR_with_Custom_FIR_Libraries_Sample_Based_Filtering_out2_1 : unsigned(1 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- ufix2</span>
 </span><span><a class="LN" id="113">  113   </a>  <span class="KW">SIGNAL</span> avalon_sink_error_unsigned       : unsigned(1 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- ufix2</span>
-</span><span><a class="LN" id="114">  114   </a>  <span class="KW">SIGNAL</span> delayMatch2_reg                  : vector_of_unsigned2(0 <span class="KW">TO</span> 15);  <span class="CT">-- ufix2 [16]</span>
+</span><span><a class="LN" id="114">  114   </a>  <span class="KW">SIGNAL</span> delayMatch2_reg                  : vector_of_unsigned2(0 <span class="KW">TO</span> 1);  <span class="CT">-- ufix2 [2]</span>
 </span><span><a class="LN" id="115">  115   </a>  <span class="KW">SIGNAL</span> avalon_sink_error_1              : unsigned(1 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- ufix2</span>
 </span><span><a class="LN" id="116">  116   </a>
 </span><span><a class="LN" id="117">  117   </a><span class="KW">BEGIN</span>
@@ -149,8 +149,8 @@
 </span><span><a class="LN" id="136">  136   </a>              clk_enable =&gt; clk_enable,
 </span><span><a class="LN" id="137">  137   </a>              enb =&gt; enb,
 </span><span><a class="LN" id="138">  138   </a>              enb_1_1_1 =&gt; enb_1_1_1,
-</span><span><a class="LN" id="139">  139   </a>              enb_1_16_0 =&gt; enb_1_16_0,
-</span><span><a class="LN" id="140">  140   </a>              enb_1_16_1 =&gt; enb_1_16_1,
+</span><span><a class="LN" id="139">  139   </a>              enb_1_2_0 =&gt; enb_1_2_0,
+</span><span><a class="LN" id="140">  140   </a>              enb_1_2_1 =&gt; enb_1_2_1,
 </span><span><a class="LN" id="141">  141   </a>              enb_1_2048_0 =&gt; enb_1_2048_0
 </span><span><a class="LN" id="142">  142   </a>              );
 </span><span><a class="LN" id="143">  143   </a>
@@ -159,8 +159,8 @@
 </span><span><a class="LN" id="146">  146   </a>    <span class="KW">PORT</span> <span class="KW">MAP</span>( clk =&gt; clk,
 </span><span><a class="LN" id="147">  147   </a>              reset =&gt; reset,
 </span><span><a class="LN" id="148">  148   </a>              enb =&gt; enb,
-</span><span><a class="LN" id="149">  149   </a>              enb_1_16_0 =&gt; enb_1_16_0,
-</span><span><a class="LN" id="150">  150   </a>              enb_1_16_1 =&gt; enb_1_16_1,
+</span><span><a class="LN" id="149">  149   </a>              enb_1_2_0 =&gt; enb_1_2_0,
+</span><span><a class="LN" id="150">  150   </a>              enb_1_2_1 =&gt; enb_1_2_1,
 </span><span><a class="LN" id="151">  151   </a>              enb_1_2048_0 =&gt; enb_1_2048_0,
 </span><span><a class="LN" id="152">  152   </a>              Sink_Valid =&gt; avalon_sink_valid,
 </span><span><a class="LN" id="153">  153   </a>              Sink_Data =&gt; avalon_sink_data,  <span class="CT">-- sfix32_En28</span>
@@ -177,12 +177,12 @@
 </span><span><a class="LN" id="164">  164   </a>    <span class="KW">ELSIF</span> rising_edge(clk) <span class="KW">THEN</span>
 </span><span><a class="LN" id="165">  165   </a>      <span class="KW">IF</span> enb = '1' <span class="KW">THEN</span>
 </span><span><a class="LN" id="166">  166   </a>        delayMatch_reg(0) &lt;= avalon_sink_valid;
-</span><span><a class="LN" id="167">  167   </a>        delayMatch_reg(1 <span class="KW">TO</span> 15) &lt;= delayMatch_reg(0 <span class="KW">TO</span> 14);
+</span><span><a class="LN" id="167">  167   </a>        delayMatch_reg(1) &lt;= delayMatch_reg(0);
 </span><span><a class="LN" id="168">  168   </a>      <span class="KW">END</span> <span class="KW">IF</span>;
 </span><span><a class="LN" id="169">  169   </a>    <span class="KW">END</span> <span class="KW">IF</span>;
 </span><span><a class="LN" id="170">  170   </a>  <span class="KW">END</span> <span class="KW">PROCESS</span> delayMatch_process;
 </span><span><a class="LN" id="171">  171   </a>
-</span><span><a class="LN" id="172">  172   </a>  avalon_sink_valid_1 &lt;= delayMatch_reg(15);
+</span><span><a class="LN" id="172">  172   </a>  avalon_sink_valid_1 &lt;= delayMatch_reg(1);
 </span><span><a class="LN" id="173">  173   </a>
 </span><span><a class="LN" id="174">  174   </a>  Test_FIR_with_Custom_FIR_Libraries_Sample_Based_Filtering_out2_unsigned &lt;= unsigned(Test_FIR_with_Custom_FIR_Libraries_Sample_Based_Filtering_out2);
 </span><span><a class="LN" id="175">  175   </a>
@@ -193,12 +193,12 @@
 </span><span><a class="LN" id="180">  180   </a>    <span class="KW">ELSIF</span> rising_edge(clk) <span class="KW">THEN</span>
 </span><span><a class="LN" id="181">  181   </a>      <span class="KW">IF</span> enb = '1' <span class="KW">THEN</span>
 </span><span><a class="LN" id="182">  182   </a>        delayMatch1_reg(0) &lt;= Test_FIR_with_Custom_FIR_Libraries_Sample_Based_Filtering_out2_unsigned;
-</span><span><a class="LN" id="183">  183   </a>        delayMatch1_reg(1 <span class="KW">TO</span> 15) &lt;= delayMatch1_reg(0 <span class="KW">TO</span> 14);
+</span><span><a class="LN" id="183">  183   </a>        delayMatch1_reg(1) &lt;= delayMatch1_reg(0);
 </span><span><a class="LN" id="184">  184   </a>      <span class="KW">END</span> <span class="KW">IF</span>;
 </span><span><a class="LN" id="185">  185   </a>    <span class="KW">END</span> <span class="KW">IF</span>;
 </span><span><a class="LN" id="186">  186   </a>  <span class="KW">END</span> <span class="KW">PROCESS</span> delayMatch1_process;
 </span><span><a class="LN" id="187">  187   </a>
-</span><span><a class="LN" id="188">  188   </a>  Test_FIR_with_Custom_FIR_Libraries_Sample_Based_Filtering_out2_1 &lt;= delayMatch1_reg(15);
+</span><span><a class="LN" id="188">  188   </a>  Test_FIR_with_Custom_FIR_Libraries_Sample_Based_Filtering_out2_1 &lt;= delayMatch1_reg(1);
 </span><span><a class="LN" id="189">  189   </a>
 </span><span><a class="LN" id="190">  190   </a>  avalon_source_channel &lt;= std_logic_vector(Test_FIR_with_Custom_FIR_Libraries_Sample_Based_Filtering_out2_1);
 </span><span><a class="LN" id="191">  191   </a>
@@ -211,12 +211,12 @@
 </span><span><a class="LN" id="198">  198   </a>    <span class="KW">ELSIF</span> rising_edge(clk) <span class="KW">THEN</span>
 </span><span><a class="LN" id="199">  199   </a>      <span class="KW">IF</span> enb = '1' <span class="KW">THEN</span>
 </span><span><a class="LN" id="200">  200   </a>        delayMatch2_reg(0) &lt;= avalon_sink_error_unsigned;
-</span><span><a class="LN" id="201">  201   </a>        delayMatch2_reg(1 <span class="KW">TO</span> 15) &lt;= delayMatch2_reg(0 <span class="KW">TO</span> 14);
+</span><span><a class="LN" id="201">  201   </a>        delayMatch2_reg(1) &lt;= delayMatch2_reg(0);
 </span><span><a class="LN" id="202">  202   </a>      <span class="KW">END</span> <span class="KW">IF</span>;
 </span><span><a class="LN" id="203">  203   </a>    <span class="KW">END</span> <span class="KW">IF</span>;
 </span><span><a class="LN" id="204">  204   </a>  <span class="KW">END</span> <span class="KW">PROCESS</span> delayMatch2_process;
 </span><span><a class="LN" id="205">  205   </a>
-</span><span><a class="LN" id="206">  206   </a>  avalon_sink_error_1 &lt;= delayMatch2_reg(15);
+</span><span><a class="LN" id="206">  206   </a>  avalon_sink_error_1 &lt;= delayMatch2_reg(1);
 </span><span><a class="LN" id="207">  207   </a>
 </span><span><a class="LN" id="208">  208   </a>  avalon_source_error &lt;= std_logic_vector(avalon_sink_error_1);
 </span><span><a class="LN" id="209">  209   </a>

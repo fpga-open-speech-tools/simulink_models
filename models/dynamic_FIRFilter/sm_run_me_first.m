@@ -25,7 +25,7 @@ clear all   % clear all workspace variables
 close all   % close all open Matlab windows
 clc         % clear command window
 %% Add DSP blocks to the path
-addpath([pwd '/../../../simulink_library/']);
+% addpath([pwd '/../../../simulink_library/']);
 %add_library_to_path;
 %% Fast simulation
 % Fast simulation reduces the Fs_system clock rate to reduce the number of

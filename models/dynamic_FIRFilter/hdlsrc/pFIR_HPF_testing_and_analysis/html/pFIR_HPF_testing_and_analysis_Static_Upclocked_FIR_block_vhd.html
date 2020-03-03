@@ -35,8 +35,8 @@
 </span><span><a class="LN" id="22">   22   </a><span class="KW">ENTITY</span> pFIR_HPF_testing_and_analysis_Static_Upclocked_FIR_block <span class="KW">IS</span>
 </span><span><a class="LN" id="23">   23   </a>  <span class="KW">PORT</span>( clk                               :   <span class="KW">IN</span>    std_logic;
 </span><span><a class="LN" id="24">   24   </a>        reset                             :   <span class="KW">IN</span>    std_logic;
-</span><span><a class="LN" id="25">   25   </a>        enb_1_16_0                        :   <span class="KW">IN</span>    std_logic;
-</span><span><a class="LN" id="26">   26   </a>        enb_1_16_1                        :   <span class="KW">IN</span>    std_logic;
+</span><span><a class="LN" id="25">   25   </a>        enb_1_2_0                         :   <span class="KW">IN</span>    std_logic;
+</span><span><a class="LN" id="26">   26   </a>        enb_1_2_1                         :   <span class="KW">IN</span>    std_logic;
 </span><span><a class="LN" id="27">   27   </a>        enb_1_2048_0                      :   <span class="KW">IN</span>    std_logic;
 </span><span><a class="LN" id="28">   28   </a>        Data_In                           :   <span class="KW">IN</span>    std_logic_vector(31 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- sfix32_En28</span>
 </span><span><a class="LN" id="29">   29   </a>        Valid_in                          :   <span class="KW">IN</span>    std_logic;
@@ -53,12 +53,12 @@
 </span><span><a class="LN" id="40">   40   </a>  <span class="KW">COMPONENT</span> pFIR_HPF_testing_and_analysis_Addr_Gen_block
 </span><span><a class="LN" id="41">   41   </a>    <span class="KW">PORT</span>( clk                             :   <span class="KW">IN</span>    std_logic;
 </span><span><a class="LN" id="42">   42   </a>          reset                           :   <span class="KW">IN</span>    std_logic;
-</span><span><a class="LN" id="43">   43   </a>          enb_1_16_0                      :   <span class="KW">IN</span>    std_logic;
+</span><span><a class="LN" id="43">   43   </a>          enb_1_2_0                       :   <span class="KW">IN</span>    std_logic;
 </span><span><a class="LN" id="44">   44   </a>          enb_1_2048_0                    :   <span class="KW">IN</span>    std_logic;
-</span><span><a class="LN" id="45">   45   </a>          Input_Addr                      :   <span class="KW">OUT</span>   std_logic_vector(6 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- ufix7</span>
-</span><span><a class="LN" id="46">   46   </a>          Data_History_Rd_addr            :   <span class="KW">OUT</span>   std_logic_vector(6 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- ufix7</span>
+</span><span><a class="LN" id="45">   45   </a>          Input_Addr                      :   <span class="KW">OUT</span>   std_logic_vector(9 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- ufix10</span>
+</span><span><a class="LN" id="46">   46   </a>          Data_History_Rd_addr            :   <span class="KW">OUT</span>   std_logic_vector(9 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- ufix10</span>
 </span><span><a class="LN" id="47">   47   </a>          End_of_sample_calc              :   <span class="KW">OUT</span>   std_logic;
-</span><span><a class="LN" id="48">   48   </a>          b_k_addr                        :   <span class="KW">OUT</span>   std_logic_vector(6 <span class="KW">DOWNTO</span> 0)  <span class="CT">-- ufix7</span>
+</span><span><a class="LN" id="48">   48   </a>          b_k_addr                        :   <span class="KW">OUT</span>   std_logic_vector(9 <span class="KW">DOWNTO</span> 0)  <span class="CT">-- ufix10</span>
 </span><span><a class="LN" id="49">   49   </a>          );
 </span><span><a class="LN" id="50">   50   </a>  <span class="KW">END</span> <span class="KW">COMPONENT</span>;
 </span><span><a class="LN" id="51">   51   </a>
@@ -67,7 +67,7 @@
 </span><span><a class="LN" id="54">   54   </a>             DataWidth                    : integer
 </span><span><a class="LN" id="55">   55   </a>             );
 </span><span><a class="LN" id="56">   56   </a>    <span class="KW">PORT</span>( clk                             :   <span class="KW">IN</span>    std_logic;
-</span><span><a class="LN" id="57">   57   </a>          enb_1_16_0                      :   <span class="KW">IN</span>    std_logic;
+</span><span><a class="LN" id="57">   57   </a>          enb_1_2_0                       :   <span class="KW">IN</span>    std_logic;
 </span><span><a class="LN" id="58">   58   </a>          wr_din                          :   <span class="KW">IN</span>    std_logic_vector(DataWidth - 1 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- generic width</span>
 </span><span><a class="LN" id="59">   59   </a>          wr_addr                         :   <span class="KW">IN</span>    std_logic_vector(AddrWidth - 1 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- generic width</span>
 </span><span><a class="LN" id="60">   60   </a>          wr_en                           :   <span class="KW">IN</span>    std_logic;
@@ -79,12 +79,12 @@
 </span><span><a class="LN" id="66">   66   </a>  <span class="KW">COMPONENT</span> pFIR_HPF_testing_and_analysis_B_k_Memory_Block_block
 </span><span><a class="LN" id="67">   67   </a>    <span class="KW">PORT</span>( clk                             :   <span class="KW">IN</span>    std_logic;
 </span><span><a class="LN" id="68">   68   </a>          reset                           :   <span class="KW">IN</span>    std_logic;
-</span><span><a class="LN" id="69">   69   </a>          enb_1_16_0                      :   <span class="KW">IN</span>    std_logic;
+</span><span><a class="LN" id="69">   69   </a>          enb_1_2_0                       :   <span class="KW">IN</span>    std_logic;
 </span><span><a class="LN" id="70">   70   </a>          din_A                           :   <span class="KW">IN</span>    std_logic_vector(31 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- sfix32_En28</span>
-</span><span><a class="LN" id="71">   71   </a>          addr_A                          :   <span class="KW">IN</span>    std_logic_vector(6 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- ufix7</span>
+</span><span><a class="LN" id="71">   71   </a>          addr_A                          :   <span class="KW">IN</span>    std_logic_vector(9 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- ufix10</span>
 </span><span><a class="LN" id="72">   72   </a>          we_A                            :   <span class="KW">IN</span>    std_logic;
 </span><span><a class="LN" id="73">   73   </a>          din_B                           :   <span class="KW">IN</span>    std_logic_vector(31 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- sfix32_En28</span>
-</span><span><a class="LN" id="74">   74   </a>          addr_B                          :   <span class="KW">IN</span>    std_logic_vector(6 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- ufix7</span>
+</span><span><a class="LN" id="74">   74   </a>          addr_B                          :   <span class="KW">IN</span>    std_logic_vector(9 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- ufix10</span>
 </span><span><a class="LN" id="75">   75   </a>          we_B                            :   <span class="KW">IN</span>    std_logic;
 </span><span><a class="LN" id="76">   76   </a>          dout_A                          :   <span class="KW">OUT</span>   std_logic_vector(31 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- sfix32_En28</span>
 </span><span><a class="LN" id="77">   77   </a>          dout_B                          :   <span class="KW">OUT</span>   std_logic_vector(31 <span class="KW">DOWNTO</span> 0)  <span class="CT">-- sfix32_En28</span>
@@ -94,7 +94,7 @@
 </span><span><a class="LN" id="81">   81   </a>  <span class="KW">COMPONENT</span> pFIR_HPF_testing_and_analysis_Multiply_And_Sum_block
 </span><span><a class="LN" id="82">   82   </a>    <span class="KW">PORT</span>( clk                             :   <span class="KW">IN</span>    std_logic;
 </span><span><a class="LN" id="83">   83   </a>          reset                           :   <span class="KW">IN</span>    std_logic;
-</span><span><a class="LN" id="84">   84   </a>          enb_1_16_0                      :   <span class="KW">IN</span>    std_logic;
+</span><span><a class="LN" id="84">   84   </a>          enb_1_2_0                       :   <span class="KW">IN</span>    std_logic;
 </span><span><a class="LN" id="85">   85   </a>          x_n_i                           :   <span class="KW">IN</span>    std_logic_vector(31 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- sfix32_En28</span>
 </span><span><a class="LN" id="86">   86   </a>          End_of_sample_calc              :   <span class="KW">IN</span>    std_logic;
 </span><span><a class="LN" id="87">   87   </a>          b_i                             :   <span class="KW">IN</span>    std_logic_vector(31 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- sfix32_En28</span>
@@ -119,22 +119,22 @@
 </span><span><a class="LN" id="106">  106   </a>  <span class="CT">-- Signals</span>
 </span><span><a class="LN" id="107">  107   </a>  <span class="KW">SIGNAL</span> Data_In_signed                   : signed(31 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- sfix32_En28</span>
 </span><span><a class="LN" id="108">  108   </a>  <span class="KW">SIGNAL</span> Rate_Transition1_out1            : signed(31 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- sfix32_En28</span>
-</span><span><a class="LN" id="109">  109   </a>  <span class="KW">SIGNAL</span> Addr_Gen_out1                    : std_logic_vector(6 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- ufix7</span>
-</span><span><a class="LN" id="110">  110   </a>  <span class="KW">SIGNAL</span> Addr_Gen_out2                    : std_logic_vector(6 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- ufix7</span>
+</span><span><a class="LN" id="109">  109   </a>  <span class="KW">SIGNAL</span> Addr_Gen_out1                    : std_logic_vector(9 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- ufix10</span>
+</span><span><a class="LN" id="110">  110   </a>  <span class="KW">SIGNAL</span> Addr_Gen_out2                    : std_logic_vector(9 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- ufix10</span>
 </span><span><a class="LN" id="111">  111   </a>  <span class="KW">SIGNAL</span> Addr_Gen_out3                    : std_logic;
-</span><span><a class="LN" id="112">  112   </a>  <span class="KW">SIGNAL</span> Addr_Gen_out4                    : std_logic_vector(6 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- ufix7</span>
-</span><span><a class="LN" id="113">  113   </a>  <span class="KW">SIGNAL</span> Addr_Gen_out1_unsigned           : unsigned(6 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- ufix7</span>
+</span><span><a class="LN" id="112">  112   </a>  <span class="KW">SIGNAL</span> Addr_Gen_out4                    : std_logic_vector(9 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- ufix10</span>
+</span><span><a class="LN" id="113">  113   </a>  <span class="KW">SIGNAL</span> Addr_Gen_out1_unsigned           : unsigned(9 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- ufix10</span>
 </span><span><a class="LN" id="114">  114   </a>  <span class="KW">SIGNAL</span> Rate_Transition2_out1            : std_logic;
-</span><span><a class="LN" id="115">  115   </a>  <span class="KW">SIGNAL</span> Addr_Gen_out2_unsigned           : unsigned(6 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- ufix7</span>
+</span><span><a class="LN" id="115">  115   </a>  <span class="KW">SIGNAL</span> Addr_Gen_out2_unsigned           : unsigned(9 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- ufix10</span>
 </span><span><a class="LN" id="116">  116   </a>  <span class="KW">SIGNAL</span> Rate_Transition1_out1_1          : signed(31 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- sfix32_En28</span>
-</span><span><a class="LN" id="117">  117   </a>  <span class="KW">SIGNAL</span> Addr_Gen_out1_1                  : unsigned(6 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- ufix7</span>
+</span><span><a class="LN" id="117">  117   </a>  <span class="KW">SIGNAL</span> Addr_Gen_out1_1                  : unsigned(9 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- ufix10</span>
 </span><span><a class="LN" id="118">  118   </a>  <span class="KW">SIGNAL</span> Rate_Transition2_out1_1          : std_logic;
 </span><span><a class="LN" id="119">  119   </a>  <span class="KW">SIGNAL</span> Data_Type_Conversion1_out1       : std_logic;
-</span><span><a class="LN" id="120">  120   </a>  <span class="KW">SIGNAL</span> Addr_Gen_out2_1                  : unsigned(6 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- ufix7</span>
+</span><span><a class="LN" id="120">  120   </a>  <span class="KW">SIGNAL</span> Addr_Gen_out2_1                  : unsigned(9 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- ufix10</span>
 </span><span><a class="LN" id="121">  121   </a>  <span class="KW">SIGNAL</span> x_n_i                            : std_logic_vector(31 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- ufix32</span>
 </span><span><a class="LN" id="122">  122   </a>  <span class="KW">SIGNAL</span> Alignment_Delay_out1             : std_logic;
 </span><span><a class="LN" id="123">  123   </a>  <span class="KW">SIGNAL</span> READ_ONLY_1_out1                 : signed(31 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- sfix32_En28</span>
-</span><span><a class="LN" id="124">  124   </a>  <span class="KW">SIGNAL</span> READ_ONLY_2_out1                 : unsigned(6 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- ufix7</span>
+</span><span><a class="LN" id="124">  124   </a>  <span class="KW">SIGNAL</span> READ_ONLY_2_out1                 : unsigned(9 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- ufix10</span>
 </span><span><a class="LN" id="125">  125   </a>  <span class="KW">SIGNAL</span> READ_ONLY_3_out1                 : std_logic;
 </span><span><a class="LN" id="126">  126   </a>  <span class="KW">SIGNAL</span> Never_write_B2_out1              : signed(31 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- sfix32_En28</span>
 </span><span><a class="LN" id="127">  127   </a>  <span class="KW">SIGNAL</span> Always_read_B2_out1              : std_logic;
@@ -158,21 +158,21 @@
 </span><span><a class="LN" id="145">  145   </a>  u_Addr_Gen : pFIR_HPF_testing_and_analysis_Addr_Gen_block
 </span><span><a class="LN" id="146">  146   </a>    <span class="KW">PORT</span> <span class="KW">MAP</span>( clk =&gt; clk,
 </span><span><a class="LN" id="147">  147   </a>              reset =&gt; reset,
-</span><span><a class="LN" id="148">  148   </a>              enb_1_16_0 =&gt; enb_1_16_0,
+</span><span><a class="LN" id="148">  148   </a>              enb_1_2_0 =&gt; enb_1_2_0,
 </span><span><a class="LN" id="149">  149   </a>              enb_1_2048_0 =&gt; enb_1_2048_0,
-</span><span><a class="LN" id="150">  150   </a>              Input_Addr =&gt; Addr_Gen_out1,  <span class="CT">-- ufix7</span>
-</span><span><a class="LN" id="151">  151   </a>              Data_History_Rd_addr =&gt; Addr_Gen_out2,  <span class="CT">-- ufix7</span>
+</span><span><a class="LN" id="150">  150   </a>              Input_Addr =&gt; Addr_Gen_out1,  <span class="CT">-- ufix10</span>
+</span><span><a class="LN" id="151">  151   </a>              Data_History_Rd_addr =&gt; Addr_Gen_out2,  <span class="CT">-- ufix10</span>
 </span><span><a class="LN" id="152">  152   </a>              End_of_sample_calc =&gt; Addr_Gen_out3,
-</span><span><a class="LN" id="153">  153   </a>              b_k_addr =&gt; Addr_Gen_out4  <span class="CT">-- ufix7</span>
+</span><span><a class="LN" id="153">  153   </a>              b_k_addr =&gt; Addr_Gen_out4  <span class="CT">-- ufix10</span>
 </span><span><a class="LN" id="154">  154   </a>              );
 </span><span><a class="LN" id="155">  155   </a>
 </span><span><a class="LN" id="156">  156   </a>  <span class="CT">-- <a href="matlab:coder.internal.code2model('pFIR_HPF_testing_and_analysis:1850:304')" name="code2model"><font color="#117755"><i>&lt;S26&gt;/Input_Data_Circular_Buffer</i></font></a></span>
 </span><span><a class="LN" id="157">  157   </a>  u_Input_Data_Circular_Buffer : pFIR_HPF_testing_and_analysis_SimpleDualPortRAM_generic
-</span><span><a class="LN" id="158">  158   </a>    <span class="KW">GENERIC</span> <span class="KW">MAP</span>( AddrWidth =&gt; 7,
+</span><span><a class="LN" id="158">  158   </a>    <span class="KW">GENERIC</span> <span class="KW">MAP</span>( AddrWidth =&gt; 10,
 </span><span><a class="LN" id="159">  159   </a>                 DataWidth =&gt; 32
 </span><span><a class="LN" id="160">  160   </a>                 )
 </span><span><a class="LN" id="161">  161   </a>    <span class="KW">PORT</span> <span class="KW">MAP</span>( clk =&gt; clk,
-</span><span><a class="LN" id="162">  162   </a>              enb_1_16_0 =&gt; enb_1_16_0,
+</span><span><a class="LN" id="162">  162   </a>              enb_1_2_0 =&gt; enb_1_2_0,
 </span><span><a class="LN" id="163">  163   </a>              wr_din =&gt; std_logic_vector(Rate_Transition1_out1_1),
 </span><span><a class="LN" id="164">  164   </a>              wr_addr =&gt; std_logic_vector(Addr_Gen_out1_1),
 </span><span><a class="LN" id="165">  165   </a>              wr_en =&gt; Data_Type_Conversion1_out1,
@@ -184,12 +184,12 @@
 </span><span><a class="LN" id="171">  171   </a>  u_B_k_Memory_Block : pFIR_HPF_testing_and_analysis_B_k_Memory_Block_block
 </span><span><a class="LN" id="172">  172   </a>    <span class="KW">PORT</span> <span class="KW">MAP</span>( clk =&gt; clk,
 </span><span><a class="LN" id="173">  173   </a>              reset =&gt; reset,
-</span><span><a class="LN" id="174">  174   </a>              enb_1_16_0 =&gt; enb_1_16_0,
+</span><span><a class="LN" id="174">  174   </a>              enb_1_2_0 =&gt; enb_1_2_0,
 </span><span><a class="LN" id="175">  175   </a>              din_A =&gt; std_logic_vector(READ_ONLY_1_out1),  <span class="CT">-- sfix32_En28</span>
-</span><span><a class="LN" id="176">  176   </a>              addr_A =&gt; std_logic_vector(READ_ONLY_2_out1),  <span class="CT">-- ufix7</span>
+</span><span><a class="LN" id="176">  176   </a>              addr_A =&gt; std_logic_vector(READ_ONLY_2_out1),  <span class="CT">-- ufix10</span>
 </span><span><a class="LN" id="177">  177   </a>              we_A =&gt; READ_ONLY_3_out1,
 </span><span><a class="LN" id="178">  178   </a>              din_B =&gt; std_logic_vector(Never_write_B2_out1),  <span class="CT">-- sfix32_En28</span>
-</span><span><a class="LN" id="179">  179   </a>              addr_B =&gt; Addr_Gen_out4,  <span class="CT">-- ufix7</span>
+</span><span><a class="LN" id="179">  179   </a>              addr_B =&gt; Addr_Gen_out4,  <span class="CT">-- ufix10</span>
 </span><span><a class="LN" id="180">  180   </a>              we_B =&gt; Always_read_B2_out1,
 </span><span><a class="LN" id="181">  181   </a>              dout_A =&gt; B_k_Memory_Block_out1,  <span class="CT">-- sfix32_En28</span>
 </span><span><a class="LN" id="182">  182   </a>              dout_B =&gt; b_i  <span class="CT">-- sfix32_En28</span>
@@ -203,7 +203,7 @@
 </span><span><a class="LN" id="190">  190   </a>  u_Multiply_And_Sum : pFIR_HPF_testing_and_analysis_Multiply_And_Sum_block
 </span><span><a class="LN" id="191">  191   </a>    <span class="KW">PORT</span> <span class="KW">MAP</span>( clk =&gt; clk,
 </span><span><a class="LN" id="192">  192   </a>              reset =&gt; reset,
-</span><span><a class="LN" id="193">  193   </a>              enb_1_16_0 =&gt; enb_1_16_0,
+</span><span><a class="LN" id="193">  193   </a>              enb_1_2_0 =&gt; enb_1_2_0,
 </span><span><a class="LN" id="194">  194   </a>              x_n_i =&gt; x_n_i,  <span class="CT">-- sfix32_En28</span>
 </span><span><a class="LN" id="195">  195   </a>              End_of_sample_calc =&gt; Alignment_Delay_out1,
 </span><span><a class="LN" id="196">  196   </a>              b_i =&gt; b_i,  <span class="CT">-- sfix32_En28</span>
@@ -219,7 +219,7 @@
 </span><span><a class="LN" id="206">  206   </a>    <span class="KW">IF</span> reset = '1' <span class="KW">THEN</span>
 </span><span><a class="LN" id="207">  207   </a>      Rate_Transition1_out1 &lt;= to_signed(0, 32);
 </span><span><a class="LN" id="208">  208   </a>    <span class="KW">ELSIF</span> rising_edge(clk) <span class="KW">THEN</span>
-</span><span><a class="LN" id="209">  209   </a>      <span class="KW">IF</span> enb_1_16_1 = '1' <span class="KW">THEN</span>
+</span><span><a class="LN" id="209">  209   </a>      <span class="KW">IF</span> enb_1_2_1 = '1' <span class="KW">THEN</span>
 </span><span><a class="LN" id="210">  210   </a>        Rate_Transition1_out1 &lt;= Data_In_signed;
 </span><span><a class="LN" id="211">  211   </a>      <span class="KW">END</span> <span class="KW">IF</span>;
 </span><span><a class="LN" id="212">  212   </a>    <span class="KW">END</span> <span class="KW">IF</span>;
@@ -234,7 +234,7 @@
 </span><span><a class="LN" id="221">  221   </a>    <span class="KW">IF</span> reset = '1' <span class="KW">THEN</span>
 </span><span><a class="LN" id="222">  222   </a>      Rate_Transition2_out1 &lt;= '0';
 </span><span><a class="LN" id="223">  223   </a>    <span class="KW">ELSIF</span> rising_edge(clk) <span class="KW">THEN</span>
-</span><span><a class="LN" id="224">  224   </a>      <span class="KW">IF</span> enb_1_16_1 = '1' <span class="KW">THEN</span>
+</span><span><a class="LN" id="224">  224   </a>      <span class="KW">IF</span> enb_1_2_1 = '1' <span class="KW">THEN</span>
 </span><span><a class="LN" id="225">  225   </a>        Rate_Transition2_out1 &lt;= Valid_in;
 </span><span><a class="LN" id="226">  226   </a>      <span class="KW">END</span> <span class="KW">IF</span>;
 </span><span><a class="LN" id="227">  227   </a>    <span class="KW">END</span> <span class="KW">IF</span>;
@@ -249,7 +249,7 @@
 </span><span><a class="LN" id="236">  236   </a>    <span class="KW">IF</span> reset = '1' <span class="KW">THEN</span>
 </span><span><a class="LN" id="237">  237   </a>      Rate_Transition1_out1_1 &lt;= to_signed(0, 32);
 </span><span><a class="LN" id="238">  238   </a>    <span class="KW">ELSIF</span> rising_edge(clk) <span class="KW">THEN</span>
-</span><span><a class="LN" id="239">  239   </a>      <span class="KW">IF</span> enb_1_16_0 = '1' <span class="KW">THEN</span>
+</span><span><a class="LN" id="239">  239   </a>      <span class="KW">IF</span> enb_1_2_0 = '1' <span class="KW">THEN</span>
 </span><span><a class="LN" id="240">  240   </a>        Rate_Transition1_out1_1 &lt;= Rate_Transition1_out1;
 </span><span><a class="LN" id="241">  241   </a>      <span class="KW">END</span> <span class="KW">IF</span>;
 </span><span><a class="LN" id="242">  242   </a>    <span class="KW">END</span> <span class="KW">IF</span>;
@@ -259,9 +259,9 @@
 </span><span><a class="LN" id="246">  246   </a>  delayMatch_process : <span class="KW">PROCESS</span> (clk, reset)
 </span><span><a class="LN" id="247">  247   </a>  <span class="KW">BEGIN</span>
 </span><span><a class="LN" id="248">  248   </a>    <span class="KW">IF</span> reset = '1' <span class="KW">THEN</span>
-</span><span><a class="LN" id="249">  249   </a>      Addr_Gen_out1_1 &lt;= to_unsigned(16#00#, 7);
+</span><span><a class="LN" id="249">  249   </a>      Addr_Gen_out1_1 &lt;= to_unsigned(16#000#, 10);
 </span><span><a class="LN" id="250">  250   </a>    <span class="KW">ELSIF</span> rising_edge(clk) <span class="KW">THEN</span>
-</span><span><a class="LN" id="251">  251   </a>      <span class="KW">IF</span> enb_1_16_0 = '1' <span class="KW">THEN</span>
+</span><span><a class="LN" id="251">  251   </a>      <span class="KW">IF</span> enb_1_2_0 = '1' <span class="KW">THEN</span>
 </span><span><a class="LN" id="252">  252   </a>        Addr_Gen_out1_1 &lt;= Addr_Gen_out1_unsigned;
 </span><span><a class="LN" id="253">  253   </a>      <span class="KW">END</span> <span class="KW">IF</span>;
 </span><span><a class="LN" id="254">  254   </a>    <span class="KW">END</span> <span class="KW">IF</span>;
@@ -273,7 +273,7 @@
 </span><span><a class="LN" id="260">  260   </a>    <span class="KW">IF</span> reset = '1' <span class="KW">THEN</span>
 </span><span><a class="LN" id="261">  261   </a>      Rate_Transition2_out1_1 &lt;= '0';
 </span><span><a class="LN" id="262">  262   </a>    <span class="KW">ELSIF</span> rising_edge(clk) <span class="KW">THEN</span>
-</span><span><a class="LN" id="263">  263   </a>      <span class="KW">IF</span> enb_1_16_0 = '1' <span class="KW">THEN</span>
+</span><span><a class="LN" id="263">  263   </a>      <span class="KW">IF</span> enb_1_2_0 = '1' <span class="KW">THEN</span>
 </span><span><a class="LN" id="264">  264   </a>        Rate_Transition2_out1_1 &lt;= Rate_Transition2_out1;
 </span><span><a class="LN" id="265">  265   </a>      <span class="KW">END</span> <span class="KW">IF</span>;
 </span><span><a class="LN" id="266">  266   </a>    <span class="KW">END</span> <span class="KW">IF</span>;
@@ -288,9 +288,9 @@
 </span><span><a class="LN" id="275">  275   </a>  delayMatch1_process : <span class="KW">PROCESS</span> (clk, reset)
 </span><span><a class="LN" id="276">  276   </a>  <span class="KW">BEGIN</span>
 </span><span><a class="LN" id="277">  277   </a>    <span class="KW">IF</span> reset = '1' <span class="KW">THEN</span>
-</span><span><a class="LN" id="278">  278   </a>      Addr_Gen_out2_1 &lt;= to_unsigned(16#00#, 7);
+</span><span><a class="LN" id="278">  278   </a>      Addr_Gen_out2_1 &lt;= to_unsigned(16#000#, 10);
 </span><span><a class="LN" id="279">  279   </a>    <span class="KW">ELSIF</span> rising_edge(clk) <span class="KW">THEN</span>
-</span><span><a class="LN" id="280">  280   </a>      <span class="KW">IF</span> enb_1_16_0 = '1' <span class="KW">THEN</span>
+</span><span><a class="LN" id="280">  280   </a>      <span class="KW">IF</span> enb_1_2_0 = '1' <span class="KW">THEN</span>
 </span><span><a class="LN" id="281">  281   </a>        Addr_Gen_out2_1 &lt;= Addr_Gen_out2_unsigned;
 </span><span><a class="LN" id="282">  282   </a>      <span class="KW">END</span> <span class="KW">IF</span>;
 </span><span><a class="LN" id="283">  283   </a>    <span class="KW">END</span> <span class="KW">IF</span>;
@@ -303,7 +303,7 @@
 </span><span><a class="LN" id="290">  290   </a>    <span class="KW">IF</span> reset = '1' <span class="KW">THEN</span>
 </span><span><a class="LN" id="291">  291   </a>      Alignment_Delay_out1 &lt;= '0';
 </span><span><a class="LN" id="292">  292   </a>    <span class="KW">ELSIF</span> rising_edge(clk) <span class="KW">THEN</span>
-</span><span><a class="LN" id="293">  293   </a>      <span class="KW">IF</span> enb_1_16_0 = '1' <span class="KW">THEN</span>
+</span><span><a class="LN" id="293">  293   </a>      <span class="KW">IF</span> enb_1_2_0 = '1' <span class="KW">THEN</span>
 </span><span><a class="LN" id="294">  294   </a>        Alignment_Delay_out1 &lt;= Addr_Gen_out3;
 </span><span><a class="LN" id="295">  295   </a>      <span class="KW">END</span> <span class="KW">IF</span>;
 </span><span><a class="LN" id="296">  296   </a>    <span class="KW">END</span> <span class="KW">IF</span>;
@@ -314,7 +314,7 @@
 </span><span><a class="LN" id="301">  301   </a>  READ_ONLY_1_out1 &lt;= to_signed(0, 32);
 </span><span><a class="LN" id="302">  302   </a>
 </span><span><a class="LN" id="303">  303   </a>  <span class="CT">-- <a href="matlab:coder.internal.code2model('pFIR_HPF_testing_and_analysis:1850:323')" name="code2model"><font color="#117755"><i>&lt;S26&gt;/READ_ONLY_2</i></font></a></span>
-</span><span><a class="LN" id="304">  304   </a>  READ_ONLY_2_out1 &lt;= to_unsigned(16#00#, 7);
+</span><span><a class="LN" id="304">  304   </a>  READ_ONLY_2_out1 &lt;= to_unsigned(16#000#, 10);
 </span><span><a class="LN" id="305">  305   </a>
 </span><span><a class="LN" id="306">  306   </a>  <span class="CT">-- <a href="matlab:coder.internal.code2model('pFIR_HPF_testing_and_analysis:1850:324')" name="code2model"><font color="#117755"><i>&lt;S26&gt;/READ_ONLY_3</i></font></a></span>
 </span><span><a class="LN" id="307">  307   </a>  READ_ONLY_3_out1 &lt;= '0';
@@ -330,7 +330,7 @@
 </span><span><a class="LN" id="317">  317   </a>    <span class="KW">IF</span> reset = '1' <span class="KW">THEN</span>
 </span><span><a class="LN" id="318">  318   </a>      Multiply_And_Sum_out2_1 &lt;= '0';
 </span><span><a class="LN" id="319">  319   </a>    <span class="KW">ELSIF</span> rising_edge(clk) <span class="KW">THEN</span>
-</span><span><a class="LN" id="320">  320   </a>      <span class="KW">IF</span> enb_1_16_0 = '1' <span class="KW">THEN</span>
+</span><span><a class="LN" id="320">  320   </a>      <span class="KW">IF</span> enb_1_2_0 = '1' <span class="KW">THEN</span>
 </span><span><a class="LN" id="321">  321   </a>        Multiply_And_Sum_out2_1 &lt;= Multiply_And_Sum_out2;
 </span><span><a class="LN" id="322">  322   </a>      <span class="KW">END</span> <span class="KW">IF</span>;
 </span><span><a class="LN" id="323">  323   </a>    <span class="KW">END</span> <span class="KW">IF</span>;
@@ -350,7 +350,7 @@
 </span><span><a class="LN" id="337">  337   </a>    <span class="KW">IF</span> reset = '1' <span class="KW">THEN</span>
 </span><span><a class="LN" id="338">  338   </a>      Output_memory_out1 &lt;= to_signed(0, 32);
 </span><span><a class="LN" id="339">  339   </a>    <span class="KW">ELSIF</span> rising_edge(clk) <span class="KW">THEN</span>
-</span><span><a class="LN" id="340">  340   </a>      <span class="KW">IF</span> enb_1_16_0 = '1' <span class="KW">THEN</span>
+</span><span><a class="LN" id="340">  340   </a>      <span class="KW">IF</span> enb_1_2_0 = '1' <span class="KW">THEN</span>
 </span><span><a class="LN" id="341">  341   </a>        Output_memory_out1 &lt;= Reset_Switch_out1;
 </span><span><a class="LN" id="342">  342   </a>      <span class="KW">END</span> <span class="KW">IF</span>;
 </span><span><a class="LN" id="343">  343   </a>    <span class="KW">END</span> <span class="KW">IF</span>;
@@ -363,7 +363,7 @@
 </span><span><a class="LN" id="350">  350   </a>    <span class="KW">IF</span> reset = '1' <span class="KW">THEN</span>
 </span><span><a class="LN" id="351">  351   </a>      Rate_Transition_out1 &lt;= to_signed(0, 32);
 </span><span><a class="LN" id="352">  352   </a>    <span class="KW">ELSIF</span> rising_edge(clk) <span class="KW">THEN</span>
-</span><span><a class="LN" id="353">  353   </a>      <span class="KW">IF</span> enb_1_16_0 = '1' <span class="KW">THEN</span>
+</span><span><a class="LN" id="353">  353   </a>      <span class="KW">IF</span> enb_1_2_0 = '1' <span class="KW">THEN</span>
 </span><span><a class="LN" id="354">  354   </a>        Rate_Transition_out1 &lt;= Output_memory_out1;
 </span><span><a class="LN" id="355">  355   </a>      <span class="KW">END</span> <span class="KW">IF</span>;
 </span><span><a class="LN" id="356">  356   </a>    <span class="KW">END</span> <span class="KW">IF</span>;

@@ -23,8 +23,8 @@ ENTITY pFIR_HPF_testing_and_analysis_Test_FIR_with_Custom_FIR_Libraries_Sample_B
   PORT( clk                               :   IN    std_logic;
         reset                             :   IN    std_logic;
         enb                               :   IN    std_logic;
-        enb_1_16_0                        :   IN    std_logic;
-        enb_1_16_1                        :   IN    std_logic;
+        enb_1_2_0                         :   IN    std_logic;
+        enb_1_2_1                         :   IN    std_logic;
         enb_1_2048_0                      :   IN    std_logic;
         Sink_Valid                        :   IN    std_logic;
         Sink_Data                         :   IN    std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
@@ -43,8 +43,8 @@ ARCHITECTURE rtl OF pFIR_HPF_testing_and_analysis_Test_FIR_with_Custom_FIR_Libra
     PORT( clk                             :   IN    std_logic;
           reset                           :   IN    std_logic;
           enb                             :   IN    std_logic;
-          enb_1_16_0                      :   IN    std_logic;
-          enb_1_16_1                      :   IN    std_logic;
+          enb_1_2_0                       :   IN    std_logic;
+          enb_1_2_1                       :   IN    std_logic;
           enb_1_2048_0                    :   IN    std_logic;
           Left_Data_Sink                  :   IN    std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
           register_control_enable         :   IN    std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
@@ -57,8 +57,8 @@ ARCHITECTURE rtl OF pFIR_HPF_testing_and_analysis_Test_FIR_with_Custom_FIR_Libra
     PORT( clk                             :   IN    std_logic;
           reset                           :   IN    std_logic;
           enb                             :   IN    std_logic;
-          enb_1_16_0                      :   IN    std_logic;
-          enb_1_16_1                      :   IN    std_logic;
+          enb_1_2_0                       :   IN    std_logic;
+          enb_1_2_1                       :   IN    std_logic;
           enb_1_2048_0                    :   IN    std_logic;
           Right_Data_Sink                 :   IN    std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
           register_control_enable         :   IN    std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
@@ -80,14 +80,14 @@ ARCHITECTURE rtl OF pFIR_HPF_testing_and_analysis_Test_FIR_with_Custom_FIR_Libra
   SIGNAL Logical_Operator_out1            : std_logic;
   SIGNAL rightEnable                      : std_logic;
   SIGNAL Logical_Operator1_out1           : std_logic;
-  SIGNAL delayMatch_reg                   : vector_of_unsigned2(0 TO 15);  -- ufix2 [16]
+  SIGNAL delayMatch_reg                   : vector_of_unsigned2(0 TO 1);  -- ufix2 [2]
   SIGNAL Sink_Channel_1                   : unsigned(1 DOWNTO 0);  -- ufix2
   SIGNAL Left_Channel_Processing_out1     : std_logic_vector(31 DOWNTO 0);  -- ufix32
   SIGNAL Left_Channel_Processing_out1_signed : signed(31 DOWNTO 0);  -- sfix32_En28
   SIGNAL Right_Channel_Processing_out1    : std_logic_vector(31 DOWNTO 0);  -- ufix32
   SIGNAL Right_Channel_Processing_out1_signed : signed(31 DOWNTO 0);  -- sfix32_En28
   SIGNAL Sink_Data_signed                 : signed(31 DOWNTO 0);  -- sfix32_En28
-  SIGNAL delayMatch1_reg                  : vector_of_signed32(0 TO 15);  -- sfix32 [16]
+  SIGNAL delayMatch1_reg                  : vector_of_signed32(0 TO 1);  -- sfix32 [2]
   SIGNAL Sink_Data_1                      : signed(31 DOWNTO 0);  -- sfix32_En28
   SIGNAL Multiport_Switch_out1            : signed(31 DOWNTO 0);  -- sfix32_En28
 
@@ -113,8 +113,8 @@ BEGIN
     PORT MAP( clk => clk,
               reset => reset,
               enb => enb,
-              enb_1_16_0 => enb_1_16_0,
-              enb_1_16_1 => enb_1_16_1,
+              enb_1_2_0 => enb_1_2_0,
+              enb_1_2_1 => enb_1_2_1,
               enb_1_2048_0 => enb_1_2048_0,
               Left_Data_Sink => Sink_Data,  -- sfix32_En28
               register_control_enable => register_control_enable,  -- sfix32_En28
@@ -126,8 +126,8 @@ BEGIN
     PORT MAP( clk => clk,
               reset => reset,
               enb => enb,
-              enb_1_16_0 => enb_1_16_0,
-              enb_1_16_1 => enb_1_16_1,
+              enb_1_2_0 => enb_1_2_0,
+              enb_1_2_1 => enb_1_2_1,
               enb_1_2048_0 => enb_1_2048_0,
               Right_Data_Sink => Sink_Data,  -- sfix32_En28
               register_control_enable => register_control_enable,  -- sfix32_En28
@@ -156,12 +156,12 @@ BEGIN
     ELSIF rising_edge(clk) THEN
       IF enb = '1' THEN
         delayMatch_reg(0) <= Sink_Channel_unsigned;
-        delayMatch_reg(1 TO 15) <= delayMatch_reg(0 TO 14);
+        delayMatch_reg(1) <= delayMatch_reg(0);
       END IF;
     END IF;
   END PROCESS delayMatch_process;
 
-  Sink_Channel_1 <= delayMatch_reg(15);
+  Sink_Channel_1 <= delayMatch_reg(1);
 
   Left_Channel_Processing_out1_signed <= signed(Left_Channel_Processing_out1);
 
@@ -176,12 +176,12 @@ BEGIN
     ELSIF rising_edge(clk) THEN
       IF enb = '1' THEN
         delayMatch1_reg(0) <= Sink_Data_signed;
-        delayMatch1_reg(1 TO 15) <= delayMatch1_reg(0 TO 14);
+        delayMatch1_reg(1) <= delayMatch1_reg(0);
       END IF;
     END IF;
   END PROCESS delayMatch1_process;
 
-  Sink_Data_1 <= delayMatch1_reg(15);
+  Sink_Data_1 <= delayMatch1_reg(1);
 
   
   Multiport_Switch_out1 <= Left_Channel_Processing_out1_signed WHEN Sink_Channel_1 = to_unsigned(16#0#, 2) ELSE

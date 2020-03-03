@@ -24,7 +24,7 @@ ENTITY pFIR_HPF_testing_and_analysis_SimpleDualPortRAM_generic IS
            DataWidth                      : integer := 1
            );
   PORT( clk                               :   IN    std_logic;
-        enb_1_16_0                        :   IN    std_logic;
+        enb_1_2_0                         :   IN    std_logic;
         wr_din                            :   IN    std_logic_vector(DataWidth - 1 DOWNTO 0);  -- generic width
         wr_addr                           :   IN    std_logic_vector(AddrWidth - 1 DOWNTO 0);  -- generic width
         wr_en                             :   IN    std_logic;  -- ufix1
@@ -53,7 +53,7 @@ BEGIN
   SimpleDualPortRAM_generic_process: PROCESS (clk)
   BEGIN
     IF rising_edge(clk) THEN
-      IF enb_1_16_0 = '1' THEN
+      IF enb_1_2_0 = '1' THEN
         IF wr_en = '1' THEN
           ram(to_integer(wr_addr_unsigned)) <= wr_din;
         END IF;

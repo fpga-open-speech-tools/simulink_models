@@ -11,7 +11,7 @@
 % with using the static FIR filter, then load in several filters into
 % memory and switch between batches of coefficients stored in memory. 
 
-clc; close all; clear;
+% clc; close all; clear;
 
 %% Global Variable Declaration
 % Fixed point properties
@@ -66,18 +66,19 @@ lpFiltFi = fi(lpFilt.Coefficients, 1, W_bits, F_bits, Fm);
 %  "high-pitched" voice. 
 
 % Chirp signal, frequency ranging between 80 to 180 Hz.
-y  = chirp(t, 80, 2, 180);
-yFi = fi(y, 1, W_bits, F_bits, Fm);
+y  = chirp(t, 1000, 2, 2000);
+% audiowrite('1kto2k_chirp.wav', y, Fs);
+% yFi = fi(y, 1, W_bits, F_bits, Fm);
 figure;
 subplot(211);
 plot(t,y); xlabel('Time [sec]'); title('Speech Signal Chirp');
 
 subplot(212);
 spectrogram(y,8192,7800,8192,Fs, 'yaxis');   % Display the spectrogram.
-ylim([0 0.3]); 
+ylim([1 2]); 
 title('Speech Signal Chirp Spectrogram');
 print('speech_chirp_signal', '-dpng');
-
+%%
 % --------------------------------------------------------
 
 % HPF Filtered Chirp Signal
