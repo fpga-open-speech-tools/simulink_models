@@ -73,7 +73,12 @@ x0 = s0*log((1.0/shift-1)/(1+exp(x1/s1)));
 [tone,fs] = audioread('AN_test_tone.wav');
 
 % Assign to variable used in model
-RxSignal = tone;
+% *** Changed to single precision input by Matthew Blunt 03/03/2020
+RxSignal = single(tone);
+
+% Assign to variable used in model
+% *** Added double precision input by Matthew Blunt 03/03/2020
+RxSignalDouble = tone;
 
 % Find test time, which is set in model
 testtime = length(RxSignal)/Fs
