@@ -31,25 +31,49 @@ synout = PowerLaw(RxSignal, totalstim, randNums, Fs);
 
 
 %% COMPARISON PLOT
- 
+
+% *** Changed PLA Simulink output name after update
+% *** By Matthew Blunt 03/03/2020
 figure()
 subplot(2,1,1)
 plot(synout);
 title('Power Law Adaptation Approximation Output - MATLAB Code')
 xlabel('Sample Number');
 subplot(2,1,2)
-plot(out.synout(1:end-1))
+plot(out.synoutdouble(1:end-1))
 title('Power Law Adaptation Approximation Output - Simulink Model')
+xlabel('Sample Number');
+
+% *** Comparison Plot for Double and Single Precision Simulink Results
+% *** Added by Matthew Blunt 03/03/2020
+figure()
+subplot(2,1,1)
+plot(out.synoutdouble);
+title('Power Law Adaptation Approximation Output - Simulink Double Precision')
+xlabel('Sample Number');
+subplot(2,1,2)
+plot(out.synout)
+title('Power Law Adaptation Approximation Output - Simulink Single Precision')
 xlabel('Sample Number');
 
 
 %% ERROR CALCULATION
 
-% Compares output vectors of MATLAB and Simulink model outputs
-PLAmodelerror = norm(synout(1:end)-out.synout(1:end-1));
+% Compares output vectors of MATLAB and Simulink Double Precision model outputs
+% *** Changed output names after update by Matthew Blunt 03/03/2020
+PLAmodelerror = norm(synout(1:end)-out.synoutdouble(1:end-1));
+
+% Compares output vectors of Simulink Double and Single Precision Outputs
+% *** Added by Matthew Blunt 03/03/2020
+PLAconversionerror = norm(out.synoutdouble(1:end)-out.synout(1:end));
 
 % Display in Simulink Diagnostics menu
 disp('PLA Model Error =');
 disp(PLAmodelerror);
+
+% Display in Simulink Diagnostics menu
+% *** Added by Matthew Blunt 03/03/2020
+disp('PLA Conversion Error =');
+disp(PLAconversionerror);
 
 % end of script
