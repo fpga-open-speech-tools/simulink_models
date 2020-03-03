@@ -1,4 +1,4 @@
-% Copyright 2019 Flat Earth Inc
+% Copyright 2020 Flat Earth Inc
 %
 % THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
 % INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
@@ -6,7 +6,7 @@
 % FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 % ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 %
-% Matthew Blunt
+% Matthew Blunt & Hezekiah Austin
 % Flat Earth Inc
 % 985 Technology Blvd
 % Bozeman, MT 59718
@@ -75,8 +75,14 @@ c2LPohc = TWOPI*Fcohc / (TWOPI*Fcohc + C);
 % read in chirp signal
 [tone,fs] = audioread('AN_test_tone.wav');
 
-% Assign to variable used in model
-RxSignal = tone;
+% Assign to singles variable used in model
+% *** Changed to single precision by Hezekiah Austin 03/03/2020
+RxSignal = single(tone);
+
+% Assign to doubles variable used in model
+% *** Added for verification/testing by Hezekiah Austin 03/03/2020
+RxSignal_doubles = tone;
+
 
 % Find test time, which is set in model
 testtime = length(RxSignal)/Fs
