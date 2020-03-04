@@ -30,7 +30,7 @@ clc         % clear command window
 % It also reduces the number of stimulus samples.  This allow for faster
 % development iterations when developing the simulink model.
 mp.fastsim_flag = 1;     % perform fast simulation  Note: fast simulation will be turned off when generating VHDL code since we need to run at the system clock rate.
-mp.fastsim_Fs_system_N = 16;     % (typical value 2 or 4) Simulate a much slower system clock than what is specified in sm_callback_init.m   - The reduce rate will be a multiple of the sample rate, i.e. mp.Fs_system = mp.Fs*mp.fastsim_Fs_system_N
+mp.fastsim_Fs_system_N = 32;     % (typical value 2 or 4) Simulate a much slower system clock than what is specified in sm_callback_init.m   - The reduce rate will be a multiple of the sample rate, i.e. mp.Fs_system = mp.Fs*mp.fastsim_Fs_system_N
 mp.fastsim_Nsamples = 12000; % set to the string 'all' to use all the samples from the input signal specified in sm_init_test_signals.m
 
 
@@ -44,14 +44,32 @@ mp.linux_device_name = mp.model_name;
 mp.linux_device_version = '18.0';
 
 mp.speedOfSound = 343;
+
+% TODO: it'd sure be nice to have access to mp.Fs right here, but we don't....
 mp.samplingRate = 48e3;
 mp.arraySpacing = 25e-3;
 mp.arraySize = [4,4];
+arraySize = mp.arraySize;
+arraySpacing = mp.arraySpacing;
+samplingRate = mp.samplingRate;
+speedOfSound = mp.speedOfSound;
+
+% TODO: document this equation...
 mp.maxDelay = sqrt(((mp.arraySize(1) - 1)*mp.arraySpacing).^2 + ((mp.arraySize(2) - 1)*mp.arraySpacing).^2)*mp.samplingRate/mp.speedOfSound;
 % buffer size to accomodate max delay; buffer size is a power of 2
-mp.integerDelayBufferSize = 2^ceil(log2(floor(mp.maxDelay)));
+
+mp.integerDelayAddrSize = ceil(log2(floor(mp.maxDelay)));
+mp.integerDelayBufferSize = 2^mp.integerDelayAddrSize;
 mp.upsampleFactor = 21;
-mp.fractionalDelayBufferSize = 2^ceil(log2(floor(mp.upsampleFactor)));
+mp.fractionalDelayAddrSize = ceil(log2(floor(mp.upsampleFactor)));
+mp.fractionalDelayBufferSize = 2^mp.fractionalDelayAddrSize;
+
+% NOTE: these variables can't be in a matlab structure because the Matlab Coder
+% doesn't support that...
+delayDataTypeSign = 1;
+delayDataTypeWordLength = mp.integerDelayAddrSize + mp.fractionalDelayAddrSize;
+delayDataTypeFractionLength = mp.fractionalDelayAddrSize;
+
 
 
 

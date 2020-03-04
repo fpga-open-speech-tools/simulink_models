@@ -41,6 +41,7 @@ mp.register(ri).max        = -90;          % The maximum value the control signa
 mp.register(ri).default    = 0;          % default (initial) value
 mp.register(ri).widget_type          = 'slider';
 mp.register(ri).widget_display_units = 'degrees';
+mp.register(ri).dataType = fixdt(1, 16, 8);
 
 %% Create right gain control signal
 ri = ri + 1;
@@ -51,6 +52,7 @@ mp.register(ri).max        = -90;          % The maximum value the control signa
 mp.register(ri).default    = 0;          % default (initial) value
 mp.register(ri).widget_type          = 'slider';
 mp.register(ri).widget_display_units = 'degrees';
+mp.register(ri).dataType = fixdt(1, 16, 8);
 
 % Any other register control signals should be created in a similar manner
 
