@@ -1,4 +1,4 @@
-% Copyright 2019 Flat Earth Inc
+% Copyright 2020 Flat Earth Inc
 %
 % THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
 % INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
@@ -6,7 +6,7 @@
 % FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 % ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 %
-% Matthew Blunt
+% Matthew Blunt & Hezekiah Austin
 % Flat Earth Inc
 % 985 Technology Blvd
 % Bozeman, MT 59718
@@ -35,24 +35,49 @@ end
 
 %% COMPARISON PLOT
 
+% Comparision Plots for the Original C Code vs Simulink Doubles Model
+% *** Modified for new vector names by Hezekiah Austin 03/03/2020
 figure()
 subplot(2,1,1)
 plot(ihcout);
 title('IHC LP Filter Output - Source Code')
 xlabel('Sample Number');
 subplot(2,1,2)
+plot(out.ihcout_doubles)
+title('IHC LP Filter Output - Simulink Model Doubles')
+xlabel('Sample Number');
+
+% *** Figure added for test/verification of double to single precision
+% *** Added by Hezekiah Austin 03/03/2020
+figure()
+subplot(2,1,1)
+plot(out.ihcout_doubles);
+title('IHC LP Filter Output - Simulink Model Doubles')
+xlabel('Sample Number');
+subplot(2,1,2)
 plot(out.ihcout)
-title('IHC LP Filter Output - Simulink Model')
+title('IHC LP Filter Output - Simulink Model Singles')
 xlabel('Sample Number');
 
 %% CALCULATE ERROR
 
-% Compares output vectors of MATLAB and Simulink model outputs
-IHCmodelerror = norm(ihcout(1:end)-out.ihcout(1:end-1));
+% Compares output vectors of MATLAB and Simulink Doubles Model outputs
+% *** Modified for new output vector names by Hezekiah Austin 03/03/2020
+IHCmodelerror = norm(ihcout(1:end)-out.ihcout_doubles(1:end-1));
+
+% Compares output vectors of Simulink Singles Model and Simulink Doubles Model outputs
+% *** Modified for new output vector names by Hezekiah Austin 03/03/2020
+IHCconversionerror = norm(out.ihcout(1:end-1)-out.ihcout_doubles(1:end-1));
 
 % Display in Simulink Diagnostics menu
 disp('IHC Lowpass Filter Model Error = ');
 disp(IHCmodelerror);
+
+% Display in Simulink Diagnostics menu
+% *** Created for conversion (doubles to singles) error by Hezekiah Austin 03/03/2020
+disp('IHC Lowpass Filter Conversion Error = ');
+disp(IHCconversionerror);
+
 
 % end of script
 

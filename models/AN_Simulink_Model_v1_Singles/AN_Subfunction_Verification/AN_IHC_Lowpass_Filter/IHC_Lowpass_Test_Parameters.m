@@ -1,4 +1,4 @@
-% Copyright 2019 Flat Earth Inc
+% Copyright 2020 Flat Earth Inc
 %
 % THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
 % INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
@@ -6,7 +6,7 @@
 % FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 % ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 %
-% Matthew Blunt
+% Matthew Blunt & Hezekiah Austin
 % Flat Earth Inc
 % 985 Technology Blvd
 % Bozeman, MT 59718
@@ -77,7 +77,12 @@ c2LPihc = TWOPI*Fcihc / (TWOPI*Fcihc + C);
 [tone,fs] = audioread('AN_test_tone.wav');
 
 % Assign to variable used in model
-RxSignal = tone;
+% *** Changed to single precision by Hezekiah Austin 03/03/2020
+RxSignal = single(tone);
+
+% Added a doubles signal of test/verification of singles
+% *** Added by Hezekiah Austin 03/03/2020
+RxSignal_doubles = tone;
 
 % Find test time, which is set in model
 testtime = length(RxSignal)/Fs

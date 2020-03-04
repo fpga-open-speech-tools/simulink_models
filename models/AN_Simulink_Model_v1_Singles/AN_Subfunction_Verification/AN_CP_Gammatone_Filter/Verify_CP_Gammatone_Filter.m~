@@ -44,7 +44,7 @@ title('CP Wideband Gammatone Filter Output - C Source Code')
 xlabel('Sample Number');
 subplot(2,1,2)
 plot(out.wbout_doubles)
-title('CP Wideband Gammatone Filter Output - Simulink Doubles')
+title('CP Wideband Gammatone Filter Output - Simulink Model Doubles')
 xlabel('Sample Number');
 
 % Comparsion plotting of the Simulink Singles Model vs Simulink Doubles Model
@@ -52,11 +52,11 @@ xlabel('Sample Number');
 figure()
 subplot(2,1,1)
 plot(out.wbout_doubles);
-title('CP Wideband Gammatone Filter Output - Simulink Doubles')
+title('CP Wideband Gammatone Filter Output - Simulink Model Doubles')
 xlabel('Sample Number');
 subplot(2,1,2)
 plot(out.wbout)
-title('CP Wideband Gammatone Filter Output - Simulink Singles')
+title('CP Wideband Gammatone Filter Output - Simulink Model Singles')
 xlabel('Sample Number');
 
 %% ERROR CALCULATION
@@ -67,7 +67,7 @@ wbmodelerror = norm(wbout(1:end)-out.wbout_doubles(1:end-1));
 
 % Compares output vectors of MATLAB and Simulink model outputs
 % *** Added for test/verification of doubles to singles conversion by Hezekiah Austin 03/03/2020
-wbconversionerror = norm(out.wbout_doubles(1:end-1)-out.wbout(1:end-1));
+wbmodelerror = norm(wbout_doubles(1:end-1)-out.wbout(1:end-1));
 
 % Display in Simulink Diagnostics menu
 disp('CP Wideband Gammatone Model Error =');
