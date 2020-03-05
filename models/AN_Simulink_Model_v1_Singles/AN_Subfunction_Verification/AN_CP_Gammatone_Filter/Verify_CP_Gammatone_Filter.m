@@ -77,4 +77,32 @@ disp(wbmodelerror);
 disp('CP Wideband Gammatone Conversion Error =');
 disp(wbconversionerror);
 
+%% DEBUGGING ERROR CALCULATIONS
+% *** Created for temporary use by Matthew Blunt 03/04/2020
+
+% Compares vectors for double and single wbphase values
+% *** Added for debugging by Matthew Blunt 03/04/2020
+wbphaseerror = norm(out.wbphasedouble-out.wbphase);
+
+% Compares vectors for double and single complex phase values
+% *** Added for debugging by Matthew blunt 03/04/2020
+cphaseerror = norm(out.cphasedouble-out.cphase);
+
+% Compares vectors for double and single filter outputs
+% *** Added for debugging by Matthew Blunt 03/04/2020
+filtouterror = norm(out.filtoutdouble-out.filtout);
+
+% Display in Simulink Diagnostics menu
+disp('Wb Phase Error =');
+disp(wbphaseerror);
+
+% Display in Simulink Diagnostics menu
+disp('Complex Phase Error =');
+disp(cphaseerror);
+
+% Display in Simulink Diagnostics menu
+disp('Filter Output Error =');
+disp(filtouterror);
+
+
 % end of script
