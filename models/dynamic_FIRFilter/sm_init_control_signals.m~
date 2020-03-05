@@ -61,27 +61,27 @@ mp.register(1).default    = 1;              % default (initial) value
 mp.register(1).widget_type      = 'slider';
 mp.register(1).widget_display_units = ' ';
 
-mp.register(2).name       = 'Wr_Data';                  % control signal name
-mp.register(2).value      =  0;                         % value control signal will take during simulation
-mp.register(2).min        = -2^(mp.W_bits-mp.F_bits);   % The minimum value the control signal will ever take
-mp.register(2).max        =  2^(mp.W_bits-mp.F_bits);   % The maximum value the control signal will ever take
-mp.register(2).default    =  0;                         % default (initial) value
+mp.register(2).name       = 'Wr_Data';       % control signal name
+mp.register(2).value      =  0;              % value control signal will take during simulation
+mp.register(2).min        = -4;              % The minimum value the control signal will ever take
+mp.register(2).max        =  4;              % The maximum value the control signal will ever take
+mp.register(2).default    =  0;              % default (initial) value
 mp.register(2).widget_type      = 'slider';
 mp.register(2).widget_display_units = ' ';
 
-mp.register(3).name       = 'RW_Addr';      % control signal name
+mp.register(3).name       = 'RW_Addr';       % control signal name
 mp.register(3).value      = 0;              % value control signal will take during simulation
 mp.register(3).min        = 0;              % The minimum value the control signal will ever take
-mp.register(3).max        = 2^mp.W_bits;    % The maximum value the control signal will ever take
-mp.register(3).default    = 0;              % default (initial) value
+mp.register(3).max        = 2^mp.W_bits;              % The maximum value the control signal will ever take
+mp.register(3).default    = 1;              % default (initial) value
 mp.register(3).widget_type      = 'slider';
 mp.register(3).widget_display_units = ' ';
 
-mp.register(4).name       = 'Wr_En';        % control signal name
-mp.register(4).value      = 0;              % value control signal will take during simulation
+mp.register(4).name       = 'Wr_En';       % control signal name
+mp.register(4).value      = 1;              % value control signal will take during simulation
 mp.register(4).min        = 0;              % The minimum value the control signal will ever take
 mp.register(4).max        = 1;              % The maximum value the control signal will ever take
-mp.register(4).default    = 0;              % default (initial) value
+mp.register(4).default    = 1;              % default (initial) value
 mp.register(4).widget_type      = 'slider';
 mp.register(4).widget_display_units = ' ';
 %% convert to time series data
