@@ -73,7 +73,7 @@ trel   = 0.6e-3;
 % C/C++ compiler.
 
 % Set to 'true' if model verification is desired
-verificationflag = false;
+verificationflag = true;
 
 
 % End of AN_Set_Model_Parameters
