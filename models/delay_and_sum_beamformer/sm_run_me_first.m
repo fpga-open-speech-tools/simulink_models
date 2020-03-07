@@ -54,14 +54,18 @@ arraySpacing = mp.arraySpacing;
 samplingRate = mp.samplingRate;
 speedOfSound = mp.speedOfSound;
 
-% TODO: document this equation...
+% TODO: document this equation... this is across the entire array, 
+% but delays are relative to the array center, so delays are +/- maxDelay/2
 mp.maxDelay = sqrt(((mp.arraySize(1) - 1)*mp.arraySpacing).^2 + ((mp.arraySize(2) - 1)*mp.arraySpacing).^2)*mp.samplingRate/mp.speedOfSound;
 % buffer size to accomodate max delay; buffer size is a power of 2
 
 mp.integerDelayAddrSize = ceil(log2(floor(mp.maxDelay)));
 mp.integerDelayBufferSize = 2^mp.integerDelayAddrSize;
 mp.upsampleFactor = 21;
-mp.fractionalDelayAddrSize = ceil(log2(floor(mp.upsampleFactor)));
+upsampleFactor = mp.upsampleFactor;
+% number of required bits is one more than that required to represent upsampleFactor
+% because we need to be able to represent +/- upsample factor
+mp.fractionalDelayAddrSize = ceil(log2(floor(mp.upsampleFactor))) + 1;
 mp.fractionalDelayBufferSize = 2^mp.fractionalDelayAddrSize;
 
 % NOTE: these variables can't be in a matlab structure because the Matlab Coder
