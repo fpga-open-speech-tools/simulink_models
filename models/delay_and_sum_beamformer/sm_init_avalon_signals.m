@@ -38,29 +38,23 @@ datavals_channel = zeros(1,mp.Nsamples_avalon);
 datavals_error   = zeros(1,mp.Nsamples_avalon); 
 dataval_index = 1;
 for sample_index = 1:mp.test_signal.Nsamples
-    %----------------------------
-    % left channel
-    %----------------------------
-    datavals_data(dataval_index)     = mp.test_signal.left(sample_index); 
-    datavals_valid(dataval_index)    = 1;   % data is valid in this time bin
-    datavals_channel(dataval_index)  = 0;   % channel 0 = left
-    datavals_error(dataval_index)    = 0;   % no error
-    dataval_index                    = dataval_index + 1;
-    %----------------------------
-    % right channel
-    %----------------------------
-    datavals_data(dataval_index)     = mp.test_signal.right(sample_index); 
-    datavals_valid(dataval_index)    = 1;  % data is valid in this time bin
-    datavals_channel(dataval_index)  = 1;  % channel 1 = right
-    datavals_error(dataval_index)    = 0;  % no error
-    dataval_index                    = dataval_index + 1;
+    
+    % TODO: we should make the number of channels part of mp...
+    for k=0:min(size(mp.test_signal.data))-1
+        datavals_data(dataval_index)     = mp.test_signal.data(k+1, sample_index); 
+        datavals_valid(dataval_index)    = 1;   % data is valid in this time bin
+        datavals_channel(dataval_index)  = k;   
+        datavals_error(dataval_index)    = 0;   % no error
+        dataval_index                    = dataval_index + 1;
+    end
+
     %---------------------------------------------
     % fill in the invalid data slots with zeros
     %---------------------------------------------
-    for k=1:(mp.rate_change-2)
+    for k=1:(mp.rate_change-min(size(mp.test_signal.data)))
         datavals_data(dataval_index)    = 0;  % no data (put in zeros)
         datavals_valid(dataval_index)   = 0;  % data is not valid in these time bins
-        datavals_channel(dataval_index) = 3;  % channel 3 = no data
+        datavals_channel(dataval_index) = min(size(mp.test_signal.data)) - 1;
         datavals_error(dataval_index)   = 0;  % no error
         dataval_index                   = dataval_index + 1;
     end
