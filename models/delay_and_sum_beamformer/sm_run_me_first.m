@@ -48,7 +48,7 @@ mp.speedOfSound = 343;
 % TODO: it'd sure be nice to have access to mp.Fs right here, but we don't....
 mp.samplingRate = 48e3;
 mp.arraySpacing = 25e-3;
-mp.arraySize = [1,4];
+mp.arraySize = [4,1];
 arraySize = mp.arraySize;
 arraySpacing = mp.arraySpacing;
 samplingRate = mp.samplingRate;
@@ -63,9 +63,9 @@ mp.integerDelayAddrSize = ceil(log2(floor(mp.maxDelay)));
 mp.integerDelayBufferSize = 2^mp.integerDelayAddrSize;
 mp.upsampleFactor = 32;
 upsampleFactor = mp.upsampleFactor;
-% number of required bits is one more than that required to represent upsampleFactor
-% because we need to be able to represent +/- upsample factor
-mp.fractionalDelayAddrSize = ceil(log2(floor(mp.upsampleFactor))) + 1;
+% number of required bits is two more than that required to represent upsampleFactor
+% because we need to be able to represent +/- upsample factor inclusive
+mp.fractionalDelayAddrSize = ceil(log2(floor(mp.upsampleFactor))) + 2;
 mp.fractionalDelayBufferSize = 2^mp.fractionalDelayAddrSize;
 
 % NOTE: these variables can't be in a matlab structure because the Matlab Coder
