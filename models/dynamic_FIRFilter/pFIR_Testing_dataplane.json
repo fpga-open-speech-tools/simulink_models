@@ -1,0 +1,165 @@
+{
+    "avalon_sink_flag": 1,
+    "entity": "pFIR_Testing_dataplane",
+    "avalon_sink": {
+        "signal": [
+            {
+                "name": "avalon_sink_valid",
+                "data_type": {
+                    "type": "boolean",
+                    "width": 1,
+                    "fractional_bits": 0,
+                    "signed": false
+                }
+            },
+            {
+                "name": "avalon_sink_data",
+                "data_type": {
+                    "type": "sfix32_En28",
+                    "signed": true,
+                    "width": 32,
+                    "fractional_bits": 28
+                }
+            },
+            {
+                "name": "avalon_sink_channel",
+                "data_type": {
+                    "type": "ufix2",
+                    "signed": false,
+                    "width": 2,
+                    "fractional_bits": 0
+                }
+            },
+            {
+                "name": "avalon_sink_error",
+                "data_type": {
+                    "type": "ufix2",
+                    "signed": false,
+                    "width": 2,
+                    "fractional_bits": 0
+                }
+            }
+        ]
+    },
+    "avalon_source_flag": 1,
+    "avalon_source": {
+        "signal": [
+            {
+                "name": "avalon_source_valid",
+                "data_type": {
+                    "type": "ufix1",
+                    "signed": false,
+                    "width": 1,
+                    "fractional_bits": 0
+                }
+            },
+            {
+                "name": "avalon_source_data",
+                "data_type": {
+                    "type": "sfix32_En28",
+                    "signed": true,
+                    "width": 32,
+                    "fractional_bits": 28
+                }
+            },
+            {
+                "name": "avalon_source_channel",
+                "data_type": {
+                    "type": "ufix2",
+                    "signed": false,
+                    "width": 2,
+                    "fractional_bits": 0
+                }
+            },
+            {
+                "name": "avalon_source_rw_dout",
+                "data_type": {
+                    "type": "sfix32_En28",
+                    "signed": true,
+                    "width": 32,
+                    "fractional_bits": 28
+                }
+            },
+            {
+                "name": "avalon_source_error",
+                "data_type": {
+                    "type": "ufix2",
+                    "signed": false,
+                    "width": 2,
+                    "fractional_bits": 0
+                }
+            }
+        ]
+    },
+    "avalon_memorymapped_flag": 1,
+    "avalon_memorymapped": {
+        "register": [
+            {
+                "name": "enable",
+                "data_type": {
+                    "type": "sfix32_En28",
+                    "signed": true,
+                    "width": 32,
+                    "fractional_bits": 28
+                },
+                "reg_num": 0,
+                "default_value": 1,
+                "min_value": 0,
+                "max_value": 1
+            },
+            {
+                "name": "Wr_Data",
+                "data_type": {
+                    "type": "sfix32_En28",
+                    "signed": true,
+                    "width": 32,
+                    "fractional_bits": 28
+                },
+                "reg_num": 1,
+                "default_value": 0,
+                "min_value": -16,
+                "max_value": 16
+            },
+            {
+                "name": "RW_Addr",
+                "data_type": {
+                    "type": "uint32",
+                    "signed": false,
+                    "width": 32,
+                    "fractional_bits": 0
+                },
+                "reg_num": 2,
+                "default_value": 0,
+                "min_value": 0,
+                "max_value": 4294967296.0
+            },
+            {
+                "name": "Wr_En",
+                "data_type": {
+                    "type": "int32",
+                    "signed": true,
+                    "width": 32,
+                    "fractional_bits": 0
+                },
+                "reg_num": 3,
+                "default_value": 0,
+                "min_value": 0,
+                "max_value": 1
+            }
+        ]
+    },
+    "conduit_input_flag": 0,
+    "conduit_input": [],
+    "conduit_output_flag": 0,
+    "conduit_output": [],
+    "clocks": {
+        "sample_frequency_Hz": 48000,
+        "sample_period_seconds": 2.0833333333333333e-05,
+        "system_frequency_Hz": 98304000.0,
+        "system_period_seconds": 1.0172526041666666e-08
+    },
+    "model_name": "pFIR_Testing",
+    "model_abbreviation": "pFIR_Testing",
+    "linux_device_name": "pFIR_Testing",
+    "linux_device_version": "18.0"
+}
