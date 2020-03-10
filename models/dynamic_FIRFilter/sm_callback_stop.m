@@ -35,19 +35,19 @@ end
 close all; % Close any plots prior to output plots
 figure;
 % Grab the output data and time vectors - cast to type double
-data = resample(double(Avalon_Sink_Data.Data(:)), mp.Fs, mp.Fs*8);
-time = 0: 1 / mp.Fs : length(data)*1/mp.Fs;
+
+time = 0: 1 / mp.Fs : length(mp.left_data_out)*1/mp.Fs;
 time = time(1:end-1)';
 % Time domain chirp plot
 subplot(211);
-plot(time, data, 'LineWidth', 0.01);
-xlim([0, 2])
+plot(time, mp.left_data_out, 'LineWidth', 0.01);
+xlim([0, stop_time])
 xlabel('Time [sec]');
-title('Filtered Chirp Signal');
+title('Left Data');
 
 % Spectrogram
 subplot(212);
-spectrogram(data,8192,7800,8192,mp.Fs, 'yaxis');   % Display the spectrogram.
+spectrogram(mp.left_data_out,8192,7800,8192,mp.Fs, 'yaxis');   % Display the spectrogram.
 ylim([1 2]);  
 title('HPF Filtered Speech Signal Chirp Spectrogram');
 print('lpfFilt_speech_chirp_signal', '-dpng');

@@ -35,7 +35,7 @@ signal_option = 1;  % set which test signal to use
 switch signal_option
     case 1 % Justin Supplied Speech Signal
 %         [y, Fs] = audioread([mp.test_signals_path filesep '1kto2k_chirp.wav']);
-        [y, Fs] = audioread('1kto2k_chirp.wav');
+        [y, Fs] = audioread('1kto2k_chirp.wav'); %y(ceil(length(y)/2):end) for high freq section
         y_resampled = resample(y,mp.Fs,Fs);  % resample to change the sample rate to SG.Fs
         Nsamples = length(y_resampled);
         if mp.fastsim_flag == 1 % perform fast simulation by reducing the number of samples
