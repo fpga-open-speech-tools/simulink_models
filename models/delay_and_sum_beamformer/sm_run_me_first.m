@@ -48,7 +48,7 @@ mp.speedOfSound = 343;
 % TODO: it'd sure be nice to have access to mp.Fs right here, but we don't....
 mp.samplingRate = 48e3;
 mp.arraySpacing = 25e-3;
-mp.arraySize = [4,1];
+mp.arraySize = [2,2];
 arraySize = mp.arraySize;
 arraySpacing = mp.arraySpacing;
 samplingRate = mp.samplingRate;
@@ -59,7 +59,7 @@ speedOfSound = mp.speedOfSound;
 mp.maxDelay = sqrt(((mp.arraySize(1) - 1)*mp.arraySpacing).^2 + ((mp.arraySize(2) - 1)*mp.arraySpacing).^2)*mp.samplingRate/mp.speedOfSound;
 % buffer size to accomodate max delay; buffer size is a power of 2
 
-mp.integerDelayAddrSize = ceil(log2(floor(mp.maxDelay)));
+mp.integerDelayAddrSize = ceil(log2(floor(mp.maxDelay))) + 2;
 mp.integerDelayBufferSize = 2^mp.integerDelayAddrSize;
 mp.upsampleFactor = 32;
 upsampleFactor = mp.upsampleFactor;
