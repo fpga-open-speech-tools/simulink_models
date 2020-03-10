@@ -35,7 +35,7 @@ function mp = sm_init_control_signals(mp)
 %% Create left gain control signal
 ri = 1;
 mp.register(ri).name       = 'azimuth';  % control signal name
-mp.register(ri).value      = 60;          % value control signal will take during simulation
+mp.register(ri).value      = 0;          % value control signal will take during simulation
 mp.register(ri).min        = 90;          % The minimum value the control signal will ever take
 mp.register(ri).max        = -90;          % The maximum value the control signal will ever take
 mp.register(ri).default    = 0;          % default (initial) value
@@ -46,7 +46,7 @@ mp.register(ri).dataType = fixdt(1, 16, 8);
 %% Create right gain control signal
 ri = ri + 1;
 mp.register(ri).name       = 'elevation';  % control signal name
-mp.register(ri).value      = 30;          % value control signal will take during simulation
+mp.register(ri).value      = 0;          % value control signal will take during simulation
 mp.register(ri).min        = 90;          % The minimum value the control signal will ever take
 mp.register(ri).max        = -90;          % The maximum value the control signal will ever take
 mp.register(ri).default    = 0;          % default (initial) value

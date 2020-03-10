@@ -30,7 +30,7 @@ clc         % clear command window
 % It also reduces the number of stimulus samples.  This allow for faster
 % development iterations when developing the simulink model.
 mp.fastsim_flag = 1;     % perform fast simulation  Note: fast simulation will be turned off when generating VHDL code since we need to run at the system clock rate.
-mp.fastsim_Fs_system_N = 32;     % (typical value 2 or 4) Simulate a much slower system clock than what is specified in sm_callback_init.m   - The reduce rate will be a multiple of the sample rate, i.e. mp.Fs_system = mp.Fs*mp.fastsim_Fs_system_N
+mp.fastsim_Fs_system_N = 64;     % (typical value 2 or 4) Simulate a much slower system clock than what is specified in sm_callback_init.m   - The reduce rate will be a multiple of the sample rate, i.e. mp.Fs_system = mp.Fs*mp.fastsim_Fs_system_N
 mp.fastsim_Nsamples = 12000; % set to the string 'all' to use all the samples from the input signal specified in sm_init_test_signals.m
 
 
@@ -48,7 +48,7 @@ mp.speedOfSound = 343;
 % TODO: it'd sure be nice to have access to mp.Fs right here, but we don't....
 mp.samplingRate = 48e3;
 mp.arraySpacing = 25e-3;
-mp.arraySize = [4,4];
+mp.arraySize = [1,4];
 arraySize = mp.arraySize;
 arraySpacing = mp.arraySpacing;
 samplingRate = mp.samplingRate;
@@ -61,7 +61,7 @@ mp.maxDelay = sqrt(((mp.arraySize(1) - 1)*mp.arraySpacing).^2 + ((mp.arraySize(2
 
 mp.integerDelayAddrSize = ceil(log2(floor(mp.maxDelay)));
 mp.integerDelayBufferSize = 2^mp.integerDelayAddrSize;
-mp.upsampleFactor = 21;
+mp.upsampleFactor = 32;
 upsampleFactor = mp.upsampleFactor;
 % number of required bits is one more than that required to represent upsampleFactor
 % because we need to be able to represent +/- upsample factor
@@ -73,6 +73,9 @@ mp.fractionalDelayBufferSize = 2^mp.fractionalDelayAddrSize;
 delayDataTypeSign = 1;
 delayDataTypeWordLength = mp.integerDelayAddrSize + mp.fractionalDelayAddrSize;
 delayDataTypeFractionLength = mp.fractionalDelayAddrSize;
+mp.delayDataTypeSign = 1;
+mp.delayDataTypeWordLength = mp.integerDelayAddrSize + mp.fractionalDelayAddrSize;
+mp.delayDataTypeFractionLength = mp.fractionalDelayAddrSize;
 
 
 
