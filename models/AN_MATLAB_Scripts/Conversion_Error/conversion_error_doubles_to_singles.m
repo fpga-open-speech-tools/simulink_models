@@ -19,7 +19,7 @@ clc;
 % Generate and test one million 1000 point vectors
 
 % Number of test vectors
-number_tests = 10000;
+number_tests = 100000;
 
 % Number of points in the vector
 number_points = 1000;
