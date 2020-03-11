@@ -1,16 +1,16 @@
 function delays = computeDelays(mp)
 %#codegen    
 % TODO: optimize data types
-ELEMENT_SPACING = fi(25e-3, 0, 16, 15);  % meters
-SPEED_OF_SOUND = fi(343, 0, 9, 0); % meters/second
-NUM_ELEMENTS_Y = fi(4, 1, 5, 1);
-NUM_ELEMENTS_Z = fi(1, 1, 5, 1);
+ELEMENT_SPACING = fi(mp.arraySpacing, 0, 16, 15);  % meters
+SPEED_OF_SOUND = fi(mp.speedOfSound, 0, 9, 0); % meters/second
+NUM_ELEMENTS_Y = fi(mp.arraySize(1), 1, 5, 1);
+NUM_ELEMENTS_Z = fi(mp.arraySize(2), 1, 5, 1);
 
 DEG_TO_RAD = fi(pi/180, 0, 8, 7);
-SAMPLING_RATE = sfi(48e3);
+SAMPLING_RATE = sfi(mp.Fs);
 
 % TODO: make array size generic
-delays = fi(zeros(4, 1), mp.delayDataTypeSign, mp.delayDataTypeWordLength, mp.delayDataTypeFractionLength);
+delays = fi(zeros(mp.arraySize(1) * mp.arraySize(2), 1), mp.delayDataTypeSign, mp.delayDataTypeWordLength, mp.delayDataTypeFractionLength);
 yElementIdx = fi(0:(NUM_ELEMENTS_Y - 1), 1, 5, 1);
 zElementIdx = fi((0:(NUM_ELEMENTS_Z - 1)), 1, 5, 1);
 

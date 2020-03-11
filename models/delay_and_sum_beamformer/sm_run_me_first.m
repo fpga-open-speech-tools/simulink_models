@@ -48,7 +48,7 @@ mp.speedOfSound = 343;
 % TODO: it'd sure be nice to have access to mp.Fs right here, but we don't....
 mp.samplingRate = 48e3;
 mp.arraySpacing = 25e-3;
-mp.arraySize = [2,2];
+mp.arraySize = [4,4];
 arraySize = mp.arraySize;
 arraySpacing = mp.arraySpacing;
 samplingRate = mp.samplingRate;
