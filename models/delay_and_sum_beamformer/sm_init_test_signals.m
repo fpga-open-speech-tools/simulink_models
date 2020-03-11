@@ -30,11 +30,11 @@
 
 function mp = sm_init_test_signals(mp)
 
-signal_option = 4;  % set which test signal to use
+signal_option = 1;  % set which test signal to use
 
 switch signal_option
     case 1 % Simple tones        
-        mp.test_signal.duration = 1;  % duration of tone in seconds
+        mp.test_signal.duration = 5;  % duration of tone in seconds
         Nsamples = round(mp.test_signal.duration*mp.Fs);
         if mp.fastsim_flag == 1 % perform fast simulation by reducing the number of samples
            mp.test_signal.Nsamples = min(Nsamples, mp.fastsim_Nsamples);
@@ -42,7 +42,8 @@ switch signal_option
            mp.test_signal.Nsamples = mp.fastsim_Nsamples;
         end
         sample_times = [0 1:(mp.test_signal.Nsamples-1)]*mp.Ts;
-        mp.test_signal.data  = repmat(cos(2*pi*2000*sample_times), mp.arraySize(1)*mp.arraySize(2), 1);
+        mp.test_signal.data  = repmat(cos(2*pi*1000*sample_times), ... 
+            mp.arraySize(1)*mp.arraySize(2), 1);
     case 2  % speech 
         [y,Fs] = audioread('SpeechDFT-16-8-mono-5secs.wav');  % speech sample found in the Matlab Audio Toolbox 
         y_resampled = resample(y,mp.Fs,Fs);  % resample to change the sample rate to SG.Fs
@@ -52,24 +53,13 @@ switch signal_option
         else
            mp.test_signal.Nsamples = mp.fastsim_Nsamples;
         end
-        mp.test_signal.left  = y_resampled(1:mp.test_signal.Nsamples);
+        mp.test_signal.data  = repmat(y_resampled(1:mp.test_signal.Nsamples), ...
+            mp.arraySize(1) * mp.arraySize(2), 1);
         mp.test_signal.right = y_resampled(1:mp.test_signal.Nsamples);
         mp.test_signal.Nsamples = length(mp.test_signal.left);
         mp.test_signal.duration = mp.test_signal.Nsamples * mp.Ts;
-    case 3 % user supplied music
-        [y,Fs] = audioread([mp.test_signals_path filesep 'Urban_Light_HedaMusic_Creative_Commons.mp3']); 
-        y_resampled = resample(y,mp.Fs,Fs);  % resample to change the sample rate to SG.Fs
-        Nsamples = length(y_resampled);
-        if mp.fastsim_flag == 1 % perform fast simulation by reducing the number of samples
-           mp.test_signal.Nsamples = min(Nsamples, mp.fastsim_Nsamples);
-        else
-           mp.test_signal.Nsamples = mp.fastsim_Nsamples;
-        end     
-        mp.test_signal.left  = y_resampled(1:mp.test_signal.Nsamples);
-        mp.test_signal.Nsamples = length(mp.test_signal.left);
-        mp.test_signal.duration = mp.test_signal.Nsamples * mp.Ts;
-    case 4 % square wave
-        mp.test_signal.duration = 1;  % duration of tone in seconds
+    case 3 % square wave
+        mp.test_signal.duration = 5;  % duration of tone in seconds
         Nsamples = round(mp.test_signal.duration*mp.Fs);
         if mp.fastsim_flag == 1 % perform fast simulation by reducing the number of samples
            mp.test_signal.Nsamples = min(Nsamples, mp.fastsim_Nsamples);
@@ -77,19 +67,28 @@ switch signal_option
            mp.test_signal.Nsamples = mp.fastsim_Nsamples;
         end
         sample_times = [0 1:(mp.test_signal.Nsamples-1)]*mp.Ts;
-        mp.test_signal.data  = repmat(square(2*pi*2000*sample_times), mp.arraySize(1)*mp.arraySize(2), 1);
+        mp.test_signal.data  = repmat(square(2*pi*2000*sample_times), ... 
+            mp.arraySize(1)*mp.arraySize(2), 1);
     otherwise
         error('Please choose a viable option for the test signal (see sm_init_test_signals)')
 end
 
+%% simulate direction of arrival for each channel
+% the doa can be set arbitrarily between +/- 90 for both angles.
+% if you want the incoming doa to match the look direction of the array,
+% the angles here need to match those in the sm_init_control_signals.
 mp.simulatedAzimuth = fi(0, 1, 16, 8);
 mp.simulatedElevation = fi(-90, 1, 16, 8);
 delays = computeDelays(mp);
-
 %plot(mp.test_signal.data(1,:)'); hold on;
 mp.test_signal.data = delayseq(mp.test_signal.data', double(delays))';
 %plot(mp.test_signal.data');
 %legend('original', cellstr(['original'; num2str(delays)]))
+
+%% add uncorrelated noise to each channel
+% the beamforming algorithm should increase signal-to-noise ratio. 
+NOISE_AMPLITUDE = 0.4;
+mp.test_signal.data = mp.test_signal.data + NOISE_AMPLITUDE * rand(size(mp.test_signal.data));
 
 
 

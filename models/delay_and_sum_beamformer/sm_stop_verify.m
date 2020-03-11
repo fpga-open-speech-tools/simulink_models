@@ -32,4 +32,10 @@ function mp = sm_stop_verify(mp)
 %% Verify that the test data got encoded, passed through the model, and
 % decoded correctly.  The input (modified by gain) and output values should be identical.
 
+% play the original input signal
+soundsc(sum(mp.test_signal.data), mp.Fs)
+
+% play the beamformed output signal
+pause(mp.test_signal.duration);
+soundsc(squeeze(double(mp.Avalon_Source_Data.Data)), mp.Fs)
 end
