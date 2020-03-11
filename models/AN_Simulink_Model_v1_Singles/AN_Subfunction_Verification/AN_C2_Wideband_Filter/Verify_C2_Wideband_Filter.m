@@ -35,6 +35,10 @@ end
 
 %% COMPARISON PLOT
 
+% Closes all the previous run figures
+% *** Added by Hezekiah Ausitn 03/10/2020
+close all;
+
 figure()
 subplot(2,1,1)
 plot(C2filterout);
@@ -65,6 +69,14 @@ C2modelerror = norm(C2filterout(1:end)-out.C2filterout_doubles(1:end-1));
 % *** Added by Hezekiah Austin 02/20/2020
 C2conversionerror = norm(out.C2filterout(1:end)-out.C2filterout_doubles(1:end));
 
+% Compares output vector between Doubles Biquad Filter and the Singles Direct Form 1 Filter
+% *** Added by Hezekiah Austin 03/10/2020
+C2filtererror = norm(out.C2filterout_doubles(1:end)-out.C2filterout_filter(1:end));
+
+% Compares output vector between Singles Biquad Filter its replacement the Singles Direct Form 1 Filter
+% *** Added by Hezekiah Austin 03/10/2020
+C2replacementerror = norm(out.C2filterout(1:end)-out.C2filterout_filter(1:end));
+
 % Display in Simulink Diagnostics menu
 disp('C2 Wideband Filter Model Error =');
 disp(C2modelerror);
@@ -72,5 +84,15 @@ disp(C2modelerror);
 % Display in Simulink Diagnostics menu
 disp('C2 Wideband Filter Conversion Error =');
 disp(C2conversionerror);
+
+% Display Filter Error in Simulink Diagnostics menu
+% *** Added by Hezekiah Austin 03/10/2020
+disp('C2 Wideband Filter Doubles Biquad to Singles Direct Form  Error =');
+disp(C2filtererror);
+
+% Display Filter Error in Simulink Diagnostics menu
+% *** Added by Hezekiah Austin 03/10/2020
+disp('C2 Wideband Filter Replacement Error =');
+disp(C2replacementerror);
 
 % end of script

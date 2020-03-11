@@ -1,4 +1,4 @@
-% Copyright 2019 Flat Earth Inc
+% Copyright 2020 Flat Earth Inc
 %
 % THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
 % INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
@@ -6,7 +6,7 @@
 % FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 % ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 %
-% Matthew Blunt
+% Matthew Blunt & Hezekiah Austin
 % Flat Earth Inc
 % 985 Technology Blvd
 % Bozeman, MT 59718
@@ -67,6 +67,22 @@ fcohcc2 = 1;
 % Calculating IIR Biquad Coefficients by calling C2Coefficients
 % MATLAB function
 [C2coeffs, norm_gainc2] = C2Coefficients( tdres, cf, taumaxc2, fcohcc2 );
+
+%% POLES AND ZEROS OF C2coeffs
+
+% Plots the poles and zeros of the transfer function for the IIR Filter
+% *** Added by Hezekiah Austin 03/10/2020
+% figure()
+% subplot(2,3,1)
+% zplane(C2coeffs(1,1:3),C2coeffs(1,4:6));
+% subplot(2,3,2)
+% zplane(C2coeffs(2,1:3),C2coeffs(2,4:6));
+% subplot(2,3,3)
+% zplane(C2coeffs(3,1:3),C2coeffs(3,4:6));
+% subplot(2,3,4)
+% zplane(C2coeffs(4,1:3),C2coeffs(4,4:6));
+% subplot(2,3,5)
+% zplane(C2coeffs(5,1:3),C2coeffs(5,4:6));
 
 
 %% TEST SIGNAL
