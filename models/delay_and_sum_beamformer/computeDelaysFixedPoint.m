@@ -1,14 +1,15 @@
-function delays = computeDelays(mp)
-ELEMENT_SPACING = mp.arraySpacing;  % meters
-SPEED_OF_SOUND = mp.speedOfSound; % meters/second
-NUM_ELEMENTS_Y = mp.arraySize(1);
-NUM_ELEMENTS_Z = mp.arraySize(2);
-DEG_TO_RAD = pi/180;
-SAMPLING_RATE = mp.Fs;
+function delays = computeDelaysFixedPoint(mp)
+ELEMENT_SPACING = fi(mp.arraySpacing, 0, 16, 15);  % meters
+SPEED_OF_SOUND = fi(mp.speedOfSound, 0, 9, 0); % meters/second
+NUM_ELEMENTS_Y = fi(mp.arraySize(1), 1, 5, 1);
+NUM_ELEMENTS_Z = fi(mp.arraySize(2), 1, 5, 1);
 
-delays = zeros(mp.arraySize(1) * mp.arraySize(2), 1);
-yElementIdx = 0:(NUM_ELEMENTS_Y - 1);
-zElementIdx = 0:(NUM_ELEMENTS_Z - 1);
+DEG_TO_RAD = fi(pi/180, 0, 8, 7);
+SAMPLING_RATE = sfi(mp.Fs);
+
+delays = fi(zeros(mp.arraySize(1) * mp.arraySize(2), 1), mp.delayDataTypeSign, mp.delayDataTypeWordLength, mp.delayDataTypeFractionLength);
+yElementIdx = fi(0:(NUM_ELEMENTS_Y - 1), 1, 5, 1);
+zElementIdx = fi((0:(NUM_ELEMENTS_Z - 1)), 1, 5, 1);
 
 azimuthRadians = mp.simulatedAzimuth * DEG_TO_RAD;
 elevationRadians = mp.simulatedElevation * DEG_TO_RAD;

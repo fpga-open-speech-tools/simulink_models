@@ -30,7 +30,7 @@
 
 function mp = sm_init_test_signals(mp)
 
-signal_option = 1;  % set which test signal to use
+signal_option = 3;  % set which test signal to use
 
 switch signal_option
     case 1 % Simple tones        
@@ -46,7 +46,7 @@ switch signal_option
             mp.arraySize(1)*mp.arraySize(2), 1);
     case 2  % speech 
         [y,Fs] = audioread('SpeechDFT-16-8-mono-5secs.wav');  % speech sample found in the Matlab Audio Toolbox 
-        y_resampled = resample(y,mp.Fs,Fs);  % resample to change the sample rate to SG.Fs
+        y_resampled = resample(y,mp.Fs,Fs)';  % resample to change the sample rate to SG.Fs
         Nsamples = length(y_resampled);
         if mp.fastsim_flag == 1 % perform fast simulation by reducing the number of samples
            mp.test_signal.Nsamples = min(Nsamples, mp.fastsim_Nsamples);
@@ -55,8 +55,7 @@ switch signal_option
         end
         mp.test_signal.data  = repmat(y_resampled(1:mp.test_signal.Nsamples), ...
             mp.arraySize(1) * mp.arraySize(2), 1);
-        mp.test_signal.right = y_resampled(1:mp.test_signal.Nsamples);
-        mp.test_signal.Nsamples = length(mp.test_signal.left);
+        mp.test_signal.Nsamples = length(mp.test_signal.data);
         mp.test_signal.duration = mp.test_signal.Nsamples * mp.Ts;
     case 3 % square wave
         mp.test_signal.duration = 5;  % duration of tone in seconds
@@ -77,11 +76,21 @@ end
 % the doa can be set arbitrarily between +/- 90 for both angles.
 % if you want the incoming doa to match the look direction of the array,
 % the angles here need to match those in the sm_init_control_signals.
-mp.simulatedAzimuth = fi(0, 1, 16, 8);
-mp.simulatedElevation = fi(-90, 1, 16, 8);
+%
+% to simulate steering angle quantization errors due to fixed point data
+% types, use doubles for simulatedAzimuth and simulatedElevation and use 
+% the computeDelaysDoubles function; otherwise, use computeDelaysFixedPoint
+% sfix16_8 types for azimuth and elevation
+mp.simulatedAzimuth = 34;
+mp.simulatedElevation = -55;
+
 delays = computeDelays(mp);
+
 %plot(mp.test_signal.data(1,:)'); hold on;
+
+% delay the signal at each sensor
 mp.test_signal.data = delayseq(mp.test_signal.data', double(delays))';
+
 %plot(mp.test_signal.data');
 %legend('original', cellstr(['original'; num2str(delays)]))
 
