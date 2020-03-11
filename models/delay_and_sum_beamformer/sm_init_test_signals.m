@@ -83,13 +83,13 @@ switch signal_option
 end
 
 mp.simulatedAzimuth = fi(0, 1, 16, 8);
-mp.simulatedElevation = fi(0, 1, 16, 8);
+mp.simulatedElevation = fi(-90, 1, 16, 8);
 delays = computeDelays(mp);
 
-%plot(mp.test_signal.data', 'k'); hold on;
+%plot(mp.test_signal.data(1,:)'); hold on;
 mp.test_signal.data = delayseq(mp.test_signal.data', double(delays))';
 %plot(mp.test_signal.data');
-
+%legend('original', cellstr(['original'; num2str(delays)]))
 
 
 
