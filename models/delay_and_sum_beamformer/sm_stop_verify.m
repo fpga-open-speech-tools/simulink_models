@@ -33,9 +33,21 @@ function mp = sm_stop_verify(mp)
 % decoded correctly.  The input (modified by gain) and output values should be identical.
 
 % play the original input signal
-soundsc(sum(mp.test_signal.data), mp.Fs)
+%sound(double(mp.test_signal.data(1,:)), mp.Fs)
+
+% play the sum without delay compensation
+%pause(mp.test_signal.duration);
+%sound(sum(double(mp.test_signal.data)), mp.Fs)
 
 % play the beamformed output signal
-pause(mp.test_signal.duration);
-soundsc(squeeze(double(mp.Avalon_Source_Data.Data)), mp.Fs)
+%pause(mp.test_signal.duration);
+%sound(resample(squeeze(double(mp.Avalon_Sink_Data.Data)), mp.Fs, mp.Fs_system), mp.Fs)
+
+subplot(2,1,1)
+plot(mp.test_signal.data');
+title('signal at each sensor')
+subplot(2,1,2)
+plot(squeeze(mp.Avalon_Sink_Data.Data))
+title('beamformed sigal')
+
 end
