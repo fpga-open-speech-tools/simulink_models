@@ -50,12 +50,11 @@ mp.linux_device_version = '18.0';
 %% Setup the directory paths & tool settings
 % TODO: these paths should ideally be contained in a toolbox. the one exception is the model path, which is many cases is the pwd, though it doesn't have to be.
 addpath('../../config');
-% if isunix  % setup for a Linux platform
-%     path_setup_linux;
-% elseif ispc % setup for a Windows platform
-%     path_setup_windows;  
-% end
-path_setup_linux;
+if isunix  % setup for a Linux platform
+    path_setup_linux;
+elseif ispc % setup for a Windows platform
+    path_setup_windows;  
+end
 
 % Note: addpath() only sets the paths for the current Matlab session
 addpath(mp.model_path)
