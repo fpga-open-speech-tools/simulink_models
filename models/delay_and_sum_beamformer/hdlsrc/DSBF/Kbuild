@@ -1,0 +1,2 @@
+ccflags-y := -I$(src)/../../../../../component_library/include
+obj-m := delay_and_sum_beamformer.o
