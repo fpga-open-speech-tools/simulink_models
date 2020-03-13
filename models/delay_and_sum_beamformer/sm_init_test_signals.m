@@ -96,7 +96,7 @@ mp.test_signal.data = delayseq(mp.test_signal.data', double(delays))';
 
 %% add uncorrelated noise to each channel
 % the beamforming algorithm should increase signal-to-noise ratio. 
-NOISE_AMPLITUDE = 0.5;
+NOISE_AMPLITUDE = 0.4;
 mp.test_signal.data = mp.test_signal.data + NOISE_AMPLITUDE * rand(size(mp.test_signal.data));
 
 
