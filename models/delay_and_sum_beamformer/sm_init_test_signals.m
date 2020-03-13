@@ -30,7 +30,7 @@
 
 function mp = sm_init_test_signals(mp)
 
-signal_option = 3;  % set which test signal to use
+signal_option = 1;  % set which test signal to use
 
 switch signal_option
     case 1 % Simple tones        
@@ -96,7 +96,7 @@ mp.test_signal.data = delayseq(mp.test_signal.data', double(delays))';
 
 %% add uncorrelated noise to each channel
 % the beamforming algorithm should increase signal-to-noise ratio. 
-NOISE_AMPLITUDE = 0.4;
+NOISE_AMPLITUDE = 0.5;
 mp.test_signal.data = mp.test_signal.data + NOISE_AMPLITUDE * rand(size(mp.test_signal.data));
 
 
