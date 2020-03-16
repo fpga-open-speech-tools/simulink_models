@@ -15,8 +15,20 @@ Ts = 1/48000;
 tt = 0:length(data)-1;
 tt = tt.*Ts;
 
+%% Testing upsampling of signals, for valid/counter check
+data = upsample(data, 4);
+valid = upsample(valid, 4);
+delay = [0,0:8];
+delay = ones(2,10).*delay;
+delay = [delay(:); delay(:); delay(:); delay(:); delay(:); delay(:); delay(:); delay(:)];
+Ts = Ts*0.25;
+tt = 0:length(data)-1;
+tt = tt.*Ts;
+
 dataIn = timeseries(data, tt);
-delayIn = timeseries(delay, tt);
+delayIn = timeseries(delay, tt(1:length(delay)));
 validIn = timeseries(valid, tt);
 
-stop_time = tt(end);
+
+
+stop_time = tt(length(delay));
