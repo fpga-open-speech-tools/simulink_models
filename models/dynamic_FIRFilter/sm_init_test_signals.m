@@ -38,16 +38,8 @@ switch signal_option
         [y, Fs] = audioread('1kto2k_chirp.wav'); %y(ceil(length(y)/2):end) for high freq section
         y_resampled = resample(y,mp.Fs,Fs);  % resample to change the sample rate to SG.Fs
         Nsamples = length(y_resampled);
-        if mp.fastsim_flag == 1 % perform fast simulation by reducing the number of samples
-            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-            % Determine which one works better
-            %
-            % I find that line 48 is more beneficial as you can run the
-            % simulation for the entire signal duration, rather than 12
-            % seconds - making debugging easier.
-            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-           mp.test_signal.Nsamples = min(Nsamples, mp.fastsim_Nsamples);
-%             mp.test_signal.Nsamples = Nsamples;
+        if mp.fastsim_flag == 1 % perform fast simulation, clock rate is slower so more samples can be afforded
+           mp.test_signal.Nsamples = max(Nsamples, mp.fastsim_Nsamples);
         else
            mp.test_signal.Nsamples = mp.fastsim_Nsamples;
         end

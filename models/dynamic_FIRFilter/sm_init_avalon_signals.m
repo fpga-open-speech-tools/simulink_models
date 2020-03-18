@@ -46,6 +46,18 @@ for sample_index = 1:mp.test_signal.Nsamples
     datavals_channel(dataval_index)  = 0;   % channel 0 = left
     datavals_error(dataval_index)    = 0;   % no error
     dataval_index                    = dataval_index + 1;
+    
+    %---------------------------------------------
+    % fill in the invalid data slots with ZOH
+    %---------------------------------------------
+    for k=1:(mp.rate_change/2-1)
+        datavals_data(dataval_index)    = mp.test_signal.left(sample_index);  % ZOH data
+        datavals_valid(dataval_index)   = 0;  % data is not valid in these time bins
+        datavals_channel(dataval_index) = 0;  % channel 0 = left
+        datavals_error(dataval_index)   = 0;  % no error
+        dataval_index                   = dataval_index + 1;
+    end
+    
     %----------------------------
     % right channel
     %----------------------------
@@ -54,13 +66,14 @@ for sample_index = 1:mp.test_signal.Nsamples
     datavals_channel(dataval_index)  = 1;  % channel 1 = right
     datavals_error(dataval_index)    = 0;  % no error
     dataval_index                    = dataval_index + 1;
+    
     %---------------------------------------------
-    % fill in the invalid data slots with zeros
+    % fill in the invalid data slots with ZOH
     %---------------------------------------------
-    for k=1:(mp.rate_change-2)
-        datavals_data(dataval_index)    = 0;  % no data (put in zeros)
+    for k=1:(mp.rate_change/2-1)
+        datavals_data(dataval_index)    = mp.test_signal.right(sample_index);  % ZOH data
         datavals_valid(dataval_index)   = 0;  % data is not valid in these time bins
-        datavals_channel(dataval_index) = 3;  % channel 3 = no data
+        datavals_channel(dataval_index) = 1;  % channel 1 = right
         datavals_error(dataval_index)   = 0;  % no error
         dataval_index                   = dataval_index + 1;
     end
