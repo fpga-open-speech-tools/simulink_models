@@ -13,9 +13,8 @@ entity pFIR_Testing_dataplane_avalon is
     avalon_source_valid       : out std_logic; --ufix1
     avalon_source_data        : out std_logic_vector(31  downto 0); --sfix32_En28
     avalon_source_channel     : out std_logic_vector(1   downto 0); --ufix2
-    avalon_source_rw_dout     : out std_logic_vector(31  downto 0); --sfix32_En28
     avalon_source_error       : out std_logic_vector(1   downto 0); --ufix2
-    avalon_slave_address      : in  std_logic_vector(1   downto 0);            
+    avalon_slave_address      : in  std_logic_vector(2   downto 0);            
     avalon_slave_read         : in  std_logic;
     avalon_slave_readdata     : out std_logic_vector(31  downto 0);
     avalon_slave_write        : in  std_logic;
@@ -29,6 +28,7 @@ architecture pFIR_Testing_dataplane_avalon_arch of pFIR_Testing_dataplane_avalon
   signal Wr_Data                   : std_logic_vector(31  downto 0) :=  "00000000000000000000000000000000"; -- 0 (sfix32_En28)
   signal RW_Addr                   : std_logic_vector(31  downto 0) :=  "00000000000000000000000000000000"; -- 0 (uint32)
   signal Wr_En                     : std_logic_vector(31  downto 0) :=  "00000000000000000000000000000000"; -- 0 (int32)
+  signal RW_dout     			   : std_logic_vector(31  downto 0) :=  "00000000000000000000000000000000"; --sfix32_En28
 
 component pFIR_Testing_dataplane
   port(
@@ -78,10 +78,10 @@ u_pFIR_Testing_dataplane : pFIR_Testing_dataplane
   begin
     if rising_edge(clk) and avalon_slave_read = '1' then
       case avalon_slave_address is
-        when "00" => avalon_slave_readdata <= enable;
-        when "01" => avalon_slave_readdata <= Wr_Data;
-        when "10" => avalon_slave_readdata <= RW_Addr;
-        when "11" => avalon_slave_readdata <= Wr_En;
+        when "000" => avalon_slave_readdata <= enable;
+        when "001" => avalon_slave_readdata <= Wr_Data;
+        when "010" => avalon_slave_readdata <= RW_Addr;
+        when "011" => avalon_slave_readdata <= Wr_En;
         when others => avalon_slave_readdata <= (others => '0');
       end case;
     end if;
@@ -94,12 +94,14 @@ u_pFIR_Testing_dataplane : pFIR_Testing_dataplane
       Wr_Data                   <=  "00000000000000000000000000000000"; -- 0 (sfix32_En28)
       RW_Addr                   <=  "00000000000000000000000000000000"; -- 0 (uint32)
       Wr_En                     <=  "00000000000000000000000000000000"; -- 0 (int32)
+	  RW_dout     				<=  "00000000000000000000000000000000"; -- 0 (sfix32_En28)
     elsif rising_edge(clk) and avalon_slave_write = '1' then
       case avalon_slave_address is
-        when "00" => enable <= avalon_slave_writedata(31 downto 0);
-        when "01" => Wr_Data <= avalon_slave_writedata(31 downto 0);
-        when "10" => RW_Addr <= avalon_slave_writedata(31 downto 0);
-        when "11" => Wr_En <= avalon_slave_writedata(31 downto 0);
+        when "000" => enable <= avalon_slave_writedata(31 downto 0);
+        when "001" => Wr_Data <= avalon_slave_writedata(31 downto 0);
+        when "010" => RW_Addr <= avalon_slave_writedata(31 downto 0);
+        when "011" => Wr_En <= avalon_slave_writedata(31 downto 0);
+		when "100" => RW_dout <= avalon_slave_writedata(31 downto 0);
         when others => null;
       end case;
     end if;
