@@ -7,7 +7,7 @@
 
 % Copyright 2019 Flat Earth Inc
 %
-% THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+% THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR  IMPLIED,
 % INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
 % PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE
 % FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
@@ -32,20 +32,20 @@ clc         % clear command window
 % simulated clock cycles between each sample in the Avalon bus signals.
 % It also reduces the number of stimulus samples.  This allow for faster
 % development iterations when developing the simulink model.
-mp.fastsim_flag        = 0;     % perform fast simulation  Note: fast simulation will be turned off when generating VHDL code since we need to run at the system clock rate.
-mp.fastsim_Fs_system_N = 8;     % (typical value 2 or 4) Simulate a much slower system clock than what is specified in sm_callback_init.m   - The reduce rate will be a multiple of the sample rate, i.e. mp.Fs_system = mp.Fs*mp.fastsim_Fs_system_N
-mp.fastsim_Nsamples    = 50; % set to the string 'all' to use all the samples from the input signal specified in sm_init_test_signals.m
+mp.fastSimFlag        = 0;      % perform fast simulation  Note: fast simulation will be turned off when generating VHDL code since we need to run at the system clock rate.
+mp.fastSimClockUprate = 8;      % (typical value 2 or 4) Simulate a much slower system clock than what is specified in sm_callback_init.m   - The reduce rate will be a multiple of the sample rate, i.e. mp.systemFs = mp.sampleFs*mp.fastSimClockUprate
+mp.fastSimSamples     = 50;     % set to the string 'all' to use all the samples from the input signal specified in smInitTestSignals.m
 
 
 %% Model parameters
 % Model parameters are placed in a data structure called mp that can be passed to functions
-mp.model_name = 'pFIR_Testing';
-mp.model_abbreviation = 'pFIR_HPF';
-mp.model_abbreviation = 'pFIR_Testing';
+mp.modelName = 'pFIRTesting';
+mp.modelAbbreviation = 'pFIR_HPF';
+mp.modelAbbreviation = 'pFIRTesting';
 
 % Device driver version for the Linux device tree. Typically set as the Quartus version
-mp.linux_device_name = mp.model_name;
-mp.linux_device_version = '18.0';
+mp.linuxDeviceName = mp.modelName;
+mp.linuxDeviceVersion = '18.0';
 
 %% Setup the directory paths & tool settings
 % TODO: these paths should ideally be contained in a toolbox. the one exception is the model path, which is many cases is the pwd, though it doesn't have to be.
@@ -57,34 +57,35 @@ elseif ispc % setup for a Windows platform
 end
 
 % Note: addpath() only sets the paths for the current Matlab session
-addpath(mp.model_path)
-addpath(mp.driver_codegen_path)
-addpath(mp.vhdl_codegen_path)
-addpath(mp.config_path)
-hdlsetuptoolpath('ToolName', 'Altera Quartus II', 'ToolPath', mp.quartus_path);  % setup the HDL toochain path that needs to be set before calling HDL workflow process
-cd(mp.model_path);
+addpath(mp.modelPath)
+addpath(mp.driverCodegenPath)
+addpath(mp.vhdlCodegenPath)
+addpath(mp.configPath)
+hdlsetuptoolpath('ToolName', 'Altera Quartus II', 'ToolPath', mp.quartusPath);  % setup the HDL toochain path that needs to be set before calling HDL workflow process
+cd(mp.modelPath);
+
 %% python
-[python_version, python_exe, python_loaded] = pyversion;
-% if  python_loaded
-%     disp(['Using Python version ' python_version])
+[pythonVersion, pythonExe, pythonLoaded] = pyversion;
+% if  pythonLoaded
+%     disp(['Using Python version ' pythonVersion])
 % else
 %     pyversion(mp.python_path);    % Note: if the version changes from what is already loaded in Matlab, you will need to restart Matlab
-%     [python_version, python_exe, python_loaded] = pyversion;
-%     disp(['Setting Python to version ' python_version])
+%     [pythonVersion, pythonExe, pythonLoaded] = pyversion;
+%     disp(['Setting Python to version ' pythonVersion])
 % end
 % add the codegen_path to python's search path
-if count(py.sys.path,mp.vhdl_codegen_path) == 0
-    insert(py.sys.path,int32(0),mp.vhdl_codegen_path);
+if count(py.sys.path,mp.vhdlCodegenPath) == 0
+    insert(py.sys.path,int32(0),mp.vhdlCodegenPath);
 end
-if count(py.sys.path,mp.driver_codegen_path) == 0
-    insert(py.sys.path,int32(0),mp.driver_codegen_path);
+if count(py.sys.path,mp.driverCodegenPath) == 0
+    insert(py.sys.path,int32(0),mp.driverCodegenPath);
 end
 
 
 %% Open the model
-disp(['Please wait while the Simulink Model: '  mp.model_name  ' is being opened.'])
+disp(['Please wait while the Simulink Model: '  mp.modelName  ' is being opened.'])
 disp(['Note: Before generating VHDL, you will need to run a model simulation.'])
-open_system([mp.model_name])
+open_system([mp.modelName])
 % display popup reminder message
-helpdlg(sprintf(['NOTE: You will need to first run the Simulation for model ' mp.model_name ' to initialize variables in the Matlab workspace before converting to VHDL.']),'Reminder Message')
-mp.sim_prompts = 1;  % turn on the simulation prompts/comments (these will be turned off when the HDL conversion process starts).
+helpdlg(sprintf(['NOTE: You will need to first run the Simulation for model ' mp.modelName ' to initialize variables in the Matlab workspace before converting to VHDL.']),'Reminder Message')
+mp.simPrompts = 1;  % turn on the simulation prompts/comments (these will be turned off when the HDL conversion process starts).

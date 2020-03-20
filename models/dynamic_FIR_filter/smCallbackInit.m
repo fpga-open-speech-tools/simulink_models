@@ -20,47 +20,47 @@
 
 %% Make sure that sm_run_me_first has actually been run first.
 % if not, run it first since it sets up paths and toolchains
-if isfield(mp,'sim_prompts') == 0
+if isfield(mp,'simPrompts') == 0
     cd ..
-    sm_run_me_first;
+    smRunMeFirst;
 end
 
 %% Set Audio Data Sample Rate
-mp.Fs = 48000;    % sample rate frequency of AD1939 codec in Hz
-mp.Ts = 1/mp.Fs;  % sample period
+mp.sampleFs = 48000;    % sample rate frequency of AD1939 codec in Hz
+mp.sampleTs = 1/mp.sampleFs;  % sample period
 
 %% Set the FPGA system clock frequency (frequency of the FPGA fabric)
 % The system clock frequency should be an integer multiple of the Audio codec AD1939 Mclk frequency (12.288 MHz)
-if mp.fastsim_flag == 0
-    mp.Fs_system = 98304000;            % System clock frequency in Hz of Avalon Interface  Mclk*8 = 12.288MHz*8=98304000
+if mp.fastSimFlag == 0
+    mp.systemFs = 98304000;            % System clock frequency in Hz of Avalon Interface  Mclk*8 = 12.288MHz*8=98304000
 else
-    mp.Fs_system = mp.Fs * mp.fastsim_Fs_system_N;      % Note: For faster development runs (faster sim times), reduce the number of system clocks between samples.  mp.fastsim_Fs_system_N is set in sm_run_me_first.m
+    mp.systemFs = mp.sampleFs * mp.fastSimClockUprate;      % Note: For faster development runs (faster sim times), reduce the number of system clocks between samples.  mp.fastSimClockUprate is set in sm_run_me_first.m
 end
-mp.Ts_system   = 1/mp.Fs_system;        % System clock period
-mp.rate_change = mp.Fs_system/mp.Fs;    % how much faster the system clock is to the sample clock
+mp.systemTs   = 1/mp.systemFs;        % System clock period
+mp.rateChange = mp.systemFs/mp.sampleFs;    % how much faster the system clock is to the sample clock
 
 %% Set the data type for audio signal (left and right channels) in data plane
 mp.W_bits = 32;  % Word length
 mp.F_bits = 28;  % Number of fractional bits in word
 
 %% Create the control signals
-mp = sm_init_control_signals(mp);  % create the control signals
+mp = smInitControlSignals(mp);  % create the control signals
 
 %% Create test signals for the left and right channels
-mp = sm_init_test_signals(mp);          % create the test signals that will go through the model
-stop_time = mp.test_signal.duration;    % simulation time is based on the number of audio samples to go through the model
-if mp.sim_prompts == 1                  % Note: sim_prompts is set in Run_me_first.m and is set to zero when hdl code generation is run
-    Nsamples_avalon = mp.test_signal.Nsamples * mp.rate_change;
+mp = smInitTestSignals(mp);          % create the test signals that will go through the model
+stop_time = mp.testSignal.duration;    % simulation time is based on the number of audio samples to go through the model
+if mp.simPrompts == 1                  % Note: simPrompts is set in Run_me_first.m and is set to zero when hdl code generation is run
+    avalonSamples = mp.testSignal.nSamples * mp.rateChange;
     disp(['Simulation time has been set to ' num2str(stop_time) ' seconds'])
-    disp(['    Processing ' num2str(Nsamples_avalon) ' Avalon streaming samples.'])
+    disp(['    Processing ' num2str(avalonSamples) ' Avalon streaming samples.'])
     disp(['          To reduce simulation time for development iterations,'])
-    disp(['          reduce the system clock variable Fs_system (current set to ' num2str(mp.Fs_system)  ')'])
-    disp(['          and/or reduce the test signal length (current set to ' num2str(mp.test_signal.duration)  ' sec = ' num2str(mp.test_signal.Nsamples)  ' samples)'])
+    disp(['          reduce the system clock variable Fs_system (current set to ' num2str(mp.systemFs)  ')'])
+    disp(['          and/or reduce the test signal length (current set to ' num2str(mp.testSignal.duration)  ' sec = ' num2str(mp.testSignal.nSamples)  ' samples)'])
 end
 
 %% Put the test signals into the Avalon Streaming Bus format
 % i.e. put the test signals into the data-channel-valid protocol
-mp = sm_init_avalon_signals(mp);  % create the avalon streaming signals 
+mp = smInitAvalonSignals(mp);  % create the avalon streaming signals 
 
 %% Add Filter Signals
 % i.e. Add any filter coefficient files to use in the FIR Filter block
@@ -110,7 +110,7 @@ mp.HPF_1400 = HPF_SB1400_PB1700;
 %            zeros(1, length(mp.Avalon_Source_Data.time(:))) ];
 % % Modify Register Control signals
 % tt = 0:length(Wr_En)-1; 
-% tt = tt'.*mp.Ts_system;
+% tt = tt'.*mp.systemTs;
 % mp.register(1).timeseries = [tt, ones(length(tt), 1)];
 % mp.register(2).timeseries = [tt, Wr_Data'];
 % mp.register(3).timeseries = [tt, RW_Addr'];

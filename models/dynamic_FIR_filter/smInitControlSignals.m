@@ -1,5 +1,5 @@
-function mp = sm_init_control_signals(mp)
-% mp = sm_init_control_signals(mp)
+function mp = smInitControlSignals(mp)
+% mp = smInitControlSignals(mp)
 %
 % Matlab function that creates and initializes the control signals. 
 % The min/max values the control signals are expected to take need to be 
@@ -86,7 +86,7 @@ mp.register(4).widget_type      = 'slider';
 mp.register(4).widget_display_units = ' ';
 %% convert to time series data
 for i=1:length(mp.register)
-    mp.register(i).timeseries = timeseries(mp.register(i).value,0);  % timeseries(datavals,timevals);  % A timeseries data format is needed for the from workspace block     
+    mp.register(i).timeseries = timeseries(mp.register(i).value,0);  % timeseries(datavals,timeVals);  % A timeseries data format is needed for the from workspace block     
 end
 
 %% Check if the control signals have valid entries

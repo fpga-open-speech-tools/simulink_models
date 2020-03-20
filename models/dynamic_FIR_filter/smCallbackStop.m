@@ -26,7 +26,7 @@ mp.Avalon_Sink_Channel.Data = Avalon_Sink_Channel.Data; % channel
 mp.Avalon_Sink_Valid.Data   = Avalon_Sink_Valid.Data;   % valid
 
 
-if mp.sim_prompts == 1  % sim_prompts is set in Run_me_first.m   This is turned off when the model is converted to VHDL since we don't want to run the verification multiple times at this point (HDL coder runs the simulation multiple times)
+if mp.simPrompts == 1  % sim_prompts is set in Run_me_first.m   This is turned off when the model is converted to VHDL since we don't want to run the verification multiple times at this point (HDL coder runs the simulation multiple times)
     mp = sm_stop_process_output(mp);  % get the output and convert from Avalon to vector
 %     mp = sm_stop_verify(mp);          % verify that the output is correct
 end
@@ -36,7 +36,7 @@ close all; % Close any plots prior to output plots
 figure;
 % Grab the output data and time vectors - cast to type double
 
-time = 0: 1 / mp.Fs : length(mp.left_data_out)*1/mp.Fs;
+time = 0: 1 / mp.sampleFs : length(mp.left_data_out)*1/mp.sampleFs;
 time = time(1:end-1)';
 % Time domain chirp plot
 subplot(211);
@@ -47,14 +47,14 @@ title('Left Data');
 
 % Spectrogram
 subplot(212);
-%spectrogram(mp.left_data_out,8192,7800,8192,mp.Fs, 'yaxis');   % Display the spectrogram.
+%spectrogram(mp.left_data_out,8192,7800,8192,mp.sampleFs, 'yaxis');   % Display the spectrogram.
 ylim([1 2]);  
 title('HPF Filtered Signal Chirp Spectrogram');
 print('lpfFilt_speech_chirp_signal', '-dpng');
 
 
 figure;
-time = 0: 1 / mp.Fs : length(mp.right_data_out)*1/mp.Fs;
+time = 0: 1 / mp.sampleFs : length(mp.right_data_out)*1/mp.sampleFs;
 time = time(1:end-1)';
 % Time domain chirp plot
 subplot(211);
@@ -66,7 +66,7 @@ title('Right Data');
 
 % Spectrogram
 subplot(212);
-%spectrogram(mp.right_data_out,8192,7800,8192,mp.Fs, 'yaxis');   % Display the spectrogram.
+%spectrogram(mp.right_data_out,8192,7800,8192,mp.sampleFs, 'yaxis');   % Display the spectrogram.
 ylim([1 2]);  
 title('HPF Filtered Signal Chirp Spectrogram');
 print('lpfFilt_speech_chirp_signal', '-dpng');
@@ -75,7 +75,7 @@ print('lpfFilt_speech_chirp_signal', '-dpng');
 figure;
 % Grab the output data and time vectors - cast to type double
 
-time = 0: 1 / mp.Fs : length(mp.right_data_out)*1/mp.Fs;
+time = 0: 1 / mp.sampleFs : length(mp.right_data_out)*1/mp.sampleFs;
 time = time(1:end-1)';
 % Time domain chirp plot
 subplot(211);
@@ -86,7 +86,7 @@ title('Right Data');
 
 % Spectrogram
 subplot(212);
-%spectrogram(mp.left_data_out,8192,7800,8192,mp.Fs, 'yaxis');   % Display the spectrogram.
+%spectrogram(mp.left_data_out,8192,7800,8192,mp.sampleFs, 'yaxis');   % Display the spectrogram.
 ylim([1 2]);  
 title('HPF Filtered Signal Chirp Spectrogram');
 print('lpfFilt_speech_chirp_signal', '-dpng');

@@ -43,14 +43,14 @@ rDataDouble = double(rData);
 %% Plot Signal Data
     % Plot Spectrograms of the Outputs
     figure(1) % Left  Channel
-    spectrogram(lDataDouble,8192,7800,8192,mp.Fs, 'yaxis');
+    spectrogram(lDataDouble,8192,7800,8192,mp.sampleFs, 'yaxis');
     title('Left Channel -> Processed');
     % Limit the frequency axis to relevant range
 %     axis([80 600 0 0.1]);
     
     
     figure(2) % Right Channel 
-    spectrogram(rDataDouble,8192,7800,8192,mp.Fs, 'yaxis');
+    spectrogram(rDataDouble,8192,7800,8192,mp.sampleFs, 'yaxis');
     title('Right Channel -> Processed');
     % Limit the frequency axis to relevant range
 %     axis([80 200 0 0.15]);
