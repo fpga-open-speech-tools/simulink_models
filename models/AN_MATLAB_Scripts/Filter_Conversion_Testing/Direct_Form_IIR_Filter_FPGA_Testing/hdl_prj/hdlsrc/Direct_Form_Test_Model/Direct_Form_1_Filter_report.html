@@ -1,0 +1,254 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" itemscope itemtype="https://www.mathworks.com/help/schema/MathWorksDocPage">
+<head>
+<title>HDL Check Report for 'Direct_Form_Test_Model/Direct Form 1 Filter'</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<script type="text/javascript" src="file:///media/cb50701/data/MATLAB/R2019b/toolbox/hdlcoder/hdlcommon/js_css/jquery-1.7.1.js"></script>
+<script type="text/javascript" src="file:///media/cb50701/data/MATLAB/R2019b/toolbox/hdlcoder/hdlcommon/js_css/docscripts.js"></script>
+        
+        <link href="file:///media/cb50701/data/MATLAB/R2019b/toolbox/hdlcoder/hdlcommon/js_css/ice_960.css" rel="stylesheet" type="text/css">
+        <link href="file:///media/cb50701/data/MATLAB/R2019b/toolbox/hdlcoder/hdlcommon/js_css/HDLsite5.css" rel="stylesheet" type="text/css">
+        <link href="file:///media/cb50701/data/MATLAB/R2019b/toolbox/hdlcoder/hdlcommon/js_css/ice_doc_center.css" rel="stylesheet" type="text/css">
+        <link href="file:///media/cb50701/data/MATLAB/R2019b/toolbox/hdlcoder/hdlcommon/js_css/ice_doc_center_installed.css" rel="stylesheet" type="text/css">
+        <link href="file:///media/cb50701/data/MATLAB/R2019b/toolbox/hdlcoder/hdlcommon/js_css/ice_doc_center_print.css" rel="stylesheet" type="text/css" media="print">
+        <script type="text/javascript">
+            if (navigator.appName != "ICEbrowser") {
+            var cssStyleSheets = $("link").filter(function(){
+            var href = $(this).attr('href');
+            return href.indexOf("ice_doc_center_print.css") == -1});
+            var hrefElements = $.map(cssStyleSheets, function(elem) {
+            var href = $(elem).attr('href');
+            var hrefArray = href.split("/");
+            hrefArray[hrefArray.length - 1] = hrefArray[hrefArray.length - 1].replace("ice_", "");
+            return {
+            href: hrefArray.join("/"),
+            media: $(elem).attr('media')
+            };
+            });
+            cssStyleSheets.remove();
+            for (var i = 0; i < hrefElements.length; i++) {
+            if ($.browser.msie && $.browser.version <= 8) {
+            document.createStyleSheet(hrefElements[i].href);
+            } else {
+            var link = $('<link rel="stylesheet" href=' + hrefElements[i].href + ' type="text/css" />');
+            if (hrefElements[i].media) {
+            link.attr('media', hrefElements[i].media);
+            }
+            $('head').append(link);
+            }
+            }
+            }
+    </script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+<div class="container_192">
+<div class="grid_192">
+ <div class="page_container"><div class="content_frame">
+<h1>HDL Code Generation Check Report for 'Direct_Form_Test_Model/Direct Form 1 Filter'
+<a href="matlab:open_system('Direct_Form_Test_Model/Direct Form 1 Filter');">open model 'Direct_Form_Test_Model/Direct Form 1 Filter'</a><BR>
+Generated on 2020-03-10 18:46:02</h1>
+<H2>HDL check for 'Direct_Form_Test_Model' complete with 29 errors, 0 warnings, and 0 messages.</H2><BR>
+<H3>The following table describes blocks for which errors, warnings or messages were reported.</H3><BR>
+<TABLE>
+<TR><TD> <B>Simulink Blocks and resources</B> </TD><TD> <B>Level</B> </TD><TD> <B>Description</B> </TD></TR><TR bgcolor="#F0F0F0"><TD>
+<a alt="hdlcommon:nativefloatingpoint:TargetCodeGenFailure2" href="matlab:hilite(get_param(char([68 105 114 101 99 116 95 70 111 114 109 95 84 101 115 116 95 77 111 100 101 108]),'object'),'none');hilite_system(char([68 105 114 101 99 116 95 70 111 114 109 95 84 101 115 116 95 77 111 100 101 108 47 68 105 114 101 99 116 32 70 111 114 109 32 49 32 70 105 108 116 101 114 47 55 116 104 32 79 114 100 101 114 32 73 73 82 32 70 105 108 116 101 114 47 80 114 111 100 117 99 116 49]))">Direct_Form_Test_Model/Direct Form 1 Filter/7th Order IIR Filter/Product1</a>
+</TD>
+<TD>Error</TD>
+<TD>Unable to allocate delays to compensate for the 6 delays introduced by Direct_Form_Test_Model/Direct Form 1 Filter/7th Order IIR Filter/Product1 in native floating-point mode. Consider either increasing the oversampling factor, setting the 'Latency Strategy' to 'Zero', or adding the necessary output pipelines via HDL block properties for other blocks in the model to accommodate for the latency introduced by this block. <a href="matlab:helpview(fullfile(docroot, 'hdlcoder', 'helptargets.map'),'troubleshoot_hdlcoder_NFP_DelayAllocation')">More information</a></TD>
+</TR>
+<TR bgcolor="#FFFFFF"><TD>
+<a alt="hdlcommon:nativefloatingpoint:TargetCodeGenFailure2" href="matlab:hilite(get_param(char([68 105 114 101 99 116 95 70 111 114 109 95 84 101 115 116 95 77 111 100 101 108]),'object'),'none');hilite_system(char([68 105 114 101 99 116 95 70 111 114 109 95 84 101 115 116 95 77 111 100 101 108 47 68 105 114 101 99 116 32 70 111 114 109 32 49 32 70 105 108 116 101 114 47 55 116 104 32 79 114 100 101 114 32 73 73 82 32 70 105 108 116 101 114 47 80 114 111 100 117 99 116 49 49]))">Direct_Form_Test_Model/Direct Form 1 Filter/7th Order IIR Filter/Product11</a>
+</TD>
+<TD>Error</TD>
+<TD>Unable to allocate delays to compensate for the 6 delays introduced by Direct_Form_Test_Model/Direct Form 1 Filter/7th Order IIR Filter/Product11 in native floating-point mode. Consider either increasing the oversampling factor, setting the 'Latency Strategy' to 'Zero', or adding the necessary output pipelines via HDL block properties for other blocks in the model to accommodate for the latency introduced by this block. <a href="matlab:helpview(fullfile(docroot, 'hdlcoder', 'helptargets.map'),'troubleshoot_hdlcoder_NFP_DelayAllocation')">More information</a></TD>
+</TR>
+<TR bgcolor="#F0F0F0"><TD>
+<a alt="hdlcommon:nativefloatingpoint:TargetCodeGenFailure2" href="matlab:hilite(get_param(char([68 105 114 101 99 116 95 70 111 114 109 95 84 101 115 116 95 77 111 100 101 108]),'object'),'none');hilite_system(char([68 105 114 101 99 116 95 70 111 114 109 95 84 101 115 116 95 77 111 100 101 108 47 68 105 114 101 99 116 32 70 111 114 109 32 49 32 70 105 108 116 101 114 47 55 116 104 32 79 114 100 101 114 32 73 73 82 32 70 105 108 116 101 114 47 80 114 111 100 117 99 116 49 52]))">Direct_Form_Test_Model/Direct Form 1 Filter/7th Order IIR Filter/Product14</a>
+</TD>
+<TD>Error</TD>
+<TD>Unable to allocate delays to compensate for the 6 delays introduced by Direct_Form_Test_Model/Direct Form 1 Filter/7th Order IIR Filter/Product14 in native floating-point mode. Consider either increasing the oversampling factor, setting the 'Latency Strategy' to 'Zero', or adding the necessary output pipelines via HDL block properties for other blocks in the model to accommodate for the latency introduced by this block. <a href="matlab:helpview(fullfile(docroot, 'hdlcoder', 'helptargets.map'),'troubleshoot_hdlcoder_NFP_DelayAllocation')">More information</a></TD>
+</TR>
+<TR bgcolor="#FFFFFF"><TD>
+<a alt="hdlcommon:nativefloatingpoint:TargetCodeGenFailure2" href="matlab:hilite(get_param(char([68 105 114 101 99 116 95 70 111 114 109 95 84 101 115 116 95 77 111 100 101 108]),'object'),'none');hilite_system(char([68 105 114 101 99 116 95 70 111 114 109 95 84 101 115 116 95 77 111 100 101 108 47 68 105 114 101 99 116 32 70 111 114 109 32 49 32 70 105 108 116 101 114 47 55 116 104 32 79 114 100 101 114 32 73 73 82 32 70 105 108 116 101 114 47 80 114 111 100 117 99 116 49 54]))">Direct_Form_Test_Model/Direct Form 1 Filter/7th Order IIR Filter/Product16</a>
+</TD>
+<TD>Error</TD>
+<TD>Unable to allocate delays to compensate for the 6 delays introduced by Direct_Form_Test_Model/Direct Form 1 Filter/7th Order IIR Filter/Product16 in native floating-point mode. Consider either increasing the oversampling factor, setting the 'Latency Strategy' to 'Zero', or adding the necessary output pipelines via HDL block properties for other blocks in the model to accommodate for the latency introduced by this block. <a href="matlab:helpview(fullfile(docroot, 'hdlcoder', 'helptargets.map'),'troubleshoot_hdlcoder_NFP_DelayAllocation')">More information</a></TD>
+</TR>
+<TR bgcolor="#F0F0F0"><TD>
+<a alt="hdlcommon:nativefloatingpoint:TargetCodeGenFailure2" href="matlab:hilite(get_param(char([68 105 114 101 99 116 95 70 111 114 109 95 84 101 115 116 95 77 111 100 101 108]),'object'),'none');hilite_system(char([68 105 114 101 99 116 95 70 111 114 109 95 84 101 115 116 95 77 111 100 101 108 47 68 105 114 101 99 116 32 70 111 114 109 32 49 32 70 105 108 116 101 114 47 55 116 104 32 79 114 100 101 114 32 73 73 82 32 70 105 108 116 101 114 47 80 114 111 100 117 99 116 49 57]))">Direct_Form_Test_Model/Direct Form 1 Filter/7th Order IIR Filter/Product19</a>
+</TD>
+<TD>Error</TD>
+<TD>Unable to allocate delays to compensate for the 6 delays introduced by Direct_Form_Test_Model/Direct Form 1 Filter/7th Order IIR Filter/Product19 in native floating-point mode. Consider either increasing the oversampling factor, setting the 'Latency Strategy' to 'Zero', or adding the necessary output pipelines via HDL block properties for other blocks in the model to accommodate for the latency introduced by this block. <a href="matlab:helpview(fullfile(docroot, 'hdlcoder', 'helptargets.map'),'troubleshoot_hdlcoder_NFP_DelayAllocation')">More information</a></TD>
+</TR>
+<TR bgcolor="#FFFFFF"><TD>
+<a alt="hdlcommon:nativefloatingpoint:TargetCodeGenFailure2" href="matlab:hilite(get_param(char([68 105 114 101 99 116 95 70 111 114 109 95 84 101 115 116 95 77 111 100 101 108]),'object'),'none');hilite_system(char([68 105 114 101 99 116 95 70 111 114 109 95 84 101 115 116 95 77 111 100 101 108 47 68 105 114 101 99 116 32 70 111 114 109 32 49 32 70 105 108 116 101 114 47 55 116 104 32 79 114 100 101 114 32 73 73 82 32 70 105 108 116 101 114 47 80 114 111 100 117 99 116 50 49]))">Direct_Form_Test_Model/Direct Form 1 Filter/7th Order IIR Filter/Product21</a>
+</TD>
+<TD>Error</TD>
+<TD>Unable to allocate delays to compensate for the 6 delays introduced by Direct_Form_Test_Model/Direct Form 1 Filter/7th Order IIR Filter/Product21 in native floating-point mode. Consider either increasing the oversampling factor, setting the 'Latency Strategy' to 'Zero', or adding the necessary output pipelines via HDL block properties for other blocks in the model to accommodate for the latency introduced by this block. <a href="matlab:helpview(fullfile(docroot, 'hdlcoder', 'helptargets.map'),'troubleshoot_hdlcoder_NFP_DelayAllocation')">More information</a></TD>
+</TR>
+<TR bgcolor="#F0F0F0"><TD>
+<a alt="hdlcommon:nativefloatingpoint:TargetCodeGenFailure2" href="matlab:hilite(get_param(char([68 105 114 101 99 116 95 70 111 114 109 95 84 101 115 116 95 77 111 100 101 108]),'object'),'none');hilite_system(char([68 105 114 101 99 116 95 70 111 114 109 95 84 101 115 116 95 77 111 100 101 108 47 68 105 114 101 99 116 32 70 111 114 109 32 49 32 70 105 108 116 101 114 47 55 116 104 32 79 114 100 101 114 32 73 73 82 32 70 105 108 116 101 114 47 80 114 111 100 117 99 116 50 52]))">Direct_Form_Test_Model/Direct Form 1 Filter/7th Order IIR Filter/Product24</a>
+</TD>
+<TD>Error</TD>
+<TD>Unable to allocate delays to compensate for the 6 delays introduced by Direct_Form_Test_Model/Direct Form 1 Filter/7th Order IIR Filter/Product24 in native floating-point mode. Consider either increasing the oversampling factor, setting the 'Latency Strategy' to 'Zero', or adding the necessary output pipelines via HDL block properties for other blocks in the model to accommodate for the latency introduced by this block. <a href="matlab:helpview(fullfile(docroot, 'hdlcoder', 'helptargets.map'),'troubleshoot_hdlcoder_NFP_DelayAllocation')">More information</a></TD>
+</TR>
+<TR bgcolor="#FFFFFF"><TD>
+<a alt="hdlcommon:nativefloatingpoint:TargetCodeGenFailure2" href="matlab:hilite(get_param(char([68 105 114 101 99 116 95 70 111 114 109 95 84 101 115 116 95 77 111 100 101 108]),'object'),'none');hilite_system(char([68 105 114 101 99 116 95 70 111 114 109 95 84 101 115 116 95 77 111 100 101 108 47 68 105 114 101 99 116 32 70 111 114 109 32 49 32 70 105 108 116 101 114 47 55 116 104 32 79 114 100 101 114 32 73 73 82 32 70 105 108 116 101 114 47 80 114 111 100 117 99 116 50 54]))">Direct_Form_Test_Model/Direct Form 1 Filter/7th Order IIR Filter/Product26</a>
+</TD>
+<TD>Error</TD>
+<TD>Unable to allocate delays to compensate for the 6 delays introduced by Direct_Form_Test_Model/Direct Form 1 Filter/7th Order IIR Filter/Product26 in native floating-point mode. Consider either increasing the oversampling factor, setting the 'Latency Strategy' to 'Zero', or adding the necessary output pipelines via HDL block properties for other blocks in the model to accommodate for the latency introduced by this block. <a href="matlab:helpview(fullfile(docroot, 'hdlcoder', 'helptargets.map'),'troubleshoot_hdlcoder_NFP_DelayAllocation')">More information</a></TD>
+</TR>
+<TR bgcolor="#F0F0F0"><TD>
+<a alt="hdlcommon:nativefloatingpoint:TargetCodeGenFailure2" href="matlab:hilite(get_param(char([68 105 114 101 99 116 95 70 111 114 109 95 84 101 115 116 95 77 111 100 101 108]),'object'),'none');hilite_system(char([68 105 114 101 99 116 95 70 111 114 109 95 84 101 115 116 95 77 111 100 101 108 47 68 105 114 101 99 116 32 70 111 114 109 32 49 32 70 105 108 116 101 114 47 55 116 104 32 79 114 100 101 114 32 73 73 82 32 70 105 108 116 101 114 47 80 114 111 100 117 99 116 50 57]))">Direct_Form_Test_Model/Direct Form 1 Filter/7th Order IIR Filter/Product29</a>
+</TD>
+<TD>Error</TD>
+<TD>Unable to allocate delays to compensate for the 6 delays introduced by Direct_Form_Test_Model/Direct Form 1 Filter/7th Order IIR Filter/Product29 in native floating-point mode. Consider either increasing the oversampling factor, setting the 'Latency Strategy' to 'Zero', or adding the necessary output pipelines via HDL block properties for other blocks in the model to accommodate for the latency introduced by this block. <a href="matlab:helpview(fullfile(docroot, 'hdlcoder', 'helptargets.map'),'troubleshoot_hdlcoder_NFP_DelayAllocation')">More information</a></TD>
+</TR>
+<TR bgcolor="#FFFFFF"><TD>
+<a alt="hdlcommon:nativefloatingpoint:TargetCodeGenFailure2" href="matlab:hilite(get_param(char([68 105 114 101 99 116 95 70 111 114 109 95 84 101 115 116 95 77 111 100 101 108]),'object'),'none');hilite_system(char([68 105 114 101 99 116 95 70 111 114 109 95 84 101 115 116 95 77 111 100 101 108 47 68 105 114 101 99 116 32 70 111 114 109 32 49 32 70 105 108 116 101 114 47 55 116 104 32 79 114 100 101 114 32 73 73 82 32 70 105 108 116 101 114 47 80 114 111 100 117 99 116 51 49]))">Direct_Form_Test_Model/Direct Form 1 Filter/7th Order IIR Filter/Product31</a>
+</TD>
+<TD>Error</TD>
+<TD>Unable to allocate delays to compensate for the 6 delays introduced by Direct_Form_Test_Model/Direct Form 1 Filter/7th Order IIR Filter/Product31 in native floating-point mode. Consider either increasing the oversampling factor, setting the 'Latency Strategy' to 'Zero', or adding the necessary output pipelines via HDL block properties for other blocks in the model to accommodate for the latency introduced by this block. <a href="matlab:helpview(fullfile(docroot, 'hdlcoder', 'helptargets.map'),'troubleshoot_hdlcoder_NFP_DelayAllocation')">More information</a></TD>
+</TR>
+<TR bgcolor="#F0F0F0"><TD>
+<a alt="hdlcommon:nativefloatingpoint:TargetCodeGenFailure2" href="matlab:hilite(get_param(char([68 105 114 101 99 116 95 70 111 114 109 95 84 101 115 116 95 77 111 100 101 108]),'object'),'none');hilite_system(char([68 105 114 101 99 116 95 70 111 114 109 95 84 101 115 116 95 77 111 100 101 108 47 68 105 114 101 99 116 32 70 111 114 109 32 49 32 70 105 108 116 101 114 47 55 116 104 32 79 114 100 101 114 32 73 73 82 32 70 105 108 116 101 114 47 80 114 111 100 117 99 116 51 52]))">Direct_Form_Test_Model/Direct Form 1 Filter/7th Order IIR Filter/Product34</a>
+</TD>
+<TD>Error</TD>
+<TD>Unable to allocate delays to compensate for the 6 delays introduced by Direct_Form_Test_Model/Direct Form 1 Filter/7th Order IIR Filter/Product34 in native floating-point mode. Consider either increasing the oversampling factor, setting the 'Latency Strategy' to 'Zero', or adding the necessary output pipelines via HDL block properties for other blocks in the model to accommodate for the latency introduced by this block. <a href="matlab:helpview(fullfile(docroot, 'hdlcoder', 'helptargets.map'),'troubleshoot_hdlcoder_NFP_DelayAllocation')">More information</a></TD>
+</TR>
+<TR bgcolor="#FFFFFF"><TD>
+<a alt="hdlcommon:nativefloatingpoint:TargetCodeGenFailure2" href="matlab:hilite(get_param(char([68 105 114 101 99 116 95 70 111 114 109 95 84 101 115 116 95 77 111 100 101 108]),'object'),'none');hilite_system(char([68 105 114 101 99 116 95 70 111 114 109 95 84 101 115 116 95 77 111 100 101 108 47 68 105 114 101 99 116 32 70 111 114 109 32 49 32 70 105 108 116 101 114 47 55 116 104 32 79 114 100 101 114 32 73 73 82 32 70 105 108 116 101 114 47 80 114 111 100 117 99 116 52]))">Direct_Form_Test_Model/Direct Form 1 Filter/7th Order IIR Filter/Product4</a>
+</TD>
+<TD>Error</TD>
+<TD>Unable to allocate delays to compensate for the 6 delays introduced by Direct_Form_Test_Model/Direct Form 1 Filter/7th Order IIR Filter/Product4 in native floating-point mode. Consider either increasing the oversampling factor, setting the 'Latency Strategy' to 'Zero', or adding the necessary output pipelines via HDL block properties for other blocks in the model to accommodate for the latency introduced by this block. <a href="matlab:helpview(fullfile(docroot, 'hdlcoder', 'helptargets.map'),'troubleshoot_hdlcoder_NFP_DelayAllocation')">More information</a></TD>
+</TR>
+<TR bgcolor="#F0F0F0"><TD>
+<a alt="hdlcommon:nativefloatingpoint:TargetCodeGenFailure2" href="matlab:hilite(get_param(char([68 105 114 101 99 116 95 70 111 114 109 95 84 101 115 116 95 77 111 100 101 108]),'object'),'none');hilite_system(char([68 105 114 101 99 116 95 70 111 114 109 95 84 101 115 116 95 77 111 100 101 108 47 68 105 114 101 99 116 32 70 111 114 109 32 49 32 70 105 108 116 101 114 47 55 116 104 32 79 114 100 101 114 32 73 73 82 32 70 105 108 116 101 114 47 80 114 111 100 117 99 116 54]))">Direct_Form_Test_Model/Direct Form 1 Filter/7th Order IIR Filter/Product6</a>
+</TD>
+<TD>Error</TD>
+<TD>Unable to allocate delays to compensate for the 6 delays introduced by Direct_Form_Test_Model/Direct Form 1 Filter/7th Order IIR Filter/Product6 in native floating-point mode. Consider either increasing the oversampling factor, setting the 'Latency Strategy' to 'Zero', or adding the necessary output pipelines via HDL block properties for other blocks in the model to accommodate for the latency introduced by this block. <a href="matlab:helpview(fullfile(docroot, 'hdlcoder', 'helptargets.map'),'troubleshoot_hdlcoder_NFP_DelayAllocation')">More information</a></TD>
+</TR>
+<TR bgcolor="#FFFFFF"><TD>
+<a alt="hdlcommon:nativefloatingpoint:TargetCodeGenFailure2" href="matlab:hilite(get_param(char([68 105 114 101 99 116 95 70 111 114 109 95 84 101 115 116 95 77 111 100 101 108]),'object'),'none');hilite_system(char([68 105 114 101 99 116 95 70 111 114 109 95 84 101 115 116 95 77 111 100 101 108 47 68 105 114 101 99 116 32 70 111 114 109 32 49 32 70 105 108 116 101 114 47 55 116 104 32 79 114 100 101 114 32 73 73 82 32 70 105 108 116 101 114 47 80 114 111 100 117 99 116 57]))">Direct_Form_Test_Model/Direct Form 1 Filter/7th Order IIR Filter/Product9</a>
+</TD>
+<TD>Error</TD>
+<TD>Unable to allocate delays to compensate for the 6 delays introduced by Direct_Form_Test_Model/Direct Form 1 Filter/7th Order IIR Filter/Product9 in native floating-point mode. Consider either increasing the oversampling factor, setting the 'Latency Strategy' to 'Zero', or adding the necessary output pipelines via HDL block properties for other blocks in the model to accommodate for the latency introduced by this block. <a href="matlab:helpview(fullfile(docroot, 'hdlcoder', 'helptargets.map'),'troubleshoot_hdlcoder_NFP_DelayAllocation')">More information</a></TD>
+</TR>
+<TR bgcolor="#F0F0F0"><TD>
+<a alt="hdlcommon:nativefloatingpoint:TargetCodeGenFailure2" href="matlab:hilite(get_param(char([68 105 114 101 99 116 95 70 111 114 109 95 84 101 115 116 95 77 111 100 101 108]),'object'),'none');hilite_system(char([68 105 114 101 99 116 95 70 111 114 109 95 84 101 115 116 95 77 111 100 101 108 47 68 105 114 101 99 116 32 70 111 114 109 32 49 32 70 105 108 116 101 114 47 55 116 104 32 79 114 100 101 114 32 73 73 82 32 70 105 108 116 101 114 47 83 117 109]))">Direct_Form_Test_Model/Direct Form 1 Filter/7th Order IIR Filter/Sum</a>
+</TD>
+<TD>Error</TD>
+<TD>Unable to allocate delays to compensate for the 6 delays introduced by Direct_Form_Test_Model/Direct Form 1 Filter/7th Order IIR Filter/Sum in native floating-point mode. Consider either increasing the oversampling factor, setting the 'Latency Strategy' to 'Zero', or adding the necessary output pipelines via HDL block properties for other blocks in the model to accommodate for the latency introduced by this block. <a href="matlab:helpview(fullfile(docroot, 'hdlcoder', 'helptargets.map'),'troubleshoot_hdlcoder_NFP_DelayAllocation')">More information</a></TD>
+</TR>
+<TR bgcolor="#FFFFFF"><TD>
+<a alt="hdlcommon:nativefloatingpoint:TargetCodeGenFailure2" href="matlab:hilite(get_param(char([68 105 114 101 99 116 95 70 111 114 109 95 84 101 115 116 95 77 111 100 101 108]),'object'),'none');hilite_system(char([68 105 114 101 99 116 95 70 111 114 109 95 84 101 115 116 95 77 111 100 101 108 47 68 105 114 101 99 116 32 70 111 114 109 32 49 32 70 105 108 116 101 114 47 55 116 104 32 79 114 100 101 114 32 73 73 82 32 70 105 108 116 101 114 47 83 117 109 49 49]))">Direct_Form_Test_Model/Direct Form 1 Filter/7th Order IIR Filter/Sum11</a>
+</TD>
+<TD>Error</TD>
+<TD>Unable to allocate delays to compensate for the 6 delays introduced by Direct_Form_Test_Model/Direct Form 1 Filter/7th Order IIR Filter/Sum11 in native floating-point mode. Consider either increasing the oversampling factor, setting the 'Latency Strategy' to 'Zero', or adding the necessary output pipelines via HDL block properties for other blocks in the model to accommodate for the latency introduced by this block. <a href="matlab:helpview(fullfile(docroot, 'hdlcoder', 'helptargets.map'),'troubleshoot_hdlcoder_NFP_DelayAllocation')">More information</a></TD>
+</TR>
+<TR bgcolor="#F0F0F0"><TD>
+<a alt="hdlcommon:nativefloatingpoint:TargetCodeGenFailure2" href="matlab:hilite(get_param(char([68 105 114 101 99 116 95 70 111 114 109 95 84 101 115 116 95 77 111 100 101 108]),'object'),'none');hilite_system(char([68 105 114 101 99 116 95 70 111 114 109 95 84 101 115 116 95 77 111 100 101 108 47 68 105 114 101 99 116 32 70 111 114 109 32 49 32 70 105 108 116 101 114 47 55 116 104 32 79 114 100 101 114 32 73 73 82 32 70 105 108 116 101 114 47 83 117 109 49 51]))">Direct_Form_Test_Model/Direct Form 1 Filter/7th Order IIR Filter/Sum13</a>
+</TD>
+<TD>Error</TD>
+<TD>Unable to allocate delays to compensate for the 6 delays introduced by Direct_Form_Test_Model/Direct Form 1 Filter/7th Order IIR Filter/Sum13 in native floating-point mode. Consider either increasing the oversampling factor, setting the 'Latency Strategy' to 'Zero', or adding the necessary output pipelines via HDL block properties for other blocks in the model to accommodate for the latency introduced by this block. <a href="matlab:helpview(fullfile(docroot, 'hdlcoder', 'helptargets.map'),'troubleshoot_hdlcoder_NFP_DelayAllocation')">More information</a></TD>
+</TR>
+<TR bgcolor="#FFFFFF"><TD>
+<a alt="hdlcommon:nativefloatingpoint:TargetCodeGenFailure2" href="matlab:hilite(get_param(char([68 105 114 101 99 116 95 70 111 114 109 95 84 101 115 116 95 77 111 100 101 108]),'object'),'none');hilite_system(char([68 105 114 101 99 116 95 70 111 114 109 95 84 101 115 116 95 77 111 100 101 108 47 68 105 114 101 99 116 32 70 111 114 109 32 49 32 70 105 108 116 101 114 47 55 116 104 32 79 114 100 101 114 32 73 73 82 32 70 105 108 116 101 114 47 83 117 109 49 52]))">Direct_Form_Test_Model/Direct Form 1 Filter/7th Order IIR Filter/Sum14</a>
+</TD>
+<TD>Error</TD>
+<TD>Unable to allocate delays to compensate for the 6 delays introduced by Direct_Form_Test_Model/Direct Form 1 Filter/7th Order IIR Filter/Sum14 in native floating-point mode. Consider either increasing the oversampling factor, setting the 'Latency Strategy' to 'Zero', or adding the necessary output pipelines via HDL block properties for other blocks in the model to accommodate for the latency introduced by this block. <a href="matlab:helpview(fullfile(docroot, 'hdlcoder', 'helptargets.map'),'troubleshoot_hdlcoder_NFP_DelayAllocation')">More information</a></TD>
+</TR>
+<TR bgcolor="#F0F0F0"><TD>
+<a alt="hdlcommon:nativefloatingpoint:TargetCodeGenFailure2" href="matlab:hilite(get_param(char([68 105 114 101 99 116 95 70 111 114 109 95 84 101 115 116 95 77 111 100 101 108]),'object'),'none');hilite_system(char([68 105 114 101 99 116 95 70 111 114 109 95 84 101 115 116 95 77 111 100 101 108 47 68 105 114 101 99 116 32 70 111 114 109 32 49 32 70 105 108 116 101 114 47 55 116 104 32 79 114 100 101 114 32 73 73 82 32 70 105 108 116 101 114 47 83 117 109 49 55]))">Direct_Form_Test_Model/Direct Form 1 Filter/7th Order IIR Filter/Sum17</a>
+</TD>
+<TD>Error</TD>
+<TD>Unable to allocate delays to compensate for the 6 delays introduced by Direct_Form_Test_Model/Direct Form 1 Filter/7th Order IIR Filter/Sum17 in native floating-point mode. Consider either increasing the oversampling factor, setting the 'Latency Strategy' to 'Zero', or adding the necessary output pipelines via HDL block properties for other blocks in the model to accommodate for the latency introduced by this block. <a href="matlab:helpview(fullfile(docroot, 'hdlcoder', 'helptargets.map'),'troubleshoot_hdlcoder_NFP_DelayAllocation')">More information</a></TD>
+</TR>
+<TR bgcolor="#FFFFFF"><TD>
+<a alt="hdlcommon:nativefloatingpoint:TargetCodeGenFailure2" href="matlab:hilite(get_param(char([68 105 114 101 99 116 95 70 111 114 109 95 84 101 115 116 95 77 111 100 101 108]),'object'),'none');hilite_system(char([68 105 114 101 99 116 95 70 111 114 109 95 84 101 115 116 95 77 111 100 101 108 47 68 105 114 101 99 116 32 70 111 114 109 32 49 32 70 105 108 116 101 114 47 55 116 104 32 79 114 100 101 114 32 73 73 82 32 70 105 108 116 101 114 47 83 117 109 49 56]))">Direct_Form_Test_Model/Direct Form 1 Filter/7th Order IIR Filter/Sum18</a>
+</TD>
+<TD>Error</TD>
+<TD>Unable to allocate delays to compensate for the 6 delays introduced by Direct_Form_Test_Model/Direct Form 1 Filter/7th Order IIR Filter/Sum18 in native floating-point mode. Consider either increasing the oversampling factor, setting the 'Latency Strategy' to 'Zero', or adding the necessary output pipelines via HDL block properties for other blocks in the model to accommodate for the latency introduced by this block. <a href="matlab:helpview(fullfile(docroot, 'hdlcoder', 'helptargets.map'),'troubleshoot_hdlcoder_NFP_DelayAllocation')">More information</a></TD>
+</TR>
+<TR bgcolor="#F0F0F0"><TD>
+<a alt="hdlcommon:nativefloatingpoint:TargetCodeGenFailure2" href="matlab:hilite(get_param(char([68 105 114 101 99 116 95 70 111 114 109 95 84 101 115 116 95 77 111 100 101 108]),'object'),'none');hilite_system(char([68 105 114 101 99 116 95 70 111 114 109 95 84 101 115 116 95 77 111 100 101 108 47 68 105 114 101 99 116 32 70 111 114 109 32 49 32 70 105 108 116 101 114 47 55 116 104 32 79 114 100 101 114 32 73 73 82 32 70 105 108 116 101 114 47 83 117 109 50 49]))">Direct_Form_Test_Model/Direct Form 1 Filter/7th Order IIR Filter/Sum21</a>
+</TD>
+<TD>Error</TD>
+<TD>Unable to allocate delays to compensate for the 6 delays introduced by Direct_Form_Test_Model/Direct Form 1 Filter/7th Order IIR Filter/Sum21 in native floating-point mode. Consider either increasing the oversampling factor, setting the 'Latency Strategy' to 'Zero', or adding the necessary output pipelines via HDL block properties for other blocks in the model to accommodate for the latency introduced by this block. <a href="matlab:helpview(fullfile(docroot, 'hdlcoder', 'helptargets.map'),'troubleshoot_hdlcoder_NFP_DelayAllocation')">More information</a></TD>
+</TR>
+<TR bgcolor="#FFFFFF"><TD>
+<a alt="hdlcommon:nativefloatingpoint:TargetCodeGenFailure2" href="matlab:hilite(get_param(char([68 105 114 101 99 116 95 70 111 114 109 95 84 101 115 116 95 77 111 100 101 108]),'object'),'none');hilite_system(char([68 105 114 101 99 116 95 70 111 114 109 95 84 101 115 116 95 77 111 100 101 108 47 68 105 114 101 99 116 32 70 111 114 109 32 49 32 70 105 108 116 101 114 47 55 116 104 32 79 114 100 101 114 32 73 73 82 32 70 105 108 116 101 114 47 83 117 109 50 50]))">Direct_Form_Test_Model/Direct Form 1 Filter/7th Order IIR Filter/Sum22</a>
+</TD>
+<TD>Error</TD>
+<TD>Unable to allocate delays to compensate for the 6 delays introduced by Direct_Form_Test_Model/Direct Form 1 Filter/7th Order IIR Filter/Sum22 in native floating-point mode. Consider either increasing the oversampling factor, setting the 'Latency Strategy' to 'Zero', or adding the necessary output pipelines via HDL block properties for other blocks in the model to accommodate for the latency introduced by this block. <a href="matlab:helpview(fullfile(docroot, 'hdlcoder', 'helptargets.map'),'troubleshoot_hdlcoder_NFP_DelayAllocation')">More information</a></TD>
+</TR>
+<TR bgcolor="#F0F0F0"><TD>
+<a alt="hdlcommon:nativefloatingpoint:TargetCodeGenFailure2" href="matlab:hilite(get_param(char([68 105 114 101 99 116 95 70 111 114 109 95 84 101 115 116 95 77 111 100 101 108]),'object'),'none');hilite_system(char([68 105 114 101 99 116 95 70 111 114 109 95 84 101 115 116 95 77 111 100 101 108 47 68 105 114 101 99 116 32 70 111 114 109 32 49 32 70 105 108 116 101 114 47 55 116 104 32 79 114 100 101 114 32 73 73 82 32 70 105 108 116 101 114 47 83 117 109 50 53]))">Direct_Form_Test_Model/Direct Form 1 Filter/7th Order IIR Filter/Sum25</a>
+</TD>
+<TD>Error</TD>
+<TD>Unable to allocate delays to compensate for the 6 delays introduced by Direct_Form_Test_Model/Direct Form 1 Filter/7th Order IIR Filter/Sum25 in native floating-point mode. Consider either increasing the oversampling factor, setting the 'Latency Strategy' to 'Zero', or adding the necessary output pipelines via HDL block properties for other blocks in the model to accommodate for the latency introduced by this block. <a href="matlab:helpview(fullfile(docroot, 'hdlcoder', 'helptargets.map'),'troubleshoot_hdlcoder_NFP_DelayAllocation')">More information</a></TD>
+</TR>
+<TR bgcolor="#FFFFFF"><TD>
+<a alt="hdlcommon:nativefloatingpoint:TargetCodeGenFailure2" href="matlab:hilite(get_param(char([68 105 114 101 99 116 95 70 111 114 109 95 84 101 115 116 95 77 111 100 101 108]),'object'),'none');hilite_system(char([68 105 114 101 99 116 95 70 111 114 109 95 84 101 115 116 95 77 111 100 101 108 47 68 105 114 101 99 116 32 70 111 114 109 32 49 32 70 105 108 116 101 114 47 55 116 104 32 79 114 100 101 114 32 73 73 82 32 70 105 108 116 101 114 47 83 117 109 50 54]))">Direct_Form_Test_Model/Direct Form 1 Filter/7th Order IIR Filter/Sum26</a>
+</TD>
+<TD>Error</TD>
+<TD>Unable to allocate delays to compensate for the 6 delays introduced by Direct_Form_Test_Model/Direct Form 1 Filter/7th Order IIR Filter/Sum26 in native floating-point mode. Consider either increasing the oversampling factor, setting the 'Latency Strategy' to 'Zero', or adding the necessary output pipelines via HDL block properties for other blocks in the model to accommodate for the latency introduced by this block. <a href="matlab:helpview(fullfile(docroot, 'hdlcoder', 'helptargets.map'),'troubleshoot_hdlcoder_NFP_DelayAllocation')">More information</a></TD>
+</TR>
+<TR bgcolor="#F0F0F0"><TD>
+<a alt="hdlcommon:nativefloatingpoint:TargetCodeGenFailure2" href="matlab:hilite(get_param(char([68 105 114 101 99 116 95 70 111 114 109 95 84 101 115 116 95 77 111 100 101 108]),'object'),'none');hilite_system(char([68 105 114 101 99 116 95 70 111 114 109 95 84 101 115 116 95 77 111 100 101 108 47 68 105 114 101 99 116 32 70 111 114 109 32 49 32 70 105 108 116 101 114 47 55 116 104 32 79 114 100 101 114 32 73 73 82 32 70 105 108 116 101 114 47 83 117 109 51]))">Direct_Form_Test_Model/Direct Form 1 Filter/7th Order IIR Filter/Sum3</a>
+</TD>
+<TD>Error</TD>
+<TD>Unable to allocate delays to compensate for the 6 delays introduced by Direct_Form_Test_Model/Direct Form 1 Filter/7th Order IIR Filter/Sum3 in native floating-point mode. Consider either increasing the oversampling factor, setting the 'Latency Strategy' to 'Zero', or adding the necessary output pipelines via HDL block properties for other blocks in the model to accommodate for the latency introduced by this block. <a href="matlab:helpview(fullfile(docroot, 'hdlcoder', 'helptargets.map'),'troubleshoot_hdlcoder_NFP_DelayAllocation')">More information</a></TD>
+</TR>
+<TR bgcolor="#FFFFFF"><TD>
+<a alt="hdlcommon:nativefloatingpoint:TargetCodeGenFailure2" href="matlab:hilite(get_param(char([68 105 114 101 99 116 95 70 111 114 109 95 84 101 115 116 95 77 111 100 101 108]),'object'),'none');hilite_system(char([68 105 114 101 99 116 95 70 111 114 109 95 84 101 115 116 95 77 111 100 101 108 47 68 105 114 101 99 116 32 70 111 114 109 32 49 32 70 105 108 116 101 114 47 55 116 104 32 79 114 100 101 114 32 73 73 82 32 70 105 108 116 101 114 47 83 117 109 52]))">Direct_Form_Test_Model/Direct Form 1 Filter/7th Order IIR Filter/Sum4</a>
+</TD>
+<TD>Error</TD>
+<TD>Unable to allocate delays to compensate for the 6 delays introduced by Direct_Form_Test_Model/Direct Form 1 Filter/7th Order IIR Filter/Sum4 in native floating-point mode. Consider either increasing the oversampling factor, setting the 'Latency Strategy' to 'Zero', or adding the necessary output pipelines via HDL block properties for other blocks in the model to accommodate for the latency introduced by this block. <a href="matlab:helpview(fullfile(docroot, 'hdlcoder', 'helptargets.map'),'troubleshoot_hdlcoder_NFP_DelayAllocation')">More information</a></TD>
+</TR>
+<TR bgcolor="#F0F0F0"><TD>
+<a alt="hdlcommon:nativefloatingpoint:TargetCodeGenFailure2" href="matlab:hilite(get_param(char([68 105 114 101 99 116 95 70 111 114 109 95 84 101 115 116 95 77 111 100 101 108]),'object'),'none');hilite_system(char([68 105 114 101 99 116 95 70 111 114 109 95 84 101 115 116 95 77 111 100 101 108 47 68 105 114 101 99 116 32 70 111 114 109 32 49 32 70 105 108 116 101 114 47 55 116 104 32 79 114 100 101 114 32 73 73 82 32 70 105 108 116 101 114 47 83 117 109 55]))">Direct_Form_Test_Model/Direct Form 1 Filter/7th Order IIR Filter/Sum7</a>
+</TD>
+<TD>Error</TD>
+<TD>Unable to allocate delays to compensate for the 6 delays introduced by Direct_Form_Test_Model/Direct Form 1 Filter/7th Order IIR Filter/Sum7 in native floating-point mode. Consider either increasing the oversampling factor, setting the 'Latency Strategy' to 'Zero', or adding the necessary output pipelines via HDL block properties for other blocks in the model to accommodate for the latency introduced by this block. <a href="matlab:helpview(fullfile(docroot, 'hdlcoder', 'helptargets.map'),'troubleshoot_hdlcoder_NFP_DelayAllocation')">More information</a></TD>
+</TR>
+<TR bgcolor="#FFFFFF"><TD>
+<a alt="hdlcommon:nativefloatingpoint:TargetCodeGenFailure2" href="matlab:hilite(get_param(char([68 105 114 101 99 116 95 70 111 114 109 95 84 101 115 116 95 77 111 100 101 108]),'object'),'none');hilite_system(char([68 105 114 101 99 116 95 70 111 114 109 95 84 101 115 116 95 77 111 100 101 108 47 68 105 114 101 99 116 32 70 111 114 109 32 49 32 70 105 108 116 101 114 47 55 116 104 32 79 114 100 101 114 32 73 73 82 32 70 105 108 116 101 114 47 83 117 109 56]))">Direct_Form_Test_Model/Direct Form 1 Filter/7th Order IIR Filter/Sum8</a>
+</TD>
+<TD>Error</TD>
+<TD>Unable to allocate delays to compensate for the 6 delays introduced by Direct_Form_Test_Model/Direct Form 1 Filter/7th Order IIR Filter/Sum8 in native floating-point mode. Consider either increasing the oversampling factor, setting the 'Latency Strategy' to 'Zero', or adding the necessary output pipelines via HDL block properties for other blocks in the model to accommodate for the latency introduced by this block. <a href="matlab:helpview(fullfile(docroot, 'hdlcoder', 'helptargets.map'),'troubleshoot_hdlcoder_NFP_DelayAllocation')">More information</a></TD>
+</TR>
+<TR bgcolor="#F0F0F0"><TD>
+<a alt="hdlcommon:nativefloatingpoint:TargetCodeGenFailure" href="matlab:hilite(get_param(char([68 105 114 101 99 116 95 70 111 114 109 95 84 101 115 116 95 77 111 100 101 108]),'object'),'none');open_system(char([68 105 114 101 99 116 95 70 111 114 109 95 84 101 115 116 95 77 111 100 101 108]))">Direct_Form_Test_Model</a>
+</TD>
+<TD>Error</TD>
+<TD>Native floating-point code generation cannot complete for the following reason(s): 'Unable to allocate delays to compensate for the 6 delays introduced by Direct_Form_Test_Model/Direct Form 1 Filter/7th Order IIR Filter/Sum8 in native floating-point mode. Consider either increasing the oversampling factor, setting the 'Latency Strategy' to 'Zero', or adding the necessary output pipelines via HDL block properties for other blocks in the model to accommodate for the latency introduced by this block. <a href="matlab:helpview(fullfile(docroot, 'hdlcoder', 'helptargets.map'),'troubleshoot_hdlcoder_NFP_DelayAllocation')">More information</a>'.</TD>
+</TR>
+</TABLE>
+<BR><BR> </div></div></div></div>
+                    <div class="grid_192">
+                        <div class="footer_container">
+                            <div class="footer">
+                                <ul class="footernav">
+                                    <li class="footernav_trademarks"><a href="/media/cb50701/data/MATLAB/R2019b/help/acknowledgments.html">Acknowledgments</a></li>
+                                    <li class="footernav_trademarks"><a href="/media/cb50701/data/MATLAB/R2019b/trademarks.txt">Trademarks</a></li>
+                                    <li class="footernav_patents"><a href="/media/cb50701/data/MATLAB/R2019b/patents.txt">Patents</a></li>
+                                    <li class="footernav_help"><a href="/media/cb50701/data/MATLAB/R2019b/license_agreement.txt">Terms of Use</a></li>
+                                </ul>
+                                <div class="copyright">&copy; 1994-2020 The MathWorks, Inc.</div>
+                            </div>
+                        </div>
+                    </div>
+
+        <script type="text/javascript">
+
+$(document).ready( setTimeout( function () {
+                   $(".expandAllLink").trigger('click');
+            }, 50 ) );
+
+        </script>
+        
+</body>
+</html>

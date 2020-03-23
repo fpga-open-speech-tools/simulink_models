@@ -48,21 +48,44 @@ mex gain_groupdelay_mex.c
 [wb_gain,grdelay] = gain_groupdelay_mex(tdres,centerfreq,cf,tau);
 grdelay = floor(grdelay);
     
-%% CALL MATLAB FUNCTION
+%% CALL MATLAB FUNCTION (DOUBLE PRECISION)
+% *** Title changed by Matthew Blunt 03/03/2020
 
-[wb_gainmat,grdelaymat] = gain_groupdelay(tdres,centerfreq,cf,tau);
+% *** Output Variable names changed by Matthew Blunt 03/03/2020
+[wb_gainmatdouble,grdelaymatdouble] = gain_groupdelay(tdres,centerfreq,cf,tau);
+
+
+%% CALL MATLAB FUNCTION (SINGLE PRECISION)
+% *** Added by Matthew Blunt 03/03/2020
+
+% *** Single precision computation added by Matthew Blunt 03/03/2020
+[wb_gainmat,grdelaymat] = gain_groupdelay(single(tdres),single(centerfreq),single(cf),single(tau));
+
 
 %% CALCULATE ERROR
 
 % Compares output vectors of MATLAB and Simulink model outputs
-ggdmodelerror1 = norm(wb_gainmat-wb_gain);
-ggdmodelerror2 = norm(grdelay-grdelaymat);
+% *** Edited to reflect variable name changes by Matthew Blunt 03/03/2020
+ggdmodelerror1 = norm(wb_gainmatdouble-wb_gain);
+ggdmodelerror2 = norm(grdelay-grdelaymatdouble);
 
-% Display in Simulink Diagnostics menu
-disp('Gain Error =');
+% Compares output vectors of Double and Single Precision Simulink outputs
+% *** Added by Matthew Blunt 03/03/2020
+ggdconversionerror1 = norm(wb_gainmatdouble-wb_gainmat);
+ggdconversionerror2 = norm(grdelaymat-grdelaymatdouble);
+
+% Display Model Error in Simulink Diagnostics menu
+disp('Model Gain Error =');
 disp(ggdmodelerror1);
-disp('Group Delay Error =');
+disp('Model Group Delay Error =');
 disp(ggdmodelerror2);
+
+% Display Conversion Error in Simulink Diagnostics menu
+% *** Added by Matthew Blunt 03/03/2020
+disp('Conversion Gain Error =');
+disp(ggdconversionerror1);
+disp('Conversion Group Delay Error =');
+disp(ggdconversionerror2);
 
 % end of script
 

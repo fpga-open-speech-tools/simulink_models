@@ -1,4 +1,4 @@
-% Copyright 2019 Flat Earth Inc
+% Copyright 2020 Flat Earth Inc
 %
 % THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
 % INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
@@ -6,7 +6,7 @@
 % FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 % ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 %
-% Matthew Blunt
+% Matthew Blunt & Hezekiah Austin
 % Flat Earth Inc
 % 985 Technology Blvd
 % Bozeman, MT 59718
@@ -67,6 +67,20 @@ C = 2.0/tdres;
 c1LPihc = ( C - TWOPI*Fcihc ) / ( C + TWOPI*Fcihc );
 c2LPihc = TWOPI*Fcihc / (TWOPI*Fcihc + C);
 
+% Filter Coefficients Matrix
+% Coefficients are order as follows
+%       [b01 b11 b21 a01 a11 a21]
+%       [b02 b12 b22 a02 a12 a22]
+%               * * *
+%       [b0m b1m b2m a0m a1m a2m]
+% Added for the Direct Form implementation by Hezekiah Austin 03/10/2020
+INCLPcoeffs = [  gainihc*c2LPihc gainihc*c2LPihc 0 1 -c1LPihc 0;
+                c2LPihc c2LPihc 0 1 -c1LPihc 0;
+                c2LPihc c2LPihc 0 1 -c1LPihc 0;
+                c2LPihc c2LPihc 0 1 -c1LPihc 0;
+                c2LPihc c2LPihc 0 1 -c1LPihc 0;
+                c2LPihc c2LPihc 0 1 -c1LPihc 0;
+                c2LPihc c2LPihc 0 1 -c1LPihc 0];
 
 %% TEST SIGNAL
 
@@ -77,7 +91,12 @@ c2LPihc = TWOPI*Fcihc / (TWOPI*Fcihc + C);
 [tone,fs] = audioread('AN_test_tone.wav');
 
 % Assign to variable used in model
-RxSignal = tone;
+% *** Changed to single precision by Hezekiah Austin 03/03/2020
+RxSignal = single(tone);
+
+% Added a doubles signal of test/verification of singles
+% *** Added by Hezekiah Austin 03/03/2020
+RxSignal_doubles = tone;
 
 % Find test time, which is set in model
 testtime = length(RxSignal)/Fs

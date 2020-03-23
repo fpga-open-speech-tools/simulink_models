@@ -35,24 +35,48 @@ end
 
 %% COMPARISON PLOT
 
+% *** Changed Simulink output name after update
+% *** By Matthew Blunt 03/03/2020
 figure()
 subplot(2,1,1)
 plot(vihctmp);
 title('IHC NL Logarithmic Function Output - Source Code')
 xlabel('Sample Number');
 subplot(2,1,2)
-plot(out.vihctmp)
+plot(out.vihctmpdouble)
 title('IHC NL Logarithmic Function Output - Simulink Model')
 xlabel('Sample Number');
 
+% *** Comparison Plot for Double and Single Precision Simulink Results
+% *** Added by Matthew Blunt 03/03/2020
+figure()
+subplot(2,1,1)
+plot(out.vihctmpdouble);
+title('IHC NL Logarithmic Function Output - Simulink Double Precision')
+xlabel('Sample Number');
+subplot(2,1,2)
+plot(out.vihctmp)
+title('IHC NL Logarithmic Function Output - Simulink Single Precision')
+xlabel('Sample Number');
+
+
 %% ERROR CALCULATION
 
-% Compares output vectors of MATLAB and Simulink model outputs
-ihcnlmodelerror = norm(vihctmp(1:end)-out.vihctmp(1:end-1));
+% Compares output vectors of MATLAB and Simulink Double Precision model outputs
+% *** Changed output names after update by Matthew Blunt 03/03/2020
+ihcnlmodelerror = norm(vihctmp(1:end)-out.vihctmpdouble(1:end-1));
+
+% Compares output vectors of Simulink Double and Single Precision Outputs
+% *** Added by Matthew Blunt 03/03/2020
+ihcnlconversionerror = norm(out.vihctmpdouble(1:end)-out.vihctmp(1:end));
 
 % Display in Simulink Diagnostics menu
 disp('IHC NL Logarithmic Function Model Error =');
 disp(ihcnlmodelerror);
 
+% Display in Simulink Diagnostics menu
+% *** Added by Matthew Blunt 03/03/2020
+disp('IHC NL Logarithmic Function Conversion Error =');
+disp(ihcnlconversionerror);
 
 % end of script

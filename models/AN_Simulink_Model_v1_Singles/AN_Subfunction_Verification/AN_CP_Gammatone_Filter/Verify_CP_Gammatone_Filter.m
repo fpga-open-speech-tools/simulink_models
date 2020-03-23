@@ -1,4 +1,4 @@
-% Copyright 2019 Flat Earth Inc
+% Copyright 2020 Flat Earth Inc
 %
 % THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
 % INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
@@ -6,7 +6,7 @@
 % FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 % ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 %
-% Matthew Blunt
+% Matthew Blunt & Hezekiah Austin
 % Flat Earth Inc
 % 985 Technology Blvd
 % Bozeman, MT 59718
@@ -35,23 +35,74 @@ end
 
 %% COMPARISON PLOT
 
+% Comparsion plotting of the Original C Source Code vs Simulink Doubles Model
+% *** Modified for new vector names by Hezekiah Austin 03/03/2020
 figure()
 subplot(2,1,1)
 plot(wbout);
 title('CP Wideband Gammatone Filter Output - C Source Code')
 xlabel('Sample Number');
 subplot(2,1,2)
+plot(out.wbout_doubles)
+title('CP Wideband Gammatone Filter Output - Simulink Doubles')
+xlabel('Sample Number');
+
+% Comparsion plotting of the Simulink Singles Model vs Simulink Doubles Model
+% *** Added for test/verification by Hezekiah Austin 03/03/2020
+figure()
+subplot(2,1,1)
+plot(out.wbout_doubles);
+title('CP Wideband Gammatone Filter Output - Simulink Doubles')
+xlabel('Sample Number');
+subplot(2,1,2)
 plot(out.wbout)
-title('CP Wideband Gammatone Filter Output - Simulink Model')
+title('CP Wideband Gammatone Filter Output - Simulink Singles')
 xlabel('Sample Number');
 
 %% ERROR CALCULATION
 
 % Compares output vectors of MATLAB and Simulink model outputs
-wbmodelerror = norm(wbout(1:end)-out.wbout(1:end-1));
+% *** Modified for the new vector names by Hezekiah Austin 03/03/2020
+wbmodelerror = norm(wbout(1:end)-out.wbout_doubles(1:end-1));
+
+% Compares output vectors of MATLAB and Simulink model outputs
+% *** Added for test/verification of doubles to singles conversion by Hezekiah Austin 03/03/2020
+wbconversionerror = norm(out.wbout_doubles(1:end-1)-out.wbout(1:end-1));
 
 % Display in Simulink Diagnostics menu
 disp('CP Wideband Gammatone Model Error =');
 disp(wbmodelerror);
+
+% Display in Simulink Diagnostics menu
+disp('CP Wideband Gammatone Conversion Error =');
+disp(wbconversionerror);
+
+%% DEBUGGING ERROR CALCULATIONS
+% *** Created for temporary use by Matthew Blunt 03/04/2020
+
+% Compares vectors for double and single wbphase values
+% *** Added for debugging by Matthew Blunt 03/04/2020
+wbphaseerror = norm(out.wbphasedouble-out.wbphase);
+
+% Compares vectors for double and single complex phase values
+% *** Added for debugging by Matthew blunt 03/04/2020
+cphaseerror = norm(out.cphasedouble-out.cphase);
+
+% Compares vectors for double and single filter outputs
+% *** Added for debugging by Matthew Blunt 03/04/2020
+filtouterror = norm(out.filtoutdouble-out.filtout);
+
+% Display in Simulink Diagnostics menu
+disp('Wb Phase Error =');
+disp(wbphaseerror);
+
+% Display in Simulink Diagnostics menu
+disp('Complex Phase Error =');
+disp(cphaseerror);
+
+% Display in Simulink Diagnostics menu
+disp('Filter Output Error =');
+disp(filtouterror);
+
 
 % end of script

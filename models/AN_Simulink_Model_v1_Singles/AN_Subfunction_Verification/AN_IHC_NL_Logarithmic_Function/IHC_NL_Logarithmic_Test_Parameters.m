@@ -75,7 +75,12 @@ strength  = (20.0e6)/(10^(corner/20));
 [tone,fs] = audioread('AN_test_tone.wav');
 
 % Assign to variable used in model
-RxSignal = tone;
+% *** Changed to single precision input by Matthew Blunt 03/03/2020
+RxSignal = single(tone);
+
+% Assign to variable used in model
+% *** Name changed for double precision by Matthew Blunt 03/03/2020
+RxSignalDouble = tone;
 
 % Find test time, which is set in model
 testtime = length(RxSignal)/Fs

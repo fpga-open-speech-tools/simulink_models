@@ -35,25 +35,49 @@ end
 
 %% COMPARISON PLOT
 
+% *** Changed OHC NL Boltzman Simulink output name after update
+% *** By Matthew Blunt 03/03/2020
 figure()
 subplot(2,1,1)
 plot(ohcnonlinout);
 title('OHC NL Boltzman Function Output - Source Code')
 xlabel('Sample Number');
 subplot(2,1,2)
-plot(out.ohcnonlinout)
+plot(out.ohcnonlinoutdouble)
 title('OHC NL Boltzman Function Output - Simulink Model')
+xlabel('Sample Number');
+
+% *** Comparison Plot for Double and Single Precision Simulink Results
+% *** Added by Matthew Blunt 03/03/2020
+figure()
+subplot(2,1,1)
+plot(out.ohcnonlinoutdouble);
+title('OHC NL Boltzman Function Output - Simulink Double Precision')
+xlabel('Sample Number');
+subplot(2,1,2)
+plot(out.ohcnonlinout)
+title('OHC NL Boltzman Function Output - Simulink Single Precision')
 xlabel('Sample Number');
 
 
 %% ERROR CALCULATION
 
-% Compares output vectors of MATLAB and Simulink model outputs
+% Compares output vectors of MATLAB and Simulink Double Precision model outputs
+% *** Changed output names after update by Matthew Blunt 03/03/2020
 ohcnlmodelerror = norm(ohcnonlinout(1:end)-out.ohcnonlinout(1:end-1));
+
+% Compares output vectors of Simulink Double and Single Precision Outputs
+% *** Added by Matthew Blunt 03/03/2020
+ohcnlconversionerror = norm(out.ohcnonlinoutdouble(1:end)-out.ohcnonlinout(1:end));
 
 % Display in Simulink Diagnostics menu
 disp('OHC NL Boltzman Function Model Error =');
 disp(ohcnlmodelerror);
+
+% Display in Simulink Diagnostics menu
+% *** Added by Matthew Blunt 03/03/2020
+disp('OHC NL Boltzman Function Conversion Error =');
+disp(ohcnlconversionerror);
 
 % end of script
 

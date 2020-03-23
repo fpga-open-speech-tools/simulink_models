@@ -158,7 +158,12 @@ slow_coeffs = [slow_b0_1*0.2 slow_b1_1*0.2 slow_b2_1*0.2 slow_a0_1 slow_a1_1 slo
 [tone,fs] = audioread('AN_test_tone.wav');
 
 % Assign to variable used in model
-RxSignal = tone;
+% *** Changed to single precision input by Matthew Blunt 03/03/2020
+RxSignal = single(tone);
+
+% Assign to variable used in model
+% *** Added double precision input by Matthew Blunt 03/03/2020
+RxSignalDouble = tone;
 
 % Find test time, which is set in model
 testtime = length(RxSignal)/Fs
@@ -178,8 +183,13 @@ Hinput = 0.9;
 % Set mean of noise
 spont = 100;
 
-% Call fast fractional gaussian noise function
-randNums = ffGn(totalstim, tdres, Hinput, noiseType, spont);
+% Call fast fractional gaussian noise function for Double Precision
+% *** Updated double precision input name by Matthew Blunt 03/03/2020
+randNumsDouble = ffGn(totalstim, tdres, Hinput, noiseType, spont);
+
+% Call fast fractional gaussian noise function for Single Precision
+% *** Added single precision input by Matthew Blunt 03/03/2020
+randNums = single(randNumsDouble);
 
 % end of script
 
