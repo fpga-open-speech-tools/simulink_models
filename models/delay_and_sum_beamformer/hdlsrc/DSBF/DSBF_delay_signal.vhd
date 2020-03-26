@@ -37,7 +37,7 @@ ARCHITECTURE rtl OF DSBF_delay_signal IS
   ATTRIBUTE multstyle : string;
 
   -- Component Declarations
-  COMPONENT DSBF_MATLAB_Function
+  COMPONENT DSBF_split_into_int_and_frac_parts
     PORT( delay                           :   IN    std_logic_vector(12 DOWNTO 0);  -- sfix13_En7
           integer_delay                   :   OUT   std_logic_vector(5 DOWNTO 0);  -- sfix6
           fractional_delay                :   OUT   std_logic_vector(6 DOWNTO 0)  -- sfix7
@@ -51,7 +51,7 @@ ARCHITECTURE rtl OF DSBF_delay_signal IS
           );
   END COMPONENT;
 
-  COMPONENT DSBF_SimpleDualPortRAM_generic_block
+  COMPONENT DSBF_SimpleDualPortRAM_generic
     GENERIC( AddrWidth                    : integer;
              DataWidth                    : integer
              );
@@ -65,12 +65,24 @@ ARCHITECTURE rtl OF DSBF_delay_signal IS
           );
   END COMPONENT;
 
-  COMPONENT DSBF_FIR_Interpolation
+  COMPONENT DSBF_CIC_interpolation_compensator
+    PORT( clk                             :   IN    std_logic;
+          reset                           :   IN    std_logic;
+          enb_1_2048_0                    :   IN    std_logic;
+          dataIn                          :   IN    std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
+          validIn                         :   IN    std_logic;
+          dataOut                         :   OUT   std_logic_vector(31 DOWNTO 0);  -- sfix32_En25
+          validOut                        :   OUT   std_logic;
+          ready                           :   OUT   std_logic
+          );
+  END COMPONENT;
+
+  COMPONENT DSBF_CIC_Interpolation
     PORT( clk                             :   IN    std_logic;
           enb_1_64_1                      :   IN    std_logic;
           reset                           :   IN    std_logic;
-          DSBF_FIR_Interpolation_in       :   IN    std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
-          DSBF_FIR_Interpolation_out      :   OUT   std_logic_vector(68 DOWNTO 0)  -- sfix69_En58
+          DSBF_CIC_Interpolation_in       :   IN    std_logic_vector(31 DOWNTO 0);  -- sfix32_En25
+          DSBF_CIC_Interpolation_out      :   OUT   std_logic_vector(36 DOWNTO 0)  -- sfix37_En25
           );
   END COMPONENT;
 
@@ -81,7 +93,7 @@ ARCHITECTURE rtl OF DSBF_delay_signal IS
           );
   END COMPONENT;
 
-  COMPONENT DSBF_SimpleDualPortRAM_generic
+  COMPONENT DSBF_SimpleDualPortRAM_generic_block
     GENERIC( AddrWidth                    : integer;
              DataWidth                    : integer
              );
@@ -95,36 +107,54 @@ ARCHITECTURE rtl OF DSBF_delay_signal IS
           );
   END COMPONENT;
 
-  COMPONENT DSBF_FIR_Decimation
+  COMPONENT DSBF_CIC_Decimation
     PORT( clk                             :   IN    std_logic;
           enb_1_64_1                      :   IN    std_logic;
           reset                           :   IN    std_logic;
-          DSBF_FIR_Decimation_in          :   IN    std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
-          DSBF_FIR_Decimation_out         :   OUT   std_logic_vector(68 DOWNTO 0)  -- sfix69_En63
+          DSBF_CIC_Decimation_in          :   IN    std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
+          DSBF_CIC_Decimation_out         :   OUT   std_logic_vector(41 DOWNTO 0)  -- sfix42_En28
+          );
+  END COMPONENT;
+
+  COMPONENT DSBF_CIC_decimation_compensator
+    PORT( clk                             :   IN    std_logic;
+          reset                           :   IN    std_logic;
+          enb_1_2048_0                    :   IN    std_logic;
+          dataIn                          :   IN    std_logic_vector(41 DOWNTO 0);  -- sfix42_En28
+          validIn                         :   IN    std_logic;
+          dataOut                         :   OUT   std_logic_vector(41 DOWNTO 0);  -- sfix42_En26
+          validOut                        :   OUT   std_logic;
+          ready                           :   OUT   std_logic
           );
   END COMPONENT;
 
   -- Component Configuration Statements
-  FOR ALL : DSBF_MATLAB_Function
-    USE ENTITY work.DSBF_MATLAB_Function(rtl);
+  FOR ALL : DSBF_split_into_int_and_frac_parts
+    USE ENTITY work.DSBF_split_into_int_and_frac_parts(rtl);
 
   FOR ALL : DSBF_read_address_generator
     USE ENTITY work.DSBF_read_address_generator(rtl);
 
-  FOR ALL : DSBF_SimpleDualPortRAM_generic_block
-    USE ENTITY work.DSBF_SimpleDualPortRAM_generic_block(rtl);
+  FOR ALL : DSBF_SimpleDualPortRAM_generic
+    USE ENTITY work.DSBF_SimpleDualPortRAM_generic(rtl);
 
-  FOR ALL : DSBF_FIR_Interpolation
-    USE ENTITY work.DSBF_FIR_Interpolation(rtl);
+  FOR ALL : DSBF_CIC_interpolation_compensator
+    USE ENTITY work.DSBF_CIC_interpolation_compensator(rtl);
+
+  FOR ALL : DSBF_CIC_Interpolation
+    USE ENTITY work.DSBF_CIC_Interpolation(rtl);
 
   FOR ALL : DSBF_read_address_generator1
     USE ENTITY work.DSBF_read_address_generator1(rtl);
 
-  FOR ALL : DSBF_SimpleDualPortRAM_generic
-    USE ENTITY work.DSBF_SimpleDualPortRAM_generic(rtl);
+  FOR ALL : DSBF_SimpleDualPortRAM_generic_block
+    USE ENTITY work.DSBF_SimpleDualPortRAM_generic_block(rtl);
 
-  FOR ALL : DSBF_FIR_Decimation
-    USE ENTITY work.DSBF_FIR_Decimation(rtl);
+  FOR ALL : DSBF_CIC_Decimation
+    USE ENTITY work.DSBF_CIC_Decimation(rtl);
+
+  FOR ALL : DSBF_CIC_decimation_compensator
+    USE ENTITY work.DSBF_CIC_decimation_compensator(rtl);
 
   -- Signals
   SIGNAL write_address_generator_out1     : unsigned(5 DOWNTO 0);  -- ufix6
@@ -134,9 +164,14 @@ ARCHITECTURE rtl OF DSBF_delay_signal IS
   SIGNAL integer_delay                    : std_logic_vector(5 DOWNTO 0);  -- ufix6
   SIGNAL fractional_delay                 : std_logic_vector(6 DOWNTO 0);  -- ufix7
   SIGNAL read_address_generator_out1      : std_logic_vector(5 DOWNTO 0);  -- ufix6
-  SIGNAL Simple_Dual_Port_RAM_out1        : std_logic_vector(31 DOWNTO 0);  -- ufix32
-  SIGNAL FIR_Interpolation_out1           : std_logic_vector(68 DOWNTO 0);  -- ufix69
-  SIGNAL FIR_Interpolation_out1_signed    : signed(68 DOWNTO 0);  -- sfix69_En58
+  SIGNAL integer_delay_DPRAM_out1         : std_logic_vector(31 DOWNTO 0);  -- ufix32
+  SIGNAL Constant_out1                    : std_logic;
+  SIGNAL CIC_interpolation_compensator_out1 : std_logic_vector(31 DOWNTO 0);  -- ufix32
+  SIGNAL CIC_interpolation_compensator_out2 : std_logic;
+  SIGNAL CIC_interpolation_compensator_out3 : std_logic;
+  SIGNAL CIC_Interpolation_out1           : std_logic_vector(36 DOWNTO 0);  -- ufix37
+  SIGNAL CIC_Interpolation_out1_signed    : signed(36 DOWNTO 0);  -- sfix37_En25
+  SIGNAL CIC_interpolation_gain_compensation_out1 : signed(36 DOWNTO 0);  -- sfix37_En25
   SIGNAL Data_Type_Conversion_out1        : signed(31 DOWNTO 0);  -- sfix32_En28
   SIGNAL write_address_generator1_out1    : unsigned(6 DOWNTO 0);  -- ufix7
   SIGNAL reduced_reg_1                    : vector_of_unsigned7(0 TO 63);  -- ufix7 [64]
@@ -145,18 +180,28 @@ ARCHITECTURE rtl OF DSBF_delay_signal IS
   SIGNAL Constant1_out1                   : std_logic;
   SIGNAL Rate_Transition_out1             : signed(6 DOWNTO 0);  -- sfix7
   SIGNAL read_address_generator1_out1     : std_logic_vector(6 DOWNTO 0);  -- ufix7
-  SIGNAL Simple_Dual_Port_RAM1_out1       : std_logic_vector(31 DOWNTO 0);  -- ufix32
-  SIGNAL FIR_Decimation_out1              : std_logic_vector(68 DOWNTO 0);  -- ufix69
-  SIGNAL FIR_Decimation_out1_signed       : signed(68 DOWNTO 0);  -- sfix69_En63
+  SIGNAL fractional_delay_DPRAM_out1      : std_logic_vector(31 DOWNTO 0);  -- ufix32
+  SIGNAL CIC_Decimation_out1              : std_logic_vector(41 DOWNTO 0);  -- ufix42
+  SIGNAL CIC_Decimation_out1_signed       : signed(41 DOWNTO 0);  -- sfix42_En28
+  SIGNAL CIC_decimation_gain_compensation_out1 : signed(41 DOWNTO 0);  -- sfix42_En28
+  SIGNAL Constant4_out1                   : std_logic;
+  SIGNAL CIC_decimation_compensator_out1  : std_logic_vector(41 DOWNTO 0);  -- ufix42
+  SIGNAL CIC_decimation_compensator_out2  : std_logic;
+  SIGNAL CIC_decimation_compensator_out3  : std_logic;
+  SIGNAL CIC_decimation_compensator_out1_signed : signed(41 DOWNTO 0);  -- sfix42_En26
   SIGNAL Data_Type_Conversion1_out1       : signed(31 DOWNTO 0);  -- sfix32_En28
   SIGNAL Rate_Transition1_out1            : signed(31 DOWNTO 0);  -- sfix32_En28
 
 BEGIN
+  -- CIC interpolation
+  -- 
+  -- CIC decimation
+  -- 
   -- Integer delay
   -- 
   -- fractional delay (upsampled)
 
-  u_MATLAB_Function : DSBF_MATLAB_Function
+  u_split_into_int_and_frac_parts : DSBF_split_into_int_and_frac_parts
     PORT MAP( delay => delay,  -- sfix13_En7
               integer_delay => integer_delay,  -- sfix6
               fractional_delay => fractional_delay  -- sfix7
@@ -168,7 +213,7 @@ BEGIN
               read_addr => read_address_generator_out1  -- ufix6
               );
 
-  u_Simple_Dual_Port_RAM : DSBF_SimpleDualPortRAM_generic_block
+  u_integer_delay_DPRAM : DSBF_SimpleDualPortRAM_generic
     GENERIC MAP( AddrWidth => 6,
                  DataWidth => 32
                  )
@@ -178,25 +223,35 @@ BEGIN
               wr_addr => std_logic_vector(write_address_generator_out1_1),
               wr_en => Constant2_out1,
               rd_addr => read_address_generator_out1,
-              rd_dout => Simple_Dual_Port_RAM_out1
+              rd_dout => integer_delay_DPRAM_out1
               );
 
-  u_DSBF_FIR_Interpolation : DSBF_FIR_Interpolation
+  u_CIC_interpolation_compensator : DSBF_CIC_interpolation_compensator
+    PORT MAP( clk => clk,
+              reset => reset,
+              enb_1_2048_0 => enb_1_2048_0,
+              dataIn => integer_delay_DPRAM_out1,  -- sfix32_En28
+              validIn => Constant_out1,
+              dataOut => CIC_interpolation_compensator_out1,  -- sfix32_En25
+              validOut => CIC_interpolation_compensator_out2,
+              ready => CIC_interpolation_compensator_out3
+              );
+
+  u_DSBF_CIC_Interpolation : DSBF_CIC_Interpolation
     PORT MAP( clk => clk,
               enb_1_64_1 => enb_1_64_1,
               reset => reset,
-              DSBF_FIR_Interpolation_in => Simple_Dual_Port_RAM_out1,  -- sfix32_En28
-              DSBF_FIR_Interpolation_out => FIR_Interpolation_out1  -- sfix69_En58
+              DSBF_CIC_Interpolation_in => CIC_interpolation_compensator_out1,  -- sfix32_En25
+              DSBF_CIC_Interpolation_out => CIC_Interpolation_out1  -- sfix37_En25
               );
 
-  -- 
   u_read_address_generator1 : DSBF_read_address_generator1
     PORT MAP( write_addr => std_logic_vector(write_address_generator1_out1_1),  -- ufix7
               delay => std_logic_vector(Rate_Transition_out1),  -- sfix7
               read_addr => read_address_generator1_out1  -- ufix7
               );
 
-  u_Simple_Dual_Port_RAM1 : DSBF_SimpleDualPortRAM_generic
+  u_fractional_delay_DPRAM : DSBF_SimpleDualPortRAM_generic_block
     GENERIC MAP( AddrWidth => 7,
                  DataWidth => 32
                  )
@@ -206,15 +261,26 @@ BEGIN
               wr_addr => std_logic_vector(write_address_generator1_out1_1),
               wr_en => Constant1_out1,
               rd_addr => read_address_generator1_out1,
-              rd_dout => Simple_Dual_Port_RAM1_out1
+              rd_dout => fractional_delay_DPRAM_out1
               );
 
-  u_DSBF_FIR_Decimation : DSBF_FIR_Decimation
+  u_DSBF_CIC_Decimation : DSBF_CIC_Decimation
     PORT MAP( clk => clk,
               enb_1_64_1 => enb_1_64_1,
               reset => reset,
-              DSBF_FIR_Decimation_in => Simple_Dual_Port_RAM1_out1,  -- sfix32_En28
-              DSBF_FIR_Decimation_out => FIR_Decimation_out1  -- sfix69_En63
+              DSBF_CIC_Decimation_in => fractional_delay_DPRAM_out1,  -- sfix32_En28
+              DSBF_CIC_Decimation_out => CIC_Decimation_out1  -- sfix42_En28
+              );
+
+  u_CIC_decimation_compensator : DSBF_CIC_decimation_compensator
+    PORT MAP( clk => clk,
+              reset => reset,
+              enb_1_2048_0 => enb_1_2048_0,
+              dataIn => std_logic_vector(CIC_decimation_gain_compensation_out1),  -- sfix42_En28
+              validIn => Constant4_out1,
+              dataOut => CIC_decimation_compensator_out1,  -- sfix42_En26
+              validOut => CIC_decimation_compensator_out2,
+              ready => CIC_decimation_compensator_out3
               );
 
   -- Count limited, Unsigned Counter
@@ -250,9 +316,13 @@ BEGIN
 
   Constant2_out1 <= '1';
 
-  FIR_Interpolation_out1_signed <= signed(FIR_Interpolation_out1);
+  Constant_out1 <= '1';
 
-  Data_Type_Conversion_out1 <= FIR_Interpolation_out1_signed(61 DOWNTO 30);
+  CIC_Interpolation_out1_signed <= signed(CIC_Interpolation_out1);
+
+  CIC_interpolation_gain_compensation_out1 <= SHIFT_RIGHT(CIC_Interpolation_out1_signed, 5);
+
+  Data_Type_Conversion_out1 <= CIC_interpolation_gain_compensation_out1(28 DOWNTO 0) & '0' & '0' & '0';
 
   -- Count limited, Unsigned Counter
   --  initial value   = 0
@@ -301,9 +371,15 @@ BEGIN
   END PROCESS Rate_Transition_process;
 
 
-  FIR_Decimation_out1_signed <= signed(FIR_Decimation_out1);
+  CIC_Decimation_out1_signed <= signed(CIC_Decimation_out1);
 
-  Data_Type_Conversion1_out1 <= FIR_Decimation_out1_signed(66 DOWNTO 35);
+  CIC_decimation_gain_compensation_out1 <= SHIFT_RIGHT(CIC_Decimation_out1_signed, 10);
+
+  Constant4_out1 <= '1';
+
+  CIC_decimation_compensator_out1_signed <= signed(CIC_decimation_compensator_out1);
+
+  Data_Type_Conversion1_out1 <= CIC_decimation_compensator_out1_signed(29 DOWNTO 0) & '0' & '0';
 
   Rate_Transition1_process : PROCESS (clk, reset)
   BEGIN

@@ -89,7 +89,7 @@ ARCHITECTURE rtl OF DSBF_dataplane IS
           );
   END COMPONENT;
 
-  COMPONENT DSBF_MATLAB_Function_block1
+  COMPONENT DSBF_compute_delays
     PORT( clk                             :   IN    std_logic;
           reset                           :   IN    std_logic;
           enb                             :   IN    std_logic;
@@ -126,8 +126,8 @@ ARCHITECTURE rtl OF DSBF_dataplane IS
   FOR ALL : DSBF_compute_projections
     USE ENTITY work.DSBF_compute_projections(rtl);
 
-  FOR ALL : DSBF_MATLAB_Function_block1
-    USE ENTITY work.DSBF_MATLAB_Function_block1(rtl);
+  FOR ALL : DSBF_compute_delays
+    USE ENTITY work.DSBF_compute_delays(rtl);
 
   FOR ALL : DSBF_Avalon_Data_Processing
     USE ENTITY work.DSBF_Avalon_Data_Processing(rtl);
@@ -187,7 +187,7 @@ BEGIN
               sin_elevation => compute_projections_out3  -- sfix16_En14
               );
 
-  u_MATLAB_Function : DSBF_MATLAB_Function_block1
+  u_compute_delays : DSBF_compute_delays
     PORT MAP( clk => clk,
               reset => reset,
               enb => enb,
