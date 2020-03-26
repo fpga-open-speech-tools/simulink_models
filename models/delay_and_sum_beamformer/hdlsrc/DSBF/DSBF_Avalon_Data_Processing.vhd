@@ -32,7 +32,7 @@ ENTITY DSBF_Avalon_Data_Processing IS
         Sink_Data                         :   IN    std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
         Sink_Channel                      :   IN    std_logic_vector(3 DOWNTO 0);  -- ufix4
         delays                            :   IN    vector_of_std_logic_vector13(0 TO 15);  -- sfix13_En7 [16]
-        Source_Data                       :   OUT   std_logic_vector(35 DOWNTO 0);  -- sfix36_En28
+        Source_Data                       :   OUT   std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
         Source_Channel                    :   OUT   std_logic;  -- ufix1
         Source_Valid                      :   OUT   std_logic
         );
@@ -83,6 +83,12 @@ ARCHITECTURE rtl OF DSBF_Avalon_Data_Processing IS
           );
   END COMPONENT;
 
+  COMPONENT DSBF_normalize
+    PORT( input_value                     :   IN    std_logic_vector(35 DOWNTO 0);  -- sfix36_En28
+          normalized_value                :   OUT   std_logic_vector(31 DOWNTO 0)  -- sfix32_En28
+          );
+  END COMPONENT;
+
   COMPONENT DSBF_Detect_Change
     PORT( clk                             :   IN    std_logic;
           reset                           :   IN    std_logic;
@@ -101,6 +107,9 @@ ARCHITECTURE rtl OF DSBF_Avalon_Data_Processing IS
 
   FOR ALL : DSBF_delay_signals
     USE ENTITY work.DSBF_delay_signals(rtl);
+
+  FOR ALL : DSBF_normalize
+    USE ENTITY work.DSBF_normalize(rtl);
 
   FOR ALL : DSBF_Detect_Change
     USE ENTITY work.DSBF_Detect_Change(rtl);
@@ -190,6 +199,7 @@ ARCHITECTURE rtl OF DSBF_Avalon_Data_Processing IS
   SIGNAL Sum_of_Elements_add_temp_13      : signed(35 DOWNTO 0);  -- sfix36_En28
   SIGNAL Sum_of_Elements_add_cast_15      : signed(35 DOWNTO 0);  -- sfix36_En28
   SIGNAL Sum_of_Elements_out1             : signed(35 DOWNTO 0);  -- sfix36_En28
+  SIGNAL normalize_out1                   : std_logic_vector(31 DOWNTO 0);  -- ufix32
   SIGNAL Constant_out1                    : std_logic;  -- ufix1
   SIGNAL Detect_Change_out1               : std_logic;
 
@@ -397,6 +407,11 @@ BEGIN
               data_in => std_logic_vector(data_in_15_1),  -- sfix32_En28
               delays => convert_to_sampling_rate_out2(15),  -- sfix13_En7
               Out1 => delay_signal_out1_15  -- sfix32_En28
+              );
+
+  u_normalize : DSBF_normalize
+    PORT MAP( input_value => std_logic_vector(Sum_of_Elements_out1),  -- sfix36_En28
+              normalized_value => normalize_out1  -- sfix32_En28
               );
 
   u_Detect_Change : DSBF_Detect_Change
@@ -680,9 +695,9 @@ BEGIN
   Sum_of_Elements_add_cast_15 <= resize(delay_signals_out1(15), 36);
   Sum_of_Elements_out1 <= Sum_of_Elements_add_temp_13 + Sum_of_Elements_add_cast_15;
 
-  Source_Data <= std_logic_vector(Sum_of_Elements_out1);
-
   Constant_out1 <= '0';
+
+  Source_Data <= normalize_out1;
 
   Source_Channel <= Constant_out1;
 

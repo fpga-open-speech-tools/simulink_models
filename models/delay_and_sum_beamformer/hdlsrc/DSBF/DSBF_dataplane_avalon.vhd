@@ -11,7 +11,7 @@ entity DSBF_dataplane_avalon is
     avalon_sink_channel       : in  std_logic_vector(3   downto 0); --ufix4
     avalon_sink_error         : in  std_logic_vector(1   downto 0); --ufix2
     avalon_source_valid       : out std_logic; --boolean
-    avalon_source_data        : out std_logic_vector(35  downto 0); --sfix36_En28
+    avalon_source_data        : out std_logic_vector(31  downto 0); --sfix32_En28
     avalon_source_channel     : out std_logic; --ufix1
     avalon_source_error       : out std_logic_vector(1   downto 0); --ufix2
     avalon_slave_address      : in  std_logic_vector(0   downto 0);            
@@ -40,7 +40,7 @@ component DSBF_dataplane
     register_control_elevation  : in  std_logic_vector(15  downto 0);         -- sfix16_En8
     ce_out                      : out std_logic;
     avalon_source_valid         : out std_logic;                              -- boolean
-    avalon_source_data          : out std_logic_vector(35  downto 0);         -- sfix36_En28
+    avalon_source_data          : out std_logic_vector(31  downto 0);         -- sfix32_En28
     avalon_source_channel       : out std_logic;                              -- ufix1
     avalon_source_error         : out std_logic_vector(1   downto 0)          -- ufix2
   );
@@ -60,7 +60,7 @@ u_DSBF_dataplane : DSBF_dataplane
     register_control_azimuth    =>  azimuth,                         -- sfix16_En8
     register_control_elevation  =>  elevation,                       -- sfix16_En8
     avalon_source_valid         =>  avalon_source_valid,             -- boolean
-    avalon_source_data          =>  avalon_source_data,              -- sfix36_En28
+    avalon_source_data          =>  avalon_source_data,              -- sfix32_En28
     avalon_source_channel       =>  avalon_source_channel,           -- ufix1
     avalon_source_error         =>  avalon_source_error              -- ufix2
   );

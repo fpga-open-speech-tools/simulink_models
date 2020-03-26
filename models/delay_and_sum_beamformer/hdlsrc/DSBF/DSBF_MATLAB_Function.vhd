@@ -56,17 +56,17 @@ BEGIN
     VARIABLE sub_temp : signed(16 DOWNTO 0);
     VARIABLE cast_1 : signed(15 DOWNTO 0);
   BEGIN
-    --MATLAB Function 'dataplane/Avalon Data Processing/delay signals/delay signal/MATLAB Function': '<S16>:1'
+    --MATLAB Function 'dataplane/Avalon Data Processing/delay signals/delay signal/MATLAB Function': '<S17>:1'
     -- truncate the delay value to get the integer part
-    --'<S16>:1:4'
+    --'<S17>:1:4'
     y1 := delay_signed(12 DOWNTO 7) + ('0' & (delay_signed(12) AND (delay_signed(6) OR delay_signed(5) OR delay_signed(4) OR delay_signed(3) OR delay_signed(2) OR delay_signed(1) OR delay_signed(0))));
     -- get the fractional part of the delay and
     -- convert it to an integer at the upsampled clock rate
-    --'<S16>:1:8'
+    --'<S17>:1:8'
     sub_cast := resize(delay_signed, 14);
     sub_cast_0 := resize(y1 & '0' & '0' & '0' & '0' & '0' & '0' & '0', 14);
     fractional_delay_temp := sub_cast - sub_cast_0;
-    --'<S16>:1:9'
+    --'<S17>:1:9'
     u2 := resize(fractional_delay_temp & '0' & '0' & '0' & '0' & '0' & '0' & '0' & '0' & '0' & '0' & '0' & '0', 28);
     cast := resize(fractional_delay_temp & '0' & '0' & '0' & '0' & '0' & '0' & '0' & '0' & '0' & '0' & '0' & '0', 28);
     IF cast < to_signed(16#0000000#, 28) THEN 
@@ -101,7 +101,7 @@ BEGIN
       END IF;
       w2 := cast_0(15 DOWNTO 1);
     END IF;
-    --'<S16>:1:10'
+    --'<S17>:1:10'
     integer_delay_tmp <= y1;
     IF (w2(14) = '0') AND (w2(13 DOWNTO 6) /= "00000000") THEN 
       fractional_delay_tmp <= "0111111";

@@ -53,7 +53,7 @@ ENTITY DSBF_dataplane IS
         register_control_elevation        :   IN    std_logic_vector(15 DOWNTO 0);  -- sfix16_En8
         ce_out                            :   OUT   std_logic;
         avalon_source_valid               :   OUT   std_logic;
-        avalon_source_data                :   OUT   std_logic_vector(35 DOWNTO 0);  -- sfix36_En28
+        avalon_source_data                :   OUT   std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
         avalon_source_channel             :   OUT   std_logic;  -- ufix1
         avalon_source_error               :   OUT   std_logic_vector(1 DOWNTO 0)  -- ufix2
         );
@@ -89,7 +89,7 @@ ARCHITECTURE rtl OF DSBF_dataplane IS
           );
   END COMPONENT;
 
-  COMPONENT DSBF_MATLAB_Function_block
+  COMPONENT DSBF_MATLAB_Function_block1
     PORT( clk                             :   IN    std_logic;
           reset                           :   IN    std_logic;
           enb                             :   IN    std_logic;
@@ -113,7 +113,7 @@ ARCHITECTURE rtl OF DSBF_dataplane IS
           Sink_Data                       :   IN    std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
           Sink_Channel                    :   IN    std_logic_vector(3 DOWNTO 0);  -- ufix4
           delays                          :   IN    vector_of_std_logic_vector13(0 TO 15);  -- sfix13_En7 [16]
-          Source_Data                     :   OUT   std_logic_vector(35 DOWNTO 0);  -- sfix36_En28
+          Source_Data                     :   OUT   std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
           Source_Channel                  :   OUT   std_logic;  -- ufix1
           Source_Valid                    :   OUT   std_logic
           );
@@ -126,8 +126,8 @@ ARCHITECTURE rtl OF DSBF_dataplane IS
   FOR ALL : DSBF_compute_projections
     USE ENTITY work.DSBF_compute_projections(rtl);
 
-  FOR ALL : DSBF_MATLAB_Function_block
-    USE ENTITY work.DSBF_MATLAB_Function_block(rtl);
+  FOR ALL : DSBF_MATLAB_Function_block1
+    USE ENTITY work.DSBF_MATLAB_Function_block1(rtl);
 
   FOR ALL : DSBF_Avalon_Data_Processing
     USE ENTITY work.DSBF_Avalon_Data_Processing(rtl);
@@ -144,7 +144,7 @@ ARCHITECTURE rtl OF DSBF_dataplane IS
   SIGNAL compute_projections_out2         : std_logic_vector(15 DOWNTO 0);  -- ufix16
   SIGNAL compute_projections_out3         : std_logic_vector(15 DOWNTO 0);  -- ufix16
   SIGNAL delays                           : vector_of_std_logic_vector13(0 TO 15);  -- ufix13 [16]
-  SIGNAL Avalon_Data_Processing_out1      : std_logic_vector(35 DOWNTO 0);  -- ufix36
+  SIGNAL Avalon_Data_Processing_out1      : std_logic_vector(31 DOWNTO 0);  -- ufix32
   SIGNAL Avalon_Data_Processing_out2      : std_logic;  -- ufix1
   SIGNAL Avalon_Data_Processing_out3      : std_logic;
   SIGNAL delayMatch_reg                   : std_logic_vector(0 TO 4095);  -- ufix1 [4096]
@@ -187,7 +187,7 @@ BEGIN
               sin_elevation => compute_projections_out3  -- sfix16_En14
               );
 
-  u_MATLAB_Function : DSBF_MATLAB_Function_block
+  u_MATLAB_Function : DSBF_MATLAB_Function_block1
     PORT MAP( clk => clk,
               reset => reset,
               enb => enb,
@@ -210,7 +210,7 @@ BEGIN
               Sink_Data => avalon_sink_data,  -- sfix32_En28
               Sink_Channel => avalon_sink_channel,  -- ufix4
               delays => delays,  -- sfix13_En7 [16]
-              Source_Data => Avalon_Data_Processing_out1,  -- sfix36_En28
+              Source_Data => Avalon_Data_Processing_out1,  -- sfix32_En28
               Source_Channel => Avalon_Data_Processing_out2,  -- ufix1
               Source_Valid => Avalon_Data_Processing_out3
               );

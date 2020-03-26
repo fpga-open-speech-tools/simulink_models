@@ -126,7 +126,7 @@ Generated in CreateInitFunction
 *********************************************************/
 static int delay_and_sum_beamformer_init(void) {
   int ret_val = 0;
-  printk(KERN_ALERT "FUNCTION AUTO GENERATED AT: 2020-03-13 10:42\n");
+  printk(KERN_ALERT "FUNCTION AUTO GENERATED AT: 2020-03-25 13:28\n");
   pr_info("Initializing the Flat Earth delay_and_sum_beamformer module\n");
   // Register our driver with the "Platform Driver" bus
   ret_val = platform_driver_register(&delay_and_sum_beamformer_platform);  if (ret_val != 0) {

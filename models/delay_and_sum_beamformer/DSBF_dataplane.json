@@ -56,9 +56,9 @@
             {
                 "name": "avalon_source_data",
                 "data_type": {
-                    "type": "sfix36_En28",
+                    "type": "sfix32_En28",
                     "signed": true,
-                    "width": 36,
+                    "width": 32,
                     "fractional_bits": 28
                 }
             },

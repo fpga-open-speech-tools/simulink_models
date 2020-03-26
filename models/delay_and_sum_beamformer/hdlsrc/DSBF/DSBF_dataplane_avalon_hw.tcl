@@ -36,11 +36,13 @@ add_fileset_file DSBF_MATLAB_Function_block.vhd VHDL PATH DSBF_MATLAB_Function_b
 add_fileset_file DSBF_sin_LUT_pkg.vhd VHDL PATH DSBF_sin_LUT_pkg.vhd
 add_fileset_file DSBF_compute_projections.vhd VHDL PATH DSBF_compute_projections.vhd
 add_fileset_file DSBF_deserializer.vhd VHDL PATH DSBF_deserializer.vhd
+add_fileset_file DSBF_MATLAB_Function_block1.vhd VHDL PATH DSBF_MATLAB_Function_block1.vhd
 add_fileset_file DSBF_compute_cosine.vhd VHDL PATH DSBF_compute_cosine.vhd
 add_fileset_file DSBF_convert_to_sampling_rate.vhd VHDL PATH DSBF_convert_to_sampling_rate.vhd
 add_fileset_file DSBF_MATLAB_Function.vhd VHDL PATH DSBF_MATLAB_Function.vhd
 add_fileset_file DSBF_FIR_Decimation.vhd VHDL PATH DSBF_FIR_Decimation.vhd
 add_fileset_file DSBF_dataplane_tc.vhd VHDL PATH DSBF_dataplane_tc.vhd
+add_fileset_file DSBF_normalize.vhd VHDL PATH DSBF_normalize.vhd
 add_fileset_file DSBF_read_address_generator1.vhd VHDL PATH DSBF_read_address_generator1.vhd
 add_fileset_file DSBF_dataplane.vhd VHDL PATH DSBF_dataplane.vhd
 add_fileset_file DSBF_delay_signals.vhd VHDL PATH DSBF_delay_signals.vhd
@@ -187,7 +189,7 @@ set_interface_property avalon_streaming_source PORT_NAME_MAP ""
 set_interface_property avalon_streaming_source CMSIS_SVD_VARIABLES ""
 set_interface_property avalon_streaming_source SVD_ADDRESS_GROUP ""
 add_interface_port avalon_streaming_source avalon_source_valid valid Output 1
-add_interface_port avalon_streaming_source avalon_source_data data Output 36
+add_interface_port avalon_streaming_source avalon_source_data data Output 32
 add_interface_port avalon_streaming_source avalon_source_channel channel Output 1
 add_interface_port avalon_streaming_source avalon_source_error error Output 2
 # End create_sink_connection_point
