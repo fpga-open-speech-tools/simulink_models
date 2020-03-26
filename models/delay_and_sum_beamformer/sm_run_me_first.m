@@ -78,6 +78,16 @@ mp.delayDataTypeWordLength = mp.integerDelayAddrSize + mp.fractionalDelayAddrSiz
 mp.delayDataTypeFractionLength = mp.fractionalDelayAddrSize;
 
 
+%% CIC interpolation
+mp.cicInterpolator = dsp.CICInterpolator('InterpolationFactor', mp.upsampleFactor);
+mp.cicInterpolatorCompensator = dsp.CICCompensationInterpolator(mp.cicInterpolator, ... 
+    'PassbandFrequency', 18e3, 'StopbandFrequency', 22e3, 'SampleRate', samplingRate);
+
+
+%% CIC decimation
+mp.cicDecimator = dsp.CICDecimator('DecimationFactor', mp.upsampleFactor);
+mp.cicDecimatorCompensator = dsp.CICCompensationDecimator(mp.cicDecimator, ... 
+    'PassbandFrequency', 18e3, 'StopbandFrequency', 22e3, 'SampleRate', samplingRate);
 
 
 %% Setup the directory paths & tool settings
