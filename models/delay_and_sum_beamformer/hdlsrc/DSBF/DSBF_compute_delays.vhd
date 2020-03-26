@@ -26,7 +26,7 @@ ENTITY DSBF_compute_delays IS
         sin_azimuth                       :   IN    std_logic_vector(15 DOWNTO 0);  -- sfix16_En14
         cos_elevation                     :   IN    std_logic_vector(15 DOWNTO 0);  -- sfix16_En14
         sin_elevation                     :   IN    std_logic_vector(15 DOWNTO 0);  -- sfix16_En14
-        delays                            :   OUT   vector_of_std_logic_vector13(0 TO 15)  -- sfix13_En7 [16]
+        delays                            :   OUT   vector_of_std_logic_vector12(0 TO 15)  -- sfix12_En6 [16]
         );
 END DSBF_compute_delays;
 
@@ -53,7 +53,7 @@ ARCHITECTURE rtl OF DSBF_compute_delays IS
   SIGNAL delayMatch_reg                   : vector_of_signed16(0 TO 3);  -- sfix16 [4]
   SIGNAL cos_elevation_1                  : signed(15 DOWNTO 0);  -- sfix16_En14
   SIGNAL sin_elevation_signed             : signed(15 DOWNTO 0);  -- sfix16_En14
-  SIGNAL delays_tmp                       : vector_of_signed13(0 TO 15);  -- sfix13_En7 [16]
+  SIGNAL delays_tmp                       : vector_of_signed12(0 TO 15);  -- sfix12_En6 [16]
 
 BEGIN
   sin_azimuth_signed <= signed(sin_azimuth);
@@ -100,7 +100,7 @@ BEGIN
     -- meters
     -- meters/second
     --'<S8>:1:10'
-    delays_tmp <= (OTHERS => to_signed(16#0000#, 13));
+    delays_tmp <= (OTHERS => to_signed(16#000#, 12));
     --'<S8>:1:17'
     idx := to_unsigned(16#00#, 5);
     --'<S8>:1:19'
@@ -135,12 +135,12 @@ BEGIN
         add_cast_2(z_0) := resize(mul_temp_1(z_0), 64);
         add_temp_2(z_0) := add_cast_0(z_0) + add_cast_2(z_0);
         mul_temp_2(z_0) := to_signed(-16#0046#, 16) * add_temp_2(z_0);
-        IF ((mul_temp_2(z_0)(79) = '0') AND (mul_temp_2(z_0)(78 DOWNTO 56) /= "00000000000000000000000")) OR ((mul_temp_2(z_0)(79) = '0') AND (mul_temp_2(z_0)(56 DOWNTO 44) = "0111111111111")) THEN 
-          delays_tmp(to_integer(sub_cast(z_0) - 1)) <= "0111111111111";
+        IF ((mul_temp_2(z_0)(79) = '0') AND (mul_temp_2(z_0)(78 DOWNTO 56) /= "00000000000000000000000")) OR ((mul_temp_2(z_0)(79) = '0') AND (mul_temp_2(z_0)(56 DOWNTO 45) = "011111111111")) THEN 
+          delays_tmp(to_integer(sub_cast(z_0) - 1)) <= "011111111111";
         ELSIF (mul_temp_2(z_0)(79) = '1') AND (mul_temp_2(z_0)(78 DOWNTO 56) /= "11111111111111111111111") THEN 
-          delays_tmp(to_integer(sub_cast(z_0) - 1)) <= "1000000000000";
+          delays_tmp(to_integer(sub_cast(z_0) - 1)) <= "100000000000";
         ELSE 
-          delays_tmp(to_integer(sub_cast(z_0) - 1)) <= mul_temp_2(z_0)(56 DOWNTO 44) + ('0' & mul_temp_2(z_0)(43));
+          delays_tmp(to_integer(sub_cast(z_0) - 1)) <= mul_temp_2(z_0)(56 DOWNTO 45) + ('0' & mul_temp_2(z_0)(44));
         END IF;
       END LOOP;
 

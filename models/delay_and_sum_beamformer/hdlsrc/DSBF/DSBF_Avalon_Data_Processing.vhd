@@ -23,15 +23,15 @@ ENTITY DSBF_Avalon_Data_Processing IS
   PORT( clk                               :   IN    std_logic;
         reset                             :   IN    std_logic;
         enb                               :   IN    std_logic;
-        enb_1_64_1                        :   IN    std_logic;
+        enb_1_128_1                       :   IN    std_logic;
         enb_1_2048_1                      :   IN    std_logic;
         enb_1_2048_0                      :   IN    std_logic;
         enb_1_2048_5                      :   IN    std_logic;
-        enb_1_64_0                        :   IN    std_logic;
+        enb_1_128_0                       :   IN    std_logic;
         valid_in                          :   IN    std_logic;
         Sink_Data                         :   IN    std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
         Sink_Channel                      :   IN    std_logic_vector(3 DOWNTO 0);  -- ufix4
-        delays                            :   IN    vector_of_std_logic_vector13(0 TO 15);  -- sfix13_En7 [16]
+        delays                            :   IN    vector_of_std_logic_vector12(0 TO 15);  -- sfix12_En6 [16]
         Source_Data                       :   OUT   std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
         Source_Channel                    :   OUT   std_logic;  -- ufix1
         Source_Valid                      :   OUT   std_logic
@@ -65,20 +65,20 @@ ARCHITECTURE rtl OF DSBF_Avalon_Data_Processing IS
           enb_1_2048_5                    :   IN    std_logic;
           valid_in                        :   IN    std_logic;
           data_in                         :   IN    vector_of_std_logic_vector32(0 TO 15);  -- sfix32_En28 [16]
-          delays_in                       :   IN    vector_of_std_logic_vector13(0 TO 15);  -- sfix13_En7 [16]
+          delays_in                       :   IN    vector_of_std_logic_vector12(0 TO 15);  -- sfix12_En6 [16]
           data_out                        :   OUT   vector_of_std_logic_vector32(0 TO 15);  -- sfix32_En28 [16]
-          delays_out                      :   OUT   vector_of_std_logic_vector13(0 TO 15)  -- sfix13_En7 [16]
+          delays_out                      :   OUT   vector_of_std_logic_vector12(0 TO 15)  -- sfix12_En6 [16]
           );
   END COMPONENT;
 
   COMPONENT DSBF_delay_signals
     PORT( clk                             :   IN    std_logic;
           reset                           :   IN    std_logic;
-          enb_1_64_1                      :   IN    std_logic;
+          enb_1_128_1                     :   IN    std_logic;
           enb_1_2048_0                    :   IN    std_logic;
-          enb_1_64_0                      :   IN    std_logic;
+          enb_1_128_0                     :   IN    std_logic;
           data_in                         :   IN    std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
-          delays                          :   IN    std_logic_vector(12 DOWNTO 0);  -- sfix13_En7
+          delays                          :   IN    std_logic_vector(11 DOWNTO 0);  -- sfix12_En6
           Out1                            :   OUT   std_logic_vector(31 DOWNTO 0)  -- sfix32_En28
           );
   END COMPONENT;
@@ -118,7 +118,7 @@ ARCHITECTURE rtl OF DSBF_Avalon_Data_Processing IS
   SIGNAL valid_out                        : std_logic;
   SIGNAL data_out                         : vector_of_std_logic_vector32(0 TO 15);  -- ufix32 [16]
   SIGNAL convert_to_sampling_rate_out1    : vector_of_std_logic_vector32(0 TO 15);  -- ufix32 [16]
-  SIGNAL convert_to_sampling_rate_out2    : vector_of_std_logic_vector13(0 TO 15);  -- ufix13 [16]
+  SIGNAL convert_to_sampling_rate_out2    : vector_of_std_logic_vector12(0 TO 15);  -- ufix12 [16]
   SIGNAL data_in_0                        : signed(31 DOWNTO 0);  -- sfix32_En28
   SIGNAL data_in_0_1                      : signed(31 DOWNTO 0);  -- sfix32_En28
   SIGNAL data_in_1                        : signed(31 DOWNTO 0);  -- sfix32_En28
@@ -228,184 +228,184 @@ BEGIN
               enb_1_2048_5 => enb_1_2048_5,
               valid_in => valid_out,
               data_in => data_out,  -- sfix32_En28 [16]
-              delays_in => delays,  -- sfix13_En7 [16]
+              delays_in => delays,  -- sfix12_En6 [16]
               data_out => convert_to_sampling_rate_out1,  -- sfix32_En28 [16]
-              delays_out => convert_to_sampling_rate_out2  -- sfix13_En7 [16]
+              delays_out => convert_to_sampling_rate_out2  -- sfix12_En6 [16]
               );
 
   u_delay_signals_instance1 : DSBF_delay_signals
     PORT MAP( clk => clk,
               reset => reset,
-              enb_1_64_1 => enb_1_64_1,
+              enb_1_128_1 => enb_1_128_1,
               enb_1_2048_0 => enb_1_2048_0,
-              enb_1_64_0 => enb_1_64_0,
+              enb_1_128_0 => enb_1_128_0,
               data_in => std_logic_vector(data_in_0_1),  -- sfix32_En28
-              delays => convert_to_sampling_rate_out2(0),  -- sfix13_En7
+              delays => convert_to_sampling_rate_out2(0),  -- sfix12_En6
               Out1 => delay_signal_out1_0  -- sfix32_En28
               );
 
   u_delay_signals_instance2 : DSBF_delay_signals
     PORT MAP( clk => clk,
               reset => reset,
-              enb_1_64_1 => enb_1_64_1,
+              enb_1_128_1 => enb_1_128_1,
               enb_1_2048_0 => enb_1_2048_0,
-              enb_1_64_0 => enb_1_64_0,
+              enb_1_128_0 => enb_1_128_0,
               data_in => std_logic_vector(data_in_1_1),  -- sfix32_En28
-              delays => convert_to_sampling_rate_out2(1),  -- sfix13_En7
+              delays => convert_to_sampling_rate_out2(1),  -- sfix12_En6
               Out1 => delay_signal_out1_1  -- sfix32_En28
               );
 
   u_delay_signals_instance3 : DSBF_delay_signals
     PORT MAP( clk => clk,
               reset => reset,
-              enb_1_64_1 => enb_1_64_1,
+              enb_1_128_1 => enb_1_128_1,
               enb_1_2048_0 => enb_1_2048_0,
-              enb_1_64_0 => enb_1_64_0,
+              enb_1_128_0 => enb_1_128_0,
               data_in => std_logic_vector(data_in_2_1),  -- sfix32_En28
-              delays => convert_to_sampling_rate_out2(2),  -- sfix13_En7
+              delays => convert_to_sampling_rate_out2(2),  -- sfix12_En6
               Out1 => delay_signal_out1_2  -- sfix32_En28
               );
 
   u_delay_signals_instance4 : DSBF_delay_signals
     PORT MAP( clk => clk,
               reset => reset,
-              enb_1_64_1 => enb_1_64_1,
+              enb_1_128_1 => enb_1_128_1,
               enb_1_2048_0 => enb_1_2048_0,
-              enb_1_64_0 => enb_1_64_0,
+              enb_1_128_0 => enb_1_128_0,
               data_in => std_logic_vector(data_in_3_1),  -- sfix32_En28
-              delays => convert_to_sampling_rate_out2(3),  -- sfix13_En7
+              delays => convert_to_sampling_rate_out2(3),  -- sfix12_En6
               Out1 => delay_signal_out1_3  -- sfix32_En28
               );
 
   u_delay_signals_instance5 : DSBF_delay_signals
     PORT MAP( clk => clk,
               reset => reset,
-              enb_1_64_1 => enb_1_64_1,
+              enb_1_128_1 => enb_1_128_1,
               enb_1_2048_0 => enb_1_2048_0,
-              enb_1_64_0 => enb_1_64_0,
+              enb_1_128_0 => enb_1_128_0,
               data_in => std_logic_vector(data_in_4_1),  -- sfix32_En28
-              delays => convert_to_sampling_rate_out2(4),  -- sfix13_En7
+              delays => convert_to_sampling_rate_out2(4),  -- sfix12_En6
               Out1 => delay_signal_out1_4  -- sfix32_En28
               );
 
   u_delay_signals_instance6 : DSBF_delay_signals
     PORT MAP( clk => clk,
               reset => reset,
-              enb_1_64_1 => enb_1_64_1,
+              enb_1_128_1 => enb_1_128_1,
               enb_1_2048_0 => enb_1_2048_0,
-              enb_1_64_0 => enb_1_64_0,
+              enb_1_128_0 => enb_1_128_0,
               data_in => std_logic_vector(data_in_5_1),  -- sfix32_En28
-              delays => convert_to_sampling_rate_out2(5),  -- sfix13_En7
+              delays => convert_to_sampling_rate_out2(5),  -- sfix12_En6
               Out1 => delay_signal_out1_5  -- sfix32_En28
               );
 
   u_delay_signals_instance7 : DSBF_delay_signals
     PORT MAP( clk => clk,
               reset => reset,
-              enb_1_64_1 => enb_1_64_1,
+              enb_1_128_1 => enb_1_128_1,
               enb_1_2048_0 => enb_1_2048_0,
-              enb_1_64_0 => enb_1_64_0,
+              enb_1_128_0 => enb_1_128_0,
               data_in => std_logic_vector(data_in_6_1),  -- sfix32_En28
-              delays => convert_to_sampling_rate_out2(6),  -- sfix13_En7
+              delays => convert_to_sampling_rate_out2(6),  -- sfix12_En6
               Out1 => delay_signal_out1_6  -- sfix32_En28
               );
 
   u_delay_signals_instance8 : DSBF_delay_signals
     PORT MAP( clk => clk,
               reset => reset,
-              enb_1_64_1 => enb_1_64_1,
+              enb_1_128_1 => enb_1_128_1,
               enb_1_2048_0 => enb_1_2048_0,
-              enb_1_64_0 => enb_1_64_0,
+              enb_1_128_0 => enb_1_128_0,
               data_in => std_logic_vector(data_in_7_1),  -- sfix32_En28
-              delays => convert_to_sampling_rate_out2(7),  -- sfix13_En7
+              delays => convert_to_sampling_rate_out2(7),  -- sfix12_En6
               Out1 => delay_signal_out1_7  -- sfix32_En28
               );
 
   u_delay_signals_instance9 : DSBF_delay_signals
     PORT MAP( clk => clk,
               reset => reset,
-              enb_1_64_1 => enb_1_64_1,
+              enb_1_128_1 => enb_1_128_1,
               enb_1_2048_0 => enb_1_2048_0,
-              enb_1_64_0 => enb_1_64_0,
+              enb_1_128_0 => enb_1_128_0,
               data_in => std_logic_vector(data_in_8_1),  -- sfix32_En28
-              delays => convert_to_sampling_rate_out2(8),  -- sfix13_En7
+              delays => convert_to_sampling_rate_out2(8),  -- sfix12_En6
               Out1 => delay_signal_out1_8  -- sfix32_En28
               );
 
   u_delay_signals_instance10 : DSBF_delay_signals
     PORT MAP( clk => clk,
               reset => reset,
-              enb_1_64_1 => enb_1_64_1,
+              enb_1_128_1 => enb_1_128_1,
               enb_1_2048_0 => enb_1_2048_0,
-              enb_1_64_0 => enb_1_64_0,
+              enb_1_128_0 => enb_1_128_0,
               data_in => std_logic_vector(data_in_9_1),  -- sfix32_En28
-              delays => convert_to_sampling_rate_out2(9),  -- sfix13_En7
+              delays => convert_to_sampling_rate_out2(9),  -- sfix12_En6
               Out1 => delay_signal_out1_9  -- sfix32_En28
               );
 
   u_delay_signals_instance11 : DSBF_delay_signals
     PORT MAP( clk => clk,
               reset => reset,
-              enb_1_64_1 => enb_1_64_1,
+              enb_1_128_1 => enb_1_128_1,
               enb_1_2048_0 => enb_1_2048_0,
-              enb_1_64_0 => enb_1_64_0,
+              enb_1_128_0 => enb_1_128_0,
               data_in => std_logic_vector(data_in_10_1),  -- sfix32_En28
-              delays => convert_to_sampling_rate_out2(10),  -- sfix13_En7
+              delays => convert_to_sampling_rate_out2(10),  -- sfix12_En6
               Out1 => delay_signal_out1_10  -- sfix32_En28
               );
 
   u_delay_signals_instance12 : DSBF_delay_signals
     PORT MAP( clk => clk,
               reset => reset,
-              enb_1_64_1 => enb_1_64_1,
+              enb_1_128_1 => enb_1_128_1,
               enb_1_2048_0 => enb_1_2048_0,
-              enb_1_64_0 => enb_1_64_0,
+              enb_1_128_0 => enb_1_128_0,
               data_in => std_logic_vector(data_in_11_1),  -- sfix32_En28
-              delays => convert_to_sampling_rate_out2(11),  -- sfix13_En7
+              delays => convert_to_sampling_rate_out2(11),  -- sfix12_En6
               Out1 => delay_signal_out1_11  -- sfix32_En28
               );
 
   u_delay_signals_instance13 : DSBF_delay_signals
     PORT MAP( clk => clk,
               reset => reset,
-              enb_1_64_1 => enb_1_64_1,
+              enb_1_128_1 => enb_1_128_1,
               enb_1_2048_0 => enb_1_2048_0,
-              enb_1_64_0 => enb_1_64_0,
+              enb_1_128_0 => enb_1_128_0,
               data_in => std_logic_vector(data_in_12_1),  -- sfix32_En28
-              delays => convert_to_sampling_rate_out2(12),  -- sfix13_En7
+              delays => convert_to_sampling_rate_out2(12),  -- sfix12_En6
               Out1 => delay_signal_out1_12  -- sfix32_En28
               );
 
   u_delay_signals_instance14 : DSBF_delay_signals
     PORT MAP( clk => clk,
               reset => reset,
-              enb_1_64_1 => enb_1_64_1,
+              enb_1_128_1 => enb_1_128_1,
               enb_1_2048_0 => enb_1_2048_0,
-              enb_1_64_0 => enb_1_64_0,
+              enb_1_128_0 => enb_1_128_0,
               data_in => std_logic_vector(data_in_13_1),  -- sfix32_En28
-              delays => convert_to_sampling_rate_out2(13),  -- sfix13_En7
+              delays => convert_to_sampling_rate_out2(13),  -- sfix12_En6
               Out1 => delay_signal_out1_13  -- sfix32_En28
               );
 
   u_delay_signals_instance15 : DSBF_delay_signals
     PORT MAP( clk => clk,
               reset => reset,
-              enb_1_64_1 => enb_1_64_1,
+              enb_1_128_1 => enb_1_128_1,
               enb_1_2048_0 => enb_1_2048_0,
-              enb_1_64_0 => enb_1_64_0,
+              enb_1_128_0 => enb_1_128_0,
               data_in => std_logic_vector(data_in_14_1),  -- sfix32_En28
-              delays => convert_to_sampling_rate_out2(14),  -- sfix13_En7
+              delays => convert_to_sampling_rate_out2(14),  -- sfix12_En6
               Out1 => delay_signal_out1_14  -- sfix32_En28
               );
 
   u_delay_signals_instance16 : DSBF_delay_signals
     PORT MAP( clk => clk,
               reset => reset,
-              enb_1_64_1 => enb_1_64_1,
+              enb_1_128_1 => enb_1_128_1,
               enb_1_2048_0 => enb_1_2048_0,
-              enb_1_64_0 => enb_1_64_0,
+              enb_1_128_0 => enb_1_128_0,
               data_in => std_logic_vector(data_in_15_1),  -- sfix32_En28
-              delays => convert_to_sampling_rate_out2(15),  -- sfix13_En7
+              delays => convert_to_sampling_rate_out2(15),  -- sfix12_En6
               Out1 => delay_signal_out1_15  -- sfix32_En28
               );
 

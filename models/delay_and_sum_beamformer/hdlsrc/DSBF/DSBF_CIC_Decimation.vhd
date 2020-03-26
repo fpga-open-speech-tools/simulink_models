@@ -23,10 +23,10 @@ USE IEEE.numeric_std.ALL;
 
 ENTITY DSBF_CIC_Decimation IS
    PORT( clk                             :   IN    std_logic; 
-         enb_1_64_1                      :   IN    std_logic; 
+         enb_1_128_1                     :   IN    std_logic; 
          reset                           :   IN    std_logic; 
          DSBF_CIC_Decimation_in          :   IN    std_logic_vector(31 DOWNTO 0); -- sfix32_En28
-         DSBF_CIC_Decimation_out         :   OUT   std_logic_vector(41 DOWNTO 0)  -- sfix42_En28
+         DSBF_CIC_Decimation_out         :   OUT   std_logic_vector(39 DOWNTO 0)  -- sfix40_En28
          );
 
 END DSBF_CIC_Decimation;
@@ -41,39 +41,39 @@ ARCHITECTURE rtl OF DSBF_CIC_Decimation IS
   -- Constants
   -- Signals
   SIGNAL input_typeconvert                : signed(31 DOWNTO 0); -- sfix32_En28
-  SIGNAL cur_count                        : unsigned(4 DOWNTO 0); -- ufix5
+  SIGNAL cur_count                        : unsigned(3 DOWNTO 0); -- ufix4
   SIGNAL phase_0                          : std_logic; -- boolean
   --   -- Section 1 Signals 
   SIGNAL section_in1                      : signed(31 DOWNTO 0); -- sfix32_En28
-  SIGNAL section_cast1                    : signed(41 DOWNTO 0); -- sfix42_En28
-  SIGNAL sum1                             : signed(41 DOWNTO 0); -- sfix42_En28
-  SIGNAL section_out1                     : signed(41 DOWNTO 0); -- sfix42_En28
-  SIGNAL add_cast                         : signed(41 DOWNTO 0); -- sfix42_En28
-  SIGNAL add_cast_1                       : signed(41 DOWNTO 0); -- sfix42_En28
-  SIGNAL add_temp                         : signed(42 DOWNTO 0); -- sfix43_En28
+  SIGNAL section_cast1                    : signed(39 DOWNTO 0); -- sfix40_En28
+  SIGNAL sum1                             : signed(39 DOWNTO 0); -- sfix40_En28
+  SIGNAL section_out1                     : signed(39 DOWNTO 0); -- sfix40_En28
+  SIGNAL add_cast                         : signed(39 DOWNTO 0); -- sfix40_En28
+  SIGNAL add_cast_1                       : signed(39 DOWNTO 0); -- sfix40_En28
+  SIGNAL add_temp                         : signed(40 DOWNTO 0); -- sfix41_En28
   --   -- Section 2 Signals 
-  SIGNAL section_in2                      : signed(41 DOWNTO 0); -- sfix42_En28
-  SIGNAL sum2                             : signed(41 DOWNTO 0); -- sfix42_En28
-  SIGNAL section_out2                     : signed(41 DOWNTO 0); -- sfix42_En28
-  SIGNAL add_cast_2                       : signed(41 DOWNTO 0); -- sfix42_En28
-  SIGNAL add_cast_3                       : signed(41 DOWNTO 0); -- sfix42_En28
-  SIGNAL add_temp_1                       : signed(42 DOWNTO 0); -- sfix43_En28
+  SIGNAL section_in2                      : signed(39 DOWNTO 0); -- sfix40_En28
+  SIGNAL sum2                             : signed(39 DOWNTO 0); -- sfix40_En28
+  SIGNAL section_out2                     : signed(39 DOWNTO 0); -- sfix40_En28
+  SIGNAL add_cast_2                       : signed(39 DOWNTO 0); -- sfix40_En28
+  SIGNAL add_cast_3                       : signed(39 DOWNTO 0); -- sfix40_En28
+  SIGNAL add_temp_1                       : signed(40 DOWNTO 0); -- sfix41_En28
   --   -- Section 3 Signals 
-  SIGNAL section_in3                      : signed(41 DOWNTO 0); -- sfix42_En28
-  SIGNAL diff1                            : signed(41 DOWNTO 0); -- sfix42_En28
-  SIGNAL section_out3                     : signed(41 DOWNTO 0); -- sfix42_En28
-  SIGNAL sub_cast                         : signed(41 DOWNTO 0); -- sfix42_En28
-  SIGNAL sub_cast_1                       : signed(41 DOWNTO 0); -- sfix42_En28
-  SIGNAL sub_temp                         : signed(42 DOWNTO 0); -- sfix43_En28
+  SIGNAL section_in3                      : signed(39 DOWNTO 0); -- sfix40_En28
+  SIGNAL diff1                            : signed(39 DOWNTO 0); -- sfix40_En28
+  SIGNAL section_out3                     : signed(39 DOWNTO 0); -- sfix40_En28
+  SIGNAL sub_cast                         : signed(39 DOWNTO 0); -- sfix40_En28
+  SIGNAL sub_cast_1                       : signed(39 DOWNTO 0); -- sfix40_En28
+  SIGNAL sub_temp                         : signed(40 DOWNTO 0); -- sfix41_En28
   --   -- Section 4 Signals 
-  SIGNAL section_in4                      : signed(41 DOWNTO 0); -- sfix42_En28
-  SIGNAL diff2                            : signed(41 DOWNTO 0); -- sfix42_En28
-  SIGNAL section_out4                     : signed(41 DOWNTO 0); -- sfix42_En28
-  SIGNAL sub_cast_2                       : signed(41 DOWNTO 0); -- sfix42_En28
-  SIGNAL sub_cast_3                       : signed(41 DOWNTO 0); -- sfix42_En28
-  SIGNAL sub_temp_1                       : signed(42 DOWNTO 0); -- sfix43_En28
-  SIGNAL regout                           : signed(41 DOWNTO 0); -- sfix42_En28
-  SIGNAL muxout                           : signed(41 DOWNTO 0); -- sfix42_En28
+  SIGNAL section_in4                      : signed(39 DOWNTO 0); -- sfix40_En28
+  SIGNAL diff2                            : signed(39 DOWNTO 0); -- sfix40_En28
+  SIGNAL section_out4                     : signed(39 DOWNTO 0); -- sfix40_En28
+  SIGNAL sub_cast_2                       : signed(39 DOWNTO 0); -- sfix40_En28
+  SIGNAL sub_cast_3                       : signed(39 DOWNTO 0); -- sfix40_En28
+  SIGNAL sub_temp_1                       : signed(40 DOWNTO 0); -- sfix41_En28
+  SIGNAL regout                           : signed(39 DOWNTO 0); -- sfix40_En28
+  SIGNAL muxout                           : signed(39 DOWNTO 0); -- sfix40_En28
 
 
 BEGIN
@@ -84,19 +84,19 @@ BEGIN
   ce_output : PROCESS (clk, reset)
   BEGIN
     IF reset = '1' THEN
-      cur_count <= to_unsigned(0, 5);
+      cur_count <= to_unsigned(0, 4);
     ELSIF rising_edge(clk) THEN
-      IF enb_1_64_1 = '1' THEN
-        IF cur_count >= to_unsigned(31, 5) THEN
-          cur_count <= to_unsigned(0, 5);
+      IF enb_1_128_1 = '1' THEN
+        IF cur_count >= to_unsigned(15, 4) THEN
+          cur_count <= to_unsigned(0, 4);
         ELSE
-          cur_count <= cur_count + to_unsigned(1, 5);
+          cur_count <= cur_count + to_unsigned(1, 4);
         END IF;
       END IF;
     END IF; 
   END PROCESS ce_output;
 
-  phase_0 <= '1' WHEN cur_count = to_unsigned(0, 5) AND enb_1_64_1 = '1' ELSE '0';
+  phase_0 <= '1' WHEN cur_count = to_unsigned(0, 4) AND enb_1_128_1 = '1' ELSE '0';
 
   input_typeconvert <= signed(DSBF_CIC_Decimation_in);
 
@@ -104,19 +104,19 @@ BEGIN
 
   section_in1 <= input_typeconvert;
 
-  section_cast1 <= resize(section_in1, 42);
+  section_cast1 <= resize(section_in1, 40);
 
   add_cast <= section_cast1;
   add_cast_1 <= section_out1;
-  add_temp <= resize(add_cast, 43) + resize(add_cast_1, 43);
-  sum1 <= add_temp(41 DOWNTO 0);
+  add_temp <= resize(add_cast, 41) + resize(add_cast_1, 41);
+  sum1 <= add_temp(39 DOWNTO 0);
 
   integrator_delay_section1 : PROCESS (clk, reset)
   BEGIN
     IF reset = '1' THEN
       section_out1 <= (OTHERS => '0');
     ELSIF rising_edge(clk) THEN
-      IF enb_1_64_1 = '1' THEN
+      IF enb_1_128_1 = '1' THEN
         section_out1 <= sum1;
       END IF;
     END IF; 
@@ -128,15 +128,15 @@ BEGIN
 
   add_cast_2 <= section_in2;
   add_cast_3 <= section_out2;
-  add_temp_1 <= resize(add_cast_2, 43) + resize(add_cast_3, 43);
-  sum2 <= add_temp_1(41 DOWNTO 0);
+  add_temp_1 <= resize(add_cast_2, 41) + resize(add_cast_3, 41);
+  sum2 <= add_temp_1(39 DOWNTO 0);
 
   integrator_delay_section2 : PROCESS (clk, reset)
   BEGIN
     IF reset = '1' THEN
       section_out2 <= (OTHERS => '0');
     ELSIF rising_edge(clk) THEN
-      IF enb_1_64_1 = '1' THEN
+      IF enb_1_128_1 = '1' THEN
         section_out2 <= sum2;
       END IF;
     END IF; 
@@ -148,8 +148,8 @@ BEGIN
 
   sub_cast <= section_in3;
   sub_cast_1 <= diff1;
-  sub_temp <= resize(sub_cast, 43) - resize(sub_cast_1, 43);
-  section_out3 <= sub_temp(41 DOWNTO 0);
+  sub_temp <= resize(sub_cast, 41) - resize(sub_cast_1, 41);
+  section_out3 <= sub_temp(39 DOWNTO 0);
 
   comb_delay_section3 : PROCESS (clk, reset)
   BEGIN
@@ -168,8 +168,8 @@ BEGIN
 
   sub_cast_2 <= section_in4;
   sub_cast_3 <= diff2;
-  sub_temp_1 <= resize(sub_cast_2, 43) - resize(sub_cast_3, 43);
-  section_out4 <= sub_temp_1(41 DOWNTO 0);
+  sub_temp_1 <= resize(sub_cast_2, 41) - resize(sub_cast_3, 41);
+  section_out4 <= sub_temp_1(39 DOWNTO 0);
 
   comb_delay_section4 : PROCESS (clk, reset)
   BEGIN

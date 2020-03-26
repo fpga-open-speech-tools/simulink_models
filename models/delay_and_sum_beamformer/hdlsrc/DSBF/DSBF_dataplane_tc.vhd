@@ -17,8 +17,8 @@
 -- 
 -- enb         : identical to clk_enable
 -- enb_1_1_1   : identical to clk_enable
--- enb_1_64_0  : 64x slower than clk with last phase
--- enb_1_64_1  : 64x slower than clk with phase 1
+-- enb_1_128_0 : 128x slower than clk with last phase
+-- enb_1_128_1 : 128x slower than clk with phase 1
 -- enb_1_2048_0: 2048x slower than clk with last phase
 -- enb_1_2048_1: 2048x slower than clk with phase 1
 -- enb_1_2048_5: 2048x slower than clk with phase 5
@@ -34,8 +34,8 @@ ENTITY DSBF_dataplane_tc IS
         clk_enable                        :   IN    std_logic;
         enb                               :   OUT   std_logic;
         enb_1_1_1                         :   OUT   std_logic;
-        enb_1_64_0                        :   OUT   std_logic;
-        enb_1_64_1                        :   OUT   std_logic;
+        enb_1_128_0                       :   OUT   std_logic;
+        enb_1_128_1                       :   OUT   std_logic;
         enb_1_2048_0                      :   OUT   std_logic;
         enb_1_2048_1                      :   OUT   std_logic;
         enb_1_2048_5                      :   OUT   std_logic
@@ -46,7 +46,7 @@ END DSBF_dataplane_tc;
 ARCHITECTURE rtl OF DSBF_dataplane_tc IS
 
   -- Signals
-  SIGNAL count64                          : unsigned(5 DOWNTO 0);  -- ufix6
+  SIGNAL count128                         : unsigned(6 DOWNTO 0);  -- ufix7
   SIGNAL phase_0                          : std_logic;
   SIGNAL phase_0_tmp                      : std_logic;
   SIGNAL phase_1                          : std_logic;
@@ -61,20 +61,20 @@ ARCHITECTURE rtl OF DSBF_dataplane_tc IS
   SIGNAL phase_5_tmp                      : std_logic;
 
 BEGIN
-  Counter64 : PROCESS (clk, reset)
+  Counter128 : PROCESS (clk, reset)
   BEGIN
     IF reset = '1' THEN
-      count64 <= to_unsigned(1, 6);
+      count128 <= to_unsigned(1, 7);
     ELSIF rising_edge(clk) THEN
       IF clk_enable = '1' THEN
-        IF count64 >= to_unsigned(63, 6) THEN
-          count64 <= to_unsigned(0, 6);
+        IF count128 >= to_unsigned(127, 7) THEN
+          count128 <= to_unsigned(0, 7);
         ELSE
-          count64 <= count64 + to_unsigned(1, 6);
+          count128 <= count128 + to_unsigned(1, 7);
         END IF;
       END IF;
     END IF; 
-  END PROCESS Counter64;
+  END PROCESS Counter128;
 
   temp_process1 : PROCESS (clk, reset)
   BEGIN
@@ -87,7 +87,7 @@ BEGIN
     END IF; 
   END PROCESS temp_process1;
 
-  phase_0_tmp <= '1' WHEN count64 = to_unsigned(63, 6) AND clk_enable = '1' ELSE '0';
+  phase_0_tmp <= '1' WHEN count128 = to_unsigned(127, 7) AND clk_enable = '1' ELSE '0';
 
   temp_process2 : PROCESS (clk, reset)
   BEGIN
@@ -100,7 +100,7 @@ BEGIN
     END IF; 
   END PROCESS temp_process2;
 
-  phase_1_tmp <= '1' WHEN count64 = to_unsigned(0, 6) AND clk_enable = '1' ELSE '0';
+  phase_1_tmp <= '1' WHEN count128 = to_unsigned(0, 7) AND clk_enable = '1' ELSE '0';
 
   Counter2048 : PROCESS (clk, reset)
   BEGIN
@@ -162,9 +162,9 @@ BEGIN
 
   enb_1_1_1 <=  phase_all AND clk_enable;
 
-  enb_1_64_0 <=  phase_0 AND clk_enable;
+  enb_1_128_0 <=  phase_0 AND clk_enable;
 
-  enb_1_64_1 <=  phase_1 AND clk_enable;
+  enb_1_128_1 <=  phase_1 AND clk_enable;
 
   enb_1_2048_0 <=  phase_0_1 AND clk_enable;
 

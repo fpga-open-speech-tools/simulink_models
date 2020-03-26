@@ -23,9 +23,9 @@ ENTITY DSBF_Sample_and_Hold1 IS
   PORT( clk                               :   IN    std_logic;
         reset                             :   IN    std_logic;
         enb                               :   IN    std_logic;
-        In_rsvd                           :   IN    vector_of_std_logic_vector13(0 TO 15);  -- sfix13_En7 [16]
+        In_rsvd                           :   IN    vector_of_std_logic_vector12(0 TO 15);  -- sfix12_En6 [16]
         Trigger                           :   IN    std_logic;
-        alpha                             :   OUT   vector_of_std_logic_vector13(0 TO 15)  -- sfix13_En7 [16]
+        alpha                             :   OUT   vector_of_std_logic_vector12(0 TO 15)  -- sfix12_En6 [16]
         );
 END DSBF_Sample_and_Hold1;
 
@@ -36,9 +36,9 @@ ARCHITECTURE rtl OF DSBF_Sample_and_Hold1 IS
   SIGNAL enb_gated                        : std_logic;
   SIGNAL Trigger_delayed                  : std_logic;
   SIGNAL Trigger_emulated                 : std_logic;
-  SIGNAL In_signed                        : vector_of_signed13(0 TO 15);  -- sfix13_En7 [16]
-  SIGNAL In_bypass                        : vector_of_signed13(0 TO 15);  -- sfix13_En7 [16]
-  SIGNAL In_last_value                    : vector_of_signed13(0 TO 15);  -- sfix13_En7 [16]
+  SIGNAL In_signed                        : vector_of_signed12(0 TO 15);  -- sfix12_En6 [16]
+  SIGNAL In_bypass                        : vector_of_signed12(0 TO 15);  -- sfix12_En6 [16]
+  SIGNAL In_last_value                    : vector_of_signed12(0 TO 15);  -- sfix12_En6 [16]
 
 BEGIN
 
@@ -64,7 +64,7 @@ BEGIN
   alpha_bypass_process : PROCESS (clk, reset)
   BEGIN
     IF reset = '1' THEN
-      In_last_value <= (OTHERS => to_signed(16#0000#, 13));
+      In_last_value <= (OTHERS => to_signed(16#000#, 12));
     ELSIF rising_edge(clk) THEN
       IF enb_gated = '1' THEN
         In_last_value <= In_bypass;

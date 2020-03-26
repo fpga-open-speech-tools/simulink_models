@@ -28,9 +28,9 @@ ENTITY DSBF_convert_to_sampling_rate IS
         enb_1_2048_5                      :   IN    std_logic;
         valid_in                          :   IN    std_logic;
         data_in                           :   IN    vector_of_std_logic_vector32(0 TO 15);  -- sfix32_En28 [16]
-        delays_in                         :   IN    vector_of_std_logic_vector13(0 TO 15);  -- sfix13_En7 [16]
+        delays_in                         :   IN    vector_of_std_logic_vector12(0 TO 15);  -- sfix12_En6 [16]
         data_out                          :   OUT   vector_of_std_logic_vector32(0 TO 15);  -- sfix32_En28 [16]
-        delays_out                        :   OUT   vector_of_std_logic_vector13(0 TO 15)  -- sfix13_En7 [16]
+        delays_out                        :   OUT   vector_of_std_logic_vector12(0 TO 15)  -- sfix12_En6 [16]
         );
 END DSBF_convert_to_sampling_rate;
 
@@ -52,9 +52,9 @@ ARCHITECTURE rtl OF DSBF_convert_to_sampling_rate IS
     PORT( clk                             :   IN    std_logic;
           reset                           :   IN    std_logic;
           enb                             :   IN    std_logic;
-          In_rsvd                         :   IN    vector_of_std_logic_vector13(0 TO 15);  -- sfix13_En7 [16]
+          In_rsvd                         :   IN    vector_of_std_logic_vector12(0 TO 15);  -- sfix12_En6 [16]
           Trigger                         :   IN    std_logic;
-          alpha                           :   OUT   vector_of_std_logic_vector13(0 TO 15)  -- sfix13_En7 [16]
+          alpha                           :   OUT   vector_of_std_logic_vector12(0 TO 15)  -- sfix12_En6 [16]
           );
   END COMPONENT;
 
@@ -72,11 +72,11 @@ ARCHITECTURE rtl OF DSBF_convert_to_sampling_rate IS
   SIGNAL Rate_Transition1_out1_1          : vector_of_signed32(0 TO 15);  -- sfix32_En28 [16]
   SIGNAL delayMatch_reg                   : std_logic_vector(0 TO 3);  -- ufix1 [4]
   SIGNAL valid_in_1                       : std_logic;
-  SIGNAL Sample_and_Hold1_out1            : vector_of_std_logic_vector13(0 TO 15);  -- ufix13 [16]
-  SIGNAL Sample_and_Hold1_out1_signed     : vector_of_signed13(0 TO 15);  -- sfix13_En7 [16]
-  SIGNAL Rate_Transition2_ds_out          : vector_of_signed13(0 TO 15);  -- sfix13_En7 [16]
-  SIGNAL Rate_Transition2_out1            : vector_of_signed13(0 TO 15);  -- sfix13_En7 [16]
-  SIGNAL Rate_Transition2_out1_1          : vector_of_signed13(0 TO 15);  -- sfix13_En7 [16]
+  SIGNAL Sample_and_Hold1_out1            : vector_of_std_logic_vector12(0 TO 15);  -- ufix12 [16]
+  SIGNAL Sample_and_Hold1_out1_signed     : vector_of_signed12(0 TO 15);  -- sfix12_En6 [16]
+  SIGNAL Rate_Transition2_ds_out          : vector_of_signed12(0 TO 15);  -- sfix12_En6 [16]
+  SIGNAL Rate_Transition2_out1            : vector_of_signed12(0 TO 15);  -- sfix12_En6 [16]
+  SIGNAL Rate_Transition2_out1_1          : vector_of_signed12(0 TO 15);  -- sfix12_En6 [16]
 
 BEGIN
   -- sample and data on the valid pulse to make sure we are only using valid data
@@ -94,9 +94,9 @@ BEGIN
     PORT MAP( clk => clk,
               reset => reset,
               enb => enb,
-              In_rsvd => delays_in,  -- sfix13_En7 [16]
+              In_rsvd => delays_in,  -- sfix12_En6 [16]
               Trigger => valid_in_1,
-              alpha => Sample_and_Hold1_out1  -- sfix13_En7 [16]
+              alpha => Sample_and_Hold1_out1  -- sfix12_En6 [16]
               );
 
   outputgen3: FOR k IN 0 TO 15 GENERATE
@@ -153,7 +153,7 @@ BEGIN
   Rate_Transition2_ds_process : PROCESS (clk, reset)
   BEGIN
     IF reset = '1' THEN
-      Rate_Transition2_ds_out <= (OTHERS => to_signed(16#0000#, 13));
+      Rate_Transition2_ds_out <= (OTHERS => to_signed(16#000#, 12));
     ELSIF rising_edge(clk) THEN
       IF enb_1_2048_5 = '1' THEN
         Rate_Transition2_ds_out <= Sample_and_Hold1_out1_signed;
@@ -166,7 +166,7 @@ BEGIN
   Rate_Transition2_output_process : PROCESS (clk, reset)
   BEGIN
     IF reset = '1' THEN
-      Rate_Transition2_out1 <= (OTHERS => to_signed(16#0000#, 13));
+      Rate_Transition2_out1 <= (OTHERS => to_signed(16#000#, 12));
     ELSIF rising_edge(clk) THEN
       IF enb_1_2048_0 = '1' THEN
         Rate_Transition2_out1 <= Rate_Transition2_ds_out;
@@ -178,7 +178,7 @@ BEGIN
   PipelineRegister1_process : PROCESS (clk, reset)
   BEGIN
     IF reset = '1' THEN
-      Rate_Transition2_out1_1 <= (OTHERS => to_signed(16#0000#, 13));
+      Rate_Transition2_out1_1 <= (OTHERS => to_signed(16#000#, 12));
     ELSIF rising_edge(clk) THEN
       IF enb_1_2048_0 = '1' THEN
         Rate_Transition2_out1_1 <= Rate_Transition2_out1;

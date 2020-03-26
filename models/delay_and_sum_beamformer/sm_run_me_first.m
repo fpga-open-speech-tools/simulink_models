@@ -61,7 +61,7 @@ mp.maxDelay = sqrt(((mp.arraySize(1) - 1)*mp.arraySpacing).^2 + ((mp.arraySize(2
 
 mp.integerDelayAddrSize = ceil(log2(floor(mp.maxDelay))) + 2;
 mp.integerDelayBufferSize = 2^mp.integerDelayAddrSize;
-mp.upsampleFactor = 32;
+mp.upsampleFactor = 16;
 upsampleFactor = mp.upsampleFactor;
 % number of required bits is two more than that required to represent upsampleFactor
 % because we need to be able to represent +/- upsample factor inclusive
@@ -81,13 +81,15 @@ mp.delayDataTypeFractionLength = mp.fractionalDelayAddrSize;
 %% CIC interpolation
 mp.cicInterpolator = dsp.CICInterpolator('InterpolationFactor', mp.upsampleFactor);
 mp.cicInterpolatorCompensator = dsp.CICCompensationInterpolator(mp.cicInterpolator, ... 
-    'PassbandFrequency', 18e3, 'StopbandFrequency', 22e3, 'SampleRate', samplingRate);
+    'PassbandFrequency', 15e3, 'StopbandFrequency', 23e3, 'SampleRate', samplingRate, ...
+    'InterpolationFactor', 1);
 
 
 %% CIC decimation
 mp.cicDecimator = dsp.CICDecimator('DecimationFactor', mp.upsampleFactor);
 mp.cicDecimatorCompensator = dsp.CICCompensationDecimator(mp.cicDecimator, ... 
-    'PassbandFrequency', 18e3, 'StopbandFrequency', 22e3, 'SampleRate', samplingRate);
+    'PassbandFrequency', 15e3, 'StopbandFrequency', 23e3, 'SampleRate', samplingRate, ...
+    'DecimationFactor', 1);
 
 
 %% Setup the directory paths & tool settings
