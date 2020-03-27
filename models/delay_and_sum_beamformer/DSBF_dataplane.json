@@ -1,130 +1,130 @@
 {
-    "avalon_sink_flag": 1,
-    "entity": "DSBF_dataplane",
+    "avalon_memorymapped_flag": 1, 
+    "conduit_input_flag": 0, 
+    "linux_device_version": "18.0", 
+    "avalon_source_flag": 1, 
+    "entity": "DSBF_dataplane", 
+    "conduit_output": [], 
+    "clocks": {
+        "sample_frequency_Hz": 48000, 
+        "system_frequency_Hz": 98304000.0, 
+        "sample_period_seconds": 2.0833333333333333e-05, 
+        "system_period_seconds": 1.0172526041666666e-08
+    }, 
+    "linux_device_name": "delay_and_sum_beamformer", 
+    "avalon_sink_flag": 1, 
     "avalon_sink": {
         "signal": [
             {
-                "name": "avalon_sink_valid",
+                "name": "avalon_sink_valid", 
                 "data_type": {
-                    "type": "boolean",
-                    "width": 1,
-                    "fractional_bits": 0,
-                    "signed": false
-                }
-            },
-            {
-                "name": "avalon_sink_data",
-                "data_type": {
-                    "type": "sfix32_En28",
-                    "signed": true,
-                    "width": 32,
-                    "fractional_bits": 28
-                }
-            },
-            {
-                "name": "avalon_sink_channel",
-                "data_type": {
-                    "type": "ufix4",
-                    "signed": false,
-                    "width": 4,
+                    "width": 1, 
+                    "type": "boolean", 
+                    "signed": false, 
                     "fractional_bits": 0
                 }
-            },
+            }, 
             {
-                "name": "avalon_sink_error",
+                "name": "avalon_sink_data", 
                 "data_type": {
-                    "type": "ufix2",
-                    "signed": false,
-                    "width": 2,
+                    "width": 32, 
+                    "type": "sfix32_En28", 
+                    "signed": true, 
+                    "fractional_bits": 28
+                }
+            }, 
+            {
+                "name": "avalon_sink_channel", 
+                "data_type": {
+                    "width": 4, 
+                    "type": "ufix4", 
+                    "signed": false, 
+                    "fractional_bits": 0
+                }
+            }, 
+            {
+                "name": "avalon_sink_error", 
+                "data_type": {
+                    "width": 2, 
+                    "type": "ufix2", 
+                    "signed": false, 
                     "fractional_bits": 0
                 }
             }
         ]
-    },
-    "avalon_source_flag": 1,
-    "avalon_source": {
-        "signal": [
-            {
-                "name": "avalon_source_valid",
-                "data_type": {
-                    "type": "boolean",
-                    "width": 1,
-                    "fractional_bits": 0,
-                    "signed": false
-                }
-            },
-            {
-                "name": "avalon_source_data",
-                "data_type": {
-                    "type": "sfix32_En28",
-                    "signed": true,
-                    "width": 32,
-                    "fractional_bits": 28
-                }
-            },
-            {
-                "name": "avalon_source_channel",
-                "data_type": {
-                    "type": "ufix1",
-                    "signed": false,
-                    "width": 1,
-                    "fractional_bits": 0
-                }
-            },
-            {
-                "name": "avalon_source_error",
-                "data_type": {
-                    "type": "ufix2",
-                    "signed": false,
-                    "width": 2,
-                    "fractional_bits": 0
-                }
-            }
-        ]
-    },
-    "avalon_memorymapped_flag": 1,
+    }, 
+    "conduit_output_flag": 0, 
+    "conduit_input": [], 
     "avalon_memorymapped": {
         "register": [
             {
-                "name": "azimuth",
+                "default_value": 0, 
+                "name": "azimuth", 
                 "data_type": {
-                    "type": "sfix16_En8",
-                    "signed": true,
-                    "width": 16,
+                    "width": 16, 
+                    "type": "sfix16_En8", 
+                    "signed": true, 
                     "fractional_bits": 8
-                },
-                "reg_num": 0,
-                "default_value": 0,
-                "min_value": 90,
-                "max_value": -90
-            },
+                }, 
+                "reg_num": 0, 
+                "max_value": -90, 
+                "min_value": 90
+            }, 
             {
-                "name": "elevation",
+                "default_value": 0, 
+                "name": "elevation", 
                 "data_type": {
-                    "type": "sfix16_En8",
-                    "signed": true,
-                    "width": 16,
+                    "width": 16, 
+                    "type": "sfix16_En8", 
+                    "signed": true, 
                     "fractional_bits": 8
-                },
-                "reg_num": 1,
-                "default_value": 0,
-                "min_value": 90,
-                "max_value": -90
+                }, 
+                "reg_num": 1, 
+                "max_value": -90, 
+                "min_value": 90
             }
         ]
-    },
-    "conduit_input_flag": 0,
-    "conduit_input": [],
-    "conduit_output_flag": 0,
-    "conduit_output": [],
-    "clocks": {
-        "sample_frequency_Hz": 48000,
-        "sample_period_seconds": 2.0833333333333333e-05,
-        "system_frequency_Hz": 98304000.0,
-        "system_period_seconds": 1.0172526041666666e-08
-    },
-    "model_name": "delay_and_sum_beamformer",
-    "model_abbreviation": "DSBF",
-    "linux_device_name": "delay_and_sum_beamformer",
-    "linux_device_version": "18.0"
+    }, 
+    "model_abbreviation": "DSBF", 
+    "model_name": "delay_and_sum_beamformer", 
+    "avalon_source": {
+        "signal": [
+            {
+                "name": "avalon_source_valid", 
+                "data_type": {
+                    "width": 1, 
+                    "type": "boolean", 
+                    "signed": false, 
+                    "fractional_bits": 0
+                }
+            }, 
+            {
+                "name": "avalon_source_data", 
+                "data_type": {
+                    "width": 32, 
+                    "type": "sfix32_En28", 
+                    "signed": true, 
+                    "fractional_bits": 28
+                }
+            }, 
+            {
+                "name": "avalon_source_channel", 
+                "data_type": {
+                    "width": 1, 
+                    "type": "ufix1", 
+                    "signed": false, 
+                    "fractional_bits": 0
+                }
+            }, 
+            {
+                "name": "avalon_source_error", 
+                "data_type": {
+                    "width": 2, 
+                    "type": "ufix2", 
+                    "signed": false, 
+                    "fractional_bits": 0
+                }
+            }
+        ]
+    }
 }
