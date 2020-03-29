@@ -134,7 +134,7 @@ Generated in CreateInitFunction
 *********************************************************/
 static int pFIR_Testing_init(void) {
   int ret_val = 0;
-  printk(KERN_ALERT "FUNCTION AUTO GENERATED AT: 2020-03-09 21:41\n");
+  printk(KERN_ALERT "FUNCTION AUTO GENERATED AT: 2020-03-12 15:04\n");
   pr_info("Initializing the Flat Earth pFIR_Testing module\n");
   // Register our driver with the "Platform Driver" bus
   ret_val = platform_driver_register(&pFIR_Testing_platform);  if (ret_val != 0) {
