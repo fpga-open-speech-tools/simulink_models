@@ -32,44 +32,44 @@ if mp.sim_prompts == 1  % sim_prompts is set in Run_me_first.m   This is turned 
 end
 
 %% Plot some stuff
-close all; % Close any plots prior to output plots
-figure;
-% Grab the output data and time vectors - cast to type double
-
-time = 0: 1 / mp.Fs : length(mp.left_data_out)*1/mp.Fs;
-time = time(1:end-1)';
-% Time domain chirp plot
-subplot(211);
-plot(time, mp.left_data_out, 'LineWidth', 0.01);
-xlim([0, stop_time])
-xlabel('Time [sec]');
-title('Left Data');
-
-% Spectrogram
-subplot(212);
-%spectrogram(mp.left_data_out,8192,7800,8192,mp.Fs, 'yaxis');   % Display the spectrogram.
-ylim([1 2]);  
-title('HPF Filtered Signal Chirp Spectrogram');
-print('lpfFilt_speech_chirp_signal', '-dpng');
-
-
-figure;
-time = 0: 1 / mp.Fs : length(mp.right_data_out)*1/mp.Fs;
-time = time(1:end-1)';
-% Time domain chirp plot
-subplot(211);
-plot(time, mp.right_data_out, 'LineWidth', 0.01);
-xlim([0, stop_time])
-xlabel('Time [sec]');
-title('Right Data');
-
-
-% Spectrogram
-subplot(212);
-%spectrogram(mp.right_data_out,8192,7800,8192,mp.Fs, 'yaxis');   % Display the spectrogram.
-ylim([1 2]);  
-title('HPF Filtered Signal Chirp Spectrogram');
-print('lpfFilt_speech_chirp_signal', '-dpng');
+% close all; % Close any plots prior to output plots
+% figure;
+% % Grab the output data and time vectors - cast to type double
+% 
+% time = 0: 1 / mp.Fs : length(mp.left_data_out)*1/mp.Fs;
+% time = time(1:end-1)';
+% % Time domain chirp plot
+% subplot(211);
+% plot(time, mp.left_data_out, 'LineWidth', 0.01);
+% xlim([0, stop_time])
+% xlabel('Time [sec]');
+% title('Left Data');
+% 
+% % Spectrogram
+% subplot(212);
+% %spectrogram(mp.left_data_out,8192,7800,8192,mp.Fs, 'yaxis');   % Display the spectrogram.
+% ylim([1 2]);  
+% title('HPF Filtered Signal Chirp Spectrogram');
+% print('lpfFilt_speech_chirp_signal', '-dpng');
+% 
+% 
+% figure;
+% time = 0: 1 / mp.Fs : length(mp.right_data_out)*1/mp.Fs;
+% time = time(1:end-1)';
+% % Time domain chirp plot
+% subplot(211);
+% plot(time, mp.right_data_out, 'LineWidth', 0.01);
+% xlim([0, stop_time])
+% xlabel('Time [sec]');
+% title('Right Data');
+% 
+% 
+% % Spectrogram
+% subplot(212);
+% %spectrogram(mp.right_data_out,8192,7800,8192,mp.Fs, 'yaxis');   % Display the spectrogram.
+% ylim([1 2]);  
+% title('HPF Filtered Signal Chirp Spectrogram');
+% print('lpfFilt_speech_chirp_signal', '-dpng');
 
 
 

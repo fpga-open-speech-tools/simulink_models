@@ -22,6 +22,7 @@ USE IEEE.numeric_std.ALL;
 ENTITY pFIR_Testing_Programmable_Upclocked_FIR_block IS
   PORT( clk                               :   IN    std_logic;
         reset                             :   IN    std_logic;
+        enb                               :   IN    std_logic;
         enb_1_4_0                         :   IN    std_logic;
         enb_1_4_1                         :   IN    std_logic;
         enb_1_2048_0                      :   IN    std_logic;
@@ -59,7 +60,7 @@ ARCHITECTURE rtl OF pFIR_Testing_Programmable_Upclocked_FIR_block IS
              DataWidth                    : integer
              );
     PORT( clk                             :   IN    std_logic;
-          enb_1_4_0                       :   IN    std_logic;
+          enb                             :   IN    std_logic;
           wr_din                          :   IN    std_logic_vector(DataWidth - 1 DOWNTO 0);  -- generic width
           wr_addr                         :   IN    std_logic_vector(AddrWidth - 1 DOWNTO 0);  -- generic width
           wr_en                           :   IN    std_logic;
@@ -108,22 +109,32 @@ ARCHITECTURE rtl OF pFIR_Testing_Programmable_Upclocked_FIR_block IS
   FOR ALL : pFIR_Testing_Multiply_And_Sum_block
     USE ENTITY work.pFIR_Testing_Multiply_And_Sum_block(rtl);
 
+  -- Functions
+  -- HDLCODER_TO_STDLOGIC 
+  FUNCTION hdlcoder_to_stdlogic(arg: boolean) RETURN std_logic IS
+  BEGIN
+    IF arg THEN
+      RETURN '1';
+    ELSE
+      RETURN '0';
+    END IF;
+  END FUNCTION;
+
+
   -- Signals
-  SIGNAL Data_in_signed                   : signed(31 DOWNTO 0);  -- sfix32_En28
-  SIGNAL Rate_Transition1_out1            : signed(31 DOWNTO 0);  -- sfix32_En28
   SIGNAL Addr_Gen_out1                    : std_logic_vector(8 DOWNTO 0);  -- ufix9
   SIGNAL Addr_Gen_out2                    : std_logic_vector(8 DOWNTO 0);  -- ufix9
   SIGNAL Addr_Gen_out3                    : std_logic;
   SIGNAL Addr_Gen_out4                    : std_logic_vector(8 DOWNTO 0);  -- ufix9
   SIGNAL Addr_Gen_out1_unsigned           : unsigned(8 DOWNTO 0);  -- ufix9
-  SIGNAL Rate_Transition1_out1_1          : signed(31 DOWNTO 0);  -- sfix32_En28
-  SIGNAL Addr_Gen_out1_1                  : unsigned(8 DOWNTO 0);  -- ufix9
-  SIGNAL Rate_Transition2_out1            : std_logic;
-  SIGNAL Rate_Transition2_out1_1          : std_logic;
-  SIGNAL Addr_Gen_out2_unsigned           : unsigned(8 DOWNTO 0);  -- ufix9
+  SIGNAL Rate_Transition1_out1            : unsigned(8 DOWNTO 0);  -- ufix9
   SIGNAL Data_Type_Conversion4_out1       : std_logic;
-  SIGNAL Addr_Gen_out2_1                  : unsigned(8 DOWNTO 0);  -- ufix9
+  SIGNAL Addr_Gen_out2_unsigned           : unsigned(8 DOWNTO 0);  -- ufix9
+  SIGNAL Rate_Transition8_out1            : unsigned(8 DOWNTO 0);  -- ufix9
   SIGNAL x_n_i                            : std_logic_vector(31 DOWNTO 0);  -- ufix32
+  SIGNAL x_n_i_signed                     : signed(31 DOWNTO 0);  -- sfix32_En28
+  SIGNAL Rate_Transition2_out1            : signed(31 DOWNTO 0);  -- sfix32_En28
+  SIGNAL Rate_Transition2_out1_1          : signed(31 DOWNTO 0);  -- sfix32_En28
   SIGNAL Alignment_Delay_out1             : std_logic;
   SIGNAL Wr_Data_signed                   : signed(31 DOWNTO 0);  -- sfix32_En28
   SIGNAL Rate_Transition3_out1            : signed(31 DOWNTO 0);  -- sfix32_En28
@@ -147,9 +158,35 @@ ARCHITECTURE rtl OF pFIR_Testing_Programmable_Upclocked_FIR_block IS
   SIGNAL Output_memory_out1               : signed(31 DOWNTO 0);  -- sfix32_En28
   SIGNAL Output_Stabalizer_out1           : signed(31 DOWNTO 0);  -- sfix32_En28
   SIGNAL Rate_Transition_out1             : signed(31 DOWNTO 0);  -- sfix32_En28
-  SIGNAL Valid_align3_reg                 : std_logic_vector(0 TO 2);  -- ufix1 [3]
-  SIGNAL Valid_align3_out1                : std_logic;
-  SIGNAL Rate_Transition7_out1            : std_logic;
+  SIGNAL Deserializer1D_contl_cnt         : unsigned(2 DOWNTO 0);  -- ufix3
+  SIGNAL Deserializer1D_contl_validOutput : std_logic;
+  SIGNAL Deserializer1D_innerRegEn        : std_logic;
+  SIGNAL Deserializer1D_innerRegCtrolEn   : std_logic;
+  SIGNAL Deserializer1D_outBypassEn       : std_logic;
+  SIGNAL Deserializer1D_tapDelayEn        : std_logic;
+  SIGNAL Deserializer1D_tapDelayEn_1      : std_logic;
+  SIGNAL Deserializer1D_tapout            : std_logic_vector(0 TO 2);  -- boolean [3]
+  SIGNAL Deserializer1D_muxOut            : std_logic_vector(0 TO 3);  -- boolean [4]
+  SIGNAL Deserializer1D_out1              : std_logic_vector(0 TO 3);  -- boolean [4]
+  SIGNAL Deserializer1D_out1_0            : std_logic;
+  SIGNAL Deserializer1D_out1_1            : std_logic;
+  SIGNAL Deserializer1D_out1_2            : std_logic;
+  SIGNAL Deserializer1D_out1_3            : std_logic;
+  SIGNAL Alignment_Delay3_out_1           : std_logic;
+  SIGNAL Alignment_Delay3_1_reg           : std_logic_vector(0 TO 2);  -- ufix1 [3]
+  SIGNAL Alignment_Delay3_out_2           : std_logic;
+  SIGNAL Alignment_Delay3_out_3           : std_logic;
+  SIGNAL Alignment_Delay3_out_4           : std_logic;
+  SIGNAL Alignment_Delay3_1_reg_1         : std_logic_vector(0 TO 2);  -- ufix1 [3]
+  SIGNAL Alignment_Delay3_1_reg_2         : std_logic_vector(0 TO 2);  -- ufix1 [3]
+  SIGNAL Alignment_Delay3_1_reg_3         : std_logic_vector(0 TO 2);  -- ufix1 [3]
+  SIGNAL Serializer1D_contl_cnt           : unsigned(1 DOWNTO 0);  -- ufix2
+  SIGNAL Serializer1D_invldSignal         : std_logic;
+  SIGNAL Alignment_Delay3_out1            : std_logic_vector(0 TO 3);  -- boolean [4]
+  SIGNAL serial_in_1                      : std_logic_vector(0 TO 3);  -- boolean [4]
+  SIGNAL Serializer1D_data                : std_logic_vector(0 TO 2);  -- ufix1 [3]
+  SIGNAL Serializer1D_data_next           : std_logic_vector(0 TO 2);  -- ufix1 [3]
+  SIGNAL serializer_PostProcessed         : std_logic;
   SIGNAL B_k_Memory_Block2_out1_signed    : signed(31 DOWNTO 0);  -- sfix32_En28
   SIGNAL Rate_Transition6_out1            : signed(31 DOWNTO 0);  -- sfix32_En28
 
@@ -159,7 +196,7 @@ BEGIN
   -- 
   -- consider desired output rate
   -- 
-  -- try delaying Valid_in by 3 in fast time, set that to Valid_out after rate transition
+  -- match delay of rate transitions
 
   u_Addr_Gen : pFIR_Testing_Addr_Gen_block
     PORT MAP( clk => clk,
@@ -172,16 +209,17 @@ BEGIN
               b_k_addr => Addr_Gen_out4  -- ufix9
               );
 
+  -- 
   u_Input_Data_Circular_Buffer : pFIR_Testing_SimpleDualPortRAM_generic
     GENERIC MAP( AddrWidth => 9,
                  DataWidth => 32
                  )
     PORT MAP( clk => clk,
-              enb_1_4_0 => enb_1_4_0,
-              wr_din => std_logic_vector(Rate_Transition1_out1_1),
-              wr_addr => std_logic_vector(Addr_Gen_out1_1),
+              enb => enb,
+              wr_din => Data_in,
+              wr_addr => std_logic_vector(Rate_Transition1_out1),
               wr_en => Data_Type_Conversion4_out1,
-              rd_addr => std_logic_vector(Addr_Gen_out2_1),
+              rd_addr => std_logic_vector(Rate_Transition8_out1),
               rd_dout => x_n_i
               );
 
@@ -203,93 +241,69 @@ BEGIN
     PORT MAP( clk => clk,
               reset => reset,
               enb_1_4_0 => enb_1_4_0,
-              x_n_i => x_n_i,  -- sfix32_En28
+              x_n_i => std_logic_vector(Rate_Transition2_out1_1),  -- sfix32_En28
               End_of_sample_calc => Alignment_Delay_out1,
               b_i => b_i,  -- sfix32_En28
               Filtered_Output => Multiply_And_Sum_out1,  -- sfix32_En28
               Output_Valid => Multiply_And_Sum_out2
               );
 
-  Data_in_signed <= signed(Data_in);
-
-  Rate_Transition1_output_process : PROCESS (clk, reset)
-  BEGIN
-    IF reset = '1' THEN
-      Rate_Transition1_out1 <= to_signed(0, 32);
-    ELSIF rising_edge(clk) THEN
-      IF enb_1_4_1 = '1' THEN
-        Rate_Transition1_out1 <= Data_in_signed;
-      END IF;
-    END IF;
-  END PROCESS Rate_Transition1_output_process;
-
-
   Addr_Gen_out1_unsigned <= unsigned(Addr_Gen_out1);
 
-  PipelineRegister_process : PROCESS (clk, reset)
+  Rate_Transition1_process : PROCESS (clk, reset)
   BEGIN
     IF reset = '1' THEN
-      Rate_Transition1_out1_1 <= to_signed(0, 32);
+      Rate_Transition1_out1 <= to_unsigned(16#000#, 9);
     ELSIF rising_edge(clk) THEN
       IF enb_1_4_0 = '1' THEN
-        Rate_Transition1_out1_1 <= Rate_Transition1_out1;
+        Rate_Transition1_out1 <= Addr_Gen_out1_unsigned;
       END IF;
     END IF;
-  END PROCESS PipelineRegister_process;
+  END PROCESS Rate_Transition1_process;
 
 
-  delayMatch_process : PROCESS (clk, reset)
+  
+  Data_Type_Conversion4_out1 <= '1' WHEN Valid_in /= '0' ELSE
+      '0';
+
+  Addr_Gen_out2_unsigned <= unsigned(Addr_Gen_out2);
+
+  Rate_Transition8_process : PROCESS (clk, reset)
   BEGIN
     IF reset = '1' THEN
-      Addr_Gen_out1_1 <= to_unsigned(16#000#, 9);
+      Rate_Transition8_out1 <= to_unsigned(16#000#, 9);
     ELSIF rising_edge(clk) THEN
       IF enb_1_4_0 = '1' THEN
-        Addr_Gen_out1_1 <= Addr_Gen_out1_unsigned;
+        Rate_Transition8_out1 <= Addr_Gen_out2_unsigned;
       END IF;
     END IF;
-  END PROCESS delayMatch_process;
+  END PROCESS Rate_Transition8_process;
 
+
+  x_n_i_signed <= signed(x_n_i);
 
   Rate_Transition2_output_process : PROCESS (clk, reset)
   BEGIN
     IF reset = '1' THEN
-      Rate_Transition2_out1 <= '0';
+      Rate_Transition2_out1 <= to_signed(0, 32);
     ELSIF rising_edge(clk) THEN
       IF enb_1_4_1 = '1' THEN
-        Rate_Transition2_out1 <= Valid_in;
+        Rate_Transition2_out1 <= x_n_i_signed;
       END IF;
     END IF;
   END PROCESS Rate_Transition2_output_process;
 
 
-  PipelineRegister1_process : PROCESS (clk, reset)
+  PipelineRegister_process : PROCESS (clk, reset)
   BEGIN
     IF reset = '1' THEN
-      Rate_Transition2_out1_1 <= '0';
+      Rate_Transition2_out1_1 <= to_signed(0, 32);
     ELSIF rising_edge(clk) THEN
       IF enb_1_4_0 = '1' THEN
         Rate_Transition2_out1_1 <= Rate_Transition2_out1;
       END IF;
     END IF;
-  END PROCESS PipelineRegister1_process;
-
-
-  Addr_Gen_out2_unsigned <= unsigned(Addr_Gen_out2);
-
-  
-  Data_Type_Conversion4_out1 <= '1' WHEN Rate_Transition2_out1_1 /= '0' ELSE
-      '0';
-
-  delayMatch1_process : PROCESS (clk, reset)
-  BEGIN
-    IF reset = '1' THEN
-      Addr_Gen_out2_1 <= to_unsigned(16#000#, 9);
-    ELSIF rising_edge(clk) THEN
-      IF enb_1_4_0 = '1' THEN
-        Addr_Gen_out2_1 <= Addr_Gen_out2_unsigned;
-      END IF;
-    END IF;
-  END PROCESS delayMatch1_process;
+  END PROCESS PipelineRegister_process;
 
 
   Alignment_Delay_process : PROCESS (clk, reset)
@@ -346,7 +360,7 @@ BEGIN
   END PROCESS Rate_Transition5_output_process;
 
 
-  PipelineRegister2_process : PROCESS (clk, reset)
+  PipelineRegister1_process : PROCESS (clk, reset)
   BEGIN
     IF reset = '1' THEN
       Rate_Transition3_out1_1 <= to_signed(0, 32);
@@ -355,10 +369,10 @@ BEGIN
         Rate_Transition3_out1_1 <= Rate_Transition3_out1;
       END IF;
     END IF;
-  END PROCESS PipelineRegister2_process;
+  END PROCESS PipelineRegister1_process;
 
 
-  PipelineRegister3_process : PROCESS (clk, reset)
+  PipelineRegister2_process : PROCESS (clk, reset)
   BEGIN
     IF reset = '1' THEN
       Rate_Transition4_out1_1 <= to_unsigned(0, 32);
@@ -367,12 +381,12 @@ BEGIN
         Rate_Transition4_out1_1 <= Rate_Transition4_out1;
       END IF;
     END IF;
-  END PROCESS PipelineRegister3_process;
+  END PROCESS PipelineRegister2_process;
 
 
   Data_Type_Conversion2_out1 <= Rate_Transition4_out1_1(8 DOWNTO 0);
 
-  PipelineRegister4_process : PROCESS (clk, reset)
+  PipelineRegister3_process : PROCESS (clk, reset)
   BEGIN
     IF reset = '1' THEN
       Rate_Transition5_out1_1 <= to_signed(0, 32);
@@ -381,7 +395,7 @@ BEGIN
         Rate_Transition5_out1_1 <= Rate_Transition5_out1;
       END IF;
     END IF;
-  END PROCESS PipelineRegister4_process;
+  END PROCESS PipelineRegister3_process;
 
 
   
@@ -392,7 +406,7 @@ BEGIN
 
   Always_read_B2_out1 <= '0';
 
-  delayMatch2_process : PROCESS (clk, reset)
+  delayMatch_process : PROCESS (clk, reset)
   BEGIN
     IF reset = '1' THEN
       Multiply_And_Sum_out2_1 <= '0';
@@ -401,7 +415,7 @@ BEGIN
         Multiply_And_Sum_out2_1 <= Multiply_And_Sum_out2;
       END IF;
     END IF;
-  END PROCESS delayMatch2_process;
+  END PROCESS delayMatch_process;
 
 
   Multiply_And_Sum_out1_signed <= signed(Multiply_And_Sum_out1);
@@ -436,32 +450,153 @@ BEGIN
 
   Data_out <= std_logic_vector(Rate_Transition_out1);
 
-  -- 
-  -- 
-  Valid_align3_process : PROCESS (clk, reset)
+  Deserializer1D_contl_process : PROCESS (clk, reset)
   BEGIN
     IF reset = '1' THEN
-      Valid_align3_reg <= (OTHERS => '0');
+      Deserializer1D_contl_cnt <= to_unsigned(16#0#, 3);
     ELSIF rising_edge(clk) THEN
-      IF enb_1_4_0 = '1' THEN
-        Valid_align3_reg(0) <= Rate_Transition2_out1_1;
-        Valid_align3_reg(1 TO 2) <= Valid_align3_reg(0 TO 1);
+      IF enb = '1' THEN
+        IF Deserializer1D_contl_cnt = to_unsigned(16#3#, 3) THEN 
+          Deserializer1D_contl_cnt <= to_unsigned(16#0#, 3);
+        ELSE 
+          Deserializer1D_contl_cnt <= Deserializer1D_contl_cnt + to_unsigned(16#1#, 3);
+        END IF;
       END IF;
     END IF;
-  END PROCESS Valid_align3_process;
+  END PROCESS Deserializer1D_contl_process;
 
-  Valid_align3_out1 <= Valid_align3_reg(2);
+  Deserializer1D_tapDelayEn <= hdlcoder_to_stdlogic(Deserializer1D_contl_cnt < to_unsigned(16#3#, 3));
+  
+  Deserializer1D_contl_validOutput <= '1' WHEN Deserializer1D_contl_cnt = to_unsigned(16#3#, 3) ELSE
+      '0';
+  
+  Deserializer1D_innerRegEn <= '1' WHEN Deserializer1D_contl_validOutput = '1' ELSE
+      '0';
+  
+  Deserializer1D_innerRegCtrolEn <= '1' WHEN Deserializer1D_contl_validOutput = '1' ELSE
+      '0';
+  Deserializer1D_outBypassEn <= '1';
 
-  Rate_Transition7_process : PROCESS (clk, reset)
+  Deserializer1D_tapDelayEn_1 <= enb AND Deserializer1D_tapDelayEn;
+
+  Deserializer1D_tapDelayComp_process : PROCESS (clk, reset)
   BEGIN
     IF reset = '1' THEN
-      Rate_Transition7_out1 <= '0';
+      Deserializer1D_tapout <= (OTHERS => '0');
     ELSIF rising_edge(clk) THEN
-      IF enb_1_4_0 = '1' THEN
-        Rate_Transition7_out1 <= Valid_align3_out1;
+      IF enb = '1' AND Deserializer1D_tapDelayEn_1 = '1' THEN
+        Deserializer1D_tapout(2) <= Data_Type_Conversion4_out1;
+        Deserializer1D_tapout(0 TO 1) <= Deserializer1D_tapout(1 TO 2);
       END IF;
     END IF;
-  END PROCESS Rate_Transition7_process;
+  END PROCESS Deserializer1D_tapDelayComp_process;
+
+
+  Deserializer1D_muxOut(0) <= Deserializer1D_tapout(0);
+  Deserializer1D_muxOut(1) <= Deserializer1D_tapout(1);
+  Deserializer1D_muxOut(2) <= Deserializer1D_tapout(2);
+  Deserializer1D_muxOut(3) <= Data_Type_Conversion4_out1;
+
+  Deserializer1D_regComp_process : PROCESS (clk, reset)
+  BEGIN
+    IF reset = '1' THEN
+      Deserializer1D_out1 <= (OTHERS => '0');
+    ELSIF rising_edge(clk) THEN
+      IF enb = '1' AND Deserializer1D_innerRegEn = '1' THEN
+        Deserializer1D_out1 <= Deserializer1D_muxOut;
+      END IF;
+    END IF;
+  END PROCESS Deserializer1D_regComp_process;
+
+
+  -- 
+  -- 
+  Deserializer1D_out1_0 <= Deserializer1D_out1(0);
+
+  Alignment_Delay3_1_process : PROCESS (clk, reset)
+  BEGIN
+    IF reset = '1' THEN
+      Alignment_Delay3_1_reg <= (OTHERS => '0');
+      Alignment_Delay3_1_reg_1 <= (OTHERS => '0');
+      Alignment_Delay3_1_reg_2 <= (OTHERS => '0');
+      Alignment_Delay3_1_reg_3 <= (OTHERS => '0');
+    ELSIF rising_edge(clk) THEN
+      IF enb_1_4_0 = '1' THEN
+        Alignment_Delay3_1_reg(0) <= Deserializer1D_out1_0;
+        Alignment_Delay3_1_reg(1 TO 2) <= Alignment_Delay3_1_reg(0 TO 1);
+        Alignment_Delay3_1_reg_1(0) <= Deserializer1D_out1_1;
+        Alignment_Delay3_1_reg_1(1 TO 2) <= Alignment_Delay3_1_reg_1(0 TO 1);
+        Alignment_Delay3_1_reg_2(0) <= Deserializer1D_out1_2;
+        Alignment_Delay3_1_reg_2(1 TO 2) <= Alignment_Delay3_1_reg_2(0 TO 1);
+        Alignment_Delay3_1_reg_3(0) <= Deserializer1D_out1_3;
+        Alignment_Delay3_1_reg_3(1 TO 2) <= Alignment_Delay3_1_reg_3(0 TO 1);
+      END IF;
+    END IF;
+  END PROCESS Alignment_Delay3_1_process;
+
+  Alignment_Delay3_out_1 <= Alignment_Delay3_1_reg(2);
+  Alignment_Delay3_out_2 <= Alignment_Delay3_1_reg_1(2);
+  Alignment_Delay3_out_3 <= Alignment_Delay3_1_reg_2(2);
+  Alignment_Delay3_out_4 <= Alignment_Delay3_1_reg_3(2);
+
+  Deserializer1D_out1_1 <= Deserializer1D_out1(1);
+
+  Deserializer1D_out1_2 <= Deserializer1D_out1(2);
+
+  Deserializer1D_out1_3 <= Deserializer1D_out1(3);
+
+  Serializer1D_contl_process : PROCESS (clk, reset)
+  BEGIN
+    IF reset = '1' THEN
+      Serializer1D_contl_cnt <= to_unsigned(16#0#, 2);
+    ELSIF rising_edge(clk) THEN
+      IF enb = '1' THEN
+        IF Serializer1D_contl_cnt = to_unsigned(16#3#, 2) THEN 
+          Serializer1D_contl_cnt <= to_unsigned(16#0#, 2);
+        ELSE 
+          Serializer1D_contl_cnt <= Serializer1D_contl_cnt + to_unsigned(16#1#, 2);
+        END IF;
+      END IF;
+    END IF;
+  END PROCESS Serializer1D_contl_process;
+
+  
+  Serializer1D_invldSignal <= '1' WHEN Serializer1D_contl_cnt = to_unsigned(16#0#, 2) ELSE
+      '0';
+
+  Alignment_Delay3_out1(0) <= Alignment_Delay3_out_1;
+  Alignment_Delay3_out1(1) <= Alignment_Delay3_out_2;
+  Alignment_Delay3_out1(2) <= Alignment_Delay3_out_3;
+  Alignment_Delay3_out1(3) <= Alignment_Delay3_out_4;
+
+  serial_in_1 <= Alignment_Delay3_out1;
+
+  Serializer1D_process : PROCESS (clk, reset)
+  BEGIN
+    IF reset = '1' THEN
+      Serializer1D_data <= (OTHERS => '0');
+    ELSIF rising_edge(clk) THEN
+      IF enb = '1' THEN
+        Serializer1D_data <= Serializer1D_data_next;
+      END IF;
+    END IF;
+  END PROCESS Serializer1D_process;
+
+  Serializer1D_output : PROCESS (Serializer1D_data, Serializer1D_invldSignal, serial_in_1)
+  BEGIN
+    Serializer1D_data_next <= Serializer1D_data;
+    IF Serializer1D_invldSignal /= '0' THEN 
+      serializer_PostProcessed <= serial_in_1(0);
+    ELSE 
+      serializer_PostProcessed <= Serializer1D_data(0);
+    END IF;
+    IF Serializer1D_invldSignal /= '0' THEN 
+      Serializer1D_data_next(0 TO 2) <= serial_in_1(1 TO 3);
+    ELSE 
+      Serializer1D_data_next(0 TO 1) <= Serializer1D_data(1 TO 2);
+      Serializer1D_data_next(2) <= serial_in_1(3);
+    END IF;
+  END PROCESS Serializer1D_output;
 
 
   B_k_Memory_Block2_out1_signed <= signed(B_k_Memory_Block2_out1);
@@ -480,7 +615,7 @@ BEGIN
 
   RW_Dout <= std_logic_vector(Rate_Transition6_out1);
 
-  Valid_out <= Rate_Transition7_out1;
+  Valid_out <= serializer_PostProcessed;
 
 END rtl;
 

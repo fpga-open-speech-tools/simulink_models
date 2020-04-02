@@ -29,9 +29,9 @@ ENTITY pFIR_Testing_Left_Channel_Processing IS
         Left_Data_Sink                    :   IN    std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
         register_control_enable           :   IN    std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
         left_data_valid                   :   IN    std_logic;
-        register_control_Wr_Data          :   IN    std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
-        register_control_RW_Addr          :   IN    std_logic_vector(31 DOWNTO 0);  -- uint32
-        register_control_Wr_En            :   IN    std_logic_vector(31 DOWNTO 0);  -- int32
+        ram_control_Wr_Data               :   IN    std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
+        ram_control_RW_Addr               :   IN    std_logic_vector(31 DOWNTO 0);  -- uint32
+        ram_control_Wr_En                 :   IN    std_logic_vector(31 DOWNTO 0);  -- int32
         Left_Data_Source                  :   OUT   std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
         Left_Data_Valid_Source            :   OUT   std_logic
         );
@@ -44,6 +44,7 @@ ARCHITECTURE rtl OF pFIR_Testing_Left_Channel_Processing IS
   COMPONENT pFIR_Testing_Programmable_Upclocked_FIR
     PORT( clk                             :   IN    std_logic;
           reset                           :   IN    std_logic;
+          enb                             :   IN    std_logic;
           enb_1_4_0                       :   IN    std_logic;
           enb_1_4_1                       :   IN    std_logic;
           enb_1_2048_0                    :   IN    std_logic;
@@ -65,7 +66,6 @@ ARCHITECTURE rtl OF pFIR_Testing_Left_Channel_Processing IS
   SIGNAL register_control_enable_signed   : signed(31 DOWNTO 0);  -- sfix32_En28
   SIGNAL delayMatch_reg                   : vector_of_signed32(0 TO 3);  -- sfix32 [4]
   SIGNAL register_control_enable_1        : signed(31 DOWNTO 0);  -- sfix32_En28
-  SIGNAL switch_compare_1                 : std_logic;
   SIGNAL Left_Data_Sink_signed            : signed(31 DOWNTO 0);  -- sfix32_En28
   SIGNAL delayMatch1_reg                  : vector_of_signed32(0 TO 3);  -- sfix32 [4]
   SIGNAL left_data_sinksource_passthrough : signed(31 DOWNTO 0);  -- sfix32_En28
@@ -73,22 +73,28 @@ ARCHITECTURE rtl OF pFIR_Testing_Left_Channel_Processing IS
   SIGNAL Programmable_Upclocked_FIR_out2  : std_logic;
   SIGNAL left_filtered_out_signed         : signed(31 DOWNTO 0);  -- sfix32_En28
   SIGNAL Left_Data_Source_1               : signed(31 DOWNTO 0);  -- sfix32_En28
+  SIGNAL Left_Data_Source_2               : std_logic;
 
 BEGIN
+  -- avalon_slave_readdata <= RW_Dout
+  -- 
+  -- Pass a second avalon interface (data, addr, wr_en) into this?
+  -- 
   -- An enabled subsystem
   -- This subsystem only runs when the data valid signal is enabled (asserted)
 
   u_Programmable_Upclocked_FIR : pFIR_Testing_Programmable_Upclocked_FIR
     PORT MAP( clk => clk,
               reset => reset,
+              enb => enb,
               enb_1_4_0 => enb_1_4_0,
               enb_1_4_1 => enb_1_4_1,
               enb_1_2048_0 => enb_1_2048_0,
               Data_in => Left_Data_Sink,  -- sfix32_En28
               Valid_in => left_data_valid,
-              Wr_Data => register_control_Wr_Data,  -- sfix32_En28
-              Wr_Addr => register_control_RW_Addr,  -- uint32
-              Wr_En => register_control_Wr_En,  -- int32
+              Wr_Data => ram_control_Wr_Data,  -- sfix32_En28
+              Wr_Addr => ram_control_RW_Addr,  -- uint32
+              Wr_En => ram_control_Wr_En,  -- int32
               Data_out => left_filtered_out,  -- sfix32_En28
               Valid_out => Programmable_Upclocked_FIR_out2
               );
@@ -109,10 +115,6 @@ BEGIN
 
   register_control_enable_1 <= delayMatch_reg(3);
 
-  
-  switch_compare_1 <= '1' WHEN register_control_enable_1 >= to_signed(268435456, 32) ELSE
-      '0';
-
   Left_Data_Sink_signed <= signed(Left_Data_Sink);
 
   delayMatch1_process : PROCESS (clk, reset)
@@ -132,12 +134,16 @@ BEGIN
   left_filtered_out_signed <= signed(left_filtered_out);
 
   
-  Left_Data_Source_1 <= left_data_sinksource_passthrough WHEN switch_compare_1 = '0' ELSE
+  Left_Data_Source_1 <= left_data_sinksource_passthrough WHEN register_control_enable_1 = to_signed(0, 32) ELSE
       left_filtered_out_signed;
 
   Left_Data_Source <= std_logic_vector(Left_Data_Source_1);
 
-  Left_Data_Valid_Source <= Programmable_Upclocked_FIR_out2;
+  
+  Left_Data_Source_2 <= left_data_valid WHEN register_control_enable_signed = to_signed(0, 32) ELSE
+      Programmable_Upclocked_FIR_out2;
+
+  Left_Data_Valid_Source <= Left_Data_Source_2;
 
 END rtl;
 

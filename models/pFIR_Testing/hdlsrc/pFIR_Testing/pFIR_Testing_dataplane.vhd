@@ -23,8 +23,8 @@
 -- avalon_source_valid           ce_out        1.01725e-08
 -- avalon_source_data            ce_out        1.01725e-08
 -- avalon_source_channel         ce_out        1.01725e-08
--- avalon_source_rw_dout         ce_out        1.01725e-08
 -- avalon_source_error           ce_out        1.01725e-08
+-- ram_control_rw_dout           ce_out        1.01725e-08
 -- -------------------------------------------------------------
 -- 
 -- -------------------------------------------------------------
@@ -51,15 +51,15 @@ ENTITY pFIR_Testing_dataplane IS
         avalon_sink_channel               :   IN    std_logic_vector(1 DOWNTO 0);  -- ufix2
         avalon_sink_error                 :   IN    std_logic_vector(1 DOWNTO 0);  -- ufix2
         register_control_enable           :   IN    std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
-        register_control_Wr_Data          :   IN    std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
-        register_control_RW_Addr          :   IN    std_logic_vector(31 DOWNTO 0);  -- uint32
-        register_control_Wr_En            :   IN    std_logic_vector(31 DOWNTO 0);  -- int32
+        ram_control_Wr_Data               :   IN    std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
+        ram_control_RW_Addr               :   IN    std_logic_vector(31 DOWNTO 0);  -- uint32
+        ram_control_Wr_En                 :   IN    std_logic_vector(31 DOWNTO 0);  -- int32
         ce_out                            :   OUT   std_logic;
         avalon_source_valid               :   OUT   std_logic;  -- ufix1
         avalon_source_data                :   OUT   std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
         avalon_source_channel             :   OUT   std_logic_vector(1 DOWNTO 0);  -- ufix2
-        avalon_source_rw_dout             :   OUT   std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
-        avalon_source_error               :   OUT   std_logic_vector(1 DOWNTO 0)  -- ufix2
+        avalon_source_error               :   OUT   std_logic_vector(1 DOWNTO 0);  -- ufix2
+        ram_control_rw_dout               :   OUT   std_logic_vector(31 DOWNTO 0)  -- sfix32_En28
         );
 END pFIR_Testing_dataplane;
 
@@ -90,12 +90,12 @@ ARCHITECTURE rtl OF pFIR_Testing_dataplane IS
           Sink_Data                       :   IN    std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
           Sink_Channel                    :   IN    std_logic_vector(1 DOWNTO 0);  -- ufix2
           register_control_enable         :   IN    std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
-          register_control_Wr_Data        :   IN    std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
-          register_control_RW_Addr        :   IN    std_logic_vector(31 DOWNTO 0);  -- uint32
-          register_control_Wr_En          :   IN    std_logic_vector(31 DOWNTO 0);  -- int32
+          ram_control_Wr_Data             :   IN    std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
+          ram_control_RW_Addr             :   IN    std_logic_vector(31 DOWNTO 0);  -- uint32
+          ram_control_Wr_En               :   IN    std_logic_vector(31 DOWNTO 0);  -- int32
           Source_Data                     :   OUT   std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
           Source_Channel                  :   OUT   std_logic_vector(1 DOWNTO 0);  -- ufix2
-          Source_RW_Dout                  :   OUT   std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
+          register_control_RW_Dout        :   OUT   std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
           Source_Valid                    :   OUT   std_logic  -- ufix1
           );
   END COMPONENT;
@@ -156,12 +156,12 @@ BEGIN
               Sink_Data => avalon_sink_data,  -- sfix32_En28
               Sink_Channel => avalon_sink_channel,  -- ufix2
               register_control_enable => register_control_enable,  -- sfix32_En28
-              register_control_Wr_Data => register_control_Wr_Data,  -- sfix32_En28
-              register_control_RW_Addr => register_control_RW_Addr,  -- uint32
-              register_control_Wr_En => register_control_Wr_En,  -- int32
+              ram_control_Wr_Data => ram_control_Wr_Data,  -- sfix32_En28
+              ram_control_RW_Addr => ram_control_RW_Addr,  -- uint32
+              ram_control_Wr_En => ram_control_Wr_En,  -- int32
               Source_Data => sourceData,  -- sfix32_En28
               Source_Channel => sourceChannel,  -- ufix2
-              Source_RW_Dout => Test_FIR_with_Custom_FIR_Libraries_Sample_Based_Filtering_out3,  -- sfix32_En28
+              register_control_RW_Dout => Test_FIR_with_Custom_FIR_Libraries_Sample_Based_Filtering_out3,  -- sfix32_En28
               Source_Valid => sourceValid  -- ufix1
               );
 
@@ -191,7 +191,7 @@ BEGIN
 
   avalon_source_channel <= sourceChannel;
 
-  avalon_source_rw_dout <= Test_FIR_with_Custom_FIR_Libraries_Sample_Based_Filtering_out3;
+  ram_control_rw_dout <= Test_FIR_with_Custom_FIR_Libraries_Sample_Based_Filtering_out3;
 
 END rtl;
 

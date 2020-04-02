@@ -29,18 +29,20 @@ ENTITY pFIR_Testing_Test_FIR_with_Custom_FIR_Libraries_Sample_Based_Filtering IS
         Sink_Data                         :   IN    std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
         Sink_Channel                      :   IN    std_logic_vector(1 DOWNTO 0);  -- ufix2
         register_control_enable           :   IN    std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
-        register_control_Wr_Data          :   IN    std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
-        register_control_RW_Addr          :   IN    std_logic_vector(31 DOWNTO 0);  -- uint32
-        register_control_Wr_En            :   IN    std_logic_vector(31 DOWNTO 0);  -- int32
+        ram_control_Wr_Data               :   IN    std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
+        ram_control_RW_Addr               :   IN    std_logic_vector(31 DOWNTO 0);  -- uint32
+        ram_control_Wr_En                 :   IN    std_logic_vector(31 DOWNTO 0);  -- int32
         Source_Data                       :   OUT   std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
         Source_Channel                    :   OUT   std_logic_vector(1 DOWNTO 0);  -- ufix2
-        Source_RW_Dout                    :   OUT   std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
+        register_control_RW_Dout          :   OUT   std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
         Source_Valid                      :   OUT   std_logic  -- ufix1
         );
 END pFIR_Testing_Test_FIR_with_Custom_FIR_Libraries_Sample_Based_Filtering;
 
 
 ARCHITECTURE rtl OF pFIR_Testing_Test_FIR_with_Custom_FIR_Libraries_Sample_Based_Filtering IS
+
+  ATTRIBUTE multstyle : string;
 
   -- Component Declarations
   COMPONENT pFIR_Testing_Left_Channel_Processing
@@ -53,9 +55,9 @@ ARCHITECTURE rtl OF pFIR_Testing_Test_FIR_with_Custom_FIR_Libraries_Sample_Based
           Left_Data_Sink                  :   IN    std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
           register_control_enable         :   IN    std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
           left_data_valid                 :   IN    std_logic;
-          register_control_Wr_Data        :   IN    std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
-          register_control_RW_Addr        :   IN    std_logic_vector(31 DOWNTO 0);  -- uint32
-          register_control_Wr_En          :   IN    std_logic_vector(31 DOWNTO 0);  -- int32
+          ram_control_Wr_Data             :   IN    std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
+          ram_control_RW_Addr             :   IN    std_logic_vector(31 DOWNTO 0);  -- uint32
+          ram_control_Wr_En               :   IN    std_logic_vector(31 DOWNTO 0);  -- int32
           Left_Data_Source                :   OUT   std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
           Left_Data_Valid_Source          :   OUT   std_logic
           );
@@ -71,20 +73,22 @@ ARCHITECTURE rtl OF pFIR_Testing_Test_FIR_with_Custom_FIR_Libraries_Sample_Based
           Right_Data_Sink                 :   IN    std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
           register_control_enable         :   IN    std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
           right_data_valid                :   IN    std_logic;
-          register_control_Wr_Data        :   IN    std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
-          register_control_RW_Addr        :   IN    std_logic_vector(31 DOWNTO 0);  -- uint32
-          register_control_Wr_En          :   IN    std_logic_vector(31 DOWNTO 0);  -- int32
+          ram_control_Wr_Data             :   IN    std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
+          ram_control_RW_Addr             :   IN    std_logic_vector(31 DOWNTO 0);  -- uint32
+          ram_control_Wr_En               :   IN    std_logic_vector(31 DOWNTO 0);  -- int32
           Right_Data_Source               :   OUT   std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
           Right_Data_Valid_Source         :   OUT   std_logic;
           Right_RW_Dout                   :   OUT   std_logic_vector(31 DOWNTO 0)  -- sfix32_En28
           );
   END COMPONENT;
 
-  COMPONENT pFIR_Testing_MATLAB_Function
-    PORT( leftData                        :   IN    std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
+  COMPONENT pFIR_Testing_Channel_Data_Multiplexer
+    PORT( dataPrev                        :   IN    std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
+          leftData                        :   IN    std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
           leftValid                       :   IN    std_logic;
           rightData                       :   IN    std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
           rightValid                      :   IN    std_logic;
+          chanPrev                        :   IN    std_logic_vector(1 DOWNTO 0);  -- ufix2
           sourceData                      :   OUT   std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
           sourceChannel                   :   OUT   std_logic_vector(1 DOWNTO 0);  -- ufix2
           sourceValid                     :   OUT   std_logic  -- ufix1
@@ -98,8 +102,8 @@ ARCHITECTURE rtl OF pFIR_Testing_Test_FIR_with_Custom_FIR_Libraries_Sample_Based
   FOR ALL : pFIR_Testing_Right_Channel_Processing
     USE ENTITY work.pFIR_Testing_Right_Channel_Processing(rtl);
 
-  FOR ALL : pFIR_Testing_MATLAB_Function
-    USE ENTITY work.pFIR_Testing_MATLAB_Function(rtl);
+  FOR ALL : pFIR_Testing_Channel_Data_Multiplexer
+    USE ENTITY work.pFIR_Testing_Channel_Data_Multiplexer(rtl);
 
   -- Signals
   SIGNAL Sink_Channel_unsigned            : unsigned(1 DOWNTO 0);  -- ufix2
@@ -107,13 +111,21 @@ ARCHITECTURE rtl OF pFIR_Testing_Test_FIR_with_Custom_FIR_Libraries_Sample_Based
   SIGNAL Logical_Operator_out1            : std_logic;
   SIGNAL Left_Channel_Processing_out1     : std_logic_vector(31 DOWNTO 0);  -- ufix32
   SIGNAL Left_Channel_Processing_out2     : std_logic;
+  SIGNAL delayMatch_reg                   : std_logic_vector(0 TO 3);  -- ufix1 [4]
+  SIGNAL Left_Channel_Processing_out2_1   : std_logic;
   SIGNAL rightEnable                      : std_logic;
   SIGNAL Logical_Operator1_out1           : std_logic;
   SIGNAL Right_Channel_Processing_out1    : std_logic_vector(31 DOWNTO 0);  -- ufix32
   SIGNAL Right_Channel_Processing_out2    : std_logic;
   SIGNAL Right_Channel_Processing_out3    : std_logic_vector(31 DOWNTO 0);  -- ufix32
-  SIGNAL sourceData                       : std_logic_vector(31 DOWNTO 0);  -- ufix32
+  SIGNAL delayMatch1_reg                  : std_logic_vector(0 TO 3);  -- ufix1 [4]
+  SIGNAL Right_Channel_Processing_out2_1  : std_logic;
   SIGNAL sourceChannel                    : std_logic_vector(1 DOWNTO 0);  -- ufix2
+  SIGNAL sourceChannel_unsigned           : unsigned(1 DOWNTO 0);  -- ufix2
+  SIGNAL Unit_Delay1_out1                 : unsigned(1 DOWNTO 0);  -- ufix2
+  SIGNAL sourceData                       : std_logic_vector(31 DOWNTO 0);  -- ufix32
+  SIGNAL sourceData_signed                : signed(31 DOWNTO 0);  -- sfix32_En28
+  SIGNAL Unit_Delay_out1                  : signed(31 DOWNTO 0);  -- sfix32_En28
   SIGNAL sourceValid                      : std_logic;  -- ufix1
 
 BEGIN
@@ -149,9 +161,9 @@ BEGIN
               Left_Data_Sink => Sink_Data,  -- sfix32_En28
               register_control_enable => register_control_enable,  -- sfix32_En28
               left_data_valid => Logical_Operator_out1,
-              register_control_Wr_Data => register_control_Wr_Data,  -- sfix32_En28
-              register_control_RW_Addr => register_control_RW_Addr,  -- uint32
-              register_control_Wr_En => register_control_Wr_En,  -- int32
+              ram_control_Wr_Data => ram_control_Wr_Data,  -- sfix32_En28
+              ram_control_RW_Addr => ram_control_RW_Addr,  -- uint32
+              ram_control_Wr_En => ram_control_Wr_En,  -- int32
               Left_Data_Source => Left_Channel_Processing_out1,  -- sfix32_En28
               Left_Data_Valid_Source => Left_Channel_Processing_out2
               );
@@ -166,19 +178,21 @@ BEGIN
               Right_Data_Sink => Sink_Data,  -- sfix32_En28
               register_control_enable => register_control_enable,  -- sfix32_En28
               right_data_valid => Logical_Operator1_out1,
-              register_control_Wr_Data => register_control_Wr_Data,  -- sfix32_En28
-              register_control_RW_Addr => register_control_RW_Addr,  -- uint32
-              register_control_Wr_En => register_control_Wr_En,  -- int32
+              ram_control_Wr_Data => ram_control_Wr_Data,  -- sfix32_En28
+              ram_control_RW_Addr => ram_control_RW_Addr,  -- uint32
+              ram_control_Wr_En => ram_control_Wr_En,  -- int32
               Right_Data_Source => Right_Channel_Processing_out1,  -- sfix32_En28
               Right_Data_Valid_Source => Right_Channel_Processing_out2,
               Right_RW_Dout => Right_Channel_Processing_out3  -- sfix32_En28
               );
 
-  u_MATLAB_Function : pFIR_Testing_MATLAB_Function
-    PORT MAP( leftData => Left_Channel_Processing_out1,  -- sfix32_En28
-              leftValid => Left_Channel_Processing_out2,
+  u_Channel_Data_Multiplexer : pFIR_Testing_Channel_Data_Multiplexer
+    PORT MAP( dataPrev => std_logic_vector(Unit_Delay_out1),  -- sfix32_En28
+              leftData => Left_Channel_Processing_out1,  -- sfix32_En28
+              leftValid => Left_Channel_Processing_out2_1,
               rightData => Right_Channel_Processing_out1,  -- sfix32_En28
-              rightValid => Right_Channel_Processing_out2,
+              rightValid => Right_Channel_Processing_out2_1,
+              chanPrev => std_logic_vector(Unit_Delay1_out1),  -- ufix2
               sourceData => sourceData,  -- sfix32_En28
               sourceChannel => sourceChannel,  -- ufix2
               sourceValid => sourceValid  -- ufix1
@@ -192,17 +206,73 @@ BEGIN
 
   Logical_Operator_out1 <= leftEnable AND Sink_Valid;
 
+  delayMatch_process : PROCESS (clk, reset)
+  BEGIN
+    IF reset = '1' THEN
+      delayMatch_reg <= (OTHERS => '0');
+    ELSIF rising_edge(clk) THEN
+      IF enb = '1' THEN
+        delayMatch_reg(0) <= Left_Channel_Processing_out2;
+        delayMatch_reg(1 TO 3) <= delayMatch_reg(0 TO 2);
+      END IF;
+    END IF;
+  END PROCESS delayMatch_process;
+
+  Left_Channel_Processing_out2_1 <= delayMatch_reg(3);
+
   
   rightEnable <= '1' WHEN Sink_Channel_unsigned = to_unsigned(16#1#, 2) ELSE
       '0';
 
   Logical_Operator1_out1 <= rightEnable AND Sink_Valid;
 
+  delayMatch1_process : PROCESS (clk, reset)
+  BEGIN
+    IF reset = '1' THEN
+      delayMatch1_reg <= (OTHERS => '0');
+    ELSIF rising_edge(clk) THEN
+      IF enb = '1' THEN
+        delayMatch1_reg(0) <= Right_Channel_Processing_out2;
+        delayMatch1_reg(1 TO 3) <= delayMatch1_reg(0 TO 2);
+      END IF;
+    END IF;
+  END PROCESS delayMatch1_process;
+
+  Right_Channel_Processing_out2_1 <= delayMatch1_reg(3);
+
+  sourceChannel_unsigned <= unsigned(sourceChannel);
+
+  Unit_Delay1_process : PROCESS (clk, reset)
+  BEGIN
+    IF reset = '1' THEN
+      Unit_Delay1_out1 <= to_unsigned(16#0#, 2);
+    ELSIF rising_edge(clk) THEN
+      IF enb = '1' THEN
+        Unit_Delay1_out1 <= sourceChannel_unsigned;
+      END IF;
+    END IF;
+  END PROCESS Unit_Delay1_process;
+
+
+  sourceData_signed <= signed(sourceData);
+
+  Unit_Delay_process : PROCESS (clk, reset)
+  BEGIN
+    IF reset = '1' THEN
+      Unit_Delay_out1 <= to_signed(0, 32);
+    ELSIF rising_edge(clk) THEN
+      IF enb = '1' THEN
+        Unit_Delay_out1 <= sourceData_signed;
+      END IF;
+    END IF;
+  END PROCESS Unit_Delay_process;
+
+
   Source_Data <= sourceData;
 
   Source_Channel <= sourceChannel;
 
-  Source_RW_Dout <= Right_Channel_Processing_out3;
+  register_control_RW_Dout <= Right_Channel_Processing_out3;
 
   Source_Valid <= sourceValid;
 

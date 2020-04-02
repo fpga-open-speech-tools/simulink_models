@@ -5,7 +5,7 @@ High-level Resource Utilization Report for pFIR_Testing
 </title>
 
 </head>
-<body bgcolor="#ffffff" link="0033CC" vlink="#666666" onload="try {if (top) {if (top.rtwPageOnLoad) top.rtwPageOnLoad('rtwIdBillOfMaterials'); else local_onload();}} catch(err) {};hdlTableShrink(this, 'Input_Port');hdlTableShrink(this, 'Output_Port');hdlTableShrink(this, 'Multiplexer_2_1');hdlTableShrink(this, 'Multiplexer_4_2');hdlTableShrink(this, 'RAM_5_1');hdlTableShrink(this, 'Register_6_2');hdlTableShrink(this, 'Multiplexer_6_1');hdlTableShrink(this, 'Adder_8_1');hdlTableShrink(this, 'Register_8_1');hdlTableShrink(this, 'Multiplexer_8_1');hdlTableShrink(this, 'Multiplexer_9_2');hdlTableShrink(this, 'RAM_10_1');hdlTableShrink(this, 'Register_11_2');hdlTableShrink(this, 'Multiplexer_11_1');hdlTableShrink(this, 'Adder_13_1');hdlTableShrink(this, 'Register_13_1');hdlTableShrink(this, 'Multiplexer_13_1');">
+<body bgcolor="#ffffff" link="0033CC" vlink="#666666" onload="try {if (top) {if (top.rtwPageOnLoad) top.rtwPageOnLoad('rtwIdBillOfMaterials'); else local_onload();}} catch(err) {};hdlTableShrink(this, 'Input_Port');hdlTableShrink(this, 'Output_Port');hdlTableShrink(this, 'Register_2_2');hdlTableShrink(this, 'Register_2_3');hdlTableShrink(this, 'Multiplexer_2_1');hdlTableShrink(this, 'Multiplexer_4_1');hdlTableShrink(this, 'Multiplexer_4_2');hdlTableShrink(this, 'RAM_5_1');hdlTableShrink(this, 'Register_6_2');hdlTableShrink(this, 'Multiplexer_6_1');hdlTableShrink(this, 'Adder_8_1');hdlTableShrink(this, 'Register_8_1');hdlTableShrink(this, 'Multiplexer_8_1');hdlTableShrink(this, 'Multiplexer_9_1');hdlTableShrink(this, 'Multiplexer_9_2');hdlTableShrink(this, 'RAM_10_1');hdlTableShrink(this, 'Register_11_2');hdlTableShrink(this, 'Multiplexer_11_1');hdlTableShrink(this, 'Adder_13_1');hdlTableShrink(this, 'Register_13_1');hdlTableShrink(this, 'Multiplexer_13_1');">
 <script>
 <!--
 function hdlTableShrink(o,tagNameStr)
@@ -161,7 +161,7 @@ Multipliers
 Adders/Subtractors
 </td>
 <td align="center" valign="top" style="border-style: none">
-12
+16
 </td>
 
 </tr>
@@ -170,7 +170,7 @@ Adders/Subtractors
 Registers
 </td>
 <td align="center" valign="top" style="border-style: none">
-1105
+1155
 </td>
 
 </tr>
@@ -179,7 +179,7 @@ Registers
 Total 1-Bit Registers
 </td>
 <td align="center" valign="top" style="border-style: none">
-34294
+34388
 </td>
 
 </tr>
@@ -197,7 +197,7 @@ RAMs
 Multiplexers
 </td>
 <td align="center" valign="top" style="border-style: none">
-5143
+5159
 </td>
 
 </tr>
@@ -261,7 +261,7 @@ Number of I/O Bits (238)
 Number of Input Bits: 168
 </span>
 <span name="Input_Port" id="Input_Port">
-<ul class="SystemdefinedCollapse" id="62a60c39-9f0f-466a-8a0b-8c3fc6b181b5" dataCollapse="off">
+<ul class="SystemdefinedCollapse" id="43a88329-27d1-4933-8e8b-71eae3078b90" dataCollapse="off">
 <li>
 clk: 1 bit
 </li>
@@ -303,25 +303,25 @@ register_control_enable
 </li>
 <li>
 <a href="matlab:coder.internal.code2model('pFIR_Testing:1863')" name="code2model" class="code2model">
-register_control_Wr_Data
+ram_control_Wr_Data
 </a>
 : 32 bits
 </li>
 <li>
 <a href="matlab:coder.internal.code2model('pFIR_Testing:1864')" name="code2model" class="code2model">
-register_control_RW_Addr
+ram_control_RW_Addr
 </a>
 : 32 bits
 </li>
 <li>
 <a href="matlab:coder.internal.code2model('pFIR_Testing:1865')" name="code2model" class="code2model">
-register_control_Wr_En
+ram_control_Wr_En
 </a>
 : 32 bits
 </li>
 
 </ul>
-<span class="SDCollapseControl" onclick="collapseSD(this, '62a60c39-9f0f-466a-8a0b-8c3fc6b181b5')" onmouseover="this.style.cursor = 'pointer'">
+<span class="SDCollapseControl" onclick="collapseSD(this, '43a88329-27d1-4933-8e8b-71eae3078b90')" onmouseover="this.style.cursor = 'pointer'">
 &#8743; Less
 </span>
 <br />
@@ -356,16 +356,16 @@ avalon_source_channel
 : 2 bits
 </li>
 <li>
-<a href="matlab:coder.internal.code2model('pFIR_Testing:1892')" name="code2model" class="code2model">
-avalon_source_rw_dout
-</a>
-: 32 bits
-</li>
-<li>
 <a href="matlab:coder.internal.code2model('pFIR_Testing:414')" name="code2model" class="code2model">
 avalon_source_error
 </a>
 : 2 bits
+</li>
+<li>
+<a href="matlab:coder.internal.code2model('pFIR_Testing:1892')" name="code2model" class="code2model">
+ram_control_rw_dout
+</a>
+: 32 bits
 </li>
 
 </ul>
@@ -379,6 +379,48 @@ Sample Based Filtering
 
 </h5>
 <h5>
+Registers (10)
+</h5>
+<span style="font-family:monospace">
+1-bit Register 							: 8
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, 'Register_2_2')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+2-bit Register 							: 1
+</span>
+<span name="Register_2_2" id="Register_2_2">
+<ul>
+<li>
+<a href="matlab:coder.internal.code2model('pFIR_Testing:1901')" name="code2model" class="code2model">
+Unit Delay1
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, 'Register_2_3')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+32-bit Register 							: 1
+</span>
+<span name="Register_2_3" id="Register_2_3">
+<ul>
+<li>
+<a href="matlab:coder.internal.code2model('pFIR_Testing:1900')" name="code2model" class="code2model">
+Unit Delay
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><h5>
 Multiplexers (2)
 </h5>
 <span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, 'Multiplexer_2_1')" onmouseover="this.style.cursor = 'pointer'">
@@ -391,15 +433,13 @@ Multiplexers (2)
 <ul>
 <li>
 <a href="matlab:coder.internal.code2model('pFIR_Testing:1045')" name="code2model" class="code2model">
-Compare
-To Constant2
+Compare To Constant2
 </a>
 
 </li>
 <li>
 <a href="matlab:coder.internal.code2model('pFIR_Testing:1044')" name="code2model" class="code2model">
-Compare
-To Constant1
+Compare To Constant1
 </a>
 
 </li>
@@ -409,7 +449,7 @@ To Constant1
 </span>
 <br /><p><hr /></p><h5>
 Report for User-defined block:    <a href="matlab:coder.internal.code2model('pFIR_Testing:1888')" name="code2model" class="code2model">
-MATLAB Function
+Channel_Data_Multiplexer
 </a>
 
 </h5>
@@ -440,20 +480,35 @@ Registers (8)
 <br /><h5>
 Multiplexers (2)
 </h5>
-<span style="font-family:monospace">
-1-bit 2-to-1 Multiplexer 							: 1
-</span>
-<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, 'Multiplexer_4_2')" onmouseover="this.style.cursor = 'pointer'">
+<span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, 'Multiplexer_4_1')" onmouseover="this.style.cursor = 'pointer'">
 [+]
 </span>
 <span style="font-family:monospace">
 32-bit 2-to-1 Multiplexer 							: 1
 </span>
-<span name="Multiplexer_4_2" id="Multiplexer_4_2">
+<span name="Multiplexer_4_1" id="Multiplexer_4_1">
 <ul>
 <li>
 <a href="matlab:coder.internal.code2model('pFIR_Testing:1837')" name="code2model" class="code2model">
 Switch
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, 'Multiplexer_4_2')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+1-bit 2-to-1 Multiplexer 							: 1
+</span>
+<span name="Multiplexer_4_2" id="Multiplexer_4_2">
+<ul>
+<li>
+<a href="matlab:coder.internal.code2model('pFIR_Testing:1899')" name="code2model" class="code2model">
+Switch1
 </a>
 
 </li>
@@ -468,16 +523,31 @@ Programmable Upclocked FIR
 
 </h5>
 <h5>
-Registers (21)
+Adders/Subtractors (2)
 </h5>
 <span style="font-family:monospace">
-32-bit Register 							: 11
+3x3-bit Adder 							: 1
 </span>
 <br /><span style="font-family:monospace">
+2x2-bit Adder 							: 1
+</span>
+<br /><h5>
+Registers (41)
+</h5>
+<span style="font-family:monospace">
 9-bit Register 							: 2
 </span>
 <br /><span style="font-family:monospace">
-1-bit Register 							: 8
+32-bit Register 							: 11
+</span>
+<br /><span style="font-family:monospace">
+1-bit Register 							: 24
+</span>
+<br /><span style="font-family:monospace">
+3-bit Register 							: 2
+</span>
+<br /><span style="font-family:monospace">
+2-bit Register 							: 2
 </span>
 <br /><h5>
 RAMs (1)
@@ -501,13 +571,22 @@ SimpleDualPortRAM_generic
 
 </span>
 <br /><h5>
-Multiplexers (3)
+Multiplexers (11)
 </h5>
 <span style="font-family:monospace">
-1-bit 2-to-1 Multiplexer 							: 2
+1-bit 2-to-1 Multiplexer 							: 7
 </span>
 <br /><span style="font-family:monospace">
 32-bit 2-to-1 Multiplexer 							: 1
+</span>
+<br /><span style="font-family:monospace">
+3-bit 2-to-1 Multiplexer 							: 1
+</span>
+<br /><span style="font-family:monospace">
+2-bit 2-to-1 Multiplexer 							: 1
+</span>
+<br /><span style="font-family:monospace">
+1-bit 7-to-1 Multiplexer 							: 1
 </span>
 <br /><p><hr /></p><h5>
 Report for Subsystem:    <a href="matlab:coder.internal.code2model('pFIR_Testing:1882:25')" name="code2model" class="code2model">
@@ -712,20 +791,35 @@ Registers (8)
 <br /><h5>
 Multiplexers (2)
 </h5>
-<span style="font-family:monospace">
-1-bit 2-to-1 Multiplexer 							: 1
-</span>
-<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, 'Multiplexer_9_2')" onmouseover="this.style.cursor = 'pointer'">
+<span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, 'Multiplexer_9_1')" onmouseover="this.style.cursor = 'pointer'">
 [+]
 </span>
 <span style="font-family:monospace">
 32-bit 2-to-1 Multiplexer 							: 1
 </span>
-<span name="Multiplexer_9_2" id="Multiplexer_9_2">
+<span name="Multiplexer_9_1" id="Multiplexer_9_1">
 <ul>
 <li>
 <a href="matlab:coder.internal.code2model('pFIR_Testing:1790')" name="code2model" class="code2model">
 Switch
+</a>
+
+</li>
+
+</ul>
+
+</span>
+<br /><span name="collapsible" id="collapsible" style="font-family:monospace" onclick="hdlTableShrink(this, 'Multiplexer_9_2')" onmouseover="this.style.cursor = 'pointer'">
+[+]
+</span>
+<span style="font-family:monospace">
+1-bit 2-to-1 Multiplexer 							: 1
+</span>
+<span name="Multiplexer_9_2" id="Multiplexer_9_2">
+<ul>
+<li>
+<a href="matlab:coder.internal.code2model('pFIR_Testing:1898')" name="code2model" class="code2model">
+Switch1
 </a>
 
 </li>
@@ -740,16 +834,31 @@ Programmable Upclocked FIR
 
 </h5>
 <h5>
-Registers (20)
+Adders/Subtractors (2)
 </h5>
 <span style="font-family:monospace">
-32-bit Register 							: 10
+3x3-bit Adder 							: 1
 </span>
 <br /><span style="font-family:monospace">
+2x2-bit Adder 							: 1
+</span>
+<br /><h5>
+Registers (40)
+</h5>
+<span style="font-family:monospace">
 9-bit Register 							: 2
 </span>
 <br /><span style="font-family:monospace">
-1-bit Register 							: 8
+32-bit Register 							: 10
+</span>
+<br /><span style="font-family:monospace">
+1-bit Register 							: 24
+</span>
+<br /><span style="font-family:monospace">
+3-bit Register 							: 2
+</span>
+<br /><span style="font-family:monospace">
+2-bit Register 							: 2
 </span>
 <br /><h5>
 RAMs (1)
@@ -773,13 +882,22 @@ SimpleDualPortRAM_generic
 
 </span>
 <br /><h5>
-Multiplexers (3)
+Multiplexers (11)
 </h5>
 <span style="font-family:monospace">
-1-bit 2-to-1 Multiplexer 							: 2
+1-bit 2-to-1 Multiplexer 							: 7
 </span>
 <br /><span style="font-family:monospace">
 32-bit 2-to-1 Multiplexer 							: 1
+</span>
+<br /><span style="font-family:monospace">
+3-bit 2-to-1 Multiplexer 							: 1
+</span>
+<br /><span style="font-family:monospace">
+2-bit 2-to-1 Multiplexer 							: 1
+</span>
+<br /><span style="font-family:monospace">
+1-bit 7-to-1 Multiplexer 							: 1
 </span>
 <br /><p><hr /></p><h5>
 Report for Subsystem:    <a href="matlab:coder.internal.code2model('pFIR_Testing:1857:25')" name="code2model" class="code2model">

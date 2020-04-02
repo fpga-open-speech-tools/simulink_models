@@ -14,7 +14,7 @@ pFIR_Testing/dataplane/Test FIR with Custom FIR Libraries Sample Based Filtering
 pFIR_Testing/dataplane/Test FIR with Custom FIR Libraries Sample Based Filtering/Right Channel Processing/Programmable Upclocked FIR/Multiply_And_Sum --> pFIR_Testing_Multiply_And_Sum_block
 pFIR_Testing/dataplane/Test FIR with Custom FIR Libraries Sample Based Filtering/Right Channel Processing/Programmable Upclocked FIR --> pFIR_Testing_Programmable_Upclocked_FIR_block
 pFIR_Testing/dataplane/Test FIR with Custom FIR Libraries Sample Based Filtering/Right Channel Processing --> pFIR_Testing_Right_Channel_Processing
-pFIR_Testing/dataplane/Test FIR with Custom FIR Libraries Sample Based Filtering/MATLAB Function --> pFIR_Testing_MATLAB_Function
+pFIR_Testing/dataplane/Test FIR with Custom FIR Libraries Sample Based Filtering/Channel_Data_Multiplexer --> pFIR_Testing_Channel_Data_Multiplexer
 pFIR_Testing/dataplane/Test FIR with Custom FIR Libraries Sample Based Filtering --> pFIR_Testing_Test_FIR_with_Custom_FIR_Libraries_Sample_Based_Filtering
 dataplane_tc --> pFIR_Testing_dataplane_tc
 pFIR_Testing/dataplane --> pFIR_Testing_dataplane

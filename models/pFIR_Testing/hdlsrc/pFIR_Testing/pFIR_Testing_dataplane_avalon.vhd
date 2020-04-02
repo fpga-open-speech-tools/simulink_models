@@ -14,13 +14,22 @@ entity pFIR_Testing_dataplane_avalon is
     avalon_source_data        : out std_logic_vector(31  downto 0); --sfix32_En28
     avalon_source_channel     : out std_logic_vector(1   downto 0); --ufix2
     avalon_source_error       : out std_logic_vector(1   downto 0); --ufix2
-    avalon_slave_address      : in  std_logic_vector(2   downto 0);            
-    avalon_slave_read         : in  std_logic;
-    avalon_slave_readdata     : out std_logic_vector(31  downto 0);
-    avalon_slave_write        : in  std_logic;
-    avalon_slave_writedata    : in  std_logic_vector(31  downto 0)
+	-- Interface for register control
+	avalon_slave_0_address      : in  std_logic_vector(0   downto 0);         
+    avalon_slave_0_read         : in  std_logic;							
+    avalon_slave_0_readdata     : out std_logic_vector(31  downto 0);		
+    avalon_slave_0_write        : in  std_logic;							
+    avalon_slave_0_writedata    : in  std_logic_vector(31  downto 0);
+	-- Interface for ram control 
+    avalon_slave_1_address      : in  std_logic_vector(8   downto 0);    	-- to addr         
+    avalon_slave_1_read         : in  std_logic;							-- case select? nothing? use this to update rw_dout? maybe just use !write? 
+    avalon_slave_1_readdata     : out std_logic_vector(31  downto 0);		-- from RW_dout, always? when !write? when read? 
+    avalon_slave_1_write        : in  std_logic;							-- wr_en
+    avalon_slave_1_writedata    : in  std_logic_vector(31  downto 0)		-- to Wr_Data
   );
 end entity pFIR_Testing_dataplane_avalon;
+
+-- setup a second avalon slave interface 
 
 architecture pFIR_Testing_dataplane_avalon_arch of pFIR_Testing_dataplane_avalon is
 
@@ -40,15 +49,15 @@ component pFIR_Testing_dataplane
     avalon_sink_channel         : in  std_logic_vector(1   downto 0);         -- ufix2
     avalon_sink_error           : in  std_logic_vector(1   downto 0);         -- ufix2
     register_control_enable     : in  std_logic_vector(31  downto 0);         -- sfix32_En28
-    register_control_Wr_Data    : in  std_logic_vector(31  downto 0);         -- sfix32_En28
-    register_control_RW_Addr    : in  std_logic_vector(31  downto 0);         -- uint32
-    register_control_Wr_En      : in  std_logic_vector(31  downto 0);         -- int32
+    ram_control_Wr_Data    		: in  std_logic_vector(31  downto 0);         -- sfix32_En28
+    ram_control_RW_Addr    		: in  std_logic_vector(31  downto 0);         -- uint32
+    ram_control_Wr_En      		: in  std_logic_vector(31  downto 0);         -- int32
     ce_out                      : out std_logic;
     avalon_source_valid         : out std_logic;                              -- ufix1
     avalon_source_data          : out std_logic_vector(31  downto 0);         -- sfix32_En28
     avalon_source_channel       : out std_logic_vector(1   downto 0);         -- ufix2
-    avalon_source_rw_dout       : out std_logic_vector(31  downto 0);         -- sfix32_En28
-    avalon_source_error         : out std_logic_vector(1   downto 0)          -- ufix2
+    avalon_source_error         : out std_logic_vector(1   downto 0);         -- ufix2
+    ram_control_rw_dout       	: out std_logic_vector(31  downto 0)          -- sfix32_En28
   );
 end component;
 
@@ -64,47 +73,56 @@ u_pFIR_Testing_dataplane : pFIR_Testing_dataplane
     avalon_sink_channel         =>  avalon_sink_channel,             -- ufix2
     avalon_sink_error           =>  avalon_sink_error,               -- ufix2
     register_control_enable     =>  enable,                          -- sfix32_En28
-    register_control_Wr_Data    =>  Wr_Data,                         -- sfix32_En28
-    register_control_RW_Addr    =>  RW_Addr,                         -- uint32
-    register_control_Wr_En      =>  Wr_En,                           -- int32
+    ram_control_Wr_Data    		=>  Wr_Data,                         -- sfix32_En28
+    ram_control_RW_Addr    		=>  RW_Addr,                         -- uint32
+    ram_control_Wr_En      		=>  Wr_En,                           -- int32
     avalon_source_valid         =>  avalon_source_valid,             -- ufix1
     avalon_source_data          =>  avalon_source_data,              -- sfix32_En28
     avalon_source_channel       =>  avalon_source_channel,           -- ufix2
-    avalon_source_rw_dout       =>  avalon_source_rw_dout,           -- sfix32_En28
-    avalon_source_error         =>  avalon_source_error              -- ufix2
+    avalon_source_error         =>  avalon_source_error,             -- ufix2
+    ram_control_rw_dout         =>  RW_dout              			 -- sfix32_En28
   );
 
-  bus_read : process(clk)
+  bus_read_0 : process(clk)
   begin
-    if rising_edge(clk) and avalon_slave_read = '1' then
-      case avalon_slave_address is
-        when "000" => avalon_slave_readdata <= enable;
-        when "001" => avalon_slave_readdata <= Wr_Data;
-        when "010" => avalon_slave_readdata <= RW_Addr;
-        when "011" => avalon_slave_readdata <= Wr_En;
-        when others => avalon_slave_readdata <= (others => '0');
+    if rising_edge(clk) and avalon_slave_0_read = '1' then
+      case avalon_slave_0_address is
+        when "0" => avalon_slave_0_readdata <= enable;
+        when others => avalon_slave_0_readdata <= (others => '0');
+      end case;
+    end if;
+  end process;
+	
+  bus_read_1 : process(clk)
+  begin
+    if rising_edge(clk) and avalon_slave_1_read = '1' then
+      avalon_slave_1_readdata <= RW_dout;
+	end if;
+  end process;
+  
+  bus_write_0 : process(clk, reset)
+  begin
+    if reset = '1' then
+      enable                    <=  "00010000000000000000000000000000"; -- 1 (sfix32_En28)
+    elsif rising_edge(clk) and avalon_slave_0_write = '1' then
+      case avalon_slave_0_address is
+        when "0" => enable <= avalon_slave_0_writedata(31 downto 0);
       end case;
     end if;
   end process;
 
-  bus_write : process(clk, reset)
-  begin
-    if reset = '1' then
-      enable                    <=  "00010000000000000000000000000000"; -- 1 (sfix32_En28)
-      Wr_Data                   <=  "00000000000000000000000000000000"; -- 0 (sfix32_En28)
-      RW_Addr                   <=  "00000000000000000000000000000000"; -- 0 (uint32)
-      Wr_En                     <=  "00000000000000000000000000000000"; -- 0 (int32)
-	  RW_dout     				<=  "00000000000000000000000000000000"; -- 0 (sfix32_En28)
-    elsif rising_edge(clk) and avalon_slave_write = '1' then
-      case avalon_slave_address is
-        when "000" => enable <= avalon_slave_writedata(31 downto 0);
-        when "001" => Wr_Data <= avalon_slave_writedata(31 downto 0);
-        when "010" => RW_Addr <= avalon_slave_writedata(31 downto 0);
-        when "011" => Wr_En <= avalon_slave_writedata(31 downto 0);
-		when "100" => RW_dout <= avalon_slave_writedata(31 downto 0);
-        when others => null;
-      end case;
+  bus_write_1 : process(clk, reset)
+  begin 
+  if reset = '1' then
+	  Wr_Data	    <=  (others => '0');
+      RW_Addr       <=  (others => '0');
+	  Wr_En			<= 	(others => '0');
+    elsif rising_edge(clk) and avalon_slave_1_write = '1' then
+	  Wr_Data 				<= avalon_slave_1_writedata;
+	  RW_Addr(8 downto 0) 	<= avalon_slave_1_address(8 downto 0);
+	  Wr_En(0)				<= avalon_slave_1_write;
     end if;
+	
   end process;
 
 end architecture;

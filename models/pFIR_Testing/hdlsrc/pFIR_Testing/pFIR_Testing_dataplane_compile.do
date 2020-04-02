@@ -15,7 +15,7 @@ vcom  pFIR_Testing_B_k_Memory_Block2_block.vhd
 vcom  pFIR_Testing_Multiply_And_Sum_block.vhd
 vcom  pFIR_Testing_Programmable_Upclocked_FIR_block.vhd
 vcom  pFIR_Testing_Right_Channel_Processing.vhd
-vcom  pFIR_Testing_MATLAB_Function.vhd
+vcom  pFIR_Testing_Channel_Data_Multiplexer.vhd
 vcom  pFIR_Testing_Test_FIR_with_Custom_FIR_Libraries_Sample_Based_Filtering.vhd
 vcom  pFIR_Testing_dataplane_tc.vhd
 vcom  pFIR_Testing_dataplane.vhd

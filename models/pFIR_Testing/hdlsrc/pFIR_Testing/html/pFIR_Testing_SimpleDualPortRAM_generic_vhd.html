@@ -37,7 +37,7 @@
 </span><span><a class="LN" name="24">   24   </a>           DataWidth                      : integer := 1
 </span><span><a class="LN" name="25">   25   </a>           );
 </span><span><a class="LN" name="26">   26   </a>  <span class="KW">PORT</span>( clk                               :   <span class="KW">IN</span>    std_logic;
-</span><span><a class="LN" name="27">   27   </a>        enb_1_4_0                         :   <span class="KW">IN</span>    std_logic;
+</span><span><a class="LN" name="27">   27   </a>        enb                               :   <span class="KW">IN</span>    std_logic;
 </span><span><a class="LN" name="28">   28   </a>        wr_din                            :   <span class="KW">IN</span>    std_logic_vector(DataWidth - 1 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- generic width</span>
 </span><span><a class="LN" name="29">   29   </a>        wr_addr                           :   <span class="KW">IN</span>    std_logic_vector(AddrWidth - 1 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- generic width</span>
 </span><span><a class="LN" name="30">   30   </a>        wr_en                             :   <span class="KW">IN</span>    std_logic;  <span class="CT">-- ufix1</span>
@@ -66,7 +66,7 @@
 </span><span><a class="LN" name="53">   53   </a>  SimpleDualPortRAM_generic_process: <span class="KW">PROCESS</span> (clk)
 </span><span><a class="LN" name="54">   54   </a>  <span class="KW">BEGIN</span>
 </span><span><a class="LN" name="55">   55   </a>    <span class="KW">IF</span> rising_edge(clk) <span class="KW">THEN</span>
-</span><span><a class="LN" name="56">   56   </a>      <span class="KW">IF</span> enb_1_4_0 = '1' <span class="KW">THEN</span>
+</span><span><a class="LN" name="56">   56   </a>      <span class="KW">IF</span> enb = '1' <span class="KW">THEN</span>
 </span><span><a class="LN" name="57">   57   </a>        <span class="KW">IF</span> wr_en = '1' <span class="KW">THEN</span>
 </span><span><a class="LN" name="58">   58   </a>          ram(to_integer(wr_addr_unsigned)) &lt;= wr_din;
 </span><span><a class="LN" name="59">   59   </a>        <span class="KW">END</span> <span class="KW">IF</span>;

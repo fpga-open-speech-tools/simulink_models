@@ -42,9 +42,9 @@
 </span><span><a class="LN" id="29">   29   </a>        Right_Data_Sink                   :   <span class="KW">IN</span>    std_logic_vector(31 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- sfix32_En28</span>
 </span><span><a class="LN" id="30">   30   </a>        register_control_enable           :   <span class="KW">IN</span>    std_logic_vector(31 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- sfix32_En28</span>
 </span><span><a class="LN" id="31">   31   </a>        right_data_valid                  :   <span class="KW">IN</span>    std_logic;
-</span><span><a class="LN" id="32">   32   </a>        register_control_Wr_Data          :   <span class="KW">IN</span>    std_logic_vector(31 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- sfix32_En28</span>
-</span><span><a class="LN" id="33">   33   </a>        register_control_RW_Addr          :   <span class="KW">IN</span>    std_logic_vector(31 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- uint32</span>
-</span><span><a class="LN" id="34">   34   </a>        register_control_Wr_En            :   <span class="KW">IN</span>    std_logic_vector(31 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- int32</span>
+</span><span><a class="LN" id="32">   32   </a>        ram_control_Wr_Data               :   <span class="KW">IN</span>    std_logic_vector(31 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- sfix32_En28</span>
+</span><span><a class="LN" id="33">   33   </a>        ram_control_RW_Addr               :   <span class="KW">IN</span>    std_logic_vector(31 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- uint32</span>
+</span><span><a class="LN" id="34">   34   </a>        ram_control_Wr_En                 :   <span class="KW">IN</span>    std_logic_vector(31 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- int32</span>
 </span><span><a class="LN" id="35">   35   </a>        Right_Data_Source                 :   <span class="KW">OUT</span>   std_logic_vector(31 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- sfix32_En28</span>
 </span><span><a class="LN" id="36">   36   </a>        Right_Data_Valid_Source           :   <span class="KW">OUT</span>   std_logic;
 </span><span><a class="LN" id="37">   37   </a>        Right_RW_Dout                     :   <span class="KW">OUT</span>   std_logic_vector(31 <span class="KW">DOWNTO</span> 0)  <span class="CT">-- sfix32_En28</span>
@@ -58,111 +58,117 @@
 </span><span><a class="LN" id="45">   45   </a>  <span class="KW">COMPONENT</span> pFIR_Testing_Programmable_Upclocked_FIR_block
 </span><span><a class="LN" id="46">   46   </a>    <span class="KW">PORT</span>( clk                             :   <span class="KW">IN</span>    std_logic;
 </span><span><a class="LN" id="47">   47   </a>          reset                           :   <span class="KW">IN</span>    std_logic;
-</span><span><a class="LN" id="48">   48   </a>          enb_1_4_0                       :   <span class="KW">IN</span>    std_logic;
-</span><span><a class="LN" id="49">   49   </a>          enb_1_4_1                       :   <span class="KW">IN</span>    std_logic;
-</span><span><a class="LN" id="50">   50   </a>          enb_1_2048_0                    :   <span class="KW">IN</span>    std_logic;
-</span><span><a class="LN" id="51">   51   </a>          Data_in                         :   <span class="KW">IN</span>    std_logic_vector(31 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- sfix32_En28</span>
-</span><span><a class="LN" id="52">   52   </a>          Valid_in                        :   <span class="KW">IN</span>    std_logic;
-</span><span><a class="LN" id="53">   53   </a>          Wr_Data                         :   <span class="KW">IN</span>    std_logic_vector(31 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- sfix32_En28</span>
-</span><span><a class="LN" id="54">   54   </a>          Wr_Addr                         :   <span class="KW">IN</span>    std_logic_vector(31 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- uint32</span>
-</span><span><a class="LN" id="55">   55   </a>          Wr_En                           :   <span class="KW">IN</span>    std_logic_vector(31 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- int32</span>
-</span><span><a class="LN" id="56">   56   </a>          Data_out                        :   <span class="KW">OUT</span>   std_logic_vector(31 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- sfix32_En28</span>
-</span><span><a class="LN" id="57">   57   </a>          Valid_out                       :   <span class="KW">OUT</span>   std_logic;
-</span><span><a class="LN" id="58">   58   </a>          RW_Dout                         :   <span class="KW">OUT</span>   std_logic_vector(31 <span class="KW">DOWNTO</span> 0)  <span class="CT">-- sfix32_En28</span>
-</span><span><a class="LN" id="59">   59   </a>          );
-</span><span><a class="LN" id="60">   60   </a>  <span class="KW">END</span> <span class="KW">COMPONENT</span>;
-</span><span><a class="LN" id="61">   61   </a>
-</span><span><a class="LN" id="62">   62   </a>  <span class="CT">-- Component Configuration Statements</span>
-</span><span><a class="LN" id="63">   63   </a>  <span class="KW">FOR</span> <span class="KW">ALL</span> : pFIR_Testing_Programmable_Upclocked_FIR_block
-</span><span><a class="LN" id="64">   64   </a>    <span class="KW">USE</span> <span class="KW">ENTITY</span> work.pFIR_Testing_Programmable_Upclocked_FIR_block(rtl);
-</span><span><a class="LN" id="65">   65   </a>
-</span><span><a class="LN" id="66">   66   </a>  <span class="CT">-- Signals</span>
-</span><span><a class="LN" id="67">   67   </a>  <span class="KW">SIGNAL</span> register_control_enable_signed   : signed(31 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- sfix32_En28</span>
-</span><span><a class="LN" id="68">   68   </a>  <span class="KW">SIGNAL</span> delayMatch_reg                   : vector_of_signed32(0 <span class="KW">TO</span> 3);  <span class="CT">-- sfix32 [4]</span>
-</span><span><a class="LN" id="69">   69   </a>  <span class="KW">SIGNAL</span> register_control_enable_1        : signed(31 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- sfix32_En28</span>
-</span><span><a class="LN" id="70">   70   </a>  <span class="KW">SIGNAL</span> switch_compare_1                 : std_logic;
-</span><span><a class="LN" id="71">   71   </a>  <span class="KW">SIGNAL</span> Right_Data_Sink_signed           : signed(31 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- sfix32_En28</span>
-</span><span><a class="LN" id="72">   72   </a>  <span class="KW">SIGNAL</span> delayMatch1_reg                  : vector_of_signed32(0 <span class="KW">TO</span> 3);  <span class="CT">-- sfix32 [4]</span>
-</span><span><a class="LN" id="73">   73   </a>  <span class="KW">SIGNAL</span> right_data_sinksource_passthrough : signed(31 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- sfix32_En28</span>
-</span><span><a class="LN" id="74">   74   </a>  <span class="KW">SIGNAL</span> filter_data                      : std_logic_vector(31 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- ufix32</span>
-</span><span><a class="LN" id="75">   75   </a>  <span class="KW">SIGNAL</span> Programmable_Upclocked_FIR_out2  : std_logic;
-</span><span><a class="LN" id="76">   76   </a>  <span class="KW">SIGNAL</span> RW_Dout                          : std_logic_vector(31 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- ufix32</span>
-</span><span><a class="LN" id="77">   77   </a>  <span class="KW">SIGNAL</span> filter_data_signed               : signed(31 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- sfix32_En28</span>
-</span><span><a class="LN" id="78">   78   </a>  <span class="KW">SIGNAL</span> Right_Data_Source_1              : signed(31 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- sfix32_En28</span>
-</span><span><a class="LN" id="79">   79   </a>
-</span><span><a class="LN" id="80">   80   </a><span class="KW">BEGIN</span>
-</span><span><a class="LN" id="81">   81   </a>  <span class="CT">-- An enabled subsystem</span>
-</span><span><a class="LN" id="82">   82   </a>  <span class="CT">-- This subsystem only runs when the data valid signal is enabled (asserted)</span>
-</span><span><a class="LN" id="83">   83   </a>
-</span><span><a class="LN" id="84">   84   </a>  <span class="CT">-- '<a href="matlab:coder.internal.code2model('pFIR_Testing:1882')" name="code2model"><font color="#117755"><i>&lt;S11&gt;/Programmable Upclocked FIR</i></font></a>'</span>
-</span><span><a class="LN" id="85">   85   </a>  u_Programmable_Upclocked_FIR : pFIR_Testing_Programmable_Upclocked_FIR_block
-</span><span><a class="LN" id="86">   86   </a>    <span class="KW">PORT</span> <span class="KW">MAP</span>( clk =&gt; clk,
-</span><span><a class="LN" id="87">   87   </a>              reset =&gt; reset,
-</span><span><a class="LN" id="88">   88   </a>              enb_1_4_0 =&gt; enb_1_4_0,
-</span><span><a class="LN" id="89">   89   </a>              enb_1_4_1 =&gt; enb_1_4_1,
-</span><span><a class="LN" id="90">   90   </a>              enb_1_2048_0 =&gt; enb_1_2048_0,
-</span><span><a class="LN" id="91">   91   </a>              Data_in =&gt; Right_Data_Sink,  <span class="CT">-- sfix32_En28</span>
-</span><span><a class="LN" id="92">   92   </a>              Valid_in =&gt; right_data_valid,
-</span><span><a class="LN" id="93">   93   </a>              Wr_Data =&gt; register_control_Wr_Data,  <span class="CT">-- sfix32_En28</span>
-</span><span><a class="LN" id="94">   94   </a>              Wr_Addr =&gt; register_control_RW_Addr,  <span class="CT">-- uint32</span>
-</span><span><a class="LN" id="95">   95   </a>              Wr_En =&gt; register_control_Wr_En,  <span class="CT">-- int32</span>
-</span><span><a class="LN" id="96">   96   </a>              Data_out =&gt; filter_data,  <span class="CT">-- sfix32_En28</span>
-</span><span><a class="LN" id="97">   97   </a>              Valid_out =&gt; Programmable_Upclocked_FIR_out2,
-</span><span><a class="LN" id="98">   98   </a>              RW_Dout =&gt; RW_Dout  <span class="CT">-- sfix32_En28</span>
-</span><span><a class="LN" id="99">   99   </a>              );
-</span><span><a class="LN" id="100">  100   </a>
-</span><span><a class="LN" id="101">  101   </a>  register_control_enable_signed &lt;= signed(register_control_enable);
-</span><span><a class="LN" id="102">  102   </a>
-</span><span><a class="LN" id="103">  103   </a>  delayMatch_process : <span class="KW">PROCESS</span> (clk, reset)
-</span><span><a class="LN" id="104">  104   </a>  <span class="KW">BEGIN</span>
-</span><span><a class="LN" id="105">  105   </a>    <span class="KW">IF</span> reset = '1' <span class="KW">THEN</span>
-</span><span><a class="LN" id="106">  106   </a>      delayMatch_reg &lt;= (<span class="KW">OTHERS</span> =&gt; to_signed(0, 32));
-</span><span><a class="LN" id="107">  107   </a>    <span class="KW">ELSIF</span> rising_edge(clk) <span class="KW">THEN</span>
-</span><span><a class="LN" id="108">  108   </a>      <span class="KW">IF</span> enb = '1' <span class="KW">THEN</span>
-</span><span><a class="LN" id="109">  109   </a>        delayMatch_reg(0) &lt;= register_control_enable_signed;
-</span><span><a class="LN" id="110">  110   </a>        delayMatch_reg(1 <span class="KW">TO</span> 3) &lt;= delayMatch_reg(0 <span class="KW">TO</span> 2);
-</span><span><a class="LN" id="111">  111   </a>      <span class="KW">END</span> <span class="KW">IF</span>;
-</span><span><a class="LN" id="112">  112   </a>    <span class="KW">END</span> <span class="KW">IF</span>;
-</span><span><a class="LN" id="113">  113   </a>  <span class="KW">END</span> <span class="KW">PROCESS</span> delayMatch_process;
-</span><span><a class="LN" id="114">  114   </a>
-</span><span><a class="LN" id="115">  115   </a>  register_control_enable_1 &lt;= delayMatch_reg(3);
-</span><span><a class="LN" id="116">  116   </a>
-</span><span><a class="LN" id="117">  117   </a>
-</span><span><a class="LN" id="118">  118   </a>  switch_compare_1 &lt;= '1' <span class="KW">WHEN</span> register_control_enable_1 &gt;= to_signed(268435456, 32) <span class="KW">ELSE</span>
-</span><span><a class="LN" id="119">  119   </a>      '0';
-</span><span><a class="LN" id="120">  120   </a>
-</span><span><a class="LN" id="121">  121   </a>  Right_Data_Sink_signed &lt;= signed(Right_Data_Sink);
-</span><span><a class="LN" id="122">  122   </a>
-</span><span><a class="LN" id="123">  123   </a>  delayMatch1_process : <span class="KW">PROCESS</span> (clk, reset)
-</span><span><a class="LN" id="124">  124   </a>  <span class="KW">BEGIN</span>
-</span><span><a class="LN" id="125">  125   </a>    <span class="KW">IF</span> reset = '1' <span class="KW">THEN</span>
-</span><span><a class="LN" id="126">  126   </a>      delayMatch1_reg &lt;= (<span class="KW">OTHERS</span> =&gt; to_signed(0, 32));
-</span><span><a class="LN" id="127">  127   </a>    <span class="KW">ELSIF</span> rising_edge(clk) <span class="KW">THEN</span>
-</span><span><a class="LN" id="128">  128   </a>      <span class="KW">IF</span> enb = '1' <span class="KW">THEN</span>
-</span><span><a class="LN" id="129">  129   </a>        delayMatch1_reg(0) &lt;= Right_Data_Sink_signed;
-</span><span><a class="LN" id="130">  130   </a>        delayMatch1_reg(1 <span class="KW">TO</span> 3) &lt;= delayMatch1_reg(0 <span class="KW">TO</span> 2);
-</span><span><a class="LN" id="131">  131   </a>      <span class="KW">END</span> <span class="KW">IF</span>;
-</span><span><a class="LN" id="132">  132   </a>    <span class="KW">END</span> <span class="KW">IF</span>;
-</span><span><a class="LN" id="133">  133   </a>  <span class="KW">END</span> <span class="KW">PROCESS</span> delayMatch1_process;
-</span><span><a class="LN" id="134">  134   </a>
-</span><span><a class="LN" id="135">  135   </a>  right_data_sinksource_passthrough &lt;= delayMatch1_reg(3);
-</span><span><a class="LN" id="136">  136   </a>
-</span><span><a class="LN" id="137">  137   </a>  filter_data_signed &lt;= signed(filter_data);
-</span><span><a class="LN" id="138">  138   </a>
-</span><span><a class="LN" id="139">  139   </a>  <span class="CT">-- '<a href="matlab:coder.internal.code2model('pFIR_Testing:1837')" name="code2model"><font color="#117755"><i>&lt;S11&gt;/Switch</i></font></a>'</span>
-</span><span><a class="LN" id="140">  140   </a>
-</span><span><a class="LN" id="141">  141   </a>  Right_Data_Source_1 &lt;= right_data_sinksource_passthrough <span class="KW">WHEN</span> switch_compare_1 = '0' <span class="KW">ELSE</span>
-</span><span><a class="LN" id="142">  142   </a>      filter_data_signed;
-</span><span><a class="LN" id="143">  143   </a>
-</span><span><a class="LN" id="144">  144   </a>  Right_Data_Source &lt;= std_logic_vector(Right_Data_Source_1);
-</span><span><a class="LN" id="145">  145   </a>
-</span><span><a class="LN" id="146">  146   </a>  Right_Data_Valid_Source &lt;= Programmable_Upclocked_FIR_out2;
-</span><span><a class="LN" id="147">  147   </a>
-</span><span><a class="LN" id="148">  148   </a>  Right_RW_Dout &lt;= RW_Dout;
-</span><span><a class="LN" id="149">  149   </a>
-</span><span><a class="LN" id="150">  150   </a><span class="KW">END</span> rtl;
+</span><span><a class="LN" id="48">   48   </a>          enb                             :   <span class="KW">IN</span>    std_logic;
+</span><span><a class="LN" id="49">   49   </a>          enb_1_4_0                       :   <span class="KW">IN</span>    std_logic;
+</span><span><a class="LN" id="50">   50   </a>          enb_1_4_1                       :   <span class="KW">IN</span>    std_logic;
+</span><span><a class="LN" id="51">   51   </a>          enb_1_2048_0                    :   <span class="KW">IN</span>    std_logic;
+</span><span><a class="LN" id="52">   52   </a>          Data_in                         :   <span class="KW">IN</span>    std_logic_vector(31 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- sfix32_En28</span>
+</span><span><a class="LN" id="53">   53   </a>          Valid_in                        :   <span class="KW">IN</span>    std_logic;
+</span><span><a class="LN" id="54">   54   </a>          Wr_Data                         :   <span class="KW">IN</span>    std_logic_vector(31 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- sfix32_En28</span>
+</span><span><a class="LN" id="55">   55   </a>          Wr_Addr                         :   <span class="KW">IN</span>    std_logic_vector(31 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- uint32</span>
+</span><span><a class="LN" id="56">   56   </a>          Wr_En                           :   <span class="KW">IN</span>    std_logic_vector(31 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- int32</span>
+</span><span><a class="LN" id="57">   57   </a>          Data_out                        :   <span class="KW">OUT</span>   std_logic_vector(31 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- sfix32_En28</span>
+</span><span><a class="LN" id="58">   58   </a>          Valid_out                       :   <span class="KW">OUT</span>   std_logic;
+</span><span><a class="LN" id="59">   59   </a>          RW_Dout                         :   <span class="KW">OUT</span>   std_logic_vector(31 <span class="KW">DOWNTO</span> 0)  <span class="CT">-- sfix32_En28</span>
+</span><span><a class="LN" id="60">   60   </a>          );
+</span><span><a class="LN" id="61">   61   </a>  <span class="KW">END</span> <span class="KW">COMPONENT</span>;
+</span><span><a class="LN" id="62">   62   </a>
+</span><span><a class="LN" id="63">   63   </a>  <span class="CT">-- Component Configuration Statements</span>
+</span><span><a class="LN" id="64">   64   </a>  <span class="KW">FOR</span> <span class="KW">ALL</span> : pFIR_Testing_Programmable_Upclocked_FIR_block
+</span><span><a class="LN" id="65">   65   </a>    <span class="KW">USE</span> <span class="KW">ENTITY</span> work.pFIR_Testing_Programmable_Upclocked_FIR_block(rtl);
+</span><span><a class="LN" id="66">   66   </a>
+</span><span><a class="LN" id="67">   67   </a>  <span class="CT">-- Signals</span>
+</span><span><a class="LN" id="68">   68   </a>  <span class="KW">SIGNAL</span> right_data_sink_1                : std_logic;
+</span><span><a class="LN" id="69">   69   </a>  <span class="KW">SIGNAL</span> register_control_enable_signed   : signed(31 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- sfix32_En28</span>
+</span><span><a class="LN" id="70">   70   </a>  <span class="KW">SIGNAL</span> delayMatch_reg                   : vector_of_signed32(0 <span class="KW">TO</span> 3);  <span class="CT">-- sfix32 [4]</span>
+</span><span><a class="LN" id="71">   71   </a>  <span class="KW">SIGNAL</span> register_control_enable_1        : signed(31 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- sfix32_En28</span>
+</span><span><a class="LN" id="72">   72   </a>  <span class="KW">SIGNAL</span> Right_Data_Sink_signed           : signed(31 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- sfix32_En28</span>
+</span><span><a class="LN" id="73">   73   </a>  <span class="KW">SIGNAL</span> delayMatch1_reg                  : vector_of_signed32(0 <span class="KW">TO</span> 3);  <span class="CT">-- sfix32 [4]</span>
+</span><span><a class="LN" id="74">   74   </a>  <span class="KW">SIGNAL</span> right_data_sinksource_passthrough : signed(31 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- sfix32_En28</span>
+</span><span><a class="LN" id="75">   75   </a>  <span class="KW">SIGNAL</span> filter_data                      : std_logic_vector(31 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- ufix32</span>
+</span><span><a class="LN" id="76">   76   </a>  <span class="KW">SIGNAL</span> Programmable_Upclocked_FIR_out2  : std_logic;
+</span><span><a class="LN" id="77">   77   </a>  <span class="KW">SIGNAL</span> RW_Dout                          : std_logic_vector(31 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- ufix32</span>
+</span><span><a class="LN" id="78">   78   </a>  <span class="KW">SIGNAL</span> filter_data_signed               : signed(31 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- sfix32_En28</span>
+</span><span><a class="LN" id="79">   79   </a>  <span class="KW">SIGNAL</span> Right_Data_Source_1              : signed(31 <span class="KW">DOWNTO</span> 0);  <span class="CT">-- sfix32_En28</span>
+</span><span><a class="LN" id="80">   80   </a>  <span class="KW">SIGNAL</span> Right_Data_Source_2              : std_logic;
+</span><span><a class="LN" id="81">   81   </a>
+</span><span><a class="LN" id="82">   82   </a><span class="KW">BEGIN</span>
+</span><span><a class="LN" id="83">   83   </a>  <span class="CT">-- An enabled subsystem</span>
+</span><span><a class="LN" id="84">   84   </a>  <span class="CT">-- This subsystem only runs when the data valid signal is enabled (asserted)</span>
+</span><span><a class="LN" id="85">   85   </a>
+</span><span><a class="LN" id="86">   86   </a>  <span class="CT">-- '<a href="matlab:coder.internal.code2model('pFIR_Testing:1882')" name="code2model"><font color="#117755"><i>&lt;S13&gt;/Programmable Upclocked FIR</i></font></a>'</span>
+</span><span><a class="LN" id="87">   87   </a>  u_Programmable_Upclocked_FIR : pFIR_Testing_Programmable_Upclocked_FIR_block
+</span><span><a class="LN" id="88">   88   </a>    <span class="KW">PORT</span> <span class="KW">MAP</span>( clk =&gt; clk,
+</span><span><a class="LN" id="89">   89   </a>              reset =&gt; reset,
+</span><span><a class="LN" id="90">   90   </a>              enb =&gt; enb,
+</span><span><a class="LN" id="91">   91   </a>              enb_1_4_0 =&gt; enb_1_4_0,
+</span><span><a class="LN" id="92">   92   </a>              enb_1_4_1 =&gt; enb_1_4_1,
+</span><span><a class="LN" id="93">   93   </a>              enb_1_2048_0 =&gt; enb_1_2048_0,
+</span><span><a class="LN" id="94">   94   </a>              Data_in =&gt; Right_Data_Sink,  <span class="CT">-- sfix32_En28</span>
+</span><span><a class="LN" id="95">   95   </a>              Valid_in =&gt; right_data_sink_1,
+</span><span><a class="LN" id="96">   96   </a>              Wr_Data =&gt; ram_control_Wr_Data,  <span class="CT">-- sfix32_En28</span>
+</span><span><a class="LN" id="97">   97   </a>              Wr_Addr =&gt; ram_control_RW_Addr,  <span class="CT">-- uint32</span>
+</span><span><a class="LN" id="98">   98   </a>              Wr_En =&gt; ram_control_Wr_En,  <span class="CT">-- int32</span>
+</span><span><a class="LN" id="99">   99   </a>              Data_out =&gt; filter_data,  <span class="CT">-- sfix32_En28</span>
+</span><span><a class="LN" id="100">  100   </a>              Valid_out =&gt; Programmable_Upclocked_FIR_out2,
+</span><span><a class="LN" id="101">  101   </a>              RW_Dout =&gt; RW_Dout  <span class="CT">-- sfix32_En28</span>
+</span><span><a class="LN" id="102">  102   </a>              );
+</span><span><a class="LN" id="103">  103   </a>
+</span><span><a class="LN" id="104">  104   </a>  right_data_sink_1 &lt;= right_data_valid;
+</span><span><a class="LN" id="105">  105   </a>
+</span><span><a class="LN" id="106">  106   </a>  register_control_enable_signed &lt;= signed(register_control_enable);
+</span><span><a class="LN" id="107">  107   </a>
+</span><span><a class="LN" id="108">  108   </a>  delayMatch_process : <span class="KW">PROCESS</span> (clk, reset)
+</span><span><a class="LN" id="109">  109   </a>  <span class="KW">BEGIN</span>
+</span><span><a class="LN" id="110">  110   </a>    <span class="KW">IF</span> reset = '1' <span class="KW">THEN</span>
+</span><span><a class="LN" id="111">  111   </a>      delayMatch_reg &lt;= (<span class="KW">OTHERS</span> =&gt; to_signed(0, 32));
+</span><span><a class="LN" id="112">  112   </a>    <span class="KW">ELSIF</span> rising_edge(clk) <span class="KW">THEN</span>
+</span><span><a class="LN" id="113">  113   </a>      <span class="KW">IF</span> enb = '1' <span class="KW">THEN</span>
+</span><span><a class="LN" id="114">  114   </a>        delayMatch_reg(0) &lt;= register_control_enable_signed;
+</span><span><a class="LN" id="115">  115   </a>        delayMatch_reg(1 <span class="KW">TO</span> 3) &lt;= delayMatch_reg(0 <span class="KW">TO</span> 2);
+</span><span><a class="LN" id="116">  116   </a>      <span class="KW">END</span> <span class="KW">IF</span>;
+</span><span><a class="LN" id="117">  117   </a>    <span class="KW">END</span> <span class="KW">IF</span>;
+</span><span><a class="LN" id="118">  118   </a>  <span class="KW">END</span> <span class="KW">PROCESS</span> delayMatch_process;
+</span><span><a class="LN" id="119">  119   </a>
+</span><span><a class="LN" id="120">  120   </a>  register_control_enable_1 &lt;= delayMatch_reg(3);
+</span><span><a class="LN" id="121">  121   </a>
+</span><span><a class="LN" id="122">  122   </a>  Right_Data_Sink_signed &lt;= signed(Right_Data_Sink);
+</span><span><a class="LN" id="123">  123   </a>
+</span><span><a class="LN" id="124">  124   </a>  delayMatch1_process : <span class="KW">PROCESS</span> (clk, reset)
+</span><span><a class="LN" id="125">  125   </a>  <span class="KW">BEGIN</span>
+</span><span><a class="LN" id="126">  126   </a>    <span class="KW">IF</span> reset = '1' <span class="KW">THEN</span>
+</span><span><a class="LN" id="127">  127   </a>      delayMatch1_reg &lt;= (<span class="KW">OTHERS</span> =&gt; to_signed(0, 32));
+</span><span><a class="LN" id="128">  128   </a>    <span class="KW">ELSIF</span> rising_edge(clk) <span class="KW">THEN</span>
+</span><span><a class="LN" id="129">  129   </a>      <span class="KW">IF</span> enb = '1' <span class="KW">THEN</span>
+</span><span><a class="LN" id="130">  130   </a>        delayMatch1_reg(0) &lt;= Right_Data_Sink_signed;
+</span><span><a class="LN" id="131">  131   </a>        delayMatch1_reg(1 <span class="KW">TO</span> 3) &lt;= delayMatch1_reg(0 <span class="KW">TO</span> 2);
+</span><span><a class="LN" id="132">  132   </a>      <span class="KW">END</span> <span class="KW">IF</span>;
+</span><span><a class="LN" id="133">  133   </a>    <span class="KW">END</span> <span class="KW">IF</span>;
+</span><span><a class="LN" id="134">  134   </a>  <span class="KW">END</span> <span class="KW">PROCESS</span> delayMatch1_process;
+</span><span><a class="LN" id="135">  135   </a>
+</span><span><a class="LN" id="136">  136   </a>  right_data_sinksource_passthrough &lt;= delayMatch1_reg(3);
+</span><span><a class="LN" id="137">  137   </a>
+</span><span><a class="LN" id="138">  138   </a>  filter_data_signed &lt;= signed(filter_data);
+</span><span><a class="LN" id="139">  139   </a>
+</span><span><a class="LN" id="140">  140   </a>  <span class="CT">-- '<a href="matlab:coder.internal.code2model('pFIR_Testing:1837')" name="code2model"><font color="#117755"><i>&lt;S13&gt;/Switch</i></font></a>'</span>
+</span><span><a class="LN" id="141">  141   </a>
+</span><span><a class="LN" id="142">  142   </a>  Right_Data_Source_1 &lt;= right_data_sinksource_passthrough <span class="KW">WHEN</span> register_control_enable_1 = to_signed(0, 32) <span class="KW">ELSE</span>
+</span><span><a class="LN" id="143">  143   </a>      filter_data_signed;
+</span><span><a class="LN" id="144">  144   </a>
+</span><span><a class="LN" id="145">  145   </a>  Right_Data_Source &lt;= std_logic_vector(Right_Data_Source_1);
+</span><span><a class="LN" id="146">  146   </a>
+</span><span><a class="LN" id="147">  147   </a>  <span class="CT">-- '<a href="matlab:coder.internal.code2model('pFIR_Testing:1899')" name="code2model"><font color="#117755"><i>&lt;S13&gt;/Switch1</i></font></a>'</span>
+</span><span><a class="LN" id="148">  148   </a>
+</span><span><a class="LN" id="149">  149   </a>  Right_Data_Source_2 &lt;= right_data_sink_1 <span class="KW">WHEN</span> register_control_enable_signed = to_signed(0, 32) <span class="KW">ELSE</span>
+</span><span><a class="LN" id="150">  150   </a>      Programmable_Upclocked_FIR_out2;
 </span><span><a class="LN" id="151">  151   </a>
-</span><span><a class="LN" id="152">  152   </a>
+</span><span><a class="LN" id="152">  152   </a>  Right_Data_Valid_Source &lt;= Right_Data_Source_2;
+</span><span><a class="LN" id="153">  153   </a>
+</span><span><a class="LN" id="154">  154   </a>  Right_RW_Dout &lt;= RW_Dout;
+</span><span><a class="LN" id="155">  155   </a>
+</span><span><a class="LN" id="156">  156   </a><span class="KW">END</span> rtl;
+</span><span><a class="LN" id="157">  157   </a>
+</span><span><a class="LN" id="158">  158   </a>
 </span></pre>
 </td></tr></table>
 </p>
