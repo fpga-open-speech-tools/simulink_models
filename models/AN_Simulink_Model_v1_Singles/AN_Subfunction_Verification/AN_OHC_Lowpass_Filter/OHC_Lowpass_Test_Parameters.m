@@ -67,6 +67,10 @@ C = 2.0/tdres;
 c1LPohc = ( C - TWOPI*Fcohc ) / ( C + TWOPI*Fcohc );
 c2LPohc = TWOPI*Fcohc / (TWOPI*Fcohc + C);
 
+% *** Organized OHC Lowpass Filter Coefficients Matrix
+% *** Added by Matthew Blunt 03/10/2020
+OHCLPcoeffs = [gainohc*c2LPohc gainohc*c2LPohc 0 1 -c1LPohc 0; gainohc*c2LPohc gainohc*c2LPohc 0 1 -c1LPohc 0];
+
 %% TEST SIGNAL
 
 % Test signal set to chirp signal moving linearly over time from 125 Hz to
