@@ -25,7 +25,7 @@ counter = 1;
 
 for i = 1:coefficient_length
     
-   fprintf(fileID, '%s\n', "master_write_32 $m 0x0 0x0 " + "0x" + string(hex(fi(LPF_PB1000_SB1300(counter),1,32,28)))+ " " + "0x" + string(hex(fi(counter,0,32,0))));
+   fprintf(fileID, '%s\n', "master_write_32 $m 0x0 " + "0x" + string(hex(fi(LPF_PB1000_SB1300(counter),1,32,28)))+ " " + "0x" + string(hex(fi(counter,0,32,0))));
    counter = counter + 1;
 end
 
