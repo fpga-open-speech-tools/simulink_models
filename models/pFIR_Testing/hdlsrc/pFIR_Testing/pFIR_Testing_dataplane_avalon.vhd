@@ -107,6 +107,7 @@ u_pFIR_Testing_dataplane : pFIR_Testing_dataplane
     elsif rising_edge(clk) and avalon_slave_0_write = '1' then
       case avalon_slave_0_address is
         when "0" => enable <= avalon_slave_0_writedata(31 downto 0);
+		when others => null;
       end case;
     end if;
   end process;
