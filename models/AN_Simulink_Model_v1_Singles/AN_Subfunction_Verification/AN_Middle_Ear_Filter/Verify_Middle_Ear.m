@@ -72,5 +72,25 @@ disp(modelerror)
 disp('Conversion error = ')
 disp(conversionerror)
 
+% Calculate Filter Error 
+% *** Added by Matthew Blunt 03/10/2020
+filtererror = norm(out.mearout - out.mearout1);
+
+% Display Filter Error
+% *** Added by Matthew Blunt 03/10/2020
+disp('Filter Error = ')
+disp(filtererror)
+
+% Calculate New Structure Conversion Error 
+% *** Added by Matthew Blunt 03/10/2020
+newerror = norm(out.mearout1 - out.mearoutdouble);
+
+% Display New Structure Conversion Error
+% *** Added by Matthew Blunt 03/10/2020
+disp('New Error = ')
+disp(newerror)
+
+errorcheck = norm(out.mearout1 - out.mearout2);
+disp(errorcheck)
 % end of script
 

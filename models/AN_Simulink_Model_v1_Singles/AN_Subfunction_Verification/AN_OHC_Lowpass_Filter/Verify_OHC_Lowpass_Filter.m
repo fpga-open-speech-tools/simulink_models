@@ -78,6 +78,15 @@ disp(OHCmodelerror);
 disp('OHC Lowpass Conversion Error =');
 disp(OHCconversionerror);
 
+% Calculate Filter Error 
+% *** Added by Matthew Blunt 03/10/2020
+filtererror = norm(out.ohcout - out.ohcout1);
+
+% Display Filter Error
+% *** Added by Matthew Blunt 03/10/2020
+disp('Filter Error = ')
+disp(filtererror)
+
 % end of script
 
 

@@ -76,4 +76,22 @@ disp(PLAmodelerror);
 disp('PLA Conversion Error =');
 disp(PLAconversionerror);
 
+% Calculate Filter Error 
+% *** Added by Matthew Blunt 03/10/2020
+filtererror = norm(out.synout - out.synout1);
+
+% Display Filter Error
+% *** Added by Matthew Blunt 03/10/2020
+disp('Filter Error = ')
+disp(filtererror)
+
+% Calculate New Structure Conversion Error 
+% *** Added by Matthew Blunt 03/10/2020
+newerror = norm(out.synout1 - out.synoutdouble);
+
+% Display New Structure Conversion Error
+% *** Added by Matthew Blunt 03/10/2020
+disp('New Structure Conversion Error = ')
+disp(newerror)
+
 % end of script

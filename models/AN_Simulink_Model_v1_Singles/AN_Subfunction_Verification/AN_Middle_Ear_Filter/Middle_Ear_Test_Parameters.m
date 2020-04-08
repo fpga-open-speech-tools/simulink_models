@@ -95,6 +95,14 @@ m36=-3.1137e+003*C+6.9768e+008;
 % Filter Scaling Factor
 megainmax=2;
 
+% *** Organized Middle Ear Filter Coefficients Matrix
+% *** Added by Matthew Blunt 03/10/2020
+MEcoeffs = [m14*m11 m15*m11 m16*m11 1 m12*m11 m13*m11; m24*m21 m25*m21 m26*m21 1 m22*m21 m23*m21; m34*m31 m35*m31 m36*m31 1 m32*m31 m33*m31];
+
+% *** Simplified Scaling Factor for ME Filter
+% *** Added by Matthew Blunt 03/10/2020
+MEscale = 1/megainmax;
+
 %% TEST SIGNAL
 
 % read in chirp signal

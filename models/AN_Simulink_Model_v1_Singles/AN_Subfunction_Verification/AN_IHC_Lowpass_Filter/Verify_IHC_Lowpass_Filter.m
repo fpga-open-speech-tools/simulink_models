@@ -85,7 +85,7 @@ IHCreplacementerror = norm(out.ihcout(1:end-1)-out.ihcout_filter(1:end-1));
 % Compares output vectors of Simulink Singles Biquad Filter and Simulink
 % Single Direct Form 1 Filter
 % *** Modified for new output vector names by Hezekiah Austin 03/10/2020
-IHCfiltererror = norm(out.ihcout(1:end-1)-out.ihcout_filter(1:end-1));
+IHCreplacementerror = norm(out.ihcout(1:end-1)-out.ihcout_filter(1:end-1));
 
 % Display in Simulink Diagnostics menu
 disp('IHC Lowpass Filter Model Error = ');
