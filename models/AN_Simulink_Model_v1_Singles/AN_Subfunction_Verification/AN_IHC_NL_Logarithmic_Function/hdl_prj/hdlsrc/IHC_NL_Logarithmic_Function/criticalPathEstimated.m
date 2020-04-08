@@ -1,0 +1,13 @@
+open_system('gm_IHC_NL_Logarithmic_Function');
+cs.HiliteType = 'user2';
+cs.ForegroundColor = 'black';
+cs.BackgroundColor = 'lightblue';
+set_param(0, 'HiliteAncestorsData', cs);
+hilite_system('gm_IHC_NL_Logarithmic_Function/IHC NL Logarithmic Function Singles/Subsystem', 'user2');
+annotate_port('gm_IHC_NL_Logarithmic_Function/IHC NL Logarithmic Function Singles/Subsystem', 0, 1, 'cp : 7.807 ns');
+cs.HiliteType = 'user1';
+cs.ForegroundColor = 'black';
+cs.BackgroundColor = 'blue';
+set_param(0, 'HiliteAncestorsData', cs);
+hilite_system('gm_IHC_NL_Logarithmic_Function/IHC NL Logarithmic Function Singles/Subsystem/Math Function1', 'user1');
+annotate_port('gm_IHC_NL_Logarithmic_Function/IHC NL Logarithmic Function Singles/Subsystem/Math Function1', 0, 1, 'cp : 7.807 ns');
