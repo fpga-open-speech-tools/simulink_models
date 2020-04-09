@@ -81,6 +81,29 @@ else
     minRout = halfR;
 end
 
+
+% *** Adding precalculated values to avoid unnecessary computation and
+% switch block architecture (All the following lines until Test Signal
+% section)
+% *** Added by Matthew Blunt 04/08/2020
+
+R = taumin/taumax;
+
+if R < minR
+    minR = 0.5*R;
+else
+    minR = minR;
+end
+
+dc = (ohcasym-1)/(ohcasym+1.0)/2.0-minR;
+R1 = R-minR;
+
+% Denoted in C code: For new nonlinearity
+s0 = -dc/log(R1/(1-minR));
+
+% *** Note: These new variables are added to the Simulink model as constant
+% blocks (single precision)
+
 %% TEST SIGNAL
 
 % Test signal set to chirp signal moving linearly over time from 125 Hz to
