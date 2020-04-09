@@ -1,0 +1,804 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" display="inline" height="289.000000px" preserveAspectRatio="xMinYMin meet" viewBox="-284.91 -157.00 561.91 289.00" width="561.906250px" x="0" y="0" zoomAndPan="disable">
+  <g fill="none" stroke="black" stroke-width="1" fill-rule="evenodd" stroke-linecap="square" stroke-linejoin="bevel">
+    <!--RAWSTRING-->
+    <g id="background" pointer-events="none">
+      <g clip-path="none" fill="#ffffff" fill-opacity="1" opacity="1" stroke="none" stroke-opacity="0" transform="matrix(1,0,0,1,0,0)">
+        <path d="M-283.906,-156 L276,-156 L276,131 L-283.906,131 L-283.906,-156 z" fill-rule="evenodd" vector-effect="none"/>
+      </g>
+      <!--RAWSTRING-->
+    </g>
+    <!--RAWSTRING-->
+    <g id="OHC_Lowpass_Filter">
+      <!--RAWSTRING-->
+      <g data-tags="Text">
+        <!--RAWSTRING-->
+        <g id="OHC_Lowpass_Filter:20">
+          <g clip-path="none" fill="#ffffff" fill-opacity="1" opacity="1" stroke="none" stroke-opacity="0" transform="matrix(1,0,0,1,-98,-156)">
+            <path d="M0,0 L250,0 L250,169 L0,169 L0,0 z" fill-rule="evenodd" vector-effect="none"/>
+          </g>
+          <defs>
+            <clipPath id="clip5">
+              <path d="M0,0 L250,0 L250,169 L0,169 L0,0 z"/>
+            </clipPath>
+          </defs>
+          <g clip-path="url(#clip5)" fill="#ffffff" fill-opacity="1" opacity="1" stroke="#0070c0" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,-98,-156)">
+            <text fill="#0070c0" fill-opacity="1" font-family="Arial" font-size="12" font-style="normal" font-weight="700" stroke="none" textLength="113.922" x="1" xml:space="preserve" y="12">OHC Lowpass Filter</text>
+          </g>
+          <defs>
+            <clipPath id="clip6">
+              <path d="M0,0 L250,0 L250,169 L0,169 L0,0 z"/>
+            </clipPath>
+          </defs>
+          <g clip-path="url(#clip6)" fill="#ffffff" fill-opacity="1" opacity="1" stroke="#0070c0" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,-98,-156)">
+            <text fill="#0070c0" fill-opacity="1" font-family="Arial" font-size="12" font-style="normal" font-weight="400" stroke="none" textLength="32.6719" x="1" xml:space="preserve" y="40">Inputs</text>
+          </g>
+          <defs>
+            <clipPath id="clip7">
+              <path d="M0,0 L250,0 L250,169 L0,169 L0,0 z"/>
+            </clipPath>
+          </defs>
+          <g clip-path="url(#clip7)" fill="#ffffff" fill-opacity="1" opacity="1" stroke="#0070c0" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,-98,-156)">
+            <text fill="#0070c0" fill-opacity="1" font-family="Arial" font-size="12" font-style="normal" font-weight="400" stroke="none" textLength="206.578" x="33.6719" xml:space="preserve" y="40">: OHC Nonlinear Output (ohcnonlinout)</text>
+          </g>
+          <defs>
+            <clipPath id="clip8">
+              <path d="M0,0 L250,0 L250,169 L0,169 L0,0 z"/>
+            </clipPath>
+          </defs>
+          <g clip-path="url(#clip8)" fill="#ffffff" fill-opacity="1" opacity="1" stroke="#0070c0" stroke-linecap="butt" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,-98,-156)">
+            <polyline fill="none" points="1,42.5 33,42.5" vector-effect="none"/>
+          </g>
+          <defs>
+            <clipPath id="clip9">
+              <path d="M0,0 L250,0 L250,169 L0,169 L0,0 z"/>
+            </clipPath>
+          </defs>
+          <g clip-path="url(#clip9)" fill="#ffffff" fill-opacity="1" opacity="1" stroke="#0070c0" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,-98,-156)">
+            <text fill="#0070c0" fill-opacity="1" font-family="Arial" font-size="12" font-style="normal" font-weight="400" stroke="none" textLength="36" x="1" xml:space="preserve" y="68">Output</text>
+          </g>
+          <defs>
+            <clipPath id="clip10">
+              <path d="M0,0 L250,0 L250,169 L0,169 L0,0 z"/>
+            </clipPath>
+          </defs>
+          <g clip-path="url(#clip10)" fill="#ffffff" fill-opacity="1" opacity="1" stroke="#0070c0" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,-98,-156)">
+            <text fill="#0070c0" fill-opacity="1" font-family="Arial" font-size="12" font-style="normal" font-weight="400" stroke="none" textLength="181.031" x="37" xml:space="preserve" y="68">: LP Filtered OHC Output (ohcout)</text>
+          </g>
+          <defs>
+            <clipPath id="clip11">
+              <path d="M0,0 L250,0 L250,169 L0,169 L0,0 z"/>
+            </clipPath>
+          </defs>
+          <g clip-path="url(#clip11)" fill="#ffffff" fill-opacity="1" opacity="1" stroke="#0070c0" stroke-linecap="butt" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,-98,-156)">
+            <polyline fill="none" points="1,70.5 37,70.5" vector-effect="none"/>
+          </g>
+          <defs>
+            <clipPath id="clip12">
+              <path d="M0,0 L250,0 L250,169 L0,169 L0,0 z"/>
+            </clipPath>
+          </defs>
+          <g clip-path="url(#clip12)" fill="#ffffff" fill-opacity="1" opacity="1" stroke="#0070c0" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,-98,-156)">
+            <text fill="#0070c0" fill-opacity="1" font-family="Arial" font-size="12" font-style="normal" font-weight="400" stroke="none" textLength="160.562" x="1" xml:space="preserve" y="96">- 2nd Order IIR Lowpass Filter</text>
+          </g>
+          <defs>
+            <clipPath id="clip13">
+              <path d="M0,0 L250,0 L250,169 L0,169 L0,0 z"/>
+            </clipPath>
+          </defs>
+          <g clip-path="url(#clip13)" fill="#ffffff" fill-opacity="1" opacity="1" stroke="#0070c0" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,-98,-156)">
+            <text fill="#0070c0" fill-opacity="1" font-family="Arial" font-size="12" font-style="normal" font-weight="400" stroke="none" textLength="236.984" x="1" xml:space="preserve" y="124">- Coefficients are determined in the init script</text>
+          </g>
+          <defs>
+            <clipPath id="clip14">
+              <path d="M0,0 L250,0 L250,169 L0,169 L0,0 z"/>
+            </clipPath>
+          </defs>
+          <g clip-path="url(#clip14)" fill="#ffffff" fill-opacity="1" opacity="1" stroke="#0070c0" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,-98,-156)">
+            <text fill="#0070c0" fill-opacity="1" font-family="Arial" font-size="12" font-style="normal" font-weight="400" stroke="none" textLength="179.906" x="1" xml:space="preserve" y="152">- Implemented w/ Simulink biquad</text>
+          </g>
+          <!--RAWSTRING-->
+        </g>
+        <!--RAWSTRING-->
+      </g>
+      <!--RAWSTRING-->
+      <g data-tags="blk">
+        <!--RAWSTRING-->
+        <g id="OHC_Lowpass_Filter:7">
+          <g clip-path="none" fill="none" opacity="0.65098" stroke="#000000" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,-241,74)">
+            <image height="51" preserveAspectRatio="none" width="106" x="0" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGoAAAAzCAYAAAB/oJ2oAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABwUlEQVR4nO2cvW7CMBRGD1XagQwwtAtLl/Iwfb2+HixdWMoQBhhgaAfbSsgfVtEFXfEd6cpRsIKVk2tHVuwJ8NyKl8axsOUU49g4TnFGQRAyBcpWOb1RYx+ZQ4x9qxwUVQIzYB4jHQtbKmAXyyqe60iC84yaA28xXmMpbPkBttTDzImQVR0KwphUUotaNELYUhLuPwRJB0KGdWhm1IyQSQvgPYawJWXSkZBJFQMvcX1dXxK1NG+mgLq72xG6wl5RT7dskfg/EuUEiXKCRDlBopwgUU6QKCdIlBMkygkS5QSJcoJEOUGinCBRTpAoJ0iUEyTKCRLlBIlygkQ5oTC+/sTour+Z9VbAulF+ZdZL5TrjPz4y6uW2dxBllBOsM2rsSbrmKX44rEWtRn77BjaEb9kqBj6OFwFrUWPZsYmxJXx8KFEjWIv6NL7+JZYxLrUjt97d0MuEEyTKCRLlBIlygkQ5QaKcIFFOKKjXjlaEWYIS7TFxK7JnZ5qidoRZgubiX2FL9uxMQf9C33RO2JK2L0gZtSfc+w7trg/OF/8KW9obglzs+lL2tMcrYUvfFju9oiZo06p7kr1plRBCCCHEVfwBuMeBtmoE2aUAAAAASUVORK5CYII=" y="0"/>
+          </g>
+          <g clip-path="none" fill="#ffffff" fill-opacity="1" opacity="1" stroke="none" stroke-opacity="0" transform="matrix(1,0,0,1,-240,75)">
+            <path d="M0,0 L95,0 L95,40 L0,40 L0,0 z" fill-rule="evenodd" vector-effect="none"/>
+          </g>
+          <!--RAWSTRING-->
+          <g data-tags="blk">
+            <defs>
+              <clipPath id="clip22">
+                <path d="M-48,-20 L47,-20 L47,20 L-48,20 L-48,-20 z"/>
+              </clipPath>
+            </defs>
+            <g clip-path="url(#clip22)" fill="none" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="2" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,-192,95)">
+              <text fill="#000000" fill-opacity="1" font-family="Arial" font-size="10" font-style="normal" font-weight="400" stroke="none" textLength="39.9531" x="-19.9688" xml:space="preserve" y="3.5">RxSignal</text>
+            </g>
+            <!--RAWSTRING-->
+          </g>
+          <!--RAWSTRING-->
+          <g data-tags="blk frame">
+            <g clip-path="none" fill="none" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="2" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,-240,75)">
+              <path d="M0,0 L95,0 L95,40 L0,40 L0,0 z" fill-rule="evenodd" vector-effect="none"/>
+            </g>
+            <!--RAWSTRING-->
+          </g>
+          <!--RAWSTRING-->
+          <g data-tags="blk BlockName">
+            <defs>
+              <clipPath id="clip23">
+                <path d="M-1.94531,-273 L561.961,-273 L561.961,14 L-1.94531,14 L-1.94531,-273 z"/>
+              </clipPath>
+            </defs>
+            <g clip-path="url(#clip23)" fill="none" opacity="1" stroke="#000000" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,-281.961,117)">
+              <text fill="#000000" fill-opacity="1" font-family="Arial" font-size="10" font-style="normal" font-weight="400" stroke="none" textLength="176.922" x="1" xml:space="preserve" y="10">OHC Nonlinear Function Output Singles</text>
+            </g>
+            <!--RAWSTRING-->
+          </g>
+          <!--RAWSTRING-->
+          <g data-tags="portannotationpanel PortDataTypeString">
+            <defs>
+              <clipPath id="clip24">
+                <path d="M-140.906,-253 L423,-253 L423,34 L-140.906,34 L-140.906,-253 z"/>
+              </clipPath>
+            </defs>
+            <g clip-path="url(#clip24)" fill="none" opacity="1" stroke="#000000" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,-143,97)">
+              <text fill="#000000" fill-opacity="1" font-family="Arial" font-size="9" font-style="normal" font-weight="400" stroke="none" textLength="23.4688" x="1" xml:space="preserve" y="9">single</text>
+            </g>
+            <!--RAWSTRING-->
+          </g>
+          <!--RAWSTRING-->
+        </g>
+        <!--RAWSTRING-->
+      </g>
+      <!--RAWSTRING-->
+      <g data-tags="blk">
+        <!--RAWSTRING-->
+        <g id="OHC_Lowpass_Filter:13">
+          <g clip-path="none" fill="none" opacity="0.65098" stroke="#000000" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,-26,29)">
+            <image height="71" preserveAspectRatio="none" width="116" x="0" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHQAAABHCAYAAADWdGMkAAAACXBIWXMAAA7EAAAOxAGVKw4bAAACMklEQVR4nO3dMVPbMBjG8Sc90wEPMMDC0qV8mH69fj1YurCUwRlggKEdJF0cxUnkGiXi6f93p5Mv+IzvHl7bMbK1knSRta+jZbThPba30XJqWzqF4C4l9Vl/eaKdxXGvsb1k/d5Ae0lXkq5jS8towyBpHfshfrYTprRdodeSbmO7iT3a8FvSszanwXeFKt3RKZwze20CvRs1tKFXyEkKYb4qVOyOcYVeKVTmnaRvsaENqTLfFCpz0J6L1qlDbgr0vvpuYo50mF0rHIInA/1yyj1CfQRqhkDNEKgZAjVDoGYI1AyBmunOvQP/uQdJj6P+59INUqFmCNQMgZohUDMEaoZAzRCoGQI1Q6BmCNQMgZqpfS93VWm7fwrXK71Xmq+X+seC3/G9YL3S/V2MCjVTu0IP/WUuqQrsUTvQhwM/+yXpSWGM6aA9D99gntqBHqq2p9ieFQYPE+gHqB3oj8rbP+Y+tmP7Ubpe87goMkOgZgjUDIGaIVAzBGqGQM3M/R566M4P5svvli02N1Dus36s/G7ZYlToeaXX1VChJqZeKLUIFXpe+SvfFqNCzyt/KeNiBGqG76FmCNQMgZohUDMEambuVe7JBgzj31ChZgjUDIGaIVAzBGqGQM0QqJlOm3lABoX/nPdi3rPWFD+pNw50rTAcYjzhC9pQ/KRep+nJXdJnaEM+9uhFIaMd+SFX2p7wBW3Ixx4dPeSmaszPp2jD1HSTk4GuxISwn0HxhLAAAACQ9BerKKNwplfPtwAAAABJRU5ErkJggg==" y="0"/>
+          </g>
+          <defs>
+            <linearGradient gradientUnits="objectBoundingBox" id="grad1" x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0.3" stop-color="#ffffff" stop-opacity="1"/>
+              <stop offset="1" stop-color="#d9d9d9" stop-opacity="1"/>
+            </linearGradient>
+          </defs>
+          <g clip-path="none" fill="url(#grad1)" opacity="1" stroke="none" stroke-opacity="0" transform="matrix(1,0,0,1,-25,30)">
+            <path d="M0,0 L105,0 L105,60 L0,60 L0,0 z" fill-rule="evenodd" vector-effect="none"/>
+          </g>
+          <!--RAWSTRING-->
+          <g data-tags="blk transparency">
+            <defs>
+              <linearGradient gradientUnits="objectBoundingBox" id="grad3" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0.3" stop-color="#ffffff" stop-opacity="1"/>
+                <stop offset="1" stop-color="#d9d9d9" stop-opacity="1"/>
+              </linearGradient>
+            </defs>
+            <g clip-path="none" fill="#ffffff" fill-opacity="1" opacity="0.75" stroke="none" stroke-opacity="0" transform="matrix(0.188976,0,0,0.188976,18.9444,54.8976)">
+              <path d="M0,0 L85,0 L85,54 L0,54 L0,0 z" fill-rule="evenodd" vector-effect="none"/>
+            </g>
+            <g clip-path="none" fill="none" opacity="0.75" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="2" stroke-opacity="1" stroke-width="1" transform="matrix(0.188976,0,0,0.188976,18.9444,54.8976)">
+              <path d="M0,0 L85,0 L85,54 L0,54 L0,0 z" fill-rule="evenodd" vector-effect="none"/>
+            </g>
+            <defs>
+              <linearGradient gradientUnits="objectBoundingBox" id="grad4" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0.3" stop-color="#ffffff" stop-opacity="1"/>
+                <stop offset="1" stop-color="#d9d9d9" stop-opacity="1"/>
+              </linearGradient>
+            </defs>
+            <g clip-path="none" fill="#ffffff" fill-opacity="1" opacity="0.75" stroke="none" stroke-opacity="0" transform="matrix(0.188976,0,0,0.188976,-7.5123,58.6772)">
+              <path d="M7,0 L23,0 C26.866,0 30,3.13401 30,7 C30,10.866 26.866,14 23,14 L7,14 C3.13401,14 0,10.866 0,7 C0,3.13401 3.13401,0 7,0 z" fill-rule="nonzero" vector-effect="none"/>
+            </g>
+            <g clip-path="none" fill="none" opacity="0.75" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="2" stroke-opacity="1" stroke-width="1" transform="matrix(0.188976,0,0,0.188976,-7.5123,58.6772)">
+              <path d="M7,0 L23,0 C26.866,0 30,3.13401 30,7 C30,10.866 26.866,14 23,14 L7,14 C3.13401,14 0,10.866 0,7 C0,3.13401 3.13401,0 7,0 z" fill-rule="nonzero" vector-effect="none"/>
+            </g>
+            <defs>
+              <linearGradient gradientUnits="objectBoundingBox" id="grad5" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0.3" stop-color="#ffffff" stop-opacity="1"/>
+                <stop offset="1" stop-color="#d9d9d9" stop-opacity="1"/>
+              </linearGradient>
+            </defs>
+            <g clip-path="none" fill="#ffffff" fill-opacity="1" opacity="0.75" stroke="none" stroke-opacity="0" transform="matrix(0.188976,0,0,0.188976,57.6845,58.6772)">
+              <path d="M7,0 L23,0 C26.866,0 30,3.13401 30,7 C30,10.866 26.866,14 23,14 L7,14 C3.13401,14 0,10.866 0,7 C0,3.13401 3.13401,0 7,0 z" fill-rule="nonzero" vector-effect="none"/>
+            </g>
+            <g clip-path="none" fill="none" opacity="0.75" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="2" stroke-opacity="1" stroke-width="1" transform="matrix(0.188976,0,0,0.188976,57.6845,58.6772)">
+              <path d="M7,0 L23,0 C26.866,0 30,3.13401 30,7 C30,10.866 26.866,14 23,14 L7,14 C3.13401,14 0,10.866 0,7 C0,3.13401 3.13401,0 7,0 z" fill-rule="nonzero" vector-effect="none"/>
+            </g>
+            <defs>
+              <linearGradient gradientUnits="objectBoundingBox" id="grad6" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0.3" stop-color="#ffffff" stop-opacity="1"/>
+                <stop offset="1" stop-color="#d9d9d9" stop-opacity="1"/>
+              </linearGradient>
+            </defs>
+            <g clip-path="none" fill="#ffffff" fill-opacity="1" opacity="0.75" stroke="none" stroke-opacity="0" transform="matrix(0.188976,0,0,0.188976,18.9444,36)">
+              <path d="M0,0 L85,0 L85,54 L0,54 L0,0 z" fill-rule="evenodd" vector-effect="none"/>
+            </g>
+            <g clip-path="none" fill="none" opacity="0.75" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="2" stroke-opacity="1" stroke-width="1" transform="matrix(0.188976,0,0,0.188976,18.9444,36)">
+              <path d="M0,0 L85,0 L85,54 L0,54 L0,0 z" fill-rule="evenodd" vector-effect="none"/>
+            </g>
+            <defs>
+              <linearGradient gradientUnits="objectBoundingBox" id="grad7" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0.3" stop-color="#ffffff" stop-opacity="1"/>
+                <stop offset="1" stop-color="#d9d9d9" stop-opacity="1"/>
+              </linearGradient>
+            </defs>
+            <g clip-path="none" fill="#ffffff" fill-opacity="1" opacity="0.75" stroke="none" stroke-opacity="0" transform="matrix(0.188976,0,0,0.188976,-7.5123,39.7795)">
+              <path d="M7,0 L23,0 C26.866,0 30,3.13401 30,7 C30,10.866 26.866,14 23,14 L7,14 C3.13401,14 0,10.866 0,7 C0,3.13401 3.13401,0 7,0 z" fill-rule="nonzero" vector-effect="none"/>
+            </g>
+            <g clip-path="none" fill="none" opacity="0.75" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="2" stroke-opacity="1" stroke-width="1" transform="matrix(0.188976,0,0,0.188976,-7.5123,39.7795)">
+              <path d="M7,0 L23,0 C26.866,0 30,3.13401 30,7 C30,10.866 26.866,14 23,14 L7,14 C3.13401,14 0,10.866 0,7 C0,3.13401 3.13401,0 7,0 z" fill-rule="nonzero" vector-effect="none"/>
+            </g>
+            <defs>
+              <linearGradient gradientUnits="objectBoundingBox" id="grad8" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0.3" stop-color="#ffffff" stop-opacity="1"/>
+                <stop offset="1" stop-color="#d9d9d9" stop-opacity="1"/>
+              </linearGradient>
+            </defs>
+            <g clip-path="none" fill="#ffffff" fill-opacity="1" opacity="0.75" stroke="none" stroke-opacity="0" transform="matrix(0.188976,0,0,0.188976,57.6845,39.7795)">
+              <path d="M7,0 L23,0 C26.866,0 30,3.13401 30,7 C30,10.866 26.866,14 23,14 L7,14 C3.13401,14 0,10.866 0,7 C0,3.13401 3.13401,0 7,0 z" fill-rule="nonzero" vector-effect="none"/>
+            </g>
+            <g clip-path="none" fill="none" opacity="0.75" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="2" stroke-opacity="1" stroke-width="1" transform="matrix(0.188976,0,0,0.188976,57.6845,39.7795)">
+              <path d="M7,0 L23,0 C26.866,0 30,3.13401 30,7 C30,10.866 26.866,14 23,14 L7,14 C3.13401,14 0,10.866 0,7 C0,3.13401 3.13401,0 7,0 z" fill-rule="nonzero" vector-effect="none"/>
+            </g>
+            <defs>
+              <linearGradient gradientUnits="objectBoundingBox" id="grad9" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0.3" stop-color="#ffffff" stop-opacity="1"/>
+                <stop offset="1" stop-color="#d9d9d9" stop-opacity="1"/>
+              </linearGradient>
+            </defs>
+            <g clip-path="none" fill="#ffffff" fill-opacity="1" opacity="0.75" stroke="none" stroke-opacity="0" transform="matrix(0.188976,0,0,0.188976,18.9444,73.7953)">
+              <path d="M0,0 L85,0 L85,54 L0,54 L0,0 z" fill-rule="evenodd" vector-effect="none"/>
+            </g>
+            <g clip-path="none" fill="none" opacity="0.75" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="2" stroke-opacity="1" stroke-width="1" transform="matrix(0.188976,0,0,0.188976,18.9444,73.7953)">
+              <path d="M0,0 L85,0 L85,54 L0,54 L0,0 z" fill-rule="evenodd" vector-effect="none"/>
+            </g>
+            <defs>
+              <linearGradient gradientUnits="objectBoundingBox" id="grad10" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0.3" stop-color="#ffffff" stop-opacity="1"/>
+                <stop offset="1" stop-color="#d9d9d9" stop-opacity="1"/>
+              </linearGradient>
+            </defs>
+            <g clip-path="none" fill="#ffffff" fill-opacity="1" opacity="0.75" stroke="none" stroke-opacity="0" transform="matrix(0.188976,0,0,0.188976,57.6845,77.5748)">
+              <path d="M7,0 L23,0 C26.866,0 30,3.13401 30,7 C30,10.866 26.866,14 23,14 L7,14 C3.13401,14 0,10.866 0,7 C0,3.13401 3.13401,0 7,0 z" fill-rule="nonzero" vector-effect="none"/>
+            </g>
+            <g clip-path="none" fill="none" opacity="0.75" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="2" stroke-opacity="1" stroke-width="1" transform="matrix(0.188976,0,0,0.188976,57.6845,77.5748)">
+              <path d="M7,0 L23,0 C26.866,0 30,3.13401 30,7 C30,10.866 26.866,14 23,14 L7,14 C3.13401,14 0,10.866 0,7 C0,3.13401 3.13401,0 7,0 z" fill-rule="nonzero" vector-effect="none"/>
+            </g>
+            <defs>
+              <linearGradient gradientUnits="objectBoundingBox" id="grad12" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0.3" stop-color="#ffffff" stop-opacity="1"/>
+                <stop offset="1" stop-color="#d9d9d9" stop-opacity="1"/>
+              </linearGradient>
+            </defs>
+            <g clip-path="none" fill="none" opacity="0.75" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="2" stroke-opacity="1" stroke-width="1" transform="matrix(0.188976,0,0,0.188976,-11.2918,50.5512)">
+              <path d="M50,50 L97,50" fill-rule="evenodd" vector-effect="none"/>
+            </g>
+            <defs>
+              <linearGradient gradientUnits="objectBoundingBox" id="grad14" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0.3" stop-color="#ffffff" stop-opacity="1"/>
+                <stop offset="1" stop-color="#d9d9d9" stop-opacity="1"/>
+              </linearGradient>
+            </defs>
+            <g clip-path="none" fill="#000000" fill-opacity="1" opacity="0.75" stroke="none" stroke-opacity="0" transform="matrix(0.188976,0,0,0.188976,18.9444,60)">
+              <path d="M0,0 L-8,-4 L-8,4 L0,0 z" fill-rule="nonzero" vector-effect="none"/>
+            </g>
+            <defs>
+              <linearGradient gradientUnits="objectBoundingBox" id="grad15" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0.3" stop-color="#ffffff" stop-opacity="1"/>
+                <stop offset="1" stop-color="#d9d9d9" stop-opacity="1"/>
+              </linearGradient>
+            </defs>
+            <g clip-path="none" fill="none" opacity="0.75" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="2" stroke-opacity="1" stroke-width="1" transform="matrix(0.188976,0,0,0.188976,-11.2918,50.5512)">
+              <path d="M97,50 L152,50" fill-rule="evenodd" vector-effect="none"/>
+            </g>
+            <defs>
+              <linearGradient gradientUnits="objectBoundingBox" id="grad17" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0.3" stop-color="#ffffff" stop-opacity="1"/>
+                <stop offset="1" stop-color="#d9d9d9" stop-opacity="1"/>
+              </linearGradient>
+            </defs>
+            <g clip-path="none" fill="#000000" fill-opacity="1" opacity="0.75" stroke="none" stroke-opacity="0" transform="matrix(0.188976,0,0,0.188976,18.9444,78.8976)">
+              <path d="M0,0 L-8,-4 L-8,4 L0,0 z" fill-rule="nonzero" vector-effect="none"/>
+            </g>
+            <defs>
+              <linearGradient gradientUnits="objectBoundingBox" id="grad18" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0.3" stop-color="#ffffff" stop-opacity="1"/>
+                <stop offset="1" stop-color="#d9d9d9" stop-opacity="1"/>
+              </linearGradient>
+            </defs>
+            <g clip-path="none" fill="none" opacity="0.75" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="2" stroke-opacity="1" stroke-width="1" transform="matrix(0.188976,0,0,0.188976,-11.2918,50.5512)">
+              <path d="M97,50 L97,150 L152,150" fill-rule="evenodd" vector-effect="none"/>
+            </g>
+            <defs>
+              <linearGradient gradientUnits="objectBoundingBox" id="grad19" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0.3" stop-color="#ffffff" stop-opacity="1"/>
+                <stop offset="1" stop-color="#d9d9d9" stop-opacity="1"/>
+              </linearGradient>
+            </defs>
+            <g clip-path="none" fill="#000000" fill-opacity="1" opacity="0.75" stroke="none" stroke-opacity="0" transform="matrix(0.188976,0,0,0.188976,7.03888,60)">
+              <path d="M2.5,0 C2.5,1.38071 1.38071,2.5 0,2.5 C-1.38071,2.5 -2.5,1.38071 -2.5,0 C-2.5,-1.38071 -1.38071,-2.5 0,-2.5 C1.38071,-2.5 2.5,-1.38071 2.5,0 z" fill-rule="evenodd" vector-effect="none"/>
+            </g>
+            <defs>
+              <linearGradient gradientUnits="objectBoundingBox" id="grad23" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0.3" stop-color="#ffffff" stop-opacity="1"/>
+                <stop offset="1" stop-color="#d9d9d9" stop-opacity="1"/>
+              </linearGradient>
+            </defs>
+            <g clip-path="none" fill="#000000" fill-opacity="1" opacity="0.75" stroke="none" stroke-opacity="0" transform="matrix(0.188976,0,0,0.188976,57.6845,60)">
+              <path d="M0,0 L-8,-4 L-8,4 L0,0 z" fill-rule="nonzero" vector-effect="none"/>
+            </g>
+            <defs>
+              <linearGradient gradientUnits="objectBoundingBox" id="grad24" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0.3" stop-color="#ffffff" stop-opacity="1"/>
+                <stop offset="1" stop-color="#d9d9d9" stop-opacity="1"/>
+              </linearGradient>
+            </defs>
+            <g clip-path="none" fill="none" opacity="0.75" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="2" stroke-opacity="1" stroke-width="1" transform="matrix(0.188976,0,0,0.188976,-11.2918,50.5512)">
+              <path d="M245,50 L357,50" fill-rule="evenodd" vector-effect="none"/>
+            </g>
+            <defs>
+              <linearGradient gradientUnits="objectBoundingBox" id="grad28" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0.3" stop-color="#ffffff" stop-opacity="1"/>
+                <stop offset="1" stop-color="#d9d9d9" stop-opacity="1"/>
+              </linearGradient>
+            </defs>
+            <g clip-path="none" fill="#000000" fill-opacity="1" opacity="0.75" stroke="none" stroke-opacity="0" transform="matrix(0.188976,0,0,0.188976,57.6845,41.1024)">
+              <path d="M0,0 L-8,-4 L-8,4 L0,0 z" fill-rule="nonzero" vector-effect="none"/>
+            </g>
+            <defs>
+              <linearGradient gradientUnits="objectBoundingBox" id="grad29" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0.3" stop-color="#ffffff" stop-opacity="1"/>
+                <stop offset="1" stop-color="#d9d9d9" stop-opacity="1"/>
+              </linearGradient>
+            </defs>
+            <g clip-path="none" fill="none" opacity="0.75" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="2" stroke-opacity="1" stroke-width="1" transform="matrix(0.188976,0,0,0.188976,-11.2918,50.5512)">
+              <path d="M245,-50 L357,-50" fill-rule="evenodd" vector-effect="none"/>
+            </g>
+            <defs>
+              <linearGradient gradientUnits="objectBoundingBox" id="grad33" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0.3" stop-color="#ffffff" stop-opacity="1"/>
+                <stop offset="1" stop-color="#d9d9d9" stop-opacity="1"/>
+              </linearGradient>
+            </defs>
+            <g clip-path="none" fill="#000000" fill-opacity="1" opacity="0.75" stroke="none" stroke-opacity="0" transform="matrix(0.188976,0,0,0.188976,18.9444,41.1024)">
+              <path d="M0,0 L-8,-4 L-8,4 L0,0 z" fill-rule="nonzero" vector-effect="none"/>
+            </g>
+            <defs>
+              <linearGradient gradientUnits="objectBoundingBox" id="grad34" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0.3" stop-color="#ffffff" stop-opacity="1"/>
+                <stop offset="1" stop-color="#d9d9d9" stop-opacity="1"/>
+              </linearGradient>
+            </defs>
+            <g clip-path="none" fill="none" opacity="0.75" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="2" stroke-opacity="1" stroke-width="1" transform="matrix(0.188976,0,0,0.188976,-11.2918,50.5512)">
+              <path d="M50,-50 L152,-50" fill-rule="evenodd" vector-effect="none"/>
+            </g>
+            <defs>
+              <linearGradient gradientUnits="objectBoundingBox" id="grad38" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0.3" stop-color="#ffffff" stop-opacity="1"/>
+                <stop offset="1" stop-color="#d9d9d9" stop-opacity="1"/>
+              </linearGradient>
+            </defs>
+            <g clip-path="none" fill="#000000" fill-opacity="1" opacity="0.75" stroke="none" stroke-opacity="0" transform="matrix(0.188976,0,0,0.188976,57.6845,78.8976)">
+              <path d="M0,0 L-8,-4 L-8,4 L0,0 z" fill-rule="nonzero" vector-effect="none"/>
+            </g>
+            <defs>
+              <linearGradient gradientUnits="objectBoundingBox" id="grad39" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0.3" stop-color="#ffffff" stop-opacity="1"/>
+                <stop offset="1" stop-color="#d9d9d9" stop-opacity="1"/>
+              </linearGradient>
+            </defs>
+            <g clip-path="none" fill="none" opacity="0.75" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="2" stroke-opacity="1" stroke-width="1" transform="matrix(0.188976,0,0,0.188976,-11.2918,50.5512)">
+              <path d="M245,150 L357,150" fill-rule="evenodd" vector-effect="none"/>
+            </g>
+            <!--RAWSTRING-->
+          </g>
+          <!--RAWSTRING-->
+          <g data-tags="blk">
+            <!--RAWSTRING-->
+          </g>
+          <!--RAWSTRING-->
+          <g data-tags="blk frame">
+            <defs>
+              <linearGradient gradientUnits="objectBoundingBox" id="grad44" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0.3" stop-color="#ffffff" stop-opacity="1"/>
+                <stop offset="1" stop-color="#d9d9d9" stop-opacity="1"/>
+              </linearGradient>
+            </defs>
+            <g clip-path="none" fill="none" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="2" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,-25,30)">
+              <path d="M0,0 L105,0 L105,60 L0,60 L0,0 z" fill-rule="evenodd" vector-effect="none"/>
+            </g>
+            <!--RAWSTRING-->
+          </g>
+          <!--RAWSTRING-->
+          <g data-tags="blk BlockName">
+            <defs>
+              <linearGradient gradientUnits="objectBoundingBox" id="grad45" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0.3" stop-color="#ffffff" stop-opacity="1"/>
+                <stop offset="1" stop-color="#d9d9d9" stop-opacity="1"/>
+              </linearGradient>
+              <clipPath id="clip26">
+                <path d="M-278.938,-248 L284.969,-248 L284.969,39 L-278.938,39 L-278.938,-248 z"/>
+              </clipPath>
+            </defs>
+            <g clip-path="url(#clip26)" fill="none" opacity="1" stroke="#000000" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,-4.96875,92)">
+              <text fill="#000000" fill-opacity="1" font-family="Arial" font-size="10" font-style="normal" font-weight="400" stroke="none" textLength="61.9375" x="1.5" xml:space="preserve" y="10">OHC LP Filter</text>
+            </g>
+            <!--RAWSTRING-->
+          </g>
+          <!--RAWSTRING-->
+          <g data-tags="portannotationpanel PortDataTypeString">
+            <defs>
+              <linearGradient gradientUnits="objectBoundingBox" id="grad46" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0.3" stop-color="#ffffff" stop-opacity="1"/>
+                <stop offset="1" stop-color="#d9d9d9" stop-opacity="1"/>
+              </linearGradient>
+              <clipPath id="clip27">
+                <path d="M-365.906,-198 L198,-198 L198,89 L-365.906,89 L-365.906,-198 z"/>
+              </clipPath>
+            </defs>
+            <g clip-path="url(#clip27)" fill="none" opacity="1" stroke="#000000" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,82,42)">
+              <text fill="#000000" fill-opacity="1" font-family="Arial" font-size="9" font-style="normal" font-weight="400" stroke="none" textLength="26.9844" x="1" xml:space="preserve" y="9">double</text>
+            </g>
+            <!--RAWSTRING-->
+          </g>
+          <!--RAWSTRING-->
+          <g data-tags="portannotationpanel PortDataTypeString">
+            <defs>
+              <linearGradient gradientUnits="objectBoundingBox" id="grad47" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0.3" stop-color="#ffffff" stop-opacity="1"/>
+                <stop offset="1" stop-color="#d9d9d9" stop-opacity="1"/>
+              </linearGradient>
+              <clipPath id="clip28">
+                <path d="M-365.906,-202 L198,-202 L198,85 L-365.906,85 L-365.906,-202 z"/>
+              </clipPath>
+            </defs>
+            <g clip-path="url(#clip28)" fill="none" opacity="1" stroke="#000000" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,82,46)">
+              <text fill="#000000" fill-opacity="1" font-family="Arial" font-size="9" font-style="normal" font-weight="400" stroke="none" textLength="23.4688" x="1" xml:space="preserve" y="9">single</text>
+            </g>
+            <!--RAWSTRING-->
+          </g>
+          <!--RAWSTRING-->
+          <g data-tags="portannotationpanel PortDataTypeString">
+            <defs>
+              <linearGradient gradientUnits="objectBoundingBox" id="grad48" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0.3" stop-color="#ffffff" stop-opacity="1"/>
+                <stop offset="1" stop-color="#d9d9d9" stop-opacity="1"/>
+              </linearGradient>
+              <clipPath id="clip29">
+                <path d="M-365.906,-222 L198,-222 L198,65 L-365.906,65 L-365.906,-222 z"/>
+              </clipPath>
+            </defs>
+            <g clip-path="url(#clip29)" fill="none" opacity="1" stroke="#000000" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,82,66)">
+              <text fill="#000000" fill-opacity="1" font-family="Arial" font-size="9" font-style="normal" font-weight="400" stroke="none" textLength="23.4688" x="1" xml:space="preserve" y="9">single</text>
+            </g>
+            <!--RAWSTRING-->
+          </g>
+          <!--RAWSTRING-->
+        </g>
+        <!--RAWSTRING-->
+      </g>
+      <!--RAWSTRING-->
+      <g data-tags="blk">
+        <!--RAWSTRING-->
+        <g id="OHC_Lowpass_Filter:16">
+          <defs>
+            <linearGradient gradientUnits="objectBoundingBox" id="grad49" x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0.3" stop-color="#ffffff" stop-opacity="1"/>
+              <stop offset="1" stop-color="#d9d9d9" stop-opacity="1"/>
+            </linearGradient>
+          </defs>
+          <g clip-path="none" fill="none" opacity="0.65098" stroke="#000000" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,179,44)">
+            <image height="41" preserveAspectRatio="none" width="106" x="0" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGoAAAApCAYAAADd7bxVAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABXElEQVR4nO3bu07DQBCF4T/IUMRFUkCThor3f6Y0aUhhF0mRNBSzK98BgdboiPNJo7VSWXs06xQ7G+BxVE+9ZyvrnurWe841UBGBbIF6tG5Xetn/7JrqMloXg6qBHbBPlZ+trAZo09qk3yYhwbCj9sBLque0WlnvwJnuM3MnumqiIr5JNV1Qh15ZWTWx/xAhXYkOm+h31I7opAPwmsrKyp10IzqpYeFP3NzRl4N6K/6aBt1x1xJH4WxQD2u+kf2cgxLhoEQ4KBEOSoSDEuGgRDgoEQ5KhIMS4aBEOCgRDkqEgxLhoEQ4KBEOSoSDEuGgRDgoEQ5KhIMS4aBEVHQ3NBviXlmNJznWcgROxL43LAwIwDColrgH3b9ia2WdUp2J/f80qLnrtPk3KysPCeSOuhB7PzE++mB4xdbKGo/dfHn05e4Zf6+srLlBttmgNng09C99ezTUzMzM7Fc+ADWwX0UCraVHAAAAAElFTkSuQmCC" y="0"/>
+          </g>
+          <g clip-path="none" fill="#ffffff" fill-opacity="1" opacity="1" stroke="none" stroke-opacity="0" transform="matrix(1,0,0,1,180,45)">
+            <path d="M0,0 L95,0 L95,30 L0,30 L0,0 z" fill-rule="evenodd" vector-effect="none"/>
+          </g>
+          <!--RAWSTRING-->
+          <g data-tags="blk*">
+            <defs>
+              <clipPath id="clip31">
+                <path d="M0,0 L96,0 L96,31 L0,31 L0,0 z"/>
+              </clipPath>
+            </defs>
+            <g clip-path="url(#clip31)" fill="none" opacity="1" stroke="none" stroke-opacity="0" transform="matrix(1,0,0,1,180,45)">
+              <path d="M0,0 L96,0 L96,31 L0,31 L0,0 z" fill-rule="evenodd" vector-effect="none"/>
+            </g>
+            <!--RAWSTRING-->
+            <g data-tags="dvgImage">
+              <defs>
+                <clipPath id="clip36">
+                  <path d="M-2,-1 L62,-1 L62,27 L-2,27 L-2,-1 z"/>
+                </clipPath>
+              </defs>
+              <g clip-path="url(#clip36)" fill="#000000" fill-opacity="1" opacity="1" stroke="none" stroke-opacity="0" transform="matrix(1,0,0,1,197.5,48)">
+                <path d="M2.39062,12 C2.39062,10.8438 2.70833,9.98958 3.34375,9.4375 C3.875,8.97917 4.52604,8.75 5.29688,8.75 C6.15104,8.75 6.85156,9.02865 7.39844,9.58594 C7.94531,10.1432 8.21875,10.9167 8.21875,11.9062 C8.21875,12.7083 8.09896,13.3385 7.85938,13.7969 C7.61979,14.2552 7.26823,14.612 6.80469,14.8672 C6.34115,15.1224 5.83854,15.25 5.29688,15.25 C4.43229,15.25 3.73177,14.9714 3.19531,14.4141 C2.65885,13.8568 2.39062,13.0521 2.39062,12 M3.46875,12 C3.46875,12.7917 3.64323,13.3854 3.99219,13.7812 C4.34115,14.1771 4.77604,14.375 5.29688,14.375 C5.82812,14.375 6.26562,14.1771 6.60938,13.7812 C6.95312,13.3854 7.125,12.7812 7.125,11.9688 C7.125,11.1979 6.95052,10.6146 6.60156,10.2188 C6.2526,9.82292 5.81771,9.625 5.29688,9.625 C4.77604,9.625 4.34115,9.82031 3.99219,10.2109 C3.64323,10.6016 3.46875,11.1979 3.46875,12 M13.5312,15.1094 L13.5312,14.1875 C13.0417,14.8958 12.3802,15.25 11.5469,15.25 C11.1823,15.25 10.8411,15.1797 10.5234,15.0391 C10.2057,14.8984 9.96875,14.7214 9.8125,14.5078 C9.65625,14.2943 9.54688,14.0312 9.48438,13.7188 C9.44271,13.5208 9.42188,13.1927 9.42188,12.7344 L9.42188,8.89062 L10.4844,8.89062 L10.4844,12.3438 C10.4844,12.8854 10.5052,13.2552 10.5469,13.4531 C10.6094,13.724 10.7474,13.9401 10.9609,14.1016 C11.1745,14.263 11.4427,14.3438 11.7656,14.3438 C12.0781,14.3438 12.3724,14.263 12.6484,14.1016 C12.9245,13.9401 13.1224,13.7188 13.2422,13.4375 C13.362,13.1562 13.4219,12.75 13.4219,12.2188 L13.4219,8.89062 L14.4688,8.89062 L14.4688,15.1094 L13.5312,15.1094 M18.4219,14.1719 L18.5781,15.0938 C18.276,15.1562 18.0104,15.1875 17.7812,15.1875 C17.3958,15.1875 17.099,15.1276 16.8906,15.0078 C16.6823,14.888 16.5339,14.7292 16.4453,14.5312 C16.3568,14.3333 16.3125,13.9167 16.3125,13.2812 L16.3125,9.70312 L15.5469,9.70312 L15.5469,8.89062 L16.3125,8.89062 L16.3125,7.34375 L17.3594,6.71875 L17.3594,8.89062 L18.4219,8.89062 L18.4219,9.70312 L17.3594,9.70312 L17.3594,13.3438 C17.3594,13.6458 17.3776,13.8385 17.4141,13.9219 C17.4505,14.0052 17.5104,14.0729 17.5938,14.125 C17.6771,14.1771 17.7969,14.2031 17.9531,14.2031 C18.0781,14.2031 18.2344,14.1927 18.4219,14.1719 M19.75,15.1094 L19.75,13.9062 L20.9531,13.9062 L20.9531,15.1094 L19.75,15.1094 M22.3906,12 C22.3906,10.8438 22.7083,9.98958 23.3438,9.4375 C23.875,8.97917 24.526,8.75 25.2969,8.75 C26.151,8.75 26.8516,9.02865 27.3984,9.58594 C27.9453,10.1432 28.2188,10.9167 28.2188,11.9062 C28.2188,12.7083 28.099,13.3385 27.8594,13.7969 C27.6198,14.2552 27.2682,14.612 26.8047,14.8672 C26.3411,15.1224 25.8385,15.25 25.2969,15.25 C24.4323,15.25 23.7318,14.9714 23.1953,14.4141 C22.6589,13.8568 22.3906,13.0521 22.3906,12 M23.4688,12 C23.4688,12.7917 23.6432,13.3854 23.9922,13.7812 C24.3411,14.1771 24.776,14.375 25.2969,14.375 C25.8281,14.375 26.2656,14.1771 26.6094,13.7812 C26.9531,13.3854 27.125,12.7812 27.125,11.9688 C27.125,11.1979 26.9505,10.6146 26.6016,10.2188 C26.2526,9.82292 25.8177,9.625 25.2969,9.625 C24.776,9.625 24.3411,9.82031 23.9922,10.2109 C23.6432,10.6016 23.4688,11.1979 23.4688,12 M29.4531,15.1094 L29.4531,6.51562 L30.5,6.51562 L30.5,9.59375 C30.9896,9.03125 31.6094,8.75 32.3594,8.75 C32.8281,8.75 33.2318,8.84115 33.5703,9.02344 C33.9089,9.20573 34.151,9.45573 34.2969,9.77344 C34.4427,10.0911 34.5156,10.5573 34.5156,11.1719 L34.5156,15.1094 L33.4688,15.1094 L33.4688,11.1719 C33.4688,10.6406 33.3542,10.2552 33.125,10.0156 C32.8958,9.77604 32.5729,9.65625 32.1562,9.65625 C31.8438,9.65625 31.5495,9.73698 31.2734,9.89844 C30.9974,10.0599 30.7995,10.2786 30.6797,10.5547 C30.5599,10.8307 30.5,11.2135 30.5,11.7031 L30.5,15.1094 L29.4531,15.1094 M40.1875,12.8281 L41.2188,12.9688 C41.1042,13.6771 40.8125,14.2344 40.3438,14.6406 C39.875,15.0469 39.3021,15.25 38.625,15.25 C37.7708,15.25 37.0859,14.9714 36.5703,14.4141 C36.0547,13.8568 35.7969,13.0573 35.7969,12.0156 C35.7969,11.349 35.9089,10.763 36.1328,10.2578 C36.3568,9.7526 36.6953,9.375 37.1484,9.125 C37.6016,8.875 38.099,8.75 38.6406,8.75 C39.3073,8.75 39.8568,8.91927 40.2891,9.25781 C40.7214,9.59635 41,10.0833 41.125,10.7188 L40.0938,10.875 C40,10.4583 39.8281,10.1432 39.5781,9.92969 C39.3281,9.71615 39.026,9.60938 38.6719,9.60938 C38.1406,9.60938 37.7083,9.79948 37.375,10.1797 C37.0417,10.5599 36.875,11.1615 36.875,11.9844 C36.875,12.8281 37.0365,13.4375 37.3594,13.8125 C37.6823,14.1875 38.099,14.375 38.6094,14.375 C39.026,14.375 39.3724,14.25 39.6484,14 C39.9245,13.75 40.1042,13.3594 40.1875,12.8281 M41.7344,12 C41.7344,10.8438 42.0521,9.98958 42.6875,9.4375 C43.2188,8.97917 43.8698,8.75 44.6406,8.75 C45.4948,8.75 46.1953,9.02865 46.7422,9.58594 C47.2891,10.1432 47.5625,10.9167 47.5625,11.9062 C47.5625,12.7083 47.4427,13.3385 47.2031,13.7969 C46.9635,14.2552 46.612,14.612 46.1484,14.8672 C45.6849,15.1224 45.1823,15.25 44.6406,15.25 C43.776,15.25 43.0755,14.9714 42.5391,14.4141 C42.0026,13.8568 41.7344,13.0521 41.7344,12 M42.8125,12 C42.8125,12.7917 42.987,13.3854 43.3359,13.7812 C43.6849,14.1771 44.1198,14.375 44.6406,14.375 C45.1719,14.375 45.6094,14.1771 45.9531,13.7812 C46.2969,13.3854 46.4688,12.7812 46.4688,11.9688 C46.4688,11.1979 46.2943,10.6146 45.9453,10.2188 C45.5964,9.82292 45.1615,9.625 44.6406,9.625 C44.1198,9.625 43.6849,9.82031 43.3359,10.2109 C42.987,10.6016 42.8125,11.1979 42.8125,12 M52.875,15.1094 L52.875,14.1875 C52.3854,14.8958 51.724,15.25 50.8906,15.25 C50.526,15.25 50.1849,15.1797 49.8672,15.0391 C49.5495,14.8984 49.3125,14.7214 49.1562,14.5078 C49,14.2943 48.8906,14.0312 48.8281,13.7188 C48.7865,13.5208 48.7656,13.1927 48.7656,12.7344 L48.7656,8.89062 L49.8281,8.89062 L49.8281,12.3438 C49.8281,12.8854 49.849,13.2552 49.8906,13.4531 C49.9531,13.724 50.0911,13.9401 50.3047,14.1016 C50.5182,14.263 50.7865,14.3438 51.1094,14.3438 C51.4219,14.3438 51.7161,14.263 51.9922,14.1016 C52.2682,13.9401 52.4661,13.7188 52.5859,13.4375 C52.7057,13.1562 52.7656,12.75 52.7656,12.2188 L52.7656,8.89062 L53.8125,8.89062 L53.8125,15.1094 L52.875,15.1094 M57.7656,14.1719 L57.9219,15.0938 C57.6198,15.1562 57.3542,15.1875 57.125,15.1875 C56.7396,15.1875 56.4427,15.1276 56.2344,15.0078 C56.026,14.888 55.8776,14.7292 55.7891,14.5312 C55.7005,14.3333 55.6562,13.9167 55.6562,13.2812 L55.6562,9.70312 L54.8906,9.70312 L54.8906,8.89062 L55.6562,8.89062 L55.6562,7.34375 L56.7031,6.71875 L56.7031,8.89062 L57.7656,8.89062 L57.7656,9.70312 L56.7031,9.70312 L56.7031,13.3438 C56.7031,13.6458 56.7214,13.8385 56.7578,13.9219 C56.7943,14.0052 56.8542,14.0729 56.9375,14.125 C57.0208,14.1771 57.1406,14.2031 57.2969,14.2031 C57.4219,14.2031 57.5781,14.1927 57.7656,14.1719" fill-rule="nonzero" vector-effect="none"/>
+              </g>
+              <!--RAWSTRING-->
+            </g>
+            <!--RAWSTRING-->
+          </g>
+          <!--RAWSTRING-->
+          <g data-tags="blk">
+            <!--RAWSTRING-->
+          </g>
+          <!--RAWSTRING-->
+          <g data-tags="blk frame">
+            <g clip-path="none" fill="none" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="2" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,180,45)">
+              <path d="M0,0 L95,0 L95,30 L0,30 L0,0 z" fill-rule="evenodd" vector-effect="none"/>
+            </g>
+            <!--RAWSTRING-->
+          </g>
+          <!--RAWSTRING-->
+        </g>
+        <!--RAWSTRING-->
+      </g>
+      <!--RAWSTRING-->
+      <g data-tags="blk">
+        <!--RAWSTRING-->
+        <g id="OHC_Lowpass_Filter:24">
+          <g clip-path="none" fill="none" opacity="0.65098" stroke="#000000" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,-241,4)">
+            <image height="51" preserveAspectRatio="none" width="106" x="0" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGoAAAAzCAYAAAB/oJ2oAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABkElEQVR4nO3cP0/CQACG8QdTHegAgy4sTn4Yv/+oiwuLDGWAARaHu0v/q9BczSvvL7m0ISQ0fXKtg3cL4L4zHhrnltc5jlPjPI2WghBkCZSd43Kmi71lxzgOneNoqBJYAes40rnlVQH7eKziZ71I0J5Ra+Apjsd4tLw+gR31a+ZMmFU9BeGdVFKH2jSG5VUS7j+ESEfCDOtpzqgVYSZtgOc4LK80k06EmVQx8kfc0KMvhXrJfpkG9eNuT3gUDoa6m/OK7HoOJcKhRDiUCIcS4VAiHEqEQ4lwKBEOJcKhRDiUCIcS4VAiHEqEQ4lwKBEOJcKhRDiUCIcS4VAiHEpEceH337Jcxf83+X8kLw31PvUHb9TsoV6n/qBdx+8oEQ4lwqFEOJQIhxLhUCIcSkRBvXa0Iqx4K/EeE3P5ALaE+14xsnUBtEPtCSu0m4t/La9tHDvC/f821NBC3/SZ5ZW2L0gz6kC49z3dRx+0F/9aXt0NQX589KXZ031fWV5DW+wMhlrgTav+0q83rTIzMzOb5AuCuGGp57nupQAAAABJRU5ErkJggg==" y="0"/>
+          </g>
+          <g clip-path="none" fill="#ffffff" fill-opacity="1" opacity="1" stroke="none" stroke-opacity="0" transform="matrix(1,0,0,1,-240,5)">
+            <path d="M0,0 L95,0 L95,40 L0,40 L0,0 z" fill-rule="evenodd" vector-effect="none"/>
+          </g>
+          <!--RAWSTRING-->
+          <g data-tags="blk">
+            <defs>
+              <clipPath id="clip48">
+                <path d="M-48,-20 L47,-20 L47,20 L-48,20 L-48,-20 z"/>
+              </clipPath>
+            </defs>
+            <g clip-path="url(#clip48)" fill="none" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="2" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,-192,25)">
+              <text fill="#000000" fill-opacity="1" font-family="Arial" font-size="10" font-style="normal" font-weight="400" stroke="none" textLength="80.4531" x="-40.2188" xml:space="preserve" y="3.5">RxSignal_doubles</text>
+            </g>
+            <!--RAWSTRING-->
+          </g>
+          <!--RAWSTRING-->
+          <g data-tags="blk frame">
+            <g clip-path="none" fill="none" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="2" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,-240,5)">
+              <path d="M0,0 L95,0 L95,40 L0,40 L0,0 z" fill-rule="evenodd" vector-effect="none"/>
+            </g>
+            <!--RAWSTRING-->
+          </g>
+          <!--RAWSTRING-->
+          <g data-tags="blk BlockName">
+            <defs>
+              <clipPath id="clip49">
+                <path d="M0,-203 L563.906,-203 L563.906,84 L0,84 L0,-203 z"/>
+              </clipPath>
+            </defs>
+            <g clip-path="url(#clip49)" fill="none" opacity="1" stroke="#000000" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,-283.906,47)">
+              <text fill="#000000" fill-opacity="1" font-family="Arial" font-size="10" font-style="normal" font-weight="400" stroke="none" textLength="180.812" x="1" xml:space="preserve" y="10">OHC Nonlinear Function Output Doubles</text>
+            </g>
+            <!--RAWSTRING-->
+          </g>
+          <!--RAWSTRING-->
+          <g data-tags="portannotationpanel PortDataTypeString">
+            <defs>
+              <clipPath id="clip50">
+                <path d="M-140.906,-183 L423,-183 L423,104 L-140.906,104 L-140.906,-183 z"/>
+              </clipPath>
+            </defs>
+            <g clip-path="url(#clip50)" fill="none" opacity="1" stroke="#000000" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,-143,27)">
+              <text fill="#000000" fill-opacity="1" font-family="Arial" font-size="9" font-style="normal" font-weight="400" stroke="none" textLength="26.9844" x="1" xml:space="preserve" y="9">double</text>
+            </g>
+            <!--RAWSTRING-->
+          </g>
+          <!--RAWSTRING-->
+        </g>
+        <!--RAWSTRING-->
+      </g>
+      <!--RAWSTRING-->
+      <g data-tags="blk">
+        <!--RAWSTRING-->
+        <g id="OHC_Lowpass_Filter:25">
+          <g clip-path="none" fill="none" opacity="0.65098" stroke="#000000" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,179,-6)">
+            <image height="41" preserveAspectRatio="none" width="106" x="0" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGoAAAApCAYAAADd7bxVAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABXElEQVR4nO3bu07DQBCF4T/IUMRFUkCThor3f6Y0aUhhF0mRNBSzK98BgdboiPNJo7VSWXs06xQ7G+BxVE+9ZyvrnurWe841UBGBbIF6tG5Xetn/7JrqMloXg6qBHbBPlZ+trAZo09qk3yYhwbCj9sBLque0WlnvwJnuM3MnumqiIr5JNV1Qh15ZWTWx/xAhXYkOm+h31I7opAPwmsrKyp10IzqpYeFP3NzRl4N6K/6aBt1x1xJH4WxQD2u+kf2cgxLhoEQ4KBEOSoSDEuGgRDgoEQ5KhIMS4aBEOCgRDkqEgxLhoEQ4KBEOSoSDEuGgRDgoEQ5KhIMS4aBEVHQ3NBviXlmNJznWcgROxL43LAwIwDColrgH3b9ia2WdUp2J/f80qLnrtPk3KysPCeSOuhB7PzE++mB4xdbKGo/dfHn05e4Zf6+srLlBttmgNng09C99ezTUzMzM7Fc+ADWwX0UCraVHAAAAAElFTkSuQmCC" y="0"/>
+          </g>
+          <g clip-path="none" fill="#ffffff" fill-opacity="1" opacity="1" stroke="none" stroke-opacity="0" transform="matrix(1,0,0,1,180,-5)">
+            <path d="M0,0 L95,0 L95,30 L0,30 L0,0 z" fill-rule="evenodd" vector-effect="none"/>
+          </g>
+          <!--RAWSTRING-->
+          <g data-tags="blk*">
+            <defs>
+              <clipPath id="clip52">
+                <path d="M0,0 L96,0 L96,31 L0,31 L0,0 z"/>
+              </clipPath>
+            </defs>
+            <g clip-path="url(#clip52)" fill="none" opacity="1" stroke="none" stroke-opacity="0" transform="matrix(1,0,0,1,180,-5)">
+              <path d="M0,0 L96,0 L96,31 L0,31 L0,0 z" fill-rule="evenodd" vector-effect="none"/>
+            </g>
+            <!--RAWSTRING-->
+            <g data-tags="dvgImage">
+              <defs>
+                <clipPath id="clip57">
+                  <path d="M-25,-6 L86,-6 L86,34 L-25,34 L-25,-6 z"/>
+                </clipPath>
+              </defs>
+              <g clip-path="url(#clip57)" fill="#000000" fill-opacity="1" opacity="1" stroke="none" stroke-opacity="0" transform="matrix(0.7,0,0,0.7,206.5,1.33281)">
+                <path d="M-21.9375,12 C-21.9375,10.8438 -21.6198,9.98958 -20.9844,9.4375 C-20.4531,8.97917 -19.8021,8.75 -19.0312,8.75 C-18.1771,8.75 -17.4766,9.02865 -16.9297,9.58594 C-16.3828,10.1432 -16.1094,10.9167 -16.1094,11.9062 C-16.1094,12.7083 -16.2292,13.3385 -16.4688,13.7969 C-16.7083,14.2552 -17.0599,14.612 -17.5234,14.8672 C-17.987,15.1224 -18.4896,15.25 -19.0312,15.25 C-19.8958,15.25 -20.5964,14.9714 -21.1328,14.4141 C-21.6693,13.8568 -21.9375,13.0521 -21.9375,12 M-20.8594,12 C-20.8594,12.7917 -20.6849,13.3854 -20.3359,13.7812 C-19.987,14.1771 -19.5521,14.375 -19.0312,14.375 C-18.5,14.375 -18.0625,14.1771 -17.7188,13.7812 C-17.375,13.3854 -17.2031,12.7812 -17.2031,11.9688 C-17.2031,11.1979 -17.3776,10.6146 -17.7266,10.2188 C-18.0755,9.82292 -18.5104,9.625 -19.0312,9.625 C-19.5521,9.625 -19.987,9.82031 -20.3359,10.2109 C-20.6849,10.6016 -20.8594,11.1979 -20.8594,12 M-10.7969,15.1094 L-10.7969,14.1875 C-11.2865,14.8958 -11.9479,15.25 -12.7812,15.25 C-13.1458,15.25 -13.487,15.1797 -13.8047,15.0391 C-14.1224,14.8984 -14.3594,14.7214 -14.5156,14.5078 C-14.6719,14.2943 -14.7812,14.0312 -14.8438,13.7188 C-14.8854,13.5208 -14.9062,13.1927 -14.9062,12.7344 L-14.9062,8.89062 L-13.8438,8.89062 L-13.8438,12.3438 C-13.8438,12.8854 -13.8229,13.2552 -13.7812,13.4531 C-13.7188,13.724 -13.5807,13.9401 -13.3672,14.1016 C-13.1536,14.263 -12.8854,14.3438 -12.5625,14.3438 C-12.25,14.3438 -11.9557,14.263 -11.6797,14.1016 C-11.4036,13.9401 -11.2057,13.7188 -11.0859,13.4375 C-10.9661,13.1562 -10.9062,12.75 -10.9062,12.2188 L-10.9062,8.89062 L-9.85938,8.89062 L-9.85938,15.1094 L-10.7969,15.1094 M-5.90625,14.1719 L-5.75,15.0938 C-6.05208,15.1562 -6.31771,15.1875 -6.54688,15.1875 C-6.93229,15.1875 -7.22917,15.1276 -7.4375,15.0078 C-7.64583,14.888 -7.79427,14.7292 -7.88281,14.5312 C-7.97135,14.3333 -8.01562,13.9167 -8.01562,13.2812 L-8.01562,9.70312 L-8.78125,9.70312 L-8.78125,8.89062 L-8.01562,8.89062 L-8.01562,7.34375 L-6.96875,6.71875 L-6.96875,8.89062 L-5.90625,8.89062 L-5.90625,9.70312 L-6.96875,9.70312 L-6.96875,13.3438 C-6.96875,13.6458 -6.95052,13.8385 -6.91406,13.9219 C-6.8776,14.0052 -6.81771,14.0729 -6.73438,14.125 C-6.65104,14.1771 -6.53125,14.2031 -6.375,14.2031 C-6.25,14.2031 -6.09375,14.1927 -5.90625,14.1719 M-4.57812,15.1094 L-4.57812,13.9062 L-3.375,13.9062 L-3.375,15.1094 L-4.57812,15.1094 M-1.9375,12 C-1.9375,10.8438 -1.61979,9.98958 -0.984375,9.4375 C-0.453125,8.97917 0.197917,8.75 0.96875,8.75 C1.82292,8.75 2.52344,9.02865 3.07031,9.58594 C3.61719,10.1432 3.89062,10.9167 3.89062,11.9062 C3.89062,12.7083 3.77083,13.3385 3.53125,13.7969 C3.29167,14.2552 2.9401,14.612 2.47656,14.8672 C2.01302,15.1224 1.51042,15.25 0.96875,15.25 C0.104167,15.25 -0.596354,14.9714 -1.13281,14.4141 C-1.66927,13.8568 -1.9375,13.0521 -1.9375,12 M-0.859375,12 C-0.859375,12.7917 -0.684896,13.3854 -0.335938,13.7812 C0.0130208,14.1771 0.447917,14.375 0.96875,14.375 C1.5,14.375 1.9375,14.1771 2.28125,13.7812 C2.625,13.3854 2.79688,12.7812 2.79688,11.9688 C2.79688,11.1979 2.6224,10.6146 2.27344,10.2188 C1.92448,9.82292 1.48958,9.625 0.96875,9.625 C0.447917,9.625 0.0130208,9.82031 -0.335938,10.2109 C-0.684896,10.6016 -0.859375,11.1979 -0.859375,12 M5.10938,15.1094 L5.10938,6.51562 L6.15625,6.51562 L6.15625,9.59375 C6.64583,9.03125 7.26562,8.75 8.01562,8.75 C8.48438,8.75 8.88802,8.84115 9.22656,9.02344 C9.5651,9.20573 9.80729,9.45573 9.95312,9.77344 C10.099,10.0911 10.1719,10.5573 10.1719,11.1719 L10.1719,15.1094 L9.125,15.1094 L9.125,11.1719 C9.125,10.6406 9.01042,10.2552 8.78125,10.0156 C8.55208,9.77604 8.22917,9.65625 7.8125,9.65625 C7.5,9.65625 7.20573,9.73698 6.92969,9.89844 C6.65365,10.0599 6.45573,10.2786 6.33594,10.5547 C6.21615,10.8307 6.15625,11.2135 6.15625,11.7031 L6.15625,15.1094 L5.10938,15.1094 M15.8438,12.8281 L16.875,12.9688 C16.7604,13.6771 16.4688,14.2344 16,14.6406 C15.5312,15.0469 14.9583,15.25 14.2812,15.25 C13.4271,15.25 12.7422,14.9714 12.2266,14.4141 C11.7109,13.8568 11.4531,13.0573 11.4531,12.0156 C11.4531,11.349 11.5651,10.763 11.7891,10.2578 C12.013,9.7526 12.3516,9.375 12.8047,9.125 C13.2578,8.875 13.7552,8.75 14.2969,8.75 C14.9635,8.75 15.513,8.91927 15.9453,9.25781 C16.3776,9.59635 16.6562,10.0833 16.7812,10.7188 L15.75,10.875 C15.6562,10.4583 15.4844,10.1432 15.2344,9.92969 C14.9844,9.71615 14.6823,9.60938 14.3281,9.60938 C13.7969,9.60938 13.3646,9.79948 13.0312,10.1797 C12.6979,10.5599 12.5312,11.1615 12.5312,11.9844 C12.5312,12.8281 12.6927,13.4375 13.0156,13.8125 C13.3385,14.1875 13.7552,14.375 14.2656,14.375 C14.6823,14.375 15.0286,14.25 15.3047,14 C15.5807,13.75 15.7604,13.3594 15.8438,12.8281 M17.3906,12 C17.3906,10.8438 17.7083,9.98958 18.3438,9.4375 C18.875,8.97917 19.526,8.75 20.2969,8.75 C21.151,8.75 21.8516,9.02865 22.3984,9.58594 C22.9453,10.1432 23.2188,10.9167 23.2188,11.9062 C23.2188,12.7083 23.099,13.3385 22.8594,13.7969 C22.6198,14.2552 22.2682,14.612 21.8047,14.8672 C21.3411,15.1224 20.8385,15.25 20.2969,15.25 C19.4323,15.25 18.7318,14.9714 18.1953,14.4141 C17.6589,13.8568 17.3906,13.0521 17.3906,12 M18.4688,12 C18.4688,12.7917 18.6432,13.3854 18.9922,13.7812 C19.3411,14.1771 19.776,14.375 20.2969,14.375 C20.8281,14.375 21.2656,14.1771 21.6094,13.7812 C21.9531,13.3854 22.125,12.7812 22.125,11.9688 C22.125,11.1979 21.9505,10.6146 21.6016,10.2188 C21.2526,9.82292 20.8177,9.625 20.2969,9.625 C19.776,9.625 19.3411,9.82031 18.9922,10.2109 C18.6432,10.6016 18.4688,11.1979 18.4688,12 M28.5312,15.1094 L28.5312,14.1875 C28.0417,14.8958 27.3802,15.25 26.5469,15.25 C26.1823,15.25 25.8411,15.1797 25.5234,15.0391 C25.2057,14.8984 24.9688,14.7214 24.8125,14.5078 C24.6562,14.2943 24.5469,14.0312 24.4844,13.7188 C24.4427,13.5208 24.4219,13.1927 24.4219,12.7344 L24.4219,8.89062 L25.4844,8.89062 L25.4844,12.3438 C25.4844,12.8854 25.5052,13.2552 25.5469,13.4531 C25.6094,13.724 25.7474,13.9401 25.9609,14.1016 C26.1745,14.263 26.4427,14.3438 26.7656,14.3438 C27.0781,14.3438 27.3724,14.263 27.6484,14.1016 C27.9245,13.9401 28.1224,13.7188 28.2422,13.4375 C28.362,13.1562 28.4219,12.75 28.4219,12.2188 L28.4219,8.89062 L29.4688,8.89062 L29.4688,15.1094 L28.5312,15.1094 M33.4219,14.1719 L33.5781,15.0938 C33.276,15.1562 33.0104,15.1875 32.7812,15.1875 C32.3958,15.1875 32.099,15.1276 31.8906,15.0078 C31.6823,14.888 31.5339,14.7292 31.4453,14.5312 C31.3568,14.3333 31.3125,13.9167 31.3125,13.2812 L31.3125,9.70312 L30.5469,9.70312 L30.5469,8.89062 L31.3125,8.89062 L31.3125,7.34375 L32.3594,6.71875 L32.3594,8.89062 L33.4219,8.89062 L33.4219,9.70312 L32.3594,9.70312 L32.3594,13.3438 C32.3594,13.6458 32.3776,13.8385 32.4141,13.9219 C32.4505,14.0052 32.5104,14.0729 32.5938,14.125 C32.6771,14.1771 32.7969,14.2031 32.9531,14.2031 C33.0781,14.2031 33.2344,14.1927 33.4219,14.1719 M33.4688,17.5 L33.4688,16.7344 L40.4688,16.7344 L40.4688,17.5 L33.4688,17.5 M45.1562,15.1094 L45.1562,14.3281 C44.7604,14.9427 44.1823,15.25 43.4219,15.25 C42.9219,15.25 42.4635,15.112 42.0469,14.8359 C41.6302,14.5599 41.3073,14.1771 41.0781,13.6875 C40.849,13.1979 40.7344,12.6354 40.7344,12 C40.7344,11.3854 40.8385,10.8229 41.0469,10.3125 C41.2552,9.80208 41.5677,9.41406 41.9844,9.14844 C42.401,8.88281 42.8646,8.75 43.375,8.75 C43.75,8.75 44.0833,8.82812 44.375,8.98438 C44.6667,9.14062 44.9062,9.34375 45.0938,9.59375 L45.0938,6.51562 L46.1406,6.51562 L46.1406,15.1094 L45.1562,15.1094 M41.8281,12 C41.8281,12.8021 41.9948,13.3984 42.3281,13.7891 C42.6615,14.1797 43.0573,14.375 43.5156,14.375 C43.974,14.375 44.3646,14.1875 44.6875,13.8125 C45.0104,13.4375 45.1719,12.8646 45.1719,12.0938 C45.1719,11.2396 45.0078,10.6146 44.6797,10.2188 C44.3516,9.82292 43.9479,9.625 43.4688,9.625 C43,9.625 42.6094,9.8151 42.2969,10.1953 C41.9844,10.5755 41.8281,11.1771 41.8281,12 M47.4062,12 C47.4062,10.8438 47.724,9.98958 48.3594,9.4375 C48.8906,8.97917 49.5417,8.75 50.3125,8.75 C51.1667,8.75 51.8672,9.02865 52.4141,9.58594 C52.9609,10.1432 53.2344,10.9167 53.2344,11.9062 C53.2344,12.7083 53.1146,13.3385 52.875,13.7969 C52.6354,14.2552 52.2839,14.612 51.8203,14.8672 C51.3568,15.1224 50.8542,15.25 50.3125,15.25 C49.4479,15.25 48.7474,14.9714 48.2109,14.4141 C47.6745,13.8568 47.4062,13.0521 47.4062,12 M48.4844,12 C48.4844,12.7917 48.6589,13.3854 49.0078,13.7812 C49.3568,14.1771 49.7917,14.375 50.3125,14.375 C50.8438,14.375 51.2812,14.1771 51.625,13.7812 C51.9688,13.3854 52.1406,12.7812 52.1406,11.9688 C52.1406,11.1979 51.9661,10.6146 51.6172,10.2188 C51.2682,9.82292 50.8333,9.625 50.3125,9.625 C49.7917,9.625 49.3568,9.82031 49.0078,10.2109 C48.6589,10.6016 48.4844,11.1979 48.4844,12 M58.5469,15.1094 L58.5469,14.1875 C58.0573,14.8958 57.3958,15.25 56.5625,15.25 C56.1979,15.25 55.8568,15.1797 55.5391,15.0391 C55.2214,14.8984 54.9844,14.7214 54.8281,14.5078 C54.6719,14.2943 54.5625,14.0312 54.5,13.7188 C54.4583,13.5208 54.4375,13.1927 54.4375,12.7344 L54.4375,8.89062 L55.5,8.89062 L55.5,12.3438 C55.5,12.8854 55.5208,13.2552 55.5625,13.4531 C55.625,13.724 55.763,13.9401 55.9766,14.1016 C56.1901,14.263 56.4583,14.3438 56.7812,14.3438 C57.0938,14.3438 57.388,14.263 57.6641,14.1016 C57.9401,13.9401 58.138,13.7188 58.2578,13.4375 C58.3776,13.1562 58.4375,12.75 58.4375,12.2188 L58.4375,8.89062 L59.4844,8.89062 L59.4844,15.1094 L58.5469,15.1094 M62.1094,15.1094 L61.125,15.1094 L61.125,6.51562 L62.1875,6.51562 L62.1875,9.57812 C62.6354,9.02604 63.2031,8.75 63.8906,8.75 C64.276,8.75 64.638,8.82552 64.9766,8.97656 C65.3151,9.1276 65.5964,9.34375 65.8203,9.625 C66.0443,9.90625 66.2188,10.2448 66.3438,10.6406 C66.4688,11.0365 66.5312,11.4583 66.5312,11.9062 C66.5312,12.9688 66.2656,13.7917 65.7344,14.375 C65.2031,14.9583 64.5729,15.25 63.8438,15.25 C63.1042,15.25 62.526,14.9427 62.1094,14.3281 L62.1094,15.1094 M62.0938,11.9531 C62.0938,12.6927 62.1979,13.2292 62.4062,13.5625 C62.7396,14.1042 63.1875,14.375 63.75,14.375 C64.2083,14.375 64.6068,14.1771 64.9453,13.7812 C65.2839,13.3854 65.4531,12.7865 65.4531,11.9844 C65.4531,11.1719 65.2917,10.5729 64.9688,10.1875 C64.6458,9.80208 64.2552,9.60938 63.7969,9.60938 C63.3385,9.60938 62.9401,9.8099 62.6016,10.2109 C62.263,10.612 62.0938,11.1927 62.0938,11.9531 M67.7812,15.1094 L67.7812,6.51562 L68.8438,6.51562 L68.8438,15.1094 L67.7812,15.1094 M74.7188,13.1094 L75.8125,13.2344 C75.6458,13.8698 75.3281,14.3646 74.8594,14.7188 C74.3906,15.0729 73.7969,15.25 73.0781,15.25 C72.1719,15.25 71.4505,14.9688 70.9141,14.4062 C70.3776,13.8438 70.1094,13.0573 70.1094,12.0469 C70.1094,11.0052 70.3802,10.1953 70.9219,9.61719 C71.4635,9.03906 72.1615,8.75 73.0156,8.75 C73.849,8.75 74.5286,9.03125 75.0547,9.59375 C75.5807,10.1562 75.8438,10.9531 75.8438,11.9844 C75.8438,12.0469 75.8438,12.1406 75.8438,12.2656 L71.2031,12.2656 C71.2448,12.9531 71.4375,13.4766 71.7812,13.8359 C72.125,14.1953 72.5573,14.375 73.0781,14.375 C73.4635,14.375 73.7943,14.2734 74.0703,14.0703 C74.3464,13.8672 74.5625,13.5469 74.7188,13.1094 M71.2656,11.4062 L74.7344,11.4062 C74.6927,10.875 74.5625,10.4792 74.3438,10.2188 C74,9.8125 73.5625,9.60938 73.0312,9.60938 C72.5417,9.60938 72.1328,9.77083 71.8047,10.0938 C71.4766,10.4167 71.2969,10.8542 71.2656,11.4062 M76.7188,13.25 L77.75,13.0938 C77.8125,13.5104 77.9766,13.8281 78.2422,14.0469 C78.5078,14.2656 78.8854,14.375 79.375,14.375 C79.8542,14.375 80.2109,14.2786 80.4453,14.0859 C80.6797,13.8932 80.7969,13.6615 80.7969,13.3906 C80.7969,13.151 80.6927,12.9635 80.4844,12.8281 C80.3385,12.7344 79.9792,12.6146 79.4062,12.4688 C78.6354,12.2708 78.1016,12.1016 77.8047,11.9609 C77.5078,11.8203 77.2812,11.625 77.125,11.375 C76.9688,11.125 76.8906,10.8438 76.8906,10.5312 C76.8906,10.2604 76.9531,10.0052 77.0781,9.76562 C77.2031,9.52604 77.375,9.32812 77.5938,9.17188 C77.7604,9.05729 77.9844,8.95833 78.2656,8.875 C78.5469,8.79167 78.8542,8.75 79.1875,8.75 C79.6667,8.75 80.0911,8.82031 80.4609,8.96094 C80.8307,9.10156 81.1042,9.29167 81.2812,9.53125 C81.4583,9.77083 81.5781,10.0885 81.6406,10.4844 L80.6094,10.625 C80.5677,10.3125 80.4349,10.0651 80.2109,9.88281 C79.987,9.70052 79.6667,9.60938 79.25,9.60938 C78.7708,9.60938 78.4271,9.6901 78.2188,9.85156 C78.0104,10.013 77.9062,10.2031 77.9062,10.4219 C77.9062,10.5573 77.9479,10.6771 78.0312,10.7812 C78.125,10.8958 78.2604,10.9896 78.4375,11.0625 C78.5417,11.1042 78.8542,11.1927 79.375,11.3281 C80.125,11.5365 80.6458,11.7031 80.9375,11.8281 C81.2292,11.9531 81.4583,12.1354 81.625,12.375 C81.7917,12.6146 81.875,12.9167 81.875,13.2812 C81.875,13.6354 81.7734,13.9661 81.5703,14.2734 C81.3672,14.5807 81.0729,14.8203 80.6875,14.9922 C80.3021,15.1641 79.8646,15.25 79.375,15.25 C78.5625,15.25 77.9453,15.0807 77.5234,14.7422 C77.1016,14.4036 76.8333,13.9062 76.7188,13.25" fill-rule="nonzero" vector-effect="none"/>
+              </g>
+              <!--RAWSTRING-->
+            </g>
+            <!--RAWSTRING-->
+          </g>
+          <!--RAWSTRING-->
+          <g data-tags="blk">
+            <!--RAWSTRING-->
+          </g>
+          <!--RAWSTRING-->
+          <g data-tags="blk frame">
+            <g clip-path="none" fill="none" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="2" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,180,-5)">
+              <path d="M0,0 L95,0 L95,30 L0,30 L0,0 z" fill-rule="evenodd" vector-effect="none"/>
+            </g>
+            <!--RAWSTRING-->
+          </g>
+          <!--RAWSTRING-->
+        </g>
+        <!--RAWSTRING-->
+      </g>
+      <!--RAWSTRING-->
+      <g data-tags="blk">
+        <!--RAWSTRING-->
+        <g id="OHC_Lowpass_Filter:50">
+          <g clip-path="none" fill="none" opacity="0.65098" stroke="#000000" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,179,94)">
+            <image height="41" preserveAspectRatio="none" width="106" x="0" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGoAAAApCAYAAADd7bxVAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABXElEQVR4nO3bu07DQBCF4T/IUMRFUkCThor3f6Y0aUhhF0mRNBSzK98BgdboiPNJo7VSWXs06xQ7G+BxVE+9ZyvrnurWe841UBGBbIF6tG5Xetn/7JrqMloXg6qBHbBPlZ+trAZo09qk3yYhwbCj9sBLque0WlnvwJnuM3MnumqiIr5JNV1Qh15ZWTWx/xAhXYkOm+h31I7opAPwmsrKyp10IzqpYeFP3NzRl4N6K/6aBt1x1xJH4WxQD2u+kf2cgxLhoEQ4KBEOSoSDEuGgRDgoEQ5KhIMS4aBEOCgRDkqEgxLhoEQ4KBEOSoSDEuGgRDgoEQ5KhIMS4aBEVHQ3NBviXlmNJznWcgROxL43LAwIwDColrgH3b9ia2WdUp2J/f80qLnrtPk3KysPCeSOuhB7PzE++mB4xdbKGo/dfHn05e4Zf6+srLlBttmgNng09C99ezTUzMzM7Fc+ADWwX0UCraVHAAAAAElFTkSuQmCC" y="0"/>
+          </g>
+          <g clip-path="none" fill="#ffffff" fill-opacity="1" opacity="1" stroke="none" stroke-opacity="0" transform="matrix(1,0,0,1,180,95)">
+            <path d="M0,0 L95,0 L95,30 L0,30 L0,0 z" fill-rule="evenodd" vector-effect="none"/>
+          </g>
+          <!--RAWSTRING-->
+          <g data-tags="blk*">
+            <defs>
+              <clipPath id="clip69">
+                <path d="M0,0 L96,0 L96,31 L0,31 L0,0 z"/>
+              </clipPath>
+            </defs>
+            <g clip-path="url(#clip69)" fill="none" opacity="1" stroke="none" stroke-opacity="0" transform="matrix(1,0,0,1,180,95)">
+              <path d="M0,0 L96,0 L96,31 L0,31 L0,0 z" fill-rule="evenodd" vector-effect="none"/>
+            </g>
+            <!--RAWSTRING-->
+            <g data-tags="dvgImage">
+              <defs>
+                <clipPath id="clip74">
+                  <path d="M-3,-1 L63,-1 L63,27 L-3,27 L-3,-1 z"/>
+                </clipPath>
+              </defs>
+              <g clip-path="url(#clip74)" fill="#000000" fill-opacity="1" opacity="1" stroke="none" stroke-opacity="0" transform="matrix(1,0,0,1,197.5,98)">
+                <path d="M-0.9375,12 C-0.9375,10.8438 -0.619792,9.98958 0.015625,9.4375 C0.546875,8.97917 1.19792,8.75 1.96875,8.75 C2.82292,8.75 3.52344,9.02865 4.07031,9.58594 C4.61719,10.1432 4.89062,10.9167 4.89062,11.9062 C4.89062,12.7083 4.77083,13.3385 4.53125,13.7969 C4.29167,14.2552 3.9401,14.612 3.47656,14.8672 C3.01302,15.1224 2.51042,15.25 1.96875,15.25 C1.10417,15.25 0.403646,14.9714 -0.132812,14.4141 C-0.669271,13.8568 -0.9375,13.0521 -0.9375,12 M0.140625,12 C0.140625,12.7917 0.315104,13.3854 0.664062,13.7812 C1.01302,14.1771 1.44792,14.375 1.96875,14.375 C2.5,14.375 2.9375,14.1771 3.28125,13.7812 C3.625,13.3854 3.79688,12.7812 3.79688,11.9688 C3.79688,11.1979 3.6224,10.6146 3.27344,10.2188 C2.92448,9.82292 2.48958,9.625 1.96875,9.625 C1.44792,9.625 1.01302,9.82031 0.664062,10.2109 C0.315104,10.6016 0.140625,11.1979 0.140625,12 M10.2031,15.1094 L10.2031,14.1875 C9.71354,14.8958 9.05208,15.25 8.21875,15.25 C7.85417,15.25 7.51302,15.1797 7.19531,15.0391 C6.8776,14.8984 6.64062,14.7214 6.48438,14.5078 C6.32812,14.2943 6.21875,14.0312 6.15625,13.7188 C6.11458,13.5208 6.09375,13.1927 6.09375,12.7344 L6.09375,8.89062 L7.15625,8.89062 L7.15625,12.3438 C7.15625,12.8854 7.17708,13.2552 7.21875,13.4531 C7.28125,13.724 7.41927,13.9401 7.63281,14.1016 C7.84635,14.263 8.11458,14.3438 8.4375,14.3438 C8.75,14.3438 9.04427,14.263 9.32031,14.1016 C9.59635,13.9401 9.79427,13.7188 9.91406,13.4375 C10.0339,13.1562 10.0938,12.75 10.0938,12.2188 L10.0938,8.89062 L11.1406,8.89062 L11.1406,15.1094 L10.2031,15.1094 M15.0938,14.1719 L15.25,15.0938 C14.9479,15.1562 14.6823,15.1875 14.4531,15.1875 C14.0677,15.1875 13.7708,15.1276 13.5625,15.0078 C13.3542,14.888 13.2057,14.7292 13.1172,14.5312 C13.0286,14.3333 12.9844,13.9167 12.9844,13.2812 L12.9844,9.70312 L12.2188,9.70312 L12.2188,8.89062 L12.9844,8.89062 L12.9844,7.34375 L14.0312,6.71875 L14.0312,8.89062 L15.0938,8.89062 L15.0938,9.70312 L14.0312,9.70312 L14.0312,13.3438 C14.0312,13.6458 14.0495,13.8385 14.0859,13.9219 C14.1224,14.0052 14.1823,14.0729 14.2656,14.125 C14.349,14.1771 14.4688,14.2031 14.625,14.2031 C14.75,14.2031 14.9062,14.1927 15.0938,14.1719 M16.4219,15.1094 L16.4219,13.9062 L17.625,13.9062 L17.625,15.1094 L16.4219,15.1094 M19.0625,12 C19.0625,10.8438 19.3802,9.98958 20.0156,9.4375 C20.5469,8.97917 21.1979,8.75 21.9688,8.75 C22.8229,8.75 23.5234,9.02865 24.0703,9.58594 C24.6172,10.1432 24.8906,10.9167 24.8906,11.9062 C24.8906,12.7083 24.7708,13.3385 24.5312,13.7969 C24.2917,14.2552 23.9401,14.612 23.4766,14.8672 C23.013,15.1224 22.5104,15.25 21.9688,15.25 C21.1042,15.25 20.4036,14.9714 19.8672,14.4141 C19.3307,13.8568 19.0625,13.0521 19.0625,12 M20.1406,12 C20.1406,12.7917 20.3151,13.3854 20.6641,13.7812 C21.013,14.1771 21.4479,14.375 21.9688,14.375 C22.5,14.375 22.9375,14.1771 23.2812,13.7812 C23.625,13.3854 23.7969,12.7812 23.7969,11.9688 C23.7969,11.1979 23.6224,10.6146 23.2734,10.2188 C22.9245,9.82292 22.4896,9.625 21.9688,9.625 C21.4479,9.625 21.013,9.82031 20.6641,10.2109 C20.3151,10.6016 20.1406,11.1979 20.1406,12 M26.125,15.1094 L26.125,6.51562 L27.1719,6.51562 L27.1719,9.59375 C27.6615,9.03125 28.2812,8.75 29.0312,8.75 C29.5,8.75 29.9036,8.84115 30.2422,9.02344 C30.5807,9.20573 30.8229,9.45573 30.9688,9.77344 C31.1146,10.0911 31.1875,10.5573 31.1875,11.1719 L31.1875,15.1094 L30.1406,15.1094 L30.1406,11.1719 C30.1406,10.6406 30.026,10.2552 29.7969,10.0156 C29.5677,9.77604 29.2448,9.65625 28.8281,9.65625 C28.5156,9.65625 28.2214,9.73698 27.9453,9.89844 C27.6693,10.0599 27.4714,10.2786 27.3516,10.5547 C27.2318,10.8307 27.1719,11.2135 27.1719,11.7031 L27.1719,15.1094 L26.125,15.1094 M36.8594,12.8281 L37.8906,12.9688 C37.776,13.6771 37.4844,14.2344 37.0156,14.6406 C36.5469,15.0469 35.974,15.25 35.2969,15.25 C34.4427,15.25 33.7578,14.9714 33.2422,14.4141 C32.7266,13.8568 32.4688,13.0573 32.4688,12.0156 C32.4688,11.349 32.5807,10.763 32.8047,10.2578 C33.0286,9.7526 33.3672,9.375 33.8203,9.125 C34.2734,8.875 34.7708,8.75 35.3125,8.75 C35.9792,8.75 36.5286,8.91927 36.9609,9.25781 C37.3932,9.59635 37.6719,10.0833 37.7969,10.7188 L36.7656,10.875 C36.6719,10.4583 36.5,10.1432 36.25,9.92969 C36,9.71615 35.6979,9.60938 35.3438,9.60938 C34.8125,9.60938 34.3802,9.79948 34.0469,10.1797 C33.7135,10.5599 33.5469,11.1615 33.5469,11.9844 C33.5469,12.8281 33.7083,13.4375 34.0312,13.8125 C34.3542,14.1875 34.7708,14.375 35.2812,14.375 C35.6979,14.375 36.0443,14.25 36.3203,14 C36.5964,13.75 36.776,13.3594 36.8594,12.8281 M38.4062,12 C38.4062,10.8438 38.724,9.98958 39.3594,9.4375 C39.8906,8.97917 40.5417,8.75 41.3125,8.75 C42.1667,8.75 42.8672,9.02865 43.4141,9.58594 C43.9609,10.1432 44.2344,10.9167 44.2344,11.9062 C44.2344,12.7083 44.1146,13.3385 43.875,13.7969 C43.6354,14.2552 43.2839,14.612 42.8203,14.8672 C42.3568,15.1224 41.8542,15.25 41.3125,15.25 C40.4479,15.25 39.7474,14.9714 39.2109,14.4141 C38.6745,13.8568 38.4062,13.0521 38.4062,12 M39.4844,12 C39.4844,12.7917 39.6589,13.3854 40.0078,13.7812 C40.3568,14.1771 40.7917,14.375 41.3125,14.375 C41.8438,14.375 42.2812,14.1771 42.625,13.7812 C42.9688,13.3854 43.1406,12.7812 43.1406,11.9688 C43.1406,11.1979 42.9661,10.6146 42.6172,10.2188 C42.2682,9.82292 41.8333,9.625 41.3125,9.625 C40.7917,9.625 40.3568,9.82031 40.0078,10.2109 C39.6589,10.6016 39.4844,11.1979 39.4844,12 M49.5469,15.1094 L49.5469,14.1875 C49.0573,14.8958 48.3958,15.25 47.5625,15.25 C47.1979,15.25 46.8568,15.1797 46.5391,15.0391 C46.2214,14.8984 45.9844,14.7214 45.8281,14.5078 C45.6719,14.2943 45.5625,14.0312 45.5,13.7188 C45.4583,13.5208 45.4375,13.1927 45.4375,12.7344 L45.4375,8.89062 L46.5,8.89062 L46.5,12.3438 C46.5,12.8854 46.5208,13.2552 46.5625,13.4531 C46.625,13.724 46.763,13.9401 46.9766,14.1016 C47.1901,14.263 47.4583,14.3438 47.7812,14.3438 C48.0938,14.3438 48.388,14.263 48.6641,14.1016 C48.9401,13.9401 49.138,13.7188 49.2578,13.4375 C49.3776,13.1562 49.4375,12.75 49.4375,12.2188 L49.4375,8.89062 L50.4844,8.89062 L50.4844,15.1094 L49.5469,15.1094 M54.4375,14.1719 L54.5938,15.0938 C54.2917,15.1562 54.026,15.1875 53.7969,15.1875 C53.4115,15.1875 53.1146,15.1276 52.9062,15.0078 C52.6979,14.888 52.5495,14.7292 52.4609,14.5312 C52.3724,14.3333 52.3281,13.9167 52.3281,13.2812 L52.3281,9.70312 L51.5625,9.70312 L51.5625,8.89062 L52.3281,8.89062 L52.3281,7.34375 L53.375,6.71875 L53.375,8.89062 L54.4375,8.89062 L54.4375,9.70312 L53.375,9.70312 L53.375,13.3438 C53.375,13.6458 53.3932,13.8385 53.4297,13.9219 C53.4661,14.0052 53.526,14.0729 53.6094,14.125 C53.6927,14.1771 53.8125,14.2031 53.9688,14.2031 C54.0938,14.2031 54.25,14.1927 54.4375,14.1719 M59.1406,15.1094 L58.0938,15.1094 L58.0938,8.39062 C57.8333,8.63021 57.4974,8.8724 57.0859,9.11719 C56.6745,9.36198 56.3073,9.54167 55.9844,9.65625 L55.9844,8.64062 C56.5677,8.35938 57.0807,8.02344 57.5234,7.63281 C57.9661,7.24219 58.2812,6.85938 58.4688,6.48438 L59.1406,6.48438 L59.1406,15.1094" fill-rule="nonzero" vector-effect="none"/>
+              </g>
+              <!--RAWSTRING-->
+            </g>
+            <!--RAWSTRING-->
+          </g>
+          <!--RAWSTRING-->
+          <g data-tags="blk">
+            <!--RAWSTRING-->
+          </g>
+          <!--RAWSTRING-->
+          <g data-tags="blk frame">
+            <g clip-path="none" fill="none" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="2" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,180,95)">
+              <path d="M0,0 L95,0 L95,30 L0,30 L0,0 z" fill-rule="evenodd" vector-effect="none"/>
+            </g>
+            <!--RAWSTRING-->
+          </g>
+          <!--RAWSTRING-->
+        </g>
+        <!--RAWSTRING-->
+      </g>
+      <!--RAWSTRING-->
+      <g id="OHC_Lowpass_Filter:7#out:1">
+        <!--RAWSTRING-->
+        <g data-tags="PathIntersectionsEnabledTag">
+          <g clip-path="none" fill="#000000" fill-opacity="1" opacity="1" stroke="none" stroke-opacity="0" transform="matrix(1,0,0,1,-25,75)">
+            <path d="M0,0 L-8,-4 L-8,4 L0,0 z" fill-rule="nonzero" vector-effect="none"/>
+          </g>
+          <g clip-path="none" fill="none" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="2" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,0,0)">
+            <path d="M-145,95 L-54,95 L-54,75 L-33,75" fill-rule="evenodd" vector-effect="none"/>
+          </g>
+          <defs>
+            <clipPath id="clip85">
+              <path d="M-160.422,-237.5 L403.484,-237.5 L403.484,49.5 L-160.422,49.5 L-160.422,-237.5 z"/>
+            </clipPath>
+          </defs>
+          <g clip-path="url(#clip85)" fill="none" opacity="1" stroke="#000000" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,-123.484,81.5)">
+            <text fill="#000000" fill-opacity="1" font-family="Arial" font-size="9" font-style="normal" font-weight="400" stroke="none" textLength="50.9688" x="1" xml:space="preserve" y="9">ohcnonlinout</text>
+          </g>
+          <!--RAWSTRING-->
+        </g>
+        <!--RAWSTRING-->
+      </g>
+      <!--RAWSTRING-->
+      <g id="OHC_Lowpass_Filter:13#out:2">
+        <!--RAWSTRING-->
+        <g data-tags="PathIntersectionsEnabledTag">
+          <g clip-path="none" fill="#000000" fill-opacity="1" opacity="1" stroke="none" stroke-opacity="0" transform="matrix(1,0,0,1,180,60)">
+            <path d="M0,0 L-8,-4 L-8,4 L0,0 z" fill-rule="nonzero" vector-effect="none"/>
+          </g>
+          <g clip-path="none" fill="none" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="2" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,0,0)">
+            <path d="M80,60 L172,60" fill-rule="evenodd" vector-effect="none"/>
+          </g>
+          <defs>
+            <clipPath id="clip86">
+              <path d="M-394.406,-217.5 L169.5,-217.5 L169.5,69.5 L-394.406,69.5 L-394.406,-217.5 z"/>
+            </clipPath>
+          </defs>
+          <g clip-path="url(#clip86)" fill="none" opacity="1" stroke="#000000" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,110.5,61.5)">
+            <text fill="#000000" fill-opacity="1" font-family="Arial" font-size="9" font-style="normal" font-weight="400" stroke="none" textLength="27" x="1" xml:space="preserve" y="9">ohcout</text>
+          </g>
+          <!--RAWSTRING-->
+        </g>
+        <!--RAWSTRING-->
+      </g>
+      <!--RAWSTRING-->
+      <g id="OHC_Lowpass_Filter:24#out:1">
+        <!--RAWSTRING-->
+        <g data-tags="PathIntersectionsEnabledTag">
+          <g clip-path="none" fill="#000000" fill-opacity="1" opacity="1" stroke="none" stroke-opacity="0" transform="matrix(1,0,0,1,-25,45)">
+            <path d="M0,0 L-8,-4 L-8,4 L0,0 z" fill-rule="nonzero" vector-effect="none"/>
+          </g>
+          <g clip-path="none" fill="none" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="2" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,0,0)">
+            <path d="M-145,25 L-56,25 L-56,45 L-33,45" fill-rule="evenodd" vector-effect="none"/>
+          </g>
+          <defs>
+            <clipPath id="clip87">
+              <path d="M-141.18,-167.5 L422.727,-167.5 L422.727,119.5 L-141.18,119.5 L-141.18,-167.5 z"/>
+            </clipPath>
+          </defs>
+          <g clip-path="url(#clip87)" fill="none" opacity="1" stroke="#000000" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,-142.727,11.5)">
+            <text fill="#000000" fill-opacity="1" font-family="Arial" font-size="9" font-style="normal" font-weight="400" stroke="none" textLength="87.4531" x="1" xml:space="preserve" y="9">ohcnonlinout_doubles</text>
+          </g>
+          <!--RAWSTRING-->
+        </g>
+        <!--RAWSTRING-->
+      </g>
+      <!--RAWSTRING-->
+      <g id="OHC_Lowpass_Filter:13#out:1">
+        <!--RAWSTRING-->
+        <g data-tags="PathIntersectionsEnabledTag">
+          <g clip-path="none" fill="#000000" fill-opacity="1" opacity="1" stroke="none" stroke-opacity="0" transform="matrix(1,0,0,1,180,10)">
+            <path d="M0,0 L-8,-4 L-8,4 L0,0 z" fill-rule="nonzero" vector-effect="none"/>
+          </g>
+          <g clip-path="none" fill="none" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="2" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,0,0)">
+            <path d="M80,40 L164,40 L164,10 L172,10" fill-rule="evenodd" vector-effect="none"/>
+          </g>
+          <defs>
+            <clipPath id="clip88">
+              <path d="M-380.922,-175 L182.984,-175 L182.984,112 L-380.922,112 L-380.922,-175 z"/>
+            </clipPath>
+          </defs>
+          <g clip-path="url(#clip88)" fill="none" opacity="1" stroke="#000000" stroke-linecap="square" stroke-linejoin="bevel" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,97.0156,19)">
+            <text fill="#000000" fill-opacity="1" font-family="Arial" font-size="9" font-style="normal" font-weight="400" stroke="none" textLength="63.4844" x="1" xml:space="preserve" y="9">ohcout_doubles</text>
+          </g>
+          <!--RAWSTRING-->
+        </g>
+        <!--RAWSTRING-->
+      </g>
+      <!--RAWSTRING-->
+      <g id="OHC_Lowpass_Filter:13#out:3">
+        <!--RAWSTRING-->
+        <g data-tags="PathIntersectionsEnabledTag">
+          <g clip-path="none" fill="#000000" fill-opacity="1" opacity="1" stroke="none" stroke-opacity="0" transform="matrix(1,0,0,1,180,110)">
+            <path d="M0,0 L-8,-4 L-8,4 L0,0 z" fill-rule="nonzero" vector-effect="none"/>
+          </g>
+          <g clip-path="none" fill="none" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="2" stroke-opacity="1" stroke-width="1" transform="matrix(1,0,0,1,0,0)">
+            <path d="M80,80 L164,80 L164,110 L172,110" fill-rule="evenodd" vector-effect="none"/>
+          </g>
+          <!--RAWSTRING-->
+        </g>
+        <!--RAWSTRING-->
+      </g>
+      <!--RAWSTRING-->
+    </g>
+  </g>
+  <!--generated on windows @ 2020-04-02 12:29:00 Mountain Daylight Time-->
+</svg>

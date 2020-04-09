@@ -1,0 +1,12 @@
+vlib work
+vmap -c
+vcom  NL_After_OHC_Function_Singles_pkg.vhd
+vcom  nfp_uminus_single.vhd
+vcom  nfp_abs_single.vhd
+vcom  nfp_add_single.vhd
+vcom  nfp_div_single.vhd
+vcom  nfp_exp_single.vhd
+vcom  nfp_mul_single.vhd
+vcom  nfp_relop_single.vhd
+vcom  nfp_relop_single_block.vhd
+vcom  NL_After_OHC_Function_Singles.vhd

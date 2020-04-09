@@ -1,0 +1,11 @@
+.OHC_Lowpass_Filter0,
+.OHC_Lowpass_Filter1,
+.OHC_Lowpass_Filter2,
+.OHC_Lowpass_Filter3,
+.OHC_Lowpass_Filter4 { background-image: url('OHC_Lowpass_Filter_icons.png'); width: 16px; height: 16px; }
+
+.OHC_Lowpass_Filter0 { background-position: -0px; }
+.OHC_Lowpass_Filter1 { background-position: -16px; }
+.OHC_Lowpass_Filter2 { background-position: -32px; }
+.OHC_Lowpass_Filter3 { background-position: -48px; }
+.OHC_Lowpass_Filter4 { background-position: -64px; }

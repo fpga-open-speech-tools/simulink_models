@@ -1,0 +1,15 @@
+SLStudio.Utils.RemoveHighlighting(get_param('Subsystem', 'handle'));
+SLStudio.Utils.RemoveHighlighting(get_param('gm_Subsystem', 'handle'));
+annotate_port('gm_Subsystem/Unit Delay', 1, 1, '');
+annotate_port('Subsystem/Unit Delay', 1, 1, '');
+annotate_port('gm_Subsystem/Unit Delay1', 1, 1, '');
+annotate_port('Subsystem/Unit Delay1', 1, 1, '');
+annotate_port('gm_Subsystem/Unit Delay3', 1, 1, '');
+annotate_port('Subsystem/Unit Delay3', 1, 1, '');
+annotate_port('gm_Subsystem/Unit Delay2', 1, 1, '');
+annotate_port('Subsystem/Unit Delay2', 1, 1, '');
+annotate_port('gm_Subsystem/Sum', 0, 1, '');
+annotate_port('gm_Subsystem/Unit Delay5', 1, 1, '');
+annotate_port('Subsystem/Unit Delay5', 1, 1, '');
+annotate_port('gm_Subsystem/Unit Delay4', 1, 1, '');
+annotate_port('Subsystem/Unit Delay4', 1, 1, '');
