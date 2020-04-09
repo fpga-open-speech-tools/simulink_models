@@ -66,22 +66,6 @@ taumin = 4.6310e-04;
 % Declared as constant in function
 minR = 0.05;
 
-% Ratio between taumin and taumax
-R = taumin./taumax;
-
-% Half of ratio
-halfR = 0.5*R;
-
-% If statement
-% Passing through minR if minR is greater than tauratio
-% Passing half tauratio if otherwise
-if R >= minR
-    minRout = minR;
-else
-    minRout = halfR;
-end
-
-
 % *** Adding precalculated values to avoid unnecessary computation and
 % switch block architecture (All the following lines until Test Signal
 % section)
