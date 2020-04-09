@@ -1,0 +1,15 @@
+vlib work
+vmap -c
+vcom  IHC_NL_Logarithmic_Function_Singles_pkg.vhd
+vcom  nfp_uminus_single.vhd
+vcom  nfp_add_single.vhd
+vcom  nfp_div_single.vhd
+vcom  nfp_log10_single.vhd
+vcom  nfp_exp_single.vhd
+vcom  nfp_mul_single.vhd
+vcom  nfp_sub_single.vhd
+vcom  Subsystem.vhd
+vcom  nfp_abs_single.vhd
+vcom  nfp_relop_single.vhd
+vcom  nfp_log_single.vhd
+vcom  IHC_NL_Logarithmic_Function_Singles.vhd
