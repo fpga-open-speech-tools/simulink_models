@@ -93,12 +93,13 @@ u_pFIR_Testing_dataplane : pFIR_Testing_dataplane
     end if;
   end process;
 	
-  bus_read_1 : process(clk)
-  begin
-    if rising_edge(clk) and avalon_slave_1_read = '1' then
-      avalon_slave_1_readdata <= RW_dout;
-	end if;
-  end process;
+  -- bus_read_1 : process(clk)
+  -- begin
+    -- if rising_edge(clk) then
+	  
+      -- avalon_slave_1_readdata <= RW_dout;
+	-- end if;
+  -- end process;
   
   bus_write_0 : process(clk, reset)
   begin
@@ -118,11 +119,15 @@ u_pFIR_Testing_dataplane : pFIR_Testing_dataplane
 	  Wr_Data	    <=  (others => '0');
       RW_Addr       <=  (others => '0');
 	  Wr_En			<= 	(others => '0');
-    elsif rising_edge(clk) and avalon_slave_1_write = '1' then
-	  Wr_Data 				<= avalon_slave_1_writedata;
+    elsif rising_edge(clk) and (avalon_slave_1_write = '1' or avalon_slave_1_read = '1') then 
 	  RW_Addr(8 downto 0) 	<= avalon_slave_1_address(8 downto 0);
+	  avalon_slave_1_readdata <= RW_dout;	-- TESTING
 	  Wr_En(0)				<= avalon_slave_1_write;
+	  if avalon_slave_1_write = '1' then 
+	    Wr_Data 				<= avalon_slave_1_writedata; 
+	  end if;
     end if;
+	
 	
   end process;
 
