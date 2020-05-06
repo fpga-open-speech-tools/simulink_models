@@ -25,11 +25,11 @@ ENTITY SE_Avalon_Data_Processing IS
         enb                               :   IN    std_logic;
         Sink_Data                         :   IN    std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
         Sink_Channel                      :   IN    std_logic_vector(1 DOWNTO 0);  -- ufix2
-        Left_Bypass                       :   IN    std_logic;
+        Left_enable                       :   IN    std_logic;
         Left_Delay                        :   IN    std_logic_vector(14 DOWNTO 0);  -- ufix15
         Left_Decay                        :   IN    std_logic_vector(7 DOWNTO 0);  -- ufix8_En7
         Left_Wet_Dry_Mix                  :   IN    std_logic_vector(7 DOWNTO 0);  -- ufix8_En7
-        Right_Bypass                      :   IN    std_logic;
+        Right_enable                      :   IN    std_logic;
         Right_Delay                       :   IN    std_logic_vector(14 DOWNTO 0);  -- ufix15
         Right_Decay                       :   IN    std_logic_vector(7 DOWNTO 0);  -- ufix8_En7
         Right_Wet_Dry_Mix                 :   IN    std_logic_vector(7 DOWNTO 0);  -- ufix8_En7
@@ -50,7 +50,7 @@ ARCHITECTURE rtl OF SE_Avalon_Data_Processing IS
           reset                           :   IN    std_logic;
           enb                             :   IN    std_logic;
           Left_Data_In                    :   IN    std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
-          Left_Bypass                     :   IN    std_logic;
+          Left_enable                     :   IN    std_logic;
           Left_Delay                      :   IN    std_logic_vector(14 DOWNTO 0);  -- ufix15
           Left_Decay                      :   IN    std_logic_vector(7 DOWNTO 0);  -- ufix8_En7
           Left_Wet_Dry_Mix                :   IN    std_logic_vector(7 DOWNTO 0);  -- ufix8_En7
@@ -64,7 +64,7 @@ ARCHITECTURE rtl OF SE_Avalon_Data_Processing IS
           reset                           :   IN    std_logic;
           enb                             :   IN    std_logic;
           Right_Data_In                   :   IN    std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
-          Right_Bypass                    :   IN    std_logic;
+          Right_enable                    :   IN    std_logic;
           Right_Delay                     :   IN    std_logic_vector(14 DOWNTO 0);  -- ufix15
           Right_Decay                     :   IN    std_logic_vector(7 DOWNTO 0);  -- ufix8_En7
           Right_Wet_Dry_Mix               :   IN    std_logic_vector(7 DOWNTO 0);  -- ufix8_En7
@@ -131,7 +131,7 @@ BEGIN
               reset => reset,
               enb => enb,
               Left_Data_In => Sink_Data,  -- sfix32_En28
-              Left_Bypass => Left_Bypass,
+              Left_enable => Left_enable,
               Left_Delay => Left_Delay,  -- ufix15
               Left_Decay => Left_Decay,  -- ufix8_En7
               Left_Wet_Dry_Mix => Left_Wet_Dry_Mix,  -- ufix8_En7
@@ -144,7 +144,7 @@ BEGIN
               reset => reset,
               enb => enb,
               Right_Data_In => Sink_Data,  -- sfix32_En28
-              Right_Bypass => Right_Bypass,
+              Right_enable => Right_enable,
               Right_Delay => Right_Delay,  -- ufix15
               Right_Decay => Right_Decay,  -- ufix8_En7
               Right_Wet_Dry_Mix => Right_Wet_Dry_Mix,  -- ufix8_En7

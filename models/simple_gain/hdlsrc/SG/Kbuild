@@ -1,1 +1,2 @@
+ccflags-y := -I$(src)/../../../../../component_library/include
 obj-m := simple_gain.o
