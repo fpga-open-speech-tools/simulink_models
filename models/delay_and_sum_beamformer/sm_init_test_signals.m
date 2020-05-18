@@ -89,7 +89,9 @@ delays = computeDelays(mp);
 %plot(mp.test_signal.data(1,:)'); hold on;
 
 % delay the signal at each sensor
-mp.test_signal.data = delayseq(mp.test_signal.data', double(delays))';
+% fcolshift is from the fileexchange 
+% https://www.mathworks.com/matlabcentral/fileexchange/73424-fcolshift-fractional-column-circular-shift
+mp.test_signal.data = fcolshift(mp.test_signal.data', double(delays))';
 
 %plot(mp.test_signal.data');
 %legend('original', cellstr(['original'; num2str(delays)]))
