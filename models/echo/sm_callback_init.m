@@ -20,7 +20,7 @@
 
 %% Make sure that sm_run_me_first has actually been run first.
 % if not, run it first since it sets up paths and toolchains
-if exist('mp') == 0 || isfield(mp,'sim_prompts') == 0
+if exist('mp', 'var') == 0 || isfield(mp,'sim_prompts') == 0
     sm_run_me_first;
 end
 
@@ -64,7 +64,8 @@ end
 %% Put the test signals into the Avalon Streaming Bus format
 % i.e. put the test signals into the data-channel-valid protocol
 mp = sm_init_avalon_signals(mp);  % create the avalon streaming signals 
-
+%% Configure target system
+mp.target_system = "de10";
 %% place variables into workspace directly (debug)
 % Avalon_Source_Data    = SG.Avalon_Source_Data;    % place into workspace directly so that the "From Workspace" blocks can read from these variables
 % Avalon_Source_Valid   = SG.Avalon_Source_Valid;    

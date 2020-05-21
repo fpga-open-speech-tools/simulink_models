@@ -56,9 +56,9 @@ cd(mp.model_path)
 
 
 %% Open the model
-disp(['Please wait while the Simulink Model: '  mp.model_name  ' is being opened.'])
-disp(['Note: Before generating VHDL, you will need to run a model simulation.'])
+%disp(['Please wait while the Simulink Model: '  mp.model_name  ' is being opened.'])
+%disp(['Note: Before generating VHDL, you will need to run a model simulation.'])
 open_system([mp.model_abbreviation])
 % display popup reminder message
-helpdlg(sprintf(['NOTE: You will need to first run the Simulation for model ' mp.model_name ' to initialize variables in the Matlab workspace before converting to VHDL.']),'Reminder Message')
+%helpdlg(sprintf(['NOTE: You will need to first run the Simulation for model ' mp.model_name ' to initialize variables in the Matlab workspace before converting to VHDL.']),'Reminder Message')
 mp.sim_prompts = 1;  % turn on the simulation prompts/comments (these will be turned off when the HDL conversion process starts).
