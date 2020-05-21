@@ -1,0 +1,613 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Info>
+    <Files>
+        <File path=".gitattributes" value="f69aec78" />
+        <File path=".gitignore" value="920338c" />
+        <File path=".qsys_edit/de10_system.xml" value="129dd8b" />
+        <File path=".qsys_edit/de10_system_schematic.nlv" value="ef59b5c4" />
+        <File path=".qsys_edit/filters.xml" value="4fb7e933" />
+        <File path=".qsys_edit/preferences.xml" value="5f56bb27" />
+        <File path=".qsys_edit/soc_base_system.xml" value="8da99aba" />
+        <File path=".qsys_edit/soc_base_system_schematic.nlv" value="ba4e15f9" />
+        <File path=".qsys_edit/soc_system.xml" value="a106070d" />
+        <File path=".qsys_edit/soc_system_schematic.nlv" value="0" />
+        <File path=".qsys_edit/test.xml" value="3ee4c72a" />
+        <File path=".qsys_edit/test_schematic.nlv" value="e590ae35" />
+        <File path=".qsys_edit" value="-1" />
+        <File path=".vscode/.ropeproject/config.py" value="d6a07347" />
+        <File path=".vscode/.ropeproject/objectdb" value="c50291f2" />
+        <File path=".vscode/.ropeproject" value="-1" />
+        <File path=".vscode" value="-1" />
+        <File path="LICENSE" value="47d50cd4" />
+        <File path="README.md" value="526d23c7" />
+        <File path="Simulink_codegen.prj" value="fe84b66d" />
+        <File path="device_drivers/AvalonJsonParser.py" value="c0ad0af3" />
+        <File path="device_drivers/CreateCFunctionStubs.py" value="a095aee" />
+        <File path="device_drivers/CreateCustomFunctions.py" value="ecd9ddef" />
+        <File path="device_drivers/CreateDeviceAttrMacros.py" value="9eb6c0f8" />
+        <File path="device_drivers/CreateDriverStuff.py" value="b1983aac" />
+        <File path="device_drivers/CreateEndOfFileStuff.py" value="e1f3495d" />
+        <File path="device_drivers/CreateExitFunction.py" value="21088549" />
+        <File path="device_drivers/CreateFileHeaderInfo.py" value="1c2e60a1" />
+        <File path="device_drivers/CreateFunctionPrototypes.py" value="1d3ff985" />
+        <File path="device_drivers/CreateInitFunctionFile.py" value="94f878b" />
+        <File path="device_drivers/CreateMiscTopOfFileStuff.py" value="a42818db" />
+        <File path="device_drivers/CreateProbeFunction.py" value="1683c8c5" />
+        <File path="device_drivers/CreateReadAndWriteFuncs.py" value="77675919" />
+        <File path="device_drivers/CreateRemoveFunction.py" value="5ee05d28" />
+        <File path="device_drivers/Driver.py" value="7037514f" />
+        <File path="device_drivers/ExampleInputStructs.py" value="122503a5" />
+        <File path="device_drivers/FileDriver.py" value="36c6e1a1" />
+        <File path="device_drivers/FileOutput.py" value="fd0de0f1" />
+        <File path="device_drivers/FindVolumeLevelNoTable" value="515672a3" />
+        <File path="device_drivers/FindVolumeLevelTable" value="3e19c878" />
+        <File path="device_drivers/FixedPointToString" value="408fe734" />
+        <File path="device_drivers/InputStructureFile.py" value="52d51e6" />
+        <File path="device_drivers/JsonToDriver.py" value="900b3b3a" />
+        <File path="device_drivers/SetFixedNum" value="579d8cfb" />
+        <File path="device_drivers/StrCat2" value="10184e5f" />
+        <File path="device_drivers/__init__.py" value="0" />
+        <File path="device_drivers/__pycache__/AvalonJsonParser.cpython-37.pyc" value="8316d25a" />
+        <File path="device_drivers/__pycache__/CreateCFunctionStubs.cpython-37.pyc" value="ec18063b" />
+        <File path="device_drivers/__pycache__/CreateCustomFunctions.cpython-37.pyc" value="ccdc16ac" />
+        <File path="device_drivers/__pycache__/CreateDeviceAttrMacros.cpython-37.pyc" value="d15a98fc" />
+        <File path="device_drivers/__pycache__/CreateDriverStuff.cpython-37.pyc" value="43e07ebe" />
+        <File path="device_drivers/__pycache__/CreateEndOfFileStuff.cpython-37.pyc" value="ae9f52d4" />
+        <File path="device_drivers/__pycache__/CreateExitFunction.cpython-37.pyc" value="fb973eee" />
+        <File path="device_drivers/__pycache__/CreateFileHeaderInfo.cpython-37.pyc" value="ed5d809f" />
+        <File path="device_drivers/__pycache__/CreateFunctionPrototypes.cpython-37.pyc" value="afb4a8bf" />
+        <File path="device_drivers/__pycache__/CreateInitFunctionFile.cpython-37.pyc" value="2f8844c1" />
+        <File path="device_drivers/__pycache__/CreateMiscTopOfFileStuff.cpython-37.pyc" value="8bca467" />
+        <File path="device_drivers/__pycache__/CreateProbeFunction.cpython-37.pyc" value="8e63664a" />
+        <File path="device_drivers/__pycache__/CreateReadAndWriteFuncs.cpython-37.pyc" value="d97fe3f8" />
+        <File path="device_drivers/__pycache__/CreateRemoveFunction.cpython-37.pyc" value="75fba6e4" />
+        <File path="device_drivers/__pycache__/FileOutput.cpython-37.pyc" value="ae790c03" />
+        <File path="device_drivers/__pycache__/InputStructureFile.cpython-37.pyc" value="455fdaa9" />
+        <File path="device_drivers/__pycache__/JsonToDriver.cpython-37.pyc" value="622b0476" />
+        <File path="device_drivers/__pycache__/gen_makefile.cpython-37.pyc" value="b8d39d7d" />
+        <File path="device_drivers/__pycache__" value="-1" />
+        <File path="device_drivers/genDeviceDriver.m" value="ac39c76b" />
+        <File path="device_drivers/genMakefile.m" value="969e9311" />
+        <File path="device_drivers/gen_makefile.py" value="8cc176ae" />
+        <File path="device_drivers" value="-1" />
+        <File path="resources/project/Project.xml" value="c576b26a" />
+        <File path="resources/project/ProjectData.type.Info.xml" value="cb3aa950" />
+        <File path="resources/project/Root.type.Categories/FileClassCategory.type.Category.xml" value="d2dc6b71" />
+        <File path="resources/project/Root.type.Categories/FileClassCategory.type.Category/artifact.type.Label.xml" value="3a808e07" />
+        <File path="resources/project/Root.type.Categories/FileClassCategory.type.Category/convenience.type.Label.xml" value="9fa19c1e" />
+        <File path="resources/project/Root.type.Categories/FileClassCategory.type.Category/derived.type.Label.xml" value="b32f4cc5" />
+        <File path="resources/project/Root.type.Categories/FileClassCategory.type.Category/design.type.Label.xml" value="657f94e3" />
+        <File path="resources/project/Root.type.Categories/FileClassCategory.type.Category/none.type.Label.xml" value="4434695f" />
+        <File path="resources/project/Root.type.Categories/FileClassCategory.type.Category/other.type.Label.xml" value="7716e543" />
+        <File path="resources/project/Root.type.Categories/FileClassCategory.type.Category/test.type.Label.xml" value="eff7b485" />
+        <File path="resources/project/Root.type.Categories/FileClassCategory.type.Category" value="-1" />
+        <File path="resources/project/Root.type.Categories" value="-1" />
+        <File path="resources/project/Root.type.EntryPoints" value="-1" />
+        <File path="resources/project/Root.type.Extensions" value="-1" />
+        <File path="resources/project/Root.type.Files/.gitattributes.type.File.xml" value="3af507e" />
+        <File path="resources/project/Root.type.Files/.gitignore.type.File.xml" value="3af507e" />
+        <File path="resources/project/Root.type.Files/LICENSE.type.File.xml" value="3af507e" />
+        <File path="resources/project/Root.type.Files/README.md.type.File.xml" value="3af507e" />
+        <File path="resources/project/Root.type.Files/device_drivers.type.File.xml" value="3af507e" />
+        <File path="resources/project/Root.type.Files/device_drivers.type.File/1.type.DIR_SIGNIFIER.xml" value="3af507e" />
+        <File path="resources/project/Root.type.Files/device_drivers.type.File/AvalonJsonParser.py.type.File.xml" value="3af507e" />
+        <File path="resources/project/Root.type.Files/device_drivers.type.File/CreateCFunctionStubs.py.type.File.xml" value="3af507e" />
+        <File path="resources/project/Root.type.Files/device_drivers.type.File/CreateCustomFunctions.py.type.File.xml" value="3af507e" />
+        <File path="resources/project/Root.type.Files/device_drivers.type.File/CreateDeviceAttrMacros.py.type.File.xml" value="3af507e" />
+        <File path="resources/project/Root.type.Files/device_drivers.type.File/CreateDriverStuff.py.type.File.xml" value="3af507e" />
+        <File path="resources/project/Root.type.Files/device_drivers.type.File/CreateEndOfFileStuff.py.type.File.xml" value="3af507e" />
+        <File path="resources/project/Root.type.Files/device_drivers.type.File/CreateExitFunction.py.type.File.xml" value="3af507e" />
+        <File path="resources/project/Root.type.Files/device_drivers.type.File/CreateFileHeaderInfo.py.type.File.xml" value="3af507e" />
+        <File path="resources/project/Root.type.Files/device_drivers.type.File/CreateFunctionPrototypes.py.type.File.xml" value="3af507e" />
+        <File path="resources/project/Root.type.Files/device_drivers.type.File/CreateInitFunctionFile.py.type.File.xml" value="3af507e" />
+        <File path="resources/project/Root.type.Files/device_drivers.type.File/CreateMiscTopOfFileStuff.py.type.File.xml" value="3af507e" />
+        <File path="resources/project/Root.type.Files/device_drivers.type.File/CreateProbeFunction.py.type.File.xml" value="3af507e" />
+        <File path="resources/project/Root.type.Files/device_drivers.type.File/CreateReadAndWriteFuncs.py.type.File.xml" value="3af507e" />
+        <File path="resources/project/Root.type.Files/device_drivers.type.File/CreateRemoveFunction.py.type.File.xml" value="3af507e" />
+        <File path="resources/project/Root.type.Files/device_drivers.type.File/Driver.py.type.File.xml" value="3af507e" />
+        <File path="resources/project/Root.type.Files/device_drivers.type.File/ExampleInputStructs.py.type.File.xml" value="3af507e" />
+        <File path="resources/project/Root.type.Files/device_drivers.type.File/FileDriver.py.type.File.xml" value="3af507e" />
+        <File path="resources/project/Root.type.Files/device_drivers.type.File/FileOutput.py.type.File.xml" value="3af507e" />
+        <File path="resources/project/Root.type.Files/device_drivers.type.File/FindVolumeLevelNoTable.type.File.xml" value="3af507e" />
+        <File path="resources/project/Root.type.Files/device_drivers.type.File/FindVolumeLevelTable.type.File.xml" value="3af507e" />
+        <File path="resources/project/Root.type.Files/device_drivers.type.File/FixedPointToString.type.File.xml" value="3af507e" />
+        <File path="resources/project/Root.type.Files/device_drivers.type.File/InputStructureFile.py.type.File.xml" value="3af507e" />
+        <File path="resources/project/Root.type.Files/device_drivers.type.File/JsonToDriver.py.type.File.xml" value="3af507e" />
+        <File path="resources/project/Root.type.Files/device_drivers.type.File/SetFixedNum.type.File.xml" value="3af507e" />
+        <File path="resources/project/Root.type.Files/device_drivers.type.File/StrCat2.type.File.xml" value="3af507e" />
+        <File path="resources/project/Root.type.Files/device_drivers.type.File/__init__.py.type.File.xml" value="3af507e" />
+        <File path="resources/project/Root.type.Files/device_drivers.type.File/genDeviceDriver.m.type.File.xml" value="df0217e1" />
+        <File path="resources/project/Root.type.Files/device_drivers.type.File/genMakefile.m.type.File.xml" value="df0217e1" />
+        <File path="resources/project/Root.type.Files/device_drivers.type.File/gen_makefile.py.type.File.xml" value="3af507e" />
+        <File path="resources/project/Root.type.Files/device_drivers.type.File" value="-1" />
+        <File path="resources/project/Root.type.Files/vhdl.type.File.xml" value="3af507e" />
+        <File path="resources/project/Root.type.Files/vhdl.type.File/1.type.DIR_SIGNIFIER.xml" value="3af507e" />
+        <File path="resources/project/Root.type.Files/vhdl.type.File/__init__.py.type.File.xml" value="3af507e" />
+        <File path="resources/project/Root.type.Files/vhdl.type.File/create_connection_point_clock.py.type.File.xml" value="3af507e" />
+        <File path="resources/project/Root.type.Files/vhdl.type.File/create_connection_point_reset.py.type.File.xml" value="3af507e" />
+        <File path="resources/project/Root.type.Files/vhdl.type.File/create_file_sets.py.type.File.xml" value="3af507e" />
+        <File path="resources/project/Root.type.Files/vhdl.type.File/create_header_file_stuff.py.type.File.xml" value="3af507e" />
+        <File path="resources/project/Root.type.Files/vhdl.type.File/create_mm_connection_point.py.type.File.xml" value="3af507e" />
+        <File path="resources/project/Root.type.Files/vhdl.type.File/create_module.py.type.File.xml" value="3af507e" />
+        <File path="resources/project/Root.type.Files/vhdl.type.File/create_module_assignments.py.type.File.xml" value="3af507e" />
+        <File path="resources/project/Root.type.Files/vhdl.type.File/create_sink_connection_point.py.type.File.xml" value="3af507e" />
+        <File path="resources/project/Root.type.Files/vhdl.type.File/create_source_connection_point.py.type.File.xml" value="3af507e" />
+        <File path="resources/project/Root.type.Files/vhdl.type.File/driver.py.type.File.xml" value="3af507e" />
+        <File path="resources/project/Root.type.Files/vhdl.type.File/hdlworkflow.m.type.File.xml" value="df0217e1" />
+        <File path="resources/project/Root.type.Files/vhdl.type.File/input_structure.py.type.File.xml" value="3af507e" />
+        <File path="resources/project/Root.type.Files/vhdl.type.File/parse_json.py.type.File.xml" value="3af507e" />
+        <File path="resources/project/Root.type.Files/vhdl.type.File/populate_additional_filesets.py.type.File.xml" value="3af507e" />
+        <File path="resources/project/Root.type.Files/vhdl.type.File/qsys_system.type.File.xml" value="3af507e" />
+        <File path="resources/project/Root.type.Files/vhdl.type.File/qsys_system.type.File/1.type.DIR_SIGNIFIER.xml" value="3af507e" />
+        <File path="resources/project/Root.type.Files/vhdl.type.File/qsys_system.type.File/A10SoM_System.qsys.type.File.xml" value="3af507e" />
+        <File path="resources/project/Root.type.Files/vhdl.type.File/qsys_system.type.File/A10SoM_System.sopcinfo.type.File.xml" value="3af507e" />
+        <File path="resources/project/Root.type.Files/vhdl.type.File/qsys_system.type.File/A10SoM_System.vhd.type.File.xml" value="3af507e" />
+        <File path="resources/project/Root.type.Files/vhdl.type.File/qsys_system.type.File/DE10Nano_System.vhd.type.File.xml" value="3af507e" />
+        <File path="resources/project/Root.type.Files/vhdl.type.File/qsys_system.type.File/__init__.py.type.File.xml" value="3af507e" />
+        <File path="resources/project/Root.type.Files/vhdl.type.File/qsys_system.type.File/arria10_proj.tcl.type.File.xml" value="3af507e" />
+        <File path="resources/project/Root.type.Files/vhdl.type.File/qsys_system.type.File/components.ipx.type.File.xml" value="3af507e" />
+        <File path="resources/project/Root.type.Files/vhdl.type.File/qsys_system.type.File/create_qsys_system.py.type.File.xml" value="3af507e" />
+        <File path="resources/project/Root.type.Files/vhdl.type.File/qsys_system.type.File/de10_proj.tcl.type.File.xml" value="3af507e" />
+        <File path="resources/project/Root.type.Files/vhdl.type.File/qsys_system.type.File/pll_hw.tcl.type.File.xml" value="3af507e" />
+        <File path="resources/project/Root.type.Files/vhdl.type.File/qsys_system.type.File/qsys_templates.py.type.File.xml" value="3af507e" />
+        <File path="resources/project/Root.type.Files/vhdl.type.File/qsys_system.type.File/soc_base_system.qsys.type.File.xml" value="3af507e" />
+        <File path="resources/project/Root.type.Files/vhdl.type.File/qsys_system.type.File/som_system.qsys.type.File.xml" value="3af507e" />
+        <File path="resources/project/Root.type.Files/vhdl.type.File/qsys_system.type.File" value="-1" />
+        <File path="resources/project/Root.type.Files/vhdl.type.File/readjson.m.type.File.xml" value="df0217e1" />
+        <File path="resources/project/Root.type.Files/vhdl.type.File/tests.py.type.File.xml" value="3af507e" />
+        <File path="resources/project/Root.type.Files/vhdl.type.File/vgenAddToPath.m.type.File.xml" value="df0217e1" />
+        <File path="resources/project/Root.type.Files/vhdl.type.File/vgenAvalonWrapper.m.type.File.xml" value="df0217e1" />
+        <File path="resources/project/Root.type.Files/vhdl.type.File/vgenAvalonWrapper.py.type.File.xml" value="3af507e" />
+        <File path="resources/project/Root.type.Files/vhdl.type.File/vgen_get_simulink_block_interfaces.m.type.File.xml" value="df0217e1" />
+        <File path="resources/project/Root.type.Files/vhdl.type.File/vgen_process_simulink_model.m.type.File.xml" value="df0217e1" />
+        <File path="resources/project/Root.type.Files/vhdl.type.File/writejson.m.type.File.xml" value="df0217e1" />
+        <File path="resources/project/Root.type.Files/vhdl.type.File" value="-1" />
+        <File path="resources/project/Root.type.Files" value="-1" />
+        <File path="resources/project/Root.type.ProjectData" value="-1" />
+        <File path="resources/project/Root.type.ProjectPath/45e53aba-ae90-4eb7-8f63-74b02f020516.type.Reference.xml" value="6abacc32" />
+        <File path="resources/project/Root.type.ProjectPath/9784e0bd-b891-4f10-946c-51031126d9de.type.Reference.xml" value="5308849f" />
+        <File path="resources/project/Root.type.ProjectPath" value="-1" />
+        <File path="resources/project/uuid-3a5e1a5c-cf1d-49c3-a8bf-877aee876900.xml" value="3af507e" />
+        <File path="resources/project" value="-1" />
+        <File path="resources" value="-1" />
+        <File path="vhdl/__init__.py" value="0" />
+        <File path="vhdl/__pycache__/__init__.cpython-37.pyc" value="23ad59b1" />
+        <File path="vhdl/__pycache__/autogen_tcl.cpython-37.pyc" value="909fd7e0" />
+        <File path="vhdl/__pycache__/create_connection_point_clock.cpython-37.pyc" value="9ad76fb5" />
+        <File path="vhdl/__pycache__/create_connection_point_reset.cpython-37.pyc" value="3acf4dfc" />
+        <File path="vhdl/__pycache__/create_file_sets.cpython-37.pyc" value="e611687" />
+        <File path="vhdl/__pycache__/create_header_file_stuff.cpython-37.pyc" value="56d24b3e" />
+        <File path="vhdl/__pycache__/create_mm_connection_point.cpython-37.pyc" value="b0a4fd09" />
+        <File path="vhdl/__pycache__/create_module.cpython-37.pyc" value="9fb2b272" />
+        <File path="vhdl/__pycache__/create_module_assignments.cpython-37.pyc" value="a8ac2326" />
+        <File path="vhdl/__pycache__/create_sink_connection_point.cpython-37.pyc" value="c0744b50" />
+        <File path="vhdl/__pycache__/create_source_connection_point.cpython-37.pyc" value="3f5cafd5" />
+        <File path="vhdl/__pycache__/input_structure.cpython-37.pyc" value="6d462a11" />
+        <File path="vhdl/__pycache__/parse_json.cpython-37.pyc" value="16dad679" />
+        <File path="vhdl/__pycache__/populate_additional_filesets.cpython-37.pyc" value="4f5257f0" />
+        <File path="vhdl/__pycache__/vgenAvalonWrapper.cpython-37.pyc" value="ef582682" />
+        <File path="vhdl/__pycache__" value="-1" />
+        <File path="vhdl/autogen_quartus.py" value="1dd1b48c" />
+        <File path="vhdl/create_connection_point_clock.py" value="97601c06" />
+        <File path="vhdl/create_connection_point_reset.py" value="c547c9ce" />
+        <File path="vhdl/create_file_sets.py" value="7a827029" />
+        <File path="vhdl/create_header_file_stuff.py" value="90b23815" />
+        <File path="vhdl/create_mm_connection_point.py" value="b4b9f97a" />
+        <File path="vhdl/create_module.py" value="49c1078b" />
+        <File path="vhdl/create_module_assignments.py" value="1b4043ed" />
+        <File path="vhdl/create_sink_connection_point.py" value="a22de7c8" />
+        <File path="vhdl/create_source_connection_point.py" value="86141f41" />
+        <File path="vhdl/driver.py" value="1185a9d3" />
+        <File path="vhdl/generate_vhdl.m" value="41fd4fd8" />
+        <File path="vhdl/hdlworkflow.m" value="74aafeac" />
+        <File path="vhdl/input_structure.py" value="d660825a" />
+        <File path="vhdl/parse_json.py" value="670fa086" />
+        <File path="vhdl/populate_additional_filesets.py" value="9a17ccfe" />
+        <File path="vhdl/qsys_system/.qsys_edit/A10SoM_System.xml" value="69a2c69f" />
+        <File path="vhdl/qsys_system/.qsys_edit/A10SoM_System_schematic.nlv" value="c7815260" />
+        <File path="vhdl/qsys_system/.qsys_edit/filters.xml" value="4fb7e933" />
+        <File path="vhdl/qsys_system/.qsys_edit/preferences.xml" value="117e8c6" />
+        <File path="vhdl/qsys_system/.qsys_edit/soc_base_system.xml" value="8868d8ae" />
+        <File path="vhdl/qsys_system/.qsys_edit/soc_base_system_schematic.nlv" value="ea583834" />
+        <File path="vhdl/qsys_system/.qsys_edit/som_system.xml" value="69a2c69f" />
+        <File path="vhdl/qsys_system/.qsys_edit/som_system_schematic.nlv" value="cc82caa0" />
+        <File path="vhdl/qsys_system/.qsys_edit" value="-1" />
+        <File path="vhdl/qsys_system/A10SoM_System.qsys" value="b2deda37" />
+        <File path="vhdl/qsys_system/A10SoM_System.sopcinfo" value="f8e38675" />
+        <File path="vhdl/qsys_system/A10SoM_System.vhd" value="975af6be" />
+        <File path="vhdl/qsys_system/DE10Nano_System.vhd" value="57c8dbce" />
+        <File path="vhdl/qsys_system/__init__.py" value="0" />
+        <File path="vhdl/qsys_system/__pycache__/__init__.cpython-37.pyc" value="f1f1ea52" />
+        <File path="vhdl/qsys_system/__pycache__/create_qsys_system.cpython-37.pyc" value="e52a74f4" />
+        <File path="vhdl/qsys_system/__pycache__/qsys_templates.cpython-37.pyc" value="fd5a55bf" />
+        <File path="vhdl/qsys_system/__pycache__" value="-1" />
+        <File path="vhdl/qsys_system/arria10_proj.tcl" value="fe9d4c32" />
+        <File path="vhdl/qsys_system/components.ipx" value="d0deac54" />
+        <File path="vhdl/qsys_system/create_qsys_system.py" value="8cfb20a2" />
+        <File path="vhdl/qsys_system/de10_proj.tcl" value="5fd69cb1" />
+        <File path="vhdl/qsys_system/pll.qsys" value="b4f32b2b" />
+        <File path="vhdl/qsys_system/pll_hw.tcl" value="78b7b3b0" />
+        <File path="vhdl/qsys_system/qsys_templates.py" value="cc37692c" />
+        <File path="vhdl/qsys_system/soc_base_system.qsys" value="591b7d21" />
+        <File path="vhdl/qsys_system/som_system.qsys" value="f0c3e9d4" />
+        <File path="vhdl/qsys_system/target.py" value="c79bd517" />
+        <File path="vhdl/qsys_system" value="-1" />
+        <File path="vhdl/readjson.m" value="daed1786" />
+        <File path="vhdl/tests.py" value="ea17077e" />
+        <File path="vhdl/vgenAddToPath.m" value="708eb0f6" />
+        <File path="vhdl/vgenAvalonWrapper.m" value="f4d134b0" />
+        <File path="vhdl/vgenAvalonWrapper.py" value="a805cfbb" />
+        <File path="vhdl/vgenQuartus.m" value="2a13ed46" />
+        <File path="vhdl/vgen_get_simulink_block_interfaces.m" value="16a74dfb" />
+        <File path="vhdl/vgen_process_simulink_model.m" value="40ef2ad5" />
+        <File path="vhdl/writejson.m" value="bb0ef37b" />
+        <File path="vhdl" value="-1" />
+    </Files>
+    <MetadataNode>
+        <path value="ProjectData:type:Info">
+            <node name="Info">
+                <entry value="simulink_codegen" key="Name" />
+            </node>
+        </path>
+        <path value="Root:type:Categories">
+            <path value="FileClassCategory:type:Category">
+                <node name="Info">
+                    <entry value="None" key="DataType" />
+                    <entry value="Classification" key="Name" />
+                    <entry value="1" key="ReadOnly" />
+                    <entry value="1" key="SingleValued" />
+                </node>
+                <path value="artifact:type:Label">
+                    <node name="Info">
+                        <entry value="Artifact" key="Name" />
+                        <entry value="READ_ONLY" key="ReadOnly" />
+                    </node>
+                </path>
+                <path value="convenience:type:Label">
+                    <node name="Info">
+                        <entry value="Convenience" key="Name" />
+                        <entry value="READ_ONLY" key="ReadOnly" />
+                    </node>
+                </path>
+                <path value="derived:type:Label">
+                    <node name="Info">
+                        <entry value="Derived" key="Name" />
+                        <entry value="READ_ONLY" key="ReadOnly" />
+                    </node>
+                </path>
+                <path value="design:type:Label">
+                    <node name="Info">
+                        <entry value="Design" key="Name" />
+                        <entry value="READ_ONLY" key="ReadOnly" />
+                    </node>
+                </path>
+                <path value="none:type:Label">
+                    <node name="Info">
+                        <entry value="None" key="Name" />
+                        <entry value="READ_ONLY" key="ReadOnly" />
+                    </node>
+                </path>
+                <path value="other:type:Label">
+                    <node name="Info">
+                        <entry value="Other" key="Name" />
+                        <entry value="READ_ONLY" key="ReadOnly" />
+                    </node>
+                </path>
+                <path value="test:type:Label">
+                    <node name="Info">
+                        <entry value="Test" key="Name" />
+                        <entry value="READ_ONLY" key="ReadOnly" />
+                    </node>
+                </path>
+            </path>
+        </path>
+        <path value="Root:type:EntryPoints" />
+        <path value="Root:type:Extensions" />
+        <path value="Root:type:Files">
+            <path value=".gitattributes:type:File">
+                <node name="Info" />
+            </path>
+            <path value=".gitignore:type:File">
+                <node name="Info" />
+            </path>
+            <path value="LICENSE:type:File">
+                <node name="Info" />
+            </path>
+            <path value="README.md:type:File">
+                <node name="Info" />
+            </path>
+            <path value="device_drivers:type:File">
+                <node name="Info" />
+                <path value="1:type:DIR_SIGNIFIER">
+                    <node name="Info" />
+                </path>
+                <path value="AvalonJsonParser.py:type:File">
+                    <node name="Info" />
+                </path>
+                <path value="CreateCFunctionStubs.py:type:File">
+                    <node name="Info" />
+                </path>
+                <path value="CreateCustomFunctions.py:type:File">
+                    <node name="Info" />
+                </path>
+                <path value="CreateDeviceAttrMacros.py:type:File">
+                    <node name="Info" />
+                </path>
+                <path value="CreateDriverStuff.py:type:File">
+                    <node name="Info" />
+                </path>
+                <path value="CreateEndOfFileStuff.py:type:File">
+                    <node name="Info" />
+                </path>
+                <path value="CreateExitFunction.py:type:File">
+                    <node name="Info" />
+                </path>
+                <path value="CreateFileHeaderInfo.py:type:File">
+                    <node name="Info" />
+                </path>
+                <path value="CreateFunctionPrototypes.py:type:File">
+                    <node name="Info" />
+                </path>
+                <path value="CreateInitFunctionFile.py:type:File">
+                    <node name="Info" />
+                </path>
+                <path value="CreateMiscTopOfFileStuff.py:type:File">
+                    <node name="Info" />
+                </path>
+                <path value="CreateProbeFunction.py:type:File">
+                    <node name="Info" />
+                </path>
+                <path value="CreateReadAndWriteFuncs.py:type:File">
+                    <node name="Info" />
+                </path>
+                <path value="CreateRemoveFunction.py:type:File">
+                    <node name="Info" />
+                </path>
+                <path value="Driver.py:type:File">
+                    <node name="Info" />
+                </path>
+                <path value="ExampleInputStructs.py:type:File">
+                    <node name="Info" />
+                </path>
+                <path value="FileDriver.py:type:File">
+                    <node name="Info" />
+                </path>
+                <path value="FileOutput.py:type:File">
+                    <node name="Info" />
+                </path>
+                <path value="FindVolumeLevelNoTable:type:File">
+                    <node name="Info" />
+                </path>
+                <path value="FindVolumeLevelTable:type:File">
+                    <node name="Info" />
+                </path>
+                <path value="FixedPointToString:type:File">
+                    <node name="Info" />
+                </path>
+                <path value="InputStructureFile.py:type:File">
+                    <node name="Info" />
+                </path>
+                <path value="JsonToDriver.py:type:File">
+                    <node name="Info" />
+                </path>
+                <path value="SetFixedNum:type:File">
+                    <node name="Info" />
+                </path>
+                <path value="StrCat2:type:File">
+                    <node name="Info" />
+                </path>
+                <path value="__init__.py:type:File">
+                    <node name="Info" />
+                </path>
+                <path value="genDeviceDriver.m:type:File">
+                    <node name="Info">
+                        <node name="Category">
+                            <entry value="FileClassCategory" key="UUID" />
+                            <node name="Label">
+                                <entry value="design" key="UUID" />
+                            </node>
+                        </node>
+                    </node>
+                </path>
+                <path value="genMakefile.m:type:File">
+                    <node name="Info">
+                        <node name="Category">
+                            <entry value="FileClassCategory" key="UUID" />
+                            <node name="Label">
+                                <entry value="design" key="UUID" />
+                            </node>
+                        </node>
+                    </node>
+                </path>
+                <path value="gen_makefile.py:type:File">
+                    <node name="Info" />
+                </path>
+            </path>
+            <path value="vhdl:type:File">
+                <node name="Info" />
+                <path value="1:type:DIR_SIGNIFIER">
+                    <node name="Info" />
+                </path>
+                <path value="__init__.py:type:File">
+                    <node name="Info" />
+                </path>
+                <path value="create_connection_point_clock.py:type:File">
+                    <node name="Info" />
+                </path>
+                <path value="create_connection_point_reset.py:type:File">
+                    <node name="Info" />
+                </path>
+                <path value="create_file_sets.py:type:File">
+                    <node name="Info" />
+                </path>
+                <path value="create_header_file_stuff.py:type:File">
+                    <node name="Info" />
+                </path>
+                <path value="create_mm_connection_point.py:type:File">
+                    <node name="Info" />
+                </path>
+                <path value="create_module.py:type:File">
+                    <node name="Info" />
+                </path>
+                <path value="create_module_assignments.py:type:File">
+                    <node name="Info" />
+                </path>
+                <path value="create_sink_connection_point.py:type:File">
+                    <node name="Info" />
+                </path>
+                <path value="create_source_connection_point.py:type:File">
+                    <node name="Info" />
+                </path>
+                <path value="driver.py:type:File">
+                    <node name="Info" />
+                </path>
+                <path value="hdlworkflow.m:type:File">
+                    <node name="Info">
+                        <node name="Category">
+                            <entry value="FileClassCategory" key="UUID" />
+                            <node name="Label">
+                                <entry value="design" key="UUID" />
+                            </node>
+                        </node>
+                    </node>
+                </path>
+                <path value="input_structure.py:type:File">
+                    <node name="Info" />
+                </path>
+                <path value="parse_json.py:type:File">
+                    <node name="Info" />
+                </path>
+                <path value="populate_additional_filesets.py:type:File">
+                    <node name="Info" />
+                </path>
+                <path value="qsys_system:type:File">
+                    <node name="Info" />
+                    <path value="1:type:DIR_SIGNIFIER">
+                        <node name="Info" />
+                    </path>
+                    <path value="A10SoM_System.qsys:type:File">
+                        <node name="Info" />
+                    </path>
+                    <path value="A10SoM_System.sopcinfo:type:File">
+                        <node name="Info" />
+                    </path>
+                    <path value="A10SoM_System.vhd:type:File">
+                        <node name="Info" />
+                    </path>
+                    <path value="DE10Nano_System.vhd:type:File">
+                        <node name="Info" />
+                    </path>
+                    <path value="__init__.py:type:File">
+                        <node name="Info" />
+                    </path>
+                    <path value="arria10_proj.tcl:type:File">
+                        <node name="Info" />
+                    </path>
+                    <path value="components.ipx:type:File">
+                        <node name="Info" />
+                    </path>
+                    <path value="create_qsys_system.py:type:File">
+                        <node name="Info" />
+                    </path>
+                    <path value="de10_proj.tcl:type:File">
+                        <node name="Info" />
+                    </path>
+                    <path value="pll_hw.tcl:type:File">
+                        <node name="Info" />
+                    </path>
+                    <path value="qsys_templates.py:type:File">
+                        <node name="Info" />
+                    </path>
+                    <path value="soc_base_system.qsys:type:File">
+                        <node name="Info" />
+                    </path>
+                    <path value="som_system.qsys:type:File">
+                        <node name="Info" />
+                    </path>
+                </path>
+                <path value="readjson.m:type:File">
+                    <node name="Info">
+                        <node name="Category">
+                            <entry value="FileClassCategory" key="UUID" />
+                            <node name="Label">
+                                <entry value="design" key="UUID" />
+                            </node>
+                        </node>
+                    </node>
+                </path>
+                <path value="tests.py:type:File">
+                    <node name="Info" />
+                </path>
+                <path value="vgenAddToPath.m:type:File">
+                    <node name="Info">
+                        <node name="Category">
+                            <entry value="FileClassCategory" key="UUID" />
+                            <node name="Label">
+                                <entry value="design" key="UUID" />
+                            </node>
+                        </node>
+                    </node>
+                </path>
+                <path value="vgenAvalonWrapper.m:type:File">
+                    <node name="Info">
+                        <node name="Category">
+                            <entry value="FileClassCategory" key="UUID" />
+                            <node name="Label">
+                                <entry value="design" key="UUID" />
+                            </node>
+                        </node>
+                    </node>
+                </path>
+                <path value="vgenAvalonWrapper.py:type:File">
+                    <node name="Info" />
+                </path>
+                <path value="vgen_get_simulink_block_interfaces.m:type:File">
+                    <node name="Info">
+                        <node name="Category">
+                            <entry value="FileClassCategory" key="UUID" />
+                            <node name="Label">
+                                <entry value="design" key="UUID" />
+                            </node>
+                        </node>
+                    </node>
+                </path>
+                <path value="vgen_process_simulink_model.m:type:File">
+                    <node name="Info">
+                        <node name="Category">
+                            <entry value="FileClassCategory" key="UUID" />
+                            <node name="Label">
+                                <entry value="design" key="UUID" />
+                            </node>
+                        </node>
+                    </node>
+                </path>
+                <path value="writejson.m:type:File">
+                    <node name="Info">
+                        <node name="Category">
+                            <entry value="FileClassCategory" key="UUID" />
+                            <node name="Label">
+                                <entry value="design" key="UUID" />
+                            </node>
+                        </node>
+                    </node>
+                </path>
+            </path>
+        </path>
+        <path value="Root:type:ProjectData" />
+        <path value="Root:type:ProjectPath">
+            <path value="45e53aba-ae90-4eb7-8f63-74b02f020516:type:Reference">
+                <node name="Info">
+                    <entry value="vhdl" key="Ref" />
+                    <entry value="Relative" key="Type" />
+                </node>
+            </path>
+            <path value="9784e0bd-b891-4f10-946c-51031126d9de:type:Reference">
+                <node name="Info">
+                    <entry value="device_drivers" key="Ref" />
+                    <entry value="Relative" key="Type" />
+                </node>
+            </path>
+        </path>
+    </MetadataNode>
+    <Date value="May 13, 2020 11:36:57 PM" />
+</Info>
