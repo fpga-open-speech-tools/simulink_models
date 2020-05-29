@@ -53,7 +53,7 @@ mp.register(ri).uiPanelName = 'bitcrusher';
 %% Create bit control signal
 ri = ri + 1;  % register index
 mp.register(ri).name       = 'Bits';   % control signal name
-mp.register(ri).value      = 4;        % value control signal will take during simulation
+mp.register(ri).value      = 8;        % value control signal will take during simulation
 mp.register(ri).min        =  0;       % The minimum value the control signal will ever take
 mp.register(ri).max        = 32;       % The maximum value the control signal will ever take
 mp.register(ri).default    = 32;       % default (initial) value
@@ -76,7 +76,7 @@ mp.register(ri).widgetType          = 'slider';
 mp.register(ri).widgetDisplayUnits = '';
 mp.register(ri).widgetStyle = 'default';
 mp.register(ri).uiPageName = 'main';
-mp.register(ri).uiPanelName = 'bitcrusher2';
+mp.register(ri).uiPanelName = 'bitcrusher';
 
 % Any other register control signals should be created in a similar manner
 
