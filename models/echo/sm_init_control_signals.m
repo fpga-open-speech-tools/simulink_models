@@ -66,8 +66,8 @@ mp.register(ri).uiPanelName = 'echo';
 
 %% Create decay control signal (must be less than one)
 ri = ri + 1;  % register index
-mp.register(ri).name       = 'Decay';  % control signal name
-mp.register(ri).value      = 0.3;      % value control signal will take during simulation
+mp.register(ri).name       = 'feedback';  % control signal name
+mp.register(ri).value      = 0.5;      % value control signal will take during simulation
 mp.register(ri).min        = 0;        % The minimum value the control signal will ever take
 mp.register(ri).max        = 1;        % The maximum value the control signal will ever take
 mp.register(ri).default    = 0.8;      % default (initial) value
@@ -80,8 +80,8 @@ mp.register(ri).uiPanelName = 'echo';
 
 %% Create wet_dry_mix signal
 ri = ri + 1;  % register index
-mp.register(ri).name       = 'Wet_Dry_Mix';   % control signal name   Note:  wet_gain=wet_dry_mix; dry_gain=1?wet_dry_mix
-mp.register(ri).value      = 0.9;             % value control signal will take during simulation
+mp.register(ri).name       = 'Wet_Dry_Mix';   % control signal name   Note:  wet_gain=wet_dry_mix; dry_gain=1-wet_dry_mix
+mp.register(ri).value      = 0.5;             % value control signal will take during simulation
 mp.register(ri).min        = 0;               % The minimum value the control signal will ever take
 mp.register(ri).max        = 1;               % The maximum value the control signal will ever take
 mp.register(ri).default    = 0.5;             % default (initial) value

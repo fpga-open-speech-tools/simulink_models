@@ -31,7 +31,7 @@ clc         % clear command window
 % development iterations when developing the simulink model.
 mp.fastsim_flag = 1;     % perform fast simulation  Note: fast simulation will be turned off when generating VHDL code since we need to run at the system clock rate.
 mp.fastsim_Fs_system_N = 8;     % (typical value 2 or 4) Simulate a much slower system clock than what is specified in sm_callback_init.m   - The reduce rate will be a multiple of the sample rate, i.e. mp.Fs_system = mp.Fs*mp.fastsim_Fs_system_N
-mp.fastsim_Nsamples = 12000; % set to the string 'all' to use all the samples from the input signal specified in sm_init_test_signals.m
+mp.fastsim_Nsamples = 48000; % set to the string 'all' to use all the samples from the input signal specified in sm_init_test_signals.m
 
 
 %% Model parameters

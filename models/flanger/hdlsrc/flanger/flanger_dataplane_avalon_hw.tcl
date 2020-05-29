@@ -30,26 +30,26 @@ set_module_property REPORT_HIERARCHY false
 # # # # # # # # # # # # # # # # # #
 
 add_fileset QUARTUS_SYNTH QUARTUS_SYNTH "" ""
-add_fileset_file flanger_LFO.vhd VHDL PATH flanger_LFO.vhd
-add_fileset_file flanger_LookUpTableGen_block.vhd VHDL PATH flanger_LookUpTableGen_block.vhd
-add_fileset_file flanger_NCO_HDL_Optimized_block.vhd VHDL PATH flanger_NCO_HDL_Optimized_block.vhd
-add_fileset_file flanger_WaveformGen_block.vhd VHDL PATH flanger_WaveformGen_block.vhd
-add_fileset_file flanger_Right_Channel_Processing.vhd VHDL PATH flanger_Right_Channel_Processing.vhd
-add_fileset_file flanger_DitherGen.vhd VHDL PATH flanger_DitherGen.vhd
-add_fileset_file flanger_LookUpTableGen.vhd VHDL PATH flanger_LookUpTableGen.vhd
-add_fileset_file flanger_dataplane_pkg.vhd VHDL PATH flanger_dataplane_pkg.vhd
-add_fileset_file flanger_variable_delay.vhd VHDL PATH flanger_variable_delay.vhd
 add_fileset_file flanger_Avalon_Data_Processing.vhd VHDL PATH flanger_Avalon_Data_Processing.vhd
-add_fileset_file flanger_SimpleDualPortRAM_generic.vhd VHDL PATH flanger_SimpleDualPortRAM_generic.vhd
-add_fileset_file flanger_NCO_HDL_Optimized.vhd VHDL PATH flanger_NCO_HDL_Optimized.vhd
-add_fileset_file flanger_read_address_generator_block.vhd VHDL PATH flanger_read_address_generator_block.vhd
-add_fileset_file flanger_read_address_generator.vhd VHDL PATH flanger_read_address_generator.vhd
 add_fileset_file flanger_dataplane.vhd VHDL PATH flanger_dataplane.vhd
-add_fileset_file flanger_WaveformGen.vhd VHDL PATH flanger_WaveformGen.vhd
+add_fileset_file flanger_dataplane_pkg.vhd VHDL PATH flanger_dataplane_pkg.vhd
+add_fileset_file flanger_DitherGen.vhd VHDL PATH flanger_DitherGen.vhd
 add_fileset_file flanger_DitherGen_block.vhd VHDL PATH flanger_DitherGen_block.vhd
-add_fileset_file flanger_variable_delay_block.vhd VHDL PATH flanger_variable_delay_block.vhd
 add_fileset_file flanger_Left_Channel_Processing.vhd VHDL PATH flanger_Left_Channel_Processing.vhd
+add_fileset_file flanger_LFO.vhd VHDL PATH flanger_LFO.vhd
 add_fileset_file flanger_LFO_block.vhd VHDL PATH flanger_LFO_block.vhd
+add_fileset_file flanger_LookUpTableGen.vhd VHDL PATH flanger_LookUpTableGen.vhd
+add_fileset_file flanger_LookUpTableGen_block.vhd VHDL PATH flanger_LookUpTableGen_block.vhd
+add_fileset_file flanger_NCO_HDL_Optimized.vhd VHDL PATH flanger_NCO_HDL_Optimized.vhd
+add_fileset_file flanger_NCO_HDL_Optimized_block.vhd VHDL PATH flanger_NCO_HDL_Optimized_block.vhd
+add_fileset_file flanger_read_address_generator.vhd VHDL PATH flanger_read_address_generator.vhd
+add_fileset_file flanger_read_address_generator_block.vhd VHDL PATH flanger_read_address_generator_block.vhd
+add_fileset_file flanger_Right_Channel_Processing.vhd VHDL PATH flanger_Right_Channel_Processing.vhd
+add_fileset_file flanger_SimpleDualPortRAM_generic.vhd VHDL PATH flanger_SimpleDualPortRAM_generic.vhd
+add_fileset_file flanger_variable_delay.vhd VHDL PATH flanger_variable_delay.vhd
+add_fileset_file flanger_variable_delay_block.vhd VHDL PATH flanger_variable_delay_block.vhd
+add_fileset_file flanger_WaveformGen.vhd VHDL PATH flanger_WaveformGen.vhd
+add_fileset_file flanger_WaveformGen_block.vhd VHDL PATH flanger_WaveformGen_block.vhd
 set_fileset_property QUARTUS_SYNTH TOP_LEVEL flanger_dataplane_avalon
 set_fileset_property QUARTUS_SYNTH ENABLE_RELATIVE_INCLUDE_PATHS false
 set_fileset_property QUARTUS_SYNTH ENABLE_FILE_OVERWRITE_MODE false
@@ -154,10 +154,10 @@ set_interface_property avalon_streaming_sink EXPORT_OF ""
 set_interface_property avalon_streaming_sink PORT_NAME_MAP ""
 set_interface_property avalon_streaming_sink CMSIS_SVD_VARIABLES ""
 set_interface_property avalon_streaming_sink SVD_ADDRESS_GROUP ""
+add_interface_port avalon_streaming_sink avalon_sink_valid valid Input 1
 add_interface_port avalon_streaming_sink avalon_sink_data data Input 32
 add_interface_port avalon_streaming_sink avalon_sink_channel channel Input 2
 add_interface_port avalon_streaming_sink avalon_sink_error error Input 2
-add_interface_port avalon_streaming_sink avalon_sink_valid valid Input 1
 # End create_sink_connection_point
 
 
@@ -178,10 +178,10 @@ set_interface_property avalon_streaming_source EXPORT_OF ""
 set_interface_property avalon_streaming_source PORT_NAME_MAP ""
 set_interface_property avalon_streaming_source CMSIS_SVD_VARIABLES ""
 set_interface_property avalon_streaming_source SVD_ADDRESS_GROUP ""
+add_interface_port avalon_streaming_source avalon_source_valid valid Output 1
+add_interface_port avalon_streaming_source avalon_source_data data Output 32
 add_interface_port avalon_streaming_source avalon_source_channel channel Output 2
 add_interface_port avalon_streaming_source avalon_source_error error Output 2
-add_interface_port avalon_streaming_source avalon_source_data data Output 32
-add_interface_port avalon_streaming_source avalon_source_valid valid Output 1
 # End create_sink_connection_point
 
 
