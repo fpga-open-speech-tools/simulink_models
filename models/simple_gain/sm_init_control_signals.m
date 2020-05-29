@@ -41,7 +41,7 @@ mp.register(ri).max        = 1.0;          % The maximum value the control signa
 mp.register(ri).default    = 0.3;          % default (initial) value
 mp.register(ri).dataType = fixdt(1,mp.W_bits,mp.F_bits);
 mp.register(ri).widgetType          = 'slider';
-mp.register(ri).widgetDisplayUnits = 'dB';
+mp.register(ri).widgetDisplayUnits = '';
 mp.register(ri).widgetStyle = 'default';
 mp.register(ri).uiPageName = 'main';
 mp.register(ri).uiPanelName = 'simple_gain';
@@ -55,7 +55,7 @@ mp.register(ri).max        = 1.0;          % The maximum value the control signa
 mp.register(ri).default    = 0.3;          % default (initial) value
 mp.register(ri).dataType = fixdt(1,mp.W_bits,mp.F_bits);
 mp.register(ri).widgetType          = 'slider';
-mp.register(ri).widgetDisplayUnits = 'dB';
+mp.register(ri).widgetDisplayUnits = '';
 mp.register(ri).widgetStyle = 'default';
 mp.register(ri).uiPageName = 'main';
 mp.register(ri).uiPanelName = 'simple_gain';
@@ -69,5 +69,5 @@ for i=1:length(mp.register)
 end
 
 %% Check if the control signals have valid entries
-sm_check_control_signals(mp)
+% sm_check_control_signals(mp)
 
