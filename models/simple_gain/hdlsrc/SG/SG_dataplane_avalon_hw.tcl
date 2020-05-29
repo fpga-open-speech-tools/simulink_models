@@ -30,11 +30,11 @@ set_module_property REPORT_HIERARCHY false
 # # # # # # # # # # # # # # # # # #
 
 add_fileset QUARTUS_SYNTH QUARTUS_SYNTH "" ""
-add_fileset_file SG_dataplane.vhd VHDL PATH SG_dataplane.vhd
 add_fileset_file SG_Avalon_Data_Processing.vhd VHDL PATH SG_Avalon_Data_Processing.vhd
+add_fileset_file SG_dataplane.vhd VHDL PATH SG_dataplane.vhd
+add_fileset_file SG_dataplane_pkg.vhd VHDL PATH SG_dataplane_pkg.vhd
 add_fileset_file SG_Left_Channel_Processing.vhd VHDL PATH SG_Left_Channel_Processing.vhd
 add_fileset_file SG_Right_Channel_Processing.vhd VHDL PATH SG_Right_Channel_Processing.vhd
-add_fileset_file SG_dataplane_pkg.vhd VHDL PATH SG_dataplane_pkg.vhd
 set_fileset_property QUARTUS_SYNTH TOP_LEVEL SG_dataplane_avalon
 set_fileset_property QUARTUS_SYNTH ENABLE_RELATIVE_INCLUDE_PATHS false
 set_fileset_property QUARTUS_SYNTH ENABLE_FILE_OVERWRITE_MODE false
@@ -139,10 +139,10 @@ set_interface_property avalon_streaming_sink EXPORT_OF ""
 set_interface_property avalon_streaming_sink PORT_NAME_MAP ""
 set_interface_property avalon_streaming_sink CMSIS_SVD_VARIABLES ""
 set_interface_property avalon_streaming_sink SVD_ADDRESS_GROUP ""
+add_interface_port avalon_streaming_sink avalon_sink_valid valid Input 1
 add_interface_port avalon_streaming_sink avalon_sink_data data Input 32
 add_interface_port avalon_streaming_sink avalon_sink_channel channel Input 2
 add_interface_port avalon_streaming_sink avalon_sink_error error Input 2
-add_interface_port avalon_streaming_sink avalon_sink_valid valid Input 1
 # End create_sink_connection_point
 
 
@@ -163,10 +163,10 @@ set_interface_property avalon_streaming_source EXPORT_OF ""
 set_interface_property avalon_streaming_source PORT_NAME_MAP ""
 set_interface_property avalon_streaming_source CMSIS_SVD_VARIABLES ""
 set_interface_property avalon_streaming_source SVD_ADDRESS_GROUP ""
+add_interface_port avalon_streaming_source avalon_source_valid valid Output 1
+add_interface_port avalon_streaming_source avalon_source_data data Output 32
 add_interface_port avalon_streaming_source avalon_source_channel channel Output 2
 add_interface_port avalon_streaming_source avalon_source_error error Output 2
-add_interface_port avalon_streaming_source avalon_source_data data Output 32
-add_interface_port avalon_streaming_source avalon_source_valid valid Output 1
 # End create_sink_connection_point
 
 
