@@ -21,7 +21,7 @@
 % support@flatearthinc.com
 
 %% Clear the workspace
-clear all   % clear all workspace variables
+%clear all   % clear all workspace variables
 close all   % close all open Matlab windows
 clc         % clear command window
 
@@ -37,7 +37,7 @@ mp.fastsim_Nsamples    = 12000; % set to the string 'all' to use all the samples
 
 %% Model parameters
 % Model parameters are placed in a data structure called mp that can be passed to functions
-mp.model_name = 'mean_noise_reduction';
+mp.model_name = 'short_window_mean_reduction';
 mp.model_abbreviation = 'MNR';
 
 % Device driver version for the Linux device tree. Typically set as the Quartus version
@@ -47,15 +47,14 @@ mp.linux_device_version = '18.0';
 %% Setup the directory paths & tool settings
 % TODO: these paths should ideally be contained in a toolbox. the one exception is the model path, which is many cases is the pwd, though it doesn't have to be.
 addpath('../../config');
-% if isunix  % setup for a Linux platform
-%     path_setup_linux;
-% elseif ispc % setup for a Windows platform
-%     path_setup_windows;  
-% end
-path_setup_linux;
+if isunix  % setup for a Linux platform
+    path_setup_linux;
+elseif ispc % setup for a Windows platform
+    path_setup_windows;  
+end
 
 % Note: addpath() only sets the paths for the current Matlab session
-addpath(mp.model_path)
+%addpath(mp.model_path)
 addpath(mp.driver_codegen_path)
 addpath(mp.vhdl_codegen_path)
 addpath(mp.config_path)
@@ -77,12 +76,11 @@ end
 if count(py.sys.path,mp.driver_codegen_path) == 0
     insert(py.sys.path,int32(0),mp.driver_codegen_path);
 end
-
+if count(py.sys.path,[git_path, '/utils/device_tree_overlays/']) == 0
+    insert(py.sys.path,int32(0),[git_path, '/utils/device_tree_overlays/']);
+end
 
 %% Open the model
-disp(['Please wait while the Simulink Model: '  mp.model_name  ' is being opened.'])
-disp(['Note: Before generating VHDL, you will need to run a model simulation.'])
-open_system([mp.model_abbreviation])
-% display popup reminder message
-helpdlg(sprintf(['NOTE: You will need to first run the Simulation for model ' mp.model_name ' to initialize variables in the Matlab workspace before converting to VHDL.']),'Reminder Message')
+disp(['Please wait while the Simulink Model: '  mp.model_name  ' is being loaded.'])
+load_system([mp.model_abbreviation])
 mp.sim_prompts = 1;  % turn on the simulation prompts/comments (these will be turned off when the HDL conversion process starts).
