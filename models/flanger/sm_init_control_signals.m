@@ -36,13 +36,13 @@ function mp = sm_init_control_signals(mp)
 %
 
 %% Create bypass control signal
-mp.register(1).name       = 'bypass';
-mp.register(1).value      = 0;          % value control signal will take during simulation
+mp.register(1).name       = 'Enable';
+mp.register(1).value      = 1;          % value control signal will take during simulation
 mp.register(1).min        = 0;          % The minimum value the control signal will ever take
 mp.register(1).max        = 1;          % The maximum value the control signal will ever take
-mp.register(1).default    = 0;          % default (initial) value
+mp.register(1).default    = 1;          % default (initial) value
 mp.register(1).widget_type          = 'toggle';
-mp.register(1).widget_display_units = 'bypass';
+mp.register(1).widget_display_units = 'enable';
 
 %% Create rate control signal
 mp.register(2).name       = 'rate';
