@@ -79,8 +79,8 @@ end
 if count(py.sys.path,mp.driver_codegen_path) == 0
     insert(py.sys.path,int32(0),mp.driver_codegen_path);
 end
-if count(py.sys.path,[git_path, '\utils\device_tree_overlays\']) == 0
-    insert(py.sys.path,int32(0),[git_path, '\utils\device_tree_overlays\']);
+if count(py.sys.path,[git_path, filesep 'utils' filesep  'device_tree_overlays' filesep]) == 0
+    insert(py.sys.path,int32(0),[git_path, filesep 'utils' filesep  'device_tree_overlays' filesep]);
 end
 
 %% Open the model
