@@ -54,6 +54,33 @@ end
 % Change the working directory to the model directory (this might already be the case)
 cd(mp.model_path)
 
+% Note: addpath() only sets the paths for the current Matlab session
+addpath(mp.model_path)
+addpath(mp.driver_codegen_path)
+addpath(mp.vhdl_codegen_path)
+addpath(mp.config_path)
+hdlsetuptoolpath('ToolName', 'Altera Quartus II', 'ToolPath', mp.quartus_path);  % setup the HDL toochain path that needs to be set before calling HDL workflow process
+eval(['cd ' mp.model_path])  % change the working directory to the model directory
+
+%% python
+% [python_version, python_exe, python_loaded] = pyversion;
+% if  python_loaded
+%     disp(['Using Python version ' python_version])
+% else
+%     pyversion(mp.python_path);    % Note: if the version changes from what is already loaded in Matlab, you will need to restart Matlab
+%     [python_version, python_exe, python_loaded] = pyversion;
+%     disp(['Setting Python to version ' python_version])
+% end
+% add the codegen_path to python's search path
+if count(py.sys.path,mp.vhdl_codegen_path) == 0
+    insert(py.sys.path,int32(0),mp.vhdl_codegen_path);
+end
+if count(py.sys.path,mp.driver_codegen_path) == 0
+    insert(py.sys.path,int32(0),mp.driver_codegen_path);
+end
+if count(py.sys.path,[git_path, filesep 'utils' filesep  'device_tree_overlays' filesep]) == 0
+    insert(py.sys.path,int32(0),[git_path, filesep 'utils' filesep  'device_tree_overlays' filesep]);
+end
 
 %% Open the model
 disp(['Please wait while the Simulink Model: '  mp.model_name  ' is being loaded.'])
