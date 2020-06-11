@@ -20,8 +20,7 @@
 
 %% Make sure that sm_run_me_first has actually been run first.
 % if not, run it first since it sets up paths and toolchains
-if isfield(mp,'sim_prompts') == 0
-    cd ..
+if exist('mp','var') == 0
     sm_run_me_first;
 end
 
@@ -45,6 +44,9 @@ mp.F_bits = 28;  % Number of fractional bits in word
 
 %% Create the control signals
 mp = sm_init_control_signals(mp);  % create the control signals
+
+%% Configure target system
+mp.target_system = "arria10";
 
 %% Create test signals for the left and right channels
 mp = sm_init_test_signals(mp);  % create the test signals that will go through the model

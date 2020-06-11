@@ -77,6 +77,9 @@ end
 % i.e. put the test signals into the data-channel-valid protocol
 mp = sm_init_avalon_signals(mp);  % create the avalon streaming signals
 
+%% Configure target system
+mp.target_system = "de10";
+
 %% place variables into workspace directly (debug)
 % Avalon_Source_Data    = SG.Avalon_Source_Data;    % place into workspace directly so that the "From Workspace" blocks can read from these variables
 % Avalon_Source_Valid   = SG.Avalon_Source_Valid;
