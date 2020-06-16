@@ -125,8 +125,8 @@ static const struct file_operations fe_simple_gain_fops = {
 Generated in CreateInitFunction
 *********************************************************/
 static int simple_gain_init(void) {
-  printk(KERN_ALERT "FUNCTION AUTO GENERATED AT: 2019-10-06 20:39\n");
   int ret_val = 0;
+  printk(KERN_ALERT "FUNCTION AUTO GENERATED AT: 2020-05-28 09:23\n");
   pr_info("Initializing the Flat Earth simple_gain module\n");
   // Register our driver with the "Platform Driver" bus
   ret_val = platform_driver_register(&simple_gain_platform);  if (ret_val != 0) {
@@ -148,8 +148,8 @@ static int simple_gain_probe(struct platform_device *pdev) {
   int status;
   struct device *device_obj;
   fe_simple_gain_dev_t * fe_simple_gain_devp;
+  struct resource *r = NULL;
   pr_info("simple_gain_probe enter\n");
-  struct resource *r = 0;
   r = platform_get_resource(pdev, IORESOURCE_MEM, 0);
   if (r == NULL) {
     pr_err("IORESOURCE_MEM (register space) does not exist\n");
@@ -184,11 +184,11 @@ static int simple_gain_probe(struct platform_device *pdev) {
 /* Beginning attribute file stuff */
   status = device_create_file(device_obj, &dev_attr_left_gain);
   if (status)
-    goto bad_device_create_file_1;
+    goto bad_device_create_file_0;
 
   status = device_create_file(device_obj, &dev_attr_right_gain);
   if (status)
-    goto bad_device_create_file_2;
+    goto bad_device_create_file_1;
 
   status = device_create_file(device_obj, &dev_attr_name);
   if (status)
@@ -197,16 +197,15 @@ static int simple_gain_probe(struct platform_device *pdev) {
   return 0;
 bad_device_create_file_3:
   device_remove_file(device_obj, &dev_attr_name);
-bad_device_create_file_2:
+bad_device_create_file_1:
   device_remove_file(device_obj, &dev_attr_right_gain);
 
-bad_device_create_file_1:
+bad_device_create_file_0:
   device_remove_file(device_obj, &dev_attr_left_gain);
 
-bad_device_create_file_0:
+bad_device_create:
   device_destroy(cl, dev_num);
 
-bad_device_create:
   cdev_del(&fe_simple_gain_devp->cdev);
 bad_cdev_add:
   class_destroy(cl);
@@ -247,7 +246,7 @@ static ssize_t left_gain_write(struct device *dev, struct device_attribute *attr
     }
   }
   substring[substring_count] = 0;
-  tempValue = set_fixed_num(substring, 28, false);
+  tempValue = set_fixed_num(substring, 28, true);
   devp->left_gain = tempValue;
   iowrite32(devp->left_gain, (u32 *)devp->regs + 0);
   return count;
@@ -273,7 +272,7 @@ static ssize_t right_gain_write(struct device *dev, struct device_attribute *att
     }
   }
   substring[substring_count] = 0;
-  tempValue = set_fixed_num(substring, 28, false);
+  tempValue = set_fixed_num(substring, 28, true);
   devp->right_gain = tempValue;
   iowrite32(devp->right_gain, (u32 *)devp->regs + 1);
   return count;

@@ -79,12 +79,11 @@ end
 if count(py.sys.path,mp.driver_codegen_path) == 0
     insert(py.sys.path,int32(0),mp.driver_codegen_path);
 end
-
+if count(py.sys.path,[git_path, '\utils\device_tree_overlays\']) == 0
+    insert(py.sys.path,int32(0),[git_path, '\utils\device_tree_overlays\']);
+end
 
 %% Open the model
-disp(['Please wait while the Simulink Model: '  mp.model_name  ' is being opened.'])
-disp(['Note: Before generating VHDL, you will need to run a model simulation.'])
-open_system([mp.model_abbreviation])
-% display popup reminder message
-helpdlg(sprintf(['NOTE: You will need to first run the Simulation for model ' mp.model_name ' to initialize variables in the Matlab workspace before converting to VHDL.']),'Reminder Message')
+disp(['Please wait while the Simulink Model: '  mp.model_name  ' is being loaded.'])
+load_system([mp.model_abbreviation])
 mp.sim_prompts = 1;  % turn on the simulation prompts/comments (these will be turned off when the HDL conversion process starts).
