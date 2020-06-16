@@ -1,30 +1,46 @@
 [
     {
-        "name": "name",
-        "description": "control signal name"
-    },
+        "description": "control signal name", 
+        "name": "name"
+    }, 
     {
-        "name": "value",
-        "description": "value control signal will take during simulation"
-    },
+        "description": "value control signal will take during simulation", 
+        "name": "value"
+    }, 
     {
-        "name": "min",
-        "description": "The minimum value the control signal will ever take"
-    },
+        "description": "The minimum value the control signal will ever take", 
+        "name": "min"
+    }, 
     {
-        "name": "max",
-        "description": "The maximum value the control signal will ever take"
-    },
+        "description": "The maximum value the control signal will ever take", 
+        "name": "max"
+    }, 
     {
-        "name": "default",
-        "description": "default (initial or powerup) value"
-    },
+        "description": "default (initial or powerup) value", 
+        "name": "default"
+    }, 
     {
-        "name": "widget_type",
-        "description": "display widget for register"
-    },
+        "description": "display widget for register", 
+        "name": "widgetType"
+    }, 
     {
-        "name": "widget_display_units",
-        "description": "the units the diplay widget will use"
+        "description": "the units the diplay widget will use", 
+        "name": "widgetDisplayUnits"
+    }, 
+    {
+        "description": "register data type", 
+        "name": "dataType"
+    }, 
+    {
+        "description": "widget display style", 
+        "name": "widgetStyle"
+    }, 
+    {
+        "description": "name of page where this register will show up in the app", 
+        "name": "uiPageName"
+    }, 
+    {
+        "description": "name of panel where this register will show up in the app", 
+        "name": "uiPanelName"
     }
 ]

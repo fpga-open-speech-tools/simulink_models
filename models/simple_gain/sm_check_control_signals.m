@@ -63,7 +63,7 @@ error_flag = 0;
 for i=1:Nsr
     found_flag = 0;
     for j=1:Nw
-        if strcmp(registers(i).widget_type, wl(j).name) == 1
+        if strcmp(registers(i).widgetType, wl(j).name) == 1
             found_flag = 1;
             break
         end           

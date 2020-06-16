@@ -57,12 +57,12 @@ static ssize_t name_read(struct device *dev, struct device_attribute *attr, char
 
 /************** Generate device specific prototypes ********************/
 // FPGA device funcs
-static ssize_t bypass_write (struct device *dev, struct device_attribute *attr, const char *buf, size_t count);
-static ssize_t bypass_read  (struct device *dev, struct device_attribute *attr, char *buf);
+static ssize_t enable_write (struct device *dev, struct device_attribute *attr, const char *buf, size_t count);
+static ssize_t enable_read  (struct device *dev, struct device_attribute *attr, char *buf);
 static ssize_t delay_write (struct device *dev, struct device_attribute *attr, const char *buf, size_t count);
 static ssize_t delay_read  (struct device *dev, struct device_attribute *attr, char *buf);
-static ssize_t decay_write (struct device *dev, struct device_attribute *attr, const char *buf, size_t count);
-static ssize_t decay_read  (struct device *dev, struct device_attribute *attr, char *buf);
+static ssize_t feedback_write (struct device *dev, struct device_attribute *attr, const char *buf, size_t count);
+static ssize_t feedback_read  (struct device *dev, struct device_attribute *attr, char *buf);
 static ssize_t wet_dry_mix_write (struct device *dev, struct device_attribute *attr, const char *buf, size_t count);
 static ssize_t wet_dry_mix_read  (struct device *dev, struct device_attribute *attr, char *buf);
 
@@ -73,9 +73,9 @@ static ssize_t wet_dry_mix_read  (struct device *dev, struct device_attribute *a
 /*************************************************
 Generated in WriteDeviceAttributes
 *************************************************/
-DEVICE_ATTR(bypass, 0664, bypass_read, bypass_write);
+DEVICE_ATTR(enable, 0664, enable_read, enable_write);
 DEVICE_ATTR(delay, 0664, delay_read, delay_write);
-DEVICE_ATTR(decay, 0664, decay_read, decay_write);
+DEVICE_ATTR(feedback, 0664, feedback_read, feedback_write);
 DEVICE_ATTR(wet_dry_mix, 0664, wet_dry_mix_read, wet_dry_mix_write);
 DEVICE_ATTR(name, 0444, name_read, NULL);
 /* End WriteDeviceAttributes */
@@ -90,9 +90,9 @@ struct fe_echo_dev {
   struct cdev cdev;
   char *name;
   void __iomem *regs;
-  int bypass;
+  int enable;
   int delay;
-  int decay;
+  int feedback;
   int wet_dry_mix;
 };
 
@@ -133,8 +133,8 @@ static const struct file_operations fe_echo_fops = {
 Generated in CreateInitFunction
 *********************************************************/
 static int echo_init(void) {
-  printk(KERN_ALERT "FUNCTION AUTO GENERATED AT: 2019-10-06 09:02\n");
   int ret_val = 0;
+  printk(KERN_ALERT "FUNCTION AUTO GENERATED AT: 2020-05-27 10:44\n");
   pr_info("Initializing the Flat Earth echo module\n");
   // Register our driver with the "Platform Driver" bus
   ret_val = platform_driver_register(&echo_platform);  if (ret_val != 0) {
@@ -156,8 +156,8 @@ static int echo_probe(struct platform_device *pdev) {
   int status;
   struct device *device_obj;
   fe_echo_dev_t * fe_echo_devp;
+  struct resource *r = NULL;
   pr_info("echo_probe enter\n");
-  struct resource *r = 0;
   r = platform_get_resource(pdev, IORESOURCE_MEM, 0);
   if (r == NULL) {
     pr_err("IORESOURCE_MEM (register space) does not exist\n");
@@ -190,21 +190,21 @@ static int echo_probe(struct platform_device *pdev) {
     goto bad_device_create;
   dev_set_drvdata(device_obj, fe_echo_devp);
 /* Beginning attribute file stuff */
-  status = device_create_file(device_obj, &dev_attr_bypass);
+  status = device_create_file(device_obj, &dev_attr_enable);
   if (status)
-    goto bad_device_create_file_1;
+    goto bad_device_create_file_0;
 
   status = device_create_file(device_obj, &dev_attr_delay);
   if (status)
-    goto bad_device_create_file_2;
+    goto bad_device_create_file_1;
 
-  status = device_create_file(device_obj, &dev_attr_decay);
+  status = device_create_file(device_obj, &dev_attr_feedback);
   if (status)
-    goto bad_device_create_file_3;
+    goto bad_device_create_file_2;
 
   status = device_create_file(device_obj, &dev_attr_wet_dry_mix);
   if (status)
-    goto bad_device_create_file_4;
+    goto bad_device_create_file_3;
 
   status = device_create_file(device_obj, &dev_attr_name);
   if (status)
@@ -213,22 +213,21 @@ static int echo_probe(struct platform_device *pdev) {
   return 0;
 bad_device_create_file_5:
   device_remove_file(device_obj, &dev_attr_name);
-bad_device_create_file_4:
+bad_device_create_file_3:
   device_remove_file(device_obj, &dev_attr_wet_dry_mix);
 
-bad_device_create_file_3:
-  device_remove_file(device_obj, &dev_attr_decay);
-
 bad_device_create_file_2:
-  device_remove_file(device_obj, &dev_attr_delay);
+  device_remove_file(device_obj, &dev_attr_feedback);
 
 bad_device_create_file_1:
-  device_remove_file(device_obj, &dev_attr_bypass);
+  device_remove_file(device_obj, &dev_attr_delay);
 
 bad_device_create_file_0:
-  device_destroy(cl, dev_num);
+  device_remove_file(device_obj, &dev_attr_enable);
 
 bad_device_create:
+  device_destroy(cl, dev_num);
+
   cdev_del(&fe_echo_devp->cdev);
 bad_cdev_add:
   class_destroy(cl);
@@ -249,14 +248,14 @@ bad_exit_return:
 Generated by CreateAttrReadWriteFuncs
 ****************************************************/
 // FPGA Attribute functions
-static ssize_t bypass_read(struct device *dev, struct device_attribute *attr, char *buf) {
+static ssize_t enable_read(struct device *dev, struct device_attribute *attr, char *buf) {
   fe_echo_dev_t * devp = (fe_echo_dev_t *)dev_get_drvdata(dev);
-  fp_to_string(buf, devp->bypass, 0, false, 0);
+  fp_to_string(buf, devp->enable, 0, false, 0);
   strcat2(buf,"\n");
   return strlen(buf);
 }
 
-static ssize_t bypass_write(struct device *dev, struct device_attribute *attr, const char *buf, size_t count) {
+static ssize_t enable_write(struct device *dev, struct device_attribute *attr, const char *buf, size_t count) {
   uint32_t tempValue = 0;
   char substring[80];
   int substring_count = 0;
@@ -270,8 +269,8 @@ static ssize_t bypass_write(struct device *dev, struct device_attribute *attr, c
   }
   substring[substring_count] = 0;
   tempValue = set_fixed_num(substring, 0, false);
-  devp->bypass = tempValue;
-  iowrite32(devp->bypass, (u32 *)devp->regs + 0);
+  devp->enable = tempValue;
+  iowrite32(devp->enable, (u32 *)devp->regs + 0);
   return count;
 }
 
@@ -301,14 +300,14 @@ static ssize_t delay_write(struct device *dev, struct device_attribute *attr, co
   return count;
 }
 
-static ssize_t decay_read(struct device *dev, struct device_attribute *attr, char *buf) {
+static ssize_t feedback_read(struct device *dev, struct device_attribute *attr, char *buf) {
   fe_echo_dev_t * devp = (fe_echo_dev_t *)dev_get_drvdata(dev);
-  fp_to_string(buf, devp->decay, 7, false, 9);
+  fp_to_string(buf, devp->feedback, 7, false, 7);
   strcat2(buf,"\n");
   return strlen(buf);
 }
 
-static ssize_t decay_write(struct device *dev, struct device_attribute *attr, const char *buf, size_t count) {
+static ssize_t feedback_write(struct device *dev, struct device_attribute *attr, const char *buf, size_t count) {
   uint32_t tempValue = 0;
   char substring[80];
   int substring_count = 0;
@@ -322,14 +321,14 @@ static ssize_t decay_write(struct device *dev, struct device_attribute *attr, co
   }
   substring[substring_count] = 0;
   tempValue = set_fixed_num(substring, 7, false);
-  devp->decay = tempValue;
-  iowrite32(devp->decay, (u32 *)devp->regs + 2);
+  devp->feedback = tempValue;
+  iowrite32(devp->feedback, (u32 *)devp->regs + 2);
   return count;
 }
 
 static ssize_t wet_dry_mix_read(struct device *dev, struct device_attribute *attr, char *buf) {
   fe_echo_dev_t * devp = (fe_echo_dev_t *)dev_get_drvdata(dev);
-  fp_to_string(buf, devp->wet_dry_mix, 7, false, 9);
+  fp_to_string(buf, devp->wet_dry_mix, 7, false, 7);
   strcat2(buf,"\n");
   return strlen(buf);
 }

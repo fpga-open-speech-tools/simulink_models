@@ -24,8 +24,8 @@ end entity SG_dataplane_avalon;
 
 architecture SG_dataplane_avalon_arch of SG_dataplane_avalon is
 
-  signal left_gain                 : std_logic_vector(31  downto 0) :=  "00000100110011001100110011001101"; -- 0.3
-  signal right_gain                : std_logic_vector(31  downto 0) :=  "00000100110011001100110011001101"; -- 0.3
+  signal left_gain                 : std_logic_vector(31  downto 0) :=  "00000100110011001100110011001101"; -- 0.3 (sfix32_En28)
+  signal right_gain                : std_logic_vector(31  downto 0) :=  "00000100110011001100110011001101"; -- 0.3 (sfix32_En28)
 
 component SG_dataplane
   port(
@@ -57,7 +57,7 @@ u_SG_dataplane : SG_dataplane
     avalon_sink_data            =>  avalon_sink_data,                -- sfix32_En28
     avalon_sink_channel         =>  avalon_sink_channel,             -- ufix2
     avalon_sink_error           =>  avalon_sink_error,               -- ufix2
-    register_control_left_gain  =>  left_gain,                       -- boolean
+    register_control_left_gain  =>  left_gain,                       -- sfix32_En28
     register_control_right_gain =>  right_gain,                      -- sfix32_En28
     avalon_source_valid         =>  avalon_source_valid,             -- boolean
     avalon_source_data          =>  avalon_source_data,              -- sfix32_En28
@@ -79,8 +79,8 @@ u_SG_dataplane : SG_dataplane
   bus_write : process(clk, reset)
   begin
     if reset = '1' then
-      left_gain                 <=  "00000100110011001100110011001101"; -- 0.3
-      right_gain                <=  "00000100110011001100110011001101"; -- 0.3
+      left_gain                 <=  "00000100110011001100110011001101"; -- 0.3 (sfix32_En28)
+      right_gain                <=  "00000100110011001100110011001101"; -- 0.3 (sfix32_En28)
     elsif rising_edge(clk) and avalon_slave_write = '1' then
       case avalon_slave_address is
         when "0" => left_gain <= avalon_slave_writedata(31 downto 0);
