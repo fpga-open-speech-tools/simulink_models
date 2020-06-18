@@ -47,6 +47,7 @@ mp.test_signals_path    = [gitPath filesep 'simulink_models' filesep 'test_signa
 mp.vhdl_codegen_path    = [gitPath filesep 'simulink_codegen' filesep 'vhdl'];
 mp.driver_codegen_path  = [gitPath filesep 'simulink_codegen' filesep 'device_drivers'];
 mp.ui_codegen_path      = [gitPath filesep 'simulink_codegen' filesep 'ui'];
+mp.dtogen_path          = [git_path, filesep 'utils' filesep  'device_tree_overlays' filesep];
 
 %% Quartus Setup
 % Add your Quartus path to the cell array selection below so it will be found
@@ -68,6 +69,12 @@ end
 mp.quartus_path = quartusPath;
 
 %% Python setup
+[pythonVersion, pythonExe, pythonLoaded] = pyversion;
+if  pythonLoaded
+    disp(['Using Python version ' pythonVersion])
+else
+    pyenv('ExecutionMode', 'OutOfProcess')
+end
 
 % add the codegen_path to python's search path
 if count(py.sys.path,mp.vhdl_codegen_path) == 0
@@ -75,6 +82,9 @@ if count(py.sys.path,mp.vhdl_codegen_path) == 0
 end
 if count(py.sys.path,mp.driver_codegen_path) == 0
     insert(py.sys.path,int32(0),mp.driver_codegen_path);
+end
+if count(py.sys.path,mp.dtogen_path) == 0
+    insert(py.sys.path,int32(0),mp.dtogen_path);
 end
 
 %% Add the paths to the current Matlab session

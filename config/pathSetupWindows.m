@@ -48,6 +48,8 @@ mp.test_signals_path    = [gitPath '\simulink_models\test_signals'];
 mp.vhdl_codegen_path    = [gitPath '\simulink_codegen\vhdl'];
 mp.driver_codegen_path  = [gitPath '\simulink_codegen\device_drivers'];
 mp.ui_codegen_path      = [gitPath '\simulink_codegen\ui'];
+mp.dtogen_path          = [git_path, filesep 'utils' filesep  'device_tree_overlays' filesep];
+
 
 %% Quartus Setup
 % Add your Quartus path to the cell array selection below so it will be found
@@ -92,6 +94,7 @@ mp.pythonPath = pythonPath;
 if  pythonLoaded
     disp(['Using Python version ' pythonVersion])
 else
+    pyenv('ExecutionMode', 'OutOfProcess')
     % NOTE: if the version changes from what is already loaded in Matlab, you will need to restart 
     pyversion([mp.pythonPath, '\python.exe']);
     [pythonVersion, pythonExe, pythonLoaded] = pyversion;
@@ -104,6 +107,9 @@ if count(py.sys.path,mp.vhdl_codegen_path) == 0
 end
 if count(py.sys.path,mp.driver_codegen_path) == 0
     insert(py.sys.path,int32(0),mp.driver_codegen_path);
+end
+if count(py.sys.path,mp.dtogen_path) == 0
+    insert(py.sys.path,int32(0),mp.dtogen_path);
 end
 
 %% Add the paths to the current Matlab session
