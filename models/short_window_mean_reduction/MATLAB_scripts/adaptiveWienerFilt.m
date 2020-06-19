@@ -1,4 +1,4 @@
-function [sn, meansVect] = adaptiveWienerFilt(noisyAudio, Fs, windowSize)
+function [sn, meansVect] = adaptiveWienerFilt(noisyAudio, Fs, windowSize, noiseVariance)
 %%Adaptive Wiener Filter
 % Author: Justin Williams
 % Under:  Flat Earth Inc
@@ -25,36 +25,37 @@ for n = 1:length(noisyAudio)
     
     if n <= winSize
         win(n)    = noisyAudio(n);
-        [winMean, winSTD, winNoise] = wienStats(win);
-    elseif (n > winSize & n <= (length(noisyAudio) - winSize))
+        [signalAvg, signalVariance] = wienStats(win, noiseVariance);
+    elseif (n > winSize && n <= (length(noisyAudio) - winSize))
         win     = noisyAudio((n-winSize/2):(n+winSize/2 - 1));
-        [winMean, winSTD, winNoise] = wienStats(win);
+        [signalAvg, signalVariance] = wienStats(win, noiseVariance);
     else
         win     = noisyAudio((n):end);
-        [winMean, winSTD, winNoise] = wienStats(win);
+        [signalAvg, signalVariance] = wienStats(win, noiseVariance);
     end
+    
     % Filter Signal
-    sn(n) = winMean + winSTD / (winNoise + winSTD) *  ... 
-        (noisyAudio(n) - winMean);
-    meansVect(n) = winMean;
+    sn(n) = signalAvg ... 
+        + (signalVariance / (noiseVariance + signalVariance)) * (noisyAudio(n) - signalAvg);
+    
+    meansVect(n) = signalAvg;
+    
     % Account for any nans / divide by zeros
-    if (sn(n) == nan)
+    if (isnan(sn(n)))
         sn(n) = 0;
     end
 end
                 
 %% Calculate Stats 
-    function [winMean, winSTD, winNoise] = wienStats(win, cnt)
-    %%This function calculates the statistics of the current window within a
-    %%function, including the mean, standard deviation, and noise power.
-    winMean = mean(win);
-    winSTD  = std(win);
-    winNoise = 0.1/6;
-%     winNoisePow = 1 / length(win) * sum((win - winMean)).^2;
-%         if winNoisePow > winSTD
-%             winNoise = winNoisePow - winSTD;
-%         else 
-%             winNoise = 0;
-%         end % end if
-    end % end fcn
+function [signalAvg, signalVariance] = wienStats(win, noiseVariance)
+%%This function calculates the statistics of the current window within a
+%%function, including the mean, standard deviation, and noise power.
+signalAvg = mean(win);
+windowVariance = var(win);
+    if windowVariance > noiseVariance
+        signalVariance = windowVariance - noiseVariance;
+    else 
+        signalVariance = 0;
+    end
+end
 end
