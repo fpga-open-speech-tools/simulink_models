@@ -27,7 +27,11 @@ for n = 1:length(noisyAudio)
         win(n)    = noisyAudio(n);
         [signalAvg, signalVariance] = wienStats(win, noiseVariance);
     elseif (n > winSize && n <= (length(noisyAudio) - winSize))
+<<<<<<< HEAD:models/noise_suppression/MATLAB_scripts/adaptiveWienerFilt.m
         win     = noisyAudio(n - winSize + 1 : n);
+=======
+        win     = noisyAudio((n-winSize/2):(n+winSize/2 - 1));
+>>>>>>> Fix the adaptive Wiener filter matlab code:models/short_window_mean_reduction/MATLAB_scripts/adaptiveWienerFilt.m
         [signalAvg, signalVariance] = wienStats(win, noiseVariance);
     else
         win     = noisyAudio((n):end);
