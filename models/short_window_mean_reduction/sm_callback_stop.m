@@ -29,18 +29,8 @@ mp.Avalon_Sink_Valid.Data   = Avalon_Sink_Valid.Data;   % valid
 if mp.sim_prompts == 1  % sim_prompts is set in Run_me_first.m   This is turned off when the model is converted to VHDL since we don't want to run the verification multiple times at this point (HDL coder runs the simulation multiple times)
     
     mp = sm_stop_process_output(mp);  % get the output and convert from Avalon to vector
-%     mp = sm_stop_verify(mp);          % verify that the output is correct
+    mp = sm_stop_verify(mp);          % verify that the output is correct
     
 end
-
-%% Plot some stuff
-% snPlay = double(Avalon_Sink_Data.data);
-% figure;
-% subplot(211);
-% plot(mp.Avalon_Sink_Data);
-% title('Filtered Signal');
-% subplot(212);
-% plot(mp.Avalon_Source_Data);
-% title('Noisy Speech Signal');
 
 
