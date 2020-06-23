@@ -83,8 +83,6 @@ switch signal_option
         mp.test_signal.right = y_resampled(1:mp.test_signal.Nsamples);
         mp.test_signal.Nsamples = length(mp.test_signal.left);
         mp.test_signal.duration = mp.test_signal.Nsamples * mp.Ts;
-        mp.win = 32; % WINDOW SIZE -- POWER OF 2
-        mp.noise_std = 0.1/6;
     otherwise
         error('Please choose a viable option for the test signal (see sm_init_test_signals)')
 end
