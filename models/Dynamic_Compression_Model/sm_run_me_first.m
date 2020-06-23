@@ -29,9 +29,15 @@ clc         % clear command window
 % simulated clock cycles between each sample in the Avalon bus signals.
 % It also reduces the number of stimulus samples.  This allow for faster
 % development iterations when developing the simulink model.
+<<<<<<< HEAD:models/Dynamic_Compression_Model/sm_run_me_first.m
 mp.fastsim_flag = 0;     % perform fast simulation  Note: fast simulation will be turned off when generating VHDL code since we need to run at the system clock rate.
 mp.fastsim_Fs_system_N = 8;     % (typical value 2 or 4) Simulate a much slower system clock than what is specified in sm_callback_init.m   - The reduce rate will be a multiple of the sample rate, i.e. mp.Fs_system = mp.Fs*mp.fastsim_Fs_system_N
 mp.fastsim_Nsamples = 12000; % set to the string 'all' to use all the samples from the input signal specified in sm_init_test_signals.m
+=======
+mp.fastsim_flag        = 1;     % perform fast simulation  Note: fast simulation will be turned off when generating VHDL code since we need to run at the system clock rate.
+mp.fastsim_Fs_system_N = 4;     % (typical value 2 or 4) Simulate a much slower system clock than what is specified in sm_callback_init.m   - The reduce rate will be a multiple of the sample rate, i.e. mp.Fs_system = mp.Fs*mp.fastsim_Fs_system_N
+mp.fastsim_Nsamples    = 48000*5; % set to the string 'all' to use all the samples from the input signal specified in sm_init_test_signals.m
+>>>>>>> refactor model so it implements the adaptive Wiener filter:models/short_window_mean_reduction/sm_run_me_first.m
 
 
 %% Model parameters
@@ -47,15 +53,16 @@ mp.linux_device_version = '18.0';
 % TODO: these paths should ideally be contained in a toolbox. the one exception is the model path, which is many cases is the pwd, though it doesn't have to be.
 addpath('../../config');
 if isunix  % setup for a Linux platform
-    path_setup_linux;
+    pathSetupLinux;
 elseif ispc % setup for a Windows platform
-    path_setup_windows;  
+    pathSetupWidnows;  
 end
 
 % TODO: remove python path and version information. All of the code should be python3 and python2 compatible. If not, we should make it python2/3 compatible if possible.
 % mp.python_path = 'F:\Python\Python37\python.exe';
 
 % Note: addpath() only sets the paths for the current Matlab session
+<<<<<<< HEAD:models/Dynamic_Compression_Model/sm_run_me_first.m
 addpath(mp.model_path)
 addpath(mp.driver_codegen_path)
 addpath(mp.vhdl_codegen_path)
@@ -63,6 +70,14 @@ addpath(mp.config_path)
 hdlsetuptoolpath('ToolName', 'Altera Quartus II', 'ToolPath', mp.quartus_path);  % setup the HDL toochain path that needs to be set before calling HDL workflow process
 eval(['cd ' mp.model_path])  % change the working directory to the model directory
 
+=======
+%addpath(mp.model_path)
+% addpath(mp.driver_codegen_path)
+% addpath(mp.vhdl_codegen_path)
+% addpath(mp.config_path)
+% hdlsetuptoolpath('ToolName', 'Altera Quartus II', 'ToolPath', mp.quartus_path);  % setup the HDL toochain path that needs to be set before calling HDL workflow process
+cd(mp.model_path);
+>>>>>>> refactor model so it implements the adaptive Wiener filter:models/short_window_mean_reduction/sm_run_me_first.m
 %% python
 % [python_version, python_exe, python_loaded] = pyversion;
 % if  python_loaded
@@ -73,6 +88,7 @@ eval(['cd ' mp.model_path])  % change the working directory to the model directo
 %     disp(['Setting Python to version ' python_version])
 % end
 % add the codegen_path to python's search path
+<<<<<<< HEAD:models/Dynamic_Compression_Model/sm_run_me_first.m
 if count(py.sys.path,mp.vhdl_codegen_path) == 0
     insert(py.sys.path,int32(0),mp.vhdl_codegen_path);
 end
@@ -82,6 +98,17 @@ end
 if count(py.sys.path,[git_path, '\utils\device_tree_overlays\']) == 0
     insert(py.sys.path,int32(0),[git_path, '\utils\device_tree_overlays\']);
 end
+=======
+% if count(py.sys.path,mp.vhdl_codegen_path) == 0
+%     insert(py.sys.path,int32(0),mp.vhdl_codegen_path);
+% end
+% if count(py.sys.path,mp.driver_codegen_path) == 0
+%     insert(py.sys.path,int32(0),mp.driver_codegen_path);
+% end
+% if count(py.sys.path,[git_path, '/utils/device_tree_overlays/']) == 0
+%     insert(py.sys.path,int32(0),[git_path, '/utils/device_tree_overlays/']);
+% end
+>>>>>>> refactor model so it implements the adaptive Wiener filter:models/short_window_mean_reduction/sm_run_me_first.m
 
 %% Open the model
 disp(['Please wait while the Simulink Model: '  mp.model_name  ' is being loaded.'])

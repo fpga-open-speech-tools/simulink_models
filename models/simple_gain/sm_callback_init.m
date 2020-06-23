@@ -45,6 +45,24 @@ mp.F_bits = 28;  % Number of fractional bits in word
 %% Create the control signals
 mp = sm_init_control_signals(mp);  % create the control signals
 
+<<<<<<< HEAD:models/simple_gain/sm_callback_init.m
+=======
+%% Configure target system
+mp.target_system = "arria10";
+
+%% Custom model parameters
+% 10 ms window
+mp.windowSize = 10e-3 * mp.Fs;
+
+% define the expoential moving average weight to be roughly equivalent to
+% a simple moving average of length mp.windowSize
+% https://en.wikipedia.org/wiki/Moving_average#Relationship_between_SMA_and_EMA
+mp.exponentialMovingAverageWeight = 2/(mp.windowSize + 1);
+
+mp.noiseVariance = (0.1/6)^2;
+
+
+>>>>>>> refactor model so it implements the adaptive Wiener filter:models/short_window_mean_reduction/sm_callback_init.m
 %% Create test signals for the left and right channels
 mp = sm_init_test_signals(mp);  % create the test signals that will go through the model
 stop_time = mp.test_signal.duration;  % simulation time is based on the number of audio samples to go through the model
