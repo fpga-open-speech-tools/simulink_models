@@ -25,7 +25,7 @@ if exist('mp','var') == 0
 end
 
 %% Set Audio Data Sample Rate
-mp.Fs = 1024*48000;    % sample rate frequency of AD1939 codec in Hz
+mp.Fs = 48000;    % sample rate frequency of AD1939 codec in Hz
 mp.Ts = 1/mp.Fs;  % sample period
 
 %% Set the FPGA system clock frequency (frequency of the FPGA fabric)
@@ -47,6 +47,18 @@ mp = sm_init_control_signals(mp);  % create the control signals
 
 %% Configure target system
 mp.target_system = "arria10";
+
+%% Custom model parameters
+% 10 ms window
+mp.windowSize = 10e-3 * mp.Fs;
+
+% define the expoential moving average weight to be roughly equivalent to
+% a simple moving average of length mp.windowSize
+% https://en.wikipedia.org/wiki/Moving_average#Relationship_between_SMA_and_EMA
+mp.exponentialMovingAverageWeight = 2/(mp.windowSize + 1);
+
+mp.noiseVariance = (0.1/6)^2;
+
 
 %% Create test signals for the left and right channels
 mp = sm_init_test_signals(mp);  % create the test signals that will go through the model
