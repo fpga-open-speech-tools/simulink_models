@@ -22,8 +22,11 @@
 % Add your git path to the cell array selection below so it will be found
 % the next time you run Simulink.
 % The first directory that Matlab finds that exists will be used.
-localGitPath{1} = 'C:\Users\bugsbunny\research\NIH';
-localGitPath{2} = 'V:\MSU\GitHub\';
+localGitPath = {};
+localGitPath{end + 1} = '/mnt/data/NIH';
+localGitPath{end + 1} = 'C:\Users\bugsbunny\research\NIH';
+localGitPath{end + 1} = 'V:\MSU\GitHub\';
+localGitPath{end + 1} = 'C:\Users\wickh\Documents\NIH\';
 validIndex = 0;
 for index=1:length(localGitPath)
     if exist(localGitPath{index},'dir') 
@@ -43,20 +46,23 @@ end
 
 % TODO: change struct field names to match coding style; this struct
 %       is used all over the place, so this will require some global refactoring
-mp.model_path           = [gitPath '\simulink_models\models\' mp.model_name];
-mp.test_signals_path    = [gitPath '\simulink_models\test_signals'];
-mp.vhdl_codegen_path    = [gitPath '\simulink_codegen\vhdl'];
-mp.driver_codegen_path  = [gitPath '\simulink_codegen\device_drivers'];
-mp.ui_codegen_path      = [gitPath '\simulink_codegen\ui'];
-mp.dtogen_path          = [git_path, filesep 'utils' filesep  'device_tree_overlays' filesep];
-
+mp.model_path           = [gitPath filesep 'simulink_models' filesep 'models' filesep mp.model_name];
+mp.test_signals_path    = [gitPath filesep 'simulink_models' filesep 'test_signals'];
+mp.ipcore_codegen_path  = [gitPath filesep 'simulink_codegen' filesep 'ipcore'];
+mp.driver_codegen_path  = [gitPath filesep 'simulink_codegen' filesep 'device_drivers'];
+mp.ui_codegen_path      = [gitPath filesep 'simulink_codegen' filesep 'ui'];
+mp.dtogen_path          = [gitPath filesep 'utils' filesep  'device_tree_overlays'];
+mp.codegen_path         = [gitPath filesep 'simulink_codegen' ];
 
 %% Quartus Setup
 % Add your Quartus path to the cell array selection below so it will be found
 % the next time you run Simulink.
 % The first directory that Matlab finds that exists will be used.
-localQuartusPath{1} = 'C:\intelFPGA_lite\18.1\quartus\bin64';
-localQuartusPath{2} = 'D:\intelFPGA_lite\18.1\quartus\bin64';
+localQuartusPath = {};
+localQuartusPath{end + 1} = 'C:\intelFPGA_lite\18.1\quartus\bin64';
+localQuartusPath{end + 1} = 'D:\intelFPGA_lite\18.1\quartus\bin64';
+localQuartusPath{end + 1} = 'C:\intelFPGA\18.0\quartus\bin64';
+localQuartusPath{end + 1} = '/usr/local/intelFPGA_lite/18.0/quartus/bin';
 validIndex = 0;
 for index=1:length(localQuartusPath)
     if exist(localQuartusPath{index},'dir') 
@@ -74,8 +80,10 @@ mp.quartus_path = quartusPath;
 % Add your Python path to the cell array selection below so it will be found
 % the next time you run Simulink.
 % The first directory that Matlab finds that exists will be used.
-localPythonPath{1} = 'F:\Python\Python37';
-localPythonPath{2} = 'C:\Anaconda3';
+localPythonPath = {};
+localPythonPath{end + 1} = 'F:\Python\Python37';
+localPythonPath{end + 1} = 'C:\Anaconda3';
+localPythonPath{end + 1} = 'C:\Users\wickh\AppData\Local\Programs\Python\Python37';
 validIndex = 0;
 for index=1:length(localPythonPath)
     if exist(localPythonPath{index},'dir') 
@@ -96,14 +104,14 @@ if  pythonLoaded
 else
     pyenv('ExecutionMode', 'OutOfProcess')
     % NOTE: if the version changes from what is already loaded in Matlab, you will need to restart 
-    pyversion([mp.pythonPath, '\python.exe']);
+    pyversion([mp.pythonPath, filesep ,'python.exe']);
     [pythonVersion, pythonExe, pythonLoaded] = pyversion;
     disp(['Setting Python to version ' pythonVersion])
 end
 
 % add the codegen_path to python's search path
-if count(py.sys.path,mp.vhdl_codegen_path) == 0
-    insert(py.sys.path,int32(0),mp.vhdl_codegen_path);
+if count(py.sys.path,mp.ipcore_codegen_path) == 0
+    insert(py.sys.path,int32(0),mp.ipcore_codegen_path);
 end
 if count(py.sys.path,mp.driver_codegen_path) == 0
     insert(py.sys.path,int32(0),mp.driver_codegen_path);
@@ -115,18 +123,19 @@ end
 %% Add the paths to the current Matlab session
 addpath(mp.model_path)
 addpath(mp.driver_codegen_path)
-addpath(mp.vhdl_codegen_path)
+addpath(mp.ipcore_codegen_path)
 addpath(mp.ui_codegen_path)
 addpath(mp.test_signals_path)
+addpath(mp.codegen_path)
 hdlsetuptoolpath('ToolName', 'Altera Quartus II', 'ToolPath', mp.quartus_path);
 
 %% Print out the paths
 disp(['------------------------------------------------'])
 disp(['Setting up the the following path parameters'])
-disp(['Local GitHub repository path = ' localGitPath])
+disp(['Local GitHub repository path = ' gitPath])
 disp(['Simulink model path          = ' mp.model_path])
 disp(['Test signals path            = ' mp.test_signals_path])
-disp(['VHDL Codegen path            = ' mp.vhdl_codegen_path])
+disp(['VHDL Codegen path            = ' mp.ipcore_codegen_path])
 disp(['Driver Codegen path          = ' mp.driver_codegen_path])
 disp(['UI Codegen path              = ' mp.ui_codegen_path])
 disp(['Quartus path                 = ' mp.quartus_path])
