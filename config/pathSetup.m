@@ -29,7 +29,7 @@ localGitPath{end + 1} = 'V:\MSU\GitHub\';
 localGitPath{end + 1} = 'C:\Users\wickh\Documents\NIH\';
 validIndex = 0;
 for index=1:length(localGitPath)
-    if exist(localGitPath{index},'dir') 
+    if isfolder(localGitPath{index}) 
         validIndex = index;
     end
 end
@@ -67,7 +67,7 @@ localQuartusPath{end + 1} = '/usr/local/intelFPGA_lite/18.0/quartus/bin';
 
 validIndex = 0;
 for index=1:length(localQuartusPath)
-    if exist(localQuartusPath{index},'dir') 
+    if isfolder(localQuartusPath{index}) 
         validIndex = index;
     end
 end
