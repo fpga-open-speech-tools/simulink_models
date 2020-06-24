@@ -12,7 +12,7 @@
 % FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 % ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 %
-% Ross Snider, Trevor Vannoy
+% Ross Snider, Trevor Vannoy, Dylan Wickham
 % Flat Earth Inc
 % 985 Technology Blvd
 % Bozeman, MT 59718
@@ -62,7 +62,9 @@ localQuartusPath = {};
 localQuartusPath{end + 1} = 'C:\intelFPGA_lite\18.1\quartus\bin64';
 localQuartusPath{end + 1} = 'D:\intelFPGA_lite\18.1\quartus\bin64';
 localQuartusPath{end + 1} = 'C:\intelFPGA\18.0\quartus\bin64';
+localQuartusPath{end + 1} = '/usr/local/intelFPGA/19.1/quartus/bin';
 localQuartusPath{end + 1} = '/usr/local/intelFPGA_lite/18.0/quartus/bin';
+
 validIndex = 0;
 for index=1:length(localQuartusPath)
     if exist(localQuartusPath{index},'dir') 
@@ -77,39 +79,6 @@ end
 mp.quartus_path = quartusPath;
 
 %% Setup Python paths
-% Add your Python path to the cell array selection below so it will be found
-% the next time you run Simulink.
-% The first directory that Matlab finds that exists will be used.
-localPythonPath = {};
-localPythonPath{end + 1} = 'F:\Python\Python37';
-localPythonPath{end + 1} = 'C:\Anaconda3';
-localPythonPath{end + 1} = 'C:\Users\wickh\AppData\Local\Programs\Python\Python37';
-validIndex = 0;
-for index=1:length(localPythonPath)
-    if exist(localPythonPath{index},'dir') 
-        validIndex = index;
-    end
-end
-if validIndex > 0
-    pythonPath = localPythonPath{validIndex};
-else
-    error('Local python path not found. Please add your python path to pathSetupWindows.m');
-end
-mp.pythonPath = pythonPath;
-
-% make sure Matlab is using the version of Python that you specified
-[pythonVersion, pythonExe, pythonLoaded] = pyversion;
-if  pythonLoaded
-    disp(['Using Python version ' pythonVersion])
-else
-    pyenv('ExecutionMode', 'OutOfProcess')
-    % NOTE: if the version changes from what is already loaded in Matlab, you will need to restart 
-    pyversion([mp.pythonPath, filesep ,'python.exe']);
-    [pythonVersion, pythonExe, pythonLoaded] = pyversion;
-    disp(['Setting Python to version ' pythonVersion])
-end
-
-% add the codegen_path to python's search path
 if count(py.sys.path,mp.ipcore_codegen_path) == 0
     insert(py.sys.path,int32(0),mp.ipcore_codegen_path);
 end
