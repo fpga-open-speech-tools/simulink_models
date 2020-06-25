@@ -16,7 +16,7 @@
 % Audio Logic
 % 985 Technology Blvd
 % Bozeman, MT 59718
-% support@flatearthinc.com
+% openspeech@flatearthinc.com
 
 %% Make sure that sm_run_me_first has actually been run first.
 % if not, run it first since it sets up paths and toolchains

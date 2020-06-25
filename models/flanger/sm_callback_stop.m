@@ -16,7 +16,7 @@
 % Audio Logic
 % 985 Technology Blvd
 % Bozeman, MT 59718
-% support@flatearthinc.com
+% openspeech@flatearthinc.com
 
 %% Put the output into the SG data struct 
 % The "To Workspace" block won't accept structs

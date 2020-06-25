@@ -29,7 +29,7 @@ function mp = sm_init_control_signals(mp)
 % Audio Logic
 % 985 Technology Blvd
 % Bozeman, MT 59718
-% support@flatearthinc.com
+% openspeech@flatearthinc.com
 %
 % Note: to display the widget types available, run the function
 % \simulink_models\config\widget_list_display.m

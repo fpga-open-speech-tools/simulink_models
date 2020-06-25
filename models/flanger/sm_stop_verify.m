@@ -25,7 +25,7 @@
 % Audio Logic
 % 985 Technology Blvd
 % Bozeman, MT 59718
-% support@flatearthinc.com
+% openspeech@flatearthinc.com
 
 function mp = sm_stop_verify(mp)
 

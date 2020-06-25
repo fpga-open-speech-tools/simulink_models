@@ -34,7 +34,7 @@
 %    Audio Logic
 %    985 Technology Blvd
 %    Bozeman, MT 59718
-%    support@flatearthinc.com
+%    openspeech@flatearthinc.com
 % 
 %    Auditory Nerve Simulink Model Code
 %    NLBeforePLA.m Function

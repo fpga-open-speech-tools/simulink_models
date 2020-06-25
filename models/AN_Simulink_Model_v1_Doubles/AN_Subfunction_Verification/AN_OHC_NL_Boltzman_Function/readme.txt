@@ -10,7 +10,7 @@
 % Audio Logic
 % 985 Technology Blvd
 % Bozeman, MT 59718
-% support@flatearthinc.com
+% openspeech@flatearthinc.com
 
 % Auditory Nerve Simulink Model Code
 % OHC NL Boltzman Function readme.txt File

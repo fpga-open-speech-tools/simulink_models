@@ -14,7 +14,7 @@ Generated in CreateFileHeaderInfo
 #include "custom_functions.h"
 
 MODULE_LICENSE("GPL");
-MODULE_AUTHOR("Tyler Davis <support@flatearthinc.com");
+MODULE_AUTHOR("Tyler Davis <openspeech@flatearthinc.com");
 MODULE_DESCRIPTION("Loadable kernel module for the DynamicCompressionWithRx");
 MODULE_VERSION("1.0");
 /* End CreateFileHeaderInfo */
