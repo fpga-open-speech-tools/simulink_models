@@ -4,7 +4,7 @@
 % Users need to add their FPGA Open Speech Tools root folder where all of the 
 % git repositories are. They also need to add the path to their Quartus installation.
 
-% Copyright 2020 Flat Earth Inc, Montana State University
+% Copyright 2020 Audio Logic
 %
 % THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
 % INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR

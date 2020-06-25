@@ -19,7 +19,7 @@
 % 
 %  ------------------------------------------------------------------------
 % 
-%    Copyright 2019 Flat Earth Inc
+%    Copyright 2019 Audio Logic
 % 
 %    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
 %    INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR

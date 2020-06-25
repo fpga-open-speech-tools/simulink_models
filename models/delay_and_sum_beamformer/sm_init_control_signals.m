@@ -17,7 +17,7 @@ function mp = sm_init_control_signals(mp)
 %         mp.register(i).max        -  The maximum value the control signal will ever take
 %         mp.register(i).timeseries - The timeseries data format that is needed for the from workspace block
 %
-% Copyright 2019 Flat Earth Inc
+% Copyright 2019 Audio Logic
 %
 % THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
 % INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
