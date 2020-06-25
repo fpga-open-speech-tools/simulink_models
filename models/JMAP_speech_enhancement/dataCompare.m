@@ -1,6 +1,6 @@
 %% Compares outputs of the model to that of the Definitive Algorithm
 % Justin Williams
-% Flat Earth Inc
+% Audio Logic
 
 %% Extract data from model outputs
 ensigLength = get(ensig_Out_Work);

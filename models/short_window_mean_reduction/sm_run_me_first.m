@@ -15,7 +15,7 @@
 %
 % Ross K. Snider
 % Justin P. Williams
-% Flat Earth Inc
+% Audio Logic
 % 985 Technology Blvd
 % Bozeman, MT 59718
 % support@flatearthinc.com

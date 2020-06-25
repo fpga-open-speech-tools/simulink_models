@@ -14,7 +14,7 @@ function noiseVariance = JMAP_noiseCalc(x, win, len, nFFT)
 % Author: 
 %  Justin Williams
 
-% Copyright Flat Earth Inc
+% Copyright Audio Logic
 
 j = 1;   % Indexing Variable
 noise_mean = zeros(nFFT, 1);

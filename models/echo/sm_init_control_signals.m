@@ -26,7 +26,7 @@ function mp = sm_init_control_signals(mp)
 % ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 %
 % Ross K. Snider
-% Flat Earth Inc
+% Audio Logic
 % 985 Technology Blvd
 % Bozeman, MT 59718
 % support@flatearthinc.com
