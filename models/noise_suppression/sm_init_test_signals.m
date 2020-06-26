@@ -70,17 +70,30 @@ switch signal_option
         mp.test_signal.right = y_resampled(1:mp.test_signal.Nsamples);
         mp.test_signal.Nsamples = length(mp.test_signal.left);
         mp.test_signal.duration = mp.test_signal.Nsamples * mp.Ts;
-    case 4 % Justin Supplied Speech Signal
-        [y, Fs] = audioread([mp.test_signals_path filesep 'noisySpeech.wav']);
-        y_resampled = resample(y,mp.Fs,Fs);  % resample to change the sample rate to SG.Fs
-        Nsamples = length(y_resampled);
+    case 4 
+        [originalAudio, Fs] = audioread([mp.test_signals_path filesep 'sp03.wav']);
+        originalAudio = resample(originalAudio,mp.Fs,Fs);  
+        
+        % Ensure that the signal is an integer multiple of the sampling period
+        newLength = ceil(length(originalAudio)/mp.Fs) * mp.Fs;
+        cleanAudio = zeros(newLength, 1);
+        cleanAudio(1:length(originalAudio)) = originalAudio;
+
+        % Add noise
+        stddev = 0.1/6;
+        noiseVariance = stddev^2; 
+        noise = randn(size(cleanAudio))*stddev;
+        noisyAudio = cleanAudio + noise;
+        
+        Nsamples = length(noisyAudio);
         if mp.fastsim_flag == 1 % perform fast simulation by reducing the number of samples
            mp.test_signal.Nsamples = min(Nsamples, mp.fastsim_Nsamples);
         else
            mp.test_signal.Nsamples = mp.fastsim_Nsamples;
         end
-        mp.test_signal.left  = y_resampled(1:mp.test_signal.Nsamples);
-        mp.test_signal.right = y_resampled(1:mp.test_signal.Nsamples);
+        
+        mp.test_signal.left  = noisyAudio(1:mp.test_signal.Nsamples);
+        mp.test_signal.right = noisyAudio(1:mp.test_signal.Nsamples);
         mp.test_signal.Nsamples = length(mp.test_signal.left);
         mp.test_signal.duration = mp.test_signal.Nsamples * mp.Ts;
     otherwise

@@ -17,7 +17,7 @@ cleanAudio = zeros(newLength, 1);
 cleanAudio(1:length(originalAudio)) = originalAudio;
 
 % Add noise
-stddev = 0.3/6;
+stddev = 0.1/6;
 noiseVariance = stddev^2; 
 noise = randn(size(cleanAudio))*stddev;
 noisyAudio = cleanAudio + noise;
