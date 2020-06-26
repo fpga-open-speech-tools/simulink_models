@@ -1,1 +1,0 @@
-obj-m := mean_noise_reduction.o
