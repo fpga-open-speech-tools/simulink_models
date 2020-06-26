@@ -1,7 +1,0 @@
- --> MNR_dataplane_pkg
-MNR/dataplane/Adaptive_Wiener_Filter Sample Based Filtering/Right Channel Processing/Grab the Look-behind Window and Calculate the Mean --> MNR_Grab_the_Look_behind_Window_and_Calculate_the_Mean
-MNR/dataplane/Adaptive_Wiener_Filter Sample Based Filtering/Right Channel Processing --> MNR_Right_Channel_Processing
-MNR/dataplane/Adaptive_Wiener_Filter Sample Based Filtering/Right Channel Processing1/Grab the Look-behind Window and Calculate the Mean --> MNR_Grab_the_Look_behind_Window_and_Calculate_the_Mean_block
-MNR/dataplane/Adaptive_Wiener_Filter Sample Based Filtering/Right Channel Processing1 --> MNR_Right_Channel_Processing1
-MNR/dataplane/Adaptive_Wiener_Filter Sample Based Filtering --> MNR_Adaptive_Wiener_Filter_Sample_Based_Filtering
-MNR/dataplane --> MNR_dataplane
