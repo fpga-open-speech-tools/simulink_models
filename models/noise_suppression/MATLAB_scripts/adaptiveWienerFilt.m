@@ -1,4 +1,4 @@
-function [sn, meansVect] = adaptiveWienerFilt(noisyAudio, Fs, windowSize, noiseVariance)
+function [sn, means] = adaptiveWienerFilt(noisyAudio, Fs, windowSize, noiseVariance)
 %%Adaptive Wiener Filter
 % Author: Justin Williams
 % Under:  Audio Logic
@@ -20,7 +20,10 @@ Ts = 1 / Fs;
 sn = zeros(length(noisyAudio),1 );
 winSize = round(windowSize / Ts);
 win = zeros(winSize,1);        % Init look-behind-window
-meansVect = zeros(winSize, 1);
+means = zeros(ceil(length(noisyAudio)/winSize), 1);
+meansExponential = zeros(ceil(length(noisyAudio)/winSize), 1);
+varExponential = zeros(ceil(length(noisyAudio)/winSize), 1);
+exponentialWeight = 2/(winSize + 1);
 for n = 1:length(noisyAudio)
     
     if n <= winSize
@@ -38,17 +41,26 @@ for n = 1:length(noisyAudio)
         [signalAvg, signalVariance] = wienStats(win, noiseVariance);
     end
     
+    if n > 1
+        meansExponential(n) = meansExponential(n-1) + exponentialWeight * (noisyAudio(n) - meansExponential(n-1));
+        varExponential(n) = (1 - exponentialWeight) * (varExponential(n-1) + exponentialWeight * (noisyAudio(n) - meansExponential(n-1)).^2);
+    else
+        meansExponential(n) = noisyAudio(n);
+    end
+    
     % Filter Signal
     sn(n) = signalAvg ... 
         + (signalVariance / (noiseVariance + signalVariance)) * (noisyAudio(n) - signalAvg);
     
-    meansVect(n) = signalAvg;
+    means(n) = signalAvg;
+    vars(n) = signalVariance;
     
     % Account for any nans / divide by zeros
     if (isnan(sn(n)))
         sn(n) = 0;
     end
 end
+disp('done')
                 
 %% Calculate Stats 
 function [signalAvg, signalVariance] = wienStats(win, noiseVariance)
