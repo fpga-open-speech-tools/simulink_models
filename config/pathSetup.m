@@ -18,7 +18,34 @@
 % Audio Logic
 % 985 Technology Blvd
 % Bozeman, MT 59718
+<<<<<<< HEAD
 % openspeech@flatearthinc.com
+=======
+% support@flatearthinc.com
+
+%% Git Repository Setup
+% Add your git path to the cell array selection below so it will be found
+% the next time you run Simulink.
+% The first directory that Matlab finds that exists will be used.
+localGitPath = {};
+localGitPath{end + 1} = '/mnt/data/NIH';
+localGitPath{end + 1} = 'C:\Users\bugsbunny\research\NIH';
+localGitPath{end + 1} = 'V:\MSU\GitHub\';
+localGitPath{end + 1} = 'C:\Users\wickh\Documents\NIH\';
+localGitPath{end + 1} = '/home/trevor/research/NIH_SBIR_R44_DC015443';
+
+validIndex = 0;
+for index=1:length(localGitPath)
+    if isfolder(localGitPath{index}) 
+        validIndex = index;
+    end
+end
+if validIndex > 0
+    gitPath = localGitPath{validIndex};
+else
+    error('Local Git repository not found.  Please add your Git path to pathSetupWindows.m');
+end
+>>>>>>> make a register for noise variance
 
 %% Setup Matlab/Simulink paths
 
@@ -33,6 +60,20 @@ mp.ui_codegen_path      = [autogenRootDir filesep 'simulink_codegen' filesep 'ui
 mp.dtogen_path          = [autogenRootDir filesep 'utils' filesep  'device_tree_overlays'];
 mp.codegen_path         = [autogenRootDir filesep 'simulink_codegen'];
 
+<<<<<<< HEAD
+=======
+
+%% Quartus Setup
+% Add your Quartus path to the cell array selection below so it will be found
+% the next time you run Simulink.
+% The first directory that Matlab finds that exists will be used.
+localQuartusPath = {};
+localQuartusPath{end + 1} = 'C:\intelFPGA_lite\18.1\quartus\bin64';
+localQuartusPath{end + 1} = 'D:\intelFPGA_lite\18.1\quartus\bin64';
+localQuartusPath{end + 1} = 'C:\intelFPGA\18.0\quartus\bin64';
+localQuartusPath{end + 1} = '/usr/local/intelFPGA/19.1/quartus/bin';
+localQuartusPath{end + 1} = '/usr/local/intelFPGA_lite/18.0/quartus/bin';
+>>>>>>> make a register for noise variance
 
 %% Quartus Setup
 mp.quartus_path = autogenConfig.quartus;

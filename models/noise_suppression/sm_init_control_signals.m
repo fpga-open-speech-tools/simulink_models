@@ -52,14 +52,32 @@ function mp = sm_init_control_signals(mp)
 
 % Any other register control signals should be created in a similar manner
 
-%% Create Noise Standad-Deviation Register
-mp.register(1).name       = 'enable';       % control signal name
-mp.register(1).value      = 1;              % value control signal will take during simulation
-mp.register(1).min        = 0;              % The minimum value the control signal will ever take
-mp.register(1).max        = 1;              % The maximum value the control signal will ever take
-mp.register(1).default    = 1;              % default (initial) value
-mp.register(1).widget_type          = 'slider';
-mp.register(1).widget_display_units = ' ';
+%% Create registers
+ri = 1;
+mp.register(ri).name       = 'enable';  % control signal name
+mp.register(ri).value      = 1;         % value control signal will take during simulation
+mp.register(ri).min        = 0;         % The minimum value the control signal will ever take
+mp.register(ri).max        = 1;         % The maximum value the control signal will ever take
+mp.register(ri).default    = 1;         % default (initial) value
+mp.register(ri).dataType = fixdt('boolean');
+mp.register(ri).widgetType          = 'toggle';
+mp.register(ri).widgetDisplayUnits = '';
+mp.register(ri).widgetStyle = 'enable';
+mp.register(ri).uiPageName = 'main';
+mp.register(ri).uiPanelName = 'Noise Suppression';
+
+ri = ri + 1;
+mp.register(ri).name = 'enable';  % control signal name
+mp.register(ri).value = mp.noiseVariance;         % value control signal will take during simulation
+mp.register(ri).min = 0;         % The minimum value the control signal will ever take
+mp.register(ri).max = 1;         % The maximum value the control signal will ever take
+mp.register(ri).default = mp.noiseVariance;         % default (initial) value
+mp.register(ri).dataType = fixdt(0, 32, 31);
+mp.register(ri).widgetType          = 'slider';
+mp.register(ri).widgetDisplayUnits = '';
+mp.register(ri).widgetStyle = '';
+mp.register(ri).uiPageName = 'main';
+mp.register(ri).uiPanelName = 'Noise Suppression';
 
 %% convert to time series data
 for i=1:length(mp.register)

@@ -44,6 +44,8 @@ mp.model_abbreviation = 'noise_suppression';
 mp.linux_device_name = mp.model_name;
 mp.linux_device_version = '18.0';
 
+mp.noiseVariance = (0.1/6)^2;
+
 %% Setup the directory paths & tool settings
 % TODO: these paths should ideally be contained in a toolbox. the one exception is the model path, which is many cases is the pwd, though it doesn't have to be.
 addpath('../../config');

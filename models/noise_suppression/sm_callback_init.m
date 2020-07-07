@@ -57,7 +57,6 @@ mp.windowSize = 10e-3 * mp.Fs;
 % https://en.wikipedia.org/wiki/Moving_average#Relationship_between_SMA_and_EMA
 mp.exponentialMovingAverageWeight = 2/(mp.windowSize + 1);
 
-mp.noiseVariance = (0.1/6)^2;
 
 
 %% Create test signals for the left and right channels

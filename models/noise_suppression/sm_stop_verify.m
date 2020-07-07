@@ -30,6 +30,6 @@
 function mp = sm_stop_verify(mp)
 
 %% Verify that the test data got encoded, passed through the model, and
-soundsc([mp.test_signal.left, mp.test_signal.right], mp.Fs);
-pause(5);
-soundsc([mp.left_data_out; mp.right_data_out], mp.Fs);
+% soundsc([mp.test_signal.left, mp.test_signal.right], mp.Fs);
+% pause(5);
+% soundsc([mp.left_data_out; mp.right_data_out], mp.Fs);
