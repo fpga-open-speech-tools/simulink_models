@@ -27,6 +27,8 @@ localGitPath{end + 1} = '/mnt/data/NIH';
 localGitPath{end + 1} = 'C:\Users\bugsbunny\research\NIH';
 localGitPath{end + 1} = 'V:\MSU\GitHub\';
 localGitPath{end + 1} = 'C:\Users\wickh\Documents\NIH\';
+localGitPath{end + 1} = '/home/trevor/research/NIH_SBIR_R44_DC015443';
+
 validIndex = 0;
 for index=1:length(localGitPath)
     if isfolder(localGitPath{index}) 
@@ -53,6 +55,7 @@ mp.driver_codegen_path  = [gitPath filesep 'simulink_codegen' filesep 'device_dr
 mp.ui_codegen_path      = [gitPath filesep 'simulink_codegen' filesep 'ui'];
 mp.dtogen_path          = [gitPath filesep 'utils' filesep  'device_tree_overlays'];
 mp.codegen_path         = [gitPath filesep 'simulink_codegen' ];
+
 
 %% Quartus Setup
 % Add your Quartus path to the cell array selection below so it will be found
