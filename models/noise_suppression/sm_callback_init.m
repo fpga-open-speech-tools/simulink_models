@@ -46,7 +46,7 @@ mp.F_bits = 28;  % Number of fractional bits in word
 mp = sm_init_control_signals(mp);  % create the control signals
 
 %% Configure target system
-mp.target_system = "arria10";
+mp.target_system = "audiomini";
 
 %% Custom model parameters
 % 10 ms window
@@ -55,7 +55,7 @@ mp.windowSize = 10e-3 * mp.Fs;
 % define the expoential moving average weight to be roughly equivalent to
 % a simple moving average of length mp.windowSize
 % https://en.wikipedia.org/wiki/Moving_average#Relationship_between_SMA_and_EMA
-mp.exponentialMovingAverageWeight = 2/(mp.windowSize + 1);
+mp.exponentialMovingAverageWeight = fi(2/(mp.windowSize + 1), 0, 32, 31);
 
 
 

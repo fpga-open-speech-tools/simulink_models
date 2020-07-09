@@ -67,7 +67,7 @@ mp.register(ri).uiPageName = 'main';
 mp.register(ri).uiPanelName = 'Noise Suppression';
 
 ri = ri + 1;
-mp.register(ri).name = 'enable';  % control signal name
+mp.register(ri).name = 'noise_variance';  % control signal name
 mp.register(ri).value = mp.noiseVariance;         % value control signal will take during simulation
 mp.register(ri).min = 0;         % The minimum value the control signal will ever take
 mp.register(ri).max = 1;         % The maximum value the control signal will ever take
