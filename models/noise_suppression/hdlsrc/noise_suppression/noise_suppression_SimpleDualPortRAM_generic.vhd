@@ -10,8 +10,7 @@
 -- -------------------------------------------------------------
 -- 
 -- Module: noise_suppression_SimpleDualPortRAM_generic
--- Source Path: noise_suppression/dataplane/Adaptive_Wiener_Filter Sample Based Filtering/noise suppression blocks/noise 
--- suppression/SimpleDualPortRAM_generi
+-- Source Path: noise_suppression/dataplane/Adaptive_Wiener_Filter Sample Based Filtering/SimpleDualPortRAM_generic
 -- Hierarchy Level: 4
 -- 
 -- -------------------------------------------------------------

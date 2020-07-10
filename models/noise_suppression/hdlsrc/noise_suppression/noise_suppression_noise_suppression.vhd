@@ -60,7 +60,10 @@ ARCHITECTURE rtl OF noise_suppression_noise_suppression IS
   END COMPONENT;
 
   COMPONENT noise_suppression_adaptive_wiener_filter
-    PORT( data                            :   IN    std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
+    PORT( clk                             :   IN    std_logic;
+          reset                           :   IN    std_logic;
+          enb                             :   IN    std_logic;
+          data                            :   IN    std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
           mean                            :   IN    std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
           variance                        :   IN    std_logic_vector(49 DOWNTO 0);  -- sfix50_En47
           noiseVariance                   :   IN    std_logic_vector(31 DOWNTO 0);  -- ufix32_En31
@@ -98,7 +101,7 @@ ARCHITECTURE rtl OF noise_suppression_noise_suppression IS
   SIGNAL estimatedSignal                  : std_logic_vector(31 DOWNTO 0);  -- ufix32
 
 BEGIN
-  u_ShiftRegisterRAM_generic : noise_suppression_SimpleDualPortRAM_generic
+  u_ShiftRegisterRAM : noise_suppression_SimpleDualPortRAM_generic
     GENERIC MAP( AddrWidth => 3,
                  DataWidth => 64
                  )
@@ -122,7 +125,10 @@ BEGIN
               );
 
   u_adaptive_wiener_filter : noise_suppression_adaptive_wiener_filter
-    PORT MAP( data => std_logic_vector(noisy_signal_1),  -- sfix32_En28
+    PORT MAP( clk => clk,
+              reset => reset,
+              enb => enb,
+              data => std_logic_vector(noisy_signal_1),  -- sfix32_En28
               mean => compute_statistics_out1,  -- sfix32_En28
               variance => compute_statistics_out2,  -- sfix50_En47
               noiseVariance => std_logic_vector(noise_variance_1),  -- ufix32_En31

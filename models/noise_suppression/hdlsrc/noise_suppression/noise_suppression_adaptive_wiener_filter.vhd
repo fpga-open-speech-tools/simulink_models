@@ -14,13 +14,19 @@
 -- suppression/adaptive wiener filte
 -- Hierarchy Level: 4
 -- 
+-- #codegen
+-- 
 -- -------------------------------------------------------------
 LIBRARY IEEE;
 USE IEEE.std_logic_1164.ALL;
 USE IEEE.numeric_std.ALL;
+USE work.noise_suppression_dataplane_pkg.ALL;
 
 ENTITY noise_suppression_adaptive_wiener_filter IS
-  PORT( data                              :   IN    std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
+  PORT( clk                               :   IN    std_logic;
+        reset                             :   IN    std_logic;
+        enb                               :   IN    std_logic;
+        data                              :   IN    std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
         mean                              :   IN    std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
         variance                          :   IN    std_logic_vector(49 DOWNTO 0);  -- sfix50_En47
         noiseVariance                     :   IN    std_logic_vector(31 DOWNTO 0);  -- ufix32_En31
@@ -33,97 +39,146 @@ ARCHITECTURE rtl OF noise_suppression_adaptive_wiener_filter IS
 
   ATTRIBUTE multstyle : string;
 
-  -- Constants
-  CONSTANT C_divbyzero_p                  : signed(50 DOWNTO 0) := 
-    signed'("011111111111111111111111111111111111111111111111111");  -- sfix51
-  CONSTANT C_divbyzero_n                  : signed(50 DOWNTO 0) := 
-    signed'("100000000000000000000000000000000000000000000000000");  -- sfix51
+  ATTRIBUTE multstyle OF rtl : ARCHITECTURE IS "dsp";
 
   -- Signals
-  SIGNAL data_signed                      : signed(31 DOWNTO 0);  -- sfix32_En28
   SIGNAL mean_signed                      : signed(31 DOWNTO 0);  -- sfix32_En28
+  SIGNAL delayMatch_reg                   : vector_of_signed32(0 TO 1);  -- sfix32 [2]
+  SIGNAL delayMatch_reg_next              : vector_of_signed32(0 TO 1);  -- sfix32_En28 [2]
+  SIGNAL mean_1                           : signed(31 DOWNTO 0);  -- sfix32_En28
   SIGNAL variance_signed                  : signed(49 DOWNTO 0);  -- sfix50_En47
   SIGNAL noiseVariance_unsigned           : unsigned(31 DOWNTO 0);  -- ufix32_En31
+  SIGNAL relop_1_cast                     : signed(49 DOWNTO 0);  -- sfix50_En47
+  SIGNAL relop_relop1                     : std_logic;
+  SIGNAL variance_1                       : signed(49 DOWNTO 0);  -- sfix50_En47
+  SIGNAL variance_2                       : signed(49 DOWNTO 0);  -- sfix50_En47
+  SIGNAL variance_dtc                     : signed(50 DOWNTO 0);  -- sfix51_En47
+  SIGNAL adder_add_cast                   : signed(51 DOWNTO 0);  -- sfix52_En47
+  SIGNAL adder_add_cast_1                 : signed(51 DOWNTO 0);  -- sfix52_En47
+  SIGNAL out0                             : signed(51 DOWNTO 0);  -- sfix52_En47
+  SIGNAL out0_1                           : signed(51 DOWNTO 0);  -- sfix52
+  SIGNAL out0_2                           : signed(51 DOWNTO 0);  -- sfix52
+  SIGNAL data_signed                      : signed(31 DOWNTO 0);  -- sfix32_En28
+  SIGNAL subtract_sub_cast                : signed(32 DOWNTO 0);  -- sfix33_En28
+  SIGNAL subtract_sub_cast_1              : signed(32 DOWNTO 0);  -- sfix33_En28
+  SIGNAL out0_3                           : signed(32 DOWNTO 0);  -- sfix33_En28
+  SIGNAL out0_4                           : signed(32 DOWNTO 0);  -- sfix33_En28
+  SIGNAL out0_5                           : signed(84 DOWNTO 0);  -- sfix85_En28
+  SIGNAL out0_6                           : signed(84 DOWNTO 0);  -- sfix85_En28
+  SIGNAL adder1_add_cast                  : signed(85 DOWNTO 0);  -- sfix86_En28
+  SIGNAL adder1_add_cast_1                : signed(85 DOWNTO 0);  -- sfix86_En28
+  SIGNAL estimatedSignalFullPrecision     : signed(85 DOWNTO 0);  -- sfix86_En28
   SIGNAL estimatedSignal_tmp              : signed(31 DOWNTO 0);  -- sfix32_En28
 
 BEGIN
-  data_signed <= signed(data);
-
   mean_signed <= signed(mean);
+
+  delayMatch_process : PROCESS (clk, reset)
+  BEGIN
+    IF reset = '1' THEN
+      delayMatch_reg(0) <= to_signed(0, 32);
+      delayMatch_reg(1) <= to_signed(0, 32);
+    ELSIF rising_edge(clk) THEN
+      IF enb = '1' THEN
+        delayMatch_reg(0) <= delayMatch_reg_next(0);
+        delayMatch_reg(1) <= delayMatch_reg_next(1);
+      END IF;
+    END IF;
+  END PROCESS delayMatch_process;
+
+  mean_1 <= delayMatch_reg(1);
+  delayMatch_reg_next(0) <= mean_signed;
+  delayMatch_reg_next(1) <= delayMatch_reg(0);
 
   variance_signed <= signed(variance);
 
   noiseVariance_unsigned <= unsigned(noiseVariance);
 
-  adaptive_wiener_filter_output : PROCESS (data_signed, mean_signed, noiseVariance_unsigned, variance_signed)
-    VARIABLE variance1 : signed(49 DOWNTO 0);
-    VARIABLE estimatedSignalFullPrecision : signed(85 DOWNTO 0);
-    VARIABLE c : signed(51 DOWNTO 0);
-    VARIABLE c_0 : signed(51 DOWNTO 0);
-    VARIABLE div_temp : signed(50 DOWNTO 0);
-    VARIABLE cast : signed(49 DOWNTO 0);
-    VARIABLE add_cast : signed(51 DOWNTO 0);
-    VARIABLE add_cast_0 : signed(51 DOWNTO 0);
-    VARIABLE slice_cast : signed(50 DOWNTO 0);
-    VARIABLE slice_cast_0 : signed(50 DOWNTO 0);
-    VARIABLE cast_0 : signed(50 DOWNTO 0);
-    VARIABLE add_cast_1 : signed(85 DOWNTO 0);
-    VARIABLE sub_cast : signed(32 DOWNTO 0);
-    VARIABLE sub_cast_0 : signed(32 DOWNTO 0);
-    VARIABLE sub_temp : signed(32 DOWNTO 0);
-    VARIABLE mul_temp : signed(84 DOWNTO 0);
-    VARIABLE add_cast_2 : signed(85 DOWNTO 0);
-  BEGIN
-    variance1 := variance_signed;
-    --MATLAB Function 'dataplane/Adaptive_Wiener_Filter Sample Based Filtering/noise suppression blocks/noise suppression/adaptive wiener filter': '<S11>:1'
-    cast := signed(resize(noiseVariance_unsigned & '0' & '0' & '0' & '0' & '0' & '0' & '0' & '0' & '0' & '0' & '0' & '0' & '0' & '0' & '0' & '0', 50));
-    IF variance_signed < cast THEN 
-      --'<S11>:1:3'
-      --'<S11>:1:4'
-      variance1 := to_signed(0, 50);
-    END IF;
-    --'<S11>:1:7'
-    add_cast := resize(variance1, 52);
-    add_cast_0 := signed(resize(noiseVariance_unsigned & '0' & '0' & '0' & '0' & '0' & '0' & '0' & '0' & '0' & '0' & '0' & '0' & '0' & '0' & '0' & '0', 52));
-    c := add_cast + add_cast_0;
-    IF c = to_signed(0, 52) THEN 
-      IF variance1 < to_signed(0, 50) THEN 
-        c_0 := signed'(X"8000000000000");
-      ELSE 
-        c_0 := signed'(X"7FFFFFFFFFFFF");
-      END IF;
-    ELSE 
-      slice_cast := variance1 & '0';
-      IF slice_cast(50) = c(51) THEN 
-        slice_cast_0 := C_divbyzero_p;
-      ELSE 
-        slice_cast_0 := C_divbyzero_n;
-      END IF;
-      cast_0 := variance1 & '0';
-      IF c = 0 THEN 
-        div_temp := slice_cast_0;
-      ELSE 
-        div_temp := cast_0 / c;
-      END IF;
-      c_0 := (resize(div_temp(50 DOWNTO 1), 52)) + ('0' & div_temp(0));
-    END IF;
-    add_cast_1 := resize(mean_signed, 86);
-    sub_cast := resize(data_signed, 33);
-    sub_cast_0 := resize(mean_signed, 33);
-    sub_temp := sub_cast - sub_cast_0;
-    mul_temp := c_0 * sub_temp;
-    add_cast_2 := resize(mul_temp, 86);
-    estimatedSignalFullPrecision := add_cast_1 + add_cast_2;
-    --'<S11>:1:8'
-    IF (estimatedSignalFullPrecision(85) = '0') AND (estimatedSignalFullPrecision(84 DOWNTO 31) /= "000000000000000000000000000000000000000000000000000000") THEN 
-      estimatedSignal_tmp <= X"7FFFFFFF";
-    ELSIF (estimatedSignalFullPrecision(85) = '1') AND (estimatedSignalFullPrecision(84 DOWNTO 31) /= "111111111111111111111111111111111111111111111111111111") THEN 
-      estimatedSignal_tmp <= X"80000000";
-    ELSE 
-      estimatedSignal_tmp <= estimatedSignalFullPrecision(31 DOWNTO 0);
-    END IF;
-  END PROCESS adaptive_wiener_filter_output;
+  relop_1_cast <= signed(resize(noiseVariance_unsigned & '0' & '0' & '0' & '0' & '0' & '0' & '0' & '0' & '0' & '0' & '0' & '0' & '0' & '0' & '0' & '0', 50));
+  
+  relop_relop1 <= '1' WHEN variance_signed < relop_1_cast ELSE
+      '0';
 
+  variance_1 <= to_signed(0, 50);
+
+  
+  variance_2 <= variance_signed WHEN relop_relop1 = '0' ELSE
+      variance_1;
+
+  variance_dtc <= resize(variance_2, 51);
+
+  adder_add_cast <= resize(variance_2, 52);
+  adder_add_cast_1 <= signed(resize(noiseVariance_unsigned & '0' & '0' & '0' & '0' & '0' & '0' & '0' & '0' & '0' & '0' & '0' & '0' & '0' & '0' & '0' & '0', 52));
+  out0 <= adder_add_cast + adder_add_cast_1;
+
+  divider_output : PROCESS (out0, variance_dtc)
+    VARIABLE div_temp : signed(51 DOWNTO 0);
+  BEGIN
+    IF out0 = to_signed(0, 52) THEN 
+      IF variance_dtc < to_signed(0, 51) THEN 
+        out0_1 <= signed'(X"8000000000000");
+      ELSE 
+        out0_1 <= signed'(X"7FFFFFFFFFFFF");
+      END IF;
+    ELSE 
+      div_temp := resize(variance_dtc, 52) / out0;
+      out0_1 <= div_temp;
+    END IF;
+  END PROCESS divider_output;
+
+
+  HwModeRegister_process : PROCESS (clk, reset)
+  BEGIN
+    IF reset = '1' THEN
+      out0_2 <= to_signed(0, 52);
+    ELSIF rising_edge(clk) THEN
+      IF enb = '1' THEN
+        out0_2 <= out0_1;
+      END IF;
+    END IF;
+  END PROCESS HwModeRegister_process;
+
+
+  data_signed <= signed(data);
+
+  subtract_sub_cast <= resize(data_signed, 33);
+  subtract_sub_cast_1 <= resize(mean_signed, 33);
+  out0_3 <= subtract_sub_cast - subtract_sub_cast_1;
+
+  HwModeRegister1_process : PROCESS (clk, reset)
+  BEGIN
+    IF reset = '1' THEN
+      out0_4 <= to_signed(0, 33);
+    ELSIF rising_edge(clk) THEN
+      IF enb = '1' THEN
+        out0_4 <= out0_3;
+      END IF;
+    END IF;
+  END PROCESS HwModeRegister1_process;
+
+
+  out0_5 <= out0_2 * out0_4;
+
+  PipelineRegister_process : PROCESS (clk, reset)
+  BEGIN
+    IF reset = '1' THEN
+      out0_6 <= to_signed(0, 85);
+    ELSIF rising_edge(clk) THEN
+      IF enb = '1' THEN
+        out0_6 <= out0_5;
+      END IF;
+    END IF;
+  END PROCESS PipelineRegister_process;
+
+
+  adder1_add_cast <= resize(mean_1, 86);
+  adder1_add_cast_1 <= resize(out0_6, 86);
+  estimatedSignalFullPrecision <= adder1_add_cast + adder1_add_cast_1;
+
+  
+  estimatedSignal_tmp <= X"7FFFFFFF" WHEN (estimatedSignalFullPrecision(85) = '0') AND (estimatedSignalFullPrecision(84 DOWNTO 31) /= "000000000000000000000000000000000000000000000000000000") ELSE
+      X"80000000" WHEN (estimatedSignalFullPrecision(85) = '1') AND (estimatedSignalFullPrecision(84 DOWNTO 31) /= "111111111111111111111111111111111111111111111111111111") ELSE
+      estimatedSignalFullPrecision(31 DOWNTO 0);
 
   estimatedSignal <= std_logic_vector(estimatedSignal_tmp);
 

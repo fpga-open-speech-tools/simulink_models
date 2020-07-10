@@ -38,6 +38,20 @@ END noise_suppression_Adaptive_Wiener_Filter_Sample_Based_Filtering;
 ARCHITECTURE rtl OF noise_suppression_Adaptive_Wiener_Filter_Sample_Based_Filtering IS
 
   -- Component Declarations
+  COMPONENT noise_suppression_SimpleDualPortRAM_generic
+    GENERIC( AddrWidth                    : integer;
+             DataWidth                    : integer
+             );
+    PORT( clk                             :   IN    std_logic;
+          enb                             :   IN    std_logic;
+          wr_din                          :   IN    std_logic_vector(DataWidth - 1 DOWNTO 0);  -- generic width
+          wr_addr                         :   IN    std_logic_vector(AddrWidth - 1 DOWNTO 0);  -- generic width
+          wr_en                           :   IN    std_logic;  -- ufix1
+          rd_addr                         :   IN    std_logic_vector(AddrWidth - 1 DOWNTO 0);  -- generic width
+          rd_dout                         :   OUT   std_logic_vector(DataWidth - 1 DOWNTO 0)  -- generic width
+          );
+  END COMPONENT;
+
   COMPONENT noise_suppression_deserializer
     PORT( clk                             :   IN    std_logic;
           reset                           :   IN    std_logic;
@@ -76,6 +90,9 @@ ARCHITECTURE rtl OF noise_suppression_Adaptive_Wiener_Filter_Sample_Based_Filter
   END COMPONENT;
 
   -- Component Configuration Statements
+  FOR ALL : noise_suppression_SimpleDualPortRAM_generic
+    USE ENTITY work.noise_suppression_SimpleDualPortRAM_generic(rtl);
+
   FOR ALL : noise_suppression_deserializer
     USE ENTITY work.noise_suppression_deserializer(rtl);
 
@@ -86,12 +103,16 @@ ARCHITECTURE rtl OF noise_suppression_Adaptive_Wiener_Filter_Sample_Based_Filter
     USE ENTITY work.noise_suppression_serializer(rtl);
 
   -- Signals
-  SIGNAL delayMatch_reg                   : std_logic_vector(0 TO 5);  -- ufix1 [6]
-  SIGNAL delayMatch_reg_next              : std_logic_vector(0 TO 5);  -- ufix1 [6]
+  SIGNAL delayMatch_reg                   : std_logic_vector(0 TO 7);  -- ufix1 [8]
+  SIGNAL delayMatch_reg_next              : std_logic_vector(0 TO 7);  -- ufix1 [8]
   SIGNAL enable_1                         : std_logic;
   SIGNAL Sink_Data_signed                 : signed(31 DOWNTO 0);  -- sfix32_En28
-  SIGNAL delayMatch1_reg                  : vector_of_signed32(0 TO 5);  -- sfix32 [6]
-  SIGNAL delayMatch1_reg_next             : vector_of_signed32(0 TO 5);  -- sfix32_En28 [6]
+  SIGNAL delayMatch1_regin                : signed(31 DOWNTO 0);  -- sfix32_En28
+  SIGNAL delayMatch1_waddr                : unsigned(2 DOWNTO 0);  -- ufix3
+  SIGNAL delayMatch1_wrenb                : std_logic;  -- ufix1
+  SIGNAL delayMatch1_raddr                : unsigned(2 DOWNTO 0);  -- ufix3
+  SIGNAL delayMatch1_regout               : std_logic_vector(31 DOWNTO 0);  -- ufix32
+  SIGNAL delayMatch1_regout_signed        : signed(31 DOWNTO 0);  -- sfix32_En28
   SIGNAL from_passthrough_out1            : signed(31 DOWNTO 0);  -- sfix32_En28
   SIGNAL data_out                         : vector_of_std_logic_vector32(0 TO 1);  -- ufix32 [2]
   SIGNAL valid_out                        : std_logic;
@@ -102,17 +123,30 @@ ARCHITECTURE rtl OF noise_suppression_Adaptive_Wiener_Filter_Sample_Based_Filter
   SIGNAL enable_switch_out1               : vector_of_signed32(0 TO 1);  -- sfix32_En28 [2]
   SIGNAL enable_switch_out1_1             : vector_of_std_logic_vector32(0 TO 1);  -- ufix32 [2]
   SIGNAL channel_out_unsigned             : unsigned(1 DOWNTO 0);  -- ufix2
-  SIGNAL delayMatch2_reg                  : std_logic_vector(0 TO 5);  -- ufix1 [6]
-  SIGNAL delayMatch2_reg_next             : std_logic_vector(0 TO 5);  -- ufix1 [6]
+  SIGNAL delayMatch2_reg                  : std_logic_vector(0 TO 7);  -- ufix1 [8]
+  SIGNAL delayMatch2_reg_next             : std_logic_vector(0 TO 7);  -- ufix1 [8]
   SIGNAL valid_out_1                      : std_logic;
-  SIGNAL delayMatch3_reg                  : vector_of_unsigned2(0 TO 5);  -- ufix2 [6]
-  SIGNAL delayMatch3_reg_next             : vector_of_unsigned2(0 TO 5);  -- ufix2 [6]
+  SIGNAL delayMatch3_reg                  : vector_of_unsigned2(0 TO 7);  -- ufix2 [8]
+  SIGNAL delayMatch3_reg_next             : vector_of_unsigned2(0 TO 7);  -- ufix2 [8]
   SIGNAL channel_out_1                    : unsigned(1 DOWNTO 0);  -- ufix2
   SIGNAL data_out_1                       : std_logic_vector(31 DOWNTO 0);  -- ufix32
   SIGNAL valid_out_2                      : std_logic;
   SIGNAL channel_out_2                    : std_logic_vector(1 DOWNTO 0);  -- ufix2
 
 BEGIN
+  u_ShiftRegisterRAM_generic : noise_suppression_SimpleDualPortRAM_generic
+    GENERIC MAP( AddrWidth => 3,
+                 DataWidth => 32
+                 )
+    PORT MAP( clk => clk,
+              enb => enb,
+              wr_din => std_logic_vector(delayMatch1_regin),
+              wr_addr => std_logic_vector(delayMatch1_waddr),
+              wr_en => delayMatch1_wrenb,  -- ufix1
+              rd_addr => std_logic_vector(delayMatch1_raddr),
+              rd_dout => delayMatch1_regout
+              );
+
   u_deserializer : noise_suppression_deserializer
     PORT MAP( clk => clk,
               reset => reset,
@@ -146,6 +180,8 @@ BEGIN
       delayMatch_reg(3) <= '0';
       delayMatch_reg(4) <= '0';
       delayMatch_reg(5) <= '0';
+      delayMatch_reg(6) <= '0';
+      delayMatch_reg(7) <= '0';
     ELSIF rising_edge(clk) THEN
       IF enb = '1' THEN
         delayMatch_reg(0) <= delayMatch_reg_next(0);
@@ -154,49 +190,98 @@ BEGIN
         delayMatch_reg(3) <= delayMatch_reg_next(3);
         delayMatch_reg(4) <= delayMatch_reg_next(4);
         delayMatch_reg(5) <= delayMatch_reg_next(5);
+        delayMatch_reg(6) <= delayMatch_reg_next(6);
+        delayMatch_reg(7) <= delayMatch_reg_next(7);
       END IF;
     END IF;
   END PROCESS delayMatch_process;
 
-  enable_1 <= delayMatch_reg(5);
+  enable_1 <= delayMatch_reg(7);
   delayMatch_reg_next(0) <= enable;
   delayMatch_reg_next(1) <= delayMatch_reg(0);
   delayMatch_reg_next(2) <= delayMatch_reg(1);
   delayMatch_reg_next(3) <= delayMatch_reg(2);
   delayMatch_reg_next(4) <= delayMatch_reg(3);
   delayMatch_reg_next(5) <= delayMatch_reg(4);
+  delayMatch_reg_next(6) <= delayMatch_reg(5);
+  delayMatch_reg_next(7) <= delayMatch_reg(6);
 
   -- 
   Sink_Data_signed <= signed(Sink_Data);
 
-  delayMatch1_process : PROCESS (clk, reset)
+  -- Input register for RAM-based shift register delayMatch1
+  delayMatch1_reginc_process : PROCESS (clk, reset)
   BEGIN
     IF reset = '1' THEN
-      delayMatch1_reg(0) <= to_signed(0, 32);
-      delayMatch1_reg(1) <= to_signed(0, 32);
-      delayMatch1_reg(2) <= to_signed(0, 32);
-      delayMatch1_reg(3) <= to_signed(0, 32);
-      delayMatch1_reg(4) <= to_signed(0, 32);
-      delayMatch1_reg(5) <= to_signed(0, 32);
+      delayMatch1_regin <= to_signed(0, 32);
     ELSIF rising_edge(clk) THEN
       IF enb = '1' THEN
-        delayMatch1_reg(0) <= delayMatch1_reg_next(0);
-        delayMatch1_reg(1) <= delayMatch1_reg_next(1);
-        delayMatch1_reg(2) <= delayMatch1_reg_next(2);
-        delayMatch1_reg(3) <= delayMatch1_reg_next(3);
-        delayMatch1_reg(4) <= delayMatch1_reg_next(4);
-        delayMatch1_reg(5) <= delayMatch1_reg_next(5);
+        delayMatch1_regin <= Sink_Data_signed;
       END IF;
     END IF;
-  END PROCESS delayMatch1_process;
+  END PROCESS delayMatch1_reginc_process;
 
-  from_passthrough_out1 <= delayMatch1_reg(5);
-  delayMatch1_reg_next(0) <= Sink_Data_signed;
-  delayMatch1_reg_next(1) <= delayMatch1_reg(0);
-  delayMatch1_reg_next(2) <= delayMatch1_reg(1);
-  delayMatch1_reg_next(3) <= delayMatch1_reg(2);
-  delayMatch1_reg_next(4) <= delayMatch1_reg(3);
-  delayMatch1_reg_next(5) <= delayMatch1_reg(4);
+
+  -- Count limited, Unsigned Counter
+  --  initial value   = 0
+  --  step value      = 1
+  --  count to value  = 5
+  -- 
+  -- Write address counter for RAM-based shift register delayMatch1
+  delayMatch1_wr_process : PROCESS (clk, reset)
+  BEGIN
+    IF reset = '1' THEN
+      delayMatch1_waddr <= to_unsigned(16#0#, 3);
+    ELSIF rising_edge(clk) THEN
+      IF enb = '1' THEN
+        IF delayMatch1_waddr >= to_unsigned(16#5#, 3) THEN 
+          delayMatch1_waddr <= to_unsigned(16#0#, 3);
+        ELSE 
+          delayMatch1_waddr <= delayMatch1_waddr + to_unsigned(16#1#, 3);
+        END IF;
+      END IF;
+    END IF;
+  END PROCESS delayMatch1_wr_process;
+
+
+  delayMatch1_wrenb <= '1';
+
+  -- Count limited, Unsigned Counter
+  --  initial value   = 1
+  --  step value      = 1
+  --  count to value  = 5
+  -- 
+  -- Read address counter for RAM-based shift register delayMatch1
+  delayMatch1_rd_process : PROCESS (clk, reset)
+  BEGIN
+    IF reset = '1' THEN
+      delayMatch1_raddr <= to_unsigned(16#1#, 3);
+    ELSIF rising_edge(clk) THEN
+      IF enb = '1' THEN
+        IF delayMatch1_raddr >= to_unsigned(16#5#, 3) THEN 
+          delayMatch1_raddr <= to_unsigned(16#0#, 3);
+        ELSE 
+          delayMatch1_raddr <= delayMatch1_raddr + to_unsigned(16#1#, 3);
+        END IF;
+      END IF;
+    END IF;
+  END PROCESS delayMatch1_rd_process;
+
+
+  delayMatch1_regout_signed <= signed(delayMatch1_regout);
+
+  -- Output register for RAM-based shift register delayMatch1
+  delayMatch1_regoutc_process : PROCESS (clk, reset)
+  BEGIN
+    IF reset = '1' THEN
+      from_passthrough_out1 <= to_signed(0, 32);
+    ELSIF rising_edge(clk) THEN
+      IF enb = '1' THEN
+        from_passthrough_out1 <= delayMatch1_regout_signed;
+      END IF;
+    END IF;
+  END PROCESS delayMatch1_regoutc_process;
+
 
   from_passthrough_out1_scalarexpand(0) <= from_passthrough_out1;
   from_passthrough_out1_scalarexpand(1) <= from_passthrough_out1;
@@ -239,6 +324,8 @@ BEGIN
       delayMatch2_reg(3) <= '0';
       delayMatch2_reg(4) <= '0';
       delayMatch2_reg(5) <= '0';
+      delayMatch2_reg(6) <= '0';
+      delayMatch2_reg(7) <= '0';
     ELSIF rising_edge(clk) THEN
       IF enb = '1' THEN
         delayMatch2_reg(0) <= delayMatch2_reg_next(0);
@@ -247,17 +334,21 @@ BEGIN
         delayMatch2_reg(3) <= delayMatch2_reg_next(3);
         delayMatch2_reg(4) <= delayMatch2_reg_next(4);
         delayMatch2_reg(5) <= delayMatch2_reg_next(5);
+        delayMatch2_reg(6) <= delayMatch2_reg_next(6);
+        delayMatch2_reg(7) <= delayMatch2_reg_next(7);
       END IF;
     END IF;
   END PROCESS delayMatch2_process;
 
-  valid_out_1 <= delayMatch2_reg(5);
+  valid_out_1 <= delayMatch2_reg(7);
   delayMatch2_reg_next(0) <= valid_out;
   delayMatch2_reg_next(1) <= delayMatch2_reg(0);
   delayMatch2_reg_next(2) <= delayMatch2_reg(1);
   delayMatch2_reg_next(3) <= delayMatch2_reg(2);
   delayMatch2_reg_next(4) <= delayMatch2_reg(3);
   delayMatch2_reg_next(5) <= delayMatch2_reg(4);
+  delayMatch2_reg_next(6) <= delayMatch2_reg(5);
+  delayMatch2_reg_next(7) <= delayMatch2_reg(6);
 
   delayMatch3_process : PROCESS (clk, reset)
   BEGIN
@@ -268,6 +359,8 @@ BEGIN
       delayMatch3_reg(3) <= to_unsigned(16#0#, 2);
       delayMatch3_reg(4) <= to_unsigned(16#0#, 2);
       delayMatch3_reg(5) <= to_unsigned(16#0#, 2);
+      delayMatch3_reg(6) <= to_unsigned(16#0#, 2);
+      delayMatch3_reg(7) <= to_unsigned(16#0#, 2);
     ELSIF rising_edge(clk) THEN
       IF enb = '1' THEN
         delayMatch3_reg(0) <= delayMatch3_reg_next(0);
@@ -276,17 +369,21 @@ BEGIN
         delayMatch3_reg(3) <= delayMatch3_reg_next(3);
         delayMatch3_reg(4) <= delayMatch3_reg_next(4);
         delayMatch3_reg(5) <= delayMatch3_reg_next(5);
+        delayMatch3_reg(6) <= delayMatch3_reg_next(6);
+        delayMatch3_reg(7) <= delayMatch3_reg_next(7);
       END IF;
     END IF;
   END PROCESS delayMatch3_process;
 
-  channel_out_1 <= delayMatch3_reg(5);
+  channel_out_1 <= delayMatch3_reg(7);
   delayMatch3_reg_next(0) <= channel_out_unsigned;
   delayMatch3_reg_next(1) <= delayMatch3_reg(0);
   delayMatch3_reg_next(2) <= delayMatch3_reg(1);
   delayMatch3_reg_next(3) <= delayMatch3_reg(2);
   delayMatch3_reg_next(4) <= delayMatch3_reg(3);
   delayMatch3_reg_next(5) <= delayMatch3_reg(4);
+  delayMatch3_reg_next(6) <= delayMatch3_reg(5);
+  delayMatch3_reg_next(7) <= delayMatch3_reg(6);
 
   Source_Valid <= valid_out_2;
 
