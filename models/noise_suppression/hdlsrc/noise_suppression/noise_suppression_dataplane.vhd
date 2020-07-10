@@ -8,22 +8,22 @@
 -- -------------------------------------------------------------
 -- Rate and Clocking Details
 -- -------------------------------------------------------------
--- Model base rate: 1.01725e-08
--- Target subsystem base rate: 1.01725e-08
+-- Model base rate: 5.20833e-06
+-- Target subsystem base rate: 5.20833e-06
 -- 
 -- 
 -- Clock Enable  Sample Time
 -- -------------------------------------------------------------
--- ce_out        1.01725e-08
+-- ce_out        5.20833e-06
 -- -------------------------------------------------------------
 -- 
 -- 
 -- Output Signal                 Clock Enable  Sample Time
 -- -------------------------------------------------------------
--- avalon_source_valid           ce_out        1.01725e-08
--- avalon_source_data            ce_out        1.01725e-08
--- avalon_source_channel         ce_out        1.01725e-08
--- avalon_source_error           ce_out        1.01725e-08
+-- avalon_source_valid           ce_out        5.20833e-06
+-- avalon_source_data            ce_out        5.20833e-06
+-- avalon_source_channel         ce_out        5.20833e-06
+-- avalon_source_error           ce_out        5.20833e-06
 -- -------------------------------------------------------------
 -- 
 -- -------------------------------------------------------------
@@ -88,8 +88,8 @@ ARCHITECTURE rtl OF noise_suppression_dataplane IS
   SIGNAL channel_out                      : std_logic_vector(1 DOWNTO 0);  -- ufix2
   SIGNAL valid_out                        : std_logic;
   SIGNAL avalon_sink_error_unsigned       : unsigned(1 DOWNTO 0);  -- ufix2
-  SIGNAL delayMatch_reg                   : vector_of_unsigned2(0 TO 5);  -- ufix2 [6]
-  SIGNAL delayMatch_reg_next              : vector_of_unsigned2(0 TO 5);  -- ufix2 [6]
+  SIGNAL delayMatch_reg                   : vector_of_unsigned2(0 TO 7);  -- ufix2 [8]
+  SIGNAL delayMatch_reg_next              : vector_of_unsigned2(0 TO 7);  -- ufix2 [8]
   SIGNAL avalon_sink_error_1              : unsigned(1 DOWNTO 0);  -- ufix2
 
 BEGIN
@@ -138,6 +138,8 @@ BEGIN
       delayMatch_reg(3) <= to_unsigned(16#0#, 2);
       delayMatch_reg(4) <= to_unsigned(16#0#, 2);
       delayMatch_reg(5) <= to_unsigned(16#0#, 2);
+      delayMatch_reg(6) <= to_unsigned(16#0#, 2);
+      delayMatch_reg(7) <= to_unsigned(16#0#, 2);
     ELSIF rising_edge(clk) THEN
       IF enb = '1' THEN
         delayMatch_reg(0) <= delayMatch_reg_next(0);
@@ -146,17 +148,21 @@ BEGIN
         delayMatch_reg(3) <= delayMatch_reg_next(3);
         delayMatch_reg(4) <= delayMatch_reg_next(4);
         delayMatch_reg(5) <= delayMatch_reg_next(5);
+        delayMatch_reg(6) <= delayMatch_reg_next(6);
+        delayMatch_reg(7) <= delayMatch_reg_next(7);
       END IF;
     END IF;
   END PROCESS delayMatch_process;
 
-  avalon_sink_error_1 <= delayMatch_reg(5);
+  avalon_sink_error_1 <= delayMatch_reg(7);
   delayMatch_reg_next(0) <= avalon_sink_error_unsigned;
   delayMatch_reg_next(1) <= delayMatch_reg(0);
   delayMatch_reg_next(2) <= delayMatch_reg(1);
   delayMatch_reg_next(3) <= delayMatch_reg(2);
   delayMatch_reg_next(4) <= delayMatch_reg(3);
   delayMatch_reg_next(5) <= delayMatch_reg(4);
+  delayMatch_reg_next(6) <= delayMatch_reg(5);
+  delayMatch_reg_next(7) <= delayMatch_reg(6);
 
   avalon_source_error <= std_logic_vector(avalon_sink_error_1);
 

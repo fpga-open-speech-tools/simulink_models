@@ -67,8 +67,6 @@ BEGIN
 
   deserializer_output : PROCESS (channel_in_unsigned, data_in_signed, data_out_reg, data_out_temp, valid_in)
     VARIABLE data_out_temp_temp : vector_of_signed32(0 TO 1);
-    VARIABLE add_temp : unsigned(2 DOWNTO 0);
-    VARIABLE sub_cast : signed(31 DOWNTO 0);
   BEGIN
     data_out_temp_temp := data_out_temp;
     data_out_reg_next <= data_out_reg;
@@ -80,9 +78,7 @@ BEGIN
     IF valid_in = '1' THEN 
       --'<S7>:1:18'
       --'<S7>:1:19'
-      add_temp := resize(channel_in_unsigned, 3) + to_unsigned(16#1#, 3);
-      sub_cast := signed(resize(add_temp, 32));
-      data_out_temp_temp(to_integer(sub_cast - 1)) := data_in_signed;
+      data_out_temp_temp(to_integer(channel_in_unsigned)) := data_in_signed;
       IF channel_in_unsigned = to_unsigned(16#1#, 2) THEN 
         --'<S7>:1:20'
         --         valid_out = true;
