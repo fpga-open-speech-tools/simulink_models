@@ -22,22 +22,25 @@
 % Add your git path to the cell array selection below so it will be found
 % the next time you run Simulink.
 % The first directory that Matlab finds that exists will be used.
-localGitPath = {};
-localGitPath{end + 1} = '/mnt/data/NIH';
-localGitPath{end + 1} = 'C:\Users\bugsbunny\research\NIH';
-localGitPath{end + 1} = 'V:\MSU\GitHub\';
-localGitPath{end + 1} = 'C:\Users\wickh\Documents\NIH\';
-validIndex = 0;
-for index=1:length(localGitPath)
-    if isfolder(localGitPath{index}) 
-        validIndex = index;
-    end
-end
-if validIndex > 0
-    gitPath = localGitPath{validIndex};
-else
-    error('Local Git repository not found.  Please add your Git path to pathSetupWindows.m');
-end
+% localGitPath = {};
+% localGitPath{end + 1} = '/mnt/data/NIH';
+% localGitPath{end + 1} = 'C:\Users\bugsbunny\research\NIH';
+% localGitPath{end + 1} = 'V:\MSU\GitHub\';
+% localGitPath{end + 1} = 'C:\Users\wickh\Documents\NIH\Review';
+%localGitPath{end + 1} = '/home/trevor/research/NIH_SBIR_R44_DC015443';
+
+% validIndex = 0;
+% for index=1:length(localGitPath)
+%     if isfolder(localGitPath{index}) 
+%         validIndex = index;
+%         break
+%     end
+% end
+% if validIndex > 0
+%     gitPath = localGitPath{validIndex};
+% else
+%     error('Local Git repository not found.  Please add your Git path to pathSetupWindows.m');
+% end
 
 %% Setup Matlab/Simulink paths
 % These paths are required for developing simulink models and autogenerating code.
@@ -46,7 +49,23 @@ end
 
 % TODO: change struct field names to match coding style; this struct
 %       is used all over the place, so this will require some global refactoring
-mp.model_path           = [gitPath filesep 'simulink_models' filesep 'models' filesep mp.model_name];
+config_dir = erase(mfilename('fullpath'), mfilename); 
+config_path = config_dir + "pathx.json";
+if isfile(config_path)
+    config = jsondecode(fileread(config_path));
+else
+    root_dir = config_dir + "../../";
+    [status, values] = fileattrib(root_dir);
+    root_dir = values.Name;
+    config.root = root_dir;
+    quartus_root = getenv("QUARTUS_ROOTDIR");
+    config.quartus = [quartus_root '/bin64/'];
+    disp(config.quartus)
+end
+disp("mfilename is: " + config_dir)
+gitPath = config.root;
+mp.model_path = '';
+%mp.model_path           = [gitPath filesep 'simulink_models' filesep 'models' filesep mp.model_name];
 mp.test_signals_path    = [gitPath filesep 'simulink_models' filesep 'test_signals'];
 mp.ipcore_codegen_path  = [gitPath filesep 'simulink_codegen' filesep 'ipcore'];
 mp.driver_codegen_path  = [gitPath filesep 'simulink_codegen' filesep 'device_drivers'];
@@ -54,29 +73,30 @@ mp.ui_codegen_path      = [gitPath filesep 'simulink_codegen' filesep 'ui'];
 mp.dtogen_path          = [gitPath filesep 'utils' filesep  'device_tree_overlays'];
 mp.codegen_path         = [gitPath filesep 'simulink_codegen' ];
 
+
 %% Quartus Setup
 % Add your Quartus path to the cell array selection below so it will be found
 % the next time you run Simulink.
 % The first directory that Matlab finds that exists will be used.
-localQuartusPath = {};
-localQuartusPath{end + 1} = 'C:\intelFPGA_lite\18.1\quartus\bin64';
-localQuartusPath{end + 1} = 'D:\intelFPGA_lite\18.1\quartus\bin64';
-localQuartusPath{end + 1} = 'C:\intelFPGA\18.0\quartus\bin64';
-localQuartusPath{end + 1} = '/usr/local/intelFPGA/19.1/quartus/bin';
-localQuartusPath{end + 1} = '/usr/local/intelFPGA_lite/18.0/quartus/bin';
-
-validIndex = 0;
-for index=1:length(localQuartusPath)
-    if isfolder(localQuartusPath{index}) 
-        validIndex = index;
-    end
-end
-if validIndex > 0
-    quartusPath = localQuartusPath{validIndex};
-else
-    error('Local Quartus install not found.  Please add your Quartus path to pathSetupWindows.m');
-end
-mp.quartus_path = quartusPath;
+% localQuartusPath = {};
+% localQuartusPath{end + 1} = 'C:\intelFPGA_lite\18.1\quartus\bin64';
+% localQuartusPath{end + 1} = 'D:\intelFPGA_lite\18.1\quartus\bin64';
+% localQuartusPath{end + 1} = 'C:\intelFPGA\18.0\quartus\bin64';
+% localQuartusPath{end + 1} = '/usr/local/intelFPGA/19.1/quartus/bin';
+% localQuartusPath{end + 1} = '/usr/local/intelFPGA_lite/18.0/quartus/bin';
+% 
+% validIndex = 0;
+% for index=1:length(localQuartusPath)
+%     if isfolder(localQuartusPath{index}) 
+%         validIndex = index;
+%     end
+% end
+% if validIndex > 0
+%     quartusPath = localQuartusPath{validIndex};
+% else
+%     error('Local Quartus install not found.  Please add your Quartus path to pathSetupWindows.m');
+% end
+mp.quartus_path = config.quartus;
 
 %% Setup Python paths
 if count(py.sys.path,mp.ipcore_codegen_path) == 0
