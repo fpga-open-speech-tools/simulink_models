@@ -1,6 +1,6 @@
 %% Adaptive Wiener Filter Implementation
 %  Author: Justin Williams
-%  Flat Earth Inc.
+%  Audio Logic
 %  NIH Speech Enhancement Demo Research
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

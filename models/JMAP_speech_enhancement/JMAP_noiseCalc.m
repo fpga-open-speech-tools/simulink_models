@@ -14,7 +14,7 @@ function noiseVariance2 = JMAP_noiseCalc(x)
 % Author: 
 %  Justin Williams
 
-% Copyright Flat Earth Inc
+% Copyright Audio Logic
 len = 64;                          % Frame size in samples
 PERC = 75;                          % window overlap in percent of frame size
 len1 = floor(len*PERC/100);         % PERC% Length of Input Window

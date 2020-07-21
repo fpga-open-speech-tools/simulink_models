@@ -4,7 +4,7 @@
 % these signals are correct. The script runs after the simulation stops.  
 % This is called in the StopFcn callback found in Model Explorer.
 %
-% Copyright 2019 Flat Earth Inc
+% Copyright 2019 Audio Logic
 %
 % THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
 % INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
@@ -13,10 +13,10 @@
 % ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 %
 % Ross K. Snider
-% Flat Earth Inc
+% Audio Logic
 % 985 Technology Blvd
 % Bozeman, MT 59718
-% support@flatearthinc.com
+% openspeech@flatearthinc.com
 
 %% Put the output into the SG data struct 
 % The "To Workspace" block won't accept structs

@@ -13,7 +13,7 @@
 %          mp.Avalon_Source_Channel - The Avalon streaming channel bus
 %          mp.Avalon_Source_Error   - The Avalon streaming error bus
 %
-% Copyright 2019 Flat Earth Inc
+% Copyright 2019 Audio Logic
 %
 % THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
 % INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
@@ -22,10 +22,10 @@
 % ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 %
 % Ross K. Snider
-% Flat Earth Inc
+% Audio Logic
 % 985 Technology Blvd
 % Bozeman, MT 59718
-% support@flatearthinc.com
+% openspeech@flatearthinc.com
 
 
 function mp = sm_init_avalon_signals(mp)
