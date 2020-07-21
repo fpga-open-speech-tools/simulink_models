@@ -55,5 +55,5 @@ cd(mp.model_path);
 
 %% Open the model
 disp(['Please wait while the Simulink Model: '  mp.model_name  ' is being loaded.'])
-load_system([mp.model_abbreviation])
+open_system([mp.model_abbreviation])
 mp.sim_prompts = 1;  % turn on the simulation prompts/comments (these will be turned off when the HDL conversion process starts).
