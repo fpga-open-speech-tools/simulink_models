@@ -28,41 +28,37 @@
 % support@flatearthinc.com
 
 
-function mp = sm_init_avalon_signals(mp)
+function mp = sm_init_avalon_signals(mp, test_signal)
 
 %% create the data-channel-valid signals from the test signals
-mp.Nsamples_avalon = mp.test_signal.Nsamples * mp.rate_change;
+mp.Nsamples_avalon = test_signal.Nsamples * mp.rate_change;
 datavals_data    = zeros(1,mp.Nsamples_avalon);   % preallocate arrays
 datavals_valid   = zeros(1,mp.Nsamples_avalon); 
 datavals_channel = zeros(1,mp.Nsamples_avalon); 
 datavals_error   = zeros(1,mp.Nsamples_avalon); 
-dataval_index = 1;
-for sample_index = 1:mp.test_signal.Nsamples
+for sample_index = 1:test_signal.Nsamples
     %----------------------------
     % left channel
     %----------------------------
-    datavals_data(dataval_index)     = mp.test_signal.left(sample_index); 
-    datavals_valid(dataval_index)    = 1;   % data is valid in this time bin
-    datavals_channel(dataval_index)  = 0;   % channel 0 = left
-    datavals_error(dataval_index)    = 0;   % no error
-    dataval_index                    = dataval_index + 1;
+    datavals_data(1)     = test_signal.left(sample_index); 
+    datavals_valid(1)    = 1;   % data is valid in this time bin
+    datavals_channel(1)  = 0;   % channel 0 = left
+    datavals_error(1)    = 0;   % no error
     %----------------------------
     % right channel
     %----------------------------
-    datavals_data(dataval_index)     = mp.test_signal.right(sample_index); 
-    datavals_valid(dataval_index)    = 1;  % data is valid in this time bin
-    datavals_channel(dataval_index)  = 1;  % channel 1 = right
-    datavals_error(dataval_index)    = 0;  % no error
-    dataval_index                    = dataval_index + 1;
+    datavals_data(2)     = test_signal.right(sample_index); 
+    datavals_valid(2)    = 1;  % data is valid in this time bin
+    datavals_channel(2)  = 1;  % channel 1 = right
+    datavals_error(2)    = 0;  % no error
     %---------------------------------------------
     % fill in the invalid data slots with zeros
     %---------------------------------------------
-    for k=1:(mp.rate_change-2)
-        datavals_data(dataval_index)    = 0;  % no data (put in zeros)
-        datavals_valid(dataval_index)   = 0;  % data is not valid in these time bins
-        datavals_channel(dataval_index) = 3;  % channel 3 = no data
-        datavals_error(dataval_index)   = 0;  % no error
-        dataval_index                   = dataval_index + 1;
+    for k=3:(mp.rate_change)
+        datavals_data(k)    = 0;  % no data (put in zeros)
+        datavals_valid(k)   = 0;  % data is not valid in these time bins
+        datavals_channel(k) = 0;  % channel is irrelevant because not valid
+        datavals_error(k)   = 0;  % no error
     end
 end
 

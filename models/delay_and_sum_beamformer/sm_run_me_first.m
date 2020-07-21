@@ -95,22 +95,22 @@ mp.cicDecimatorCompensator = dsp.CICCompensationDecimator(mp.cicDecimator, ...
 %% Setup the directory paths & tool settings
 % TODO: these paths should ideally be contained in a toolbox. the one exception is the model path, which is many cases is the pwd, though it doesn't have to be.
 addpath('../../config');
-if isunix  % setup for a Linux platform
-    path_setup_linux;
-elseif ispc % setup for a Windows platform
-    path_setup_windows;  
-end
+% if isunix  % setup for a Linux platform
+%     path_setup_linux;
+% elseif ispc % setup for a Windows platform
+%     path_setup_windows;  
+% end
 
 % TODO: remove python path and version information. All of the code should be python3 and python2 compatible. If not, we should make it python2/3 compatible if possible.
 % mp.python_path = 'F:\Python\Python37\python.exe';
 
 % Note: addpath() only sets the paths for the current Matlab session
-addpath(mp.model_path)
-addpath(mp.driver_codegen_path)
-addpath(mp.vhdl_codegen_path)
-addpath(mp.config_path)
-hdlsetuptoolpath('ToolName', 'Altera Quartus II', 'ToolPath', mp.quartus_path);  % setup the HDL toochain path that needs to be set before calling HDL workflow process
-eval(['cd ' mp.model_path])  % change the working directory to the model directory
+% addpath(mp.model_path)
+% addpath(mp.driver_codegen_path)
+% addpath(mp.vhdl_codegen_path)
+% addpath(mp.config_path)
+% hdlsetuptoolpath('ToolName', 'Altera Quartus II', 'ToolPath', mp.quartus_path);  % setup the HDL toochain path that needs to be set before calling HDL workflow process
+% eval(['cd ' mp.model_path])  % change the working directory to the model directory
 
 %% python
 % [python_version, python_exe, python_loaded] = pyversion;
@@ -122,12 +122,12 @@ eval(['cd ' mp.model_path])  % change the working directory to the model directo
 %     disp(['Setting Python to version ' python_version])
 % end
 % add the codegen_path to python's search path
-if count(py.sys.path,mp.vhdl_codegen_path) == 0
-    insert(py.sys.path,int32(0),mp.vhdl_codegen_path);
-end
-if count(py.sys.path,mp.driver_codegen_path) == 0
-    insert(py.sys.path,int32(0),mp.driver_codegen_path);
-end
+% if count(py.sys.path,mp.vhdl_codegen_path) == 0
+%     insert(py.sys.path,int32(0),mp.vhdl_codegen_path);
+% end
+% if count(py.sys.path,mp.driver_codegen_path) == 0
+%     insert(py.sys.path,int32(0),mp.driver_codegen_path);
+% end
 
 
 %% Open the model
