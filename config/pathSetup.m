@@ -27,8 +27,6 @@
 %       is used all over the place, so this will require some global refactoring
 autogenConfig = getconfig();
 autogenRootDir = autogenConfig.root;
-mp.model_path = '';
-%mp.model_path           = [gitPath filesep 'simulink_models' filesep 'models' filesep mp.model_name];
 mp.test_signals_path    = [autogenRootDir filesep 'simulink_models' filesep 'test_signals'];
 mp.ipcore_codegen_path  = [autogenRootDir filesep 'simulink_codegen' filesep 'ipcore'];
 mp.driver_codegen_path  = [autogenRootDir filesep 'simulink_codegen' filesep 'device_drivers'];
@@ -52,7 +50,6 @@ if count(py.sys.path,mp.dtogen_path) == 0
 end
 
 %% Add the paths to the current Matlab session
-addpath(mp.model_path)
 addpath(mp.driver_codegen_path)
 addpath(mp.ipcore_codegen_path)
 addpath(mp.ui_codegen_path)
@@ -75,11 +72,11 @@ disp(['------------------------------------------------'])
 
 function config = getconfig()
 % Get the autogen configuration from path.json or automatically
-    config_dir = erase(mfilename('fullpath'), mfilename); 
-    config_path = config_dir + "path.json";
+    configDir = erase(mfilename('fullpath'), mfilename); 
+    configPath = configDir + "path.json";
     
-    if isfile(config_path)
-        config = jsondecode(fileread(config_path));
+    if isfile(configPath)
+        config = jsondecode(fileread(configPath));
         if isfolder(config.root) == 0
             error("The given root path " + config.root + " was not found on your system.")
         end
@@ -87,24 +84,24 @@ function config = getconfig()
            error("The given quartus path " + config.quartus + " was not found on your system.") 
         end
     else
-        root_dir = config_dir + ".." +  filesep + ".." + filesep;
+        root_dir = configDir + ".." +  filesep + ".." + filesep;
         [~, values] = fileattrib(root_dir);
         root_dir = values.Name;
         config.root = root_dir;
         if ispc
-            quartus_root = strcat(getenv("QUARTUS_ROOTDIR"),filesep);
+            quartusRoot = strcat(getenv("QUARTUS_ROOTDIR"),filesep);
             bin = "bin64";
         else
             % QUARTUS_ROOTDIR is not defined on Linux installations by default
-            qsys_root = getenv("QSYS_ROOTDIR");
-            temp = regexp(qsys_root, "sopc_builder", 'split');
-            quartus_root = temp{1};
+            qsysRoot = getenv("QSYS_ROOTDIR");
+            temp = regexp(qsysRoot, "sopc_builder", 'split');
+            quartusRoot = temp{1};
             bin = "bin";
         end
-        if isempty(quartus_root)
+        if isempty(quartusRoot)
            error("Quartus was not found in your system environment variables.\n" ...
                + "Ensure Quartus environment variables are set or use path.json to configure Quartus path.") 
         end
-        config.quartus = char(quartus_root + bin + filesep);
+        config.quartus = char(quartusRoot + bin + filesep);
     end
 end
