@@ -3,7 +3,7 @@ To use FPGA Open Speech Tools' Simulink code generation tools, MATLAB needs to k
 By convention, all of the FPGA Open Speech Tools repositories are cloned to the same root directory during development.
 
 ## Automatic Path Setup
-By default, `pathSetup.m` will try to automatically find the required paths. For this to work, the [simulink_codgen](https://github.com/fpga-open-speech-tools/simulink_codegen) repository needs to be in the same folder as [simulink_models](https://github.com/fpga-open-speech-tools/simulink_models). Quartus is found automatically from your system's environment variables. 
+By default, `pathSetup.m` will try to automatically find the required paths. For this to work, the [simulink_codegen](https://github.com/fpga-open-speech-tools/simulink_codegen) repository needs to be in the same folder as [simulink_models](https://github.com/fpga-open-speech-tools/simulink_models). Quartus is found automatically from your system's environment variables. 
 
 ### Quartus Environment Variables
 Users should not need to manually define any Quartus environment variables. We check for the following environment variables:
