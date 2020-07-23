@@ -1,7 +1,7 @@
 function [sn, meansVect] = adaptiveWienerFilt(noisyAudio, Fs, windowSize)
 %%Adaptive Wiener Filter
 % Author: Justin Williams
-% Under:  Flat Earth Inc
+% Under:  Audio Logic
 % NIH Speech Enhancement Research
 %
 %%This function imeplements an adaptive wiener filter that attenuates white
