@@ -1,0 +1,72 @@
+{
+    "system": {
+        "target": "audiomini",
+        "sampleClockFrequency": 48000,
+        "systemClockFrequency": 98304000,
+
+        "inputDataType": {
+            "wordLength": 24,
+            "fractionLength": 24,
+            "signed": true
+        },
+        "outputDataType": {
+            "wordLength": 24,
+            "fractionLength": 23,
+            "signed": true
+        },
+        "numberOfChannels": 2
+    },
+
+    "devices": [
+        {
+            "name": "echo",
+            "registers": [
+                {
+                    "dataType": {
+                        "fractionalBits": 0,
+                        "signed": false,
+                        "type": "boolean",
+                        "totalBits": 1
+                    },
+                    "defaultValue": 1,
+                    "name": "enable",
+                    "registerNumber": 0
+                },
+                {
+                    "dataType": {
+                        "fractionalBits": 0,
+                        "signed": false,
+                        "type": "ufix15",
+                        "totalBits": 15
+                    },
+                    "defaultValue": 12000,
+                    "name": "delay",
+                    "registerNumber": 1
+                },
+                {
+                    "dataType": {
+                        "fractionalBits": 7,
+                        "signed": false,
+                        "type": "ufix8_En7",
+                        "totalBits": 8
+                    },
+                    "defaultValue": 0.8,
+                    "name": "feedback",
+                    "registerNumber": 2
+                },
+                {
+                    "dataType": {
+                        "fractionalBits": 7,
+                        "signed": false,
+                        "type": "ufix8_En7",
+                        "totalBits": 8
+                    },
+                    "defaultValue": 0.5,
+                    "name": "wet_dry_mix",
+                    "registerNumber": 3
+                }
+            ]
+        }
+    ]
+    
+}
