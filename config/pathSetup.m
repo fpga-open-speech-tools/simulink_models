@@ -31,7 +31,7 @@ mp.ipcore_codegen_path  = [autogenRootDir filesep 'simulink_codegen' filesep 'ip
 mp.driver_codegen_path  = [autogenRootDir filesep 'simulink_codegen' filesep 'device_drivers'];
 mp.ui_codegen_path      = [autogenRootDir filesep 'simulink_codegen' filesep 'ui'];
 mp.dtogen_path          = [autogenRootDir filesep 'utils' filesep  'device_tree_overlays'];
-mp.codegen_path         = [autogenRootDir filesep 'simulink_codegen' ];
+mp.codegen_path         = [autogenRootDir filesep 'simulink_codegen'];
 
 
 %% Quartus Setup
