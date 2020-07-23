@@ -5,3 +5,4 @@ gm_*.slx
 *.autosave
 *.asv
 *.bak
+config/path.json
