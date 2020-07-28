@@ -1,4 +1,4 @@
-# Flat Earth Inc
+# Audio Logic
 By Justin P. Williams and Ross K. Snider.
 
 # WienerV2 MATLAB & Simulink Model Run Guide

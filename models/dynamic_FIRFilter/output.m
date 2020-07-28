@@ -1,5 +1,5 @@
 %% E. Bailey Galacci & Justin P Williams
-% Flat Earth Inc.
+% Audio Logic
 % 10/17/2019
 
 % This script is to display the outputs of the dynamicFIRv1 simulink model
