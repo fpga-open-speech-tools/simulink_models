@@ -26,9 +26,16 @@ mp.Avalon_Sink_Channel.Data = Avalon_Sink_Channel.Data; % channel
 mp.Avalon_Sink_Valid.Data   = Avalon_Sink_Valid.Data;   % valid
 
 
-if mp.sim_prompts == 1  % sim_prompts is set in Run_me_first.m   This is turned off when the model is converted to VHDL since we don't want to run the verification multiple times at this point (HDL coder runs the simulation multiple times)
-    
-    mp = sm_stop_process_output(mp);  % get the output and convert from Avalon to vector
-    mp = sm_stop_verify(mp);          % verify that the output is correct
-    
+if mp.sim_verify == 1
+    onPath = contains(path, [mp.modelPath, pathsep]);
+    if ~onPath
+        addpath(mp.modelPath)
+    end
+    if exist('sm_stop_verify', 'file')
+        mp = sm_stop_process_output(mp);  % get the output and convert from Avalon to vector
+        mp = sm_stop_verify(mp, test_signal);          % verify that the output is correct
+    end
+    if ~onPath
+       rmpath(mp.modelPath) 
+    end
 end

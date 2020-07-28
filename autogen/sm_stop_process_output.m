@@ -35,20 +35,27 @@ t = mp.Avalon_Sink_Data.Time;             % time
 d = squeeze(mp.Avalon_Sink_Data.Data);    % data      Note: the Matlab squeeze() function removes singleton dimensions (i.e. dimensions of length 1)
 c = squeeze(mp.Avalon_Sink_Channel.Data); % channel
 v = squeeze(mp.Avalon_Sink_Valid.Data);   % valid
-left_index = 1;
-right_index = 1;
-for i=1:length(v)
-    if v(i) == 1  % check if valid, valid is asserted when there is data
-        if c(i) == 0  % if the channel number is zero, it is left channel data
-            mp.left_data_out(left_index) = double(d(i));
-            mp.left_time_out(left_index) = t(i);
-            left_index            = left_index + 1;
-        end
-        if c(i) == 1  % if the channel number is one, it is right channel data
-            mp.right_data_out(right_index) = double(d(i));
-            mp.right_time_out(right_index) = t(i);
-            right_index             = right_index + 1;
-        end
-    end
+d = double(d);
+
+c = int(c);
+idxvalid = v == 1;
+t = t(idxvalid);
+d = d(idxvalid);
+c = c(idxvalid);
+
+% Remove fields for different number of samples (TODO: is this needed?)
+data_field = "data_out";
+time_field = "time_out";
+if isfield(mp, data_field)
+    mp = rmfield(mp, data_field);
+end
+if isfield(mp, time_field)
+    mp = rmfield(mp, time_field);
+end
+
+for i=1:mp.nChannels
+        idxchan = c == i - 1;
+        mp.data_out(i, :) = d(idxchan);
+        mp.time_out(i, :) = t(idxchan);
 end
 

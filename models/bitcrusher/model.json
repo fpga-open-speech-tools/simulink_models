@@ -19,7 +19,7 @@
 
     "devices": [
         {
-            "name": "echo",
+            "name": "bitcrusher",
             "registers": [
                 {
                     "dataType": {
@@ -37,22 +37,11 @@
                         "fractionalBits": 0,
                         "signed": false,
                         "type": "ufix15",
-                        "totalBits": 15
+                        "totalBits": 5
                     },
-                    "defaultValue": 12000,
-                    "name": "delay",
+                    "defaultValue": 8,
+                    "name": "bits",
                     "registerNumber": 1
-                },
-                {
-                    "dataType": {
-                        "fractionalBits": 7,
-                        "signed": false,
-                        "type": "ufix8_En7",
-                        "totalBits": 8
-                    },
-                    "defaultValue": 0.8,
-                    "name": "feedback",
-                    "registerNumber": 2
                 },
                 {
                     "dataType": {
@@ -63,7 +52,7 @@
                     },
                     "defaultValue": 0.5,
                     "name": "wet_dry_mix",
-                    "registerNumber": 3
+                    "registerNumber": 2
                 }
             ]
         }

@@ -58,20 +58,23 @@ switch signal_option
         test_signal.Nsamples = length(test_signal.left);
         test_signal.duration = test_signal.Nsamples * mp.Ts;
     case 3 % user supplied music
-        [y,Fs] = audioread(mp.testFile, [1,48000]); 
-        y_resampled = resample(y,mp.Fs,Fs);  % resample to change the sample rate to SG.Fs
-        Nsamples = length(y_resampled);
+        
         if mp.fastsim_flag == 1 % perform fast simulation by reducing the number of samples
-           test_signal.Nsamples = min(Nsamples, mp.fastsim_Nsamples);
-           mp.Nsamples = min(Nsamples, mp.fastsim_Nsamples);
+           sim_time = mp.fastsim_Nsamples / mp.Fs;
+
+           info = audioinfo(mp.testFile);
+           file_Fs = info.SampleRate;
+           totalSamples = info.TotalSamples;
+           nSourceSamples = min(sim_time * file_Fs, totalSamples);
+           [y,~] = audioread(mp.testFile,[1, nSourceSamples]);
+            
         else
-           test_signal.Nsamples = mp.fastsim_Nsamples;
+           [y,~] = audioread(mp.testFile);
         end     
-        test_signal.left  = y_resampled(1:test_signal.Nsamples);
-        test_signal.right = y_resampled(1:test_signal.Nsamples);
-        test_signal.Nsamples = length(test_signal.left);
-        test_signal.duration = test_signal.Nsamples * mp.Ts;
-        test_signal = AudioSource([test_signal.left; test_signal.right], test_signal.Nsamples, mp.Fs);
+        y_resampled = resample(y,mp.Fs, file_Fs);  % resample to change the sample rate to SG.Fs
+        
+        test_signal = AudioSource(y_resampled, mp.Fs);
+        
     otherwise
         error('Please choose a viable option for the test signal (see sm_init_test_signals)')
 end
