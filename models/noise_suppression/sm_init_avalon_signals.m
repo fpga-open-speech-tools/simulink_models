@@ -57,13 +57,13 @@ for sample_index = 1:mp.test_signal.Nsamples
     %---------------------------------------------
     % fill in the invalid data slots with zeros
     %---------------------------------------------
-    for k=1:(mp.rate_change-2)
-        datavals_data(dataval_index)    = 0;  % no data (put in zeros)
-        datavals_valid(dataval_index)   = 0;  % data is not valid in these time bins
-        datavals_channel(dataval_index) = 3;  % channel 3 = no data
-        datavals_error(dataval_index)   = 0;  % no error
-        dataval_index                   = dataval_index + 1;
-    end
+%     for k=1:(mp.rate_change-2)
+%         datavals_data(dataval_index)    = 0;  % no data (put in zeros)
+%         datavals_valid(dataval_index)   = 0;  % data is not valid in these time bins
+%         datavals_channel(dataval_index) = 3;  % channel 3 = no data
+%         datavals_error(dataval_index)   = 0;  % no error
+%         dataval_index                   = dataval_index + 1;
+%     end
 end
 
 %% Convert to time series objects that can be read from "From Workspace" blocks
