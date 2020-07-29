@@ -56,6 +56,5 @@ end
 for i=1:mp.nChannels
         idxchan = channel == i - 1;
         mp.data_out(i, :) = data(idxchan);
-        mp.time_out(i, :) = time(idxchan);
 end
 
