@@ -37,12 +37,11 @@ stop_time = test_signal.duration;  % simulation time is based on the number of a
 
 %% Put the test signals into the Avalon Streaming Bus format
 % i.e. put the test signals into the data-channel-valid protocol
-tic
-toc
+
 avalonSource = test_signal.toAvalonSource();
-toc
+
 mp.avalonSim = avalonSource.astimeseries(mp.Ts_system);
-toc
+
 mp.Avalon_Source_Data     = mp.avalonSim.data;
 mp.Avalon_Source_Valid    = mp.avalonSim.valid;
 mp.Avalon_Source_Channel  = mp.avalonSim.channel;

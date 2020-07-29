@@ -31,17 +31,17 @@
 function mp = sm_stop_process_output(mp)
 
 %% Get the Avalon streaming signals from the model
-t = mp.Avalon_Sink_Data.Time;             % time
-d = squeeze(mp.Avalon_Sink_Data.Data);    % data      Note: the Matlab squeeze() function removes singleton dimensions (i.e. dimensions of length 1)
-c = squeeze(mp.Avalon_Sink_Channel.Data); % channel
-v = squeeze(mp.Avalon_Sink_Valid.Data);   % valid
-d = double(d);
+time = mp.Avalon_Sink_Data.Time;             % time
+data = squeeze(mp.Avalon_Sink_Data.Data);    % data      Note: the Matlab squeeze() function removes singleton dimensions (i.e. dimensions of length 1)
+channel = squeeze(mp.Avalon_Sink_Channel.Data); % channel
+valid = squeeze(mp.Avalon_Sink_Valid.Data);   % valid
+data = double(data);
 
-c = int(c);
-idxvalid = v == 1;
-t = t(idxvalid);
-d = d(idxvalid);
-c = c(idxvalid);
+channel = int(channel);
+idxvalid = valid == 1;
+time = time(idxvalid);
+data = data(idxvalid);
+channel = channel(idxvalid);
 
 % Remove fields for different number of samples (TODO: is this needed?)
 data_field = "data_out";
@@ -54,8 +54,8 @@ if isfield(mp, time_field)
 end
 
 for i=1:mp.nChannels
-        idxchan = c == i - 1;
-        mp.data_out(i, :) = d(idxchan);
-        mp.time_out(i, :) = t(idxchan);
+        idxchan = channel == i - 1;
+        mp.data_out(i, :) = data(idxchan);
+        mp.time_out(i, :) = time(idxchan);
 end
 

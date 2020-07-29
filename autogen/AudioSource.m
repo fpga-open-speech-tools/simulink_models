@@ -1,3 +1,20 @@
+% AudioSource 
+%
+% This class represents an audio source for use with Autogen.
+%
+% Copyright 2019 Audio Logic
+%
+% THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+% INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
+% PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE
+% FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+% ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+%
+% Dylan Wickham
+% Audio Logic
+% 985 Technology Blvd
+% Bozeman, MT 59718
+% openspeech@flatearthinc.com
 classdef AudioSource
     %AudioSource Represents an audio source for use with Autogen
     properties
@@ -35,22 +52,16 @@ classdef AudioSource
             end
             
             nSamplesAvalon = this.nSamples * this.nChannel;
+            
             data = zeros(nSamplesAvalon, 1);
             valid = ones(nSamplesAvalon, 1);
             error = zeros(nSamplesAvalon, 1);
             channel = zeros(nSamplesAvalon, 1);
+            
             for k=1:this.nChannel
                 data(k:2:(nSamplesAvalon - 1 + k)) = this.audio(:, k);
                 channel(k:2:(nSamplesAvalon - 1 + k))= k - 1;
             end 
-            
-%             for sample_idx = 1:this.nSamples
-%                  offset = this.nChannel * (sample_idx - 1);
-%                  for k=1:this.nChannel
-%                     data(k + offset)     = this.audio(sample_idx, k); 
-%                     channel(k + offset)  = k - 1;   
-%                  end
-%             end
             avalonSource = AvalonSource(data, channel, valid, error);
 
         end

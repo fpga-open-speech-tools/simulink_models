@@ -24,10 +24,10 @@ The Autogen framework gives 3 major file based interfaces for models: `model.jso
         - `registers`: An array of objects representing run-time tunable parameters as registers  
         - register object  
             - `dataType`: object representing the data type of the register  
-                - `fractionalBits`: number of fractional bits in the fixed point number  
+                - `fractionLength`: number of fractional bits in the fixed point number  
                 - `signed`: true if the data type is signed, false otherwise  
                 - `type`: string representation of type ('boolean', 'string', 'int')  
-                - `totalBits`: number of total bits in the data type  
+                - `wordLength`: number of total bits in the data type  
             - `defaultValue`: default value to set the register to (should be 1 or 0 for boolean types)  
             - `name`: name of the tunable parameter  
             - `registerNumber`: offset in memory for the register (starts at 1 and must have registerNumber's defined between 1 and the highest value given)  

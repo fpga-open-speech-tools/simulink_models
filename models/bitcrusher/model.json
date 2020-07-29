@@ -23,10 +23,10 @@
             "registers": [
                 {
                     "dataType": {
-                        "fractionalBits": 0,
+                        "fractionLength": 0,
                         "signed": false,
                         "type": "boolean",
-                        "totalBits": 1
+                        "wordLength": 1
                     },
                     "defaultValue": 1,
                     "name": "enable",
@@ -34,10 +34,10 @@
                 },
                 {
                     "dataType": {
-                        "fractionalBits": 0,
+                        "fractionLength": 0,
                         "signed": false,
                         "type": "ufix15",
-                        "totalBits": 5
+                        "wordLength": 5
                     },
                     "defaultValue": 8,
                     "name": "bits",
@@ -45,10 +45,10 @@
                 },
                 {
                     "dataType": {
-                        "fractionalBits": 7,
+                        "fractionLength": 7,
                         "signed": false,
                         "type": "ufix8_En7",
-                        "totalBits": 8
+                        "wordLength": 8
                     },
                     "defaultValue": 0.5,
                     "name": "wet_dry_mix",

@@ -1,9 +1,27 @@
-
+% std_modelparameters.m
+%
+% This file sets the mp struct to have model parameters defined on it.
+% First it parses model.json, then reads modelparameters.m, and finally
+% computes additional fields from the previous settings.
+%
+% Copyright 2019 Audio Logic
+%
+% THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+% INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
+% PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE
+% FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+% ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+%
+% Dylan Wickham
+% Audio Logic
+% 985 Technology Blvd
+% Bozeman, MT 59718
+% openspeech@flatearthinc.com
 %% Read the config 
 config_path = [modelPath filesep 'model.json'];
 config = jsondecode(fileread(config_path));
 
-mp.model_name = config.devices(1).name;
+mp.modelName = config.devices(1).name;
 
 %% Set Audio Data
 if isfield(config.system, "sampleClockFrequency")
@@ -79,7 +97,7 @@ function regs = parsedeviceregisters(device)
             tempReg.dataType = fixdt('boolean');
         else
             tempReg.dataType = fixdt(reg.dataType.signed, ...
-                reg.dataType.totalBits, reg.dataType.fractionalBits);
+                reg.dataType.wordLength, reg.dataType.fractionLength);
         end
         tempReg.timeseries = timeseries(tempReg.value, 0);
         
