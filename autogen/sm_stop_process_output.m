@@ -41,7 +41,7 @@ idxvalid = valid == 1;
 data = data(idxvalid);
 channel = channel(idxvalid);
 
-% Remove fields for different number of samples (TODO: is this needed?)
+% Remove fields for different number of samples
 data_field = "data_out";
 if isfield(mp, data_field)
     mp = rmfield(mp, data_field);
