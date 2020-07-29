@@ -31,17 +31,16 @@ set_module_property REPORT_HIERARCHY false
 # # # # # # # # # # # # # # # # # #
 
 add_fileset QUARTUS_SYNTH QUARTUS_SYNTH "" ""
-add_fileset_file noise_suppression_Adaptive_Wiener_Filter_Sample_Based_Filtering.vhd VHDL PATH noise_suppression_Adaptive_Wiener_Filter_Sample_Based_Filtering.vhd
-add_fileset_file noise_suppression_dataplane.vhd VHDL PATH noise_suppression_dataplane.vhd
-add_fileset_file noise_suppression_deserializer.vhd VHDL PATH noise_suppression_deserializer.vhd
+add_fileset_file noise_suppression_streaming_partition_streamed.vhd VHDL PATH noise_suppression_streaming_partition_streamed.vhd
+add_fileset_file noise_suppression_Reciprocal1.vhd VHDL PATH noise_suppression_Reciprocal1.vhd
 add_fileset_file noise_suppression_compute_statistics.vhd VHDL PATH noise_suppression_compute_statistics.vhd
-add_fileset_file noise_suppression_dataplane_tc.vhd VHDL PATH noise_suppression_dataplane_tc.vhd
-add_fileset_file noise_suppression_noise_suppression.vhd VHDL PATH noise_suppression_noise_suppression.vhd
-add_fileset_file noise_suppression_noise_suppression_blocks.vhd VHDL PATH noise_suppression_noise_suppression_blocks.vhd
-add_fileset_file noise_suppression_serializer.vhd VHDL PATH noise_suppression_serializer.vhd
 add_fileset_file noise_suppression_dataplane_pkg.vhd VHDL PATH noise_suppression_dataplane_pkg.vhd
+add_fileset_file noise_suppression_Reciprocal2.vhd VHDL PATH noise_suppression_Reciprocal2.vhd
+add_fileset_file noise_suppression_dataplane_tc.vhd VHDL PATH noise_suppression_dataplane_tc.vhd
+add_fileset_file noise_suppression_Adaptive_Wiener_Filter_Sample_Based_Filtering.vhd VHDL PATH noise_suppression_Adaptive_Wiener_Filter_Sample_Based_Filtering.vhd
+add_fileset_file noise_suppression_streaming_partition_streamed_block.vhd VHDL PATH noise_suppression_streaming_partition_streamed_block.vhd
+add_fileset_file noise_suppression_dataplane.vhd VHDL PATH noise_suppression_dataplane.vhd
 add_fileset_file noise_suppression_SimpleDualPortRAM_generic.vhd VHDL PATH noise_suppression_SimpleDualPortRAM_generic.vhd
-add_fileset_file noise_suppression_adaptive_wiener_filter.vhd VHDL PATH noise_suppression_adaptive_wiener_filter.vhd
 set_fileset_property QUARTUS_SYNTH TOP_LEVEL noise_suppression_dataplane_avalon
 set_fileset_property QUARTUS_SYNTH ENABLE_RELATIVE_INCLUDE_PATHS false
 set_fileset_property QUARTUS_SYNTH ENABLE_FILE_OVERWRITE_MODE false
@@ -53,9 +52,9 @@ add_fileset_file noise_suppression_dataplane_avalon.vhd VHDL PATH noise_suppress
 # Created in create_module_assignments
 # # # # # # # # # # # # # # # # # # # #
 
-set_module_assignment embeddedsw.dts.compatible dev,fe-noise_suppression
+set_module_assignment embeddedsw.dts.compatible dev,al-noise_suppression
 set_module_assignment embeddedsw.dts.group autogen 
-set_module_assignment embeddedsw.dts.vendor fe
+set_module_assignment embeddedsw.dts.vendor al
 # End create_module_assignments
 
 
@@ -64,7 +63,7 @@ set_module_assignment embeddedsw.dts.vendor fe
 # # # # # # # # # # # # # # # # # # # # # #
 
 add_interface clock clock end
-set_interface_property clock clockRate 98304000.0
+set_interface_property clock clockRate 98304000
 set_interface_property clock ENABLED true
 set_interface_property clock EXPORT_OF ""
 set_interface_property clock PORT_NAME_MAP ""
@@ -139,17 +138,16 @@ set_interface_property avalon_streaming_sink associatedReset reset
 set_interface_property avalon_streaming_sink dataBitsPerSymbol 32
 set_interface_property avalon_streaming_sink errorDescriptor ""
 set_interface_property avalon_streaming_sink firstSymbolInHighOrderBits true
-set_interface_property avalon_streaming_sink maxChannel 3
+set_interface_property avalon_streaming_sink maxChannel 0
 set_interface_property avalon_streaming_sink readyLatency 0
 set_interface_property avalon_streaming_sink ENABLED true
 set_interface_property avalon_streaming_sink EXPORT_OF ""
 set_interface_property avalon_streaming_sink PORT_NAME_MAP ""
 set_interface_property avalon_streaming_sink CMSIS_SVD_VARIABLES ""
 set_interface_property avalon_streaming_sink SVD_ADDRESS_GROUP ""
-add_interface_port avalon_streaming_sink avalon_sink_valid valid Input 1
 add_interface_port avalon_streaming_sink avalon_sink_data data Input 32
-add_interface_port avalon_streaming_sink avalon_sink_channel channel Input 2
-add_interface_port avalon_streaming_sink avalon_sink_error error Input 2
+add_interface_port avalon_streaming_sink avalon_sink_channel channel Input 1
+add_interface_port avalon_streaming_sink avalon_sink_valid valid Input 1
 # End create_sink_connection_point
 
 
@@ -163,17 +161,16 @@ set_interface_property avalon_streaming_source associatedReset reset
 set_interface_property avalon_streaming_source dataBitsPerSymbol 32
 set_interface_property avalon_streaming_source errorDescriptor ""
 set_interface_property avalon_streaming_source firstSymbolInHighOrderBits true
-set_interface_property avalon_streaming_source maxChannel 3
+set_interface_property avalon_streaming_source maxChannel 0
 set_interface_property avalon_streaming_source readyLatency 0
 set_interface_property avalon_streaming_source ENABLED true
 set_interface_property avalon_streaming_source EXPORT_OF ""
 set_interface_property avalon_streaming_source PORT_NAME_MAP ""
 set_interface_property avalon_streaming_source CMSIS_SVD_VARIABLES ""
 set_interface_property avalon_streaming_source SVD_ADDRESS_GROUP ""
-add_interface_port avalon_streaming_source avalon_source_valid valid Output 1
 add_interface_port avalon_streaming_source avalon_source_data data Output 32
-add_interface_port avalon_streaming_source avalon_source_channel channel Output 2
-add_interface_port avalon_streaming_source avalon_source_error error Output 2
+add_interface_port avalon_streaming_source avalon_source_channel channel Output 1
+add_interface_port avalon_streaming_source avalon_source_valid valid Output 1
 # End create_sink_connection_point
 
 
