@@ -31,7 +31,6 @@
 function mp = sm_stop_process_output(mp)
 
 %% Get the Avalon streaming signals from the model
-time = mp.Avalon_Sink_Data.Time;             % time
 data = squeeze(mp.Avalon_Sink_Data.Data);    % data      Note: the Matlab squeeze() function removes singleton dimensions (i.e. dimensions of length 1)
 channel = squeeze(mp.Avalon_Sink_Channel.Data); % channel
 valid = squeeze(mp.Avalon_Sink_Valid.Data);   % valid
@@ -39,18 +38,13 @@ data = double(data);
 
 channel = int(channel);
 idxvalid = valid == 1;
-time = time(idxvalid);
 data = data(idxvalid);
 channel = channel(idxvalid);
 
 % Remove fields for different number of samples (TODO: is this needed?)
 data_field = "data_out";
-time_field = "time_out";
 if isfield(mp, data_field)
     mp = rmfield(mp, data_field);
-end
-if isfield(mp, time_field)
-    mp = rmfield(mp, time_field);
 end
 
 for i=1:mp.nChannels
