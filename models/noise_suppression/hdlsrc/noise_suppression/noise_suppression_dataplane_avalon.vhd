@@ -27,6 +27,7 @@ architecture noise_suppression_dataplane_avalon_arch of noise_suppression_datapl
   signal noise_variance            : std_logic_vector(23  downto 0) :=  "000000000000100100011010"; -- 0.0002777777777777778 (ufix24_En23)
 
   signal sink_data : vector_of_std_logic_vector32(0 to 1) := (others => (others => '0'));
+  signal sink_data_tmp : vector_of_std_logic_vector32(0 to 1) := (others => (others => '0'));
   signal source_data_prev : vector_of_std_logic_vector32(0 to 1) := (others => (others => '0'));
   signal source_data : vector_of_std_logic_vector32(0 to 1) := (others => (others => '0'));
 
@@ -87,28 +88,35 @@ u_noise_suppression_dataplane : noise_suppression_dataplane
   end process;
 
   buffer_sink_data : process(clk, reset)
-  variable sink_data_tmp : vector_of_std_logic_vector32(0 to 1);
   begin
-    if avalon_sink_valid = '1' then
-      if avalon_sink_channel = '0' then
-        sink_data_tmp(0) := avalon_sink_data;
-      elsif avalon_sink_channel = '1' then
-        sink_data_tmp(1) := avalon_sink_data;
-        sink_data <= sink_data_tmp;
-      end if;
-    end if;
+	 if rising_edge(clk) then
+		 if avalon_sink_valid = '1' then
+			if avalon_sink_channel = '0' then
+			  sink_data_tmp(0) <= avalon_sink_data;
+			elsif avalon_sink_channel = '1' then
+			  sink_data_tmp(1) <= avalon_sink_data;
+			  sink_data <= sink_data_tmp;
+			end if;
+		 end if;
+	end if;
   end process;
 
   enable_source_tdm_counter : process(clk, reset)
   begin
-    if source_data_prev /= source_data then
-      source_counter_enable <= true;
-    end if;
+	 if rising_edge(clk) then
+		 if source_data_prev /= source_data then
+			source_counter <= 0;
+			source_data_prev <= source_data;
+		 else
+			source_counter <= source_counter + 1;
+		 end if;
+	 end if;
   end process;
 
+  -- TODO: I could make source_counter roll over automatically by choosing a restricted data type
   generate_avalon_source : process(clk, reset)
   begin
-    if source_counter_enable then
+    if rising_edge(clk) then
       if source_counter = 0 then
         avalon_source_data <= source_data(0);
         avalon_source_valid <= '1';
@@ -117,11 +125,10 @@ u_noise_suppression_dataplane : noise_suppression_dataplane
         avalon_source_data <= source_data(1);
         avalon_source_valid <= '1';
         avalon_source_channel <= '1';
-		  source_data_prev <= source_data;
       else
         avalon_source_valid <= '0';
       end if;
-    end if;
+	end if;
   end process;
         
 end architecture;
