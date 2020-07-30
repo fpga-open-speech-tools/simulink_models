@@ -71,9 +71,10 @@ ARCHITECTURE rtl OF noise_suppression_dataplane IS
           enb                             :   IN    std_logic;
           enb_1_2048_1                    :   IN    std_logic;
           enb_1_2048_0                    :   IN    std_logic;
-          Sink_Data                       :   IN    vector_of_std_logic_vector24(0 TO 1);  -- sfix24_En24 [2]
+          Sink_Data                       :   IN    vector_of_std_logic_vector24(0 TO 1);  -- sfix24_En23 [2]
           noise_variance                  :   IN    std_logic_vector(23 DOWNTO 0);  -- ufix24_En23
-          data_out                        :   OUT   vector_of_std_logic_vector50(0 TO 1)  -- sfix50_En48 [2]
+          enable                          :   IN    std_logic;
+          data_out                        :   OUT   vector_of_std_logic_vector50(0 TO 1)  -- sfix50_En46 [2]
           );
   END COMPONENT;
 
@@ -89,10 +90,10 @@ ARCHITECTURE rtl OF noise_suppression_dataplane IS
   SIGNAL enb_1_2048_1                     : std_logic;
   SIGNAL enb_1_2048_0                     : std_logic;
   SIGNAL avalon_sink_data_signed          : vector_of_signed32(0 TO 1);  -- sfix32_En28 [2]
-  SIGNAL Data_Type_Conversion_out1        : vector_of_signed24(0 TO 1);  -- sfix24_En24 [2]
+  SIGNAL Data_Type_Conversion_out1        : vector_of_signed24(0 TO 1);  -- sfix24_En23 [2]
   SIGNAL Data_Type_Conversion_out1_1      : vector_of_std_logic_vector24(0 TO 1);  -- ufix24 [2]
   SIGNAL Adaptive_Wiener_Filter_Sample_Based_Filtering_out1 : vector_of_std_logic_vector50(0 TO 1);  -- ufix50 [2]
-  SIGNAL Adaptive_Wiener_Filter_Sample_Based_Filtering_out1_signed : vector_of_signed50(0 TO 1);  -- sfix50_En48 [2]
+  SIGNAL Adaptive_Wiener_Filter_Sample_Based_Filtering_out1_signed : vector_of_signed50(0 TO 1);  -- sfix50_En46 [2]
   SIGNAL Data_Type_Conversion1_out1       : vector_of_signed32(0 TO 1);  -- sfix32_En28 [2]
 
 BEGIN
@@ -123,17 +124,18 @@ BEGIN
               enb => enb,
               enb_1_2048_1 => enb_1_2048_1,
               enb_1_2048_0 => enb_1_2048_0,
-              Sink_Data => Data_Type_Conversion_out1_1,  -- sfix24_En24 [2]
+              Sink_Data => Data_Type_Conversion_out1_1,  -- sfix24_En23 [2]
               noise_variance => register_control_noise_variance,  -- ufix24_En23
-              data_out => Adaptive_Wiener_Filter_Sample_Based_Filtering_out1  -- sfix50_En48 [2]
+              enable => register_control_enable,
+              data_out => Adaptive_Wiener_Filter_Sample_Based_Filtering_out1  -- sfix50_En46 [2]
               );
 
   outputgen3: FOR k IN 0 TO 1 GENERATE
     avalon_sink_data_signed(k) <= signed(avalon_sink_data(k));
   END GENERATE;
 
-  Data_Type_Conversion_out1(0) <= avalon_sink_data_signed(0)(27 DOWNTO 4);
-  Data_Type_Conversion_out1(1) <= avalon_sink_data_signed(1)(27 DOWNTO 4);
+  Data_Type_Conversion_out1(0) <= avalon_sink_data_signed(0)(28 DOWNTO 5);
+  Data_Type_Conversion_out1(1) <= avalon_sink_data_signed(1)(28 DOWNTO 5);
 
   outputgen2: FOR k IN 0 TO 1 GENERATE
     Data_Type_Conversion_out1_1(k) <= std_logic_vector(Data_Type_Conversion_out1(k));
@@ -143,15 +145,14 @@ BEGIN
     Adaptive_Wiener_Filter_Sample_Based_Filtering_out1_signed(k) <= signed(Adaptive_Wiener_Filter_Sample_Based_Filtering_out1(k));
   END GENERATE;
 
-  Data_Type_Conversion1_out1(0) <= resize(Adaptive_Wiener_Filter_Sample_Based_Filtering_out1_signed(0)(49 DOWNTO 20), 32);
-  Data_Type_Conversion1_out1(1) <= resize(Adaptive_Wiener_Filter_Sample_Based_Filtering_out1_signed(1)(49 DOWNTO 20), 32);
+  Data_Type_Conversion1_out1(0) <= Adaptive_Wiener_Filter_Sample_Based_Filtering_out1_signed(0)(49 DOWNTO 18);
+  Data_Type_Conversion1_out1(1) <= Adaptive_Wiener_Filter_Sample_Based_Filtering_out1_signed(1)(49 DOWNTO 18);
 
   outputgen: FOR k IN 0 TO 1 GENERATE
     avalon_source_data(k) <= std_logic_vector(Data_Type_Conversion1_out1(k));
   END GENERATE;
 
   ce_out <= enb_1_2048_1;
-
 
 END rtl;
 
