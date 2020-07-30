@@ -74,8 +74,7 @@ Notable fields on the `mp` struct, in addition to those described above:
 - `signed`: true if the audio data is signed, false otherwise  
 - `Fs`: Sampling rate of the audio data  
 - `Ts`: Sampling time of the audio data  
-- `Fs_system`: Clock rate of the FPGA  
-- `Ts_system`: Clock period of the FPGA  
+- `Ts_sim`: Sample time expected during Simulation  
 - `register`: Cell array of registers  
     - `name`: Name of tunable parameter  
     - `value`: Value that the tunable parameter is set to  

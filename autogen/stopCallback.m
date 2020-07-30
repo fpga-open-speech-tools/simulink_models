@@ -27,15 +27,11 @@ mp.Avalon_Sink_Valid.Data   = Avalon_Sink_Valid.Data;   % valid
 
 
 if mp.sim_verify == 1
-    onPath = contains(path, [mp.modelPath, pathsep]);
-    if ~onPath
-        addpath(mp.modelPath)
-    end
-    if exist('verifySim', 'file')
+    verifySimScript = [mp.modelPath '\verifySim.m'];
+    if exist(verifySimScript, 'file')
         mp = processOutput(mp);  % get the output and convert from Avalon to vector
-        mp = verifySim(mp, testSignal);          % verify that the output is correct
-    end
-    if ~onPath
-       rmpath(mp.modelPath) 
+        run(verifySimScript);          % verify that the output is correct
+    else
+        disp(['Simulation verification is on but the verification script was not found at:' newline  verifySimScript])
     end
 end

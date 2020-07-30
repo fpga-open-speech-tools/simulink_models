@@ -36,7 +36,7 @@ mp.nChannels = config.system.audioIn.numberOfChannels;
 %% Parse registers
 mp.register = parseregisters(config);
 
-modelparameters
+run([mp.modelPath '\modelparameters.m'])
 
 %% Computed parameters
 % Set undefined configuration parameters
@@ -57,9 +57,9 @@ end
 
 % Configure target system
 if isfield(config.system, "target") == 0 || config.system.target == "audiomini"
-    mp.target = Hardware.Audiomini;
+    mp.target = Hardware.AudioMini;
 else
-    mp.target = Hardware.Audioblade;
+    mp.target = Hardware.AudioBlade;
 end
 
 % Set sample period for audio source

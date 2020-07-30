@@ -13,7 +13,7 @@
         "audioOut": {
             "wordLength": 24,
             "fractionLength": 23,
-            "signed": true
+            "signed": true,
             "numberOfChannels": 2
         },
     },

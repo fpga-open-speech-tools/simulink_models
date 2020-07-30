@@ -74,8 +74,8 @@ classdef AudioSource
                simTime = nSamples / sampleRate;
                totalSamples = info.TotalSamples;
                nSourceSamples = min(simTime * fileFs, totalSamples);
+               
                [y,~] = audioread(filepath,[1, nSourceSamples]);
-
             else
                [y,~] = audioread(filepath);
             end     
