@@ -5,9 +5,7 @@ mp.testFile = [mp.test_signals_path filesep 'Urban_Light_HedaMusic_Creative_Comm
 
 mp.sim_prompts = 0;
 mp.sim_verify = 1;
-mp.fastsim_flag = 1;     % perform fast simulation  Note: fast simulation will be turned off when generating VHDL code since we need to run at the system clock rate.
-mp.fastsim_Fs_system_N = 2;     % (typical value 2 or 4) Simulate a much slower system clock than what is specified in sm_callback_init.m   - The reduce rate will be a multiple of the sample rate, i.e. mp.Fs_system = mp.Fs*mp.fastsim_Fs_system_N
-mp.fastsim_Nsamples = 48000 * 20;
+mp.nSamples = 48000 * 2;
     
 %%% General model parameters
 

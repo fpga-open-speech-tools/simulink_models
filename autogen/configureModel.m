@@ -1,10 +1,10 @@
-% std_modelparameters.m
+% configureModel.m
 %
 % This file sets the mp struct to have model parameters defined on it.
 % First it parses model.json, then reads modelparameters.m, and finally
 % computes additional fields from the previous settings.
-%
-% Copyright 2019 Audio Logic
+
+% Copyright 2020 Audio Logic
 %
 % THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
 % INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
@@ -18,34 +18,20 @@
 % Bozeman, MT 59718
 % openspeech@flatearthinc.com
 %% Read the config 
-config_path = [modelPath filesep 'model.json'];
-config = jsondecode(fileread(config_path));
+configPath = [modelPath filesep 'model.json'];
+config = jsondecode(fileread(configPath));
 
 mp.modelName = config.devices(1).name;
 
 %% Set Audio Data
-if isfield(config.system, "sampleClockFrequency")
-    mp.Fs = config.system.sampleClockFrequency; 
-else
-    mp.Fs = 48000;
-end
 
-if isfield(config.system, "numberOfChannels")
-    mp.nChannels = config.system.numberOfChannels;
-else
-    mp.nChannels = 2;
-end
+mp.Fs = config.system.sampleClockFrequency; 
+
 % Set the data type for audio signal
-mp.signed = config.system.inputDataType.signed;
-mp.W_bits = config.system.inputDataType.wordLength;  % Word length
-mp.F_bits = config.system.inputDataType.fractionLength;  % Number of fractional bits in word
-
-%% Configure target system
-if isfield(config.system, "target")
-    mp.target_system = config.system.target; 
-else
-    mp.target_system = "audiomini";
-end
+mp.signed = config.system.audioIn.signed;
+mp.W_bits = config.system.audioIn.wordLength;  % Word length
+mp.F_bits = config.system.audioIn.fractionLength;  % Number of fractional bits in word
+mp.nChannels = config.system.audioIn.numberOfChannels;
 
 %% Parse registers
 mp.register = parseregisters(config);
@@ -53,22 +39,38 @@ mp.register = parseregisters(config);
 modelparameters
 
 %% Computed parameters
+% Set undefined configuration parameters
+if isfield(mp, "nSamples") == 0
+   mp.nSamples = -1; % This is interpreted as the full audio file is to be used
+end
+
+if isfield(mp, "sim_prompts") == 0
+   mp.sim_prompts = 0; 
+end
+if isfield(mp, "sim_verify") == 0
+   mp.sim_verify = 0; 
+end
+
+if isfield(mp, "testFile") == 0
+   mp.testFile = [mp.test_signals_path filesep 'Urban_Light_HedaMusic_Creative_Commons.mp3']; 
+end
+
+% Configure target system
+if isfield(config.system, "target") == 0 || config.system.target == "audiomini"
+    mp.target = Hardware.Audiomini;
+else
+    mp.target = Hardware.Audioblade;
+end
+
 % Set sample period for audio source
 mp.Ts = 1/mp.Fs; 
 
 %Set the FPGA system clock frequency (frequency of the FPGA fabric)
 % The system clock frequency should be an integer multiple of the Audio codec AD1939 Mclk frequency (12.288 MHz)
+mp.Fs_system = config.system.systemClockFrequency;        % System clock frequency in Hz of Avalon Interface  Mclk*8 = 12.288MHz*8=98304000
 
-if isfield(mp, "fastsim_flag") == 0 || mp.fastsim_flag == 0
-    if isfield(config.system, "systemClockFrequency")
-        mp.Fs_system = config.system.systemClockFrequency;        % System clock frequency in Hz of Avalon Interface  Mclk*8 = 12.288MHz*8=98304000
-    else
-        mp.Fs_system = 98304000;
-    end
-else
-    mp.Fs_system = mp.Fs * mp.fastsim_Fs_system_N;          % Note: For faster development runs (faster sim times), reduce the number of system clocks between samples.  mp.fastsim_Fs_system_N is set in sm_run_me_first.m
-end
-mp.Ts_system = 1/mp.Fs_system;         % System clock period
+mp.Ts_system = 1 / mp.Fs_system;
+mp.Ts_sim = 1/(mp.Fs * mp.nChannels);         % System clock period
 mp.rate_change = mp.Fs_system/mp.Fs;   % how much faster the system clock is to the sample clock
 
 

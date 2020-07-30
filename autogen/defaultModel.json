@@ -4,17 +4,18 @@
         "sampleClockFrequency": 48000,
         "systemClockFrequency": 98304000,
 
-        "inputDataType": {
+        "audioIn": {
+            "wordLength": 24,
+            "fractionLength": 23,
+            "signed": true,
+            "numberOfChannels": 2
+        },
+        "audioOut": {
             "wordLength": 24,
             "fractionLength": 23,
             "signed": true
+            "numberOfChannels": 2
         },
-        "outputDataType": {
-            "wordLength": 24,
-            "fractionLength": 23,
-            "signed": true
-        },
-        "numberOfChannels": 2
     },
 
     "devices": [

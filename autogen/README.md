@@ -37,33 +37,30 @@ The Autogen framework gives 3 major file based interfaces for models: `model.jso
 
 Configurable Autogen model parameters:  
 - `testFile`: A path to an audio file for input to the simulation. The number of channels should match `numberOfChannels` defined in `model.json`  
-- `fastsim_flag`: A flag enabling faster simulation  
-    - `fastsim_Nsamples`: Number of samples of the test audio source to simulate after resampling  
-    - `fastsim_Fs_system_N`: System clock rate to run at for fast simulation  
+- `nSamples`: Number of samples of the test audio source to simulate after resampling
 - `sim_prompts`: Flag to enable prompts during simulation  
-- `sim_verify`: Enables simulation verification with the user defined script `sm_stop_verify`  
+- `sim_verify`: Enables simulation verification with the user defined script `verifySim`  
 
 ## Verifying the Simulation
-If `sim_verify` is set to `1`, then the Autogen framework will attempt to run the user defined script `sm_stop_verify` post-simulation. Autogen makes the output data available via the following two fields on the `mp` struct:  
-- `data_out`: m x n array where m is the number of channels and n is the number of samples containing the channel's audio data  
-- `time_out`: m x n array where m is the number of channels and n is the number of samples, containing timestamps for the corresponding audio data  
+If `sim_verify` is set to `1`, then the Autogen framework will attempt to run the user defined script `verifySim` post-simulation. Autogen makes the output data available via the following two fields on the `mp` struct:  
+- `dataOut`: m x n array where m is the number of channels and n is the number of samples containing the channel's audio data  
 
-The `sm_stop_verify script` should have the same inputs and outputs as the example below:  
+The `verifySim` should have the same inputs and outputs as the example below:  
 ```Matlab
-function mp = sm_stop_verify(mp, test_signal)
+function mp = verifySim(mp, test_signal)
 
 %% Verify that the test data got encoded, passed through the model, and
 % decoded correctly. 
 
 figure(1)
 subplot(2,1,1)
-plot(test_signal.audio(:,1)); hold on
-plot(mp.data_out(1,:))
+plot(testSignal.audio(:,1)); hold on
+plot(mp.dataOut(1,:))
 title(['Delay = ' num2str(mp.register{2}.value) '  Bypass = ' num2str(mp.register{1}.value) '  Decay = ' num2str(mp.register{3}.value)  '  Wet/Dry Mix = ' num2str(mp.register{4}.value)])
 
 subplot(2,1,2)
-plot(test_signal.audio(:,2)); hold on
-plot(mp.data_out(2,:))
+plot(testSignal.audio(:,2)); hold on
+plot(mp.dataOut(2,:))
 title(['Delay = ' num2str(mp.register{2}.value) '  Bypass = ' num2str(mp.register{1}.value) '  Decay = ' num2str(mp.register{3}.value)  '  Wet/Dry Mix = ' num2str(mp.register{4}.value)])
 
 end

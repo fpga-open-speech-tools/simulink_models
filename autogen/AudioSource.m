@@ -1,8 +1,7 @@
 % AudioSource 
-%
 % This class represents an audio source for use with Autogen.
-%
-% Copyright 2019 Audio Logic
+
+% Copyright 2020 Audio Logic
 %
 % THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
 % INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
@@ -24,7 +23,7 @@ classdef AudioSource
     
     properties(SetAccess = private)
         nSamples
-        nChannel
+        nChannels
         duration
     end
     
@@ -51,25 +50,43 @@ classdef AudioSource
                this AudioSource
             end
             
-            nSamplesAvalon = this.nSamples * this.nChannel;
+            nSamplesAvalon = this.nSamples * this.nChannels;
             
             data = zeros(nSamplesAvalon, 1);
             valid = ones(nSamplesAvalon, 1);
             error = zeros(nSamplesAvalon, 1);
             channel = zeros(nSamplesAvalon, 1);
             
-            for k=1:this.nChannel
+            for k=1:this.nChannels
                 data(k:2:(nSamplesAvalon - 1 + k)) = this.audio(:, k);
                 channel(k:2:(nSamplesAvalon - 1 + k))= k - 1;
             end 
-            avalonSource = AvalonSource(data, channel, valid, error);
+            avalonSource = AvalonSource(data, channel, valid, error, 1 / this.sampleRateHz / this.nChannels);
 
         end
     end
-    
+    methods(Static)
+        function audioSource = fromFile(filepath, sampleRate, nSamples)
+            info = audioinfo(filepath);
+            fileFs = info.SampleRate;
+            
+            if nSamples ~= -1 % perform fast simulation by reducing the number of samples
+               simTime = nSamples / sampleRate;
+               totalSamples = info.TotalSamples;
+               nSourceSamples = min(simTime * fileFs, totalSamples);
+               [y,~] = audioread(filepath,[1, nSourceSamples]);
+
+            else
+               [y,~] = audioread(filepath);
+            end     
+            yResampled = resample(y,sampleRate, fileFs);
+
+            audioSource = AudioSource(yResampled, sampleRate);
+        end
+    end
     methods(Access = private)
         function obj = updateAudioInfo(obj)
-            obj.nChannel = size(obj.audio,2);
+            obj.nChannels = size(obj.audio,2);
             obj.nSamples = size(obj.audio,1);
             obj.duration = obj.nSamples /obj.sampleRateHz;
         end

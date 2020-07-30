@@ -1,9 +1,9 @@
-% sm_callback_stop
+% stopCallback
 %
 % This scripts captures the output signals and then verifies that
 % these signals are correct. The script runs after the simulation stops.  
 % This is called in the StopFcn callback found in Model Explorer.
-%
+
 % Copyright 2019 Audio Logic
 %
 % THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
@@ -31,9 +31,9 @@ if mp.sim_verify == 1
     if ~onPath
         addpath(mp.modelPath)
     end
-    if exist('sm_stop_verify', 'file')
-        mp = sm_stop_process_output(mp);  % get the output and convert from Avalon to vector
-        mp = sm_stop_verify(mp, test_signal);          % verify that the output is correct
+    if exist('verifySim', 'file')
+        mp = processOutput(mp);  % get the output and convert from Avalon to vector
+        mp = verifySim(mp, testSignal);          % verify that the output is correct
     end
     if ~onPath
        rmpath(mp.modelPath) 
