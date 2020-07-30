@@ -25,8 +25,8 @@ ENTITY noise_suppression_compute_statistics IS
         enb                               :   IN    std_logic;
         enb_1_2048_1                      :   IN    std_logic;
         enb_1_2048_0                      :   IN    std_logic;
-        data                              :   IN    vector_of_std_logic_vector24(0 TO 1);  -- sfix24_En24 [2]
-        mean                              :   OUT   vector_of_std_logic_vector24(0 TO 1);  -- sfix24_En24 [2]
+        data                              :   IN    vector_of_std_logic_vector24(0 TO 1);  -- sfix24_En23 [2]
+        mean                              :   OUT   vector_of_std_logic_vector24(0 TO 1);  -- sfix24_En23 [2]
         variance                          :   OUT   vector_of_std_logic_vector50(0 TO 1)  -- sfix50_En47 [2]
         );
 END noise_suppression_compute_statistics;
@@ -58,9 +58,9 @@ ARCHITECTURE rtl OF noise_suppression_compute_statistics IS
     USE ENTITY work.noise_suppression_SimpleDualPortRAM_generic(rtl);
 
   -- Signals
-  SIGNAL data_signed                      : vector_of_signed24(0 TO 1);  -- sfix24_En24 [2]
-  SIGNAL data_1                           : vector_of_signed24(0 TO 1);  -- sfix24_En24 [2]
-  SIGNAL data_2                           : vector_of_signed24(0 TO 1);  -- sfix24_En24 [2]
+  SIGNAL data_signed                      : vector_of_signed24(0 TO 1);  -- sfix24_En23 [2]
+  SIGNAL data_1                           : vector_of_signed24(0 TO 1);  -- sfix24_En23 [2]
+  SIGNAL data_2                           : vector_of_signed24(0 TO 1);  -- sfix24_En23 [2]
   SIGNAL SignumOutput                     : vector_of_signed2(0 TO 1);  -- sfix2 [2]
   SIGNAL SignumOutput_1                   : vector_of_signed2(0 TO 1);  -- sfix2 [2]
   SIGNAL Constant_out1                    : std_logic;
@@ -90,10 +90,10 @@ ARCHITECTURE rtl OF noise_suppression_compute_statistics IS
   SIGNAL rd_6_1_reg_next                  : vector_of_signed2(0 TO 3);  -- sfix2 [4]
   SIGNAL rd_6_1_reg_next_1                : vector_of_signed2(0 TO 3);  -- sfix2 [4]
   SIGNAL switch_compare_1                 : std_logic;
-  SIGNAL Product_in0_dtc_in_abs_y         : vector_of_signed25(0 TO 1);  -- sfix25_En24 [2]
-  SIGNAL Product_in0_dtc_in_abs_cast      : signed(24 DOWNTO 0);  -- sfix25_En24
-  SIGNAL Product_in0_dtc_in_abs_cast_1    : signed(24 DOWNTO 0);  -- sfix25_En24
-  SIGNAL data_3                           : vector_of_unsigned24(0 TO 1);  -- ufix24_En24 [2]
+  SIGNAL Product_in0_dtc_in_abs_y         : vector_of_signed25(0 TO 1);  -- sfix25_En23 [2]
+  SIGNAL Product_in0_dtc_in_abs_cast      : signed(24 DOWNTO 0);  -- sfix25_En23
+  SIGNAL Product_in0_dtc_in_abs_cast_1    : signed(24 DOWNTO 0);  -- sfix25_En23
+  SIGNAL data_3                           : vector_of_unsigned24(0 TO 1);  -- ufix24_En23 [2]
   SIGNAL data_4                           : vector_of_unsigned24(0 TO 1);  -- ufix24 [2]
   SIGNAL data_5                           : vector_of_unsigned24(0 TO 1);  -- ufix24 [2]
   SIGNAL Switch1_out1_1                   : unsigned(53 DOWNTO 0);  -- ufix54
@@ -126,9 +126,9 @@ ARCHITECTURE rtl OF noise_suppression_compute_statistics IS
   SIGNAL mulOutput_1_2                    : signed(56 DOWNTO 0);  -- sfix57
   SIGNAL mulOutput_1_3                    : signed(56 DOWNTO 0);  -- sfix57
   SIGNAL mulOutput_15                     : vector_of_signed57(0 TO 1);  -- sfix57 [2]
-  SIGNAL mulOutput_16                     : vector_of_signed56(0 TO 1);  -- sfix56_En55 [2]
-  SIGNAL Product_out1                     : vector_of_signed24(0 TO 1);  -- sfix24_En24 [2]
-  SIGNAL Product_out1_1                   : vector_of_signed24(0 TO 1);  -- sfix24_En24 [2]
+  SIGNAL mulOutput_16                     : vector_of_signed56(0 TO 1);  -- sfix56_En54 [2]
+  SIGNAL Product_out1                     : vector_of_signed24(0 TO 1);  -- sfix24_En23 [2]
+  SIGNAL Product_out1_1                   : vector_of_signed24(0 TO 1);  -- sfix24_En23 [2]
   SIGNAL mergedDelay_waddr                : unsigned(2 DOWNTO 0);  -- ufix3
   SIGNAL mergedDelay_wrenb                : std_logic;  -- ufix1
   SIGNAL mergedDelay_raddr                : unsigned(2 DOWNTO 0);  -- ufix3
@@ -140,61 +140,61 @@ ARCHITECTURE rtl OF noise_suppression_compute_statistics IS
   SIGNAL mergedDelay_raddr_1              : unsigned(2 DOWNTO 0);  -- ufix3
   SIGNAL mergedOutput                     : unsigned(48 DOWNTO 0);  -- ufix49
   SIGNAL slicedInput                      : unsigned(23 DOWNTO 0);  -- ufix24
-  SIGNAL delayOut1                        : signed(23 DOWNTO 0);  -- sfix24_En24
-  SIGNAL Delay1_out1                      : vector_of_signed24(0 TO 1);  -- sfix24_En24 [2]
-  SIGNAL delayIn1                         : signed(23 DOWNTO 0);  -- sfix24_En24
-  SIGNAL delayIn0                         : signed(23 DOWNTO 0);  -- sfix24_En24
+  SIGNAL delayOut1                        : signed(23 DOWNTO 0);  -- sfix24_En23
+  SIGNAL Delay1_out1                      : vector_of_signed24(0 TO 1);  -- sfix24_En23 [2]
+  SIGNAL delayIn1                         : signed(23 DOWNTO 0);  -- sfix24_En23
+  SIGNAL delayIn0                         : signed(23 DOWNTO 0);  -- sfix24_En23
   SIGNAL mergedInput                      : unsigned(48 DOWNTO 0);  -- ufix49
   SIGNAL mergedDelay_regin                : unsigned(48 DOWNTO 0);  -- ufix49
   SIGNAL mergedDelay_regout               : std_logic_vector(48 DOWNTO 0);  -- ufix49
   SIGNAL mergedDelay_regout_unsigned      : unsigned(48 DOWNTO 0);  -- ufix49
   SIGNAL slicedInput_1                    : unsigned(23 DOWNTO 0);  -- ufix24
-  SIGNAL delayOut0                        : signed(23 DOWNTO 0);  -- sfix24_En24
-  SIGNAL Delay1_out1_1                    : vector_of_signed24(0 TO 1);  -- sfix24_En24 [2]
+  SIGNAL delayOut0                        : signed(23 DOWNTO 0);  -- sfix24_En23
+  SIGNAL Delay1_out1_1                    : vector_of_signed24(0 TO 1);  -- sfix24_En23 [2]
   SIGNAL mergedOutput_1                   : unsigned(47 DOWNTO 0);  -- ufix48
   SIGNAL slicedInput_2                    : unsigned(23 DOWNTO 0);  -- ufix24
-  SIGNAL delayOut1_1                      : signed(23 DOWNTO 0);  -- sfix24_En24
-  SIGNAL alpha_out1                       : vector_of_signed24(0 TO 1);  -- sfix24_En24 [2]
-  SIGNAL delayIn1_1                       : signed(23 DOWNTO 0);  -- sfix24_En24
-  SIGNAL Add_out1                         : vector_of_signed24(0 TO 1);  -- sfix24_En24 [2]
+  SIGNAL delayOut1_1                      : signed(23 DOWNTO 0);  -- sfix24_En23
+  SIGNAL alpha_out1                       : vector_of_signed24(0 TO 1);  -- sfix24_En23 [2]
+  SIGNAL delayIn1_1                       : signed(23 DOWNTO 0);  -- sfix24_En23
+  SIGNAL Add_out1                         : vector_of_signed24(0 TO 1);  -- sfix24_En23 [2]
   SIGNAL Delay1_bypass_reg                : vector_of_signed24(0 TO 1);  -- sfix24 [2]
-  SIGNAL Delay1_bypass_reg_next           : vector_of_signed24(0 TO 1);  -- sfix24_En24 [2]
-  SIGNAL Add_out1_1                       : vector_of_signed24(0 TO 1);  -- sfix24_En24 [2]
-  SIGNAL Delay1_out1_2                    : vector_of_signed24(0 TO 1);  -- sfix24_En24 [2]
-  SIGNAL alpha_mul_temp                   : signed(56 DOWNTO 0);  -- sfix57_En55
-  SIGNAL alpha_cast                       : signed(55 DOWNTO 0);  -- sfix56_En55
-  SIGNAL alpha_mul_temp_1                 : signed(56 DOWNTO 0);  -- sfix57_En55
-  SIGNAL alpha_cast_1                     : signed(55 DOWNTO 0);  -- sfix56_En55
-  SIGNAL delayIn0_1                       : signed(23 DOWNTO 0);  -- sfix24_En24
+  SIGNAL Delay1_bypass_reg_next           : vector_of_signed24(0 TO 1);  -- sfix24_En23 [2]
+  SIGNAL Add_out1_1                       : vector_of_signed24(0 TO 1);  -- sfix24_En23 [2]
+  SIGNAL Delay1_out1_2                    : vector_of_signed24(0 TO 1);  -- sfix24_En23 [2]
+  SIGNAL alpha_mul_temp                   : signed(56 DOWNTO 0);  -- sfix57_En54
+  SIGNAL alpha_cast                       : signed(55 DOWNTO 0);  -- sfix56_En54
+  SIGNAL alpha_mul_temp_1                 : signed(56 DOWNTO 0);  -- sfix57_En54
+  SIGNAL alpha_cast_1                     : signed(55 DOWNTO 0);  -- sfix56_En54
+  SIGNAL delayIn0_1                       : signed(23 DOWNTO 0);  -- sfix24_En23
   SIGNAL mergedInput_1                    : unsigned(47 DOWNTO 0);  -- ufix48
   SIGNAL mergedDelay_regin_1              : unsigned(47 DOWNTO 0);  -- ufix48
   SIGNAL mergedDelay_regout_1             : std_logic_vector(47 DOWNTO 0);  -- ufix48
   SIGNAL mergedDelay_regout_unsigned_1    : unsigned(47 DOWNTO 0);  -- ufix48
   SIGNAL slicedInput_3                    : unsigned(23 DOWNTO 0);  -- ufix24
-  SIGNAL delayOut0_1                      : signed(23 DOWNTO 0);  -- sfix24_En24
-  SIGNAL alpha_out1_1                     : vector_of_signed24(0 TO 1);  -- sfix24_En24 [2]
-  SIGNAL Add_stage2_sub_cast              : signed(25 DOWNTO 0);  -- sfix26_En24
-  SIGNAL Add_stage2_sub_cast_1            : signed(25 DOWNTO 0);  -- sfix26_En24
-  SIGNAL Add_stage2_sub_cast_2            : signed(25 DOWNTO 0);  -- sfix26_En24
-  SIGNAL Add_stage2_sub_cast_3            : signed(25 DOWNTO 0);  -- sfix26_En24
-  SIGNAL Add_op_stage2                    : vector_of_signed26(0 TO 1);  -- sfix26_En24 [2]
-  SIGNAL Add_op_stage2_1                  : vector_of_signed26(0 TO 1);  -- sfix26_En24 [2]
-  SIGNAL Add_stage3_add_cast              : signed(25 DOWNTO 0);  -- sfix26_En24
-  SIGNAL Add_stage3_add_temp              : signed(25 DOWNTO 0);  -- sfix26_En24
-  SIGNAL Add_stage3_add_cast_1            : signed(25 DOWNTO 0);  -- sfix26_En24
-  SIGNAL Add_stage3_add_temp_1            : signed(25 DOWNTO 0);  -- sfix26_En24
+  SIGNAL delayOut0_1                      : signed(23 DOWNTO 0);  -- sfix24_En23
+  SIGNAL alpha_out1_1                     : vector_of_signed24(0 TO 1);  -- sfix24_En23 [2]
+  SIGNAL Add_stage2_sub_cast              : signed(25 DOWNTO 0);  -- sfix26_En23
+  SIGNAL Add_stage2_sub_cast_1            : signed(25 DOWNTO 0);  -- sfix26_En23
+  SIGNAL Add_stage2_sub_cast_2            : signed(25 DOWNTO 0);  -- sfix26_En23
+  SIGNAL Add_stage2_sub_cast_3            : signed(25 DOWNTO 0);  -- sfix26_En23
+  SIGNAL Add_op_stage2                    : vector_of_signed26(0 TO 1);  -- sfix26_En23 [2]
+  SIGNAL Add_op_stage2_1                  : vector_of_signed26(0 TO 1);  -- sfix26_En23 [2]
+  SIGNAL Add_stage3_add_cast              : signed(25 DOWNTO 0);  -- sfix26_En23
+  SIGNAL Add_stage3_add_temp              : signed(25 DOWNTO 0);  -- sfix26_En23
+  SIGNAL Add_stage3_add_cast_1            : signed(25 DOWNTO 0);  -- sfix26_En23
+  SIGNAL Add_stage3_add_temp_1            : signed(25 DOWNTO 0);  -- sfix26_En23
   SIGNAL slicedInput_4                    : std_logic;  -- ufix1
   SIGNAL Delay3_out1_1                    : std_logic;
   SIGNAL Constant3_out1                   : signed(49 DOWNTO 0);  -- sfix50_En47
   SIGNAL Constant3_out1_scalarexpand      : vector_of_signed50(0 TO 1);  -- sfix50_En47 [2]
-  SIGNAL data_signed_1                    : vector_of_signed24(0 TO 1);  -- sfix24_En24 [2]
-  SIGNAL data_6                           : vector_of_signed24(0 TO 1);  -- sfix24_En24 [2]
-  SIGNAL Add_out1_2                       : vector_of_signed24(0 TO 1);  -- sfix24_En24 [2]
-  SIGNAL Add1_out1                        : vector_of_signed24(0 TO 1);  -- sfix24_En24 [2]
-  SIGNAL Add1_out1_1                      : vector_of_signed24(0 TO 1);  -- sfix24_En24 [2]
-  SIGNAL Add1_out1_2                      : vector_of_signed24(0 TO 1);  -- sfix24_En24 [2]
-  SIGNAL Product1_out1                    : vector_of_signed48(0 TO 1);  -- sfix48_En48 [2]
-  SIGNAL Product1_out1_1                  : vector_of_signed48(0 TO 1);  -- sfix48_En48 [2]
+  SIGNAL data_signed_1                    : vector_of_signed24(0 TO 1);  -- sfix24_En23 [2]
+  SIGNAL data_6                           : vector_of_signed24(0 TO 1);  -- sfix24_En23 [2]
+  SIGNAL Add_out1_2                       : vector_of_signed24(0 TO 1);  -- sfix24_En23 [2]
+  SIGNAL Add1_out1                        : vector_of_signed24(0 TO 1);  -- sfix24_En23 [2]
+  SIGNAL Add1_out1_1                      : vector_of_signed24(0 TO 1);  -- sfix24_En23 [2]
+  SIGNAL Add1_out1_2                      : vector_of_signed24(0 TO 1);  -- sfix24_En23 [2]
+  SIGNAL Product1_out1                    : vector_of_signed48(0 TO 1);  -- sfix48_En46 [2]
+  SIGNAL Product1_out1_1                  : vector_of_signed48(0 TO 1);  -- sfix48_En46 [2]
   SIGNAL Product1_out1_2                  : vector_of_signed50(0 TO 1);  -- sfix50_En47 [2]
   SIGNAL Product1_out1_3                  : vector_of_signed50(0 TO 1);  -- sfix50_En47 [2]
   SIGNAL alpha1_mul_temp                  : signed(82 DOWNTO 0);  -- sfix83_En78
@@ -1039,8 +1039,8 @@ BEGIN
   END PROCESS PipelineRegister2_process;
 
 
-  Product1_out1_2(0) <= resize(Product1_out1_1(0)(47 DOWNTO 1), 50);
-  Product1_out1_2(1) <= resize(Product1_out1_1(1)(47 DOWNTO 1), 50);
+  Product1_out1_2(0) <= resize(Product1_out1_1(0) & '0', 50);
+  Product1_out1_2(1) <= resize(Product1_out1_1(1) & '0', 50);
 
   rd_71_process : PROCESS (clk, reset)
   BEGIN

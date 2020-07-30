@@ -28,8 +28,8 @@ PACKAGE noise_suppression_dataplane_pkg IS
   TYPE vector_of_signed26 IS ARRAY (NATURAL RANGE <>) OF signed(25 DOWNTO 0);
   TYPE vector_of_signed48 IS ARRAY (NATURAL RANGE <>) OF signed(47 DOWNTO 0);
   TYPE vector_of_signed50 IS ARRAY (NATURAL RANGE <>) OF signed(49 DOWNTO 0);
-  TYPE vector_of_std_logic_vector27 IS ARRAY (NATURAL RANGE <>) OF std_logic_vector(26 DOWNTO 0);
   TYPE vector_of_std_logic_vector25 IS ARRAY (NATURAL RANGE <>) OF std_logic_vector(24 DOWNTO 0);
+  TYPE vector_of_std_logic_vector27 IS ARRAY (NATURAL RANGE <>) OF std_logic_vector(26 DOWNTO 0);
   TYPE vector_of_unsigned8 IS ARRAY (NATURAL RANGE <>) OF unsigned(7 DOWNTO 0);
   TYPE vector_of_std_logic_vector32 IS ARRAY (NATURAL RANGE <>) OF std_logic_vector(31 DOWNTO 0);
   TYPE vector_of_signed32 IS ARRAY (NATURAL RANGE <>) OF signed(31 DOWNTO 0);

@@ -25,9 +25,10 @@ ENTITY noise_suppression_Adaptive_Wiener_Filter_Sample_Based_Filtering IS
         enb                               :   IN    std_logic;
         enb_1_2048_1                      :   IN    std_logic;
         enb_1_2048_0                      :   IN    std_logic;
-        Sink_Data                         :   IN    vector_of_std_logic_vector24(0 TO 1);  -- sfix24_En24 [2]
+        Sink_Data                         :   IN    vector_of_std_logic_vector24(0 TO 1);  -- sfix24_En23 [2]
         noise_variance                    :   IN    std_logic_vector(23 DOWNTO 0);  -- ufix24_En23
-        data_out                          :   OUT   vector_of_std_logic_vector50(0 TO 1)  -- sfix50_En48 [2]
+        enable                            :   IN    std_logic;
+        data_out                          :   OUT   vector_of_std_logic_vector50(0 TO 1)  -- sfix50_En46 [2]
         );
 END noise_suppression_Adaptive_Wiener_Filter_Sample_Based_Filtering;
 
@@ -45,8 +46,8 @@ ARCHITECTURE rtl OF noise_suppression_Adaptive_Wiener_Filter_Sample_Based_Filter
           enb                             :   IN    std_logic;
           enb_1_2048_1                    :   IN    std_logic;
           enb_1_2048_0                    :   IN    std_logic;
-          data                            :   IN    vector_of_std_logic_vector24(0 TO 1);  -- sfix24_En24 [2]
-          mean                            :   OUT   vector_of_std_logic_vector24(0 TO 1);  -- sfix24_En24 [2]
+          data                            :   IN    vector_of_std_logic_vector24(0 TO 1);  -- sfix24_En23 [2]
+          mean                            :   OUT   vector_of_std_logic_vector24(0 TO 1);  -- sfix24_En23 [2]
           variance                        :   OUT   vector_of_std_logic_vector50(0 TO 1)  -- sfix50_En47 [2]
           );
   END COMPONENT;
@@ -55,14 +56,14 @@ ARCHITECTURE rtl OF noise_suppression_Adaptive_Wiener_Filter_Sample_Based_Filter
     PORT( clk                             :   IN    std_logic;
           reset                           :   IN    std_logic;
           enb                             :   IN    std_logic;
-          in0                             :   IN    std_logic_vector(23 DOWNTO 0);  -- ufix24_En23
-          in1                             :   IN    vector_of_std_logic_vector50(0 TO 1);  -- sfix50_En47 [2]
-          in2                             :   IN    vector_of_std_logic_vector24(0 TO 1);  -- sfix24_En24 [2]
-          in3                             :   IN    vector_of_std_logic_vector24(0 TO 1);  -- sfix24_En24 [2]
+          in0                             :   IN    vector_of_std_logic_vector24(0 TO 1);  -- sfix24_En23 [2]
+          in1                             :   IN    vector_of_std_logic_vector24(0 TO 1);  -- sfix24_En23 [2]
+          in2                             :   IN    std_logic_vector(23 DOWNTO 0);  -- ufix24_En23
+          in3                             :   IN    vector_of_std_logic_vector50(0 TO 1);  -- sfix50_En47 [2]
           globalSchedule                  :   IN    std_logic;
-          out0                            :   OUT   vector_of_std_logic_vector24(0 TO 1);  -- sfix24_En20 [2]
-          out1                            :   OUT   vector_of_std_logic_vector27(0 TO 1);  -- sfix27_En24 [2]
-          out2                            :   OUT   vector_of_std_logic_vector25(0 TO 1)  -- sfix25_En24 [2]
+          out0                            :   OUT   vector_of_std_logic_vector25(0 TO 1);  -- sfix25_En23 [2]
+          out1                            :   OUT   vector_of_std_logic_vector24(0 TO 1);  -- sfix24_En20 [2]
+          out2                            :   OUT   vector_of_std_logic_vector27(0 TO 1)  -- sfix27_En24 [2]
           );
   END COMPONENT;
 
@@ -88,13 +89,15 @@ ARCHITECTURE rtl OF noise_suppression_Adaptive_Wiener_Filter_Sample_Based_Filter
     PORT( clk                             :   IN    std_logic;
           reset                           :   IN    std_logic;
           enb                             :   IN    std_logic;
-          in0                             :   IN    vector_of_std_logic_vector27(0 TO 1);  -- sfix27_En24 [2]
-          in1                             :   IN    vector_of_std_logic_vector24(0 TO 1);  -- sfix24_En2 [2]
-          in2                             :   IN    vector_of_std_logic_vector24(0 TO 1);  -- sfix24_En24 [2]
-          in3                             :   IN    vector_of_std_logic_vector25(0 TO 1);  -- sfix25_En24 [2]
+          in0                             :   IN    std_logic;
+          in1                             :   IN    vector_of_std_logic_vector24(0 TO 1);  -- sfix24_En23 [2]
+          in2                             :   IN    vector_of_std_logic_vector27(0 TO 1);  -- sfix27_En24 [2]
+          in3                             :   IN    vector_of_std_logic_vector24(0 TO 1);  -- sfix24_En2 [2]
+          in4                             :   IN    vector_of_std_logic_vector24(0 TO 1);  -- sfix24_En23 [2]
+          in5                             :   IN    vector_of_std_logic_vector25(0 TO 1);  -- sfix25_En23 [2]
           enb_counter                     :   IN    std_logic_vector(15 DOWNTO 0);  -- ufix16
           globalSchedule                  :   IN    std_logic;
-          out0                            :   OUT   vector_of_std_logic_vector50(0 TO 1)  -- sfix50_En48 [2]
+          out0                            :   OUT   vector_of_std_logic_vector50(0 TO 1)  -- sfix50_En46 [2]
           );
   END COMPONENT;
 
@@ -115,29 +118,30 @@ ARCHITECTURE rtl OF noise_suppression_Adaptive_Wiener_Filter_Sample_Based_Filter
     USE ENTITY work.noise_suppression_streaming_partition_streamed_block(rtl);
 
   -- Signals
-  SIGNAL noise_variance_1                 : std_logic_vector(23 DOWNTO 0);  -- ufix24
-  SIGNAL compute_statistics_out1          : vector_of_std_logic_vector24(0 TO 1);  -- ufix24 [2]
-  SIGNAL compute_statistics_out2          : vector_of_std_logic_vector50(0 TO 1);  -- ufix50 [2]
-  SIGNAL Sink_Data_signed                 : vector_of_signed24(0 TO 1);  -- sfix24_En24 [2]
-  SIGNAL Sink_Data_1                      : vector_of_signed24(0 TO 1);  -- sfix24_En24 [2]
+  SIGNAL Sink_Data_signed                 : vector_of_signed24(0 TO 1);  -- sfix24_En23 [2]
+  SIGNAL Sink_Data_1                      : vector_of_signed24(0 TO 1);  -- sfix24_En23 [2]
   SIGNAL Sink_Data_2                      : vector_of_std_logic_vector24(0 TO 1);  -- ufix24 [2]
+  SIGNAL Sink_Data_3                      : vector_of_std_logic_vector24(0 TO 1);  -- ufix24 [2]
+  SIGNAL mean                             : vector_of_std_logic_vector24(0 TO 1);  -- ufix24 [2]
+  SIGNAL compute_statistics_out2          : vector_of_std_logic_vector50(0 TO 1);  -- ufix50 [2]
+  SIGNAL noise_variance_1                 : std_logic_vector(23 DOWNTO 0);  -- ufix24
   SIGNAL ctr_2047_sig                     : unsigned(15 DOWNTO 0);  -- ufix16
   SIGNAL enb_counter_ge_1_1               : std_logic;
   SIGNAL enb_counter_le_2_1               : std_logic;
   SIGNAL streaming_partition_enb_phase_1_1 : std_logic;
-  SIGNAL Data_Type_Conversion3_out1_signed : vector_of_std_logic_vector24(0 TO 1);  -- ufix24 [2]
-  SIGNAL Data_Type_Conversion2_out1       : vector_of_std_logic_vector27(0 TO 1);  -- ufix27 [2]
   SIGNAL Add2_out1                        : vector_of_std_logic_vector25(0 TO 1);  -- ufix25 [2]
+  SIGNAL Data_Type_Conversion3_out1_signed : vector_of_std_logic_vector24(0 TO 1);  -- ufix24 [2]
+  SIGNAL variance                         : vector_of_std_logic_vector27(0 TO 1);  -- ufix27 [2]
   SIGNAL Mux_out1                         : vector_of_std_logic_vector24(0 TO 1);  -- ufix24 [2]
   SIGNAL enb_counter_ge_30_1              : std_logic;
   SIGNAL enb_counter_le_35_1              : std_logic;
   SIGNAL streaming_partition_enb_phase_30_5 : std_logic;
-  SIGNAL Product1_out1                    : vector_of_std_logic_vector50(0 TO 1);  -- ufix50 [2]
-  SIGNAL Product1_out1_signed             : vector_of_signed50(0 TO 1);  -- sfix50_En48 [2]
-  SIGNAL Product1_out1_2                  : vector_of_signed50(0 TO 1);  -- sfix50_En48 [2]
+  SIGNAL Switch_out1                      : vector_of_std_logic_vector50(0 TO 1);  -- ufix50 [2]
+  SIGNAL Switch_out1_signed               : vector_of_signed50(0 TO 1);  -- sfix50_En46 [2]
+  SIGNAL Switch_out1_2                    : vector_of_signed50(0 TO 1);  -- sfix50_En46 [2]
   SIGNAL Data_Type_Conversion1_bypass_reg : vector_of_signed50(0 TO 1);  -- sfix50 [2]
-  SIGNAL Data_Type_Conversion1_bypass_reg_next : vector_of_signed50(0 TO 1);  -- sfix50_En48 [2]
-  SIGNAL Product1_out1_3                  : vector_of_signed50(0 TO 1);  -- sfix50_En48 [2]
+  SIGNAL Data_Type_Conversion1_bypass_reg_next : vector_of_signed50(0 TO 1);  -- sfix50_En46 [2]
+  SIGNAL Switch_out1_3                    : vector_of_signed50(0 TO 1);  -- sfix50_En46 [2]
 
 BEGIN
   u_compute_statistics : noise_suppression_compute_statistics
@@ -146,8 +150,8 @@ BEGIN
               enb => enb,
               enb_1_2048_1 => enb_1_2048_1,
               enb_1_2048_0 => enb_1_2048_0,
-              data => Sink_Data,  -- sfix24_En24 [2]
-              mean => compute_statistics_out1,  -- sfix24_En24 [2]
+              data => Sink_Data,  -- sfix24_En23 [2]
+              mean => mean,  -- sfix24_En23 [2]
               variance => compute_statistics_out2  -- sfix50_En47 [2]
               );
 
@@ -155,14 +159,14 @@ BEGIN
     PORT MAP( clk => clk,
               reset => reset,
               enb => enb,
-              in0 => noise_variance_1,  -- ufix24_En23
-              in1 => compute_statistics_out2,  -- sfix50_En47 [2]
-              in2 => Sink_Data_2,  -- sfix24_En24 [2]
-              in3 => compute_statistics_out1,  -- sfix24_En24 [2]
+              in0 => Sink_Data_3,  -- sfix24_En23 [2]
+              in1 => mean,  -- sfix24_En23 [2]
+              in2 => noise_variance_1,  -- ufix24_En23
+              in3 => compute_statistics_out2,  -- sfix50_En47 [2]
               globalSchedule => streaming_partition_enb_phase_1_1,
-              out0 => Data_Type_Conversion3_out1_signed,  -- sfix24_En20 [2]
-              out1 => Data_Type_Conversion2_out1,  -- sfix27_En24 [2]
-              out2 => Add2_out1  -- sfix25_En24 [2]
+              out0 => Add2_out1,  -- sfix25_En23 [2]
+              out1 => Data_Type_Conversion3_out1_signed,  -- sfix24_En20 [2]
+              out2 => variance  -- sfix27_En24 [2]
               );
 
   u_Reciprocal : noise_suppression_Reciprocal1
@@ -185,26 +189,32 @@ BEGIN
     PORT MAP( clk => clk,
               reset => reset,
               enb => enb,
-              in0 => Data_Type_Conversion2_out1,  -- sfix27_En24 [2]
-              in1 => Mux_out1,  -- sfix24_En2 [2]
-              in2 => compute_statistics_out1,  -- sfix24_En24 [2]
-              in3 => Add2_out1,  -- sfix25_En24 [2]
+              in0 => enable,
+              in1 => Sink_Data_2,  -- sfix24_En23 [2]
+              in2 => variance,  -- sfix27_En24 [2]
+              in3 => Mux_out1,  -- sfix24_En2 [2]
+              in4 => mean,  -- sfix24_En23 [2]
+              in5 => Add2_out1,  -- sfix25_En23 [2]
               enb_counter => std_logic_vector(ctr_2047_sig),  -- ufix16
               globalSchedule => streaming_partition_enb_phase_30_5,
-              out0 => Product1_out1  -- sfix50_En48 [2]
+              out0 => Switch_out1  -- sfix50_En46 [2]
               );
 
-  noise_variance_1 <= std_logic_vector(unsigned(noise_variance));
-
-  outputgen3: FOR k IN 0 TO 1 GENERATE
+  outputgen4: FOR k IN 0 TO 1 GENERATE
     Sink_Data_signed(k) <= signed(Sink_Data(k));
   END GENERATE;
 
   Sink_Data_1 <= Sink_Data_signed;
 
-  outputgen2: FOR k IN 0 TO 1 GENERATE
+  outputgen3: FOR k IN 0 TO 1 GENERATE
     Sink_Data_2(k) <= std_logic_vector(Sink_Data_1(k));
   END GENERATE;
+
+  outputgen2: FOR k IN 0 TO 1 GENERATE
+    Sink_Data_3(k) <= std_logic_vector(Sink_Data_1(k));
+  END GENERATE;
+
+  noise_variance_1 <= std_logic_vector(unsigned(noise_variance));
 
   -- Count limited, Unsigned Counter
   --  initial value   = 0
@@ -248,21 +258,21 @@ BEGIN
   streaming_partition_enb_phase_30_5 <= enb_counter_ge_30_1 AND enb_counter_le_35_1;
 
   outputgen1: FOR k IN 0 TO 1 GENERATE
-    Product1_out1_signed(k) <= signed(Product1_out1(k));
+    Switch_out1_signed(k) <= signed(Switch_out1(k));
   END GENERATE;
 
-  Product1_out1_1_process : PROCESS (clk, reset)
+  Switch_out1_1_process : PROCESS (clk, reset)
   BEGIN
     IF reset = '1' THEN
-      Product1_out1_2(0) <= to_signed(0, 50);
-      Product1_out1_2(1) <= to_signed(0, 50);
+      Switch_out1_2(0) <= to_signed(0, 50);
+      Switch_out1_2(1) <= to_signed(0, 50);
     ELSIF rising_edge(clk) THEN
       IF enb = '1' THEN
-        Product1_out1_2(0) <= Product1_out1_signed(0);
-        Product1_out1_2(1) <= Product1_out1_signed(1);
+        Switch_out1_2(0) <= Switch_out1_signed(0);
+        Switch_out1_2(1) <= Switch_out1_signed(1);
       END IF;
     END IF;
-  END PROCESS Product1_out1_1_process;
+  END PROCESS Switch_out1_1_process;
 
 
   Data_Type_Conversion1_bypass_process : PROCESS (clk, reset)
@@ -279,16 +289,16 @@ BEGIN
   END PROCESS Data_Type_Conversion1_bypass_process;
 
   
-  Product1_out1_3(0) <= Product1_out1_2(0) WHEN enb_1_2048_1 = '1' ELSE
+  Switch_out1_3(0) <= Switch_out1_2(0) WHEN enb_1_2048_1 = '1' ELSE
       Data_Type_Conversion1_bypass_reg(0);
   
-  Product1_out1_3(1) <= Product1_out1_2(1) WHEN enb_1_2048_1 = '1' ELSE
+  Switch_out1_3(1) <= Switch_out1_2(1) WHEN enb_1_2048_1 = '1' ELSE
       Data_Type_Conversion1_bypass_reg(1);
-  Data_Type_Conversion1_bypass_reg_next(0) <= Product1_out1_2(0);
-  Data_Type_Conversion1_bypass_reg_next(1) <= Product1_out1_2(1);
+  Data_Type_Conversion1_bypass_reg_next(0) <= Switch_out1_2(0);
+  Data_Type_Conversion1_bypass_reg_next(1) <= Switch_out1_2(1);
 
   outputgen: FOR k IN 0 TO 1 GENERATE
-    data_out(k) <= std_logic_vector(Product1_out1_3(k));
+    data_out(k) <= std_logic_vector(Switch_out1_3(k));
   END GENERATE;
 
 END rtl;

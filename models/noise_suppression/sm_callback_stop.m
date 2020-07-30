@@ -20,16 +20,16 @@
 
 %% Put the output into the WienerV2 data struct 
 % The "To Workspace" block won't accept structs
-mp.Avalon_Sink_Data.Time    = Avalon_Sink_Data.Time;    % time
-mp.Avalon_Sink_Data.Data    = Avalon_Sink_Data.Data;    % data      
-mp.Avalon_Sink_Channel.Data = Avalon_Sink_Channel.Data; % channel
-mp.Avalon_Sink_Valid.Data   = Avalon_Sink_Valid.Data;   % valid
+% mp.Avalon_Sink_Data.Time    = Avalon_Sink_Data.Time;    % time
+% mp.Avalon_Sink_Data.Data    = Avalon_Sink_Data.Data;    % data      
+% mp.Avalon_Sink_Channel.Data = Avalon_Sink_Channel.Data; % channel
+% mp.Avalon_Sink_Valid.Data   = Avalon_Sink_Valid.Data;   % valid
 
 
 if mp.sim_prompts == 1  % sim_prompts is set in Run_me_first.m   This is turned off when the model is converted to VHDL since we don't want to run the verification multiple times at this point (HDL coder runs the simulation multiple times)
     
-    mp = sm_stop_process_output(mp);  % get the output and convert from Avalon to vector
-    mp = sm_stop_verify(mp);          % verify that the output is correct
+%     mp = sm_stop_process_output(mp);  % get the output and convert from Avalon to vector
+%     mp = sm_stop_verify(mp);          % verify that the output is correct
     
 end
 
