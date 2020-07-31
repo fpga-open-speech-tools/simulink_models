@@ -27,9 +27,8 @@
 % Bozeman, MT 59718
 % openspeech@flatearthinc.com
 
-function mp = sm_stop_verify(mp)
 
 %% Verify that the test data got encoded, passed through the model, and
-% soundsc([mp.test_signal.left, mp.test_signal.right], mp.Fs);
-% pause(5);
-% soundsc([mp.left_data_out; mp.right_data_out], mp.Fs);
+plot(mp.Avalon_Source_Data);
+hold on;
+plot(data_out);
