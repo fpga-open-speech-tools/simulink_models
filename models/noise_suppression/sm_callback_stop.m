@@ -29,8 +29,7 @@
 if mp.sim_prompts == 1  % sim_prompts is set in Run_me_first.m   This is turned off when the model is converted to VHDL since we don't want to run the verification multiple times at this point (HDL coder runs the simulation multiple times)
     
 %     mp = sm_stop_process_output(mp);  % get the output and convert from Avalon to vector
-%     mp = sm_stop_verify(mp);          % verify that the output is correct
-    
+    sm_stop_verify
 end
 
 
