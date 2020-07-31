@@ -35,8 +35,7 @@ mp.Ts = 1/mp.Fs;  % sample period
 % else
 %     mp.Fs_system = mp.Fs * mp.fastsim_Fs_system_N;          % Note: For faster development runs (faster sim times), reduce the number of system clocks between samples.  mp.fastsim_Fs_system_N is set in sm_run_me_first.m
 % end
-numChannels = 2;
-mp.Fs_system = mp.Fs * numChannels;
+mp.Fs_system = mp.Fs;
 mp.Ts_system   = 1/mp.Fs_system;         % System clock period
 mp.rate_change = mp.Fs_system/mp.Fs;   % how much faster the system clock is to the sample clock
 
