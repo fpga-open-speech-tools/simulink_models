@@ -90,7 +90,6 @@ ARCHITECTURE rtl OF pFIR_Testing_Test_FIR_with_Custom_FIR_Libraries_Sample_Based
           leftValid                       :   IN    std_logic;
           rightData                       :   IN    std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
           rightValid                      :   IN    std_logic;
-          chanPrev                        :   IN    std_logic_vector(1 DOWNTO 0);  -- ufix2
           sourceData                      :   OUT   std_logic_vector(31 DOWNTO 0);  -- sfix32_En28
           sourceChannel                   :   OUT   std_logic_vector(1 DOWNTO 0);  -- ufix2
           sourceValid                     :   OUT   std_logic  -- ufix1
@@ -104,8 +103,6 @@ ARCHITECTURE rtl OF pFIR_Testing_Test_FIR_with_Custom_FIR_Libraries_Sample_Based
   FOR ALL : pFIR_Testing_Right_Channel_Processing
     USE ENTITY work.pFIR_Testing_Right_Channel_Processing(rtl);
 
-  FOR ALL : pFIR_Testing_Channel_Data_Multiplexer
-    USE ENTITY work.pFIR_Testing_Channel_Data_Multiplexer(rtl);
 
   -- Signals
   SIGNAL Sink_Channel_unsigned            : unsigned(1 DOWNTO 0);  -- ufix2
@@ -196,7 +193,6 @@ BEGIN
               leftValid => Left_Channel_Processing_out2,
               rightData => Right_Channel_Processing_out1,  -- sfix32_En28
               rightValid => Right_Channel_Processing_out2_1,
-              chanPrev => std_logic_vector(Unit_Delay1_out1),  -- ufix2
               sourceData => sourceData,  -- sfix32_En28
               sourceChannel => sourceChannel,  -- ufix2
               sourceValid => sourceValid  -- ufix1

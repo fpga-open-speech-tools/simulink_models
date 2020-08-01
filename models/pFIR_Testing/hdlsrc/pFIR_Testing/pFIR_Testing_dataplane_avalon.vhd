@@ -79,7 +79,7 @@ u_pFIR_Testing_dataplane : pFIR_Testing_dataplane
     avalon_source_valid         =>  avalon_source_valid,             -- ufix1
     avalon_source_data          =>  avalon_source_data,              -- sfix32_En28
     avalon_source_channel       =>  avalon_source_channel,           -- ufix2
-    avalon_source_rw_dout       =>  RW_dout,           -- sfix32_En28
+    ram_control_rw_dout       =>  RW_dout,           -- sfix32_En28
     avalon_source_error         =>  avalon_source_error              -- ufix2
   );
 
