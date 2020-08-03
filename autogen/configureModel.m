@@ -36,7 +36,7 @@ mp.nChannels = config.system.audioIn.numberOfChannels;
 %% Parse registers
 mp.register = parseregisters(config);
 
-run([mp.modelPath '\modelparameters.m'])
+run([mp.modelPath filesep 'modelparameters.m'])
 
 %% Computed parameters
 % Set undefined configuration parameters
