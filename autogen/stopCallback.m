@@ -18,18 +18,20 @@
 % Bozeman, MT 59718
 % openspeech@flatearthinc.com
 
-%% Put the output into the SG data struct 
-% The "To Workspace" block won't accept structs
-mp.Avalon_Sink_Data.Time    = Avalon_Sink_Data.Time;    % time
-mp.Avalon_Sink_Data.Data    = Avalon_Sink_Data.Data;    % data      
-mp.Avalon_Sink_Channel.Data = Avalon_Sink_Channel.Data; % channel
-mp.Avalon_Sink_Valid.Data   = Avalon_Sink_Valid.Data;   % valid
+if mp.useAvalonInterface
+    mp.Avalon_Sink_Data.Time    = Avalon_Sink_Data.Time;    
+    mp.Avalon_Sink_Data.Data    = Avalon_Sink_Data.Data;          
+    mp.Avalon_Sink_Channel.Data = Avalon_Sink_Channel.Data; 
+    mp.Avalon_Sink_Valid.Data   = Avalon_Sink_Valid.Data;   
+end    
 
 
 if mp.sim_verify == 1
-    verifySimScript = [mp.modelPath '\verifySim.m'];
+    verifySimScript = [mp.modelPath filesep 'verifySim.m'];
     if exist(verifySimScript, 'file')
-        mp = processOutput(mp);  % get the output and convert from Avalon to vector
+        if mp.useAvalonInterface
+            mp = processOutput(mp);  % get the output and convert from Avalon to vector
+        end
         run(verifySimScript);          % verify that the output is correct
     else
         disp(['Simulation verification is on but the verification script was not found at:' newline  verifySimScript])
