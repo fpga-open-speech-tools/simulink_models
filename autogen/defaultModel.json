@@ -1,0 +1,28 @@
+{
+    "system": {
+        "target": "audiomini",
+        "sampleClockFrequency": 48000,
+        "systemClockFrequency": 98304000,
+
+        "audioIn": {
+            "wordLength": 24,
+            "fractionLength": 23,
+            "signed": true,
+            "numberOfChannels": 2
+        },
+        "audioOut": {
+            "wordLength": 24,
+            "fractionLength": 23,
+            "signed": true,
+            "numberOfChannels": 2
+        }
+    },
+
+    "devices": [
+        {
+            "name": "",
+            "registers": []
+        }
+    ]
+    
+}

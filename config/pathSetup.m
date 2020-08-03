@@ -54,6 +54,8 @@ addpath(mp.ipcore_codegen_path)
 addpath(mp.ui_codegen_path)
 addpath(mp.test_signals_path)
 addpath(mp.codegen_path)
+config_dir = erase(mfilename('fullpath'), mfilename); 
+addpath(config_dir + "../autogen")
 hdlsetuptoolpath('ToolName', 'Altera Quartus II', 'ToolPath', mp.quartus_path);
 
 %% Print out the paths

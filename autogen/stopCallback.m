@@ -1,9 +1,9 @@
-% sm_callback_stop
+% stopCallback
 %
 % This scripts captures the output signals and then verifies that
 % these signals are correct. The script runs after the simulation stops.  
 % This is called in the StopFcn callback found in Model Explorer.
-%
+
 % Copyright 2019 Audio Logic
 %
 % THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
@@ -26,9 +26,12 @@ mp.Avalon_Sink_Channel.Data = Avalon_Sink_Channel.Data; % channel
 mp.Avalon_Sink_Valid.Data   = Avalon_Sink_Valid.Data;   % valid
 
 
-if mp.sim_prompts == 1  % sim_prompts is set in Run_me_first.m   This is turned off when the model is converted to VHDL since we don't want to run the verification multiple times at this point (HDL coder runs the simulation multiple times)
-    
-    mp = sm_stop_process_output(mp);  % get the output and convert from Avalon to vector
-    mp = sm_stop_verify(mp);          % verify that the output is correct
-    
+if mp.sim_verify == 1
+    verifySimScript = [mp.modelPath '\verifySim.m'];
+    if exist(verifySimScript, 'file')
+        mp = processOutput(mp);  % get the output and convert from Avalon to vector
+        run(verifySimScript);          % verify that the output is correct
+    else
+        disp(['Simulation verification is on but the verification script was not found at:' newline  verifySimScript])
+    end
 end

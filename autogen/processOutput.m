@@ -1,7 +1,8 @@
-% mp = sm_stop_verify(mp)
+% mp = sm_stop_process_output(mp)
 %
-% Matlab function that verifies the model output 
-
+% Matlab function that gets the Avalon Streaming output and converts it
+% to a vector format that is useful for verification.
+%
 % Inputs:
 %   mp, which is the model data structure that holds the model parameters
 %
@@ -27,24 +28,29 @@
 % Bozeman, MT 59718
 % openspeech@flatearthinc.com
 
-function mp = sm_stop_verify(mp)
+function mp = processOutput(mp)
 
-%% Verify that the test data got encoded, passed through the model, and
-% decoded correctly.  The input (modified by gain) and output values should be identical.
+%% Get the Avalon streaming signals from the model
+data = squeeze(mp.Avalon_Sink_Data.Data);   %Note: the Matlab squeeze() function removes singleton dimensions (i.e. dimensions of length 1)
+channel = squeeze(mp.Avalon_Sink_Channel.Data); 
+valid = squeeze(mp.Avalon_Sink_Valid.Data);  
+data = double(data);
 
-figure(1)
-subplot(2,1,1)
-plot(mp.test_signal.left); hold on
-plot(mp.left_data_out)
-title(['Delay = ' num2str(mp.register(2).value) '  Bypass = ' num2str(mp.register(1).value) '  Decay = ' num2str(mp.register(3).value)  '  Wet/Dry Mix = ' num2str(mp.register(4).value)])
+% Convert away from fixed point for faster processing
+channel = int(channel);
 
-subplot(2,1,2)
-plot(mp.test_signal.right); hold on
-plot(mp.right_data_out)
-title(['Delay = ' num2str(mp.register(2).value) '  Bypass = ' num2str(mp.register(1).value) '  Decay = ' num2str(mp.register(3).value)  '  Wet/Dry Mix = ' num2str(mp.register(4).value)])
+% Grab only valid audio data and the corresponding channel
+data = data(valid);
+channel = channel(valid);
 
-% original_audio = [mp.test_signal.left(:) mp.test_signal.right(:)];
-% processed_audio = [mp.left_data_out(:) mp.right_data_out(:)];
-% soundsc(original_audio, mp.Fs);
-% pause(mp.test_signal.duration*1.1);
-% soundsc(processed_audio, mp.Fs);
+% Remove fields for different number of samples
+data_field = "dataOut";
+if isfield(mp, data_field)
+    mp = rmfield(mp, data_field);
+end
+
+for i=1:mp.nChannels
+        idxchan = channel == i - 1;
+        mp.dataOut(i, :) = data(idxchan);
+end
+
