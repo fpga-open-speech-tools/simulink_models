@@ -15,7 +15,7 @@
             "fractionLength": 23,
             "signed": true,
             "numberOfChannels": 2
-        },
+        }
     },
 
     "devices": [

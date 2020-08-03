@@ -32,7 +32,7 @@ The Autogen framework gives 3 major file based interfaces for models: `model.jso
             - `name`: name of the tunable parameter  
             - `registerNumber`: offset in memory for the register (starts at 1 and must have registerNumber's defined between 1 and the highest value given)  
 
-## modelparameters.m
+## Model Parameters
 `modelparameters.m` is an optional model specific script that can define both properties to directly interface with Autogen or to be available to the Simulink Model. These model parameters are available via the `mp` struct.  
 
 Configurable Autogen model parameters:  
