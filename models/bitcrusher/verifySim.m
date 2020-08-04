@@ -27,12 +27,12 @@ figure(1)
 subplot(2,1,1)
 plot(testSignal.audio(:,1)); hold on
 plot(mp.dataOut(1,:))
-title(['Bit Control = ' num2str(mp.register{2}.value) ' Bypass = ' num2str(mp.register{1}.value) ' Wet/Dry Mix = ' num2str(mp.register{3}.value)])
+title(['Bit Control = ' num2str(mp.register{2}.value) ' Enable = ' num2str(mp.register{1}.value) ' Wet/Dry Mix = ' num2str(mp.register{3}.value)])
 
 subplot(2,1,2)
 plot(testSignal.audio(:,2)); hold on
 plot(mp.dataOut(2,:))
-title(['Bit Control = ' num2str(mp.register{2}.value) ' Bypass = ' num2str(mp.register{1}.value) ' Wet/Dry Mix = ' num2str(mp.register{3}.value)])
+title(['Bit Control = ' num2str(mp.register{2}.value) ' Enable = ' num2str(mp.register{1}.value) ' Wet/Dry Mix = ' num2str(mp.register{3}.value)])
 
 % original_audio = [mp.test_signal.left(:) mp.test_signal.right(:)];
 % processed_audio = [mp.left_data_out(:) mp.right_data_out(:)];

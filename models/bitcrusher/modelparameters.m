@@ -5,7 +5,7 @@ mp.testFile = [mp.test_signals_path filesep 'Urban_Light_HedaMusic_Creative_Comm
 
 mp.sim_prompts = 0;
 mp.sim_verify = 1;
-mp.nSamples = 48000 * .01;
+mp.nSamples = 48000 * 2;
     
 %%% General model parameters
 
