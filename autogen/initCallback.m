@@ -31,8 +31,11 @@ configureModel;
 testSignal = AudioSource.fromFile(mp.testFile, mp.Fs, mp.nSamples);
 stopTime = testSignal.duration;
 
+nSamples = testSignal.nSamples;
+
 if mp.useAvalonInterface
     avalonSource = testSignal.toAvalonSource();
+    nSamples = avalonSource.nSamples;
 
     mp.avalonSim = avalonSource.astimeseries();
 
@@ -40,18 +43,13 @@ if mp.useAvalonInterface
     mp.Avalon_Source_Valid    = mp.avalonSim.valid;
     mp.Avalon_Source_Channel  = mp.avalonSim.channel;
     mp.Avalon_Source_Error    = mp.avalonSim.error;
-    if mp.sim_prompts == 1  % Note: sim_prompts is set in Run_me_first.m and is set to zero when hdl code generation is run
-        disp(['Simulation time has been set to ' num2str(stopTime) ' seconds'])
-        disp(['    Processing ' num2str(avalonSource.nSamples) ' Avalon streaming samples.'])
-        disp(['    The test signal length (current set to ' num2str(testSignal.duration)  ' sec = ' num2str(testSignal.nSamples)  ' samples)'])
-    end
-
-    clear avalonSource;
-else
-    if mp.sim_prompts == 1  % Note: sim_prompts is set in Run_me_first.m and is set to zero when hdl code generation is run
-        disp(['Simulation time has been set to ' num2str(stopTime) ' seconds'])
-        disp(['Processing ' num2str(testSignal.nSamples) ' samples.'])
-    end
 end
 
+if mp.sim_prompts == 1  % Note: sim_prompts is set in Run_me_first.m and is set to zero when hdl code generation is run
+    disp(['Simulation time has been set to ' num2str(stopTime) ' seconds'])
+    disp(['Processing ' num2str(nSamples) ' samples.'])
+end
+
+clear AvalonSource
+clear nSamples
 

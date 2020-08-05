@@ -3,9 +3,11 @@
 
 mp.testFile = [mp.test_signals_path filesep 'Urban_Light_HedaMusic_Creative_Commons.mp3'];
 
-mp.sim_prompts = 0;
+% TODO: use booleans instead of 0 and 1
+mp.sim_prompts = 1;
 mp.sim_verify = 1;
-mp.nSamples = 48000 * 10;
+mp.simDuration = 5;
+mp.nSamples = config.system.sampleClockFrequency * mp.simDuration;
 
 mp.useAvalonInterface = false;
     
