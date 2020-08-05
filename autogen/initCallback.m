@@ -25,10 +25,7 @@ mp.useAvalonInterface = true;
 [modelPath,modelAbbreviation,~] = fileparts(which(bdroot));
 mp.modelPath = char(modelPath);
 mp.modelAbbreviation = char(modelAbbreviation);
-% onPath = contains(path, [modelPath, pathsep]);
-% if ~onPath
-%     addpath(modelPath)
-% end
+
 configureModel;
 
 testSignal = AudioSource.fromFile(mp.testFile, mp.Fs, mp.nSamples);
@@ -43,7 +40,6 @@ if mp.useAvalonInterface
     mp.Avalon_Source_Valid    = mp.avalonSim.valid;
     mp.Avalon_Source_Channel  = mp.avalonSim.channel;
     mp.Avalon_Source_Error    = mp.avalonSim.error;
-    % TODO: support sim prompts in vectorized models as well
     if mp.sim_prompts == 1  % Note: sim_prompts is set in Run_me_first.m and is set to zero when hdl code generation is run
         disp(['Simulation time has been set to ' num2str(stopTime) ' seconds'])
         disp(['    Processing ' num2str(avalonSource.nSamples) ' Avalon streaming samples.'])
@@ -51,8 +47,11 @@ if mp.useAvalonInterface
     end
 
     clear avalonSource;
+else
+    if mp.sim_prompts == 1  % Note: sim_prompts is set in Run_me_first.m and is set to zero when hdl code generation is run
+        disp(['Simulation time has been set to ' num2str(stopTime) ' seconds'])
+        disp(['Processing ' num2str(testSignal.nSamples) ' samples.'])
+    end
 end
-% if ~onPath
-%     rmpath(modelPath)
-% end
+
 
