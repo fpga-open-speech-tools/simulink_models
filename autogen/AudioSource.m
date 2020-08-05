@@ -64,7 +64,17 @@ classdef AudioSource
             avalonSource = AvalonSource(data, channel, valid, error, 1 / this.sampleRateHz / this.nChannels);
 
         end
+
+        function ts = asTimeSeries(obj)
+            % Convert an AudioSource to a time series object. 
+            % The "From Workspace" block in Simulink typically 
+            % requires the input to be time series. Call this method
+            % to use an AudioSource in Simulink simulations.
+            time = [0:(obj.nSamples - 1)] / obj.sampleRateHz;
+            ts = timeseries(obj.audio, time);
+        end
     end
+
     methods(Static)
         function audioSource = fromFile(filepath, sampleRate, nSamples)
             info = audioinfo(filepath);
@@ -84,6 +94,7 @@ classdef AudioSource
             audioSource = AudioSource(yResampled, sampleRate);
         end
     end
+
     methods(Access = private)
         function obj = updateAudioInfo(obj)
             obj.nChannels = size(obj.audio,2);
