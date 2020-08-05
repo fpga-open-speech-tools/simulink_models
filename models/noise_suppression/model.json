@@ -1,0 +1,51 @@
+{
+    "system": {
+        "target": "audiomini",
+        "sampleClockFrequency": 48000,
+        "systemClockFrequency": 98304000,
+
+        "audioIn": {
+            "wordLength": 32,
+            "fractionLength": 28,
+            "signed": true,
+            "numberOfChannels": 2
+        },
+        "audioOut": {
+            "wordLength": 32,
+            "fractionLength": 28,
+            "signed": true,
+            "numberOfChannels": 2
+        }
+    },
+
+    "devices": [
+        {
+            "name": "noise_suppression",
+            "registers": [
+                {
+                    "dataType": {
+                        "fractionLength": 0,
+                        "signed": false,
+                        "type": "boolean",
+                        "wordLength": 1
+                    },
+                    "defaultValue": 1,
+                    "name": "enable",
+                    "registerNumber": 0
+                },
+                {
+                    "dataType": {
+                        "fractionLength": 11,
+                        "signed": false,
+                        "type": "ufix9_en8",
+                        "wordLength": 12 
+                    },
+                    "defaultValue": 0.001,
+                    "name": "noise_variance",
+                    "registerNumber": 1
+                }
+            ]
+        }
+    ]
+    
+}
