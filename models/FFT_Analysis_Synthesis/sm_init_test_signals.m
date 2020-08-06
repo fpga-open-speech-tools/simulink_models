@@ -1,5 +1,5 @@
 function mp = sm_init_test_signals(mp)
-[y,Fs] = audioread('acoustic.wav');
+[y,Fs] = audioread('../../test_signals/acoustic.wav');
 y_resampled = resample(y,mp.Fs,Fs);  % resample to change the sample rate to mp.Fs
 if (mp.fastsim_flag == 2) || (mp.fastsim_flag == 3)
     mp.test_signal.left  = y_resampled(1:mp.Naudio_samples);
