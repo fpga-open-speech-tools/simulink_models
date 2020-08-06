@@ -18,7 +18,7 @@ mp.register(2).widget_type      = 'drop_down_menu';
 mp.register(2).choices.display  = char('Low Pass Filter', 'Band Pass Filter', 'High Pass Filter', 'All Pass Filter');          % value control signal will take during simulation
 mp.register(2).choices.values   = [0 1 2 3];
 mp.register(2).choices.default  = 2;          % index (starting with 1) into mp.register(2).choices.values array
-mp.register(2).value            = 2;           % value control signal will take during simulation
+mp.register(2).value            = 3;           % value control signal will take during simulation
 
 %% Create right passthrough control signal
 mp.register(3) = mp.register(1);   % same as left except for name

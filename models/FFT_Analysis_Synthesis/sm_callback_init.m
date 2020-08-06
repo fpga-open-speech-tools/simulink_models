@@ -4,7 +4,7 @@
 % 1	    Developer’s Mode*.  Slow System Clock.  Entire audio signal.  Typical setting for development. This is to reduce the simulation time on the entire signal.  Typical system clock is 2x or 4x of the audio signal sample rate.
 % 2	    Fast Developer’s Mode.  Slow System Clock.  Truncated audio signal.  This is to further reduce the simulation time.  The audio signal is truncated, but can be longer than what is set for the HDL Coder Mode.
 % 3	    HDL Coder Mode*.  Target (Fast) System Clock.  Truncated audio signal.  HDL Coder will run a simulation, which needs to be at the Target System Clock.  The audio signal needs to be truncated for a reasonable fast simulation time.  The simulation is assumed to be correct at this point.
-mp.fastsim_flag = 3;
+mp.fastsim_flag = 2;
 
 %% Set Audio Data Sample Rate
 mp.Fs = 48000;    % sample rate frequency of AD1939 codec in Hz
@@ -12,6 +12,7 @@ mp.Ts = 1/mp.Fs;  % sample period
 
 %% Set FFT size
 mp.FFT_size = 128;
+% XXX: an unsigned int of mp.FFT_size_Nbits only goes up to mp.FFT_size - 1; not sure if that's intended or a bug 
 mp.FFT_size_Nbits = log2(mp.FFT_size);
 mp.FFT_size_half = mp.FFT_size/2;
 mp.FFT_frame_shift = mp.FFT_size/4;  % Changiing this from a divide by four implies substantial architectural changes
