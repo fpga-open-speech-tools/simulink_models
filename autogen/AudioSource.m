@@ -83,7 +83,7 @@ classdef AudioSource
             if nSamples ~= -1 % perform fast simulation by reducing the number of samples
                simTime = nSamples / sampleRate;
                totalSamples = info.TotalSamples;
-               nSourceSamples = min(simTime * fileFs, totalSamples);
+               nSourceSamples = floor(min(simTime * fileFs, totalSamples));
                
                [y,~] = audioread(filepath,[1, nSourceSamples]);
             else
