@@ -20,7 +20,7 @@
 
     "devices": [
         {
-            "name": "filters",
+            "name": "fft_filters",
             "registers": [
                 {
                     "dataType": {
