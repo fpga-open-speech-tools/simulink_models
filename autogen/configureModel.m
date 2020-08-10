@@ -22,7 +22,7 @@ configPath = [modelPath filesep 'model.json'];
 config = jsondecode(fileread(configPath));
 
 mp.modelName = config.devices(1).name;
-
+mp.useAvalonInterface = lower(config.system.processing) == "channel";
 %% Set Audio Data
 
 mp.Fs = config.system.sampleClockFrequency; 

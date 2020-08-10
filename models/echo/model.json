@@ -3,7 +3,7 @@
         "target": "audiomini",
         "sampleClockFrequency": 48000,
         "systemClockFrequency": 98304000,
-
+        "processing": "sample",
         "audioIn": {
             "wordLength": 24,
             "fractionLength": 23,
@@ -20,7 +20,7 @@
 
     "devices": [
         {
-            "name": "echo",
+            "name": "SE",
             "registers": [
                 {
                     "dataType": {

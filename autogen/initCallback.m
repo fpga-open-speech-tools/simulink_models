@@ -20,7 +20,7 @@
 
 % set to true so old models will still function if they don't override this
 % flag
-mp.useAvalonInterface = true;
+
 
 [modelPath,modelAbbreviation,~] = fileparts(which(bdroot));
 mp.modelPath = char(modelPath);
