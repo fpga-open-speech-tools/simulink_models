@@ -3,7 +3,7 @@
         "target": "audiomini",
         "sampleClockFrequency": 48000,
         "systemClockFrequency": 98304000,
-
+        "processing": "sample",
         "audioIn": {
             "wordLength": 32,
             "fractionLength": 28,
