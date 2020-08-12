@@ -5,19 +5,21 @@ The Autogen framework gives 3 major file based interfaces for models: `model.jso
 `model.json` is a required configuration file shared between the Autogen Framework and the Autogen Tools. This covers both system-level properties as well as run-time tunable parameters for the model via registers.  
 `model.json` properties:  
 - `system`: An object to describe the overall system  
-    - `target`: Which hardware system is being targeted, the `audiomini` or `audioblade` (default: `audiomini`)  
-    - `sampleClockFrequency`: The sampling rate of the audio being processed (default: `48000`)  
-    - `systemClockFrequency`: Clock rate of the audio processing on the FPGA (default: `98304000`)  
-    - `inputDataType`: Object representing the data type of the audio input  
+    - `target`: Which hardware system is being targeted, the `audiomini` or `audioblade`
+    - `sampleClockFrequency`: The sampling rate of the audio being processed  
+    - `systemClockFrequency`: Clock rate of the audio processing on the FPGA 
+    - `processing`: Data processing format, either channel based ("channel") or sample based ("sample")
+    - `audioIn`: Object representing the data type of the audio input  
         - `wordLength`: number of total bits in the data type  
         - `fractionLength`: number of fractional bits in the fixed point number  
         - `signed`: true if the data type is signed, false otherwise  
-    - `outputDataType`: Object reprenting the data type of the audio output
+        - `numberOfChannels`: number of channels in the audio to be processed 
+    - `audioOut`: Object reprenting the data type of the audio output
     (Note: Currently unused, only inputDataType is read)
         - `wordLength`: number of total bits in the data type  
         - `fractionLength`: number of fractional bits in the fixed point number  
         - `signed`: true if the data type is signed, false otherwise  
-    - `numberOfChannels`: number of channels in the audio to be processed (default: `2`)  
+        - `numberOfChannels`: number of channels in the audio to be processed  
 - `devices`: An array of objects representing devices. Simulation support is only for one device.  
     - device object  
         - `name`: Name of the Simulink model  
