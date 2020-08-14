@@ -29,8 +29,7 @@ autogenRootDir = autogenConfig.root;
 mp.test_signals_path    = [autogenRootDir filesep 'simulink_models' filesep 'test_signals'];
 mp.ipcore_codegen_path  = [autogenRootDir filesep 'simulink_codegen' filesep 'ipcore'];
 mp.driver_codegen_path  = [autogenRootDir filesep 'simulink_codegen' filesep 'device_drivers'];
-mp.ui_codegen_path      = [autogenRootDir filesep 'simulink_codegen' filesep 'ui'];
-mp.dtogen_path          = [autogenRootDir filesep 'utils' filesep  'device_tree_overlays'];
+mp.dtogen_path          = [autogenRootDir filesep 'simulink_codegen' filesep  'device_tree_overlays'];
 mp.codegen_path         = [autogenRootDir filesep 'simulink_codegen'];
 
 
@@ -51,7 +50,7 @@ end
 %% Add the paths to the current Matlab session
 addpath(mp.driver_codegen_path)
 addpath(mp.ipcore_codegen_path)
-addpath(mp.ui_codegen_path)
+addpath(mp.dtogen_path)
 addpath(mp.test_signals_path)
 addpath(mp.codegen_path)
 config_dir = erase(mfilename('fullpath'), mfilename); 
@@ -65,7 +64,7 @@ disp(['Local GitHub repository path = ' autogenRootDir])
 disp(['Test signals path            = ' mp.test_signals_path])
 disp(['VHDL Codegen path            = ' mp.ipcore_codegen_path])
 disp(['Driver Codegen path          = ' mp.driver_codegen_path])
-disp(['UI Codegen path              = ' mp.ui_codegen_path])
+disp(['Dtogen path                  = ' mp.dtogen_path])
 disp(['Quartus path                 = ' mp.quartus_path])
 disp(['------------------------------------------------'])
 
