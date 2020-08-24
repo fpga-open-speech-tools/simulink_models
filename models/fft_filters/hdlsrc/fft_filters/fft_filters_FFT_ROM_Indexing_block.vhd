@@ -21,7 +21,7 @@ USE IEEE.numeric_std.ALL;
 ENTITY fft_filters_FFT_ROM_Indexing_block IS
   PORT( clk                               :   IN    std_logic;
         reset                             :   IN    std_logic;
-        enb_1_2048_0                      :   IN    std_logic;
+        enb_1_16_0                        :   IN    std_logic;
         valid                             :   IN    std_logic;
         ROM_index                         :   OUT   std_logic_vector(6 DOWNTO 0)  -- ufix7
         );
@@ -67,7 +67,7 @@ BEGIN
     IF reset = '1' THEN
       FFT_count_out1 <= to_unsigned(16#00#, 7);
     ELSIF rising_edge(clk) THEN
-      IF enb_1_2048_0 = '1' THEN
+      IF enb_1_16_0 = '1' THEN
         IF Bitwise_Operator_out1 = '1' THEN 
           FFT_count_out1 <= to_unsigned(16#00#, 7);
         ELSIF valid = '1' THEN 
@@ -92,7 +92,7 @@ BEGIN
     IF reset = '1' THEN
       counter_gain_index_out1 <= to_unsigned(16#00#, 7);
     ELSIF rising_edge(clk) THEN
-      IF enb_1_2048_0 = '1' THEN
+      IF enb_1_16_0 = '1' THEN
         IF Bitwise_Operator_out1 = '1' THEN 
           counter_gain_index_out1 <= to_unsigned(16#00#, 7);
         ELSIF valid = '1' THEN 

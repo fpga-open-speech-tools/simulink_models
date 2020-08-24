@@ -22,7 +22,7 @@ USE work.fft_filters_dataplane_pkg.ALL;
 ENTITY fft_filters_MINRESRX2FFT_MEMORY_block IS
   PORT( clk                               :   IN    std_logic;
         reset                             :   IN    std_logic;
-        enb_1_2048_0                      :   IN    std_logic;
+        enb_1_16_0                        :   IN    std_logic;
         dMemIn1_re                        :   IN    std_logic_vector(30 DOWNTO 0);  -- sfix31_En23
         dMemIn1_im                        :   IN    std_logic_vector(30 DOWNTO 0);  -- sfix31_En23
         dMemIn2_re                        :   IN    std_logic_vector(30 DOWNTO 0);  -- sfix31_En23
@@ -53,7 +53,7 @@ ARCHITECTURE rtl OF fft_filters_MINRESRX2FFT_MEMORY_block IS
              DataWidth                    : integer
              );
     PORT( clk                             :   IN    std_logic;
-          enb_1_2048_0                    :   IN    std_logic;
+          enb_1_16_0                      :   IN    std_logic;
           wr_din                          :   IN    std_logic_vector(DataWidth - 1 DOWNTO 0);  -- generic width
           wr_addr                         :   IN    std_logic_vector(AddrWidth - 1 DOWNTO 0);  -- generic width
           wr_en                           :   IN    std_logic;
@@ -166,7 +166,7 @@ BEGIN
                  DataWidth => 31
                  )
     PORT MAP( clk => clk,
-              enb_1_2048_0 => enb_1_2048_0,
+              enb_1_16_0 => enb_1_16_0,
               wr_din => std_logic_vector(wrData11Dly_im),
               wr_addr => std_logic_vector(wrAddr10),
               wr_en => wrEnb11,
@@ -179,7 +179,7 @@ BEGIN
                  DataWidth => 31
                  )
     PORT MAP( clk => clk,
-              enb_1_2048_0 => enb_1_2048_0,
+              enb_1_16_0 => enb_1_16_0,
               wr_din => std_logic_vector(wrData11Dly_re),
               wr_addr => std_logic_vector(wrAddr10),
               wr_en => wrEnb11,
@@ -192,7 +192,7 @@ BEGIN
                  DataWidth => 31
                  )
     PORT MAP( clk => clk,
-              enb_1_2048_0 => enb_1_2048_0,
+              enb_1_16_0 => enb_1_16_0,
               wr_din => std_logic_vector(wrData10Dly_im),
               wr_addr => std_logic_vector(wrAddr10),
               wr_en => wrEnb10,
@@ -205,7 +205,7 @@ BEGIN
                  DataWidth => 31
                  )
     PORT MAP( clk => clk,
-              enb_1_2048_0 => enb_1_2048_0,
+              enb_1_16_0 => enb_1_16_0,
               wr_din => std_logic_vector(wrData10Dly_re),
               wr_addr => std_logic_vector(wrAddr10),
               wr_en => wrEnb10,
@@ -218,7 +218,7 @@ BEGIN
                  DataWidth => 31
                  )
     PORT MAP( clk => clk,
-              enb_1_2048_0 => enb_1_2048_0,
+              enb_1_16_0 => enb_1_16_0,
               wr_din => std_logic_vector(wrData01Dly_re),
               wr_addr => std_logic_vector(wrAddr01),
               wr_en => wrEnb01,
@@ -231,7 +231,7 @@ BEGIN
                  DataWidth => 31
                  )
     PORT MAP( clk => clk,
-              enb_1_2048_0 => enb_1_2048_0,
+              enb_1_16_0 => enb_1_16_0,
               wr_din => std_logic_vector(wrData01Dly_im),
               wr_addr => std_logic_vector(wrAddr01),
               wr_en => wrEnb01,
@@ -246,7 +246,7 @@ BEGIN
     IF reset = '1' THEN
       intdelay_reg <= (OTHERS => to_signed(16#00000000#, 31));
     ELSIF rising_edge(clk) THEN
-      IF enb_1_2048_0 = '1' THEN
+      IF enb_1_16_0 = '1' THEN
         intdelay_reg(0) <= dMemIn1_re_signed;
         intdelay_reg(1) <= intdelay_reg(0);
       END IF;
@@ -264,7 +264,7 @@ BEGIN
     IF reset = '1' THEN
       intdelay_reg_1 <= (OTHERS => to_signed(16#00000000#, 31));
     ELSIF rising_edge(clk) THEN
-      IF enb_1_2048_0 = '1' THEN
+      IF enb_1_16_0 = '1' THEN
         intdelay_reg_1(0) <= dMemIn2_re_signed;
         intdelay_reg_1(1) <= intdelay_reg_1(0);
       END IF;
@@ -280,7 +280,7 @@ BEGIN
     IF reset = '1' THEN
       intdelay_reg_2 <= (OTHERS => to_signed(16#00000000#, 31));
     ELSIF rising_edge(clk) THEN
-      IF enb_1_2048_0 = '1' THEN
+      IF enb_1_16_0 = '1' THEN
         intdelay_reg_2(0) <= dMemIn2_im_signed;
         intdelay_reg_2(1) <= intdelay_reg_2(0);
       END IF;
@@ -294,7 +294,7 @@ BEGIN
     IF reset = '1' THEN
       intdelay_reg_3 <= (OTHERS => to_signed(16#00000000#, 31));
     ELSIF rising_edge(clk) THEN
-      IF enb_1_2048_0 = '1' THEN
+      IF enb_1_16_0 = '1' THEN
         intdelay_reg_3(0) <= dMemIn2_re_signed;
         intdelay_reg_3(1) <= intdelay_reg_3(0);
       END IF;
@@ -308,7 +308,7 @@ BEGIN
     IF reset = '1' THEN
       intdelay_reg_4 <= (OTHERS => to_signed(16#00000000#, 31));
     ELSIF rising_edge(clk) THEN
-      IF enb_1_2048_0 = '1' THEN
+      IF enb_1_16_0 = '1' THEN
         intdelay_reg_4(0) <= dMemIn2_im_signed;
         intdelay_reg_4(1) <= intdelay_reg_4(0);
       END IF;
@@ -368,7 +368,7 @@ BEGIN
       minResRX2FFTMEMCtrl_rdEnb2Dly <= '0';
       minResRX2FFTMEMCtrl_rdEnb3Dly <= '0';
     ELSIF rising_edge(clk) THEN
-      IF enb_1_2048_0 = '1' THEN
+      IF enb_1_16_0 = '1' THEN
         minResRX2FFTMEMCtrl_cnt1 <= minResRX2FFTMEMCtrl_cnt1_next;
         minResRX2FFTMEMCtrl_cnt2 <= minResRX2FFTMEMCtrl_cnt2_next;
         minResRX2FFTMEMCtrl_cnt1LSB <= minResRX2FFTMEMCtrl_cnt1LSB_next;
@@ -514,7 +514,7 @@ BEGIN
     IF reset = '1' THEN
       intdelay_reg_5 <= (OTHERS => to_signed(16#00000000#, 31));
     ELSIF rising_edge(clk) THEN
-      IF enb_1_2048_0 = '1' THEN
+      IF enb_1_16_0 = '1' THEN
         intdelay_reg_5(0) <= dMemIn1_im_signed;
         intdelay_reg_5(1) <= intdelay_reg_5(0);
       END IF;

@@ -21,12 +21,12 @@ USE IEEE.numeric_std.ALL;
 ENTITY fft_filters_Synthesis IS
   PORT( clk                               :   IN    std_logic;
         reset                             :   IN    std_logic;
-        enb_1_262144_1                    :   IN    std_logic;
+        enb_1_16_0                        :   IN    std_logic;
         enb                               :   IN    std_logic;
         enb_1_2048_0                      :   IN    std_logic;
-        enb_1_262144_0                    :   IN    std_logic;
+        enb_1_16_1                        :   IN    std_logic;
         enb_1_2048_1                      :   IN    std_logic;
-        enb_1_262144_4097                 :   IN    std_logic;
+        enb_1_2048_33                     :   IN    std_logic;
         modified_FFT_data_re              :   IN    std_logic_vector(30 DOWNTO 0);  -- sfix31_En23
         modified_FFT_data_im              :   IN    std_logic_vector(30 DOWNTO 0);  -- sfix31_En23
         FFT_valid                         :   IN    std_logic;
@@ -44,26 +44,24 @@ ARCHITECTURE rtl OF fft_filters_Synthesis IS
   COMPONENT fft_filters_iFFT
     PORT( clk                             :   IN    std_logic;
           reset                           :   IN    std_logic;
-          enb_1_2048_0                    :   IN    std_logic;
+          enb_1_16_0                      :   IN    std_logic;
           dataIn_re                       :   IN    std_logic_vector(30 DOWNTO 0);  -- sfix31_En23
           dataIn_im                       :   IN    std_logic_vector(30 DOWNTO 0);  -- sfix31_En23
           validIn                         :   IN    std_logic;
           dataOut_re                      :   OUT   std_logic_vector(30 DOWNTO 0);  -- sfix31_En23
-          dataOut_im                      :   OUT   std_logic_vector(30 DOWNTO 0);  -- sfix31_En23
-          validOut                        :   OUT   std_logic;
-          ready                           :   OUT   std_logic
+          validOut                        :   OUT   std_logic
           );
   END COMPONENT;
 
   COMPONENT fft_filters_Overlap_and_Add
     PORT( clk                             :   IN    std_logic;
           reset                           :   IN    std_logic;
-          enb_1_262144_1                  :   IN    std_logic;
+          enb_1_16_0                      :   IN    std_logic;
           enb                             :   IN    std_logic;
           enb_1_2048_0                    :   IN    std_logic;
-          enb_1_262144_0                  :   IN    std_logic;
+          enb_1_16_1                      :   IN    std_logic;
           enb_1_2048_1                    :   IN    std_logic;
-          enb_1_262144_4097               :   IN    std_logic;
+          enb_1_2048_33                   :   IN    std_logic;
           IFFT_Data                       :   IN    std_logic_vector(30 DOWNTO 0);  -- sfix31_En23
           iFFT_Valid                      :   IN    std_logic;
           FFT_Frame_Pulse                 :   IN    std_logic;
@@ -80,9 +78,7 @@ ARCHITECTURE rtl OF fft_filters_Synthesis IS
 
   -- Signals
   SIGNAL iFFT_out1_re                     : std_logic_vector(30 DOWNTO 0);  -- ufix31
-  SIGNAL iFFT_out1_im                     : std_logic_vector(30 DOWNTO 0);  -- ufix31
   SIGNAL iFFT_out2                        : std_logic;
-  SIGNAL iFFT_out3                        : std_logic;
   SIGNAL Get_Real_out1                    : std_logic_vector(30 DOWNTO 0);  -- ufix31
   SIGNAL Overlap_and_Add_out1             : std_logic_vector(32 DOWNTO 0);  -- ufix33
   SIGNAL Overlap_and_Add_out1_signed      : signed(32 DOWNTO 0);  -- sfix33_En23
@@ -97,25 +93,23 @@ BEGIN
   u_iFFT : fft_filters_iFFT
     PORT MAP( clk => clk,
               reset => reset,
-              enb_1_2048_0 => enb_1_2048_0,
+              enb_1_16_0 => enb_1_16_0,
               dataIn_re => modified_FFT_data_re,  -- sfix31_En23
               dataIn_im => modified_FFT_data_im,  -- sfix31_En23
               validIn => FFT_valid,
               dataOut_re => iFFT_out1_re,  -- sfix31_En23
-              dataOut_im => iFFT_out1_im,  -- sfix31_En23
-              validOut => iFFT_out2,
-              ready => iFFT_out3
+              validOut => iFFT_out2
               );
 
   u_Overlap_and_Add : fft_filters_Overlap_and_Add
     PORT MAP( clk => clk,
               reset => reset,
-              enb_1_262144_1 => enb_1_262144_1,
+              enb_1_16_0 => enb_1_16_0,
               enb => enb,
               enb_1_2048_0 => enb_1_2048_0,
-              enb_1_262144_0 => enb_1_262144_0,
+              enb_1_16_1 => enb_1_16_1,
               enb_1_2048_1 => enb_1_2048_1,
-              enb_1_262144_4097 => enb_1_262144_4097,
+              enb_1_2048_33 => enb_1_2048_33,
               IFFT_Data => Get_Real_out1,  -- sfix31_En23
               iFFT_Valid => iFFT_out2,
               FFT_Frame_Pulse => FFT_frame_pulse,

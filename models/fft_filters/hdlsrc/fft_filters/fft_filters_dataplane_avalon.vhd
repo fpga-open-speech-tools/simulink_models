@@ -35,18 +35,18 @@ component fft_filters_dataplane is
     clk                              : in  std_logic;
     reset                            : in  std_logic;
     clk_enable                       : in  std_logic;
-    avalon_sink_data                 : in  vector_of_std_logic_vector24(1 downto 0);
+    avalon_sink_data                 : in  vector_of_std_logic_vector32(1 downto 0);
     ce_out                           : out std_logic;
-    avalon_source_data               : out vector_of_std_logic_vector24(1 downto 0)
+    avalon_source_data               : out vector_of_std_logic_vector32(1 downto 0)
   );
 end component fft_filters_dataplane;
 
   signal passthrough                      : std_logic := '0';
   signal filter_select                    : std_logic_vector(1 downto 0) := "00";
-  signal dataplane_sink_data              : vector_of_std_logic_vector24(1 downto 0);
-  signal dataplane_sink_data_tmp          : vector_of_std_logic_vector24(1 downto 0);
-  signal dataplane_source_data            : vector_of_std_logic_vector24(1 downto 0);
-  signal dataplane_source_data_prev       : vector_of_std_logic_vector24(1 downto 0);
+  signal dataplane_sink_data              : vector_of_std_logic_vector32(1 downto 0);
+  signal dataplane_sink_data_tmp          : vector_of_std_logic_vector32(1 downto 0);
+  signal dataplane_source_data            : vector_of_std_logic_vector32(1 downto 0);
+  signal dataplane_source_data_prev       : vector_of_std_logic_vector32(1 downto 0);
   signal counter                          : natural := 0;
 
 begin
@@ -70,10 +70,10 @@ begin
     if rising_edge(clk) then
         if avalon_sink_valid = '1' then
             if avalon_sink_channel = "00" then
-            dataplane_sink_data_tmp(0) <= std_logic_vector(resize_fixed(signed(avalon_sink_data), 32, 28, 24, 23));
+            dataplane_sink_data_tmp(0) <= avalon_sink_data;
 
             elsif avalon_sink_channel = "01" then
-                dataplane_sink_data_tmp(0) <= std_logic_vector(resize_fixed(signed(avalon_sink_data), 32, 28, 24, 23));
+                dataplane_sink_data_tmp(0) <= avalon_sink_data;
 
                 dataplane_sink_data <= dataplane_sink_data_tmp;
 
@@ -89,11 +89,11 @@ begin
       counter <= 1;
     else
       if counter = 1 then
-        avalon_source_data <= std_logic_vector(resize_fixed(signed(dataplane_source_data(0)), 24, 23, 32, 28));
+        avalon_source_data <= dataplane_source_data(0);
         avalon_source_valid <= '1';
         avalon_source_channel<= "00";
       elsif counter = 2 then
-        avalon_source_data <= std_logic_vector(resize_fixed(signed(dataplane_source_data(1)), 24, 23, 32, 28));
+        avalon_source_data <= dataplane_source_data(1);
         avalon_source_valid <= '1';
         avalon_source_channel <= "01";
       end if;

@@ -21,9 +21,9 @@ USE IEEE.numeric_std.ALL;
 ENTITY fft_filters_Apply_Complex_Gains IS
   PORT( clk                               :   IN    std_logic;
         reset                             :   IN    std_logic;
+        enb_1_16_0                        :   IN    std_logic;
         enb                               :   IN    std_logic;
-        enb_1_2048_0                      :   IN    std_logic;
-        enb_1_2048_1                      :   IN    std_logic;
+        enb_1_16_1                        :   IN    std_logic;
         FFT_data_re                       :   IN    std_logic_vector(30 DOWNTO 0);  -- sfix31_En23
         FFT_data_im                       :   IN    std_logic_vector(30 DOWNTO 0);  -- sfix31_En23
         valid_data                        :   IN    std_logic;
@@ -45,9 +45,9 @@ ARCHITECTURE rtl OF fft_filters_Apply_Complex_Gains IS
   COMPONENT fft_filters_FFT_Filter_Coefficients
     PORT( clk                             :   IN    std_logic;
           reset                           :   IN    std_logic;
+          enb_1_16_0                      :   IN    std_logic;
           enb                             :   IN    std_logic;
-          enb_1_2048_0                    :   IN    std_logic;
-          enb_1_2048_1                    :   IN    std_logic;
+          enb_1_16_1                      :   IN    std_logic;
           select_rsvd                     :   IN    std_logic_vector(1 DOWNTO 0);  -- ufix2
           valid                           :   IN    std_logic;
           filter_gains_re                 :   OUT   std_logic_vector(23 DOWNTO 0);  -- sfix24_En23
@@ -110,9 +110,9 @@ BEGIN
   u_FFT_Filter_Coefficients : fft_filters_FFT_Filter_Coefficients
     PORT MAP( clk => clk,
               reset => reset,
+              enb_1_16_0 => enb_1_16_0,
               enb => enb,
-              enb_1_2048_0 => enb_1_2048_0,
-              enb_1_2048_1 => enb_1_2048_1,
+              enb_1_16_1 => enb_1_16_1,
               select_rsvd => filter_select,  -- ufix2
               valid => valid_data,
               filter_gains_re => FFT_Filter_Coefficients_out1_re,  -- sfix24_En23
@@ -126,7 +126,7 @@ BEGIN
   Unit_Delay1_process : PROCESS (clk)
   BEGIN
     IF rising_edge(clk) THEN
-      IF enb_1_2048_0 = '1' THEN
+      IF enb_1_16_0 = '1' THEN
         Unit_Delay1_out1_re <= FFT_data_re_signed;
         Unit_Delay1_out1_im <= FFT_data_im_signed;
       END IF;
@@ -261,7 +261,7 @@ BEGIN
   Unit_Delay_process : PROCESS (clk)
   BEGIN
     IF rising_edge(clk) THEN
-      IF enb_1_2048_0 = '1' THEN
+      IF enb_1_16_0 = '1' THEN
         Unit_Delay_out1 <= valid_data;
       END IF;
     END IF;
@@ -271,7 +271,7 @@ BEGIN
   Unit_Delay2_process : PROCESS (clk)
   BEGIN
     IF rising_edge(clk) THEN
-      IF enb_1_2048_0 = '1' THEN
+      IF enb_1_16_0 = '1' THEN
         Unit_Delay2_out1 <= frame_pulse_in;
       END IF;
     END IF;

@@ -22,7 +22,7 @@ USE work.fft_filters_dataplane_pkg.ALL;
 ENTITY fft_filters_MINRESRX2_BUTTERFLY IS
   PORT( clk                               :   IN    std_logic;
         reset                             :   IN    std_logic;
-        enb_1_2048_0                      :   IN    std_logic;
+        enb_1_16_0                        :   IN    std_logic;
         btfIn1_re                         :   IN    std_logic_vector(30 DOWNTO 0);  -- sfix31_En23
         btfIn1_im                         :   IN    std_logic_vector(30 DOWNTO 0);  -- sfix31_En23
         btfIn2_re                         :   IN    std_logic_vector(30 DOWNTO 0);  -- sfix31_En23
@@ -46,7 +46,7 @@ ARCHITECTURE rtl OF fft_filters_MINRESRX2_BUTTERFLY IS
   COMPONENT fft_filters_Complex4Multiply
     PORT( clk                             :   IN    std_logic;
           reset                           :   IN    std_logic;
-          enb_1_2048_0                    :   IN    std_logic;
+          enb_1_16_0                      :   IN    std_logic;
           btfIn2_re                       :   IN    std_logic_vector(30 DOWNTO 0);  -- sfix31_En23
           btfIn2_im                       :   IN    std_logic_vector(30 DOWNTO 0);  -- sfix31_En23
           din2Dly_vld                     :   IN    std_logic;
@@ -121,7 +121,7 @@ BEGIN
   u_MUL4 : fft_filters_Complex4Multiply
     PORT MAP( clk => clk,
               reset => reset,
-              enb_1_2048_0 => enb_1_2048_0,
+              enb_1_16_0 => enb_1_16_0,
               btfIn2_re => std_logic_vector(din2Dly_re),  -- sfix31_En23
               btfIn2_im => std_logic_vector(din2Dly_im),  -- sfix31_En23
               din2Dly_vld => btfIn_vld,
@@ -142,7 +142,7 @@ BEGIN
     IF reset = '1' THEN
       intdelay_reg <= (OTHERS => to_signed(16#00000000#, 31));
     ELSIF rising_edge(clk) THEN
-      IF enb_1_2048_0 = '1' THEN
+      IF enb_1_16_0 = '1' THEN
         intdelay_reg(0) <= btfIn2_re_signed;
         intdelay_reg(1) <= intdelay_reg(0);
       END IF;
@@ -156,7 +156,7 @@ BEGIN
     IF reset = '1' THEN
       intdelay_reg_1 <= (OTHERS => to_signed(16#00000000#, 31));
     ELSIF rising_edge(clk) THEN
-      IF enb_1_2048_0 = '1' THEN
+      IF enb_1_16_0 = '1' THEN
         intdelay_reg_1(0) <= btfIn2_im_signed;
         intdelay_reg_1(1) <= intdelay_reg_1(0);
       END IF;
@@ -176,7 +176,7 @@ BEGIN
     IF reset = '1' THEN
       intdelay_reg_2 <= (OTHERS => to_signed(16#00000000#, 31));
     ELSIF rising_edge(clk) THEN
-      IF enb_1_2048_0 = '1' THEN
+      IF enb_1_16_0 = '1' THEN
         intdelay_reg_2(0) <= btfIn1_re_signed;
         intdelay_reg_2(1 TO 7) <= intdelay_reg_2(0 TO 6);
       END IF;
@@ -192,7 +192,7 @@ BEGIN
     IF reset = '1' THEN
       intdelay_reg_3 <= (OTHERS => to_signed(16#00000000#, 31));
     ELSIF rising_edge(clk) THEN
-      IF enb_1_2048_0 = '1' THEN
+      IF enb_1_16_0 = '1' THEN
         intdelay_reg_3(0) <= btfIn1_im_signed;
         intdelay_reg_3(1 TO 7) <= intdelay_reg_3(0 TO 6);
       END IF;
@@ -206,7 +206,7 @@ BEGIN
     IF reset = '1' THEN
       intdelay_reg_4 <= (OTHERS => '0');
     ELSIF rising_edge(clk) THEN
-      IF enb_1_2048_0 = '1' THEN
+      IF enb_1_16_0 = '1' THEN
         intdelay_reg_4(0) <= btfIn_vld;
         intdelay_reg_4(1 TO 7) <= intdelay_reg_4(0 TO 6);
       END IF;
@@ -230,7 +230,7 @@ BEGIN
       minResRX2FFTButterfly_vld_reg <= '0';
       btfOut_vld <= '0';
     ELSIF rising_edge(clk) THEN
-      IF enb_1_2048_0 = '1' THEN
+      IF enb_1_16_0 = '1' THEN
         minResRX2FFTButterfly_add1_re <= minResRX2FFTButterfly_add1_re_next;
         minResRX2FFTButterfly_add1_im <= minResRX2FFTButterfly_add1_im_next;
         minResRX2FFTButterfly_sub1_re <= minResRX2FFTButterfly_sub1_re_next;

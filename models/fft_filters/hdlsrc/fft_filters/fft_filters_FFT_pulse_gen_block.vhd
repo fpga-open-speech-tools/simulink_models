@@ -21,7 +21,7 @@ USE IEEE.numeric_std.ALL;
 ENTITY fft_filters_FFT_pulse_gen_block IS
   PORT( clk                               :   IN    std_logic;
         reset                             :   IN    std_logic;
-        enb_1_262144_0                    :   IN    std_logic;
+        enb_1_2048_0                      :   IN    std_logic;
         counter                           :   IN    std_logic_vector(7 DOWNTO 0);  -- uint8
         FFT_start_pulse                   :   OUT   std_logic;
         Enable_FFTs                       :   OUT   std_logic
@@ -41,7 +41,7 @@ ARCHITECTURE rtl OF fft_filters_FFT_pulse_gen_block IS
   COMPONENT fft_filters_Wait_for_data_to_start_block
     PORT( clk                             :   IN    std_logic;
           reset                           :   IN    std_logic;
-          enb_1_262144_0                  :   IN    std_logic;
+          enb_1_2048_0                    :   IN    std_logic;
           Frame_Pulse                     :   IN    std_logic;
           FFT_Frame_Start                 :   OUT   std_logic;
           Enable_FFT_Frames               :   OUT   std_logic
@@ -72,7 +72,7 @@ BEGIN
   u_Wait_for_data_to_start : fft_filters_Wait_for_data_to_start_block
     PORT MAP( clk => clk,
               reset => reset,
-              enb_1_262144_0 => enb_1_262144_0,
+              enb_1_2048_0 => enb_1_2048_0,
               Frame_Pulse => FFT_Frame_Pulse_Gen_out1,
               FFT_Frame_Start => Wait_for_data_to_start_out1,
               Enable_FFT_Frames => Wait_for_data_to_start_out2

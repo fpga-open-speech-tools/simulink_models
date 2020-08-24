@@ -8,20 +8,20 @@
 -- -------------------------------------------------------------
 -- Rate and Clocking Details
 -- -------------------------------------------------------------
--- Model base rate: 7.94729e-11
--- Target subsystem base rate: 7.94729e-11
--- Explicit user oversample request: 2048x
+-- Model base rate: 1.01725e-08
+-- Target subsystem base rate: 1.01725e-08
+-- Explicit user oversample request: 16x
 -- 
 -- 
 -- Clock Enable  Sample Time
 -- -------------------------------------------------------------
--- ce_out        2.08333e-05
+-- ce_out        1.01725e-08
 -- -------------------------------------------------------------
 -- 
 -- 
 -- Output Signal                 Clock Enable  Sample Time
 -- -------------------------------------------------------------
--- avalon_source_data            ce_out        2.08333e-05
+-- avalon_source_data            ce_out        1.01725e-08
 -- -------------------------------------------------------------
 -- 
 -- -------------------------------------------------------------
@@ -30,7 +30,7 @@
 -- -------------------------------------------------------------
 -- 
 -- Module: fft_filters_dataplane
--- Source Path: fft_filters/dataplane
+-- Source Path: 
 -- Hierarchy Level: 0
 -- 
 -- -------------------------------------------------------------
@@ -43,11 +43,11 @@ ENTITY fft_filters_dataplane IS
   PORT( clk                               :   IN    std_logic;
         reset                             :   IN    std_logic;
         clk_enable                        :   IN    std_logic;
-        avalon_sink_data                  :   IN    vector_of_std_logic_vector24(0 TO 1);  -- sfix24_En23 [2]
+        avalon_sink_data                  :   IN    vector_of_std_logic_vector32(0 TO 1);  -- sfix32_En28 [2]
         register_control_passthrough      :   IN    std_logic;
         register_control_filter_select    :   IN    std_logic_vector(1 DOWNTO 0);  -- ufix2
         ce_out                            :   OUT   std_logic;
-        avalon_source_data                :   OUT   vector_of_std_logic_vector24(0 TO 1)  -- sfix24_En23 [2]
+        avalon_source_data                :   OUT   vector_of_std_logic_vector32(0 TO 1)  -- sfix32_En28 [2]
         );
 END fft_filters_dataplane;
 
@@ -62,23 +62,24 @@ ARCHITECTURE rtl OF fft_filters_dataplane IS
           reset                           :   IN    std_logic;
           clk_enable                      :   IN    std_logic;
           enb                             :   OUT   std_logic;
+          enb_1_1_1                       :   OUT   std_logic;
+          enb_1_16_0                      :   OUT   std_logic;
+          enb_1_16_1                      :   OUT   std_logic;
           enb_1_2048_0                    :   OUT   std_logic;
           enb_1_2048_1                    :   OUT   std_logic;
-          enb_1_262144_0                  :   OUT   std_logic;
-          enb_1_262144_1                  :   OUT   std_logic;
-          enb_1_262144_4097               :   OUT   std_logic
+          enb_1_2048_33                   :   OUT   std_logic
           );
   END COMPONENT;
 
   COMPONENT fft_filters_FFT_Analysis_Synthesis_Left
     PORT( clk                             :   IN    std_logic;
           reset                           :   IN    std_logic;
-          enb_1_262144_1                  :   IN    std_logic;
+          enb_1_16_0                      :   IN    std_logic;
           enb                             :   IN    std_logic;
           enb_1_2048_0                    :   IN    std_logic;
-          enb_1_262144_0                  :   IN    std_logic;
+          enb_1_16_1                      :   IN    std_logic;
           enb_1_2048_1                    :   IN    std_logic;
-          enb_1_262144_4097               :   IN    std_logic;
+          enb_1_2048_33                   :   IN    std_logic;
           signal_in                       :   IN    std_logic_vector(23 DOWNTO 0);  -- sfix24_En23
           Passthrough                     :   IN    std_logic;
           filter_select                   :   IN    std_logic_vector(1 DOWNTO 0);  -- ufix2
@@ -89,12 +90,12 @@ ARCHITECTURE rtl OF fft_filters_dataplane IS
   COMPONENT fft_filters_FFT_Analysis_Synthesis_Right
     PORT( clk                             :   IN    std_logic;
           reset                           :   IN    std_logic;
-          enb_1_262144_1                  :   IN    std_logic;
+          enb_1_16_0                      :   IN    std_logic;
           enb                             :   IN    std_logic;
           enb_1_2048_0                    :   IN    std_logic;
-          enb_1_262144_0                  :   IN    std_logic;
+          enb_1_16_1                      :   IN    std_logic;
           enb_1_2048_1                    :   IN    std_logic;
-          enb_1_262144_4097               :   IN    std_logic;
+          enb_1_2048_33                   :   IN    std_logic;
           signal_in                       :   IN    std_logic_vector(23 DOWNTO 0);  -- sfix24_En23
           Passthrough                     :   IN    std_logic;
           filter_select                   :   IN    std_logic_vector(1 DOWNTO 0);  -- ufix2
@@ -113,17 +114,28 @@ ARCHITECTURE rtl OF fft_filters_dataplane IS
     USE ENTITY work.fft_filters_FFT_Analysis_Synthesis_Right(rtl);
 
   -- Signals
-  SIGNAL enb_1_262144_1                   : std_logic;
+  SIGNAL enb_1_16_0                       : std_logic;
   SIGNAL enb                              : std_logic;
   SIGNAL enb_1_2048_0                     : std_logic;
-  SIGNAL enb_1_262144_0                   : std_logic;
+  SIGNAL enb_1_16_1                       : std_logic;
   SIGNAL enb_1_2048_1                     : std_logic;
-  SIGNAL enb_1_262144_4097                : std_logic;
+  SIGNAL enb_1_2048_33                    : std_logic;
+  SIGNAL enb_1_1_1                        : std_logic;
+  SIGNAL delayMatch1_reg                  : std_logic_vector(0 TO 1);  -- ufix1 [2]
+  SIGNAL register_control_passthrough_1   : std_logic;
+  SIGNAL register_control_passthrough_2   : std_logic;
+  SIGNAL avalon_sink_data_signed          : vector_of_signed32(0 TO 1);  -- sfix32_En28 [2]
+  SIGNAL Data_Type_Conversion_out1        : vector_of_signed24(0 TO 1);  -- sfix24_En23 [2]
+  SIGNAL register_control_passthrough_3   : std_logic;
+  SIGNAL switch_compare_1                 : std_logic;
   SIGNAL FFT_Analysis_Synthesis_Left_out1 : std_logic_vector(23 DOWNTO 0);  -- ufix24
+  SIGNAL FFT_Analysis_Synthesis_Left_out1_signed : signed(23 DOWNTO 0);  -- sfix24_En23
+  SIGNAL Data_Type_Conversion1_out1       : signed(31 DOWNTO 0);  -- sfix32_En28
   SIGNAL FFT_Analysis_Synthesis_Right_out1 : std_logic_vector(23 DOWNTO 0);  -- ufix24
-  SIGNAL Mux_out1                         : vector_of_signed24(0 TO 1);  -- sfix24_En23 [2]
-  SIGNAL t1_bypass_reg                    : vector_of_signed24(0 TO 1);  -- sfix24 [2]
-  SIGNAL Mux_out1_1                       : vector_of_signed24(0 TO 1);  -- sfix24_En23 [2]
+  SIGNAL FFT_Analysis_Synthesis_Right_out1_signed : signed(23 DOWNTO 0);  -- sfix24_En23
+  SIGNAL Data_Type_Conversion2_out1       : signed(31 DOWNTO 0);  -- sfix32_En28
+  SIGNAL Mux_out1                         : vector_of_signed32(0 TO 1);  -- sfix32_En28 [2]
+  SIGNAL Switch_out1                      : vector_of_signed32(0 TO 1);  -- sfix32_En28 [2]
 
 BEGIN
   u_dataplane_tc : fft_filters_dataplane_tc
@@ -131,23 +143,24 @@ BEGIN
               reset => reset,
               clk_enable => clk_enable,
               enb => enb,
+              enb_1_1_1 => enb_1_1_1,
+              enb_1_16_0 => enb_1_16_0,
+              enb_1_16_1 => enb_1_16_1,
               enb_1_2048_0 => enb_1_2048_0,
               enb_1_2048_1 => enb_1_2048_1,
-              enb_1_262144_0 => enb_1_262144_0,
-              enb_1_262144_1 => enb_1_262144_1,
-              enb_1_262144_4097 => enb_1_262144_4097
+              enb_1_2048_33 => enb_1_2048_33
               );
 
   u_FFT_Analysis_Synthesis_Left : fft_filters_FFT_Analysis_Synthesis_Left
     PORT MAP( clk => clk,
               reset => reset,
-              enb_1_262144_1 => enb_1_262144_1,
+              enb_1_16_0 => enb_1_16_0,
               enb => enb,
               enb_1_2048_0 => enb_1_2048_0,
-              enb_1_262144_0 => enb_1_262144_0,
+              enb_1_16_1 => enb_1_16_1,
               enb_1_2048_1 => enb_1_2048_1,
-              enb_1_262144_4097 => enb_1_262144_4097,
-              signal_in => avalon_sink_data(0),  -- sfix24_En23
+              enb_1_2048_33 => enb_1_2048_33,
+              signal_in => std_logic_vector(Data_Type_Conversion_out1(0)),  -- sfix24_En23
               Passthrough => register_control_passthrough,
               filter_select => register_control_filter_select,  -- ufix2
               signal_out => FFT_Analysis_Synthesis_Left_out1  -- sfix24_En23
@@ -156,41 +169,80 @@ BEGIN
   u_FFT_Analysis_Synthesis_Right : fft_filters_FFT_Analysis_Synthesis_Right
     PORT MAP( clk => clk,
               reset => reset,
-              enb_1_262144_1 => enb_1_262144_1,
+              enb_1_16_0 => enb_1_16_0,
               enb => enb,
               enb_1_2048_0 => enb_1_2048_0,
-              enb_1_262144_0 => enb_1_262144_0,
+              enb_1_16_1 => enb_1_16_1,
               enb_1_2048_1 => enb_1_2048_1,
-              enb_1_262144_4097 => enb_1_262144_4097,
-              signal_in => avalon_sink_data(1),  -- sfix24_En23
+              enb_1_2048_33 => enb_1_2048_33,
+              signal_in => std_logic_vector(Data_Type_Conversion_out1(1)),  -- sfix24_En23
               Passthrough => register_control_passthrough,
               filter_select => register_control_filter_select,  -- ufix2
               signal_out => FFT_Analysis_Synthesis_Right_out1  -- sfix24_En23
               );
 
-  Mux_out1(0) <= signed(FFT_Analysis_Synthesis_Left_out1);
-  Mux_out1(1) <= signed(FFT_Analysis_Synthesis_Right_out1);
-
-  t1_bypass_process : PROCESS (clk, reset)
+  delayMatch1_process : PROCESS (clk, reset)
   BEGIN
     IF reset = '1' THEN
-      t1_bypass_reg <= (OTHERS => to_signed(16#000000#, 24));
+      delayMatch1_reg <= (OTHERS => '0');
     ELSIF rising_edge(clk) THEN
-      IF enb_1_262144_1 = '1' THEN
-        t1_bypass_reg <= Mux_out1;
+      IF enb_1_2048_0 = '1' THEN
+        delayMatch1_reg(0) <= register_control_passthrough;
+        delayMatch1_reg(1) <= delayMatch1_reg(0);
       END IF;
     END IF;
-  END PROCESS t1_bypass_process;
+  END PROCESS delayMatch1_process;
 
-  
-  Mux_out1_1 <= Mux_out1 WHEN enb_1_262144_1 = '1' ELSE
-      t1_bypass_reg;
+  register_control_passthrough_1 <= delayMatch1_reg(1);
 
-  outputgen: FOR k IN 0 TO 1 GENERATE
-    avalon_source_data(k) <= std_logic_vector(Mux_out1_1(k));
+  register_control_passthrough_2 <= register_control_passthrough_1;
+
+  outputgen1: FOR k IN 0 TO 1 GENERATE
+    avalon_sink_data_signed(k) <= signed(avalon_sink_data(k));
   END GENERATE;
 
-  ce_out <= enb_1_262144_1;
+
+  Data_Type_Conversion_out1_gen: FOR ii IN 0 TO 1 GENERATE
+    Data_Type_Conversion_out1(ii) <= avalon_sink_data_signed(ii)(28 DOWNTO 5);
+  END GENERATE Data_Type_Conversion_out1_gen;
+
+
+  delayMatch_process : PROCESS (clk, reset)
+  BEGIN
+    IF reset = '1' THEN
+      register_control_passthrough_3 <= '0';
+    ELSIF rising_edge(clk) THEN
+      IF enb = '1' THEN
+        register_control_passthrough_3 <= register_control_passthrough_2;
+      END IF;
+    END IF;
+  END PROCESS delayMatch_process;
+
+
+  
+  switch_compare_1 <= '1' WHEN register_control_passthrough_3 > '0' ELSE
+      '0';
+
+  FFT_Analysis_Synthesis_Left_out1_signed <= signed(FFT_Analysis_Synthesis_Left_out1);
+
+  Data_Type_Conversion1_out1 <= resize(FFT_Analysis_Synthesis_Left_out1_signed & '0' & '0' & '0' & '0' & '0', 32);
+
+  FFT_Analysis_Synthesis_Right_out1_signed <= signed(FFT_Analysis_Synthesis_Right_out1);
+
+  Data_Type_Conversion2_out1 <= resize(FFT_Analysis_Synthesis_Right_out1_signed & '0' & '0' & '0' & '0' & '0', 32);
+
+  Mux_out1(0) <= Data_Type_Conversion1_out1;
+  Mux_out1(1) <= Data_Type_Conversion2_out1;
+
+  
+  Switch_out1 <= Mux_out1 WHEN switch_compare_1 = '0' ELSE
+      Mux_out1;
+
+  outputgen: FOR k IN 0 TO 1 GENERATE
+    avalon_source_data(k) <= std_logic_vector(Switch_out1(k));
+  END GENERATE;
+
+  ce_out <= enb_1_1_1;
 
 END rtl;
 

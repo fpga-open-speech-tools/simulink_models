@@ -21,10 +21,10 @@ USE IEEE.numeric_std.ALL;
 ENTITY fft_filters_Analysis IS
   PORT( clk                               :   IN    std_logic;
         reset                             :   IN    std_logic;
-        enb_1_262144_1                    :   IN    std_logic;
+        enb_1_16_0                        :   IN    std_logic;
         enb                               :   IN    std_logic;
         enb_1_2048_0                      :   IN    std_logic;
-        enb_1_262144_0                    :   IN    std_logic;
+        enb_1_16_1                        :   IN    std_logic;
         enb_1_2048_1                      :   IN    std_logic;
         Signal_in                         :   IN    std_logic_vector(23 DOWNTO 0);  -- sfix24_En23
         Passthrough                       :   IN    std_logic;
@@ -47,10 +47,10 @@ ARCHITECTURE rtl OF fft_filters_Analysis IS
   COMPONENT fft_filters_FFT_Frame_Buffering
     PORT( clk                             :   IN    std_logic;
           reset                           :   IN    std_logic;
-          enb_1_262144_1                  :   IN    std_logic;
+          enb_1_16_0                      :   IN    std_logic;
           enb                             :   IN    std_logic;
           enb_1_2048_0                    :   IN    std_logic;
-          enb_1_262144_0                  :   IN    std_logic;
+          enb_1_16_1                      :   IN    std_logic;
           enb_1_2048_1                    :   IN    std_logic;
           Sample_Data_in                  :   IN    std_logic_vector(23 DOWNTO 0);  -- sfix24_En23
           passthrough_in                  :   IN    std_logic;
@@ -66,13 +66,12 @@ ARCHITECTURE rtl OF fft_filters_Analysis IS
   COMPONENT fft_filters_FFT
     PORT( clk                             :   IN    std_logic;
           reset                           :   IN    std_logic;
-          enb_1_2048_0                    :   IN    std_logic;
+          enb_1_16_0                      :   IN    std_logic;
           dataIn                          :   IN    std_logic_vector(23 DOWNTO 0);  -- sfix24_En23
           validIn                         :   IN    std_logic;
           dataOut_re                      :   OUT   std_logic_vector(30 DOWNTO 0);  -- sfix31_En23
           dataOut_im                      :   OUT   std_logic_vector(30 DOWNTO 0);  -- sfix31_En23
-          validOut                        :   OUT   std_logic;
-          ready                           :   OUT   std_logic
+          validOut                        :   OUT   std_logic
           );
   END COMPONENT;
 
@@ -93,7 +92,6 @@ ARCHITECTURE rtl OF fft_filters_Analysis IS
   SIGNAL FFT_out1_re                      : std_logic_vector(30 DOWNTO 0);  -- ufix31
   SIGNAL FFT_out1_im                      : std_logic_vector(30 DOWNTO 0);  -- ufix31
   SIGNAL FFT_out2                         : std_logic;
-  SIGNAL FFT_out3                         : std_logic;
 
 BEGIN
   -- The ready signal is ignored by design
@@ -103,10 +101,10 @@ BEGIN
   u_FFT_Frame_Buffering : fft_filters_FFT_Frame_Buffering
     PORT MAP( clk => clk,
               reset => reset,
-              enb_1_262144_1 => enb_1_262144_1,
+              enb_1_16_0 => enb_1_16_0,
               enb => enb,
               enb_1_2048_0 => enb_1_2048_0,
-              enb_1_262144_0 => enb_1_262144_0,
+              enb_1_16_1 => enb_1_16_1,
               enb_1_2048_1 => enb_1_2048_1,
               Sample_Data_in => Signal_in,  -- sfix24_En23
               passthrough_in => Passthrough,
@@ -121,13 +119,12 @@ BEGIN
   u_FFT : fft_filters_FFT
     PORT MAP( clk => clk,
               reset => reset,
-              enb_1_2048_0 => enb_1_2048_0,
+              enb_1_16_0 => enb_1_16_0,
               dataIn => FFT_Frame_Buffering_out1,  -- sfix24_En23
               validIn => FFT_Frame_Buffering_out2_1,
               dataOut_re => FFT_out1_re,  -- sfix31_En23
               dataOut_im => FFT_out1_im,  -- sfix31_En23
-              validOut => FFT_out2,
-              ready => FFT_out3
+              validOut => FFT_out2
               );
 
   delayMatch_process : PROCESS (clk, reset)
@@ -135,7 +132,7 @@ BEGIN
     IF reset = '1' THEN
       FFT_Frame_Buffering_out2_1 <= '0';
     ELSIF rising_edge(clk) THEN
-      IF enb_1_2048_0 = '1' THEN
+      IF enb_1_16_0 = '1' THEN
         FFT_Frame_Buffering_out2_1 <= FFT_Frame_Buffering_out2;
       END IF;
     END IF;

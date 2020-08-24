@@ -23,14 +23,12 @@ USE IEEE.numeric_std.ALL;
 ENTITY fft_filters_iFFT_block IS
   PORT( clk                               :   IN    std_logic;
         reset                             :   IN    std_logic;
-        enb_1_2048_0                      :   IN    std_logic;
+        enb_1_16_0                        :   IN    std_logic;
         dataIn_re                         :   IN    std_logic_vector(30 DOWNTO 0);  -- sfix31_En23
         dataIn_im                         :   IN    std_logic_vector(30 DOWNTO 0);  -- sfix31_En23
         validIn                           :   IN    std_logic;
         dataOut_re                        :   OUT   std_logic_vector(30 DOWNTO 0);  -- sfix31_En23
-        dataOut_im                        :   OUT   std_logic_vector(30 DOWNTO 0);  -- sfix31_En23
-        validOut                          :   OUT   std_logic;
-        ready                             :   OUT   std_logic
+        validOut                          :   OUT   std_logic
         );
 END fft_filters_iFFT_block;
 
@@ -41,21 +39,20 @@ ARCHITECTURE rtl OF fft_filters_iFFT_block IS
   COMPONENT fft_filters_TWDLROM_block2
     PORT( clk                             :   IN    std_logic;
           reset                           :   IN    std_logic;
-          enb_1_2048_0                    :   IN    std_logic;
+          enb_1_16_0                      :   IN    std_logic;
           dMemOutDly_vld                  :   IN    std_logic;
           stage                           :   IN    std_logic_vector(2 DOWNTO 0);  -- ufix3
           initIC                          :   IN    std_logic;
           syncReset                       :   IN    std_logic;
           twdl_re                         :   OUT   std_logic_vector(30 DOWNTO 0);  -- sfix31_En29
-          twdl_im                         :   OUT   std_logic_vector(30 DOWNTO 0);  -- sfix31_En29
-          twdl_vld                        :   OUT   std_logic
+          twdl_im                         :   OUT   std_logic_vector(30 DOWNTO 0)  -- sfix31_En29
           );
   END COMPONENT;
 
   COMPONENT fft_filters_MINRESRX2FFT_MEMORY_block2
     PORT( clk                             :   IN    std_logic;
           reset                           :   IN    std_logic;
-          enb_1_2048_0                    :   IN    std_logic;
+          enb_1_16_0                      :   IN    std_logic;
           dMemIn1_re                      :   IN    std_logic_vector(30 DOWNTO 0);  -- sfix31_En23
           dMemIn1_im                      :   IN    std_logic_vector(30 DOWNTO 0);  -- sfix31_En23
           dMemIn2_re                      :   IN    std_logic_vector(30 DOWNTO 0);  -- sfix31_En23
@@ -80,7 +77,7 @@ ARCHITECTURE rtl OF fft_filters_iFFT_block IS
   COMPONENT fft_filters_MINRESRX2FFT_BTFSEL_block2
     PORT( clk                             :   IN    std_logic;
           reset                           :   IN    std_logic;
-          enb_1_2048_0                    :   IN    std_logic;
+          enb_1_16_0                      :   IN    std_logic;
           din_1_im                        :   IN    std_logic_vector(30 DOWNTO 0);  -- sfix31_En23
           din_1_re                        :   IN    std_logic_vector(30 DOWNTO 0);  -- sfix31_En23
           validIn                         :   IN    std_logic;
@@ -104,7 +101,7 @@ ARCHITECTURE rtl OF fft_filters_iFFT_block IS
   COMPONENT fft_filters_MINRESRX2_BUTTERFLY_block2
     PORT( clk                             :   IN    std_logic;
           reset                           :   IN    std_logic;
-          enb_1_2048_0                    :   IN    std_logic;
+          enb_1_16_0                      :   IN    std_logic;
           btfIn1_re                       :   IN    std_logic_vector(30 DOWNTO 0);  -- sfix31_En23
           btfIn1_im                       :   IN    std_logic_vector(30 DOWNTO 0);  -- sfix31_En23
           btfIn2_re                       :   IN    std_logic_vector(30 DOWNTO 0);  -- sfix31_En23
@@ -124,7 +121,7 @@ ARCHITECTURE rtl OF fft_filters_iFFT_block IS
   COMPONENT fft_filters_MINRESRX2FFT_MEMSEL_block2
     PORT( clk                             :   IN    std_logic;
           reset                           :   IN    std_logic;
-          enb_1_2048_0                    :   IN    std_logic;
+          enb_1_16_0                      :   IN    std_logic;
           btfOut1_re                      :   IN    std_logic_vector(30 DOWNTO 0);  -- sfix31_En23
           btfOut1_im                      :   IN    std_logic_vector(30 DOWNTO 0);  -- sfix31_En23
           btfOut2_re                      :   IN    std_logic_vector(30 DOWNTO 0);  -- sfix31_En23
@@ -144,7 +141,7 @@ ARCHITECTURE rtl OF fft_filters_iFFT_block IS
   COMPONENT fft_filters_MINRESRX2FFT_CTRL_block2
     PORT( clk                             :   IN    std_logic;
           reset                           :   IN    std_logic;
-          enb_1_2048_0                    :   IN    std_logic;
+          enb_1_16_0                      :   IN    std_logic;
           din_1_im                        :   IN    std_logic_vector(30 DOWNTO 0);  -- sfix31_En23
           din_1_re                        :   IN    std_logic_vector(30 DOWNTO 0);  -- sfix31_En23
           validIn                         :   IN    std_logic;
@@ -176,7 +173,7 @@ ARCHITECTURE rtl OF fft_filters_iFFT_block IS
   COMPONENT fft_filters_MINRESRX2FFT_OUTMux_block2
     PORT( clk                             :   IN    std_logic;
           reset                           :   IN    std_logic;
-          enb_1_2048_0                    :   IN    std_logic;
+          enb_1_16_0                      :   IN    std_logic;
           rdEnb1                          :   IN    std_logic;
           rdEnb2                          :   IN    std_logic;
           rdEnb3                          :   IN    std_logic;
@@ -186,7 +183,6 @@ ARCHITECTURE rtl OF fft_filters_iFFT_block IS
           dMemOut2_im                     :   IN    std_logic_vector(30 DOWNTO 0);  -- sfix31_En23
           vldOut                          :   IN    std_logic;
           syncReset                       :   IN    std_logic;
-          dOut_re                         :   OUT   std_logic_vector(30 DOWNTO 0);  -- sfix31_En23
           dOut_im                         :   OUT   std_logic_vector(30 DOWNTO 0);  -- sfix31_En23
           dout_vld                        :   OUT   std_logic
           );
@@ -222,7 +218,6 @@ ARCHITECTURE rtl OF fft_filters_iFFT_block IS
   SIGNAL initIC                           : std_logic;
   SIGNAL twdl_re                          : std_logic_vector(30 DOWNTO 0);  -- ufix31
   SIGNAL twdl_im                          : std_logic_vector(30 DOWNTO 0);  -- ufix31
-  SIGNAL twdl_vld                         : std_logic;
   SIGNAL dMemIn1_re                       : std_logic_vector(30 DOWNTO 0);  -- ufix31
   SIGNAL dMemIn1_im                       : std_logic_vector(30 DOWNTO 0);  -- ufix31
   SIGNAL dMemIn2_re                       : std_logic_vector(30 DOWNTO 0);  -- ufix31
@@ -255,7 +250,6 @@ ARCHITECTURE rtl OF fft_filters_iFFT_block IS
   SIGNAL stgOut2_im                       : std_logic_vector(30 DOWNTO 0);  -- ufix31
   SIGNAL stgOut_vld                       : std_logic;
   SIGNAL vldOut                           : std_logic;
-  SIGNAL dOut_re                          : std_logic_vector(30 DOWNTO 0);  -- ufix31
   SIGNAL dOut_im                          : std_logic_vector(30 DOWNTO 0);  -- ufix31
   SIGNAL dout_vld                         : std_logic;
 
@@ -263,20 +257,19 @@ BEGIN
   u_MinResRX2FFT_TWDLROM : fft_filters_TWDLROM_block2
     PORT MAP( clk => clk,
               reset => reset,
-              enb_1_2048_0 => enb_1_2048_0,
+              enb_1_16_0 => enb_1_16_0,
               dMemOutDly_vld => dMemOutDly_vld,
               stage => stage,  -- ufix3
               initIC => initIC,
               syncReset => syncReset,
               twdl_re => twdl_re,  -- sfix31_En29
-              twdl_im => twdl_im,  -- sfix31_En29
-              twdl_vld => twdl_vld
+              twdl_im => twdl_im  -- sfix31_En29
               );
 
   u_MinResRX2FFT_MEMORY : fft_filters_MINRESRX2FFT_MEMORY_block2
     PORT MAP( clk => clk,
               reset => reset,
-              enb_1_2048_0 => enb_1_2048_0,
+              enb_1_16_0 => enb_1_16_0,
               dMemIn1_re => dMemIn1_re,  -- sfix31_En23
               dMemIn1_im => dMemIn1_im,  -- sfix31_En23
               dMemIn2_re => dMemIn2_re,  -- sfix31_En23
@@ -300,7 +293,7 @@ BEGIN
   u_MinResRX2FFT_BTFSEL : fft_filters_MINRESRX2FFT_BTFSEL_block2
     PORT MAP( clk => clk,
               reset => reset,
-              enb_1_2048_0 => enb_1_2048_0,
+              enb_1_16_0 => enb_1_16_0,
               din_1_im => dataIn_im,  -- sfix31_En23
               din_1_re => dataIn_re,  -- sfix31_En23
               validIn => validIn,
@@ -323,7 +316,7 @@ BEGIN
   u_MinResRX2FFT_BUTTERFLY : fft_filters_MINRESRX2_BUTTERFLY_block2
     PORT MAP( clk => clk,
               reset => reset,
-              enb_1_2048_0 => enb_1_2048_0,
+              enb_1_16_0 => enb_1_16_0,
               btfIn1_re => btfIn1_re,  -- sfix31_En23
               btfIn1_im => btfIn1_im,  -- sfix31_En23
               btfIn2_re => btfIn2_re,  -- sfix31_En23
@@ -342,7 +335,7 @@ BEGIN
   u_MinResRX2FFT_MEMSEL : fft_filters_MINRESRX2FFT_MEMSEL_block2
     PORT MAP( clk => clk,
               reset => reset,
-              enb_1_2048_0 => enb_1_2048_0,
+              enb_1_16_0 => enb_1_16_0,
               btfOut1_re => btfOut1_re,  -- sfix31_En23
               btfOut1_im => btfOut1_im,  -- sfix31_En23
               btfOut2_re => btfOut2_re,  -- sfix31_En23
@@ -361,7 +354,7 @@ BEGIN
   u_MinResRX2FFT_CTRL : fft_filters_MINRESRX2FFT_CTRL_block2
     PORT MAP( clk => clk,
               reset => reset,
-              enb_1_2048_0 => enb_1_2048_0,
+              enb_1_16_0 => enb_1_16_0,
               din_1_im => dataIn_im,  -- sfix31_En23
               din_1_re => dataIn_re,  -- sfix31_En23
               validIn => validIn,
@@ -392,7 +385,7 @@ BEGIN
   u_MinResRX2FFT_OUTMUX : fft_filters_MINRESRX2FFT_OUTMux_block2
     PORT MAP( clk => clk,
               reset => reset,
-              enb_1_2048_0 => enb_1_2048_0,
+              enb_1_16_0 => enb_1_16_0,
               rdEnb1 => rdEnb1,
               rdEnb2 => rdEnb2,
               rdEnb3 => rdEnb3,
@@ -402,7 +395,6 @@ BEGIN
               dMemOut2_im => dMemOut2_im,  -- sfix31_En23
               vldOut => vldOut,
               syncReset => syncReset,
-              dOut_re => dOut_re,  -- sfix31_En23
               dOut_im => dOut_im,  -- sfix31_En23
               dout_vld => dout_vld
               );
@@ -414,7 +406,7 @@ BEGIN
     IF reset = '1' THEN
       dMemOutDly_vld <= '0';
     ELSIF rising_edge(clk) THEN
-      IF enb_1_2048_0 = '1' THEN
+      IF enb_1_16_0 = '1' THEN
         IF syncReset = '1' THEN
           dMemOutDly_vld <= '0';
         ELSE 
@@ -427,11 +419,7 @@ BEGIN
 
   dataOut_re <= dOut_im;
 
-  dataOut_im <= dOut_re;
-
   validOut <= dout_vld;
-
-  ready <= rdy;
 
 END rtl;
 

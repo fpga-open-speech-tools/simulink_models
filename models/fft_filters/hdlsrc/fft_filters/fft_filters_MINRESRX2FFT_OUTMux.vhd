@@ -21,7 +21,7 @@ USE IEEE.numeric_std.ALL;
 ENTITY fft_filters_MINRESRX2FFT_OUTMux IS
   PORT( clk                               :   IN    std_logic;
         reset                             :   IN    std_logic;
-        enb_1_2048_0                      :   IN    std_logic;
+        enb_1_16_0                        :   IN    std_logic;
         rdEnb1                            :   IN    std_logic;
         rdEnb2                            :   IN    std_logic;
         rdEnb3                            :   IN    std_logic;
@@ -80,7 +80,7 @@ BEGIN
       minResRX2FFTOutMux_rdEnb2Dly <= '0';
       minResRX2FFTOutMux_rdEnb3Dly <= '0';
     ELSIF rising_edge(clk) THEN
-      IF enb_1_2048_0 = '1' THEN
+      IF enb_1_16_0 = '1' THEN
         minResRX2FFTOutMux_doutReg_re <= minResRX2FFTOutMux_doutReg_re_next;
         minResRX2FFTOutMux_doutReg_im <= minResRX2FFTOutMux_doutReg_im_next;
         minResRX2FFTOutMux_doutReg_vld <= minResRX2FFTOutMux_doutReg_vld_next;

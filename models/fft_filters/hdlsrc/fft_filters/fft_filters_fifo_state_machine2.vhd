@@ -21,7 +21,7 @@ USE IEEE.numeric_std.ALL;
 ENTITY fft_filters_fifo_state_machine2 IS
   PORT( clk                               :   IN    std_logic;
         reset                             :   IN    std_logic;
-        enb_1_2048_0                      :   IN    std_logic;
+        enb_1_16_0                        :   IN    std_logic;
         valid                             :   IN    std_logic;
         pop                               :   OUT   std_logic
         );
@@ -42,7 +42,7 @@ BEGIN
     IF reset = '1' THEN
       current_state <= to_unsigned(16#0#, 2);
     ELSIF rising_edge(clk) THEN
-      IF enb_1_2048_0 = '1' THEN
+      IF enb_1_16_0 = '1' THEN
         current_state <= current_state_next;
       END IF;
     END IF;
