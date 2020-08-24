@@ -21,8 +21,8 @@ USE IEEE.numeric_std.ALL;
 ENTITY fft_filters_Fast_Transition_block IS
   PORT( clk                               :   IN    std_logic;
         reset                             :   IN    std_logic;
-        enb_1_262144_1                    :   IN    std_logic;
-        enb_1_262144_0                    :   IN    std_logic;
+        enb_1_2048_0                      :   IN    std_logic;
+        enb_1_16_1                        :   IN    std_logic;
         enb_1_2048_1                      :   IN    std_logic;
         Slow_Pulse                        :   IN    std_logic;
         Slow_Enable                       :   IN    std_logic;
@@ -71,7 +71,7 @@ BEGIN
   Upsample_zero <= '0';
 
   
-  Upsample_muxout <= Slow_Pulse WHEN enb_1_262144_1 = '1' ELSE
+  Upsample_muxout <= Slow_Pulse WHEN enb_1_2048_1 = '1' ELSE
       Upsample_zero;
 
   -- Upsample bypass register
@@ -80,14 +80,14 @@ BEGIN
     IF reset = '1' THEN
       Upsample_bypass_reg <= '0';
     ELSIF rising_edge(clk) THEN
-      IF enb_1_2048_1 = '1' THEN
+      IF enb_1_16_1 = '1' THEN
         Upsample_bypass_reg <= Upsample_muxout;
       END IF;
     END IF;
   END PROCESS Upsample_bypass_process;
 
   
-  Upsample_bypassout <= Upsample_muxout WHEN enb_1_2048_1 = '1' ELSE
+  Upsample_bypassout <= Upsample_muxout WHEN enb_1_16_1 = '1' ELSE
       Upsample_bypass_reg;
 
   Rate_Transition_process : PROCESS (clk, reset)
@@ -95,7 +95,7 @@ BEGIN
     IF reset = '1' THEN
       Rate_Transition_out1 <= '0';
     ELSIF rising_edge(clk) THEN
-      IF enb_1_262144_0 = '1' THEN
+      IF enb_1_2048_0 = '1' THEN
         Rate_Transition_out1 <= Slow_Enable;
       END IF;
     END IF;
@@ -107,7 +107,7 @@ BEGIN
     IF reset = '1' THEN
       Rate_Transition1_out1 <= '0';
     ELSIF rising_edge(clk) THEN
-      IF enb_1_262144_0 = '1' THEN
+      IF enb_1_2048_0 = '1' THEN
         Rate_Transition1_out1 <= Slow_Passthrough;
       END IF;
     END IF;
@@ -121,7 +121,7 @@ BEGIN
     IF reset = '1' THEN
       Rate_Transition2_out1 <= to_unsigned(16#3#, 2);
     ELSIF rising_edge(clk) THEN
-      IF enb_1_262144_0 = '1' THEN
+      IF enb_1_2048_0 = '1' THEN
         Rate_Transition2_out1 <= Slow_select_unsigned;
       END IF;
     END IF;

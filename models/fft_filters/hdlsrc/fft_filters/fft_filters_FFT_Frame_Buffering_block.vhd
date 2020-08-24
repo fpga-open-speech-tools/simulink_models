@@ -21,10 +21,10 @@ USE IEEE.numeric_std.ALL;
 ENTITY fft_filters_FFT_Frame_Buffering_block IS
   PORT( clk                               :   IN    std_logic;
         reset                             :   IN    std_logic;
-        enb_1_262144_1                    :   IN    std_logic;
+        enb_1_16_0                        :   IN    std_logic;
         enb                               :   IN    std_logic;
         enb_1_2048_0                      :   IN    std_logic;
-        enb_1_262144_0                    :   IN    std_logic;
+        enb_1_16_1                        :   IN    std_logic;
         enb_1_2048_1                      :   IN    std_logic;
         Sample_Data_in                    :   IN    std_logic_vector(23 DOWNTO 0);  -- sfix24_En23
         passthrough_in                    :   IN    std_logic;
@@ -52,7 +52,7 @@ ARCHITECTURE rtl OF fft_filters_FFT_Frame_Buffering_block IS
   COMPONENT fft_filters_FFT_pulse_gen_block
     PORT( clk                             :   IN    std_logic;
           reset                           :   IN    std_logic;
-          enb_1_262144_0                  :   IN    std_logic;
+          enb_1_2048_0                    :   IN    std_logic;
           counter                         :   IN    std_logic_vector(7 DOWNTO 0);  -- uint8
           FFT_start_pulse                 :   OUT   std_logic;
           Enable_FFTs                     :   OUT   std_logic
@@ -62,8 +62,8 @@ ARCHITECTURE rtl OF fft_filters_FFT_Frame_Buffering_block IS
   COMPONENT fft_filters_Fast_Transition_block
     PORT( clk                             :   IN    std_logic;
           reset                           :   IN    std_logic;
-          enb_1_262144_1                  :   IN    std_logic;
-          enb_1_262144_0                  :   IN    std_logic;
+          enb_1_2048_0                    :   IN    std_logic;
+          enb_1_16_1                      :   IN    std_logic;
           enb_1_2048_1                    :   IN    std_logic;
           Slow_Pulse                      :   IN    std_logic;
           Slow_Enable                     :   IN    std_logic;
@@ -79,7 +79,7 @@ ARCHITECTURE rtl OF fft_filters_FFT_Frame_Buffering_block IS
   COMPONENT fft_filters_addr_B_gen_block
     PORT( clk                             :   IN    std_logic;
           reset                           :   IN    std_logic;
-          enb_1_2048_0                    :   IN    std_logic;
+          enb_1_16_0                      :   IN    std_logic;
           start                           :   IN    std_logic;
           enable                          :   IN    std_logic;
           addr_B                          :   OUT   std_logic_vector(7 DOWNTO 0);  -- uint8
@@ -93,8 +93,8 @@ ARCHITECTURE rtl OF fft_filters_FFT_Frame_Buffering_block IS
              DataWidth                    : integer
              );
     PORT( clk                             :   IN    std_logic;
+          enb_1_16_0                      :   IN    std_logic;
           enb_1_2048_0                    :   IN    std_logic;
-          enb_1_262144_0                  :   IN    std_logic;
           din_A                           :   IN    std_logic_vector(DataWidth - 1 DOWNTO 0);  -- generic width
           addr_A                          :   IN    std_logic_vector(AddrWidth - 1 DOWNTO 0);  -- generic width
           we_A                            :   IN    std_logic;
@@ -110,7 +110,7 @@ ARCHITECTURE rtl OF fft_filters_FFT_Frame_Buffering_block IS
     PORT( clk                             :   IN    std_logic;
           reset                           :   IN    std_logic;
           enb                             :   IN    std_logic;
-          enb_1_2048_1                    :   IN    std_logic;
+          enb_1_16_1                      :   IN    std_logic;
           Index                           :   IN    std_logic_vector(7 DOWNTO 0);  -- uint8
           hanning_value                   :   OUT   std_logic_vector(23 DOWNTO 0)  -- sfix24_En23
           );
@@ -231,7 +231,7 @@ BEGIN
   u_FFT_pulse_gen : fft_filters_FFT_pulse_gen_block
     PORT MAP( clk => clk,
               reset => reset,
-              enb_1_262144_0 => enb_1_262144_0,
+              enb_1_2048_0 => enb_1_2048_0,
               counter => std_logic_vector(counter_A_out1),  -- uint8
               FFT_start_pulse => FFT_pulse_gen_out1,
               Enable_FFTs => FFT_pulse_gen_out2
@@ -240,8 +240,8 @@ BEGIN
   u_Fast_Transition : fft_filters_Fast_Transition_block
     PORT MAP( clk => clk,
               reset => reset,
-              enb_1_262144_1 => enb_1_262144_1,
-              enb_1_262144_0 => enb_1_262144_0,
+              enb_1_2048_0 => enb_1_2048_0,
+              enb_1_16_1 => enb_1_16_1,
               enb_1_2048_1 => enb_1_2048_1,
               Slow_Pulse => FFT_pulse_gen_out1,
               Slow_Enable => FFT_pulse_gen_out2,
@@ -256,7 +256,7 @@ BEGIN
   u_addr_B_gen : fft_filters_addr_B_gen_block
     PORT MAP( clk => clk,
               reset => reset,
-              enb_1_2048_0 => enb_1_2048_0,
+              enb_1_16_0 => enb_1_16_0,
               start => Fast_Transition_out1,
               enable => Fast_Transition_out2,
               addr_B => addr_B_gen_out1,  -- uint8
@@ -269,8 +269,8 @@ BEGIN
                  DataWidth => 24
                  )
     PORT MAP( clk => clk,
+              enb_1_16_0 => enb_1_16_0,
               enb_1_2048_0 => enb_1_2048_0,
-              enb_1_262144_0 => enb_1_262144_0,
               din_A => Sample_Data_in,
               addr_A => addr_A_offset_out1,
               we_A => Always_Write_A_out1,
@@ -285,7 +285,7 @@ BEGIN
     PORT MAP( clk => clk,
               reset => reset,
               enb => enb,
-              enb_1_2048_1 => enb_1_2048_1,
+              enb_1_16_1 => enb_1_16_1,
               Index => addr_B_gen_out2,  -- uint8
               hanning_value => Hanning_ROM_out1  -- sfix24_En23
               );
@@ -298,7 +298,7 @@ BEGIN
     IF reset = '1' THEN
       counter_A_out1 <= to_unsigned(16#00#, 8);
     ELSIF rising_edge(clk) THEN
-      IF enb_1_262144_0 = '1' THEN
+      IF enb_1_2048_0 = '1' THEN
         counter_A_out1 <= counter_A_out1 + to_unsigned(16#01#, 8);
       END IF;
     END IF;
@@ -360,14 +360,14 @@ BEGIN
     IF reset = '1' THEN
       FFT_bypass_reg <= to_signed(16#000000#, 24);
     ELSIF rising_edge(clk) THEN
-      IF enb_1_2048_1 = '1' THEN
+      IF enb_1_16_1 = '1' THEN
         FFT_bypass_reg <= Data_Type_Conversion_out1;
       END IF;
     END IF;
   END PROCESS FFT_bypass_process;
 
   
-  Data_Type_Conversion_out1_1 <= Data_Type_Conversion_out1 WHEN enb_1_2048_1 = '1' ELSE
+  Data_Type_Conversion_out1_1 <= Data_Type_Conversion_out1 WHEN enb_1_16_1 = '1' ELSE
       FFT_bypass_reg;
 
   Data_to_FFT <= std_logic_vector(Data_Type_Conversion_out1_1);
@@ -375,7 +375,7 @@ BEGIN
   Unit_Delay_process : PROCESS (clk)
   BEGIN
     IF rising_edge(clk) THEN
-      IF enb_1_2048_0 = '1' THEN
+      IF enb_1_16_0 = '1' THEN
         Unit_Delay_out1 <= addr_B_gen_out3;
       END IF;
     END IF;

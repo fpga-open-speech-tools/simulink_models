@@ -21,12 +21,12 @@ USE IEEE.numeric_std.ALL;
 ENTITY fft_filters_FFT_Analysis_Synthesis_Left IS
   PORT( clk                               :   IN    std_logic;
         reset                             :   IN    std_logic;
-        enb_1_262144_1                    :   IN    std_logic;
+        enb_1_16_0                        :   IN    std_logic;
         enb                               :   IN    std_logic;
         enb_1_2048_0                      :   IN    std_logic;
-        enb_1_262144_0                    :   IN    std_logic;
+        enb_1_16_1                        :   IN    std_logic;
         enb_1_2048_1                      :   IN    std_logic;
-        enb_1_262144_4097                 :   IN    std_logic;
+        enb_1_2048_33                     :   IN    std_logic;
         signal_in                         :   IN    std_logic_vector(23 DOWNTO 0);  -- sfix24_En23
         Passthrough                       :   IN    std_logic;
         filter_select                     :   IN    std_logic_vector(1 DOWNTO 0);  -- ufix2
@@ -43,10 +43,10 @@ ARCHITECTURE rtl OF fft_filters_FFT_Analysis_Synthesis_Left IS
   COMPONENT fft_filters_Analysis
     PORT( clk                             :   IN    std_logic;
           reset                           :   IN    std_logic;
-          enb_1_262144_1                  :   IN    std_logic;
+          enb_1_16_0                      :   IN    std_logic;
           enb                             :   IN    std_logic;
           enb_1_2048_0                    :   IN    std_logic;
-          enb_1_262144_0                  :   IN    std_logic;
+          enb_1_16_1                      :   IN    std_logic;
           enb_1_2048_1                    :   IN    std_logic;
           Signal_in                       :   IN    std_logic_vector(23 DOWNTO 0);  -- sfix24_En23
           Passthrough                     :   IN    std_logic;
@@ -63,9 +63,9 @@ ARCHITECTURE rtl OF fft_filters_FFT_Analysis_Synthesis_Left IS
   COMPONENT fft_filters_Frequency_Domain_Processing
     PORT( clk                             :   IN    std_logic;
           reset                           :   IN    std_logic;
+          enb_1_16_0                      :   IN    std_logic;
           enb                             :   IN    std_logic;
-          enb_1_2048_0                    :   IN    std_logic;
-          enb_1_2048_1                    :   IN    std_logic;
+          enb_1_16_1                      :   IN    std_logic;
           FFT_results_re                  :   IN    std_logic_vector(30 DOWNTO 0);  -- sfix31_En23
           FFT_results_im                  :   IN    std_logic_vector(30 DOWNTO 0);  -- sfix31_En23
           valid_in                        :   IN    std_logic;
@@ -82,12 +82,12 @@ ARCHITECTURE rtl OF fft_filters_FFT_Analysis_Synthesis_Left IS
   COMPONENT fft_filters_Synthesis
     PORT( clk                             :   IN    std_logic;
           reset                           :   IN    std_logic;
-          enb_1_262144_1                  :   IN    std_logic;
+          enb_1_16_0                      :   IN    std_logic;
           enb                             :   IN    std_logic;
           enb_1_2048_0                    :   IN    std_logic;
-          enb_1_262144_0                  :   IN    std_logic;
+          enb_1_16_1                      :   IN    std_logic;
           enb_1_2048_1                    :   IN    std_logic;
-          enb_1_262144_4097               :   IN    std_logic;
+          enb_1_2048_33                   :   IN    std_logic;
           modified_FFT_data_re            :   IN    std_logic_vector(30 DOWNTO 0);  -- sfix31_En23
           modified_FFT_data_im            :   IN    std_logic_vector(30 DOWNTO 0);  -- sfix31_En23
           FFT_valid                       :   IN    std_logic;
@@ -139,10 +139,10 @@ BEGIN
   u_Analysis : fft_filters_Analysis
     PORT MAP( clk => clk,
               reset => reset,
-              enb_1_262144_1 => enb_1_262144_1,
+              enb_1_16_0 => enb_1_16_0,
               enb => enb,
               enb_1_2048_0 => enb_1_2048_0,
-              enb_1_262144_0 => enb_1_262144_0,
+              enb_1_16_1 => enb_1_16_1,
               enb_1_2048_1 => enb_1_2048_1,
               Signal_in => signal_in,  -- sfix24_En23
               Passthrough => Passthrough,
@@ -158,9 +158,9 @@ BEGIN
   u_Frequency_Domain_Processing : fft_filters_Frequency_Domain_Processing
     PORT MAP( clk => clk,
               reset => reset,
+              enb_1_16_0 => enb_1_16_0,
               enb => enb,
-              enb_1_2048_0 => enb_1_2048_0,
-              enb_1_2048_1 => enb_1_2048_1,
+              enb_1_16_1 => enb_1_16_1,
               FFT_results_re => Analysis_out1_re,  -- sfix31_En23
               FFT_results_im => Analysis_out1_im,  -- sfix31_En23
               valid_in => Analysis_out2,
@@ -176,12 +176,12 @@ BEGIN
   u_Synthesis : fft_filters_Synthesis
     PORT MAP( clk => clk,
               reset => reset,
-              enb_1_262144_1 => enb_1_262144_1,
+              enb_1_16_0 => enb_1_16_0,
               enb => enb,
               enb_1_2048_0 => enb_1_2048_0,
-              enb_1_262144_0 => enb_1_262144_0,
+              enb_1_16_1 => enb_1_16_1,
               enb_1_2048_1 => enb_1_2048_1,
-              enb_1_262144_4097 => enb_1_262144_4097,
+              enb_1_2048_33 => enb_1_2048_33,
               modified_FFT_data_re => Frequency_Domain_Processing_out1_re,  -- sfix31_En23
               modified_FFT_data_im => Frequency_Domain_Processing_out1_im,  -- sfix31_En23
               FFT_valid => Frequency_Domain_Processing_out2_1,
@@ -208,7 +208,7 @@ BEGIN
     IF reset = '1' THEN
       Analysis_out3_1 <= '0';
     ELSIF rising_edge(clk) THEN
-      IF enb_1_2048_0 = '1' THEN
+      IF enb_1_16_0 = '1' THEN
         Analysis_out3_1 <= Analysis_out3;
       END IF;
     END IF;
@@ -220,7 +220,7 @@ BEGIN
     IF reset = '1' THEN
       Analysis_out4_1 <= '0';
     ELSIF rising_edge(clk) THEN
-      IF enb_1_2048_0 = '1' THEN
+      IF enb_1_16_0 = '1' THEN
         Analysis_out4_1 <= Analysis_out4;
       END IF;
     END IF;
@@ -234,7 +234,7 @@ BEGIN
     IF reset = '1' THEN
       Analysis_out5_1 <= to_unsigned(16#0#, 2);
     ELSIF rising_edge(clk) THEN
-      IF enb_1_2048_0 = '1' THEN
+      IF enb_1_16_0 = '1' THEN
         Analysis_out5_1 <= Analysis_out5_unsigned;
       END IF;
     END IF;
@@ -246,7 +246,7 @@ BEGIN
     IF reset = '1' THEN
       Frequency_Domain_Processing_out2_1 <= '0';
     ELSIF rising_edge(clk) THEN
-      IF enb_1_2048_0 = '1' THEN
+      IF enb_1_16_0 = '1' THEN
         Frequency_Domain_Processing_out2_1 <= Frequency_Domain_Processing_out2;
       END IF;
     END IF;
@@ -258,7 +258,7 @@ BEGIN
     IF reset = '1' THEN
       Frequency_Domain_Processing_out3_1 <= '0';
     ELSIF rising_edge(clk) THEN
-      IF enb_1_2048_0 = '1' THEN
+      IF enb_1_16_0 = '1' THEN
         Frequency_Domain_Processing_out3_1 <= Frequency_Domain_Processing_out3;
       END IF;
     END IF;

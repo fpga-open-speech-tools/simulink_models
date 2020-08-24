@@ -21,7 +21,7 @@ USE IEEE.numeric_std.ALL;
 ENTITY fft_filters_addr_B_gen_block IS
   PORT( clk                               :   IN    std_logic;
         reset                             :   IN    std_logic;
-        enb_1_2048_0                      :   IN    std_logic;
+        enb_1_16_0                        :   IN    std_logic;
         start                             :   IN    std_logic;
         enable                            :   IN    std_logic;
         addr_B                            :   OUT   std_logic_vector(7 DOWNTO 0);  -- uint8
@@ -37,7 +37,7 @@ ARCHITECTURE rtl OF fft_filters_addr_B_gen_block IS
   COMPONENT fft_filters_addr_B_gen_enable_block
     PORT( clk                             :   IN    std_logic;
           reset                           :   IN    std_logic;
-          enb_1_2048_0                    :   IN    std_logic;
+          enb_1_16_0                      :   IN    std_logic;
           start                           :   IN    std_logic;
           enable_B                        :   OUT   std_logic;
           Start_Address                   :   OUT   std_logic_vector(7 DOWNTO 0);  -- uint8
@@ -75,7 +75,7 @@ BEGIN
   u_addr_B_gen_enable : fft_filters_addr_B_gen_enable_block
     PORT MAP( clk => clk,
               reset => reset,
-              enb_1_2048_0 => enb_1_2048_0,
+              enb_1_16_0 => enb_1_16_0,
               start => start,
               enable_B => addr_B_gen_enable_out1,
               Start_Address => addr_B_gen_enable_out2,  -- uint8
@@ -94,7 +94,7 @@ BEGIN
     IF reset = '1' THEN
       counter_B_out1 <= to_unsigned(16#F6#, 8);
     ELSIF rising_edge(clk) THEN
-      IF enb_1_2048_0 = '1' THEN
+      IF enb_1_16_0 = '1' THEN
         IF start = '1' THEN 
           counter_B_out1 <= addr_B_gen_enable_out2_unsigned;
         ELSIF Logical_Operator1_out1 = '1' THEN 

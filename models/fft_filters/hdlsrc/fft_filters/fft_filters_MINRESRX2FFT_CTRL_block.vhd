@@ -21,7 +21,7 @@ USE IEEE.numeric_std.ALL;
 ENTITY fft_filters_MINRESRX2FFT_CTRL_block IS
   PORT( clk                               :   IN    std_logic;
         reset                             :   IN    std_logic;
-        enb_1_2048_0                      :   IN    std_logic;
+        enb_1_16_0                        :   IN    std_logic;
         din_1_im                          :   IN    std_logic_vector(30 DOWNTO 0);  -- sfix31_En23
         din_1_re                          :   IN    std_logic_vector(30 DOWNTO 0);  -- sfix31_En23
         validIn                           :   IN    std_logic;
@@ -162,7 +162,7 @@ BEGIN
       minResRX2FFTCtrl_unLoadReg <= '0';
       minResRX2FFTCtrl_activeMem <= '0';
     ELSIF rising_edge(clk) THEN
-      IF enb_1_2048_0 = '1' THEN
+      IF enb_1_16_0 = '1' THEN
         minResRX2FFTCtrl_rdyReg <= minResRX2FFTCtrl_rdyReg_next;
         minResRX2FFTCtrl_inSampleCnt <= minResRX2FFTCtrl_inSampleCnt_next;
         minResRX2FFTCtrl_outSampleCnt <= minResRX2FFTCtrl_outSampleCnt_next;

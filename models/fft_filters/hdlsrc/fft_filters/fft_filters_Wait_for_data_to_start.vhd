@@ -21,7 +21,7 @@ USE IEEE.numeric_std.ALL;
 ENTITY fft_filters_Wait_for_data_to_start IS
   PORT( clk                               :   IN    std_logic;
         reset                             :   IN    std_logic;
-        enb_1_262144_0                    :   IN    std_logic;
+        enb_1_2048_0                      :   IN    std_logic;
         Frame_Pulse                       :   IN    std_logic;
         FFT_Frame_Start                   :   OUT   std_logic;
         Enable_FFT_Frames                 :   OUT   std_logic
@@ -77,7 +77,7 @@ BEGIN
     IF reset = '1' THEN
       Initial_frame_count_out1 <= to_unsigned(16#00#, 5);
     ELSIF rising_edge(clk) THEN
-      IF enb_1_262144_0 = '1' THEN
+      IF enb_1_2048_0 = '1' THEN
         IF Logical_Operator_out1 = '1' THEN 
           IF Initial_frame_count_out1 >= to_unsigned(16#04#, 5) THEN 
             Initial_frame_count_out1 <= to_unsigned(16#00#, 5);

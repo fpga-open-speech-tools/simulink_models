@@ -22,7 +22,7 @@ ENTITY fft_filters_Complex_Gains_4_ROM_block IS
   PORT( clk                               :   IN    std_logic;
         reset                             :   IN    std_logic;
         enb                               :   IN    std_logic;
-        enb_1_2048_1                      :   IN    std_logic;
+        enb_1_16_1                        :   IN    std_logic;
         Index                             :   IN    std_logic_vector(6 DOWNTO 0);  -- ufix7
         gains_re                          :   OUT   std_logic_vector(23 DOWNTO 0);  -- sfix24_En23
         gains_im                          :   OUT   std_logic_vector(23 DOWNTO 0)  -- sfix24_En23
@@ -39,7 +39,7 @@ ARCHITECTURE rtl OF fft_filters_Complex_Gains_4_ROM_block IS
     PORT( clk                             :   IN    std_logic;
           reset                           :   IN    std_logic;
           enb                             :   IN    std_logic;
-          enb_1_2048_1                    :   IN    std_logic;
+          enb_1_16_1                      :   IN    std_logic;
           Index                           :   IN    std_logic_vector(6 DOWNTO 0);  -- ufix7
           gain_value_real                 :   OUT   std_logic_vector(23 DOWNTO 0)  -- sfix24_En23
           );
@@ -49,7 +49,7 @@ ARCHITECTURE rtl OF fft_filters_Complex_Gains_4_ROM_block IS
     PORT( clk                             :   IN    std_logic;
           reset                           :   IN    std_logic;
           enb                             :   IN    std_logic;
-          enb_1_2048_1                    :   IN    std_logic;
+          enb_1_16_1                      :   IN    std_logic;
           Index                           :   IN    std_logic_vector(6 DOWNTO 0);  -- ufix7
           gain_value_imag                 :   OUT   std_logic_vector(23 DOWNTO 0)  -- sfix24_En23
           );
@@ -71,7 +71,7 @@ BEGIN
     PORT MAP( clk => clk,
               reset => reset,
               enb => enb,
-              enb_1_2048_1 => enb_1_2048_1,
+              enb_1_16_1 => enb_1_16_1,
               Index => Index,  -- ufix7
               gain_value_real => Gains_ROM_real_out1  -- sfix24_En23
               );
@@ -80,7 +80,7 @@ BEGIN
     PORT MAP( clk => clk,
               reset => reset,
               enb => enb,
-              enb_1_2048_1 => enb_1_2048_1,
+              enb_1_16_1 => enb_1_16_1,
               Index => Index,  -- ufix7
               gain_value_imag => Gains_ROM_imag_out1  -- sfix24_En23
               );

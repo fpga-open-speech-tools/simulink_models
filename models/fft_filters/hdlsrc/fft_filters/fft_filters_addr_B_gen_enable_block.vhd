@@ -21,7 +21,7 @@ USE IEEE.numeric_std.ALL;
 ENTITY fft_filters_addr_B_gen_enable_block IS
   PORT( clk                               :   IN    std_logic;
         reset                             :   IN    std_logic;
-        enb_1_2048_0                      :   IN    std_logic;
+        enb_1_16_0                        :   IN    std_logic;
         start                             :   IN    std_logic;
         enable_B                          :   OUT   std_logic;
         Start_Address                     :   OUT   std_logic_vector(7 DOWNTO 0);  -- uint8
@@ -69,7 +69,7 @@ BEGIN
     IF reset = '1' THEN
       B_Enable_Counter_out1 <= to_unsigned(16#00#, 8);
     ELSIF rising_edge(clk) THEN
-      IF enb_1_2048_0 = '1' THEN
+      IF enb_1_16_0 = '1' THEN
         IF start = '1' THEN 
           B_Enable_Counter_out1 <= to_unsigned(16#00#, 8);
         ELSIF Relational_Operator_relop1 = '1' THEN 
@@ -96,7 +96,7 @@ BEGIN
     IF reset = '1' THEN
       Start_Address_Counter_out1 <= to_unsigned(16#00#, 8);
     ELSIF rising_edge(clk) THEN
-      IF enb_1_2048_0 = '1' AND start = '1' THEN
+      IF enb_1_16_0 = '1' AND start = '1' THEN
         Start_Address_Counter_out1 <= Start_Address_Counter_out1 + to_unsigned(16#20#, 8);
       END IF;
     END IF;

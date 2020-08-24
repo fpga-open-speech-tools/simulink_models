@@ -22,14 +22,13 @@ USE work.fft_filters_dataplane_pkg.ALL;
 ENTITY fft_filters_TWDLROM_block2 IS
   PORT( clk                               :   IN    std_logic;
         reset                             :   IN    std_logic;
-        enb_1_2048_0                      :   IN    std_logic;
+        enb_1_16_0                        :   IN    std_logic;
         dMemOutDly_vld                    :   IN    std_logic;
         stage                             :   IN    std_logic_vector(2 DOWNTO 0);  -- ufix3
         initIC                            :   IN    std_logic;
         syncReset                         :   IN    std_logic;
         twdl_re                           :   OUT   std_logic_vector(30 DOWNTO 0);  -- sfix31_En29
-        twdl_im                           :   OUT   std_logic_vector(30 DOWNTO 0);  -- sfix31_En29
-        twdl_vld                          :   OUT   std_logic
+        twdl_im                           :   OUT   std_logic_vector(30 DOWNTO 0)  -- sfix31_En29
         );
 END fft_filters_TWDLROM_block2;
 
@@ -114,7 +113,7 @@ BEGIN
       minResRX2FFTTwdlMapping_cnt <= to_unsigned(16#3F#, 6);
       minResRX2FFTTwdlMapping_maxCnt <= to_unsigned(16#00#, 6);
     ELSIF rising_edge(clk) THEN
-      IF enb_1_2048_0 = '1' THEN
+      IF enb_1_16_0 = '1' THEN
         minResRX2FFTTwdlMapping_baseAddr <= minResRX2FFTTwdlMapping_baseAddr_next;
         minResRX2FFTTwdlMapping_cnt <= minResRX2FFTTwdlMapping_cnt_next;
         minResRX2FFTTwdlMapping_octantReg1 <= minResRX2FFTTwdlMapping_octantReg1_next;
@@ -236,7 +235,7 @@ BEGIN
     IF reset = '1' THEN
       twiddleReg_re <= to_signed(16#00000000#, 31);
     ELSIF rising_edge(clk) THEN
-      IF enb_1_2048_0 = '1' THEN
+      IF enb_1_16_0 = '1' THEN
         twiddleReg_re <= twiddleS_re;
       END IF;
     END IF;
@@ -251,7 +250,7 @@ BEGIN
     IF reset = '1' THEN
       twiddleReg_im <= to_signed(16#00000000#, 31);
     ELSIF rising_edge(clk) THEN
-      IF enb_1_2048_0 = '1' THEN
+      IF enb_1_16_0 = '1' THEN
         twiddleReg_im <= twiddleS_im;
       END IF;
     END IF;
@@ -263,7 +262,7 @@ BEGIN
     IF reset = '1' THEN
       twdlOctantReg <= to_unsigned(16#0#, 3);
     ELSIF rising_edge(clk) THEN
-      IF enb_1_2048_0 = '1' THEN
+      IF enb_1_16_0 = '1' THEN
         twdlOctantReg <= twdlOctant;
       END IF;
     END IF;
@@ -275,7 +274,7 @@ BEGIN
     IF reset = '1' THEN
       twdl45Reg <= '0';
     ELSIF rising_edge(clk) THEN
-      IF enb_1_2048_0 = '1' THEN
+      IF enb_1_16_0 = '1' THEN
         twdl45Reg <= twdl45;
       END IF;
     END IF;
@@ -357,18 +356,6 @@ BEGIN
   twdl_re <= std_logic_vector(twdl_re_tmp);
 
   twdl_im <= std_logic_vector(twdl_im_tmp);
-
-  intdelay_2_process : PROCESS (clk, reset)
-  BEGIN
-    IF reset = '1' THEN
-      twdl_vld <= '0';
-    ELSIF rising_edge(clk) THEN
-      IF enb_1_2048_0 = '1' THEN
-        twdl_vld <= twdlAddrVld;
-      END IF;
-    END IF;
-  END PROCESS intdelay_2_process;
-
 
 END rtl;
 

@@ -21,9 +21,9 @@ USE IEEE.numeric_std.ALL;
 ENTITY fft_filters_FFT_Filter_Coefficients IS
   PORT( clk                               :   IN    std_logic;
         reset                             :   IN    std_logic;
+        enb_1_16_0                        :   IN    std_logic;
         enb                               :   IN    std_logic;
-        enb_1_2048_0                      :   IN    std_logic;
-        enb_1_2048_1                      :   IN    std_logic;
+        enb_1_16_1                        :   IN    std_logic;
         select_rsvd                       :   IN    std_logic_vector(1 DOWNTO 0);  -- ufix2
         valid                             :   IN    std_logic;
         filter_gains_re                   :   OUT   std_logic_vector(23 DOWNTO 0);  -- sfix24_En23
@@ -38,7 +38,7 @@ ARCHITECTURE rtl OF fft_filters_FFT_Filter_Coefficients IS
   COMPONENT fft_filters_FFT_ROM_Indexing
     PORT( clk                             :   IN    std_logic;
           reset                           :   IN    std_logic;
-          enb_1_2048_0                    :   IN    std_logic;
+          enb_1_16_0                      :   IN    std_logic;
           valid                           :   IN    std_logic;
           ROM_index                       :   OUT   std_logic_vector(6 DOWNTO 0)  -- ufix7
           );
@@ -48,7 +48,7 @@ ARCHITECTURE rtl OF fft_filters_FFT_Filter_Coefficients IS
     PORT( clk                             :   IN    std_logic;
           reset                           :   IN    std_logic;
           enb                             :   IN    std_logic;
-          enb_1_2048_1                    :   IN    std_logic;
+          enb_1_16_1                      :   IN    std_logic;
           select_rsvd                     :   IN    std_logic_vector(1 DOWNTO 0);  -- ufix2
           Index                           :   IN    std_logic_vector(6 DOWNTO 0);  -- ufix7
           filter_gains_re                 :   OUT   std_logic_vector(23 DOWNTO 0);  -- sfix24_En23
@@ -72,7 +72,7 @@ BEGIN
   u_FFT_ROM_Indexing : fft_filters_FFT_ROM_Indexing
     PORT MAP( clk => clk,
               reset => reset,
-              enb_1_2048_0 => enb_1_2048_0,
+              enb_1_16_0 => enb_1_16_0,
               valid => valid,
               ROM_index => FFT_ROM_Indexing_out1  -- ufix7
               );
@@ -81,7 +81,7 @@ BEGIN
     PORT MAP( clk => clk,
               reset => reset,
               enb => enb,
-              enb_1_2048_1 => enb_1_2048_1,
+              enb_1_16_1 => enb_1_16_1,
               select_rsvd => select_rsvd,  -- ufix2
               Index => FFT_ROM_Indexing_out1,  -- ufix7
               filter_gains_re => Filter_ROM_Choice_out1_re,  -- sfix24_En23

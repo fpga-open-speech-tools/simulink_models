@@ -21,7 +21,7 @@ USE IEEE.numeric_std.ALL;
 ENTITY fft_filters_Complex4Multiply_block2 IS
   PORT( clk                               :   IN    std_logic;
         reset                             :   IN    std_logic;
-        enb_1_2048_0                      :   IN    std_logic;
+        enb_1_16_0                        :   IN    std_logic;
         btfIn2_re                         :   IN    std_logic_vector(30 DOWNTO 0);  -- sfix31_En23
         btfIn2_im                         :   IN    std_logic_vector(30 DOWNTO 0);  -- sfix31_En23
         din2Dly_vld                       :   IN    std_logic;
@@ -86,7 +86,7 @@ BEGIN
     IF reset = '1' THEN
       din_re_reg <= to_signed(16#00000000#, 31);
     ELSIF rising_edge(clk) THEN
-      IF enb_1_2048_0 = '1' THEN
+      IF enb_1_16_0 = '1' THEN
         din_re_reg <= btfIn2_re_signed;
       END IF;
     END IF;
@@ -100,7 +100,7 @@ BEGIN
     IF reset = '1' THEN
       din_im_reg <= to_signed(16#00000000#, 31);
     ELSIF rising_edge(clk) THEN
-      IF enb_1_2048_0 = '1' THEN
+      IF enb_1_16_0 = '1' THEN
         din_im_reg <= btfIn2_im_signed;
       END IF;
     END IF;
@@ -114,7 +114,7 @@ BEGIN
     IF reset = '1' THEN
       twdl_re_reg <= to_signed(16#00000000#, 31);
     ELSIF rising_edge(clk) THEN
-      IF enb_1_2048_0 = '1' THEN
+      IF enb_1_16_0 = '1' THEN
         twdl_re_reg <= twdl_re_signed;
       END IF;
     END IF;
@@ -128,7 +128,7 @@ BEGIN
     IF reset = '1' THEN
       twdl_im_reg <= to_signed(16#00000000#, 31);
     ELSIF rising_edge(clk) THEN
-      IF enb_1_2048_0 = '1' THEN
+      IF enb_1_16_0 = '1' THEN
         twdl_im_reg <= twdl_im_signed;
       END IF;
     END IF;
@@ -139,7 +139,7 @@ BEGIN
   Complex4Multiply_process : PROCESS (clk)
   BEGIN
     IF rising_edge(clk) THEN
-      IF enb_1_2048_0 = '1' THEN
+      IF enb_1_16_0 = '1' THEN
         prod1_re <= Complex4Multiply_mult1_re_pipe1;
         prod2_re <= Complex4Multiply_mult2_re_pipe1;
         prod1_im <= Complex4Multiply_mult1_im_pipe1;
@@ -162,7 +162,7 @@ BEGIN
     IF reset = '1' THEN
       din_vld_dly1 <= '0';
     ELSIF rising_edge(clk) THEN
-      IF enb_1_2048_0 = '1' THEN
+      IF enb_1_16_0 = '1' THEN
         din_vld_dly1 <= din2Dly_vld;
       END IF;
     END IF;
@@ -174,7 +174,7 @@ BEGIN
     IF reset = '1' THEN
       din_vld_dly2 <= '0';
     ELSIF rising_edge(clk) THEN
-      IF enb_1_2048_0 = '1' THEN
+      IF enb_1_16_0 = '1' THEN
         din_vld_dly2 <= din_vld_dly1;
       END IF;
     END IF;
@@ -186,7 +186,7 @@ BEGIN
     IF reset = '1' THEN
       din_vld_dly3 <= '0';
     ELSIF rising_edge(clk) THEN
-      IF enb_1_2048_0 = '1' THEN
+      IF enb_1_16_0 = '1' THEN
         din_vld_dly3 <= din_vld_dly2;
       END IF;
     END IF;
@@ -198,7 +198,7 @@ BEGIN
     IF reset = '1' THEN
       prod_vld <= '0';
     ELSIF rising_edge(clk) THEN
-      IF enb_1_2048_0 = '1' THEN
+      IF enb_1_16_0 = '1' THEN
         prod_vld <= din_vld_dly3;
       END IF;
     END IF;
@@ -218,7 +218,7 @@ BEGIN
       Complex4Add_prod_vld_reg1 <= '0';
       dinXTwdl_vld <= '0';
     ELSIF rising_edge(clk) THEN
-      IF enb_1_2048_0 = '1' THEN
+      IF enb_1_16_0 = '1' THEN
         Complex4Add_multRes_re_reg <= Complex4Add_multRes_re_reg_next;
         Complex4Add_multRes_im_reg <= Complex4Add_multRes_im_reg_next;
         Complex4Add_prod1_re_reg <= prod1_re;

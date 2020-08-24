@@ -21,9 +21,9 @@ USE IEEE.numeric_std.ALL;
 ENTITY fft_filters_Frequency_Domain_Processing_block IS
   PORT( clk                               :   IN    std_logic;
         reset                             :   IN    std_logic;
+        enb_1_16_0                        :   IN    std_logic;
         enb                               :   IN    std_logic;
-        enb_1_2048_0                      :   IN    std_logic;
-        enb_1_2048_1                      :   IN    std_logic;
+        enb_1_16_1                        :   IN    std_logic;
         FFT_results_re                    :   IN    std_logic_vector(30 DOWNTO 0);  -- sfix31_En23
         FFT_results_im                    :   IN    std_logic_vector(30 DOWNTO 0);  -- sfix31_En23
         valid_in                          :   IN    std_logic;
@@ -46,9 +46,9 @@ ARCHITECTURE rtl OF fft_filters_Frequency_Domain_Processing_block IS
   COMPONENT fft_filters_Apply_Complex_Gains_block
     PORT( clk                             :   IN    std_logic;
           reset                           :   IN    std_logic;
+          enb_1_16_0                      :   IN    std_logic;
           enb                             :   IN    std_logic;
-          enb_1_2048_0                    :   IN    std_logic;
-          enb_1_2048_1                    :   IN    std_logic;
+          enb_1_16_1                      :   IN    std_logic;
           FFT_data_re                     :   IN    std_logic_vector(30 DOWNTO 0);  -- sfix31_En23
           FFT_data_im                     :   IN    std_logic_vector(30 DOWNTO 0);  -- sfix31_En23
           valid_data                      :   IN    std_logic;
@@ -99,9 +99,9 @@ BEGIN
   u_Apply_Complex_Gains : fft_filters_Apply_Complex_Gains_block
     PORT MAP( clk => clk,
               reset => reset,
+              enb_1_16_0 => enb_1_16_0,
               enb => enb,
-              enb_1_2048_0 => enb_1_2048_0,
-              enb_1_2048_1 => enb_1_2048_1,
+              enb_1_16_1 => enb_1_16_1,
               FFT_data_re => FFT_results_re,  -- sfix31_En23
               FFT_data_im => FFT_results_im,  -- sfix31_En23
               valid_data => valid_in,
@@ -166,7 +166,7 @@ BEGIN
       iFFT_bypass_reg_re <= to_signed(16#00000000#, 31);
       iFFT_bypass_reg_im <= to_signed(16#00000000#, 31);
     ELSIF rising_edge(clk) THEN
-      IF enb_1_2048_1 = '1' THEN
+      IF enb_1_16_1 = '1' THEN
         iFFT_bypass_reg_im <= Switch_out1_im;
         iFFT_bypass_reg_re <= Switch_out1_re;
       END IF;
@@ -174,10 +174,10 @@ BEGIN
   END PROCESS iFFT_bypass_process;
 
   
-  Switch_out1_re_1 <= Switch_out1_re WHEN enb_1_2048_1 = '1' ELSE
+  Switch_out1_re_1 <= Switch_out1_re WHEN enb_1_16_1 = '1' ELSE
       iFFT_bypass_reg_re;
   
-  Switch_out1_im_1 <= Switch_out1_im WHEN enb_1_2048_1 = '1' ELSE
+  Switch_out1_im_1 <= Switch_out1_im WHEN enb_1_16_1 = '1' ELSE
       iFFT_bypass_reg_im;
 
   modified_frequencies_re <= std_logic_vector(Switch_out1_re_1);

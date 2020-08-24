@@ -23,7 +23,7 @@ ENTITY fft_filters_Hanning_ROM_block1 IS
   PORT( clk                               :   IN    std_logic;
         reset                             :   IN    std_logic;
         enb                               :   IN    std_logic;
-        enb_1_2048_1                      :   IN    std_logic;
+        enb_1_16_1                        :   IN    std_logic;
         Index                             :   IN    std_logic_vector(7 DOWNTO 0);  -- uint8
         hanning_value                     :   OUT   std_logic_vector(23 DOWNTO 0)  -- sfix24_En23
         );
@@ -104,14 +104,14 @@ BEGIN
     IF reset = '1' THEN
       Unit_Delay_bypass_reg <= to_signed(16#000000#, 24);
     ELSIF rising_edge(clk) THEN
-      IF enb_1_2048_1 = '1' THEN
+      IF enb_1_16_1 = '1' THEN
         Unit_Delay_bypass_reg <= Lookup_Table_out1_1;
       END IF;
     END IF;
   END PROCESS Unit_Delay_bypass_process;
 
   
-  Lookup_Table_out1_2 <= Lookup_Table_out1_1 WHEN enb_1_2048_1 = '1' ELSE
+  Lookup_Table_out1_2 <= Lookup_Table_out1_1 WHEN enb_1_16_1 = '1' ELSE
       Unit_Delay_bypass_reg;
 
   hanning_value <= std_logic_vector(Lookup_Table_out1_2);

@@ -21,7 +21,7 @@ USE IEEE.numeric_std.ALL;
 ENTITY fft_filters_MINRESRX2FFT_OUTMux_block2 IS
   PORT( clk                               :   IN    std_logic;
         reset                             :   IN    std_logic;
-        enb_1_2048_0                      :   IN    std_logic;
+        enb_1_16_0                        :   IN    std_logic;
         rdEnb1                            :   IN    std_logic;
         rdEnb2                            :   IN    std_logic;
         rdEnb3                            :   IN    std_logic;
@@ -31,7 +31,6 @@ ENTITY fft_filters_MINRESRX2FFT_OUTMux_block2 IS
         dMemOut2_im                       :   IN    std_logic_vector(30 DOWNTO 0);  -- sfix31_En23
         vldOut                            :   IN    std_logic;
         syncReset                         :   IN    std_logic;
-        dOut_re                           :   OUT   std_logic_vector(30 DOWNTO 0);  -- sfix31_En23
         dOut_im                           :   OUT   std_logic_vector(30 DOWNTO 0);  -- sfix31_En23
         dout_vld                          :   OUT   std_logic
         );
@@ -57,7 +56,7 @@ ARCHITECTURE rtl OF fft_filters_MINRESRX2FFT_OUTMux_block2 IS
   SIGNAL minResRX2FFTOutMux_rdEnb1Dly_next : std_logic;
   SIGNAL minResRX2FFTOutMux_rdEnb2Dly_next : std_logic;
   SIGNAL minResRX2FFTOutMux_rdEnb3Dly_next : std_logic;
-  SIGNAL dOut_re_tmp                      : signed(30 DOWNTO 0);  -- sfix31_En23
+  SIGNAL dOut_re                          : signed(30 DOWNTO 0);  -- sfix31_En23
   SIGNAL dOut_im_tmp                      : signed(30 DOWNTO 0);  -- sfix31_En23
 
 BEGIN
@@ -80,7 +79,7 @@ BEGIN
       minResRX2FFTOutMux_rdEnb2Dly <= '0';
       minResRX2FFTOutMux_rdEnb3Dly <= '0';
     ELSIF rising_edge(clk) THEN
-      IF enb_1_2048_0 = '1' THEN
+      IF enb_1_16_0 = '1' THEN
         minResRX2FFTOutMux_doutReg_re <= minResRX2FFTOutMux_doutReg_re_next;
         minResRX2FFTOutMux_doutReg_im <= minResRX2FFTOutMux_doutReg_im_next;
         minResRX2FFTOutMux_doutReg_vld <= minResRX2FFTOutMux_doutReg_vld_next;
@@ -117,13 +116,11 @@ BEGIN
     minResRX2FFTOutMux_rdEnb1Dly_next <= rdEnb1;
     minResRX2FFTOutMux_rdEnb2Dly_next <= rdEnb2;
     minResRX2FFTOutMux_rdEnb3Dly_next <= rdEnb3;
-    dOut_re_tmp <= minResRX2FFTOutMux_doutReg_re;
+    dOut_re <= minResRX2FFTOutMux_doutReg_re;
     dOut_im_tmp <= minResRX2FFTOutMux_doutReg_im;
     dout_vld <= minResRX2FFTOutMux_doutReg_vld;
   END PROCESS minResRX2FFTOutMux_output;
 
-
-  dOut_re <= std_logic_vector(dOut_re_tmp);
 
   dOut_im <= std_logic_vector(dOut_im_tmp);
 

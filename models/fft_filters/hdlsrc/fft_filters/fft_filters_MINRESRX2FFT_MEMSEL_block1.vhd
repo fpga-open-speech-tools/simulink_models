@@ -21,7 +21,7 @@ USE IEEE.numeric_std.ALL;
 ENTITY fft_filters_MINRESRX2FFT_MEMSEL_block1 IS
   PORT( clk                               :   IN    std_logic;
         reset                             :   IN    std_logic;
-        enb_1_2048_0                      :   IN    std_logic;
+        enb_1_16_0                        :   IN    std_logic;
         btfOut1_re                        :   IN    std_logic_vector(30 DOWNTO 0);  -- sfix31_En23
         btfOut1_im                        :   IN    std_logic_vector(30 DOWNTO 0);  -- sfix31_En23
         btfOut2_re                        :   IN    std_logic_vector(30 DOWNTO 0);  -- sfix31_En23
@@ -92,7 +92,7 @@ BEGIN
       MINRESRX2FFTMEMSEL_muxSel <= '0';
       MINRESRX2FFTMEMSEL_stgOutReg_vld <= '0';
     ELSIF rising_edge(clk) THEN
-      IF enb_1_2048_0 = '1' THEN
+      IF enb_1_16_0 = '1' THEN
         MINRESRX2FFTMEMSEL_stgOut1Reg_re <= MINRESRX2FFTMEMSEL_stgOut1Reg_re_next;
         MINRESRX2FFTMEMSEL_stgOut1Reg_im <= MINRESRX2FFTMEMSEL_stgOut1Reg_im_next;
         MINRESRX2FFTMEMSEL_stgOut2Reg_re <= MINRESRX2FFTMEMSEL_stgOut2Reg_re_next;
