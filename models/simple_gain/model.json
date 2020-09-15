@@ -1,0 +1,51 @@
+{
+    "system": {
+        "target": "audiomini",
+        "sampleClockFrequency": 48000,
+        "systemClockFrequency": 98304000,
+        "processing": "channel",
+        "audioIn": {
+            "wordLength": 32,
+            "fractionLength": 28,
+            "signed": true,
+            "numberOfChannels": 2
+        },
+        "audioOut": {
+            "wordLength": 32,
+            "fractionLength": 28,
+            "signed": true,
+            "numberOfChannels": 2
+        }
+    },
+
+    "devices": [
+        {
+            "name": "simple_gain",
+            "registers": [
+                {
+                    "dataType": {
+                        "fractionLength": 24,
+                        "signed": false,
+                        "type": "fix32",
+                        "wordLength": 32
+                    },
+                    "defaultValue": 1.5,
+                    "name": "Left_Gain",
+                    "registerNumber": 0
+                },
+               {
+                    "dataType": {
+                        "fractionLength": 0,
+                        "signed": false,
+                        "type": "fix1",
+                        "wordLength": 1
+                    },
+                    "defaultValue": 1,
+                    "name": "Enable",
+                    "registerNumber": 1
+                }
+            ]
+        }
+    ]
+    
+}
