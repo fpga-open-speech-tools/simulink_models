@@ -24,13 +24,13 @@
             "registers": [
                 {
                     "dataType": {
-                        "fractionLength": 24,
+                        "fractionLength": 16,
                         "signed": false,
-                        "type": "fix32",
-                        "wordLength": 32
+                        "type": "ufix20en16",
+                        "wordLength": 20
                     },
                     "defaultValue": 1.5,
-                    "name": "Left_Gain",
+                    "name": "Gain",
                     "registerNumber": 0
                 },
                {
