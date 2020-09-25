@@ -1,11 +1,12 @@
-% s3upload(bucket, path)
+% s3upload(mp, bucket, path)
 %
-% This function creates `model.json`configuration file in the current
-% directory with defaults set, a device added with no registers
-% and the device name set to modelName. 
+% This function uploads the artifacts of the last generated model
 %
 % Inputs:
-%   modelName, which is the name of the Simulink model that the `model.json` is for
+%   mp, the model parameters struct containing the modelName and modelPath
+%   bucket, the name of the S3 bucket to upload to
+%   path, the path in the S3 bucket that it should be uploaded to
+%   clean, deletes the current files at the path in S3 first before uploading new files
 
 % Copyright 2020 Audio Logic
 %
@@ -23,8 +24,7 @@
 
 function paths = s3upload(mp, bucket, path, clean)
 
-    % TO DO: Check for single quote character vector and convert to string
-    s3path = 's3://' + bucket + '/' + path;
+    s3path = 's3://' + string(bucket) + '/' + string(path);
     disp(s3path)
     if exist('clean', 'var') && clean
         cmd = "aws s3 rm " + s3path + " --recursive";
@@ -33,9 +33,7 @@ function paths = s3upload(mp, bucket, path, clean)
     
     paths = getArtifactPaths(mp);
     for k=1:length(paths)
-        path = paths{k};
-        %disp(path)
-        %disp(isfile(path)); 
+        path = paths{k}; 
         cmd = "aws s3 cp " + path + " " + s3path + "/";
         system(cmd);
     end
