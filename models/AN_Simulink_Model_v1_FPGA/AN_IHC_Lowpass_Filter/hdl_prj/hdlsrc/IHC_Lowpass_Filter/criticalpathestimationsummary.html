@@ -1,0 +1,611 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="rtwreport.css" /><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>
+Critical Path Summary Report
+</title>
+
+</head>
+<body bgcolor="#ffffff" link="0033CC" vlink="#666666">
+<script>
+<!--
+function hdlTableShrink(o,tagNameStr)
+{
+var temp = document.getElementsByName(tagNameStr);
+if (temp[0].style.display == "")
+{
+	temp[0].style.display = "none";
+	o.innerHTML = '<span style="font-family:monospace">[+]</span>';
+}
+else
+{
+	temp[0].style.display = "";
+	o.innerHTML = '<span style="font-family:monospace">[-]</span>';
+}
+}
+// -->
+</script>
+<script>
+<!--
+function hdlTableCollapseAll(o, numNtks, numComps)
+{
+	var id = "";
+	for (i = 1; i <= numNtks; i++)
+	{
+		for (j = 1; j <= numComps; j++)
+		{
+			id = "Multiply" + "_" + i + "_" + j;
+			var temp = document.getElementsByName(id);
+			if (temp != null && temp.length > 0)
+			{
+				temp[0].style.display = "none";
+			}
+			id = "Adder" + "_" + i + "_" + j;
+			temp = document.getElementsByName(id);
+			if (temp != null && temp.length > 0)
+			{
+				temp[0].style.display = "none";
+			}
+			id = "Subtractor" + "_" + i + "_" + j;
+			temp = document.getElementsByName(id);
+			if (temp != null && temp.length > 0)
+			{
+				temp[0].style.display = "none";
+			}
+			id = "Register" + "_" + i + "_" + j;
+			temp = document.getElementsByName(id);
+			if (temp != null && temp.length > 0)
+			{
+				temp[0].style.display = "none";
+			}
+			id = "RAM" + "_" + i + "_" + j;
+			temp = document.getElementsByName(id);
+			if (temp != null && temp.length > 0)
+			{
+				temp[0].style.display = "none";
+			}
+			id = "Multiplexer" + "_" + i + "_" + j;
+			temp = document.getElementsByName(id);
+			if (temp != null && temp.length > 0)
+			{
+				temp[0].style.display = "none";
+			}
+		}
+	}
+	var collapsibles = document.getElementsByName('collapsible');
+	for (i = 0; i < collapsibles.length; i++)
+	{
+		collapsibles[i].innerHTML = '<span style="font-family:monospace">[+]</span>';
+	}
+}
+// -->
+</script>
+<script>
+<!--
+function hdlTableExpandAll(o, numNtks, numComps)
+{
+	var id = "";
+	for (i = 1; i <= numNtks; i++)
+	{
+		for (j = 1; j <= numComps; j++)
+		{
+			id = "Multiply" + "_" + i + "_" + j;
+			var temp = document.getElementsByName(id);
+			if (temp != null && temp.length > 0)
+			{
+				temp[0].style.display = "";
+			}
+			id = "Adder" + "_" + i + "_" + j;
+			temp = document.getElementsByName(id);
+			if (temp != null && temp.length > 0)
+			{
+				temp[0].style.display = "";
+			}
+			id = "Subtractor" + "_" + i + "_" + j;
+			temp = document.getElementsByName(id);
+			if (temp != null && temp.length > 0)
+			{
+				temp[0].style.display = "";
+			}
+			id = "Register" + "_" + i + "_" + j;
+			temp = document.getElementsByName(id);
+			if (temp != null && temp.length > 0)
+			{
+				temp[0].style.display = "";
+			}
+			id = "RAM" + "_" + i + "_" + j;
+			temp = document.getElementsByName(id);
+			if (temp != null && temp.length > 0)
+			{
+				temp[0].style.display = "";
+			}
+			id = "Multiplexer" + "_" + i + "_" + j;
+			temp = document.getElementsByName(id);
+			if (temp != null && temp.length > 0)
+			{
+				temp[0].style.display = "";
+			}
+		}
+	}
+	var collapsibles = document.getElementsByName('collapsible');
+	for (i = 0; i < collapsibles.length; i++)
+	{
+		collapsibles[i].innerHTML = '<span style="font-family:monospace">[-]</span>';
+	}
+}
+// -->
+</script>
+<font SIZE="+2" COLOR="#000066">
+Critical Path Report for alpha7th_Order_IIR_Filter
+</font>
+<br /><br /><br /><a name="Summary Section">
+<font size="+1" color="#000066">
+<b class="midprod">
+Summary Section
+</b>
+
+</font>
+
+</a>
+<hr>Critical Path Delay : 293.898 ns<br>Critical Path Begin : <a href="matlab:coder.internal.code2model('gm_alpha7th_Order_IIR_Filter:24')" name="code2model" class="code2model">
+Unit Delay
+</a>
+<br>Critical Path End : <a href="matlab:coder.internal.code2model('gm_alpha7th_Order_IIR_Filter:27')" name="code2model" class="code2model">
+Unit Delay14
+</a>
+<br>Highlight Critical Path: <a href="matlab:run('hdl_prj\hdlsrc\IHC_Lowpass_Filter\criticalPathEstimated')">hdl_prj\hdlsrc\IHC_Lowpass_Filter\criticalPathEstimated.m</a> <br><br /><br /><a name="Critical Path Details">
+<font size="+1" color="#000066">
+<b class="midprod">
+Critical Path Details
+</b>
+
+</font>
+
+</a>
+<hr><table width="100%" border="1">
+<tr style="background-color: #eeeeee">
+<th width="25%" align="left" valign="top" style="border-style: none">
+<b>
+Id
+</b>
+
+</th>
+<th width="25%" align="left" valign="top" style="border-style: none">
+<b>
+Propagation (ns)
+</b>
+
+</th>
+<th width="25%" align="left" valign="top" style="border-style: none">
+<b>
+Delay (ns)
+</b>
+
+</th>
+<th width="25%" align="left" valign="top" style="border-style: none">
+<b>
+Block Path
+</b>
+
+</th>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+1
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+0.2980
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+0.2980
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_alpha7th_Order_IIR_Filter:24')" name="code2model" class="code2model">
+Unit Delay
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+2
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+10.7160
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+10.4180
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_alpha7th_Order_IIR_Filter:99')" name="code2model" class="code2model">
+Product2
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+3
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+26.5580
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+15.8420
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_alpha7th_Order_IIR_Filter:212')" name="code2model" class="code2model">
+Sum2
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+4
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+42.3120
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+15.7540
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_alpha7th_Order_IIR_Filter:244')" name="code2model" class="code2model">
+Sum3_outbuff
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+5
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+52.7300
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+10.4180
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_alpha7th_Order_IIR_Filter:168')" name="code2model" class="code2model">
+Product8
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+6
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+68.4840
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+15.7540
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_alpha7th_Order_IIR_Filter:245')" name="code2model" class="code2model">
+Sum6
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+7
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+84.2380
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+15.7540
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_alpha7th_Order_IIR_Filter:255')" name="code2model" class="code2model">
+Sum7_outbuff
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+8
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+94.6560
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+10.4180
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_alpha7th_Order_IIR_Filter:72')" name="code2model" class="code2model">
+Product13
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+9
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+110.4100
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+15.7540
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_alpha7th_Order_IIR_Filter:179')" name="code2model" class="code2model">
+Sum10
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+10
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+126.1640
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+15.7540
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_alpha7th_Order_IIR_Filter:189')" name="code2model" class="code2model">
+Sum11_outbuff
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+11
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+136.5820
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+10.4180
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_alpha7th_Order_IIR_Filter:88')" name="code2model" class="code2model">
+Product18
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+12
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+152.3360
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+15.7540
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_alpha7th_Order_IIR_Filter:190')" name="code2model" class="code2model">
+Sum12
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+13
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+168.0900
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+15.7540
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_alpha7th_Order_IIR_Filter:200')" name="code2model" class="code2model">
+Sum13_outbuff
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+14
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+178.5080
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+10.4180
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_alpha7th_Order_IIR_Filter:109')" name="code2model" class="code2model">
+Product23
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+15
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+194.2620
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+15.7540
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_alpha7th_Order_IIR_Filter:201')" name="code2model" class="code2model">
+Sum16
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+16
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+210.0160
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+15.7540
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_alpha7th_Order_IIR_Filter:211')" name="code2model" class="code2model">
+Sum17_outbuff
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+17
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+220.4340
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+10.4180
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_alpha7th_Order_IIR_Filter:125')" name="code2model" class="code2model">
+Product28
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+18
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+236.1880
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+15.7540
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_alpha7th_Order_IIR_Filter:217')" name="code2model" class="code2model">
+Sum20
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+19
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+251.9420
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+15.7540
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_alpha7th_Order_IIR_Filter:227')" name="code2model" class="code2model">
+Sum21_outbuff
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+20
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+262.3600
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+10.4180
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_alpha7th_Order_IIR_Filter:146')" name="code2model" class="code2model">
+Product33
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+21
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+278.1140
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+15.7540
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_alpha7th_Order_IIR_Filter:228')" name="code2model" class="code2model">
+Sum24
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+22
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+293.8680
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+15.7540
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_alpha7th_Order_IIR_Filter:238')" name="code2model" class="code2model">
+Sum25_outbuff
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+23
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+293.8980
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+0.0300
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_alpha7th_Order_IIR_Filter:27')" name="code2model" class="code2model">
+Unit Delay14
+</a>
+
+</td>
+
+</tr>
+
+</table>
+<br /><br />
+</body>
+
+</html>

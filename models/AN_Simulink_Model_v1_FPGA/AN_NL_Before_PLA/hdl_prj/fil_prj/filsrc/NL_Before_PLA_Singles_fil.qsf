@@ -1,0 +1,4 @@
+set_location_assignment PIN_AJ9 -to sysclk
+set_instance_assignment -name IO_STANDARD "1.2 V" -to sysclk
+set_location_assignment PIN_A26 -to sysrst
+set_instance_assignment -name IO_STANDARD "1.2 V" -to sysrst

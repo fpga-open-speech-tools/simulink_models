@@ -1,0 +1,13 @@
+open_system('gm_NL_Before_PLA');
+cs.HiliteType = 'user2';
+cs.ForegroundColor = 'black';
+cs.BackgroundColor = 'lightblue';
+set_param(0, 'HiliteAncestorsData', cs);
+hilite_system('gm_NL_Before_PLA/NL Before PLA Singles/Subsystem', 'user2');
+annotate_port('gm_NL_Before_PLA/NL Before PLA Singles/Subsystem', 0, 1, 'cp : 7.807 ns');
+cs.HiliteType = 'user1';
+cs.ForegroundColor = 'black';
+cs.BackgroundColor = 'blue';
+set_param(0, 'HiliteAncestorsData', cs);
+hilite_system('gm_NL_Before_PLA/NL Before PLA Singles/Subsystem/Pow', 'user1');
+annotate_port('gm_NL_Before_PLA/NL Before PLA Singles/Subsystem/Pow', 0, 1, 'cp : 7.807 ns');

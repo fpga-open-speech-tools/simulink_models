@@ -1,0 +1,1511 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="rtwreport.css" /><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>
+Critical Path Summary Report
+</title>
+
+</head>
+<body bgcolor="#ffffff" link="0033CC" vlink="#666666">
+<script>
+<!--
+function hdlTableShrink(o,tagNameStr)
+{
+var temp = document.getElementsByName(tagNameStr);
+if (temp[0].style.display == "")
+{
+	temp[0].style.display = "none";
+	o.innerHTML = '<span style="font-family:monospace">[+]</span>';
+}
+else
+{
+	temp[0].style.display = "";
+	o.innerHTML = '<span style="font-family:monospace">[-]</span>';
+}
+}
+// -->
+</script>
+<script>
+<!--
+function hdlTableCollapseAll(o, numNtks, numComps)
+{
+	var id = "";
+	for (i = 1; i <= numNtks; i++)
+	{
+		for (j = 1; j <= numComps; j++)
+		{
+			id = "Multiply" + "_" + i + "_" + j;
+			var temp = document.getElementsByName(id);
+			if (temp != null && temp.length > 0)
+			{
+				temp[0].style.display = "none";
+			}
+			id = "Adder" + "_" + i + "_" + j;
+			temp = document.getElementsByName(id);
+			if (temp != null && temp.length > 0)
+			{
+				temp[0].style.display = "none";
+			}
+			id = "Subtractor" + "_" + i + "_" + j;
+			temp = document.getElementsByName(id);
+			if (temp != null && temp.length > 0)
+			{
+				temp[0].style.display = "none";
+			}
+			id = "Register" + "_" + i + "_" + j;
+			temp = document.getElementsByName(id);
+			if (temp != null && temp.length > 0)
+			{
+				temp[0].style.display = "none";
+			}
+			id = "RAM" + "_" + i + "_" + j;
+			temp = document.getElementsByName(id);
+			if (temp != null && temp.length > 0)
+			{
+				temp[0].style.display = "none";
+			}
+			id = "Multiplexer" + "_" + i + "_" + j;
+			temp = document.getElementsByName(id);
+			if (temp != null && temp.length > 0)
+			{
+				temp[0].style.display = "none";
+			}
+		}
+	}
+	var collapsibles = document.getElementsByName('collapsible');
+	for (i = 0; i < collapsibles.length; i++)
+	{
+		collapsibles[i].innerHTML = '<span style="font-family:monospace">[+]</span>';
+	}
+}
+// -->
+</script>
+<script>
+<!--
+function hdlTableExpandAll(o, numNtks, numComps)
+{
+	var id = "";
+	for (i = 1; i <= numNtks; i++)
+	{
+		for (j = 1; j <= numComps; j++)
+		{
+			id = "Multiply" + "_" + i + "_" + j;
+			var temp = document.getElementsByName(id);
+			if (temp != null && temp.length > 0)
+			{
+				temp[0].style.display = "";
+			}
+			id = "Adder" + "_" + i + "_" + j;
+			temp = document.getElementsByName(id);
+			if (temp != null && temp.length > 0)
+			{
+				temp[0].style.display = "";
+			}
+			id = "Subtractor" + "_" + i + "_" + j;
+			temp = document.getElementsByName(id);
+			if (temp != null && temp.length > 0)
+			{
+				temp[0].style.display = "";
+			}
+			id = "Register" + "_" + i + "_" + j;
+			temp = document.getElementsByName(id);
+			if (temp != null && temp.length > 0)
+			{
+				temp[0].style.display = "";
+			}
+			id = "RAM" + "_" + i + "_" + j;
+			temp = document.getElementsByName(id);
+			if (temp != null && temp.length > 0)
+			{
+				temp[0].style.display = "";
+			}
+			id = "Multiplexer" + "_" + i + "_" + j;
+			temp = document.getElementsByName(id);
+			if (temp != null && temp.length > 0)
+			{
+				temp[0].style.display = "";
+			}
+		}
+	}
+	var collapsibles = document.getElementsByName('collapsible');
+	for (i = 0; i < collapsibles.length; i++)
+	{
+		collapsibles[i].innerHTML = '<span style="font-family:monospace">[-]</span>';
+	}
+}
+// -->
+</script>
+<font SIZE="+2" COLOR="#000066">
+Critical Path Report for AN_Simulink_Model_v1/Auditory Nerve Model
+</font>
+<br /><br /><br /><a name="Summary Section">
+<font size="+1" color="#000066">
+<b class="midprod">
+Summary Section
+</b>
+
+</font>
+
+</a>
+<hr>Critical Path Delay : 1359.513 ns<br>Critical Path Begin : <a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:390')" name="code2model" class="code2model">
+Constant2
+</a>
+<br>Critical Path End : <a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:1674')" name="code2model" class="code2model">
+Unit Delay14
+</a>
+<br>Highlight Critical Path: <a href="matlab:run('hdl_prj\hdlsrc\AN_Simulink_Model_v1\criticalPathEstimated')">hdl_prj\hdlsrc\AN_Simulink_Model_v1\criticalPathEstimated.m</a> <br><br /><br /><a name="Critical Path Details">
+<font size="+1" color="#000066">
+<b class="midprod">
+Critical Path Details
+</b>
+
+</font>
+
+</a>
+<hr><table width="100%" border="1">
+<tr style="background-color: #eeeeee">
+<th width="25%" align="left" valign="top" style="border-style: none">
+<b>
+Id
+</b>
+
+</th>
+<th width="25%" align="left" valign="top" style="border-style: none">
+<b>
+Propagation (ns)
+</b>
+
+</th>
+<th width="25%" align="left" valign="top" style="border-style: none">
+<b>
+Delay (ns)
+</b>
+
+</th>
+<th width="25%" align="left" valign="top" style="border-style: none">
+<b>
+Block Path
+</b>
+
+</th>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+1
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+0.0000
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+0.0000
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:390')" name="code2model" class="code2model">
+Constant2
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+2
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+43.5210
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+43.5210
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:395')" name="code2model" class="code2model">
+Reciprocal1_recip
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+3
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+59.3630
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+15.8420
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:399')" name="code2model" class="code2model">
+Subtract
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+4
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+75.2050
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+15.8420
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:770')" name="code2model" class="code2model">
+Subtract1_outbuff
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+5
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+75.4470
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+0.2420
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:479')" name="code2model" class="code2model">
+Gain3_unaryminus_outbuff
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+6
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+120.6600
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+45.2130
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:598')" name="code2model" class="code2model">
+Divide1
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+7
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+188.7710
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+68.1110
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:833')" name="code2model" class="code2model">
+Trigonometric Function3
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+8
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+204.6130
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+15.8420
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:801')" name="code2model" class="code2model">
+Subtract6
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+9
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+205.9100
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+1.2970
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:484')" name="code2model" class="code2model">
+Gain5
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+10
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+221.6640
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+15.7540
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:559')" name="code2model" class="code2model">
+Add4_stage2
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+11
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+237.4180
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+15.7540
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:564')" name="code2model" class="code2model">
+Add4_stage3
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+12
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+253.2600
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+15.8420
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:816')" name="code2model" class="code2model">
+Subtract9
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+13
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+298.4900
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+45.2300
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:698')" name="code2model" class="code2model">
+Divide7
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+14
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+369.4950
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+71.0050
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:845')" name="code2model" class="code2model">
+Trigonometric Function6
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+15
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+414.7080
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+45.2130
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:708')" name="code2model" class="code2model">
+Divide8_outbuff
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+16
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+430.4620
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+15.7540
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:574')" name="code2model" class="code2model">
+Add5_outbuff
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+17
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+475.6920
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+45.2300
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:638')" name="code2model" class="code2model">
+Divide17
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+18
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+475.6920
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+0.0000
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:65')" name="code2model" class="code2model">
+Goto8
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+19
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+475.6920
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+0.0000
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:40')" name="code2model" class="code2model">
+From21
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+20
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+486.0640
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+10.3720
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:129')" name="code2model" class="code2model">
+Product
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+21
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+501.9060
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+15.8420
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:275')" name="code2model" class="code2model">
+Sum1
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+22
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+517.7480
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+15.8420
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:335')" name="code2model" class="code2model">
+Sum2
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+23
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+533.5020
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+15.7540
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:345')" name="code2model" class="code2model">
+Sum3_outbuff
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+24
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+543.9200
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+10.4180
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:258')" name="code2model" class="code2model">
+Product8
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+25
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+559.6740
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+15.7540
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:357')" name="code2model" class="code2model">
+Sum6
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+26
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+575.4280
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+15.7540
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:367')" name="code2model" class="code2model">
+Sum7_outbuff
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+27
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+585.8460
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+10.4180
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:156')" name="code2model" class="code2model">
+Product13
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+28
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+601.6000
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+15.7540
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:280')" name="code2model" class="code2model">
+Sum10
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+29
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+617.3540
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+15.7540
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:290')" name="code2model" class="code2model">
+Sum11_outbuff
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+30
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+627.7720
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+10.4180
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:183')" name="code2model" class="code2model">
+Product18
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+31
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+643.5260
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+15.7540
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:291')" name="code2model" class="code2model">
+Sum12
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+32
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+659.2800
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+15.7540
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:301')" name="code2model" class="code2model">
+Sum13_outbuff
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+33
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+669.6980
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+10.4180
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:215')" name="code2model" class="code2model">
+Product23
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+34
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+685.4520
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+15.7540
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:313')" name="code2model" class="code2model">
+Sum16
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+35
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+701.2060
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+15.7540
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:323')" name="code2model" class="code2model">
+Sum17_outbuff
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+36
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+711.6240
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+10.4180
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:226')" name="code2model" class="code2model">
+Product26
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+37
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+712.9210
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+1.2970
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:379')" name="code2model" class="code2model">
+Product25_to_gain
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+38
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+712.9210
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+0.0000
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:386')" name="code2model" class="code2model">
+Gain1_unary
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+39
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+758.1510
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+45.2300
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:1474')" name="code2model" class="code2model">
+Divide4
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+40
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+758.3930
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+0.2420
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:1455')" name="code2model" class="code2model">
+Gain2_unaryminus
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+41
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+812.2410
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+53.8480
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:1484')" name="code2model" class="code2model">
+Log10
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+42
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+822.6590
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+10.4180
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:1492')" name="code2model" class="code2model">
+Product3
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+43
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+867.8890
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+45.2300
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:1479')" name="code2model" class="code2model">
+Divide5
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+44
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+915.6030
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+47.7140
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:1488')" name="code2model" class="code2model">
+Math Function1
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+45
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+931.3570
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+15.7540
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:1459')" name="code2model" class="code2model">
+Add3
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+46
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+976.5700
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+45.2130
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:1469')" name="code2model" class="code2model">
+Divide2
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+47
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+992.4120
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+15.8420
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:1502')" name="code2model" class="code2model">
+Subtract1
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+48
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+1037.6250
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+45.2130
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:1464')" name="code2model" class="code2model">
+Divide1
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+49
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+1049.1010
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+11.4760
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:1453')" name="code2model" class="code2model">
+Product4_out1bypassMux
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+50
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+1050.1590
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+1.0580
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:1511')" name="code2model" class="code2model">
+Switch1
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+51
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+1066.0010
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+15.8420
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:1903')" name="code2model" class="code2model">
+Sum1
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+52
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+1076.4190
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+10.4180
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:1783')" name="code2model" class="code2model">
+Product3
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+53
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+1092.1730
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+15.7540
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:1859')" name="code2model" class="code2model">
+Sum2
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+54
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+1107.9270
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+15.7540
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:1891')" name="code2model" class="code2model">
+Sum3_outbuff
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+55
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+1118.3450
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+10.4180
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:1815')" name="code2model" class="code2model">
+Product8
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+56
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+1134.0990
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+15.7540
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:1892')" name="code2model" class="code2model">
+Sum6
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+57
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+1149.8530
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+15.7540
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:1902')" name="code2model" class="code2model">
+Sum7_outbuff
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+58
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+1160.2710
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+10.4180
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:1719')" name="code2model" class="code2model">
+Product13
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+59
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+1176.0250
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+15.7540
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:1826')" name="code2model" class="code2model">
+Sum10
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+60
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+1191.7790
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+15.7540
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:1836')" name="code2model" class="code2model">
+Sum11_outbuff
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+61
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+1202.1970
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+10.4180
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:1735')" name="code2model" class="code2model">
+Product18
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+62
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+1217.9510
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+15.7540
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:1837')" name="code2model" class="code2model">
+Sum12
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+63
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+1233.7050
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+15.7540
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:1847')" name="code2model" class="code2model">
+Sum13_outbuff
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+64
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+1244.1230
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+10.4180
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:1756')" name="code2model" class="code2model">
+Product23
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+65
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+1259.8770
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+15.7540
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:1848')" name="code2model" class="code2model">
+Sum16
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+66
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+1275.6310
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+15.7540
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:1858')" name="code2model" class="code2model">
+Sum17_outbuff
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+67
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+1286.0490
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+10.4180
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:1772')" name="code2model" class="code2model">
+Product28
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+68
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+1301.8030
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+15.7540
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:1864')" name="code2model" class="code2model">
+Sum20
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+69
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+1317.5570
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+15.7540
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:1874')" name="code2model" class="code2model">
+Sum21_outbuff
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+70
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+1327.9750
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+10.4180
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:1793')" name="code2model" class="code2model">
+Product33
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+71
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+1343.7290
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+15.7540
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:1875')" name="code2model" class="code2model">
+Sum24
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+72
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+1359.4830
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+15.7540
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:1885')" name="code2model" class="code2model">
+Sum25_outbuff
+</a>
+
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="25%" align="left" valign="top" style="border-style: none">
+73
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+1359.5130
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+0.0300
+</td>
+<td width="25%" align="left" valign="top" style="border-style: none">
+<a href="matlab:coder.internal.code2model('gm_AN_Simulink_Model_v1:1674')" name="code2model" class="code2model">
+Unit Delay14
+</a>
+
+</td>
+
+</tr>
+
+</table>
+<br /><br />
+</body>
+
+</html>

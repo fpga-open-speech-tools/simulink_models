@@ -1,0 +1,5 @@
+Subsystem/nfp_uminus_single --> nfp_uminus_single
+Subsystem/nfp_mul_single --> nfp_mul_single
+Subsystem/nfp_add_single --> nfp_add_single
+Subsystem/nfp_gain_pow2_single --> nfp_gain_pow2_single
+Subsystem --> Subsystem

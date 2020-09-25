@@ -1,0 +1,12 @@
+vlib work
+vmap -c
+vcom  NL_Before_PLA_Singles_pkg.vhd
+vcom  nfp_add_single.vhd
+vcom  nfp_log10_single.vhd
+vcom  nfp_pow10_single.vhd
+vcom  nfp_mul_single.vhd
+vcom  nfp_signum_single.vhd
+vcom  Subsystem.vhd
+vcom  nfp_abs_single.vhd
+vcom  nfp_relop_single.vhd
+vcom  NL_Before_PLA_Singles.vhd
