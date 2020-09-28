@@ -1,4 +1,4 @@
-% s3upload(mp, bucket, path)
+% s3upload(mp, bucket, path, clean)
 %
 % This function uploads the artifacts of the last generated model
 %
@@ -23,10 +23,17 @@
 % openspeech@flatearthinc.com
 
 function paths = s3upload(mp, bucket, path, clean)
-
+    arguments 
+        mp struct
+        bucket string
+        path string
+        clean logical = false
+    end
+    
     s3path = 's3://' + string(bucket) + '/' + string(path);
     disp(s3path)
-    if exist('clean', 'var') && clean
+    
+    if clean
         cmd = "aws s3 rm " + s3path + " --recursive";
         system(cmd);
     end
@@ -37,7 +44,6 @@ function paths = s3upload(mp, bucket, path, clean)
         cmd = "aws s3 cp " + path + " " + s3path + "/";
         system(cmd);
     end
-    %;
 end
 
 function paths = getArtifactPaths(mp)
