@@ -39,7 +39,7 @@ classdef AudioSource
         
         function obj = set.audio(obj, audio)
            obj.audio = audio;
-           obj = obj.updateAudioInfo;
+           obj = obj.updateAudioInfo();
         end
         
         function avalonSource = toAvalonSource(this)
@@ -58,8 +58,8 @@ classdef AudioSource
             channel = zeros(nSamplesAvalon, 1);
             
             for k=1:this.nChannels
-                data(k:2:(nSamplesAvalon - 1 + k)) = this.audio(:, k);
-                channel(k:2:(nSamplesAvalon - 1 + k))= k - 1;
+                data(k:this.nChannels:(nSamplesAvalon - 1 + k)) = this.audio(:, k);
+                channel(k:this.nChannels:(nSamplesAvalon - 1 + k))= k - 1;
             end 
             avalonSource = AvalonSource(data, channel, valid, error, 1 / this.sampleRateHz / this.nChannels);
 
@@ -83,7 +83,7 @@ classdef AudioSource
             if nSamples ~= -1 % perform fast simulation by reducing the number of samples
                simTime = nSamples / sampleRate;
                totalSamples = info.TotalSamples;
-               nSourceSamples = min(simTime * fileFs, totalSamples);
+               nSourceSamples = floor(min(simTime * fileFs, totalSamples));
                
                [y,~] = audioread(filepath,[1, nSourceSamples]);
             else

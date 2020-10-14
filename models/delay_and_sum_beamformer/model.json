@@ -1,0 +1,51 @@
+{
+    "system": {
+        "target": "reflex",
+        "sampleClockFrequency": 48000,
+        "systemClockFrequency": 98304000,
+        "processing": "sample",
+        "audioIn": {
+            "wordLength": 32,
+            "fractionLength": 28,
+            "signed": true,
+            "numberOfChannels": 16
+        },
+        "audioOut": {
+            "wordLength": 32,
+            "fractionLength": 28,
+            "signed": true,
+            "numberOfChannels": 2
+        }
+    },
+
+    "devices": [
+        {
+            "name": "DSBF",
+            "registers": [
+                {
+                    "dataType": {
+                        "fractionLength": 8,
+                        "signed": true,
+                        "type": "fix16",
+                        "wordLength": 16
+                    },
+                    "defaultValue": 0,
+                    "name": "azimuth",
+                    "registerNumber": 0
+                },
+                {
+                    "dataType": {
+                        "fractionLength": 8,
+                        "signed": true,
+                        "type": "fix16",
+                        "wordLength": 16
+                    },
+                    "defaultValue": 0,
+                    "name": "elevation",
+                    "registerNumber": 1
+                }
+            ]
+        }
+    ]
+    
+}
