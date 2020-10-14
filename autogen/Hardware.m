@@ -8,6 +8,7 @@ classdef Hardware
     enumeration
         AudioMini('Cyclone V', '5CSEBA6U23I7')
         AudioBlade('Arria 10', '10AS066H2F34I1HG')
+        Reflex('Arria 10', '10AS066H2F34I1HG')
     end
     methods
         function obj = Hardware(deviceFamily, device)
