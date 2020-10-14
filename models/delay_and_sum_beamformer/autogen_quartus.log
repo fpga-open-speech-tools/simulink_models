@@ -1,0 +1,21 @@
+Generating system
+log file can be found at C:\Users\wickh\Documents\NIH\simulink_models\models\delay_and_sum_beamformer\hdlsrc\DSBF/quartus/qsys_gen.log
+cd C:\\Users\\wickh\\Documents\\NIH\\simulink_models\\models\\delay_and_sum_beamformer\\hdlsrc\\DSBF/quartus/ && C:\\intelFPGA\\18.0\\quartus\\sopc_builder\\bin/qsys-generate --synthesis=VHDL --search-path="../component_library/**/*,$"  reflex_system.qsys
+
+Traceback (most recent call last):
+  File "C:\Users\wickh\Documents\NIH\simulink_codegen/autogen_quartus.py", line 26, in main
+    execute_quartus_workflow(
+  File "C:\Users\wickh\Documents\NIH\simulink_codegen\quartus\workflow.py", line 420, in execute_quartus_workflow
+    gen_qsys_system(target, custom_components,
+  File "C:\Users\wickh\Documents\NIH\simulink_codegen\quartus\workflow.py", line 198, in gen_qsys_system
+    gen_qsys_system_from_qsys_file(target.system_name, working_dir)
+  File "C:\Users\wickh\Documents\NIH\simulink_codegen\quartus\workflow.py", line 214, in gen_qsys_system_from_qsys_file
+    run_cmd_and_log(cmd, log_msg, log_file_path)
+  File "C:\Users\wickh\Documents\NIH\simulink_codegen\quartus\workflow.py", line 129, in run_cmd_and_log
+    return_code = process.wait()
+  File "C:\Python38\lib\subprocess.py", line 1079, in wait
+    return self._wait(timeout=timeout)
+  File "C:\Python38\lib\subprocess.py", line 1357, in _wait
+    result = _winapi.WaitForSingleObject(self._handle,
+KeyboardInterrupt
+exit

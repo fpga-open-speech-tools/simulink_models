@@ -16,6 +16,7 @@ function y = fcolshift(x,s)
 	%   Email: thnguyn@mit.edu
     Ncols = size(x, 2);
 	if (length(s) ~= Ncols)
+        disp(["Length of s: " length(s) " Length of x: " Ncols])
 		error('Length of the vector s must be equal to the number of colums in x')
 	end
     N = size(x, 1); 

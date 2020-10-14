@@ -27,27 +27,37 @@
 % Bozeman, MT 59718
 % openspeech@flatearthinc.com
 
-function mp = sm_stop_verify(mp)
-
 %% Verify that the test data got encoded, passed through the model, and
 % decoded correctly.  The input (modified by gain) and output values should be identical.
 
-% play the original input signal
-%sound(double(mp.test_signal.data(1,:)), mp.Fs)
+close all;
 
-% play the sum without delay compensation
-%pause(mp.test_signal.duration);
-%sound(sum(double(mp.test_signal.data)), mp.Fs)
+figure(1)
+% subplot(2,1,1)
+% plot(testSignal.audio(:,1)); hold on
+% plot(dataOut.Data(:,1))
+% title('azimuth')
+% legend('input', 'output')
+% 
+% subplot(2,1,2)
+% plot(testSignal.audio(:,2)); hold on
+% plot(dataOut.Data(:,2))
+% title('elevation')
+% legend('input', 'output')
 
-% play the beamformed output signal
-%pause(mp.test_signal.duration);
-%sound(resample(squeeze(double(mp.Avalon_Sink_Data.Data)), mp.Fs, mp.Fs_system), mp.Fs)
-
-subplot(2,1,1)
-plot(mp.test_signal.data);
+subplot(3,1,1)
+plot(testSignal.audio(:,1));
 title('signal at each sensor')
-subplot(2,1,2)
-plot(squeeze(mp.Avalon_Sink_Data.Data))
-title('beamformed sigal')
+subplot(3,1,2)
+plot(mp.dataOut')
+title('beamformed signal')
 
-end
+subplot(3,1,3)
+plot(audioread([mp.test_signals_path filesep 'noisySpeech.wav'], [1, testSignal.nSamples]))
+title('original audio 1')
+
+% original_audio = [mp.test_signal.left(:) mp.test_signal.right(:)];
+% processed_audio = [mp.left_data_out(:) mp.right_data_out(:)];
+% soundsc(original_audio, mp.Fs);
+% pause(mp.test_signal.duration*1.1);
+% soundsc(processed_audio, mp.Fs);
