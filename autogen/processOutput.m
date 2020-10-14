@@ -49,8 +49,11 @@ if isfield(mp, data_field)
     mp = rmfield(mp, data_field);
 end
 
-for i=1:mp.nChannels
+samplesPerChannel = floor(length(channel) / mp.nOutChannels);
+
+for i=1:mp.nOutChannels
         idxchan = channel == i - 1;
-        mp.dataOut(i, :) = data(idxchan);
+        channelData = data(idxchan);
+        mp.dataOut(i, :) = channelData(1:samplesPerChannel,1);
 end
 
