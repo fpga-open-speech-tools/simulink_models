@@ -50,7 +50,7 @@
     - Select the `10AS066H2`, the click `OK`
     - Select the `10M16SA`, the click `OK`
     - In the bottom right, select the Arria 10 (`10AS066H2`)
-    - Click `Chnage File`, Select the `DSBF_simple_gain_fft_filters_noise_suppression_reflex.sof`, and Click `Open`
+    - Click `Chnage File`, Select the `output_files\DSBF_simple_gain_fft_filters_noise_suppression_reflex.sof`, and Click `Open`
     - Check the `Program/Configure` box for the Arria 10 (Middle Right)
     - Click `Start` on the left
     - Once programmed, the HPS will start to Boot
