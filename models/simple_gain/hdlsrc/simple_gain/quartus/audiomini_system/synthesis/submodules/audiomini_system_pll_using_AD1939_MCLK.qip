@@ -1,4 +1,0 @@
-set_instance_assignment -name PLL_COMPENSATION_MODE DIRECT -to "*audiomini_system_pll_using_AD1939_MCLK*|altera_pll:altera_pll_i*|*"
- 
-set_instance_assignment -name PLL_AUTO_RESET OFF -to "*audiomini_system_pll_using_AD1939_MCLK*|altera_pll:altera_pll_i*|*"
-set_instance_assignment -name PLL_BANDWIDTH_PRESET AUTO -to "*audiomini_system_pll_using_AD1939_MCLK*|altera_pll:altera_pll_i*|*"
