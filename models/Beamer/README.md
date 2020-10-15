@@ -1,5 +1,8 @@
 # The Beamer - AES 2020
 
+## Requirements
+1. Configure the [FrOST Software](https://github.com/fpga-open-speech-tools/docs/blob/master/getting_started.md)
+
 ## Recreating the Beamer Project from AES 2020
 1. In `[FrOST Repos]\simulink_models\models\Beamer\`, create `\hdlsrc\Beamer\quartus\ip\`
 2. Open MATLAB and Navigate to `[FrOST Repos]\simulink_models\config\`   
