@@ -1,0 +1,1 @@
+cmd_/mnt/c/Users/conno/Documents/NIH-GitHub/simulink_models/models/simple_gain/hdlsrc/simple_gain/built-in.a := rm -f /mnt/c/Users/conno/Documents/NIH-GitHub/simulink_models/models/simple_gain/hdlsrc/simple_gain/built-in.a; arm-linux-gnueabihf-ar cDPrST /mnt/c/Users/conno/Documents/NIH-GitHub/simulink_models/models/simple_gain/hdlsrc/simple_gain/built-in.a 

@@ -1,0 +1,13 @@
+2020.10.14.16:39:13 Info: Doing: <b>qsys-script --script=audiomini_system.tcl --search-path=../../../../../component_library/**/*,$</b>
+2020.10.14.16:39:17 Info: load_system soc_base_system.qsys
+2020.10.14.16:39:30 Info: set_instance_parameter_value pll_using_AD1939_MCLK gui_output_clock_frequency0 98.304
+2020.10.14.16:39:30 Info: add_instance simple_gain_0 simple_gain 1.0
+2020.10.14.16:39:30 Info: add_connection pll_using_AD1939_MCLK.outclk0 simple_gain_0.clock
+2020.10.14.16:39:30 Info: add_connection clk_hps.clk_reset simple_gain_0.reset
+2020.10.14.16:39:30 Info: add_connection hps.h2f_lw_axi_master simple_gain_0.avalon_slave
+2020.10.14.16:39:30 Info: set_connection_parameter_value hps.h2f_lw_axi_master/simple_gain_0.avalon_slave arbitrationPriority 1
+2020.10.14.16:39:30 Info: set_connection_parameter_value hps.h2f_lw_axi_master/simple_gain_0.avalon_slave baseAddress 0x0020
+2020.10.14.16:39:30 Info: set_connection_parameter_value hps.h2f_lw_axi_master/simple_gain_0.avalon_slave defaultConnection 0
+2020.10.14.16:39:30 Info: add_connection FE_Qsys_AD1939_Audio_Mini_v1_0.Line_In simple_gain_0.avalon_streaming_sink
+2020.10.14.16:39:30 Info: add_connection simple_gain_0.avalon_streaming_source FE_Qsys_AD1939_Audio_Mini_v1_0.Headphone_Out
+2020.10.14.16:39:30 Info: save_system audiomini_system

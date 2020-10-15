@@ -1,0 +1,37 @@
+
+State Machine - |Audiomini|audiomini_system:u0|audiomini_system_mm_interconnect_1:mm_interconnect_1|altera_merlin_burst_adapter:systemid_control_slave_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |Audiomini|audiomini_system:u0|audiomini_system_mm_interconnect_1:mm_interconnect_1|altera_merlin_burst_adapter:jtag_uart_avalon_jtag_slave_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |Audiomini|audiomini_system:u0|audiomini_system_mm_interconnect_1:mm_interconnect_1|altera_merlin_burst_adapter:fft_filters_0_avalon_slave_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |Audiomini|audiomini_system:u0|audiomini_system_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:onchip_memory_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |Audiomini|audiomini_system:u0|AD1939_hps_audio_mini:fe_qsys_ad1939_audio_mini_v1_0|state
+Name state.state_right_valid state.state_right_capture state.state_right_wait state.state_left_valid state.state_left_capture state.state_left_wait 
+state.state_left_wait 0 0 0 0 0 0 
+state.state_left_capture 0 0 0 0 1 1 
+state.state_left_valid 0 0 0 1 0 1 
+state.state_right_wait 0 0 1 0 0 1 
+state.state_right_capture 0 1 0 0 0 1 
+state.state_right_valid 1 0 0 0 0 1 

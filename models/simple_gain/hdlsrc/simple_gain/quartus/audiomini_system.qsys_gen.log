@@ -1,0 +1,118 @@
+2020.10.14.16:39:47 Info: Saving generation log to C:/Users/conno/Documents/NIH-GitHub/simulink_models/models/simple_gain/hdlsrc/simple_gain/quartus/audiomini_system/audiomini_system_generation.rpt
+2020.10.14.16:39:47 Info: Starting: <b>Create HDL design files for synthesis</b>
+2020.10.14.16:39:47 Info: qsys-generate C:\Users\conno\Documents\NIH-GitHub\simulink_models\models\simple_gain\hdlsrc\simple_gain\quartus\audiomini_system.qsys --synthesis=VHDL --output-directory=C:\Users\conno\Documents\NIH-GitHub\simulink_models\models\simple_gain\hdlsrc\simple_gain\quartus\audiomini_system\synthesis --family="Cyclone V" --part=5CSEBA6U23I7
+2020.10.14.16:39:47 Info: Loading quartus/audiomini_system.qsys
+2020.10.14.16:39:47 Info: Reading input file
+2020.10.14.16:39:47 Info: Adding FE_Qsys_AD1939_Audio_Mini_v1_0 [FE_Qsys_AD1939_Audio_Mini_v1 1.0]
+2020.10.14.16:39:47 Info: Parameterizing module FE_Qsys_AD1939_Audio_Mini_v1_0
+2020.10.14.16:39:47 Info: Adding SystemID [altera_avalon_sysid_qsys 20.1]
+2020.10.14.16:39:47 Info: Parameterizing module SystemID
+2020.10.14.16:39:47 Info: Adding clk_AD1939_ABCLK [clock_source 20.1]
+2020.10.14.16:39:47 Info: Parameterizing module clk_AD1939_ABCLK
+2020.10.14.16:39:47 Info: Adding clk_AD1939_ALRCLK [clock_source 20.1]
+2020.10.14.16:39:47 Info: Parameterizing module clk_AD1939_ALRCLK
+2020.10.14.16:39:47 Info: Adding clk_hps [clock_source 20.1]
+2020.10.14.16:39:47 Info: Parameterizing module clk_hps
+2020.10.14.16:39:47 Info: Adding hps [altera_hps 20.1]
+2020.10.14.16:39:47 Info: Parameterizing module hps
+2020.10.14.16:39:47 Info: Adding jtag_uart [altera_avalon_jtag_uart 20.1]
+2020.10.14.16:39:47 Info: Parameterizing module jtag_uart
+2020.10.14.16:39:47 Info: Adding onchip_memory [altera_avalon_onchip_memory2 20.1]
+2020.10.14.16:39:47 Info: Parameterizing module onchip_memory
+2020.10.14.16:39:47 Info: Adding pll_using_AD1939_MCLK [altera_pll 20.1]
+2020.10.14.16:39:47 Info: Parameterizing module pll_using_AD1939_MCLK
+2020.10.14.16:39:47 Info: Adding simple_gain_0 [simple_gain 1.0]
+2020.10.14.16:39:47 Info: Parameterizing module simple_gain_0
+2020.10.14.16:39:47 Info: Building connections
+2020.10.14.16:39:47 Info: Parameterizing connections
+2020.10.14.16:39:47 Info: Validating
+2020.10.14.16:39:54 Info: Done reading input file
+2020.10.14.16:39:57 Info: audiomini_system.SystemID: System ID is not assigned automatically. Edit the System ID parameter to provide a unique ID
+2020.10.14.16:39:57 Info: audiomini_system.SystemID: Time stamp will be automatically updated when this component is generated.
+2020.10.14.16:39:57 Info: audiomini_system.hps: HPS Main PLL counter settings: n = 0  m = 63
+2020.10.14.16:39:57 Info: audiomini_system.hps: HPS peripherial PLL counter settings: n = 0  m = 39
+2020.10.14.16:39:57 Info: audiomini_system.jtag_uart: JTAG UART IP input clock need to be at least double (2x) the operating frequency of JTAG TCK on board
+2020.10.14.16:39:57 Info: audiomini_system.pll_using_AD1939_MCLK: The legal reference clock frequency is 5.0 MHz..700.0 MHz
+2020.10.14.16:39:57 Info: audiomini_system.pll_using_AD1939_MCLK: Able to implement PLL with user settings
+2020.10.14.16:39:57 Info: audiomini_system.FE_Qsys_AD1939_Audio_Mini_v1_0.Line_In/simple_gain_0.avalon_streaming_sink: Max channel is 3 for source and 1 for sink. Avalon-ST Adapter will be inserted..
+2020.10.14.16:39:57 Info: audiomini_system.FE_Qsys_AD1939_Audio_Mini_v1_0.Line_In/simple_gain_0.avalon_streaming_sink: The source channel signal is 2 bits, but the sink is 1 bits. Avalon-ST Adapter will be inserted.
+2020.10.14.16:39:57 Info: audiomini_system.simple_gain_0.avalon_streaming_source/FE_Qsys_AD1939_Audio_Mini_v1_0.Headphone_Out: Max channel is 1 for source and 3 for sink. Avalon-ST Adapter will be inserted..
+2020.10.14.16:39:57 Info: audiomini_system.simple_gain_0.avalon_streaming_source/FE_Qsys_AD1939_Audio_Mini_v1_0.Headphone_Out: The source channel signal is 1 bits, but the sink is 2 bits. Avalon-ST Adapter will be inserted.
+2020.10.14.16:39:58 Info: audiomini_system: Generating <b>audiomini_system</b> "<b>audiomini_system</b>" for QUARTUS_SYNTH
+2020.10.14.16:40:02 Info: Interconnect is inserted between master hps.h2f_axi_master and slave onchip_memory.s1 because the master is of type axi and the slave is of type avalon.
+2020.10.14.16:40:04 Info: Inserting clock-crossing logic between cmd_demux.src1 and cmd_mux_001.sink0
+2020.10.14.16:40:04 Info: Inserting clock-crossing logic between cmd_demux_001.src1 and cmd_mux_001.sink1
+2020.10.14.16:40:04 Info: Inserting clock-crossing logic between rsp_demux_001.src0 and rsp_mux.sink1
+2020.10.14.16:40:04 Info: Inserting clock-crossing logic between rsp_demux_001.src1 and rsp_mux_001.sink1
+2020.10.14.16:40:05 Warning: hps.f2h_irq0: Cannot connect clock for <b>irq_mapper.sender</b>
+2020.10.14.16:40:05 Warning: hps.f2h_irq0: Cannot connect reset for <b>irq_mapper.sender</b>
+2020.10.14.16:40:05 Warning: hps.f2h_irq1: Cannot connect clock for <b>irq_mapper_001.sender</b>
+2020.10.14.16:40:05 Warning: hps.f2h_irq1: Cannot connect reset for <b>irq_mapper_001.sender</b>
+2020.10.14.16:40:05 Info: avalon_st_adapter: Inserting channel_adapter: channel_adapter_0
+2020.10.14.16:40:05 Info: avalon_st_adapter_001: Inserting channel_adapter: channel_adapter_0
+2020.10.14.16:40:11 Info: FE_Qsys_AD1939_Audio_Mini_v1_0: "<b>audiomini_system</b>" instantiated <b>FE_Qsys_AD1939_Audio_Mini_v1</b> "<b>FE_Qsys_AD1939_Audio_Mini_v1_0</b>"
+2020.10.14.16:40:11 Info: SystemID: "<b>audiomini_system</b>" instantiated <b>altera_avalon_sysid_qsys</b> "<b>SystemID</b>"
+2020.10.14.16:40:11 Info: hps: "Running  for module: hps"
+2020.10.14.16:40:11 Info: hps: HPS Main PLL counter settings: n = 0  m = 63
+2020.10.14.16:40:12 Info: hps: HPS peripherial PLL counter settings: n = 0  m = 39
+2020.10.14.16:40:14 Info: hps: "<b>audiomini_system</b>" instantiated <b>altera_hps</b> "<b>hps</b>"
+2020.10.14.16:40:14 Info: jtag_uart: Starting RTL generation for module 'audiomini_system_jtag_uart'
+2020.10.14.16:40:14 Info: jtag_uart:   Generation command is [exec C:/intelfpga/20.1/quartus/bin64/perl/bin/perl.exe -I C:/intelfpga/20.1/quartus/bin64/perl/lib -I C:/intelfpga/20.1/quartus/sopc_builder/bin/europa -I C:/intelfpga/20.1/quartus/sopc_builder/bin -I C:/intelfpga/20.1/quartus/../ip/altera/sopc_builder_ip/common -I C:/intelfpga/20.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart -- C:/intelfpga/20.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart/generate_rtl.pl --name=audiomini_system_jtag_uart --dir=C:/Users/conno/AppData/Local/Temp/alt8549_4883074699713104390.dir/0004_jtag_uart_gen/ --quartus_dir=C:/intelfpga/20.1/quartus --verilog --config=C:/Users/conno/AppData/Local/Temp/alt8549_4883074699713104390.dir/0004_jtag_uart_gen//audiomini_system_jtag_uart_component_configuration.pl  --do_build_sim=0  ]
+2020.10.14.16:40:15 Info: jtag_uart: Done RTL generation for module 'audiomini_system_jtag_uart'
+2020.10.14.16:40:15 Info: jtag_uart: "<b>audiomini_system</b>" instantiated <b>altera_avalon_jtag_uart</b> "<b>jtag_uart</b>"
+2020.10.14.16:40:15 Info: onchip_memory: Starting RTL generation for module 'audiomini_system_onchip_memory'
+2020.10.14.16:40:15 Info: onchip_memory:   Generation command is [exec C:/intelfpga/20.1/quartus/bin64/perl/bin/perl.exe -I C:/intelfpga/20.1/quartus/bin64/perl/lib -I C:/intelfpga/20.1/quartus/sopc_builder/bin/europa -I C:/intelfpga/20.1/quartus/sopc_builder/bin -I C:/intelfpga/20.1/quartus/../ip/altera/sopc_builder_ip/common -I C:/intelfpga/20.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2 -- C:/intelfpga/20.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2/generate_rtl.pl --name=audiomini_system_onchip_memory --dir=C:/Users/conno/AppData/Local/Temp/alt8549_4883074699713104390.dir/0005_onchip_memory_gen/ --quartus_dir=C:/intelfpga/20.1/quartus --verilog --config=C:/Users/conno/AppData/Local/Temp/alt8549_4883074699713104390.dir/0005_onchip_memory_gen//audiomini_system_onchip_memory_component_configuration.pl  --do_build_sim=0  ]
+2020.10.14.16:40:15 Info: onchip_memory: Done RTL generation for module 'audiomini_system_onchip_memory'
+2020.10.14.16:40:16 Info: onchip_memory: "<b>audiomini_system</b>" instantiated <b>altera_avalon_onchip_memory2</b> "<b>onchip_memory</b>"
+2020.10.14.16:40:16 Info: pll_using_AD1939_MCLK: "<b>audiomini_system</b>" instantiated <b>altera_pll</b> "<b>pll_using_AD1939_MCLK</b>"
+2020.10.14.16:40:16 Info: simple_gain_0: "<b>audiomini_system</b>" instantiated <b>simple_gain</b> "<b>simple_gain_0</b>"
+2020.10.14.16:40:17 Info: avalon_st_adapter: Inserting error_adapter: error_adapter_0
+2020.10.14.16:40:18 Info: mm_interconnect_0: "<b>audiomini_system</b>" instantiated <b>altera_mm_interconnect</b> "<b>mm_interconnect_0</b>"
+2020.10.14.16:40:20 Info: avalon_st_adapter: Inserting error_adapter: error_adapter_0
+2020.10.14.16:40:20 Info: avalon_st_adapter_001: Inserting error_adapter: error_adapter_0
+2020.10.14.16:40:20 Info: avalon_st_adapter_002: Inserting error_adapter: error_adapter_0
+2020.10.14.16:40:22 Info: mm_interconnect_1: "<b>audiomini_system</b>" instantiated <b>altera_mm_interconnect</b> "<b>mm_interconnect_1</b>"
+2020.10.14.16:40:22 Info: irq_mapper: "<b>audiomini_system</b>" instantiated <b>altera_irq_mapper</b> "<b>irq_mapper</b>"
+2020.10.14.16:40:22 Info: irq_mapper_001: "<b>audiomini_system</b>" instantiated <b>altera_irq_mapper</b> "<b>irq_mapper_001</b>"
+2020.10.14.16:40:23 Info: avalon_st_adapter: "<b>audiomini_system</b>" instantiated <b>altera_avalon_st_adapter</b> "<b>avalon_st_adapter</b>"
+2020.10.14.16:40:24 Info: avalon_st_adapter_001: "<b>audiomini_system</b>" instantiated <b>altera_avalon_st_adapter</b> "<b>avalon_st_adapter_001</b>"
+2020.10.14.16:40:24 Info: rst_controller: "<b>audiomini_system</b>" instantiated <b>altera_reset_controller</b> "<b>rst_controller</b>"
+2020.10.14.16:40:24 Info: fpga_interfaces: "<b>hps</b>" instantiated <b>altera_interface_generator</b> "<b>fpga_interfaces</b>"
+2020.10.14.16:40:25 Info: hps_io: "<b>hps</b>" instantiated <b>altera_hps_io</b> "<b>hps_io</b>"
+2020.10.14.16:40:25 Info: onchip_memory_s1_translator: "<b>mm_interconnect_0</b>" instantiated <b>altera_merlin_slave_translator</b> "<b>onchip_memory_s1_translator</b>"
+2020.10.14.16:40:25 Info: hps_h2f_axi_master_agent: "<b>mm_interconnect_0</b>" instantiated <b>altera_merlin_axi_master_ni</b> "<b>hps_h2f_axi_master_agent</b>"
+2020.10.14.16:40:25 Info: onchip_memory_s1_agent: "<b>mm_interconnect_0</b>" instantiated <b>altera_merlin_slave_agent</b> "<b>onchip_memory_s1_agent</b>"
+2020.10.14.16:40:25 Info: onchip_memory_s1_agent_rsp_fifo: "<b>mm_interconnect_0</b>" instantiated <b>altera_avalon_sc_fifo</b> "<b>onchip_memory_s1_agent_rsp_fifo</b>"
+2020.10.14.16:40:25 Info: router: "<b>mm_interconnect_0</b>" instantiated <b>altera_merlin_router</b> "<b>router</b>"
+2020.10.14.16:40:25 Info: router_002: "<b>mm_interconnect_0</b>" instantiated <b>altera_merlin_router</b> "<b>router_002</b>"
+2020.10.14.16:40:25 Info: onchip_memory_s1_burst_adapter: "<b>mm_interconnect_0</b>" instantiated <b>altera_merlin_burst_adapter</b> "<b>onchip_memory_s1_burst_adapter</b>"
+2020.10.14.16:40:25 Info: Reusing file <b>C:/Users/conno/Documents/NIH-GitHub/simulink_models/models/simple_gain/hdlsrc/simple_gain/quartus/audiomini_system/synthesis/submodules/altera_merlin_address_alignment.sv</b>
+2020.10.14.16:40:25 Info: cmd_demux: "<b>mm_interconnect_0</b>" instantiated <b>altera_merlin_demultiplexer</b> "<b>cmd_demux</b>"
+2020.10.14.16:40:25 Info: cmd_mux: "<b>mm_interconnect_0</b>" instantiated <b>altera_merlin_multiplexer</b> "<b>cmd_mux</b>"
+2020.10.14.16:40:25 Info: rsp_demux: "<b>mm_interconnect_0</b>" instantiated <b>altera_merlin_demultiplexer</b> "<b>rsp_demux</b>"
+2020.10.14.16:40:25 Info: rsp_mux: "<b>mm_interconnect_0</b>" instantiated <b>altera_merlin_multiplexer</b> "<b>rsp_mux</b>"
+2020.10.14.16:40:25 Info: Reusing file <b>C:/Users/conno/Documents/NIH-GitHub/simulink_models/models/simple_gain/hdlsrc/simple_gain/quartus/audiomini_system/synthesis/submodules/altera_merlin_arbitrator.sv</b>
+2020.10.14.16:40:26 Info: avalon_st_adapter: "<b>mm_interconnect_0</b>" instantiated <b>altera_avalon_st_adapter</b> "<b>avalon_st_adapter</b>"
+2020.10.14.16:40:26 Info: router: "<b>mm_interconnect_1</b>" instantiated <b>altera_merlin_router</b> "<b>router</b>"
+2020.10.14.16:40:26 Info: router_002: "<b>mm_interconnect_1</b>" instantiated <b>altera_merlin_router</b> "<b>router_002</b>"
+2020.10.14.16:40:26 Info: hps_h2f_lw_axi_master_wr_limiter: "<b>mm_interconnect_1</b>" instantiated <b>altera_merlin_traffic_limiter</b> "<b>hps_h2f_lw_axi_master_wr_limiter</b>"
+2020.10.14.16:40:26 Info: Reusing file <b>C:/Users/conno/Documents/NIH-GitHub/simulink_models/models/simple_gain/hdlsrc/simple_gain/quartus/audiomini_system/synthesis/submodules/altera_avalon_sc_fifo.v</b>
+2020.10.14.16:40:26 Info: Reusing file <b>C:/Users/conno/Documents/NIH-GitHub/simulink_models/models/simple_gain/hdlsrc/simple_gain/quartus/audiomini_system/synthesis/submodules/altera_avalon_st_pipeline_base.v</b>
+2020.10.14.16:40:26 Info: cmd_demux: "<b>mm_interconnect_1</b>" instantiated <b>altera_merlin_demultiplexer</b> "<b>cmd_demux</b>"
+2020.10.14.16:40:26 Info: cmd_mux: "<b>mm_interconnect_1</b>" instantiated <b>altera_merlin_multiplexer</b> "<b>cmd_mux</b>"
+2020.10.14.16:40:26 Info: Reusing file <b>C:/Users/conno/Documents/NIH-GitHub/simulink_models/models/simple_gain/hdlsrc/simple_gain/quartus/audiomini_system/synthesis/submodules/altera_merlin_arbitrator.sv</b>
+2020.10.14.16:40:26 Info: rsp_demux: "<b>mm_interconnect_1</b>" instantiated <b>altera_merlin_demultiplexer</b> "<b>rsp_demux</b>"
+2020.10.14.16:40:26 Info: rsp_demux_001: "<b>mm_interconnect_1</b>" instantiated <b>altera_merlin_demultiplexer</b> "<b>rsp_demux_001</b>"
+2020.10.14.16:40:26 Info: rsp_mux: "<b>mm_interconnect_1</b>" instantiated <b>altera_merlin_multiplexer</b> "<b>rsp_mux</b>"
+2020.10.14.16:40:26 Info: Reusing file <b>C:/Users/conno/Documents/NIH-GitHub/simulink_models/models/simple_gain/hdlsrc/simple_gain/quartus/audiomini_system/synthesis/submodules/altera_merlin_arbitrator.sv</b>
+2020.10.14.16:40:26 Info: crosser: "<b>mm_interconnect_1</b>" instantiated <b>altera_avalon_st_handshake_clock_crosser</b> "<b>crosser</b>"
+2020.10.14.16:40:26 Info: Reusing file <b>C:/Users/conno/Documents/NIH-GitHub/simulink_models/models/simple_gain/hdlsrc/simple_gain/quartus/audiomini_system/synthesis/submodules/altera_avalon_st_pipeline_base.v</b>
+2020.10.14.16:40:27 Info: avalon_st_adapter: "<b>mm_interconnect_1</b>" instantiated <b>altera_avalon_st_adapter</b> "<b>avalon_st_adapter</b>"
+2020.10.14.16:40:27 Info: channel_adapter_0: "<b>avalon_st_adapter</b>" instantiated <b>channel_adapter</b> "<b>channel_adapter_0</b>"
+2020.10.14.16:40:27 Info: channel_adapter_0: "<b>avalon_st_adapter_001</b>" instantiated <b>channel_adapter</b> "<b>channel_adapter_0</b>"
+2020.10.14.16:40:43 Info: border: "<b>hps_io</b>" instantiated <b>altera_interface_generator</b> "<b>border</b>"
+2020.10.14.16:40:43 Info: error_adapter_0: "<b>avalon_st_adapter</b>" instantiated <b>error_adapter</b> "<b>error_adapter_0</b>"
+2020.10.14.16:40:43 Info: error_adapter_0: "<b>avalon_st_adapter</b>" instantiated <b>error_adapter</b> "<b>error_adapter_0</b>"
+2020.10.14.16:40:43 Info: audiomini_system: Done "<b>audiomini_system</b>" with 44 modules, 115 files
+2020.10.14.16:40:43 Info: qsys-generate succeeded.
+2020.10.14.16:40:43 Info: Finished: <b>Create HDL design files for synthesis</b>

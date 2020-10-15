@@ -1,0 +1,27 @@
+Making tcl file for qsys
+Generating qsys file from tcl file
+log file can be found at C:\Users\conno\Documents\NIH-GitHub\simulink_models\models\simple_gain\hdlsrc\simple_gain/quartus/qsys_script.log
+cd C:\\Users\\conno\\Documents\\NIH-GitHub\\simulink_models\\models\\simple_gain\\hdlsrc\\simple_gain/quartus/ && C:\\intelFPGA\\20.1\\quartus\\sopc_builder\\bin/qsys-script --script=audiomini_system.tcl --search-path="../../../../../component_library/**/*,$" 
+Generating audiomini_system.qsys
+log file can be found at C:\Users\conno\Documents\NIH-GitHub\simulink_models\models\simple_gain\hdlsrc\simple_gain/quartus/audiomini_system.qsys_gen.log
+cd C:\\Users\\conno\\Documents\\NIH-GitHub\\simulink_models\\models\\simple_gain\\hdlsrc\\simple_gain/quartus/ && C:\\intelFPGA\\20.1\\quartus\\sopc_builder\\bin/qsys-generate --synthesis=VHDL --search-path="../component_library/**/*,$"  audiomini_system.qsys
+Generating make_project.tcl
+Generating project
+log file can be found at C:\Users\conno\Documents\NIH-GitHub\simulink_models\models\simple_gain\hdlsrc\simple_gain/quartus/project_gen.log
+cd C:\\Users\\conno\\Documents\\NIH-GitHub\\simulink_models\\models\\simple_gain\\hdlsrc\\simple_gain/quartus/ && C:\\intelFPGA\\20.1\\quartus\\bin64/quartus_sh -t make_project.tcl
+Compiling project
+log file can be found at C:\Users\conno\Documents\NIH-GitHub\simulink_models\models\simple_gain\hdlsrc\simple_gain/quartus/compile_project.log
+cd C:\\Users\\conno\\Documents\\NIH-GitHub\\simulink_models\\models\\simple_gain\\hdlsrc\\simple_gain/quartus/ && C:\\intelFPGA\\20.1\\quartus\\bin64/quartus_sh -t compile_project.tcl
+
+Traceback (most recent call last):
+  File "C:\Users\conno\Documents\NIH-GitHub\simulink_codegen/autogen_quartus.py", line 26, in main
+    execute_quartus_workflow(
+  File "C:\Users\conno\Documents\NIH-GitHub\simulink_codegen\quartus\workflow.py", line 414, in execute_quartus_workflow
+    compile_project(project_name, project_revision, template, working_dir)
+  File "C:\Users\conno\Documents\NIH-GitHub\simulink_codegen\quartus\workflow.py", line 330, in compile_project
+    run_cmd_and_log(cmd, log_msg, log_file_path)
+  File "C:\Users\conno\Documents\NIH-GitHub\simulink_codegen\quartus\workflow.py", line 131, in run_cmd_and_log
+    raise ChildProcessError(
+ChildProcessError: The following command failed cd C:\Users\conno\Documents\NIH-GitHub\simulink_models\models\simple_gain\hdlsrc\simple_gain/quartus/ && C:\intelFPGA\20.1\quartus\bin64/quartus_sh -t compile_project.tcl 
+ The log file can be found at C:\Users\conno\Documents\NIH-GitHub\simulink_models\models\simple_gain\hdlsrc\simple_gain/quartus/compile_project.log
+exit

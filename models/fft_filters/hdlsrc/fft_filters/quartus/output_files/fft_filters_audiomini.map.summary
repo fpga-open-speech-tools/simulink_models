@@ -1,0 +1,17 @@
+Analysis & Synthesis Status : Successful - Wed Oct 14 16:59:25 2020
+Quartus Prime Version : 20.1.0 Build 711 06/05/2020 SJ Standard Edition
+Revision Name : fft_filters_audiomini
+Top-level Entity Name : Audiomini
+Family : Cyclone V
+Logic utilization (in ALMs) : N/A
+Total registers : 13382
+Total pins : 230
+Total virtual pins : 0
+Total block memory bits : 720,923
+Total DSP Blocks : 82
+Total HSSI RX PCSs : 0
+Total HSSI PMA RX Deserializers : 0
+Total HSSI TX PCSs : 0
+Total HSSI PMA TX Serializers : 0
+Total PLLs : 1
+Total DLLs : 1

@@ -1,7 +1,0 @@
-Generating system
-log file can be found at Nest/ing/quartus/qsys_gen.log
-cd Nest/ing/quartus/ && C:\\intelFPGA\\18.0\\quartus\\sopc_builder\\bin/qsys-generate --synthesis=VHDL --search-path="../component_library/**/*,$"  reflex_system.qsys
-Compiling project
-log file can be found at Nest/ing/quartus/compile_project.log
-cd Nest/ing/quartus/ && C:\\intelFPGA\\18.0\\quartus\\bin64/quartus_sh -t compile_project.tcl
-exit

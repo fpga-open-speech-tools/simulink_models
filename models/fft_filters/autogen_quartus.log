@@ -1,0 +1,15 @@
+Making tcl file for qsys
+Generating qsys file from tcl file
+log file can be found at C:\Users\conno\Documents\NIH-GitHub\simulink_models\models\fft_filters\hdlsrc\fft_filters/quartus/qsys_script.log
+cd C:\\Users\\conno\\Documents\\NIH-GitHub\\simulink_models\\models\\fft_filters\\hdlsrc\\fft_filters/quartus/ && C:\\intelFPGA\\20.1\\quartus\\sopc_builder\\bin/qsys-script --script=audiomini_system.tcl --search-path="../../../../../component_library/**/*,$" 
+Generating audiomini_system.qsys
+log file can be found at C:\Users\conno\Documents\NIH-GitHub\simulink_models\models\fft_filters\hdlsrc\fft_filters/quartus/audiomini_system.qsys_gen.log
+cd C:\\Users\\conno\\Documents\\NIH-GitHub\\simulink_models\\models\\fft_filters\\hdlsrc\\fft_filters/quartus/ && C:\\intelFPGA\\20.1\\quartus\\sopc_builder\\bin/qsys-generate --synthesis=VHDL --search-path="../component_library/**/*,$"  audiomini_system.qsys
+Generating make_project.tcl
+Generating project
+log file can be found at C:\Users\conno\Documents\NIH-GitHub\simulink_models\models\fft_filters\hdlsrc\fft_filters/quartus/project_gen.log
+cd C:\\Users\\conno\\Documents\\NIH-GitHub\\simulink_models\\models\\fft_filters\\hdlsrc\\fft_filters/quartus/ && C:\\intelFPGA\\20.1\\quartus\\bin64/quartus_sh -t make_project.tcl
+Compiling project
+log file can be found at C:\Users\conno\Documents\NIH-GitHub\simulink_models\models\fft_filters\hdlsrc\fft_filters/quartus/compile_project.log
+cd C:\\Users\\conno\\Documents\\NIH-GitHub\\simulink_models\\models\\fft_filters\\hdlsrc\\fft_filters/quartus/ && C:\\intelFPGA\\20.1\\quartus\\bin64/quartus_sh -t compile_project.tcl
+exit

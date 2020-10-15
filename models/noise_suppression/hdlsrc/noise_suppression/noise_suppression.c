@@ -81,7 +81,7 @@ ATTRIBUTE_GROUPS(noise_suppression);
 
 static int noise_suppression_init(void) {
   int ret_val = 0;
-  printk(KERN_ALERT "FUNCTION AUTO GENERATED AT: 2020-08-26 09:31\n");
+  printk(KERN_ALERT "FUNCTION AUTO GENERATED AT: 2020-10-14 17:10\n");
   pr_info("Initializing the Flat Earth noise_suppression module\n");
   // Register our driver with the "Platform Driver" bus
   ret_val = platform_driver_register(&noise_suppression_platform);  if (ret_val != 0) {

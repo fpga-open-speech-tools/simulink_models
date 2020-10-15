@@ -1,0 +1,20 @@
+Fitter Status : Successful - Wed Oct 14 17:04:08 2020
+Quartus Prime Version : 20.1.0 Build 711 06/05/2020 SJ Standard Edition
+Revision Name : fft_filters_audiomini
+Top-level Entity Name : Audiomini
+Family : Cyclone V
+Device : 5CSEBA6U23I7
+Timing Models : Final
+Logic utilization (in ALMs) : 4,857 / 41,910 ( 12 % )
+Total registers : 10518
+Total pins : 230 / 314 ( 73 % )
+Total virtual pins : 0
+Total block memory bits : 720,923 / 5,662,720 ( 13 % )
+Total RAM Blocks : 145 / 553 ( 26 % )
+Total DSP Blocks : 82 / 112 ( 73 % )
+Total HSSI RX PCSs : 0
+Total HSSI PMA RX Deserializers : 0
+Total HSSI TX PCSs : 0
+Total HSSI PMA TX Serializers : 0
+Total PLLs : 1 / 6 ( 17 % )
+Total DLLs : 1 / 4 ( 25 % )
