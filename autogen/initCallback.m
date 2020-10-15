@@ -23,6 +23,9 @@
 
 
 [modelPath,modelAbbreviation,~] = fileparts(which(bdroot));
+if contains(bdroot, "gm_")
+    return
+end
 mp.modelPath = char(modelPath);
 mp.modelAbbreviation = char(modelAbbreviation);
 

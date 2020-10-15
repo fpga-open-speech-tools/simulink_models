@@ -1,0 +1,134 @@
+{
+    "system": {
+        "target": "reflex",
+        "sampleClockFrequency": 48000,
+        "systemClockFrequency": 98304000,
+        "processing": "sample",
+        "audioIn": {
+            "wordLength": 32,
+            "fractionLength": 28,
+            "signed": true,
+            "numberOfChannels": 16
+        },
+        "audioOut": {
+            "wordLength": 32,
+            "fractionLength": 28,
+            "signed": true,
+            "numberOfChannels": 2
+        }
+    },
+
+    "devices": [
+        {
+            "name": "DSBF",
+            "registers": [
+                {
+                    "dataType": {
+                        "fractionLength": 8,
+                        "signed": true,
+                        "type": "sfix16_en8",
+                        "wordLength": 16
+                    },
+                    "defaultValue": 0,
+                    "name": "azimuth",
+                    "registerNumber": 0
+                },
+                {
+                    "dataType": {
+                        "fractionLength": 8,
+                        "signed": true,
+                        "type": "sfix16_en8",
+                        "wordLength": 16
+                    },
+                    "defaultValue": 0,
+                    "name": "elevation",
+                    "registerNumber": 1
+                }
+            ]
+        },
+        {
+            "name": "simple_gain",
+            "registers": [
+                {
+                    "dataType": {
+                        "fractionLength": 24,
+                        "signed": false,
+                        "type": "fix32",
+                        "wordLength": 32
+                    },
+                    "defaultValue": 1,
+                    "name": "gain",
+                    "registerNumber": 0
+                },
+               {
+                    "dataType": {
+                        "fractionLength": 0,
+                        "signed": false,
+                        "type": "fix1",
+                        "wordLength": 1
+                    },
+                    "defaultValue": 1,
+                    "name": "Enable",
+                    "registerNumber": 1
+                }
+            ]
+        },
+        {
+            "name": "fft_filters",
+            "registers": [
+                {
+                    "dataType": {
+                        "fractionLength": 0,
+                        "signed": false,
+                        "type": "boolean",
+                        "wordLength": 1
+                    },
+                    "defaultValue": 0,
+                    "name": "passthrough",
+                    "registerNumber": 0
+                },
+                {
+                    "dataType": {
+                        "fractionLength": 0,
+                        "signed": false,
+                        "type": "ufix2",
+                        "wordLength": 2
+                    },
+                    "enumerations": {"LPF": 0, "BPF": 1, "HPF": 2, "APF": 3},
+                    "defaultValue": 0,
+                    "name": "filter_select",
+                    "registerNumber": 1
+                }
+            ]
+        },
+        {
+            "name": "noise_suppression",
+            "registers": [
+                {
+                    "dataType": {
+                        "fractionLength": 0,
+                        "signed": false,
+                        "type": "boolean",
+                        "wordLength": 1
+                    },
+                    "defaultValue": 1,
+                    "name": "enable",
+                    "registerNumber": 0
+                },
+                {
+                    "dataType": {
+                        "fractionLength": 32,
+                        "signed": false,
+                        "type": "ufix16_en15",
+                        "wordLength":  32
+                    },
+                    "defaultValue": 0,
+                    "name": "noise_variance",
+                    "registerNumber": 1
+                }
+            ]
+        }
+        
+    ]
+    
+}

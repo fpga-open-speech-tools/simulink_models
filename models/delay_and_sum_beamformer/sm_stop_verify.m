@@ -44,7 +44,7 @@ function mp = sm_stop_verify(mp)
 %sound(resample(squeeze(double(mp.Avalon_Sink_Data.Data)), mp.Fs, mp.Fs_system), mp.Fs)
 
 subplot(2,1,1)
-plot(mp.test_signal.data');
+plot(mp.test_signal.data);
 title('signal at each sensor')
 subplot(2,1,2)
 plot(squeeze(mp.Avalon_Sink_Data.Data))
