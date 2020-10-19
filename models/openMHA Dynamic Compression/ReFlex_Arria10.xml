@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FPGABoard Version="1.0">
+   <BoardName>ReFlex Arria 10 SoC SoM</BoardName>
+   <FPGA Device="10AS066H1F34E1SG" Family="Arria 10" JTAGChainPosition="1" Package=""
+         Speed=""
+         Vendor="Altera">
+      <Interface>
+         <Type>Altera JTAG</Type>
+      </Interface>
+      <Interface>
+         <Type>Clock</Type>
+         <Parameter ID="ClockType">Single-Ended</Parameter>
+         <Parameter ID="Frequency">25</Parameter>
+         <Signal>
+            <SignalName>Clock</SignalName>
+            <Description>Clock</Description>
+            <Direction>in</Direction>
+            <BitWidth>1</BitWidth>
+            <FPGAPin>AJ9</FPGAPin>
+            <IOStandard>1.2 V</IOStandard>
+         </Signal>
+      </Interface>
+      <Interface>
+         <Type>Reset</Type>
+         <Parameter ID="ActiveLevel">Active-High</Parameter>
+         <Signal>
+            <SignalName>Reset</SignalName>
+            <Description>Reset</Description>
+            <Direction>in</Direction>
+            <BitWidth>1</BitWidth>
+            <FPGAPin>A26</FPGAPin>
+            <IOStandard>1.2 V</IOStandard>
+         </Signal>
+      </Interface>
+   </FPGA>
+</FPGABoard>
