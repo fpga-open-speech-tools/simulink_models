@@ -5,7 +5,7 @@
 % parameters in the data structure SG, which is the model name initials.
 % This setup is needed for the Matlab HDL Coder to generate VHDL code.
 
-% Copyright 2019 Flat Earth Inc
+% Copyright 2019 Audio Logic
 %
 % THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
 % INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
@@ -14,10 +14,10 @@
 % ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 %
 % Ross K. Snider
-% Flat Earth Inc
+% Audio Logic
 % 985 Technology Blvd
 % Bozeman, MT 59718
-% support@flatearthinc.com
+% openspeech@flatearthinc.com
 
 %% Clear the workspace
 clear all   % clear all workspace variables
@@ -44,47 +44,17 @@ mp.linux_device_name = mp.model_name;
 mp.linux_device_version = '18.0';
 
 %% Setup the directory paths & tool settings
-% TODO: these paths should ideally be contained in a toolbox. the one exception is the model path, which is many cases is the pwd, though it doesn't have to be.
 addpath('../../config');
 if isunix  % setup for a Linux platform
-    path_setup_linux;
+    pathSetupLinux;
 elseif ispc % setup for a Windows platform
-    path_setup_windows;
+    pathSetupWindows;  
 end
 
-% TODO: remove python path and version information. All of the code should be python3 and python2 compatible. If not, we should make it python2/3 compatible if possible.
-% mp.python_path = 'F:\Python\Python37\python.exe';
-
-% Note: addpath() only sets the paths for the current Matlab session
-addpath(mp.model_path)
-addpath(mp.driver_codegen_path)
-addpath(mp.vhdl_codegen_path)
-addpath(mp.config_path)
-hdlsetuptoolpath('ToolName', 'Altera Quartus II', 'ToolPath', mp.quartus_path);  % setup the HDL toochain path that needs to be set before calling HDL workflow process
-eval(['cd ' mp.model_path])  % change the working directory to the model directory
-
-%% python
-% [python_version, python_exe, python_loaded] = pyversion;
-% if  python_loaded
-%     disp(['Using Python version ' python_version])
-% else
-%     pyversion(mp.python_path);    % Note: if the version changes from what is already loaded in Matlab, you will need to restart Matlab
-%     [python_version, python_exe, python_loaded] = pyversion;
-%     disp(['Setting Python to version ' python_version])
-% end
-% add the codegen_path to python's search path
-if count(py.sys.path,mp.vhdl_codegen_path) == 0
-    insert(py.sys.path,int32(0),mp.vhdl_codegen_path);
-end
-if count(py.sys.path,mp.driver_codegen_path) == 0
-    insert(py.sys.path,int32(0),mp.driver_codegen_path);
-end
-
+% Change working directory to model directory (this may already be the case)
+cd(mp.model_path);
 
 %% Open the model
-disp(['Please wait while the Simulink Model: '  mp.model_name  ' is being opened.'])
-disp(['Note: Before generating VHDL, you will need to run a model simulation.'])
-open_system([mp.model_abbreviation])
-% display popup reminder message
-helpdlg(sprintf(['NOTE: You will need to first run the Simulation for model ' mp.model_name ' to initialize variables in the Matlab workspace before converting to VHDL.']),'Reminder Message')
+disp(['Please wait while the Simulink Model: '  mp.model_name  ' is being loaded.'])
+load_system([mp.model_abbreviation])
 mp.sim_prompts = 1;  % turn on the simulation prompts/comments (these will be turned off when the HDL conversion process starts).

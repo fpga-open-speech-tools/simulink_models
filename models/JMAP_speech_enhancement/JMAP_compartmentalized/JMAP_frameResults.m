@@ -14,7 +14,7 @@ function [frameMag, postSNR, frameInputFFT] = JMAP_frameResults(x, noiseVariance
 %     postSNR - Posteriori SNR 
 %
 
-% Copyright Flat Earth Inc
+% Copyright Audio Logic
 % Author: Justin Williams
 
 frameInput=win.*x(k:k+len-1);

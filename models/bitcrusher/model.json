@@ -1,0 +1,62 @@
+{
+    "system": {
+        "target": "audiomini",
+        "sampleClockFrequency": 48000,
+        "systemClockFrequency": 98304000,
+        "processing": "channel",
+        "audioIn": {
+            "wordLength": 24,
+            "fractionLength": 23,
+            "signed": true,
+            "numberOfChannels": 2
+        },
+        "audioOut": {
+            "wordLength": 24,
+            "fractionLength": 23,
+            "signed": true,
+            "numberOfChannels": 2
+        }
+    },
+
+    "devices": [
+        {
+            "name": "BC",
+            "registers": [
+                {
+                    "dataType": {
+                        "fractionLength": 0,
+                        "signed": false,
+                        "type": "boolean",
+                        "wordLength": 1
+                    },
+                    "defaultValue": 1,
+                    "name": "enable",
+                    "registerNumber": 0
+                },
+                {
+                    "dataType": {
+                        "fractionLength": 0,
+                        "signed": false,
+                        "type": "ufix15",
+                        "wordLength": 5
+                    },
+                    "defaultValue": 8,
+                    "name": "bits",
+                    "registerNumber": 1
+                },
+                {
+                    "dataType": {
+                        "fractionLength": 7,
+                        "signed": false,
+                        "type": "ufix8_En7",
+                        "wordLength": 8
+                    },
+                    "defaultValue": 0.5,
+                    "name": "wet_dry_mix",
+                    "registerNumber": 2
+                }
+            ]
+        }
+    ]
+    
+}

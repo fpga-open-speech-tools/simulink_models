@@ -17,7 +17,7 @@ function mp = sm_init_control_signals(mp)
 %         mp.register(i).max        -  The maximum value the control signal will ever take
 %         mp.register(i).timeseries - The timeseries data format that is needed for the from workspace block
 %
-% Copyright 2019 Flat Earth Inc
+% Copyright 2019 Audio Logic
 %
 % THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
 % INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
@@ -26,41 +26,56 @@ function mp = sm_init_control_signals(mp)
 % ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 %
 % Ross K. Snider
-% Flat Earth Inc
+% Audio Logic
 % 985 Technology Blvd
 % Bozeman, MT 59718
-% support@flatearthinc.com
+% openspeech@flatearthinc.com
 %
 % Note: to display the widget types available, run the function
 % \simulink_models\config\widget_list_display.m
 %
 
 %% Create bypass control signal
-mp.register(1).name       = 'bypass';
-mp.register(1).value      = 0;          % value control signal will take during simulation
-mp.register(1).min        = 0;          % The minimum value the control signal will ever take
-mp.register(1).max        = 1;          % The maximum value the control signal will ever take
-mp.register(1).default    = 0;          % default (initial) value
-mp.register(1).widget_type          = 'toggle';
-mp.register(1).widget_display_units = 'bypass';
+ri = 1;
+mp.register(ri).name       = 'enable';
+mp.register(ri).value      = 1;          % value control signal will take during simulation
+mp.register(ri).min        = 0;          % The minimum value the control signal will ever take
+mp.register(ri).max        = 1;          % The maximum value the control signal will ever take
+mp.register(ri).default    = 1;          % default (initial) value
+mp.register(ri).dataType = fixdt('boolean');
+mp.register(ri).widgetType          = 'toggle';
+mp.register(ri).widgetDisplayUnits = '';
+mp.register(ri).widgetStyle = 'enable';
+mp.register(ri).uiPageName = 'main';
+mp.register(ri).uiPanelName = 'flanger';
 
 %% Create rate control signal
-mp.register(2).name       = 'rate';
-mp.register(2).value      = 2.7;          % value control signal will take during simulation
-mp.register(2).min        = 0.1;          % The minimum value the control signal will ever take
-mp.register(2).max        = 5;          % The maximum value the control signal will ever take
-mp.register(2).default    = 1;          % default (initial) value
-mp.register(2).widget_type          = 'slider';
-mp.register(2).widget_display_units = 'hz';
+ri = ri + 1;
+mp.register(ri).name       = 'rate';
+mp.register(ri).value      = 2.7;          % value control signal will take during simulation
+mp.register(ri).min        = 0.1;          % The minimum value the control signal will ever take
+mp.register(ri).max        = 5;          % The maximum value the control signal will ever take
+mp.register(ri).default    = 1;          % default (initial) value
+mp.register(ri).dataType = fixdt(0,8,5);
+mp.register(ri).widgetType          = 'slider';
+mp.register(ri).widgetDisplayUnits = 'Hz';
+mp.register(ri).widgetStyle = 'default';
+mp.register(ri).uiPageName = 'main';
+mp.register(ri).uiPanelName = 'flanger';
 
 %% Create regen control signal
-mp.register(3).name       = 'regen';
-mp.register(3).value      = 0.7;          % value control signal will take during simulation
-mp.register(3).min        = 0;          % The minimum value the control signal will ever take
-mp.register(3).max        = 0.9;          % The maximum value the control signal will ever take
-mp.register(3).default    = 0.5;          % default (initial) value
-mp.register(3).widget_type          = 'slider';
-mp.register(3).widget_display_units = 'none';
+ri = ri + 1;
+mp.register(ri).name       = 'regen';
+mp.register(ri).value      = 0.7;          % value control signal will take during simulation
+mp.register(ri).min        = 0;          % The minimum value the control signal will ever take
+mp.register(ri).max        = 0.9;          % The maximum value the control signal will ever take
+mp.register(ri).default    = 0.5;          % default (initial) value
+mp.register(ri).dataType = fixdt(0,8,7);
+mp.register(ri).widgetType          = 'slider';
+mp.register(ri).widgetDisplayUnits = '';
+mp.register(ri).widgetStyle = 'default';
+mp.register(ri).uiPageName = 'main';
+mp.register(ri).uiPanelName = 'flanger';
 
 
 

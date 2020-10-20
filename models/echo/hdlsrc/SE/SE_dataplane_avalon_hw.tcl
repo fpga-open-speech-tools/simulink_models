@@ -30,20 +30,20 @@ set_module_property REPORT_HIERARCHY false
 # # # # # # # # # # # # # # # # # #
 
 add_fileset QUARTUS_SYNTH QUARTUS_SYNTH "" ""
-add_fileset_file SE_variable_delay.vhd VHDL PATH SE_variable_delay.vhd
-add_fileset_file SE_Left_Channel_Processing.vhd VHDL PATH SE_Left_Channel_Processing.vhd
-add_fileset_file SE_Right_Channel_Processing.vhd VHDL PATH SE_Right_Channel_Processing.vhd
-add_fileset_file SE_SimpleDualPortRAM_generic.vhd VHDL PATH SE_SimpleDualPortRAM_generic.vhd
-add_fileset_file SE_dataplane_pkg.vhd VHDL PATH SE_dataplane_pkg.vhd
-add_fileset_file SE_echo_block.vhd VHDL PATH SE_echo_block.vhd
 add_fileset_file SE_Avalon_Data_Processing.vhd VHDL PATH SE_Avalon_Data_Processing.vhd
-add_fileset_file SE_read_address_generator.vhd VHDL PATH SE_read_address_generator.vhd
 add_fileset_file SE_dataplane.vhd VHDL PATH SE_dataplane.vhd
+add_fileset_file SE_dataplane_pkg.vhd VHDL PATH SE_dataplane_pkg.vhd
+add_fileset_file SE_echo.vhd VHDL PATH SE_echo.vhd
+add_fileset_file SE_echo_block.vhd VHDL PATH SE_echo_block.vhd
+add_fileset_file SE_Left_Channel_Processing.vhd VHDL PATH SE_Left_Channel_Processing.vhd
 add_fileset_file SE_mixer.vhd VHDL PATH SE_mixer.vhd
 add_fileset_file SE_mixer_block.vhd VHDL PATH SE_mixer_block.vhd
-add_fileset_file SE_echo.vhd VHDL PATH SE_echo.vhd
-add_fileset_file SE_variable_delay_block.vhd VHDL PATH SE_variable_delay_block.vhd
+add_fileset_file SE_read_address_generator.vhd VHDL PATH SE_read_address_generator.vhd
 add_fileset_file SE_read_address_generator_block.vhd VHDL PATH SE_read_address_generator_block.vhd
+add_fileset_file SE_Right_Channel_Processing.vhd VHDL PATH SE_Right_Channel_Processing.vhd
+add_fileset_file SE_SimpleDualPortRAM_generic.vhd VHDL PATH SE_SimpleDualPortRAM_generic.vhd
+add_fileset_file SE_variable_delay.vhd VHDL PATH SE_variable_delay.vhd
+add_fileset_file SE_variable_delay_block.vhd VHDL PATH SE_variable_delay_block.vhd
 set_fileset_property QUARTUS_SYNTH TOP_LEVEL SE_dataplane_avalon
 set_fileset_property QUARTUS_SYNTH ENABLE_RELATIVE_INCLUDE_PATHS false
 set_fileset_property QUARTUS_SYNTH ENABLE_FILE_OVERWRITE_MODE false
@@ -138,7 +138,7 @@ set_interface_assignment avalon_slave embeddedsw.configuration.isPrintableDevice
 add_interface avalon_streaming_sink avalon_streaming end
 set_interface_property avalon_streaming_sink associatedClock clock
 set_interface_property avalon_streaming_sink associatedReset reset
-set_interface_property avalon_streaming_sink dataBitsPerSymbol 8
+set_interface_property avalon_streaming_sink dataBitsPerSymbol 32
 set_interface_property avalon_streaming_sink errorDescriptor ""
 set_interface_property avalon_streaming_sink firstSymbolInHighOrderBits true
 set_interface_property avalon_streaming_sink maxChannel 3
@@ -148,10 +148,10 @@ set_interface_property avalon_streaming_sink EXPORT_OF ""
 set_interface_property avalon_streaming_sink PORT_NAME_MAP ""
 set_interface_property avalon_streaming_sink CMSIS_SVD_VARIABLES ""
 set_interface_property avalon_streaming_sink SVD_ADDRESS_GROUP ""
+add_interface_port avalon_streaming_sink avalon_sink_valid valid Input 1
 add_interface_port avalon_streaming_sink avalon_sink_data data Input 32
 add_interface_port avalon_streaming_sink avalon_sink_channel channel Input 2
 add_interface_port avalon_streaming_sink avalon_sink_error error Input 2
-add_interface_port avalon_streaming_sink avalon_sink_valid valid Input 1
 # End create_sink_connection_point
 
 
@@ -162,7 +162,7 @@ add_interface_port avalon_streaming_sink avalon_sink_valid valid Input 1
 add_interface avalon_streaming_source avalon_streaming start
 set_interface_property avalon_streaming_source associatedClock clock
 set_interface_property avalon_streaming_source associatedReset reset
-set_interface_property avalon_streaming_source dataBitsPerSymbol 8
+set_interface_property avalon_streaming_source dataBitsPerSymbol 32
 set_interface_property avalon_streaming_source errorDescriptor ""
 set_interface_property avalon_streaming_source firstSymbolInHighOrderBits true
 set_interface_property avalon_streaming_source maxChannel 3
@@ -172,10 +172,10 @@ set_interface_property avalon_streaming_source EXPORT_OF ""
 set_interface_property avalon_streaming_source PORT_NAME_MAP ""
 set_interface_property avalon_streaming_source CMSIS_SVD_VARIABLES ""
 set_interface_property avalon_streaming_source SVD_ADDRESS_GROUP ""
+add_interface_port avalon_streaming_source avalon_source_valid valid Output 1
+add_interface_port avalon_streaming_source avalon_source_data data Output 32
 add_interface_port avalon_streaming_source avalon_source_channel channel Output 2
 add_interface_port avalon_streaming_source avalon_source_error error Output 2
-add_interface_port avalon_streaming_source avalon_source_data data Output 32
-add_interface_port avalon_streaming_source avalon_source_valid valid Output 1
 # End create_sink_connection_point
 
 

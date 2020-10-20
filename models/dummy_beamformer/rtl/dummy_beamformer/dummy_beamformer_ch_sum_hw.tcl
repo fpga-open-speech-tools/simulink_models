@@ -60,7 +60,7 @@ set_interface_property "AStInput" maxChannel 255
 set_interface_property "AStInput" readyLatency 0
 set_interface_property "AStInput" ASSOCIATED_CLOCK clock
 set_interface_property "AStInput" ENABLED true
-set_interface_property "AStInput" dataBitsPerSymbol 8
+set_interface_property "AStInput" dataBitsPerSymbol 32
 add_interface_port "AStInput" d data Input 32
 add_interface_port "AStInput" v valid Input 1
 set_port_property v VHDL_TYPE STD_LOGIC_VECTOR
@@ -74,7 +74,7 @@ set_interface_property "AStOutput" maxChannel 255
 set_interface_property "AStOutput" readyLatency 0
 set_interface_property "AStOutput" ASSOCIATED_CLOCK clock
 set_interface_property "AStOutput" ENABLED true
-set_interface_property "AStOutput" dataBitsPerSymbol 8
+set_interface_property "AStOutput" dataBitsPerSymbol 32 
 add_interface_port "AStOutput" dout data Output 32
 add_interface_port "AStOutput" vout valid Output 1
 set_port_property vout VHDL_TYPE STD_LOGIC_VECTOR
