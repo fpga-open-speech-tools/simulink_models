@@ -32,6 +32,7 @@ mp.signed = config.system.audioIn.signed;
 mp.W_bits = config.system.audioIn.wordLength;  % Word length
 mp.F_bits = config.system.audioIn.fractionLength;  % Number of fractional bits in word
 mp.nChannels = config.system.audioIn.numberOfChannels;
+mp.nOutChannels = config.system.audioOut.numberOfChannels;
 
 %% Parse registers
 mp.register = parseregisters(config);
@@ -58,6 +59,8 @@ end
 % Configure target system
 if isfield(config.system, "target") == 0 || config.system.target == "audiomini"
     mp.target = Hardware.AudioMini;
+elseif config.system.target == "reflex"
+    mp.target = Hardware.Reflex;
 else
     mp.target = Hardware.AudioBlade;
 end
