@@ -35,7 +35,7 @@ close all;
 data_input = testSignal.audio(:,1);
 me_out = mef_verification(data_input, Fs, tdres);
 
-figure(1)
+figure
 subplot(2,1,1)
 plot(testSignal.audio(:,1))
 title('Audio Input')
@@ -47,8 +47,8 @@ plot(mp.dataOut(1, :))
 hold on
 plot(me_out)
 legend('Simulink','meout')
-title('Simulink Output vs Simulation'
+title('Simulink Output vs Simulation')
 
-[error,idx] = max(abs(sim_out - me_out))
-sim_out(idx)
-me_out(idx)
+[error,idx] = max(abs(sim_out - me_out));
+sim_out(idx);
+me_out(idx);
