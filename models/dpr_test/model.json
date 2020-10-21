@@ -1,6 +1,6 @@
 {
     "system": {
-        "target": "reflex",
+        "target": "audiomini",
         "sampleClockFrequency": 48000,
         "systemClockFrequency": 98304000,
         "processing": "sample",
@@ -20,29 +20,18 @@
 
     "devices": [
         {
-            "name": "dummy",
+            "name": "dpr_test",
             "registers": [
                 {
                     "dataType": {
                         "fractionLength": 0,
                         "signed": false,
-                        "type": "boolean",
-                        "wordLength": 1
+                        "type": "sfdfs",
+                        "wordLength": 32
                     },
-                    "defaultValue": 1,
-                    "name": "enable",
+                    "defaultValue": 0,
+                    "name": "dpr_data",
                     "registerNumber": 0
-                },
-                {
-                    "dataType": {
-                        "fractionLength": 12,
-                        "signed": true,
-                        "type": "sdfds",
-                        "wordLength": 16
-                    },
-                    "defaultValue": 1,
-                    "name": "gain",
-                    "registerNumber": 1
                 }
             ]
         }
