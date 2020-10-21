@@ -1,9 +1,7 @@
-% launch_hdl_simulator_simple_gain_dataplane;
-
 data_input = testSignal.audio(:,1);
 me_out = mef_verification(data_input, Fs, tdres);
 
-mef_inhdl = hdlcosim_simple_gain_dataplane;
+mef_inhdl = hdlcosim_dataplane;
 
 % Data Plane Inputs
 clk_enable              = fi(1,0,1,0);
