@@ -8,4 +8,4 @@ mp.sim_verify = 1;
 mp.simDuration = 5;
 mp.nSamples = config.system.sampleClockFrequency * mp.simDuration;
 
-middle_ear_parameters;
+mef_parameters;
