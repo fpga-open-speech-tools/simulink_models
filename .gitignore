@@ -6,3 +6,5 @@ gm_*.slx
 *.asv
 *.bak
 config/path.json
+*.mat
+*.fig
