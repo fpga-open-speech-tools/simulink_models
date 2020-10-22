@@ -33,21 +33,22 @@
 close all;
 mex C2ChirpFilt.c complex.c
 
-c2_filter_out = zeros(length(data_input),1);
 data_input = testSignal.audio(:,1);
+C2filterout = zeros(1,length(data_input));
+
 for i = 1:length(data_input)
-    c2_filter_out(i) = C2ChirpFilt(data_input(i),tdres,cf,i-1,taumaxc2,fcohcc2);
+    C2filterout(1,i) = C2ChirpFilt(data_input(i),tdres,cf,i-1,taumaxc2,fcohcc2);
 end
 
 figure
 subplot(2,1,1)
-plot(testSignal.audio(:,1))
+plot(data_input)
 legend('MEF Result Input Wave')
 title('Audio Input')
 
 sim_out = mp.dataOut(1, 1:end-1);
 subplot(2,1,2)
-plot(c2_filter_out)
+plot(C2filterout)
 hold on
 plot(sim_out)
 legend('C Source Code','Simulink')

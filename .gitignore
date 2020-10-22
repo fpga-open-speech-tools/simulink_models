@@ -8,3 +8,4 @@ gm_*.slx
 config/path.json
 *.mat
 *.fig
+*.mexw64
