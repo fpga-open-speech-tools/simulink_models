@@ -1,7 +1,7 @@
 
 %% Autogen parameters
 
-mp.testFile = [mp.test_signals_path filesep 'm06ae.wav'];
+mp.testFile = [mp.test_signals_path filesep 'auditory_nerve\m06ae.wav'];
 
 mp.sim_prompts = 1;
 mp.sim_verify = 1;
