@@ -9,3 +9,4 @@ config/path.json
 *.mat
 *.fig
 *.mexw64
+models/auditory_nerve/c2_wideband_filter/vsim.wlf
