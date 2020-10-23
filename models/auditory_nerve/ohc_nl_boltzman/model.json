@@ -20,7 +20,7 @@
 
     "devices": [
         {
-            "name": "middle_ear_filter",
+            "name": "ohc_nonlinear_boltzman",
             "registers": [
                 {
                     "dataType": {

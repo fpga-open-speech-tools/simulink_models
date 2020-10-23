@@ -27,13 +27,12 @@
 % Bozeman, MT 59718
 % openspeech@flatearthinc.com
 
-%% Verify that the test data got encoded, passed through the model, and
-% decoded correctly.  The input (modified by gain) and output values should be identical.
-
+%% 
 close all;
 mex Boltzman.c
 
-data_input  = testSignal.audio(:,1);
+data_input  = testSignal.audio(:,1) .* 500;
+% data_input  = testSignal.audio(:,1);
 nl_boltzman = zeros(1,length(data_input));
 
 for i = 1:length(data_input)
@@ -43,7 +42,7 @@ end
 figure
 subplot(2,1,1)
 plot(data_input)
-legend('MEF Result Input Wave')
+legend('CP WBGTF Input Wave')
 title('Audio Input')
 
 sim_out = mp.dataOut;
