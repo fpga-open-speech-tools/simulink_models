@@ -20,7 +20,7 @@
 
     "devices": [
         {
-            "name": "ohc_nonlinear_filter",
+            "name": "ohc_calc_tau",
             "registers": [
                 {
                     "dataType": {
