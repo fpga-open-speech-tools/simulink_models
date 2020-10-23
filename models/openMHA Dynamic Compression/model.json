@@ -1,0 +1,125 @@
+{
+    "system": {
+        "target": "audiomini",
+        "sampleClockFrequency": 48000,
+        "systemClockFrequency": 98304000.0,
+        "processing": "channel",
+        "audioIn": {
+            "wordLength": 24,
+            "fractionLength": 23,
+            "signed": true,
+            "numberOfChannels": 2
+        },
+        "audioOut": {
+            "wordLength": 24,
+            "fractionLength": 23,
+            "signed": true,
+            "numberOfChannels": 2
+        }
+    },
+    "devices": {
+        "name": "openMHA_test",
+        "registers": [
+            {
+                "name": "write_en_ar",
+                "dataType": {
+                    "signed": false,
+                    "wordLength": 1,
+                    "fractionLength": 0
+                },
+                "defaultValue": 0,
+                "registerNumber": 0
+            },
+            {
+                "name": "write_data_a",
+                "dataType": {
+                    "signed": true,
+                    "wordLength": 40,
+                    "fractionLength": 32
+                },
+                "defaultValue": 0,
+                "registerNumber": 1
+            },
+            {
+                "name": "write_data_r",
+                "dataType": {
+                    "signed": true,
+                    "wordLength": 40,
+                    "fractionLength": 32
+                },
+                "defaultValue": 0,
+                "registerNumber": 2
+            },
+            {
+                "name": "write_addr_a",
+                "dataType": {
+                    "signed": false,
+                    "wordLength": 8,
+                    "fractionLength": 0
+                },
+                "defaultValue": 0,
+                "registerNumber": 3
+            },
+            {
+                "name": "write_addr_r",
+                "dataType": {
+                    "signed": false,
+                    "wordLength": 8,
+                    "fractionLength": 0
+                },
+                "defaultValue": 1,
+                "registerNumber": 4
+            },
+            {
+                "name": "write_en_vy",
+                "dataType": {
+                    "signed": false,
+                    "wordLength": 1,
+                    "fractionLength": 0
+                },
+                "defaultValue": 0,
+                "registerNumber": 5
+            },
+            {
+                "name": "write_data_vy_low",
+                "dataType": {
+                    "signed": true,
+                    "wordLength": 16,
+                    "fractionLength": 8
+                },
+                "defaultValue": 0,
+                "registerNumber": 6
+            },
+            {
+                "name": "write_data_vy_high",
+                "dataType": {
+                    "signed": true,
+                    "wordLength": 16,
+                    "fractionLength": 8
+                },
+                "defaultValue": 0,
+                "registerNumber": 7
+            },
+            {
+                "name": "write_data_addr_vy_low",
+                "dataType": {
+                    "signed": false,
+                    "wordLength": 8,
+                    "fractionLength": 0
+                },
+                "defaultValue": 0,
+                "registerNumber": 8
+            },
+            {
+                "name": "write_data_addr_vy_high",
+                "dataType": {
+                    "signed": false,
+                    "wordLength": 8,
+                    "fractionLength": 0
+                },
+                "defaultValue": 1,
+                "registerNumber": 9
+            }
+        ]
+    }
+}
