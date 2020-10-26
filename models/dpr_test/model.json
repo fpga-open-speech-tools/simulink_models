@@ -24,9 +24,9 @@
             "registers": [
                 {
                     "dataType": {
-                        "fractionLength": 0,
+                        "fractionLength": 8,
                         "signed": false,
-                        "type": "sfdfs",
+                        "type": "ufix32en8",
                         "wordLength": 32
                     },
                     "defaultValue": 0,

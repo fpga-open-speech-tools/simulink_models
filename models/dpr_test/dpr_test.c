@@ -10,7 +10,6 @@
 #include <linux/of.h>
 #include "custom_functions.h"
 
-#define n_nums 1024
 #define max_char 20
 
 
