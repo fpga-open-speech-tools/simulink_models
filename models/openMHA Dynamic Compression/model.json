@@ -18,7 +18,7 @@
         }
     },
     "devices": {
-        "name": "openMHA_test",
+        "name": "openMHA_test_db_ar_gaintable",
         "registers": [
             {
                 "name": "write_en_ar",

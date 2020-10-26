@@ -5,8 +5,6 @@
 % Created to test full dynamic compression model functionality from dB
 % conversion to gaintable
 
-clear all;
-
 %% Declare Sampling Rate
 
 fs = 48000;
