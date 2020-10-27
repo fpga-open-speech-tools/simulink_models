@@ -30,15 +30,15 @@ end
 
 figure
 subplot(2,1,1)
-plot(hdl_data_in)
+plot(data_input)
 hold on
-plot(testSignal.audio(:,1),'k:')
+plot(hdl_data_in,'--')
 title('Audio Input')
-legend('HDL Data In','Input')
+legend('Input', 'HDL Data In')
 
 subplot(2,1,2)
-plot(c2_wideband_out)
-hold on
 plot(C2filterout)
-legend('HDL','C Source Code')
+hold on
+plot(c2_wideband_out,'--')
+legend('C Source Code', 'HDL')
 title('HDL Output vs Simulation')

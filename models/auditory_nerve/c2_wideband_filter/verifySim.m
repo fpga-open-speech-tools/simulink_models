@@ -34,10 +34,10 @@ close all;
 mex C2ChirpFilt.c complex.c
 
 data_input = testSignal.audio(:,1);
-C2filterout = zeros(1,length(data_input));
+c2_wbf_out = zeros(1,length(data_input));
 
 for i = 1:length(data_input)
-    C2filterout(1,i) = C2ChirpFilt(data_input(i),tdres,cf,i-1,taumaxc2,fcohcc2);
+    c2_wbf_out(1,i) = C2ChirpFilt(data_input(i),tdres,cf,i-1,taumaxc2,fcohcc2);
 end
 
 figure
@@ -46,10 +46,10 @@ plot(data_input)
 legend('MEF Result Input Wave')
 title('Audio Input')
 
-sim_out = mp.dataOut(1, 1:end-1);
+sim_out = mp.dataOut;
 subplot(2,1,2)
-plot(C2filterout)
+plot(c2_wbf_out)
 hold on
-plot(sim_out)
+plot(sim_out,'--')
 legend('C Source Code','Simulink')
 title('C Source Code vs Simulink Output')
