@@ -64,7 +64,7 @@ void C2ChirpFilt(double xx, double tdres, double cf, int n, double taumax, doubl
 
 	double ipw, ipb, rpa, pzero, rzero;
 
-	double sigma0,fs_bilinear,CF,norm_gain,phase,c2filterout;
+	double sigma0,fs_bilinear,CF,norm_gain,phase,C2filterouttemp,c2filterout;
 	int    i,r,order_of_pole,half_order_pole,order_of_zero;
 	double temp, dy, preal, pimg;
 
@@ -193,7 +193,8 @@ void C2ChirpFilt(double xx, double tdres, double cf, int n, double taumax, doubl
        };
 
 	  dy = C2output[half_order_pole][1]*norm_gain;
-	  *C2filterout= dy/4.0;
+      C2filterouttemp = dy/4.0;
+	  *C2filterout= C2filterouttemp*fabs(C2filterouttemp)*cf/10*cf/2e3;
 }
 
 /* The gateway function */
