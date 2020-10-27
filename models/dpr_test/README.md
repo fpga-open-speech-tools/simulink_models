@@ -18,7 +18,9 @@ This will generate the full Quartus project as well as a loadable kernel module 
     - `make clean`
     - `make`
 3. Transfer the `dpr_test.ko` file to `/home/root/` directory of the DE10 
-4. Copy the `soc_system.dtb` in the base directory to the FAT32 partition of the SD card
+4. Compile the `soc_system.dts` with the SoC EDS tool using the command:
+    - `dtc -I dts -O dtb -o soc_system.dtb soc_system_dc.dts -@`
+6. Copy the `soc_system.dtb` in the base directory to the FAT32 partition of the SD card
 
 ## Running the Project
 Currently, writing to MATLAB's dual port RAM is not supported by the FrOST autogen app, so the example project should be programmed manually and controlled from the command line.  

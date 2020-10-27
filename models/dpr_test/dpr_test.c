@@ -10,8 +10,9 @@
 #include <linux/of.h>
 #include "custom_functions.h"
 
-#define max_char 20
-
+#define MAX_CHAR 20
+#define BUFFER_SIZE 512
+#define FRAC_BITS 8
 
 static struct class *cl;
 static dev_t dev_num;
@@ -184,38 +185,55 @@ static ssize_t dpr_data_read(struct device *dev, struct device_attribute *attr, 
 static ssize_t dpr_data_write(struct device *dev, struct device_attribute *attr, const char *buf, size_t count) {
 
   int i,c;
-	uint32_t num;
-  char substring[max_char];
+	uint32_t num = 0;
+  uint32_t last_num = 0;
+  char substring[MAX_CHAR];
   int substring_count = 0;
   int num_counter = 0;
   
   fe_dpr_test_dev_t *devp = (fe_dpr_test_dev_t *)dev_get_drvdata(dev);
 
   // Check to see if the function was called with an empty string
-  if (count < 2)
+  if (count < 3)
     return count;
-    
+
   for (i = 0; i < count; i++)
   {
     //If its not a space or a comma, add the digit to the substring
     if ((buf[i] != ',') && (buf[i] != ' ') && (buf[i] != '\0') && (buf[i] != '\r') && (buf[i] != '\n'))
     {
-      substring[substring_count] = buf[i];
-      substring_count++;
+      if (num_counter < BUFFER_SIZE) 
+      {
+        substring[substring_count] = buf[i];
+        substring_count++;
+      }
+      else  
+      {
+        printk(KERN_WARNING "The input exceeded the buffer size.  Only the first %d entries were passed.\n",BUFFER_SIZE);
+        return count;
+      }
     }
     else 
     {
       substring[substring_count] = '\0';
-      num = set_fixed_num(substring,8,false);
+      num = set_fixed_num(substring,FRAC_BITS,false);
       iowrite32((num & 0x0000FFFF) + (((uint32_t)num_counter)<<16), (u32 *)devp->regs + 0);
+      last_num = num;
       
       for (c = 0; c <= substring_count; c++)
         substring[c] = '\0';
       substring_count = 0;
       num_counter += 1;
-      
     }
   } 
+  printk("N:%d\n",num_counter);
+  if (num_counter < BUFFER_SIZE - 1)
+  {
+    printk(KERN_WARNING "The buffer was not filled.  Writing last value to the remaining addresses.\n");
+    
+    for (i = num_counter; i < BUFFER_SIZE; i++)
+      iowrite32((last_num & 0x0000FFFF) + (((uint32_t)i)<<16), (u32 *)devp->regs + 0);
+  }
 	return count;
 }
 
