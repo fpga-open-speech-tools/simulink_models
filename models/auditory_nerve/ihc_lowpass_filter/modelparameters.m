@@ -1,18 +1,20 @@
 TWOPI= 6.28318530717959; 
 
 %% Autogen parameters
-mp.testFile  = [mp.test_signals_path filesep 'auditory_nerve\ihc_nl_log_c1.wav'];
-
-mp.testFile2 = [mp.test_signals_path filesep 'auditory_nerve\ihc_nl_log_c2.wav'];
-testSignal2 = AudioSource.fromFile(mp.testFile2, mp.Fs, mp.nSamples);
-avalonSource2 = testSignal2.toAvalonSource();
-mp.avalonSim2 = avalonSource2.astimeseries();
-mp.Avalon_Source_Data2     = mp.avalonSim.data;
-
 mp.sim_prompts = 1;
 mp.sim_verify = 1;
 mp.simDuration = 5;
 mp.nSamples = config.system.sampleClockFrequency * mp.simDuration;
+
+mp.testFile  = [mp.test_signals_path filesep 'auditory_nerve\ihc_nl_log_c1.wav'];
+mp.testFile2 = [mp.test_signals_path filesep 'auditory_nerve\ihc_nl_log_c2.wav'];
+testSignal2 = AudioSource.fromFile(mp.testFile2, mp.Fs, mp.nSamples);
+avalonSource2 = testSignal2.toAvalonSource();
+mp.avalonSim2 = avalonSource2.astimeseries();
+mp.Avalon_Source_Data2     = mp.avalonSim2.data;
+
+
+
 
 %% ANM Settings
 cf = 1000;    % Characteristic frequency of specific neuron

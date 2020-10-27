@@ -33,9 +33,9 @@ mex IhcLowPass.c
 
 data_input1 = testSignal.audio(:,1);
 data_input2 = testSignal2.audio(:,1);
-ihc_lpf_out = zeros(1,length(data_input));
+ihc_lpf_out = zeros(1,length(data_input1));
 
-for i = 1:length(data_input)
+for i = 1:length(data_input1)
     ihc_lpf_out(1,i) = IhcLowPass(data_input1(i), data_input2(i), tdres, Fcihc, i-1, gainihc, orderihc);
 end
 
