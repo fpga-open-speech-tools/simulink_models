@@ -29,14 +29,14 @@
 
 %% 
 close all;
-mex inner_hair_cell.c complex.c
+mex inner_hair_cell_source.c complex.c
 
 c1_chirp_filter     = testSignal.audio(:,1);
 c2_wideband_filter  = testSignal2.audio(:,1);
 inner_hair_cell_out = zeros(1,length(c1_chirp_filter));
 
 for i = 1:length(c1_chirp_filter)
-    inner_hair_cell_out(1,i) = inner_hair_cell(c1_chirp_filter(i), slope_c1, ihcasym_c1, c2_wideband_filter(i), slope_c2, ihcasym_c2, tdres, Fcihc, i-1, gainihc, orderihc);
+    inner_hair_cell_out(1,i) = inner_hair_cell_source(c1_chirp_filter(i), slope_c1, ihcasym_c1, c2_wideband_filter(i), slope_c2, ihcasym_c2, tdres, Fcihc, i-1, gainihc, orderihc);
 end
 
 figure
