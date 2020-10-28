@@ -24,6 +24,6 @@ strength  = (20.0e6)/(10^(corner/20));
 % slope       = 0.1; % Hard-coded as 0.1 for the output of the C1 filter
 
 %% C2 Wideband Filter
-mp.testFile = [mp.test_signals_path filesep 'auditory_nerve\c1_chirp_filter_out.wav'];
+mp.testFile = [mp.test_signals_path filesep 'auditory_nerve\c2_wbf_out.wav'];
 ihcasym     = 1.0; % Ratio of positive Max to negative Max
 slope       = 0.2; % Hard-coded as 0.1 for the output of the C1 filter
