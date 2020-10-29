@@ -61,6 +61,7 @@
 
 function [sptime, spCount, trd_vector] = SpikeGenerator(synout, randNums, tdres, t_rd_rest, t_rd_init, tau, t_rd_jump, nSites, tabs, trel, elapsed_time, unitRateInterval, oneSiteRedock)
 
+
     % Initializing parameters
     Xsum = 0;
     spCount = 0;
