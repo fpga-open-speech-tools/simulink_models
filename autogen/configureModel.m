@@ -98,7 +98,7 @@ function regs = parsedeviceregisters(device)
         tempReg.name = reg.name;
         tempReg.value = reg.defaultValue;
 
-        if reg.dataType.type == "boolean"
+        if isfield(reg.dataType, "type") && reg.dataType.type == "boolean"
             tempReg.dataType = fixdt('boolean');
         else
             tempReg.dataType = fixdt(reg.dataType.signed, ...
