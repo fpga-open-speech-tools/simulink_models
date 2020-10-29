@@ -90,6 +90,12 @@ ar_coeffs(1:2*num_bands) = exp( -1.0./(ar_taus(1:2*num_bands).*fs) );
 buf_a = 65.*ones(num_bands,1);
 buf_r = 65.*ones(num_bands,1);
 
+%% Declare Attack-Release Enabled Subsystem Rate Transition Multiplier
+
+% Rate Transition Multiplying Factor to ensure that enabled subsystem
+% completes all computations within the major time step
+enabled_rate_mult = 2;
+
 %% Calculate New Attack-Release Filter Coefficients
 
 % Created for testing of coefficient write functionality

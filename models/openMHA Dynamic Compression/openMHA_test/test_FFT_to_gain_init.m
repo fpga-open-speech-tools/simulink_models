@@ -23,6 +23,22 @@ num_bins = FFTsize/2 + 1;
 freq = linspace(0,24000,129);
 binwidth = (fs/2)/(FFTsize/2);
 
+%% Declare Freq Band Information
+
+% *** 2 Band Test Info *** %
+num_bands = 2;
+ef = [0 12000 24000];
+
+% *** 8 Band Test Info *** %
+% num_bands = 8;
+% ef = [0 100 200 400 800 1600 3200 6400 12000 24000];
+
+% Calculate Freq Band State Controller Parameters
+band_sizes = calculate_band_sizes(ef, num_bins, binwidth, num_bands);
+band_edges = calculate_band_edges(ef, num_bins, binwidth, num_bands);
+mirrored_band_edges = calculate_mirrored_band_edges(band_sizes, FFTsize, num_bins, num_bands);
+band_edges = [band_edges mirrored_band_edges];
+
 %% Declare Attack and Release Time Constants
 
 % Note that example attack and release time constants found in the openMHA 
@@ -44,13 +60,7 @@ c2_a = 1.0 - c1_a;
 c1_r = exp( -1.0/(tau_r * fs) );
 c2_r = 1.0 - c1_r;
 
-%% Declare Freq Band Information
 
-% *** 2 Band Test Info *** %
-num_bands = 2;
-
-% *** 8 Band Test Info *** %
-% num_bands = 8;
 
 %% Declare Attack and Release Time Constants for Each Frequency Band
 
@@ -154,55 +164,128 @@ for i = length(dp_gt)+1:RAM_addresses
     vy(i,1) = 0;
 end
 
+%% Dual-Port Gain Application Parameters
+
+gainapp_dp_memory = log2(num_bands) + 1;
+
 %% Declare Input Signal
 
-% Data Input Signal (Input Level Lst [dB])
-Lst = [ 55.*ones(25000*num_bands,1); 90.*ones(25000*num_bands,1); 55.*ones(25000*num_bands,1); 90.*ones(25000*num_bands,1); 55.*ones(25000*num_bands,1); ];
+% % Data Input Signal (Input Level Lst [dB])
+% Lst = [ 55.*ones(25000*num_bands,1); 90.*ones(25000*num_bands,1); 55.*ones(25000*num_bands,1); 90.*ones(25000*num_bands,1); 55.*ones(25000*num_bands,1); ];
+% 
+% % Data Input Signal (Input Level level_in [Pa^2])
+% level_in = (10.^(Lst./10))./2500000000;
 
-% Data Input Signal (Input Level level_in [Pa^2])
-level_in = (10.^(Lst./10))./2500000000;
+% Translate desired dB value and number of bins/band into symmetric FFT
+% data
+
+input_length = 2000;
+
+% Band 1 dB
+[Pa2val1,FFTval1] = dB2lin(65,64);
+% Band 2 dB
+[Pa2val2,FFTval2] = dB2lin(90,64);
+
+i = 1;
+FFT_data_real = [];
+FFT_data_imag = [];
+for i = 1:input_length/4
+    FFT_data_real = [FFT_data_real FFTval1.*ones(1,64) FFTval2.*ones(1,64) zeros(1,72)];
+    FFT_data_imag = [FFT_data_imag FFTval1.*ones(1,64) FFTval2.*ones(1,64) zeros(1,72)];
+end
+
+% Band 1 dB
+[Pa2val1,FFTval1] = dB2lin(90,64);
+% Band 2 dB
+[Pa2val2,FFTval2] = dB2lin(65,64);
+
+i = 1;
+for i = 1:input_length/4
+    FFT_data_real = [FFT_data_real FFTval1.*ones(1,64) FFTval2.*ones(1,64) zeros(1,72)];
+    FFT_data_imag = [FFT_data_imag FFTval1.*ones(1,64) FFTval2.*ones(1,64) zeros(1,72)];
+end
+
+% Band 1 dB
+[Pa2val1,FFTval1] = dB2lin(65,64);
+% Band 2 dB
+[Pa2val2,FFTval2] = dB2lin(90,64);
+
+i = 1;
+for i = 1:input_length/4
+    FFT_data_real = [FFT_data_real FFTval1.*ones(1,64) FFTval2.*ones(1,64) zeros(1,72)];
+    FFT_data_imag = [FFT_data_imag FFTval1.*ones(1,64) FFTval2.*ones(1,64) zeros(1,72)];
+end
+
+% Band 1 dB
+[Pa2val1,FFTval1] = dB2lin(90,64);
+% Band 2 dB
+[Pa2val2,FFTval2] = dB2lin(65,64);
+
+i = 1;
+for i = 1:input_length/4
+    FFT_data_real = [FFT_data_real FFTval1.*ones(1,64) FFTval2.*ones(1,64) zeros(1,72)];
+    FFT_data_imag = [FFT_data_imag FFTval1.*ones(1,64) FFTval2.*ones(1,64) zeros(1,72)];
+end
+
+Lst1 = [65.*ones(1,input_length/4) 90.*ones(1,input_length/4) 65.*ones(1,input_length/4) 90.*ones(1,input_length/4)];
+Lst2 = [90.*ones(1,input_length/4) 65.*ones(1,input_length/4) 90.*ones(1,input_length/4) 65.*ones(1,input_length/4)];
+
+
+%% Calculate Valid Signal
+
+valid_data = zeros(size(FFT_data_real));
+valid_data(find(FFT_data_real)) = 1;
 
 %% Declare Control Signals
 
-% Band Number State Controller Signal
-for i = 1:num_bands:length(Lst)
-    band_num(i) = 1;
-    band_num(i+1) = 2;
-%     band_num(i+2) = 3;
-%     ...
-end
+% % Band Number State Controller Signal
+% for i = 1:num_bands:length(Lst)
+%     band_num(i) = 1;
+%     band_num(i+1) = 2;
+% %     band_num(i+2) = 3;
+% %     ...
+% end
 
 % Attack-Release Write Enable Signal
-write_en_ar = zeros(length(Lst),1);
+write_en_ar = zeros(length(FFT_data_real),1);
 
-% Attack Coefficient Write Data Signal
-write_data_a = zeros(length(Lst),1);
+% Attack-Release Coefficient Write Data Signal
+write_data_ar = zeros(length(FFT_data_real),1);
 
-% Release Coefficient Write Data Signal
-write_data_r = zeros(length(Lst),1);
-
-% Attack Coefficient Write Address Signal
-write_addr_a = zeros(length(Lst),1);
-
-% Release Coefficient Write Address Signal
-write_addr_r = ones(length(Lst),1);
+% Attack-Release Coefficient Write Address Signal
+write_addr_ar = zeros(length(FFT_data_real),1);
 
 % Gain Table Write Enable Signal
-write_en_vy = zeros(length(Lst),1);
+write_en_vy = zeros(length(FFT_data_real),1);
 
-% Gain Table Write Low Gain Data Signal
-write_data_vy_low = zeros(length(Lst),1);
+% Gain Table Write Gain Data Signal
+write_data_vy = zeros(length(FFT_data_real),1);
 
-% Gain Table Write High Gain Data Signal
-write_data_vy_high = zeros(length(Lst),1);
+% Gain Table Write Gain Address Signal
+write_addr_vy = zeros(length(FFT_data_real),1);
 
-% Gain Table Write Low Gain Address Signal
-write_addr_vy_low = zeros(length(Lst),1);
+%% Declare Attack-Release Enabled Subsystem Rate Transition Multiplier
 
-% Gain Table Write High Gain Address Signal
-write_addr_vy_high = ones(length(Lst),1);
+% Rate Transition Multiplying Factor to ensure that enabled subsystem
+% completes all computations within the major time step
+% enabled_rate_mult = 2;
+
+%% Calculating Variable Signal Path Delay
+
+% Calculating delay according to the following:
+% Accumulator control signal delay = 1
+% dB Lookup table delay = 2
+% AR Filter delay = 1
+% Gain Table delay = 1
+% Gain Application Controller delay = 1
+
+% Maximum freq. band size = variable;
+
+system_delay = 6 + max(band_sizes);
+system_delay_memory = ceil(log2(system_delay));
+delay_memory_size =2^system_delay_memory;
 
 
 %% Declare Stop Time
 
-stop_time = length(Lst) - 1;
+stop_time = length(FFT_data_real) - 1;

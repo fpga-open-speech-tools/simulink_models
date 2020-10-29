@@ -11,10 +11,10 @@ end
 band_edges(1,1:32) = 0;
 
 for i = 1:num_bands-1
-    band_edges(1,i) = sum(bin_freq<=ef(i+1));
+    band_edges(1,i) = sum(bin_freq<=ef(i+1))-1;
 end
 
-band_edges(1,num_bands) = num_bins;
+band_edges(1,num_bands) = num_bins-1;
 
 % Error Checks
 
