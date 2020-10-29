@@ -20,7 +20,7 @@
 
     "devices": [
         {
-            "name": "simple_gain",
+            "name": "auditory_nerve",
             "registers": [
                 {
                     "dataType": {

@@ -21,42 +21,39 @@
 % FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 % ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 %
-% Ross K. Snider
+% Connor Dack
 % Audio Logic
 % 985 Technology Blvd
 % Bozeman, MT 59718
 % openspeech@flatearthinc.com
 
-%% Verify that the test data got encoded, passed through the model, and
-% decoded correctly.  The input (modified by gain) and output values should be identical.
-
+%% 
 close all;
+mex auditory_nerve_source.c complex.c
 
-figure(1)
-subplot(2,1,1)
-plot(testSignal.audio(:,1)); hold on
-plot(mp.dataOut(1, :))
-title('Left Gain')
-legend('input', 'output')
+middle_ear_filter_out = testSignal.audio(:,1);
+inner_hair_cell_out   = zeros(1,length(middle_ear_filter_out));
+totalstim             = length(middle_ear_filter_out);
 
-subplot(2,1,2)
-plot(testSignal.audio(:,2)); hold on
-plot(mp.dataOut(2, :))
-title('Right Gain')
-legend('input', 'output')
-
-
-left_error_max  = max(abs(testSignal.audio(:,1)*mp.register{1}.value-mp.dataOut(1, :)'));
-right_error_max = max(abs(testSignal.audio(:,2)*mp.register{1}.value-mp.dataOut(2, :)'));
-precision = 2^(-mp.F_bits);
-% display popup message
-    str1 = [' Max Left Error = ' num2str(left_error_max) '\n Max Right Error = ' num2str(right_error_max)];
-    str1 = [str1 ' Max Left Error = ' num2str(left_error_max) '\n Max Right Error = ' num2str(right_error_max)];
-if (left_error_max <= precision) && (right_error_max <= precision)
-    str1 = [str1 '\n Error is within exceptable range \n Least significant bit precision (F_bits = ' num2str(mp.F_bits) ') is ' num2str(2^(-mp.F_bits))];
-    helpdlg(sprintf(str1),'Verification Message: Passed')
-else
-    str1 = [str1 '\n Error is **NOT** within exceptable range \n Least significant bit precision (F_bits = ' num2str(mp.F_bits) ') is ' num2str(2^(-mp.F_bits))];
-    helpdlg(sprintf(str1),'Verification Message: Failed')
+for i = 1:totalstim
+    inner_hair_cell_out(1,i) = auditory_nerve_source(middle_ear_filter_out(i), tdres, cf, i-1, taumax, rsigma, taumaxc2, fcohcc2, slope_c1, ihcasym_c1, slope_c2, ihcasym_c2, Fcihc, i-1, gainihc, orderihc);
 end
 
+pla_nl_out = NLBeforePLA(inner_hair_cell_out, totalstim, spont, cf);
+syn_out    = PowerLaw(pla_nl_out, totalstim, randNums, Fs);
+
+figure
+subplot(2,1,1)
+plot(middle_ear_filter_out)
+hold on
+plot(c2_wideband_filter)
+legend('C1 Chirp Filter Wave','C2 Wideband Filter Wave')
+title('Audio Input')
+
+sim_out = mp.dataOut;
+subplot(2,1,2)
+plot(syn_out)
+hold on
+plot(sim_out,'--')
+legend('C Source Code','Simulink')
+title('C Source Code vs Simulink Output')
