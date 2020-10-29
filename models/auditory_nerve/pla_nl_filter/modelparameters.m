@@ -1,6 +1,6 @@
 
 %% Autogen parameters
-mp.testFile = [mp.test_signals_path filesep 'auditory_nerve\ihc_lpf.wav'];
+mp.testFile = [mp.test_signals_path filesep 'auditory_nerve\inner_hair_cell.wav'];
 mp.sim_prompts = 1;
 mp.sim_verify = 1;
 mp.simDuration = 5;

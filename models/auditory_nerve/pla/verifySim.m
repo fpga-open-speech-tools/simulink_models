@@ -41,7 +41,7 @@ title('Audio Input')
 
 sim_out = mp.dataOut;
 subplot(2,1,2)
-plot(pla_nl_out)
+plot(syn_out)
 hold on
 plot(sim_out,'--')
 legend('MATLAB Function','Simulink')
