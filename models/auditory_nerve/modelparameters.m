@@ -6,7 +6,8 @@ mp.sim_verify  = 1;
 mp.simDuration = 5;
 mp.nSamples    = config.system.sampleClockFrequency * mp.simDuration;
 
-mp.testFile            = [mp.test_signals_path filesep 'auditory_nerve\mef_result_subset.wav'];
+mp.testFile    = [mp.test_signals_path filesep 'auditory_nerve\m06ae.wav'];
+totalstim      = 20007;
 
 %% ANM Settings
 cf = 1000;    % Characteristic frequency of specific neuron
@@ -17,6 +18,10 @@ nrep = 100;   % Number of repititions for peri-stimulus time histogram
 % Impairment constants
 cohc = 1; 
 cihc = 1; 
+
+%% Middle Ear Filter Parameters
+mef_parameters;
+
 %% C1 Chirp Filter Parameters
 rsigma = .5;     % Pole shifting constant (set as constant for testing)
 taumax = 0.003; % Max time constant (given as bmTaumax in C source code, set to 0.003 for testing, the value of bmTaumax for cf = 1000)
@@ -141,7 +146,6 @@ delaypoint = floor(7500/(cf/1e3));
 
 %Power Law Adapter Parameters
 % Random Noise
-totalstim = 1002;
 noiseType = 1; % Set to variable ffGn type (1)
 Hinput = 0.9;  % Set Hurst index to the value hard-coded in C source code
 spont = 100;   % Set mean of noise
