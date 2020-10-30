@@ -22,56 +22,26 @@ cihc = 1;     % inner hair cell impairment constant ( from 0 to 1 )
 fp = 1e3;     % Prewarping frequency of 1kHz
 [MEcoeffs, MEscale] = middle_ear_filter_parameter(tdres, fp);
 
+
 %% C1 Chirp Filter Parameters
 rsigma = .5;    % Pole shifting constant (set as constant for testing)
 taumax = 0.003; % Max time constant (given as bmTaumax in C source code, set to 0.003 for testing, the value of bmTaumax for cf = 1000)
 [order_of_zero, fs_bilinear, CF, preal, pimag, C1initphase, norm_gainc1] = c1_chirp_parameter(cf, tdres, taumax);
+
 
 %% C2 Wideband Filter
 taumaxc2 = 0.0030; % time constant determined with another function (chosen as the output of Get_taubm for cf = 1000 Hz)     
 fcohcc2 = 1;       % parameter calculated as 1/ratiobm in model_IHC_BEZ2018.c (arbitrary for initial test)
 [C2coeffs, norm_gainc2] = C2Coefficients(tdres, cf, taumaxc2, fcohcc2); % Calculating IIR Biquad Coefficients by calling C2Coefficients MATLAB function
 
+
 %% Inner Hair Cell Parameters
-% IHC Nonlinear Log Function Parameters
-corner    = 80; 
-strength  = (20.0e6)/(10^(corner/20));
-
-% C1 Chirp NL Log Parameters
-ihcasym_c1 = 3.0; % Ratio of positive Max to negative Max
-slope_c1   = 0.1; % Hard-coded as 0.1 for the output of the C1 filter
-
-% C2 Wideband NL Log Parameters
-ihcasym_c2 = 1.0; % Ratio of positive Max to negative Max
-slope_c2   = 0.2; % Hard-coded as 0.2 for the output of the C2 filter
-
-% IHC Lowpass Filter Parameters
-
-% Function Inputs:
-Fcihc = 3000;
-gainihc = 1.0;
+Fcihc    = 3000;
+gainihc  = 1.0;
 orderihc = 7;
-
-% Calculated Constants
-C = 2.0/tdres;
-c1LPihc = ( C - TWOPI*Fcihc ) / ( C + TWOPI*Fcihc );
-c2LPihc = TWOPI*Fcihc / (TWOPI*Fcihc + C);
-
-% Filter Coefficients Matrix
-% Coefficients are order as follows
-%       [b01 b11 b21 a01 a11 a21]
-%       [b02 b12 b22 a02 a12 a22]
-%               * * *
-%       [b0m b1m b2m a0m a1m a2m]
-% Added for the Direct Form implementation by Hezekiah Austin 03/10/2020
-IHCLPcoeffs = [  gainihc*c2LPihc gainihc*c2LPihc 0 1 -c1LPihc 0;
-                c2LPihc c2LPihc 0 1 -c1LPihc 0;
-                c2LPihc c2LPihc 0 1 -c1LPihc 0;
-                c2LPihc c2LPihc 0 1 -c1LPihc 0;
-                c2LPihc c2LPihc 0 1 -c1LPihc 0;
-                c2LPihc c2LPihc 0 1 -c1LPihc 0;
-                c2LPihc c2LPihc 0 1 -c1LPihc 0];
+[corner, strength, ihcasym_c1, slope_c1, ihcasym_c2, slope_c2, IHCLPcoeffs] = inner_hair_cell_parameters(tdres, Fcihc, gainihc);
             
+
 %% Synapse Model
 % Nonlinear PLA Filter Parameters
 spont = 100; % Spontaneous firing rate of neurons, as set in testANmodel_BEZ2018.m source code
