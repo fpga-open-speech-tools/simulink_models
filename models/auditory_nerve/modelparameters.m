@@ -1,4 +1,4 @@
-TWOPI= 6.28318530717959; 
+
 %% Autogen parameters
 mp.sim_prompts = 1;
 mp.sim_verify  = 1;
@@ -9,49 +9,42 @@ mp.testFile    = [mp.test_signals_path filesep 'auditory_nerve\m06ae.wav'];
 totalstim      = 20007;
 
 %% ANM Settings
-cf = 1000;    % Characteristic frequency of specific neuron
-Fs = 48e3;    % Sampling frequency
+cf    = 1000; % Characteristic frequency of specific neuron
+Fs    = 48e3; % Sampling frequency
 tdres = 1/Fs; % Binsize in seconds
-nrep = 100;   % Number of repititions for peri-stimulus time histogram
+nrep  = 100;  % Number of repititions for peri-stimulus time histogram
 
 % Impairment constants
-cohc = 1;     % outer hair cell impairment constant ( from 0 to 1 )
-cihc = 1;     % inner hair cell impairment constant ( from 0 to 1 )
+cohc  = 1;    % outer hair cell impairment constant ( from 0 to 1 )
+cihc  = 1;    % inner hair cell impairment constant ( from 0 to 1 )
 
-%% Middle Ear Filter Parameters
+%% Audiotry Nerve Model Parameters
+% Middle Ear Filter Parameters
 fp = 1e3;     % Prewarping frequency of 1kHz
-[MEcoeffs, MEscale] = middle_ear_filter_parameter(tdres, fp);
 
-%% Outer Hair Cell Parameters
-ohcasym = 7.0; % Ratio of positive Max to negative Max
-
-Fcohc = 600;
-gainohc = 1.0;
+% Outer Hair Cell Parameters
+ohcasym  = 7.0; % Ratio of positive Max to negative Max
+Fcohc    = 600;
+gainohc  = 1.0;
 orderohc = 2;
-% Max and min time constants (input as bmTaumax and bmTaumin in source code, chosen as outputs for cf = 1000 Hz from Get_taubm)
-taumax = 0.003;
-taumin = 4.6310e-04;
 
-[shift, s1, s0, x1, x0, OHCLPcoeffs, s0_nl, minR] = outer_hair_cell_parameters(tdres, ohcasym, Fcohc, gainohc, taumax, taumin);
+% C1 Chirp Filter Parameters
+rsigma = .5;         % Pole shifting constant (set as constant for testing)
+taumax = 0.003;      % Max time constant (given as bmTaumax in C source code -the value of bmTaumax for cf = 1000)
+taumin = 4.6310e-04; % Min time constant (given as bmTaumin in C source code - the value of bmTaumax for cf = 1000)
 
-%% C1 Chirp Filter Parameters
-rsigma = .5;    % Pole shifting constant (set as constant for testing)
-taumax = 0.003; % Max time constant (given as bmTaumax in C source code, set to 0.003 for testing, the value of bmTaumax for cf = 1000)
-[order_of_zero, fs_bilinear, CF, preal, pimag, C1initphase, norm_gainc1] = c1_chirp_parameter(cf, tdres, taumax);
+% C2 Wideband Filter
+taumaxc2 = 0.0030;   % time constant determined with another function (chosen as the output of Get_taubm for cf = 1000 Hz)     
+fcohcc2  = 1;        % parameter calculated as 1/ratiobm in model_IHC_BEZ2018.c (arbitrary for initial test)
 
-
-%% C2 Wideband Filter
-taumaxc2 = 0.0030; % time constant determined with another function (chosen as the output of Get_taubm for cf = 1000 Hz)     
-fcohcc2 = 1;       % parameter calculated as 1/ratiobm in model_IHC_BEZ2018.c (arbitrary for initial test)
-[C2coeffs, norm_gainc2] = C2Coefficients(tdres, cf, taumaxc2, fcohcc2); % Calculating IIR Biquad Coefficients by calling C2Coefficients MATLAB function
-
-
-%% Inner Hair Cell Parameters
+% Inner Hair Cell Parameters
 Fcihc    = 3000;
 gainihc  = 1.0;
 orderihc = 7;
-[corner, strength, ihcasym_c1, slope_c1, ihcasym_c2, slope_c2, IHCLPcoeffs] = inner_hair_cell_parameters(tdres, Fcihc, gainihc);
-            
+
+[MEcoeffs, MEscale, shift, s1, s0, x1, x0, OHCLPcoeffs, s0_nl, minR, order_of_zero, fs_bilinear, CF, preal, pimag, C1initphase, norm_gainc1, C2coeffs, norm_gainc2, ...
+        corner, strength, ihcasym_c1, slope_c1, ihcasym_c2, slope_c2, IHCLPcoeffs] = auditory_nerve_parameters(tdres, fp, ohcasym, Fcohc, gainohc, taumax, taumin, cf, taumaxc2, fcohcc2, Fcihc, gainihc);
+             
 
 %% Synapse Model
 % Nonlinear PLA Filter Parameters
