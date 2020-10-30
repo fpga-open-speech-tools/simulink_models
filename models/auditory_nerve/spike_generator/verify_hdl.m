@@ -2,10 +2,9 @@ data_input  = testSignal.audio(:,1);
 
 totalstim = length(data_input);
 
-% TODO Call SpikeGenerator for verification
-pla_nl_out = NLBeforePLA(data_input, totalstim, spont, cf);
+[sptime, spCount, trd_vector] = SpikeGenerator(synout, randNums, tdres, t_rd_rest, t_rd_init, tau, t_rd_jump, nSites, tabs, trel, elapsed_time, unitRateInterval, oneSiteRedock);
 
-nl_pla_filter_inhdl = hdlcosim_dataplane;
+spike_generator_inhdl = hdlcosim_dataplane;
 
 % Data Plane Inputs
 clk_enable              = fi(1,0,1,0);
@@ -22,7 +21,7 @@ for i = 1:clock_cycles
         hdl_data_in(j) = avalon_sink_data;
         j = j + 1;
     end
-    [ce_out, avalon_source_valid, avalon_source_data, avalon_source_channel, avalon_source_error] = step(nl_pla_filter_inhdl, clk_enable, avalon_sink_valid, avalon_sink_data, avalon_sink_channel, avalon_sink_error, register_control_enable);
+    [ce_out, avalon_source_valid, avalon_source_data, avalon_source_channel, avalon_source_error] = step(spike_generator_inhdl, clk_enable, avalon_sink_valid, avalon_sink_data, avalon_sink_channel, avalon_sink_error, register_control_enable);
     if(mod(i,1024) == 1)
         hdl_data_out(j) = avalon_source_data;
     end
