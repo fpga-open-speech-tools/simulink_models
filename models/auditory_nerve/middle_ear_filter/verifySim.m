@@ -33,7 +33,7 @@
 close all;
 
 data_input = testSignal.audio(:,1);
-me_out = mef_verification(data_input, Fs, tdres);
+me_out     = mef_verification(data_input, Fs, tdres);
 
 figure
 subplot(2,1,1)
@@ -41,14 +41,10 @@ plot(testSignal.audio(:,1))
 title('Audio Input')
 legend('input')
 
-sim_out = mp.dataOut(1, 1:end-1);
+sim_out = mp.dataOut;
 subplot(2,1,2)
-plot(mp.dataOut(1, :))
-hold on
 plot(me_out)
-legend('Simulink','meout')
-title('Simulink Output vs Simulation')
-
-[error,idx] = max(abs(sim_out - me_out));
-sim_out(idx);
-me_out(idx);
+hold on
+plot(sim_out,'--')
+legend('MATLAB Function','Simulink')
+title('MATLAB vs Simulink Output')
