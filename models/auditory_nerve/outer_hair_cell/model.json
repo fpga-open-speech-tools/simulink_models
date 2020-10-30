@@ -1,0 +1,51 @@
+{
+    "system": {
+        "target": "audioblade",
+        "sampleClockFrequency": 48000,
+        "systemClockFrequency": 98304000,
+        "processing": "channel",
+        "audioIn": {
+            "wordLength": 32,
+            "fractionLength": 28,
+            "signed": true,
+            "numberOfChannels": 1
+        },
+        "audioOut": {
+            "wordLength": 32,
+            "fractionLength": 28,
+            "signed": true,
+            "numberOfChannels": 1
+        }
+    },
+
+    "devices": [
+        {
+            "name": "outer_hair_cell",
+            "registers": [
+                {
+                    "dataType": {
+                        "fractionLength": 16,
+                        "signed": false,
+                        "type": "ufix20en16",
+                        "wordLength": 20
+                    },
+                    "defaultValue": 1.5,
+                    "name": "Gain",
+                    "registerNumber": 0
+                },
+               {
+                    "dataType": {
+                        "fractionLength": 0,
+                        "signed": false,
+                        "type": "fix1",
+                        "wordLength": 1
+                    },
+                    "defaultValue": 1,
+                    "name": "Enable",
+                    "registerNumber": 1
+                }
+            ]
+        }
+    ]
+    
+}

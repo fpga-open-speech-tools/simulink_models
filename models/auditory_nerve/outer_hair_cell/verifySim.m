@@ -28,17 +28,19 @@
 % openspeech@flatearthinc.com
 
 %% 
-close all;
-mex Boltzman.c
-
+% close all;
 data_input  = testSignal.audio(:,1) .* 500;
-% data_input  = testSignal.audio(:,1);
-nl_boltzman = zeros(1,length(data_input));
+totalstim   = length(data_input);
+
+%% Outer Hair Cell Simulation
+mex outer_hair_cell_source.c
+ohc_sim = zeros(1,totalstim);
 
 for i = 1:length(data_input)
-    nl_boltzman(1,i) = Boltzman(data_input(i), ohcasym, s0, s1, x1);
+    ohc_sim(1,i) = outer_hair_cell_source(data_input(i), ohcasym, s0, s1, x1, tdres, Fcohc, i-1, gainohc, orderohc, taumin, taumax);
 end
 
+%% Plot the Results
 figure
 subplot(2,1,1)
 plot(data_input)
@@ -47,8 +49,8 @@ title('Audio Input')
 
 sim_out = mp.dataOut;
 subplot(2,1,2)
-plot(nl_boltzman)
+plot(ohc_sim)
 hold on
 plot(sim_out,'--')
 legend('C Source Code','Simulink')
-title('OHC Nonlinear Boltzman Block')
+title('Outer Hair Cell')
