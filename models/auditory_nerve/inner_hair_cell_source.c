@@ -78,14 +78,12 @@ double NLogarithm(double x, double slope, double asym, double cf)
 }
 
 /* The IHC Lowpass Filter  */
-double IhcLowPass(double x, double y, double tdres, double Fc, int n, double gain, int order, double *ihcout)
+double IhcLowPass(double x, double tdres, double Fc, int n, double gain, int order, double *ihcout)
 {
   static double ihc[8],ihcl[8];
-
-  double C,c1LP,c2LP, temp;
+  
+  double C,c1LP,c2LP;
   int i,j;
-
-  temp = x - y;
 
   if (n==0)
   {
@@ -94,13 +92,13 @@ double IhcLowPass(double x, double y, double tdres, double Fc, int n, double gai
           ihc[i] = 0;
           ihcl[i] = 0;
       }
-  }
-
+  }     
+  
   C = 2.0/tdres;
   c1LP = ( C - TWOPI*Fc ) / ( C + TWOPI*Fc );
   c2LP = TWOPI*Fc / (TWOPI*Fc + C);
-
-  ihc[0] = temp*gain;
+  
+  ihc[0] = x*gain;
   for(i=0; i<order;i++)
     ihc[i+1] = c1LP*ihcl[i+1] + c2LP*(ihc[i]+ihcl[i]);
   for(j=0; j<=order;j++) ihcl[j] = ihc[j];
@@ -144,7 +142,7 @@ void mexFunction( int nlhs, mxArray *plhs[],
     ihcout = mxGetPr(plhs[0]);
 
     c1_out = NLogarithm(c1_chirp, c1_slope, c1_asym, cf);
-    c2_out = NLogarithm(c2_wbf, c2_slope, c2_asym, cf);
+    c2_out = -NLogarithm(c2_wbf, c2_slope, c2_asym, cf);
     /* call the computational routine */
-    IhcLowPass(c1_out, c2_out, tdres, Fc, n, gain, order, ihcout);
+    IhcLowPass(c1_out + c2_out, tdres, Fc, n, gain, order, ihcout);
 }
