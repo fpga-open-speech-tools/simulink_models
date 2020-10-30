@@ -1,5 +1,5 @@
-function [MEcoeffs, MEscale] = middle_ear_filter_parameter(tdres)
-    % Middle Ear Filter
+function [MEcoeffs, MEscale] = middle_ear_filter_parameter(tdres, fp)
+
     C  = 2*pi*fp/tan(2*pi/2*fp*tdres);
     % 1st Second Order IIR Coefficients
     m11=1/(C^2+5.9761e+003*C+2.5255e+007); 

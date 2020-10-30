@@ -1,5 +1,4 @@
 TWOPI= 6.28318530717959; 
-
 %% Autogen parameters
 mp.sim_prompts = 1;
 mp.sim_verify  = 1;
@@ -16,11 +15,12 @@ tdres = 1/Fs; % Binsize in seconds
 nrep = 100;   % Number of repititions for peri-stimulus time histogram
 
 % Impairment constants
-cohc = 1; 
-cihc = 1; 
+cohc = 1;     % outer hair cell impairment constant ( from 0 to 1 )
+cihc = 1;     % inner hair cell impairment constant ( from 0 to 1 )
 
 %% Middle Ear Filter Parameters
-mef_parameters;
+fp = 1e3;     % Prewarping frequency of 1kHz
+[MEcoeffs, MEscale] = middle_ear_filter_parameter(tdres, fp);
 
 %% C1 Chirp Filter Parameters
 rsigma = .5;    % Pole shifting constant (set as constant for testing)
@@ -37,11 +37,11 @@ fcohcc2 = 1;       % parameter calculated as 1/ratiobm in model_IHC_BEZ2018.c (a
 corner    = 80; 
 strength  = (20.0e6)/(10^(corner/20));
 
-% C1 Chirp Filter
+% C1 Chirp NL Log Parameters
 ihcasym_c1 = 3.0; % Ratio of positive Max to negative Max
 slope_c1   = 0.1; % Hard-coded as 0.1 for the output of the C1 filter
 
-% C2 Wideband Filter
+% C2 Wideband NL Log Parameters
 ihcasym_c2 = 1.0; % Ratio of positive Max to negative Max
 slope_c2   = 0.2; % Hard-coded as 0.2 for the output of the C2 filter
 
