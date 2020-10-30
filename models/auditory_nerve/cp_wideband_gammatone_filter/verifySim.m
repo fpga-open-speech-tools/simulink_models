@@ -30,7 +30,7 @@
 %% Verify that the test data got encoded, passed through the model, and
 % decoded correctly.  The input (modified by gain) and output values should be identical.
 
-close all;
+% close all;
 mex WbGammaTone.c complex.c
 
 data_input = testSignal.audio(:,1);

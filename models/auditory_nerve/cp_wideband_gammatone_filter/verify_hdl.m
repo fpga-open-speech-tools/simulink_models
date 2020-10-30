@@ -1,8 +1,8 @@
 data_input = testSignal.audio(:,1);
-wb_out = zeros(1,length(data_input));
+wbout      = zeros(1,length(data_input));
 
 for i = 1:length(data_input)
-    wb_out(1,i) = WbGammaTone(data_input(i),tdres,cf,i-1,tauwb,wbgain,wborder);
+    wbout(1,i) = WbGammaTone(data_input(i), tdres, centerfreq, i-1, tauwb, wbgain, wborder, TauWBMax, cf);
 end
 
 cp_wbgtf_inhdl = hdlcosim_dataplane;
@@ -37,8 +37,8 @@ title('Audio Input')
 legend('HDL Data In','Input')
 
 subplot(2,1,2)
-plot(wb_out)
+plot(wbout)
 hold on
 plot(cp_wbgtf_out)
 legend('HDL','C Source Code')
-title('HDL Output vs Simulation')
+title('CP Wideband Gammatone Filter')

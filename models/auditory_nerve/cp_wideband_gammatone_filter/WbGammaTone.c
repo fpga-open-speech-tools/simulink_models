@@ -52,7 +52,7 @@
 #include <mex.h>
 #include <time.h>
 
-#include "complex.hpp"
+#include "complex.h"
 
 #ifndef TWOPI
 #define TWOPI 6.28318530717959
