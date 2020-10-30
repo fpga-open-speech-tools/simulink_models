@@ -28,7 +28,7 @@
 % openspeech@flatearthinc.com
 
 %% 
-% close all;
+close all;
 data_input  = testSignal.audio(:,1) .* 500;
 totalstim   = length(data_input);
 
