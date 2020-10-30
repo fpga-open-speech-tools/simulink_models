@@ -30,11 +30,13 @@
 %% 
 close all;
 
-middle_ear_filter_out = testSignal.audio(:,1);
-totalstim             = length(middle_ear_filter_out);
+data_input            = testSignal.audio(:,1);
 c1_chirp_filter       = zeros(1,totalstim);
 c2_wideband_filter    = zeros(1,totalstim);
 inner_hair_cell_out   = zeros(1,totalstim);
+
+%% Middle Ear Filter
+middle_ear_filter_out = mef_verification(data_input, Fs, tdres);
 
 %% C1 Chirp Filter
 mex C1ChirpFilt.c complex.c
