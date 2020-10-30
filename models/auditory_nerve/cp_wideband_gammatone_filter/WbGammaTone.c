@@ -59,7 +59,7 @@
 #endif
 
 /* The computational function routine */
-double WbGammaTone(double x, double tdres, double centerfreq, int n, double tau, double gain, int order, double *output)
+double WbGammaTone(double x, double tdres, double centerfreq, int n, double tau, double gain, int order, double TauWBMax, double cf, double *output)
 {
   static double wbphase;
   static COMPLEX wbgtf[4], wbgtfl[4];
@@ -91,7 +91,8 @@ double WbGammaTone(double x, double tdres, double centerfreq, int n, double tau,
   out = REAL(compprod(compexp(-wbphase), wbgtf[order])); /* FREQ SHIFT BACK UP */
 
   for(i=0; i<=order;i++) wbgtfl[i] = wbgtf[i];
-  *output = out;
+  *output = pow((tau/TauWBMax),order)*out*10e3*__max(1,cf/5e3);;
+  
 }
 
 
@@ -100,7 +101,7 @@ void mexFunction( int nlhs, mxArray *plhs[],
                   int nrhs, const mxArray *prhs[])
 {
 
-    double x, tdres, centerfreq, *ntmp, tau, gain, *ordertmp, *output;
+    double x, tdres, centerfreq, *ntmp, tau, gain, *ordertmp, *output, tauWBMax, cf;
     int n, order;
 
     /* get the value of the scalar input  */
@@ -111,6 +112,8 @@ void mexFunction( int nlhs, mxArray *plhs[],
     tau = mxGetScalar(prhs[4]);
     gain = mxGetScalar(prhs[5]);
     ordertmp = mxGetPr(prhs[6]);
+    tauWBMax = mxGetScalar(prhs[7]);
+    cf = mxGetScalar(prhs[7]);
 
 
     /* convert to integers */
@@ -122,5 +125,5 @@ void mexFunction( int nlhs, mxArray *plhs[],
     output = mxGetPr(plhs[0]);
 
     /* call the computational routine */
-    WbGammaTone(x, tdres, centerfreq, n, tau, gain, order, output);
+    WbGammaTone(x, tdres, centerfreq, n, tau, gain, order, tauWBMax, cf, output);
 }

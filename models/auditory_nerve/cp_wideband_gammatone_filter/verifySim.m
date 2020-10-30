@@ -37,7 +37,7 @@ data_input = testSignal.audio(:,1);
 wbout      = zeros(1,length(data_input));
 
 for i = 1:length(data_input)
-    wbout(1,i) = WbGammaTone(data_input(i),tdres,cf,i-1,tauwb,wbgain,wborder);
+    wbout(1,i) = WbGammaTone(data_input(i),tdres,centerfreq,i-1,tauwb,wbgain,wborder, TauWBMax, cf);
 end
 
 figure
