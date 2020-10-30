@@ -15,9 +15,4 @@ nrep = 100;   % Number of repititions for peri-stimulus time histogram
 
 %% OHC Nonlinear Boltzman Parameters
 ohcasym = 7.0; % Ratio of positive Max to negative Max
-% Function specific parameters
-shift = 1.0/(1.0+ohcasym);
-s1 = 5.0;
-s0 = 12.0;
-x1 = 5.0;
-x0 = s0*log((1.0/shift-1)/(1+exp(x1/s1)));
+[shift, s1, s0, x1, x0] = ohc_nl_boltzman_parameters(ohcasym);

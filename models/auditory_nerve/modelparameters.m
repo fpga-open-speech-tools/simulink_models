@@ -22,6 +22,17 @@ cihc = 1;     % inner hair cell impairment constant ( from 0 to 1 )
 fp = 1e3;     % Prewarping frequency of 1kHz
 [MEcoeffs, MEscale] = middle_ear_filter_parameter(tdres, fp);
 
+%% Outer Hair Cell Parameters
+ohcasym = 7.0; % Ratio of positive Max to negative Max
+
+Fcohc = 600;
+gainohc = 1.0;
+orderohc = 2;
+% Max and min time constants (input as bmTaumax and bmTaumin in source code, chosen as outputs for cf = 1000 Hz from Get_taubm)
+taumax = 0.003;
+taumin = 4.6310e-04;
+
+[shift, s1, s0, x1, x0, OHCLPcoeffs, s0_nl, minR] = outer_hair_cell_parameters(tdres, ohcasym, Fcohc, gainohc, taumax, taumin);
 
 %% C1 Chirp Filter Parameters
 rsigma = .5;    % Pole shifting constant (set as constant for testing)
