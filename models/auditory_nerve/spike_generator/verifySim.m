@@ -30,11 +30,29 @@
 %% 
 close all;
 
+load('AN_test_synout.mat');
+
 data_input  = testSignal.audio(:,1);
+
+
+
+% Call SpikeGenerator to generate the matlab output
+
+data_input = testSignal.audio(:,1);
 
 totalstim = length(data_input);
 
-% Call SpikeGenerator to generate the matlab output
+sptimeVect = zeros(1,length(data_input));
+spCountVect = zeros(1,length(data_input));
+trd_vectorVect = zeros(1,length(data_input));
+
+% for i = 1:length(data_input)
+   [sptime_sim, spCount_sim, trd_vector_sim] = SpikeGenerator(data_input, randNums, tdres, t_rd_rest, t_rd_init, tau, t_rd_jump, nSites, tabs, trel, elapsed_time, unitRateInterval, oneSiteRedock);
+   sptimeVect = sptime_sim;
+   spCountVect = spCount_sim;
+   trd_vectorVect = trd_vector_sim;
+% end
+
 
 figure
 subplot(2,1,1)
@@ -44,8 +62,68 @@ title('Audio Input')
 
 sim_out = mp.dataOut;
 subplot(2,1,2)
-plot(pla_nl_out)
+plot(trd_vectorVect)
 hold on
 plot(sim_out,'--')
 legend('C Source Code','Simulink')
 title('C Source Code vs Simulink Output')
+
+figure
+subplot(221)
+hold on
+plot(sptime_sim)
+plot(sptime,'--')
+hold off
+legend('C Source Code','Simulink')
+title('C Source Code vs Simulink Output')
+
+subplot(222)
+hold on
+plot(trd_vector_sim)
+plot(trd_vector,'--')
+hold off
+legend('C Source Code','Simulink')
+title('C Source Code vs Simulink Output')
+
+subplot(223)
+hold on
+plot(spCount_sim)
+plot(spCount,'--')
+hold off
+legend('C Source Code','Simulink')
+title('C Source Code vs Simulink Output')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
