@@ -33,7 +33,7 @@ close all;
 data_input_left  = testSignal.audio(:,1);
 data_input_right = testSignal.audio(:,2);
 sim_out          = double(squeeze(data_out.data));
-left_channel     = sim_out(143:end,1);
+left_channel     = sim_out(142:end,1);
 right_channel    = sim_out(:,2);
 
 figure
