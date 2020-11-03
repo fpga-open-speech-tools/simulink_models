@@ -71,7 +71,8 @@ mp.maxDelay = 1024; % Estimate of necessary buffer size
 mp.integerDelayAddrSize = ceil(log2(floor(mp.maxDelay))) + 2;
 mp.integerDelayBufferSize = 2^mp.integerDelayAddrSize;
 
-[wbgain_i, ~] = gain_groupdelay(tdres, centerfreq, cf, tauwb);
+[wbgain_i, ~] = gain_groupdelay(tdres, centerfreq, cf, tauwb_i);
+gain_groupdelay_func = @gain_groupdelay;
 
 function [taumax, taumin] = Get_tauwb( cf, species, order)
   TWOPI = 6.28318530717959;
@@ -103,7 +104,7 @@ function [taumax, taumin] = Get_tauwb( cf, species, order)
   taumin   = taumax*ratio;
 end
 
-function [wb_gain, grdelay] = gain_groupdelay(tdres, centerfreq, cf, tau)
+function [wb_gain, grdelay, x] = gain_groupdelay(tdres, centerfreq, cf, tau)
   TWOPI = 6.28318530717959;
   tmpcos = cos(TWOPI*(centerfreq-cf)*tdres);
   dtmp2 = tau*2.0/tdres;
@@ -115,5 +116,5 @@ function [wb_gain, grdelay] = gain_groupdelay(tdres, centerfreq, cf, tau)
   wb_gain = (tmp1/tmp2)^( 1.0/2.0);
   
   grdelay = floor((0.5-(c1LP*c1LP-c1LP*tmpcos)/(1+c1LP*c1LP-2*c1LP*tmpcos)));
-
+  x = grdelay;
 end
