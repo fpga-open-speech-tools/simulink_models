@@ -62,11 +62,11 @@
 #include <time.h>
 
 #include "complex.h"
-
 int SpikeGenerator(double *synout, double tdres, double t_rd_rest, double t_rd_init, double tau, double t_rd_jump, int nSites, double tabs, double trel, double spont, int totalstim, int nrep,double total_mean_rate,long MaxArraySizeSpikes, double *sptime, double *trd_vector)
 {
     
     /* Initializing the variables: */
+    mexPrintf ("\nZero");
     
     double*  preRelease_initialGuessTimeBins;
     int*     unitRateInterval;
@@ -132,22 +132,25 @@ int SpikeGenerator(double *synout, double tdres, double t_rd_rest, double t_rd_i
     mexCallMATLAB(1, randOutputArray, 1, randInputArray, "rand");
     randNums = mxGetPr(randOutputArray[0]);
     randBufIndex = 0;
-    
+    mexPrintf ("\nFirst");
     
     /* Initial < redocking time associated to nSites release sites */
     for (i=0; i<nSites; i++)
     {
         oneSiteRedock[i]=-t_rd_init*log(randNums[randBufIndex++]);
     }
-    
+    mexPrintf ("\nFirstp2");
     /* Initial  preRelease_initialGuessTimeBins  associated to nsites release sites */
     
+    mexPrintf("Sizes -- preRelease: %d, synout: %d, randNums : %d\n",sizeof(preRelease_initialGuessTimeBins)/sizeof(preRelease_initialGuessTimeBins[0]), sizeof(synout)/sizeof(synout[0]),sizeof(randNums)/sizeof(randNums[0]));
     for (i=0; i<nSites; i++)
     {
+        mexPrintf("Repeat %i\n",i);
         preRelease_initialGuessTimeBins[i]= __max(-totalstim*nrep,ceil ((nSites/__max(synout[0],0.1) + t_rd_init)*log(randNums[randBufIndex++] ) / tdres));
         
     }
     
+    mexPrintf ("\nSecond");
     
     /* Call Sort function using  */
     sortInputArray[0] = mxCreateDoubleMatrix(1, nSites, mxREAL);
@@ -160,6 +163,7 @@ int SpikeGenerator(double *synout, double tdres, double t_rd_rest, double t_rd_i
     
     mexCallMATLAB(1, sortOutputArray, 1, sortInputArray, "sort");
     
+    mexPrintf ("\nThird");
     /*Now Sort the four initial preRelease times and associate
      * the farthest to zero as the site which has also generated a spike */
     
@@ -173,6 +177,7 @@ int SpikeGenerator(double *synout, double tdres, double t_rd_rest, double t_rd_i
     
     /* The position of first spike, also where the process is started- continued from the past */
     kInit = (int) preReleaseTimeBinsSorted[0];
+    mexPrintf ("\nFourth");
     
     
     /* Current refractory time */
@@ -183,6 +188,7 @@ int SpikeGenerator(double *synout, double tdres, double t_rd_rest, double t_rd_i
     
     spCount = 0; /* total numebr of spikes fired */
     k = kInit;  /*the loop starts from kInit */
+    mexPrintf ("\nFifth");
     
     /* set dynamic mean redocking time to initial mean redocking time  */
     previous_redocking_period = t_rd_init;
@@ -190,6 +196,7 @@ int SpikeGenerator(double *synout, double tdres, double t_rd_rest, double t_rd_i
     t_rd_decay = 1; /* Logical "true" as to whether to decay the value of current_redocking_period at the end of the time step */
     rd_first = 0; /* Logical "false" as to whether to a first redocking event has occurred */
     
+    mexPrintf ("\nSixth");
     /* a loop to find the spike times for all the totalstim*nrep */
     while (k < totalstim*nrep){
         
@@ -263,7 +270,7 @@ int SpikeGenerator(double *synout, double tdres, double t_rd_rest, double t_rd_i
             };
             /* Error Catching */
             if ( (spCount+1)>MaxArraySizeSpikes  || (randBufIndex+1 )>randBufLen  )
-            {     /* mexPrintf ("--------Array for spike times or random Buffer length not large enough, Rerunning the function.-----\n\n"); */
+            {     /* mexPrintf ("\n--------Array for spike times or random Buffer length not large enough, Rerunning the function.-----\n\n"); */
                 spCount = -1;
                 k = totalstim*nrep;
                 siteNo = nSites;
@@ -290,6 +297,7 @@ int SpikeGenerator(double *synout, double tdres, double t_rd_rest, double t_rd_i
         
         
     };
+    mexPrintf ("\nSeventh");
     
     mxFree(preRelease_initialGuessTimeBins);
     mxFree(unitRateInterval);
@@ -309,14 +317,18 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
 {
   
   // Define the inputs and outputs
+  mexPrintf ("\nMF:Zero");
   double *synout, tdres, *synout_pntr, t_rd_rest, t_rd_init, tau, t_rd_jump, tabs, trel, spont, total_mean_rate, *sptime, *trd_vector;
   int nSites, totalstim, nrep, n_synout, spcount, ii;
   long MaxArraySizeSpikes;
+  mexPrintf ("\nMF:One");
   
   mwSize  outsize[2];
+  mexPrintf ("\nMF:Two");
   
   // Initialize the inputs
   n_synout = (int)mxGetN(prhs[0]);
+  mexPrintf ("\nMF:Three");
   
   
   synout_pntr         = mxGetPr(prhs[0]);
@@ -333,16 +345,20 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
   nrep                = (int)mxGetScalar(prhs[11]);
   total_mean_rate     = mxGetScalar(prhs[12]);
   MaxArraySizeSpikes  = (long)mxGetScalar(prhs[13]);
-  
-  
+  mexPrintf ("\nMF:Four");
+    
   // Calculate the repetition time
   totalstim = (int)floor(n_synout/nrep);
+  mexPrintf ("\nMF:Five");
   
   // Define the input array
   synout = (double*)mxCalloc(totalstim*nrep,sizeof(double));
 
-  for (ii = 0; ii < n_synout; ii++)
-      synout[ii] = synout_pntr[ii];
+   for (ii = 0; ii < n_synout; ii++)
+      synout[ii] = synout_pntr[ii]; 
+    
+  
+  mexPrintf ("\nMF:Six");
     
   // Define the size of the output arrays
   
@@ -352,15 +368,17 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
     plhs[1] = mxCreateNumericArray(2, outsize, mxDOUBLE_CLASS, mxREAL);
     plhs[2] = mxCreateNumericArray(2, outsize, mxDOUBLE_CLASS, mxREAL);
     
+    
+    mexPrintf ("\nMF:Seven");
 
     // Assign the pointer values
-    spcount = mxGetPr(plhs[0]);
-    trd_vector = mxGetPr(plhs[1]);
-    sptime = mxGetPr(plhs[2]);
+    sptime = mxGetPr(plhs[1]);
+    trd_vector = mxGetPr(plhs[2]);
 
     /* call the computational routine */
     spcount = SpikeGenerator(synout, tdres, t_rd_rest, t_rd_init, tau, t_rd_jump, nSites, tabs, trel, spont, totalstim, nrep, total_mean_rate, MaxArraySizeSpikes, sptime, trd_vector);
     
+    plhs[0] = mxCreateDoubleScalar(spcount);
     
 }
 

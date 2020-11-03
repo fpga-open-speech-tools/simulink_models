@@ -1,3 +1,7 @@
+%% Load the paths
+
+% run ../../../config/pathSetup.m
+
 
 %% Autogen parameters
 
@@ -12,7 +16,6 @@ mp.nSamples = config.system.sampleClockFrequency * mp.simDuration;
 cf = 1000;    % Characteristic frequency of specific neuron
 Fs = 48e3;    % Sampling frequency
 tdres = 1/Fs; % Binsize in seconds
-nrep = 100;   % Number of repititions for peri-stimulus time histogram
 
 spont = 100;
 nSites = 4;
