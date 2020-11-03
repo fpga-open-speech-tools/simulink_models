@@ -31,32 +31,19 @@
 % decoded correctly.  The input (modified by gain) and output values should be identical.
 
 close all;
-mex middle_ear_filter_source.c
-
 data_input     = testSignal.audio(:,1);
-totalstim      = length(data_input);
-middle_ear_out = zeros(1,totalstim);
+middle_ear_out = mef_verification(data_input, tdres);
 
-% for i = 1:totalstim
-%     if(i == 1)
-%         middle_ear_out(1,i) = middle_ear_filter_source(data_input(i), 0, 0, tdres, i-1);
-%     elseif(i == 2)
-%         middle_ear_out(1,i) = middle_ear_filter_source(data_input(i), data_input(i-1), 0, tdres, i-1);
-%     else
-%         middle_ear_out(1,i) = middle_ear_filter_source(data_input(i),data_input(i-1),data_input(i-2),tdres,i-1);
-%     end
-% end
-% 
-% figure
-% subplot(2,1,1)
-% plot(data_input)
-% title('Audio Input')
-% legend('input')
-% 
-% sim_out = mp.dataOut;
-% subplot(2,1,2)
-% plot(middle_ear_out)
-% hold on
-% plot(sim_out,'--')
-% legend('MATLAB Function','Simulink')
-% title('MATLAB vs Simulink Output')
+figure
+subplot(2,1,1)
+plot(data_input)
+title('Audio Input')
+legend('input')
+
+sim_out = mp.dataOut;
+subplot(2,1,2)
+plot(middle_ear_out)
+hold on
+plot(sim_out,'--')
+legend('MATLAB Function','Simulink')
+title('MATLAB vs Simulink Output')

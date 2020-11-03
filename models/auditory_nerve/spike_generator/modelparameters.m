@@ -19,7 +19,7 @@ nSites = 4;
 t_rd_rest = 14.0e-3;
 t_rd_jump = 0.4e-3;
 t_rd_init = t_rd_rest + 0.02e-3*spont - t_rd_jump;
-tau = 60e-3;
+tau = 60e-3;    
 
 trel = 10e-3;
 tabs = 10e-3;
@@ -28,3 +28,13 @@ randNums = single(rand(mp.nSamples,1));
 elapsed_time = single(tdres * randi(floor(Fs * t_rd_init)));
 unitRateInterval = single(-log(rand(1))/tdres);
 oneSiteRedock = single(-t_rd_init * log(rand(1)));
+
+
+%% Simulation parameters
+vihc = 0.050;
+CF = 1000;
+nrep = 10;
+dt = tdres; 
+noiseType = 1;
+implnt = 0;
+spont = 50;
