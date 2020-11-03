@@ -48,22 +48,16 @@
 
 function powerLawIn = NLBeforePLA(ihcout, totalstim, spont, cf)
 
-% ---------------------------------------%
-% NOTE: delaypoint may need to be changed due
-%       to sampling rate change from 100 kHz 
-%       to 48 kHz
-% ---------------------------------------%
+    delaypoint = floor(7500/(cf/1e3));                           % Line 244
+    cfslope = (spont^0.19)*(10^-0.87);                           % Line 303
+    cfconst = 0.1*(log10(spont))^2 + 0.56*log10(spont) - 0.84;   % Line 304
+    cfsat = 10^(cfslope*8965.5/1e3 + cfconst);                   % Line 305
+    cf_factor = min(cfsat, 10^(cfslope*cf/1e3 + cfconst)) * 2.0; % Line 306
+    multFac = max(2.95*max(1.0,1.5-spont/100), 4.3-0.2*cf/1e3);  % Line 308 
 
-    delaypoint = floor(7500/(cf/1e3));
-
-    cfslope = (spont^0.19)*(10^-0.87);
-    cfconst = 0.1*(log10(spont))^2 + 0.56*log10(spont) - 0.84;
-    cfsat = 10^(cfslope*8965.5/1e3 + cfconst);
-    cf_factor = min(cfsat, 10^(cfslope*cf/1e3 + cfconst)) * 2.0;
-
-    multFac = max(2.95*max(1.0,1.5-spont/100), 4.3-0.2*cf/1e3);
-
-    k = 1;
+    k = 1; % Line 310 - Updaetd to 1 because of MATLAB Addressing
+    
+    % Lines 311-316
     for indx=1:totalstim
         mappingOut(k) = 10^((0.9*log10(abs(ihcout(indx))*cf_factor))+ multFac);
         if ihcout(indx)<0 
@@ -71,11 +65,10 @@ function powerLawIn = NLBeforePLA(ihcout, totalstim, spont, cf)
         end  
         k=k+1;    
     end
-    
-    
+
     % Version 1 - most likely needs editing when functionality is further
     % understood!
-    powerLawIn = mappingOut + 3.0*spont;
+    powerLawIn = mappingOut + 3.0*spont; % Line 320
     
     
 % NOTE: Below is the original source code implementation:

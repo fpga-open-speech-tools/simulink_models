@@ -43,15 +43,13 @@
 %    in order for the function to operate in MATLAB
 
 function synout = PowerLaw(ihcout, totalstim, randNums, Fs)
-
-    %alpha1 = 1.5e-6*100e3; 
-    alpha1 = 1.5e-6*100e3;
-    beta1 = 5e-4; 
-    I1 = 0;
-    %alpha2 = 1e-2*100e3; 
-    alpha2 = 1e-2*100e3;
-    beta2 = 1e-1; 
-    I2 = 0;
+ 
+    alpha1 = 1.5e-6*100e3; % Line 282 - Constant
+    beta1 = 5e-4;          % Line 282 - Constant
+    I1 = 0;                % Line 282 - Constant
+    alpha2 = 1e-2*100e3;   % Line 283 - Constant
+    beta2 = 1e-1;          % Line 283 - Constant 
+    I2 = 0;                % Line 283 - Constant
 
     k = 0;
     
@@ -69,7 +67,8 @@ function synout = PowerLaw(ihcout, totalstim, randNums, Fs)
     sout2 = zeros(totalstim,1);
     
     synout = zeros(totalstim,1);
-    
+    % Lines 340-405 of model_Synapse_BEZ2018.c
+    % The model is using the approximate implementation: Lines 357-401
     for indx=0:totalstim-1
     
         sout1(k+1)  = max( 0, ihcout(indx+1) + randNums(indx+1) - alpha1*I1(k+1));
@@ -125,7 +124,6 @@ function synout = PowerLaw(ihcout, totalstim, randNums, Fs)
             
             I1(k+2) = m5(k+1);
 
-        
         synout(k+1) = sout1(k+1) + sout2(k+1);
         k = k+1;
         
