@@ -30,13 +30,10 @@
 %% 
 close all;
 
-load('AN_test_synout.mat');
-
-data_input  = testSignal.audio(:,1);
-
-
-
 % Call SpikeGenerator to generate the matlab output
+
+
+mex spikegen_source.c complex.c
 
 data_input = testSignal.audio(:,1);
 
@@ -45,13 +42,16 @@ totalstim = length(data_input);
 sptimeVect = zeros(1,length(data_input));
 spCountVect = zeros(1,length(data_input));
 trd_vectorVect = zeros(1,length(data_input));
+    
 
-% for i = 1:length(data_input)
-   [sptime_sim, spCount_sim, trd_vector_sim] = SpikeGenerator(data_input, randNums, tdres, t_rd_rest, t_rd_init, tau, t_rd_jump, nSites, tabs, trel, elapsed_time, unitRateInterval, oneSiteRedock);
-   sptimeVect = sptime_sim;
-   spCountVect = spCount_sim;
-   trd_vectorVect = trd_vector_sim;
-% end
+% Define some parameters
+total_mean_rate = sum(data_input/length(data_input));
+MaxArraySizeSpikes = length(data_input)*nrep;
+
+
+% [sptime_sim, spCount_sim, trd_vector_sim] = SpikeGenerator(data_input, randNums, tdres, t_rd_rest, t_rd_init, tau, t_rd_jump, nSites, tabs, trel, elapsed_time, unitRateInterval, oneSiteRedock);
+[sptime_sim, spCount_sim, trd_vector_sim] = spikegen_source(data_input, tdres, t_rd_rest, t_rd_init, tau, t_rd_jump, nSites, tabs, trel, spont, totalstim, nrep, total_mean_rate, MaxArraySizeSpikes, sptime, trd_vector);
+
 
 
 figure
@@ -62,7 +62,7 @@ title('Audio Input')
 
 sim_out = mp.dataOut;
 subplot(2,1,2)
-plot(trd_vectorVect)
+plot(Erate_sim)
 hold on
 plot(sim_out,'--')
 legend('C Source Code','Simulink')
