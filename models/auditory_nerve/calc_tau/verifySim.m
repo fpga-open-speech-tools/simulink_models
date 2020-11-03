@@ -48,16 +48,10 @@ for i = 1:length(data_input)
 end
 
 figure
-subplot(6,1,1)
+subplot(7,1,1)
 plot(data_input)
 legend('tmptauc1 Input Wave')
 title('Audio Input')
-
-sim_out = mp.dataOut;
-
-for i = 1:length(data_input)
-    [~, m_grdelay(i), m_tmpcos(i)] = gain_groupdelay_func(tdres, centerfreq, cf, tauwb(i));
-end
 
 lasttmpgain = wbgain_i;
 
@@ -72,32 +66,15 @@ for i = 1:length(data_input)
     c_wbgain_actual(i) = tmpgain(i);
     lasttmpgain = c_wbgain_actual(i);
 end
-lasttmpgain = wbgain_i;
-tmpgain = zeros(1,length(data_input));
 
-for i = 1:length(data_input)
-    grd = int32(grdelay(i));
-    if((grd+i) < length(data_input))
-        tmpgain(grd+i) = s_wbgain(i);
-    end
-    if(tmpgain(i) == 0)
-        tmpgain(i) = lasttmpgain;
-    end
-    m_wbgain_actual(i) = tmpgain(i);
-    lasttmpgain = m_wbgain_actual(i);
-end
-
-
-subplot(6,1,2)
+subplot(7,1,2)
 plot(c_grdelay)
 hold on
 plot(grdelay,'--')
-%hold on
-%plot(m_grdelay, '--')
 legend('C Source Code','Simulink', 'Matlab')
 title('grdelay C Source Code vs Simulink Output')
 
-subplot(6,1,3)
+subplot(7,1,3)
 plot(c_wbgain)
 hold on
 plot(s_wbgain,'--')
@@ -105,29 +82,28 @@ legend('Matlab','Simulink')
 title('wbgain before delay C Source Code vs Simulink Output')
 
 
+subplot(7,1,4)
+plot(c_rsigma)
+hold on
+plot(rsigma,'--')
+legend('C Source Code','Simulink')
+title('rsigma C Source Code vs Simulink Output')
 
-
-% plot(c_rsigma)
-% hold on
-% plot(rsigma,'--')
-% legend('C Source Code','Simulink')
-% title('rsigma C Source Code vs Simulink Output')
-
-subplot(6,1,4)
+subplot(7,1,5)
 plot(c_tauc1)
 hold on
 plot(tauc1,'--')
 legend('C Source Code','Simulink')
 title('tauc1 C Source Code vs Simulink Output')
 
-subplot(6,1,5)
+subplot(7,1,6)
 plot(c_tauwb)
 hold on
 plot(tauwb,'--')
 legend('C Source Code','Simulink')
 title('tauwb C Source Code vs Simulink Output')
 
-subplot(6,1,6)
+subplot(7,1,7)
 plot(c_wbgain_actual)
 hold on
 plot(wbgain,'--')
