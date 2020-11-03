@@ -68,7 +68,7 @@ tauwb_i    = TauWBMax+(bmTaubm-bmTaumax)*(TauWBMax-TauWBMin)/(bmTaumax-bmTaumin)
 mp.maxDelay = 1024; % Estimate of necessary buffer size
 % buffer size to accomodate max delay; buffer size is a power of 2
 
-mp.integerDelayAddrSize = ceil(log2(floor(mp.maxDelay))) + 2;
+mp.integerDelayAddrSize = ceil(log2(floor(mp.maxDelay)));
 mp.integerDelayBufferSize = 2^mp.integerDelayAddrSize;
 
 [wbgain_i, ~] = gain_groupdelay(tdres, centerfreq, cf, tauwb_i);
