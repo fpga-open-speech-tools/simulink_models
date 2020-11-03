@@ -54,7 +54,7 @@ synout = 2e5*data_input';
 [spCount_sim, sptime_sim, trd_vector_sim] = spikegen_source(synout, tdres, t_rd_rest, t_rd_init, tau, t_rd_jump, nSites, tabs, trel, spont, totalstim, nrep, total_mean_rate, MaxArraySizeSpikes, sptime, trd_vector);
 
 
-
+%%
 figure
 subplot(2,1,1)
 plot(data_input)
