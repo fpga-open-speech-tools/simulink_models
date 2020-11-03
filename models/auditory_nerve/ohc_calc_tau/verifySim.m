@@ -29,25 +29,58 @@
 
 %% 
 close all;
-mex NLafterohc.c
+mex calc_tau_source.c
 
 data_input  = testSignal.audio(:,1);
-ohc_nl = zeros(1,length(data_input));
+c_grdelay = zeros(1,length(data_input));
+c_rsigma = zeros(1,length(data_input));
+c_tauc1 = zeros(1,length(data_input));
+c_tauwb = zeros(1,length(data_input));
+c_wbgain = zeros(1,length(data_input));
 
 for i = 1:length(data_input)
-    ohc_nl(1,i) = NLafterohc(data_input(i), taumin, taumax, ohcasym);
+    [c_grdelay(1,i), c_rsigma(1,i), c_tauc1(1,i), c_tauwb(1,i), c_wbgain(1,i)] = calc_tau_source(tdres, cf, centerfreq, data_input(i));
 end
 
 figure
-subplot(2,1,1)
+subplot(6,1,1)
 plot(data_input)
-legend('CP WBGTF Input Wave')
+legend('tmptauc1 Input Wave')
 title('Audio Input')
 
 sim_out = mp.dataOut;
-subplot(2,1,2)
-plot(ohc_nl)
+subplot(6,1,2)
+plot(c_grdelay)
 hold on
-plot(sim_out,'--')
+plot(grdelay,'--')
 legend('C Source Code','Simulink')
-title('C Source Code vs Simulink Output')
+title('grdelay C Source Code vs Simulink Output')
+
+subplot(6,1,3)
+plot(c_rsigma)
+hold on
+plot(rsigma,'--')
+legend('C Source Code','Simulink')
+title('rsigma C Source Code vs Simulink Output')
+
+subplot(6,1,4)
+plot(c_tauc1)
+hold on
+plot(tauc1,'--')
+legend('C Source Code','Simulink')
+title('tauc1 C Source Code vs Simulink Output')
+
+
+subplot(6,1,5)
+plot(c_tauwb)
+hold on
+plot(tauwb,'--')
+legend('C Source Code','Simulink')
+title('tauwb C Source Code vs Simulink Output')
+
+subplot(6,1,6)
+plot(c_wbgain)
+hold on
+plot(wbgain,'--')
+legend('C Source Code','Simulink')
+title('wbgain C Source Code vs Simulink Output')
