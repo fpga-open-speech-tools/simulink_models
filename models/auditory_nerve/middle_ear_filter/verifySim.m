@@ -31,19 +31,18 @@
 % decoded correctly.  The input (modified by gain) and output values should be identical.
 
 close all;
-
-data_input = testSignal.audio(:,1);
-me_out     = mef_verification(data_input, Fs, tdres);
+data_input     = testSignal.audio(:,1);
+middle_ear_out = mef_verification(data_input, tdres);
 
 figure
 subplot(2,1,1)
-plot(testSignal.audio(:,1))
+plot(data_input)
 title('Audio Input')
 legend('input')
 
 sim_out = mp.dataOut;
 subplot(2,1,2)
-plot(me_out)
+plot(middle_ear_out)
 hold on
 plot(sim_out,'--')
 legend('MATLAB Function','Simulink')

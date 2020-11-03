@@ -39,41 +39,44 @@
 % Function copied from AN model C source code, with a few minor adjustments
 % in order for the function to operate in MATLAB
 
-function meout = mef_verification(stimulus, Fs, tdres)
+function meout = mef_verification(stimulus, tdres)
     double megainmax;
-    % NOTE: edited from original function to match signal length
+
     totalstim = length(stimulus);
-    mey1= zeros(1,totalstim);
-    mey2= zeros(1,totalstim);
-    mey3= zeros(1,totalstim);
-    meout= zeros(1,totalstim);
-    %px= zeros(1,totalstim);
-    B = zeros(totalstim,1);
-    px=stimulus;
-    TWOPI= 6.28318530717959;
-    fp = 1000; % prewarping frequency 1 kHz 
-    C  = TWOPI*fp/tan(TWOPI/2*fp*tdres);
+    mey1      = zeros(1,totalstim);
+    mey2      = zeros(1,totalstim);
+    mey3      = zeros(1,totalstim);
+    meout     = zeros(1,totalstim);
+    
+    px    = stimulus;
+    TWOPI = 6.28318530717959;
+    fp    = 1000;                           % Line 265 - Constant
+    C     = TWOPI*fp/tan(TWOPI/2*fp*tdres); % Line 266
 
-    m11=1/(C^2+5.9761e+003*C+2.5255e+007);
-    m12=-2*C^2+2*2.5255e+007;
-    m13= C^2-5.9761e+003*C+2.5255e+007;
-    m14=C^2+5.6665e+003*C; 
-    m15=-2*C^2;
-    m16=C^2-5.6665e+003*C;  
-    m21=1/(C^2+6.4255e+003*C+1.3975e+008);
-    m22=-2*C^2+2*1.3975e+008;
-    m23=C^2-6.4255e+003*C+1.3975e+008;
-    m24=C^2+5.8934e+003*C+1.7926e+008; 
-    m25=-2*C^2+2*1.7926e+008;	
-    m26=C^2-5.8934e+003*C+1.7926e+008;
-    m31=1/(C^2+2.4891e+004*C+1.2700e+009);
-    m32=-2*C^2+2*1.2700e+009;
-    m33=C^2-2.4891e+004*C+1.2700e+009;
-    m34=(3.1137e+003*C+6.9768e+008);    
-    m35=2*6.9768e+008;				
-    m36=-3.1137e+003*C+6.9768e+008;            
-    megainmax=2;
+    % Human middle-ear filter - based on Pascal et al. (JASA 1998)
+    % Lines 281-283
+    m11 = 1/(C^2 + 5.9761e+003 * C + 2.5255e+007);
+    m12 = -2 * C^2 + 2 * 2.5255e+007;
+    m13 = C^2 - 5.9761e+003 * C + 2.5255e+007;
+    m14 = C^2 + 5.6665e+003 * C; 
+    m15 = -2*C^2;
+    m16 = C^2 - 5.6665e+003 * C;  
+    m21 = 1/(C^2 + 6.4255e+003 * C + 1.3975e+008);
+    m22 = -2 * C^2 + 2 * 1.3975e+008;
+    m23 = C^2 - 6.4255e+003 * C + 1.3975e+008;
+    m24 = C^2 + 5.8934e+003 * C + 1.7926e+008; 
+    m25 = -2 * C^2 + 2 * 1.7926e+008;	
+    m26 = C^2 -5.8934e+003 * C + 1.7926e+008;
+    m31 = 1/ (C^2 + 2.4891e+004 * C + 1.2700e+009);
+    m32 = -2 * C^2 + 2 * 1.2700e+009;
+    m33 = C^2 -2.4891e+004 * C + 1.2700e+009;
+    m34 = 3.1137e+003 * C + 6.9768e+008;    
+    m35 = 2 * 6.9768e+008;				
+    m36 = -3.1137e+003 * C + 6.9768e+008;  
+    
+    megainmax = 2; % Line 284 - Constant 
 
+    % Lines 288-312
     for n=1:length(px)
         %Start of the middle-ear filtering section 
         if (n==1)  
