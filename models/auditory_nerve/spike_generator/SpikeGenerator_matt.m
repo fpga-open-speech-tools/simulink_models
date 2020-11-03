@@ -59,7 +59,7 @@
 % Function copied from AN model C source code, with a few minor adjustments
 % in order for the function to operate in a sample based manner in MATLAB
 
-function [sptime, spCount, trd_vector] = SpikeGenerator(synout, randNums, tdres, t_rd_rest, t_rd_init, tau, t_rd_jump, nSites, tabs, trel, elapsed_time, unitRateInterval, oneSiteRedock)
+function [sptime, spCount, trd_vector] = SpikeGenerator_matt(synout, randNums, tdres, t_rd_rest, t_rd_init, tau, t_rd_jump, nSites, tabs, trel, elapsed_time, unitRateInterval, oneSiteRedock)
 
 
     % Initializing parameters
