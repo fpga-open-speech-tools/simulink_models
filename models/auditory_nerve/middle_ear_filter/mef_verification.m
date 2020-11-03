@@ -39,24 +39,25 @@
 % Function copied from AN model C source code, with a few minor adjustments
 % in order for the function to operate in MATLAB
 
-function meout = mef_verification(stimulus, Fs, tdres)
+function meout = mef_verification(stimulus, tdres)
     double megainmax;
-    % NOTE: edited from original function to match signal length
-    totalstim = length(stimulus);
-    mey1= zeros(1,totalstim);
-    mey2= zeros(1,totalstim);
-    mey3= zeros(1,totalstim);
-    meout= zeros(1,totalstim);
-    %px= zeros(1,totalstim);
-    B = zeros(totalstim,1);
-    px=stimulus;
-    TWOPI= 6.28318530717959;
-    fp = 1000; % prewarping frequency 1 kHz 
-    C  = TWOPI*fp/tan(TWOPI/2*fp*tdres);
 
-    m11=1/(C^2+5.9761e+003*C+2.5255e+007);
-    m12=-2*C^2+2*2.5255e+007;
-    m13= C^2-5.9761e+003*C+2.5255e+007;
+    totalstim = length(stimulus);
+    mey1      = zeros(1,totalstim);
+    mey2      = zeros(1,totalstim);
+    mey3      = zeros(1,totalstim);
+    meout     = zeros(1,totalstim);
+    
+    px    = stimulus;
+    TWOPI = 6.28318530717959;
+    fp    = 1000;                           % Line 265 - Constant
+    C     = TWOPI*fp/tan(TWOPI/2*fp*tdres); % Line 266
+
+    % Human middle-ear filter - based on Pascal et al. (JASA 1998)
+    % Lines 281-283
+    m11 = 1/(C^2 + 5.9761e+003 * C + 2.5255e+007);
+    m12 = -2 * C^2 + 2 * 2.5255e+007;
+    m13 = C^2 - 5.9761e+003*C+2.5255e+007;
     m14=C^2+5.6665e+003*C; 
     m15=-2*C^2;
     m16=C^2-5.6665e+003*C;  
@@ -71,8 +72,9 @@ function meout = mef_verification(stimulus, Fs, tdres)
     m33=C^2-2.4891e+004*C+1.2700e+009;
     m34=(3.1137e+003*C+6.9768e+008);    
     m35=2*6.9768e+008;				
-    m36=-3.1137e+003*C+6.9768e+008;            
-    megainmax=2;
+    m36=-3.1137e+003*C+6.9768e+008;  
+    
+    megainmax = 2; % Line 284 - Constant 
 
     for n=1:length(px)
         %Start of the middle-ear filtering section 

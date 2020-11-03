@@ -18,5 +18,4 @@ cohc = 1; % outer hair cell impairment constant ( from 0 to 1 )
 cihc = 1; % inner hair cell impairment constant ( from 0 to 1 )
 
 %% Middle Ear Filter Parameters
-fp = 1e3; % Prewarping frequency of 1kHz
-[MEcoeffs, MEscale] = middle_ear_filter_parameter(tdres, fp);
+[MEcoeffs, MEscale] = middle_ear_filter_parameter(tdres);
