@@ -35,34 +35,17 @@ c1_chirp_filter       = zeros(1,totalstim);
 c2_wideband_filter    = zeros(1,totalstim);
 inner_hair_cell_out   = zeros(1,totalstim);
 
-%% Middle Ear Filter
-middle_ear_filter_out = mef_verification(data_input, Fs, tdres);
-
-%% C1 Chirp Filter
+%% Complete Auditory Nerve
 mex C1ChirpFilt.c complex.c
+mex C2ChirpFilt.c complex.c
+mex inner_hair_cell_source.c complex.c
+
+middle_ear_filter_out = mef_verification(data_input, Fs, tdres);
 for i = 1:totalstim
     c1_chirp_filter(1,i) = C1ChirpFilt(middle_ear_filter_out(i), tdres, cf, i-1, taumax, rsigma);
-end
-
-%% C2 Wideband Filter
-mex C2ChirpFilt.c complex.c
-for i = 1:totalstim
     c2_wideband_filter(1,i) = C2ChirpFilt(middle_ear_filter_out(i), tdres, cf, i-1, taumaxc2, fcohcc2);
-end
-
-%% Inner Hair Cell
-mex inner_hair_cell_source.c complex.c
-for i = 1:totalstim
     inner_hair_cell_out(1,i) = inner_hair_cell_source(c1_chirp_filter(i), slope_c1, ihcasym_c1, c2_wideband_filter(i), slope_c2, ihcasym_c2, tdres, Fcihc, i-1, gainihc, orderihc);
 end
-
-%% Complete Auditory Nerve
-% mex auditory_nerve_source.c complex.c
-% for i = 1:totalstim
-%     inner_hair_cell_out(1,i) = auditory_nerve_source(middle_ear_filter_out(i), tdres, cf, i-1, taumax, rsigma, taumaxc2, fcohcc2, slope_c1, ihcasym_c1, slope_c2, ihcasym_c2, Fcihc, gainihc, orderihc);
-% end
-
-%% Synapse
 pla_nl_out = NLBeforePLA(inner_hair_cell_out, totalstim, spont, cf);
 syn_out    = PowerLaw(pla_nl_out, totalstim, randNums, Fs);
 
@@ -70,7 +53,7 @@ syn_out    = PowerLaw(pla_nl_out, totalstim, randNums, Fs);
 figure
 subplot(2,1,1)
 plot(middle_ear_filter_out)
-legend('Middle Ear Filter Result Wave')
+legend('Input Wave')
 title('Audio Input')
 
 sim_out = mp.dataOut;
@@ -79,4 +62,4 @@ plot(syn_out)
 hold on
 plot(sim_out,'--')
 legend('C Source Code','Simulink')
-title('C Source Code vs Simulink Output')
+title('Auditory Nerve Simulink Simulation')
