@@ -48,12 +48,13 @@ trd_vectorVect = zeros(1,length(data_input));
 total_mean_rate = sum(data_input/length(data_input));
 MaxArraySizeSpikes = length(data_input)*nrep;
 
+synout = 2e5*data_input';
 
 % [sptime_sim, spCount_sim, trd_vector_sim] = SpikeGenerator(data_input, randNums, tdres, t_rd_rest, t_rd_init, tau, t_rd_jump, nSites, tabs, trel, elapsed_time, unitRateInterval, oneSiteRedock);
-[sptime_sim, spCount_sim, trd_vector_sim] = spikegen_source(data_input, tdres, t_rd_rest, t_rd_init, tau, t_rd_jump, nSites, tabs, trel, spont, totalstim, nrep, total_mean_rate, MaxArraySizeSpikes, sptime, trd_vector);
+[spCount_sim, sptime_sim, trd_vector_sim] = spikegen_source(synout, tdres, t_rd_rest, t_rd_init, tau, t_rd_jump, nSites, tabs, trel, spont, totalstim, nrep, total_mean_rate, MaxArraySizeSpikes, sptime, trd_vector);
 
 
-
+%%
 figure
 subplot(2,1,1)
 plot(data_input)
@@ -62,7 +63,7 @@ title('Audio Input')
 
 sim_out = mp.dataOut;
 subplot(2,1,2)
-plot(Erate_sim)
+plot([ 0 1 ], [0 0])
 hold on
 plot(sim_out,'--')
 legend('C Source Code','Simulink')
