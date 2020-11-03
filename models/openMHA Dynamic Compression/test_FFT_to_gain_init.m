@@ -273,7 +273,6 @@ write_addr_vy = zeros(length(FFT_data_real),1);
 %% Calculating Variable Signal Path Delay
 
 % Calculating delay according to the following:
-% Accumulator control signal delay = 1
 % dB Lookup table delay = 2
 % AR Filter delay = 1
 % Gain Table delay = 1
@@ -281,7 +280,7 @@ write_addr_vy = zeros(length(FFT_data_real),1);
 
 % Maximum freq. band size = variable;
 
-system_delay = 6 + max(band_sizes);
+system_delay = 5 + max(band_sizes);
 system_delay_memory = ceil(log2(system_delay));
 delay_memory_size =2^system_delay_memory;
 
