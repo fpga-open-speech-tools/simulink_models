@@ -29,23 +29,23 @@
 
 %% 
 %close all;
-mex calc_tau_source.c
-
-data_input  = testSignal.audio(:,1);
-c_grdelay = zeros(1,length(data_input));
-c_rsigma = zeros(1,length(data_input));
-c_tauc1 = zeros(1,length(data_input));
-c_tauwb = zeros(1,length(data_input));
-c_wbgain = zeros(1,length(data_input));
-c_wbgain_actual = zeros(1,length(data_input));
-tmpgain = zeros(1,length(data_input));
-m_grdelay = zeros(1,length(data_input));
-m_tmpcos = zeros(1,length(data_input));
-m_wbgain_actual = zeros(1,length(data_input));
-
-for i = 1:length(data_input)
-    [c_grdelay(1,i), c_rsigma(1,i), c_tauc1(1,i), c_tauwb(1,i), c_wbgain(1,i)] = calc_tau_source(tdres, cf, centerfreq, data_input(i));
-end
+% mex calc_tau_source.c
+% 
+% data_input  = testSignal.audio(:,1);
+% c_grdelay = zeros(1,length(data_input));
+% c_rsigma = zeros(1,length(data_input));
+% c_tauc1 = zeros(1,length(data_input));
+% c_tauwb = zeros(1,length(data_input));
+% c_wbgain = zeros(1,length(data_input));
+ c_wbgain_actual = zeros(1,length(data_input));
+ tmpgain = zeros(1,length(data_input));
+% m_grdelay = zeros(1,length(data_input));
+% m_tmpcos = zeros(1,length(data_input));
+% m_wbgain_actual = zeros(1,length(data_input));
+% 
+% for i = 1:length(data_input)
+%     [c_grdelay(1,i), c_rsigma(1,i), c_tauc1(1,i), c_tauwb(1,i), c_wbgain(1,i)] = calc_tau_source(tdres, cf, centerfreq, data_input(i));
+% end
 
 figure
 subplot(7,1,1)

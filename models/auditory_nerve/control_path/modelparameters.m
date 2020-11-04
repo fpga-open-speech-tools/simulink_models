@@ -6,7 +6,7 @@ mp.simDuration = 5;
 mp.nSamples    = config.system.sampleClockFrequency * mp.simDuration;
 
 mp.testFile    = [mp.test_signals_path filesep 'auditory_nerve\mef_result_subset.wav'];
-totalstim      = 20007;
+%totalstim      = 20007;
 
 %% ANM Settings
 cf    = 1000; % Characteristic frequency of specific neuron
