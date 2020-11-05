@@ -26,6 +26,17 @@
                     "dataType": {
                         "fractionLength": 0,
                         "signed": false,
+                        "type": "boolean",
+                        "wordLength": 1
+                    },
+                    "defaultValue": 0,
+                    "name": "passthrough",
+                    "registerNumber": 0
+                },
+                {
+                    "dataType": {
+                        "fractionLength": 0,
+                        "signed": false,
                         "type": "fix1",
                         "wordLength": 1
                     },

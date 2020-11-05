@@ -11,6 +11,6 @@ mp.nSamples    = config.system.sampleClockFrequency * mp.simDuration;
 fs = 48000;
 tau_a = 0.010; 
 
-% Attack Filter Coefficients
-c1_a = exp( -1.0/(tau_a * fs) );
-c2_a = 1.0 - c1_a;
+% Attack Filter Coefficients - mha_filter.cpp
+c1_a = exp( -1.0/(tau_a * fs) ); % Line 595
+c2_a = 1.0 - c1_a;               % Line 598
