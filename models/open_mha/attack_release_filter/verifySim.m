@@ -31,17 +31,21 @@
 % decoded correctly.  The input (modified by gain) and output values should be identical.
 
 close all;
-data_input        = testSignal.audio(:,1);
-totalstim         = length(data_input);
-attack_filter_out = zeros(1,totalstim);
+data_input    = testSignal.audio(:,1);
+totalstim     = length(data_input);
+ar_filter_out = zeros(1,totalstim);
 %% MHA Lowpass Fitler
-% mha_filter.hh - Line 201
+% mha_filter.hh - Line 200-203
 
 for i = 1:totalstim
     if(i == 1)
-        attack_filter_out(1,i) = (c1 * 65) + (c2 * data_input(i));
+        ar_filter_out(1,i) = (c1_a * 65) + (c2_a * data_input(i));
     else
-        attack_filter_out(1,i) = (c1 * attack_filter_out(1,i-1)) + (c2 * data_input(i));
+        if(data_input(i) > ar_filter_out(1,i-1))
+            ar_filter_out(1,i) = (c1_a * ar_filter_out(1,i-1)) + (c2_a * data_input(i));
+        else
+            ar_filter_out(1,i) = (c1_r * ar_filter_out(1,i-1)) + (c2_r * data_input(i));
+        end
     end
 end
 
@@ -54,7 +58,7 @@ legend('input')
 
 sim_out = mp.dataOut;
 subplot(2,1,2)
-plot(attack_filter_out)
+plot(ar_filter_out)
 hold on
 plot(sim_out,'--')
 legend('MATLAB Function','Simulink')
