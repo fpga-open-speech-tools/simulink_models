@@ -173,7 +173,7 @@ gainapp_dp_memory = log2(num_bands) + 1;
 % data
 % *** % NOTE: Will need to change to adjust for number of bands and desired
 % signal behavior
-input_length = 1500;
+input_length = 15000;
 
 for i = 1:num_bands
    [Pa2val1(i),FFTval1(i)] = dB2lin(55,band_sizes(i));
@@ -185,19 +185,19 @@ FFT_data_real = [];
 FFT_data_imag = [];
 for i = 1:input_length/3
     FFT_data_real = [FFT_data_real FFTval1(1).*ones(1,band_sizes(1)) FFTval2(2).*ones(1,band_sizes(2)) FFTval1(3).*ones(1,band_sizes(3)) FFTval2(4).*ones(1,band_sizes(4)) FFTval1(5).*ones(1,band_sizes(5)) FFTval2(6).*ones(1,band_sizes(6)) FFTval1(7).*ones(1,band_sizes(7)) FFTval2(8).*ones(1,band_sizes(8)) FFTval2(8).*ones(1,band_sizes(8)-1) FFTval1(7).*ones(1,band_sizes(7)) FFTval2(6).*ones(1,band_sizes(6)) FFTval1(5).*ones(1,band_sizes(5)) FFTval2(4).*ones(1,band_sizes(4)) FFTval1(3).*ones(1,band_sizes(3)) FFTval2(2).*ones(1,band_sizes(2)) FFTval1(1).*ones(1,band_sizes(1)-1) zeros(1,44)];
-    FFT_data_imag = [FFT_data_real FFTval1(1).*ones(1,band_sizes(1)) FFTval2(2).*ones(1,band_sizes(2)) FFTval1(3).*ones(1,band_sizes(3)) FFTval2(4).*ones(1,band_sizes(4)) FFTval1(5).*ones(1,band_sizes(5)) FFTval2(6).*ones(1,band_sizes(6)) FFTval1(7).*ones(1,band_sizes(7)) FFTval2(8).*ones(1,band_sizes(8)) FFTval2(8).*ones(1,band_sizes(8)-1) FFTval1(7).*ones(1,band_sizes(7)) FFTval2(6).*ones(1,band_sizes(6)) FFTval1(5).*ones(1,band_sizes(5)) FFTval2(4).*ones(1,band_sizes(4)) FFTval1(3).*ones(1,band_sizes(3)) FFTval2(2).*ones(1,band_sizes(2)) FFTval1(1).*ones(1,band_sizes(1)-1) zeros(1,44)];
+    FFT_data_imag = [FFT_data_imag FFTval1(1).*ones(1,band_sizes(1)) FFTval2(2).*ones(1,band_sizes(2)) FFTval1(3).*ones(1,band_sizes(3)) FFTval2(4).*ones(1,band_sizes(4)) FFTval1(5).*ones(1,band_sizes(5)) FFTval2(6).*ones(1,band_sizes(6)) FFTval1(7).*ones(1,band_sizes(7)) FFTval2(8).*ones(1,band_sizes(8)) FFTval2(8).*ones(1,band_sizes(8)-1) FFTval1(7).*ones(1,band_sizes(7)) FFTval2(6).*ones(1,band_sizes(6)) FFTval1(5).*ones(1,band_sizes(5)) FFTval2(4).*ones(1,band_sizes(4)) FFTval1(3).*ones(1,band_sizes(3)) FFTval2(2).*ones(1,band_sizes(2)) FFTval1(1).*ones(1,band_sizes(1)-1) zeros(1,44)];
 end
 
 i = 1;
 for i = 1:input_length/3
     FFT_data_real = [FFT_data_real FFTval2(1).*ones(1,band_sizes(1)) FFTval1(2).*ones(1,band_sizes(2)) FFTval2(3).*ones(1,band_sizes(3)) FFTval1(4).*ones(1,band_sizes(4)) FFTval2(5).*ones(1,band_sizes(5)) FFTval1(6).*ones(1,band_sizes(6)) FFTval2(7).*ones(1,band_sizes(7)) FFTval1(8).*ones(1,band_sizes(8)) FFTval1(8).*ones(1,band_sizes(8)-1) FFTval2(7).*ones(1,band_sizes(7)) FFTval1(6).*ones(1,band_sizes(6)) FFTval2(5).*ones(1,band_sizes(5)) FFTval1(4).*ones(1,band_sizes(4)) FFTval2(3).*ones(1,band_sizes(3)) FFTval1(2).*ones(1,band_sizes(2)) FFTval2(1).*ones(1,band_sizes(1)-1) zeros(1,44)];
-    FFT_data_imag = [FFT_data_real FFTval2(1).*ones(1,band_sizes(1)) FFTval1(2).*ones(1,band_sizes(2)) FFTval2(3).*ones(1,band_sizes(3)) FFTval1(4).*ones(1,band_sizes(4)) FFTval2(5).*ones(1,band_sizes(5)) FFTval1(6).*ones(1,band_sizes(6)) FFTval2(7).*ones(1,band_sizes(7)) FFTval1(8).*ones(1,band_sizes(8)) FFTval1(8).*ones(1,band_sizes(8)-1) FFTval2(7).*ones(1,band_sizes(7)) FFTval1(6).*ones(1,band_sizes(6)) FFTval2(5).*ones(1,band_sizes(5)) FFTval1(4).*ones(1,band_sizes(4)) FFTval2(3).*ones(1,band_sizes(3)) FFTval1(2).*ones(1,band_sizes(2)) FFTval2(1).*ones(1,band_sizes(1)-1) zeros(1,44)];
+    FFT_data_imag = [FFT_data_imag FFTval2(1).*ones(1,band_sizes(1)) FFTval1(2).*ones(1,band_sizes(2)) FFTval2(3).*ones(1,band_sizes(3)) FFTval1(4).*ones(1,band_sizes(4)) FFTval2(5).*ones(1,band_sizes(5)) FFTval1(6).*ones(1,band_sizes(6)) FFTval2(7).*ones(1,band_sizes(7)) FFTval1(8).*ones(1,band_sizes(8)) FFTval1(8).*ones(1,band_sizes(8)-1) FFTval2(7).*ones(1,band_sizes(7)) FFTval1(6).*ones(1,band_sizes(6)) FFTval2(5).*ones(1,band_sizes(5)) FFTval1(4).*ones(1,band_sizes(4)) FFTval2(3).*ones(1,band_sizes(3)) FFTval1(2).*ones(1,band_sizes(2)) FFTval2(1).*ones(1,band_sizes(1)-1) zeros(1,44)];
 end
 
 i = 1;
 for i = 1:input_length/3
     FFT_data_real = [FFT_data_real FFTval1(1).*ones(1,band_sizes(1)) FFTval2(2).*ones(1,band_sizes(2)) FFTval1(3).*ones(1,band_sizes(3)) FFTval2(4).*ones(1,band_sizes(4)) FFTval1(5).*ones(1,band_sizes(5)) FFTval2(6).*ones(1,band_sizes(6)) FFTval1(7).*ones(1,band_sizes(7)) FFTval2(8).*ones(1,band_sizes(8)) FFTval2(8).*ones(1,band_sizes(8)-1) FFTval1(7).*ones(1,band_sizes(7)) FFTval2(6).*ones(1,band_sizes(6)) FFTval1(5).*ones(1,band_sizes(5)) FFTval2(4).*ones(1,band_sizes(4)) FFTval1(3).*ones(1,band_sizes(3)) FFTval2(2).*ones(1,band_sizes(2)) FFTval1(1).*ones(1,band_sizes(1)-1) zeros(1,44)];
-    FFT_data_imag = [FFT_data_real FFTval1(1).*ones(1,band_sizes(1)) FFTval2(2).*ones(1,band_sizes(2)) FFTval1(3).*ones(1,band_sizes(3)) FFTval2(4).*ones(1,band_sizes(4)) FFTval1(5).*ones(1,band_sizes(5)) FFTval2(6).*ones(1,band_sizes(6)) FFTval1(7).*ones(1,band_sizes(7)) FFTval2(8).*ones(1,band_sizes(8)) FFTval2(8).*ones(1,band_sizes(8)-1) FFTval1(7).*ones(1,band_sizes(7)) FFTval2(6).*ones(1,band_sizes(6)) FFTval1(5).*ones(1,band_sizes(5)) FFTval2(4).*ones(1,band_sizes(4)) FFTval1(3).*ones(1,band_sizes(3)) FFTval2(2).*ones(1,band_sizes(2)) FFTval1(1).*ones(1,band_sizes(1)-1) zeros(1,44)];
+    FFT_data_imag = [FFT_data_imag FFTval1(1).*ones(1,band_sizes(1)) FFTval2(2).*ones(1,band_sizes(2)) FFTval1(3).*ones(1,band_sizes(3)) FFTval2(4).*ones(1,band_sizes(4)) FFTval1(5).*ones(1,band_sizes(5)) FFTval2(6).*ones(1,band_sizes(6)) FFTval1(7).*ones(1,band_sizes(7)) FFTval2(8).*ones(1,band_sizes(8)) FFTval2(8).*ones(1,band_sizes(8)-1) FFTval1(7).*ones(1,band_sizes(7)) FFTval2(6).*ones(1,band_sizes(6)) FFTval1(5).*ones(1,band_sizes(5)) FFTval2(4).*ones(1,band_sizes(4)) FFTval1(3).*ones(1,band_sizes(3)) FFTval2(2).*ones(1,band_sizes(2)) FFTval1(1).*ones(1,band_sizes(1)-1) zeros(1,44)];
 end
 
 Lst1 = [55.*ones(1,input_length/3) 90.*ones(1,input_length/3) 55.*ones(1,input_length/3)];
@@ -245,17 +245,21 @@ write_addr_vy = zeros(length(FFT_data_real),1);
 
 %% Calculating Variable Signal Path Delay
 
-% Calculating delay according to the following:
-% dB Lookup table delay = 2
+% Calculating gain delay according to the following:
+% dB Lookup table delay = 3
 % AR Filter delay = 1
 % Gain Table delay = 1
 % Gain Application Controller delay = 1
 
 % Maximum freq. band size = variable;
 
-system_delay = 5 + max(band_sizes);
+gain_delay = 6;
+accum_delay = max(band_sizes);
+system_delay = gain_delay + accum_delay;
+accum_delay_memory = ceil(log2(accum_delay));
 system_delay_memory = ceil(log2(system_delay));
 delay_memory_size =2^system_delay_memory;
+accum_delay_memory_size = 2^accum_delay_memory;
 
 
 %% Declare Stop Time
