@@ -10,11 +10,13 @@
 
 %% Plotting Resulting I/O Characteristics
 
+timevector = ((1:1:length(Lst1))./fs)';
+
 % Band 1 Results
 figure()
-plot(out.Lin(1:2:end-1));
+plot(out.Lin(70:300:end));
 hold on;
-plot(out.adjusted_gain(120+system_delay:200:end));
+plot(out.adjusted_gain(71:300:end));
 plot(Lst1);
 hold off;
 title('Input Levels - Frequency Band 1');
@@ -23,64 +25,82 @@ ylabel('Sound Level [dB]');
 
 % Band 2 Results
 figure()
-plot(out.Lin(2:2:end));
+plot(out.Lin(71:300:end));
 hold on;
-plot(out.adjusted_gain(4+system_delay:200:end));
+plot(out.adjusted_gain(73:300:end));
 plot(Lst2);
 hold off;
 title('Input Levels - Frequency Band 2');
 xlabel('Sample Number');
 ylabel('Sound Level [dB]');
 
-% timevector = ((1:1:length(Lst))./fs)';
-% 
-% % Plotting Frequency Band 2 Attack-Release Filter Output
-% figure()
-% plot(timevector(1:end/2),Lst(1:2:end-1),'b');
-% hold on;
-% plot(timevector(1:end/2),out.Lin(1:2:end-1),'r');
-% hold off;
-% legend('Input Level','Adjusted Input Level','Location','northwest');
-% title('Attack-Release Filter Input Level Adjustment - Freq. Band 2');
-% xlabel('Time [seconds]');
-% ylabel('Sound Level [dB SPL]');
-% ylim([50,95]);
-% 
-% % Plotting Frequency Band 1 Attack-Release Filter Output
-% figure()
-% plot(timevector(1:end/2),Lst(2:2:end),'b');
-% hold on;
-% plot(timevector(1:end/2),out.Lin(2:2:end),'r');
-% hold off;
-% legend('Input Level','Adjusted Input Level','Location','northwest');
-% title('Attack-Release Filter Input Level Adjustment - Freq. Band 1');
-% xlabel('Time [seconds]');
-% ylabel('Sound Level [dB SPL]');
-% ylim([50,95]);
-% 
-% 
-% % Plotting Frequency Band 2 Gain
-% figure()
-% plot(timevector(1:end/2),out.gain(2:2:end),'b');
-% hold on;
-% plot(timevector(1:end/2),out.adjusted_gain(2:2:end),'r');
-% hold off;
-% legend('Gain (Original Input Level)','Gain (Adjusted Input Level)','Location','northwest');
-% title('Gain Comparison Plot with and without Attack-Release Filter - Freq. Band 2');
-% xlabel('Time [seconds');
-% ylabel('Gain [dB]');
-% 
-% % Plotting Frequency Band 1 Gain
-% figure()
-% plot(timevector(1:end/2),out.gain(1:2:end-1),'b');
-% hold on;
-% plot(timevector(1:end/2),out.adjusted_gain(1:2:end-1),'r');
-% hold off;
-% legend('Gain (Original Input Level)','Gain (Adjusted Input Level)','Location','northwest');
-% title('Gain Comparison Plot with and without Attack-Release Filter - Freq. Band 1');
-% xlabel('Time [seconds');
-% ylabel('Gain [dB]');
+% Band 3 Results
+figure()
+plot(out.Lin(72:300:end));
+hold on;
+plot(out.adjusted_gain(74:300:end));
+plot(Lst1);
+hold off;
+title('Input Levels - Frequency Band 3');
+xlabel('Sample Number');
+ylabel('Sound Level [dB]');
+
+% Band 4 Results
+figure()
+plot(out.Lin(74:300:end));
+hold on;
+plot(out.adjusted_gain(76:300:end));
+plot(Lst2);
+hold off;
+title('Input Levels - Frequency Band 4');
+xlabel('Sample Number');
+ylabel('Sound Level [dB]');
+
+% Band 5 Results
+figure()
+plot(out.Lin(75:300:end));
+hold on;
+plot(out.adjusted_gain(77:300:end));
+plot(Lst1);
+hold off;
+title('Input Levels - Frequency Band 5');
+xlabel('Sample Number');
+ylabel('Sound Level [dB]');
+
+% Band 6 Results
+figure()
+plot(out.Lin(80:300:end));
+hold on;
+plot(out.adjusted_gain(82:300:end));
+plot(Lst2);
+hold off;
+title('Input Levels - Frequency Band 6');
+xlabel('Sample Number');
+ylabel('Sound Level [dB]');
+
+% Band 7 Results
+figure()
+plot(out.Lin(91:300:end));
+hold on;
+plot(out.adjusted_gain(93:300:end));
+plot(Lst1);
+hold off;
+title('Input Levels - Frequency Band 7');
+xlabel('Sample Number');
+ylabel('Sound Level [dB]');
+
+% Band 8 Results
+figure()
+plot(out.Lin(134:300:end));
+hold on;
+plot(out.adjusted_gain(136:300:end));
+plot(Lst2);
+hold off;
+title('Input Levels - Frequency Band 8');
+xlabel('Sample Number');
+ylabel('Sound Level [dB]');
 
 %% Compare Results
 
 % Error calculations
+

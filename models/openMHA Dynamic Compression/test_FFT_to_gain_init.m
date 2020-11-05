@@ -26,12 +26,12 @@ binwidth = (fs/2)/(FFTsize/2);
 %% Declare Freq Band Information
 
 % *** 2 Band Test Info *** %
-num_bands = 2;
-ef = [0 12000 24000];
+% num_bands = 2;
+% ef = [0 11999 24000];
 
 % *** 8 Band Test Info *** %
-% num_bands = 8;
-% ef = [0 100 200 400 800 1600 3200 6400 12000 24000];
+num_bands = 8;
+ef = [0 250 500 750 1000 2000 4000 12000 24000];
 
 % Calculate Freq Band State Controller Parameters
 band_sizes = calculate_band_sizes(ef, num_bins, binwidth, num_bands);
@@ -71,8 +71,8 @@ tau_a = 0.020; % seconds
 tau_r = 0.100; % seconds
 
 % Calculating vector easily via multiples of base constants
-tau_as = tau_a.*[1:1:num_bands]';
-tau_rs = tau_r.*[1:1:num_bands]';
+tau_as = tau_a.*[1:0.2:num_bands]';
+tau_rs = tau_r.*[1:0.2:num_bands]';
 
 z = 1;
 for i = 1:2:2*num_bands-1
@@ -135,18 +135,11 @@ for i = 1:length(gtdata)
     input_levels_db(i) = gtmin + (i-1)*gtstep;
 end
 
-% Declaring Gain Vectors for each Frequency Band in dB
-fb1_gains = gtdata;
-fb2_gains = gtdata;
-% fb3_gains = gtdata;
-% fb4_gains = gtdata;
-% fb5_gains = gtdata;
-% fb6_gains = gtdata;
-% fb7_gains = gtdata;
-% fb8_gains = gtdata;
-
-% Concatenate dB Gain Vectors into Single Table
-gt_db = [fb1_gains fb2_gains];
+% Declaring Gain Vectors for each Frequency Band in dB and Concatenating
+gt_db = [];
+for i = 1:num_bands
+    gt_db = [gt_db gtdata];
+end
 
 % Map dB gains to Linear Factors
 gt = 10.^(gt_db./20);
@@ -156,7 +149,7 @@ dp_gt = gt';
 
 % Sizing DP Table to match Address Port Width of RAM Block
 numgainentries = table_length*num_bands;
-RAM_size = 8;
+RAM_size = ceil(log2(numgainentries));
 % RAM_size = ceil(log2(numgainentries));   % number of bits
 RAM_addresses = 2^RAM_size;
 vy = dp_gt;
@@ -176,59 +169,39 @@ gainapp_dp_memory = log2(num_bands) + 1;
 % % Data Input Signal (Input Level level_in [Pa^2])
 % level_in = (10.^(Lst./10))./2500000000;
 
-% Translate desired dB value and number of bins/band into symmetric FFT
+% Translate desired dB value and number of bins per band into symmetric FFT
 % data
+% *** % NOTE: Will need to change to adjust for number of bands and desired
+% signal behavior
+input_length = 1500;
 
-input_length = 2000;
-
-% Band 1 dB
-[Pa2val1,FFTval1] = dB2lin(65,64);
-% Band 2 dB
-[Pa2val2,FFTval2] = dB2lin(90,64);
+for i = 1:num_bands
+   [Pa2val1(i),FFTval1(i)] = dB2lin(55,band_sizes(i));
+   [Pa2val2(i),FFTval2(i)] = dB2lin(90,band_sizes(i));
+end
 
 i = 1;
 FFT_data_real = [];
 FFT_data_imag = [];
-for i = 1:input_length/4
-    FFT_data_real = [FFT_data_real FFTval1.*ones(1,64) FFTval2.*ones(1,64) zeros(1,72)];
-    FFT_data_imag = [FFT_data_imag FFTval1.*ones(1,64) FFTval2.*ones(1,64) zeros(1,72)];
+for i = 1:input_length/3
+    FFT_data_real = [FFT_data_real FFTval1(1).*ones(1,band_sizes(1)) FFTval2(2).*ones(1,band_sizes(2)) FFTval1(3).*ones(1,band_sizes(3)) FFTval2(4).*ones(1,band_sizes(4)) FFTval1(5).*ones(1,band_sizes(5)) FFTval2(6).*ones(1,band_sizes(6)) FFTval1(7).*ones(1,band_sizes(7)) FFTval2(8).*ones(1,band_sizes(8)) FFTval2(8).*ones(1,band_sizes(8)-1) FFTval1(7).*ones(1,band_sizes(7)) FFTval2(6).*ones(1,band_sizes(6)) FFTval1(5).*ones(1,band_sizes(5)) FFTval2(4).*ones(1,band_sizes(4)) FFTval1(3).*ones(1,band_sizes(3)) FFTval2(2).*ones(1,band_sizes(2)) FFTval1(1).*ones(1,band_sizes(1)-1) zeros(1,44)];
+    FFT_data_imag = [FFT_data_real FFTval1(1).*ones(1,band_sizes(1)) FFTval2(2).*ones(1,band_sizes(2)) FFTval1(3).*ones(1,band_sizes(3)) FFTval2(4).*ones(1,band_sizes(4)) FFTval1(5).*ones(1,band_sizes(5)) FFTval2(6).*ones(1,band_sizes(6)) FFTval1(7).*ones(1,band_sizes(7)) FFTval2(8).*ones(1,band_sizes(8)) FFTval2(8).*ones(1,band_sizes(8)-1) FFTval1(7).*ones(1,band_sizes(7)) FFTval2(6).*ones(1,band_sizes(6)) FFTval1(5).*ones(1,band_sizes(5)) FFTval2(4).*ones(1,band_sizes(4)) FFTval1(3).*ones(1,band_sizes(3)) FFTval2(2).*ones(1,band_sizes(2)) FFTval1(1).*ones(1,band_sizes(1)-1) zeros(1,44)];
 end
-
-% Band 1 dB
-[Pa2val1,FFTval1] = dB2lin(90,64);
-% Band 2 dB
-[Pa2val2,FFTval2] = dB2lin(65,64);
 
 i = 1;
-for i = 1:input_length/4
-    FFT_data_real = [FFT_data_real FFTval1.*ones(1,64) FFTval2.*ones(1,64) zeros(1,72)];
-    FFT_data_imag = [FFT_data_imag FFTval1.*ones(1,64) FFTval2.*ones(1,64) zeros(1,72)];
+for i = 1:input_length/3
+    FFT_data_real = [FFT_data_real FFTval2(1).*ones(1,band_sizes(1)) FFTval1(2).*ones(1,band_sizes(2)) FFTval2(3).*ones(1,band_sizes(3)) FFTval1(4).*ones(1,band_sizes(4)) FFTval2(5).*ones(1,band_sizes(5)) FFTval1(6).*ones(1,band_sizes(6)) FFTval2(7).*ones(1,band_sizes(7)) FFTval1(8).*ones(1,band_sizes(8)) FFTval1(8).*ones(1,band_sizes(8)-1) FFTval2(7).*ones(1,band_sizes(7)) FFTval1(6).*ones(1,band_sizes(6)) FFTval2(5).*ones(1,band_sizes(5)) FFTval1(4).*ones(1,band_sizes(4)) FFTval2(3).*ones(1,band_sizes(3)) FFTval1(2).*ones(1,band_sizes(2)) FFTval2(1).*ones(1,band_sizes(1)-1) zeros(1,44)];
+    FFT_data_imag = [FFT_data_real FFTval2(1).*ones(1,band_sizes(1)) FFTval1(2).*ones(1,band_sizes(2)) FFTval2(3).*ones(1,band_sizes(3)) FFTval1(4).*ones(1,band_sizes(4)) FFTval2(5).*ones(1,band_sizes(5)) FFTval1(6).*ones(1,band_sizes(6)) FFTval2(7).*ones(1,band_sizes(7)) FFTval1(8).*ones(1,band_sizes(8)) FFTval1(8).*ones(1,band_sizes(8)-1) FFTval2(7).*ones(1,band_sizes(7)) FFTval1(6).*ones(1,band_sizes(6)) FFTval2(5).*ones(1,band_sizes(5)) FFTval1(4).*ones(1,band_sizes(4)) FFTval2(3).*ones(1,band_sizes(3)) FFTval1(2).*ones(1,band_sizes(2)) FFTval2(1).*ones(1,band_sizes(1)-1) zeros(1,44)];
 end
-
-% Band 1 dB
-[Pa2val1,FFTval1] = dB2lin(65,64);
-% Band 2 dB
-[Pa2val2,FFTval2] = dB2lin(90,64);
 
 i = 1;
-for i = 1:input_length/4
-    FFT_data_real = [FFT_data_real FFTval1.*ones(1,64) FFTval2.*ones(1,64) zeros(1,72)];
-    FFT_data_imag = [FFT_data_imag FFTval1.*ones(1,64) FFTval2.*ones(1,64) zeros(1,72)];
+for i = 1:input_length/3
+    FFT_data_real = [FFT_data_real FFTval1(1).*ones(1,band_sizes(1)) FFTval2(2).*ones(1,band_sizes(2)) FFTval1(3).*ones(1,band_sizes(3)) FFTval2(4).*ones(1,band_sizes(4)) FFTval1(5).*ones(1,band_sizes(5)) FFTval2(6).*ones(1,band_sizes(6)) FFTval1(7).*ones(1,band_sizes(7)) FFTval2(8).*ones(1,band_sizes(8)) FFTval2(8).*ones(1,band_sizes(8)-1) FFTval1(7).*ones(1,band_sizes(7)) FFTval2(6).*ones(1,band_sizes(6)) FFTval1(5).*ones(1,band_sizes(5)) FFTval2(4).*ones(1,band_sizes(4)) FFTval1(3).*ones(1,band_sizes(3)) FFTval2(2).*ones(1,band_sizes(2)) FFTval1(1).*ones(1,band_sizes(1)-1) zeros(1,44)];
+    FFT_data_imag = [FFT_data_real FFTval1(1).*ones(1,band_sizes(1)) FFTval2(2).*ones(1,band_sizes(2)) FFTval1(3).*ones(1,band_sizes(3)) FFTval2(4).*ones(1,band_sizes(4)) FFTval1(5).*ones(1,band_sizes(5)) FFTval2(6).*ones(1,band_sizes(6)) FFTval1(7).*ones(1,band_sizes(7)) FFTval2(8).*ones(1,band_sizes(8)) FFTval2(8).*ones(1,band_sizes(8)-1) FFTval1(7).*ones(1,band_sizes(7)) FFTval2(6).*ones(1,band_sizes(6)) FFTval1(5).*ones(1,band_sizes(5)) FFTval2(4).*ones(1,band_sizes(4)) FFTval1(3).*ones(1,band_sizes(3)) FFTval2(2).*ones(1,band_sizes(2)) FFTval1(1).*ones(1,band_sizes(1)-1) zeros(1,44)];
 end
 
-% Band 1 dB
-[Pa2val1,FFTval1] = dB2lin(90,64);
-% Band 2 dB
-[Pa2val2,FFTval2] = dB2lin(65,64);
-
-i = 1;
-for i = 1:input_length/4
-    FFT_data_real = [FFT_data_real FFTval1.*ones(1,64) FFTval2.*ones(1,64) zeros(1,72)];
-    FFT_data_imag = [FFT_data_imag FFTval1.*ones(1,64) FFTval2.*ones(1,64) zeros(1,72)];
-end
-
-Lst1 = [65.*ones(1,input_length/4) 90.*ones(1,input_length/4) 65.*ones(1,input_length/4) 90.*ones(1,input_length/4)];
-Lst2 = [90.*ones(1,input_length/4) 65.*ones(1,input_length/4) 90.*ones(1,input_length/4) 65.*ones(1,input_length/4)];
+Lst1 = [55.*ones(1,input_length/3) 90.*ones(1,input_length/3) 55.*ones(1,input_length/3)];
+Lst2 = [90.*ones(1,input_length/3) 55.*ones(1,input_length/3) 90.*ones(1,input_length/3)];
 
 
 %% Calculate Valid Signal

@@ -9,10 +9,10 @@ for bin = 1:num_bins
 end
 
 for i = 1:num_bands
-    band_sizes(1,i) = sum(bin_freq>=ef(i) & bin_freq<ef(i+1));
+    band_sizes(1,i) = sum(bin_freq>ef(i) & bin_freq<=ef(i+1));
 end
 
-band_sizes(num_bands) = band_sizes(num_bands) + 1;
+band_sizes(1) = band_sizes(1) + 1;
 
 % Error Checks
 
