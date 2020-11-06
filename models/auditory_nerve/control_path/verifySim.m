@@ -49,23 +49,60 @@ for i = 1:length(data_input)
     if(i == 1)
         wbout(1,i) = WbGammaTone(data_input(i),tdres,centerfreq,i-1,tauwb_i,wbgain_i,wborder, TauWBMax, cf);
     else
-        wbout(1,i) = WbGammaTone(data_input(i),tdres,centerfreq,i-1,c_tauwb(1,i-1),c_wbgain(1,i-1),wborder, TauWBMax, cf);
+%         wbout(1,i) = WbGammaTone(data_input(i),tdres,centerfreq,i-1,tauwb_i,wbgain_i,wborder, TauWBMax, cf);
+        wbout(1,i) = WbGammaTone(data_input(i),tdres,centerfreq,i-1,c_tauwb(1,i-1),wbgain_i,wborder, TauWBMax, cf);
+       % wbout(1,i) = WbGammaTone(data_input(i),tdres,centerfreq,i-1,c_tauwb(1,i-1),c_wbgain(1,i-1),wborder, TauWBMax, cf);
     end
-    ohc_sim(1,i) = outer_hair_cell_source(wbout(1,i), ohcasym, s0, s1, x1, tdres, Fcohc, i-1, gainohc, orderohc, taumin, taumax);
+    ohc_sim(1,i) = outer_hair_cell_source(wbout(1,i), ohcasym, s0, s1, x1, tdres, Fcohc, i-1, gainohc, orderohc, bmTaumin, bmTaumax);
     [c_grdelay(1,i), c_rsigma(1,i), c_tauc1(1,i), c_tauwb(1,i), c_wbgain(1,i)] = calc_tau_source(tdres, cf, centerfreq, ohc_sim(1,i));
 end
 
 %% Plot the Results
 figure
-subplot(2,1,1)
+subplot(7,1,1)
 plot(data_input)
 legend('Middle Ear Filter Result Wave')
 title('Audio Input')
 
 sim_out = mp.dataOut;
-subplot(2,1,2)
+subplot(7,1,2)
 plot(c_rsigma)
 hold on
 plot(sim_out,'--')
 legend('C Source Code','Simulink')
-title('Control Path')
+title('rsigma')
+
+subplot(7,1,3)
+plot(c_wbgain)
+hold on
+plot(s_wbgain,'--')
+legend('C Source Code','Simulink')
+title('wbgain')
+
+subplot(7,1,4)
+plot(c_tauwb)
+hold on
+plot(tauwb,'--')
+legend('C Source Code','Simulink')
+title('tauwb')
+
+subplot(7,1,5)
+plot(c_tauc1)
+hold on
+plot(tauc1,'--')
+legend('C Source Code','Simulink')
+title('tauc1')
+
+subplot(7,1,6)
+plot(wbout)
+hold on
+plot(s_wbout,'--')
+legend('C Source Code','Simulink')
+title('wbout')
+
+subplot(7,1,7)
+plot(ohc_sim)
+hold on
+plot(s_ohc_out,'--')
+legend('C Source Code','Simulink')
+title('ohc_out')

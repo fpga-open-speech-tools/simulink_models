@@ -1,4 +1,4 @@
-
+TWOPI = 6.28318530717959;
 %% Autogen parameters
 mp.sim_prompts = 1;
 mp.sim_verify  = 1;
@@ -30,8 +30,8 @@ orderohc = 2;
 
 % C1 Chirp Filter Parameters
 rsigma = .5;         % Pole shifting constant (set as constant for testing)
-taumax = 0.003;      % Max time constant (given as bmTaumax in C source code -the value of bmTaumax for cf = 1000)
-taumin = 4.6310e-04; % Min time constant (given as bmTaumin in C source code - the value of bmTaumax for cf = 1000)
+bmTaumax = 0.003;      % Max time constant (given as bmTaumax in C source code -the value of bmTaumax for cf = 1000)
+bmTaumin = 4.6310e-04; % Min time constant (given as bmTaumin in C source code - the value of bmTaumax for cf = 1000)
 
 % C2 Wideband Filter
 taumaxc2 = 0.0030;   % time constant determined with another function (chosen as the output of Get_taubm for cf = 1000 Hz)     
@@ -43,7 +43,7 @@ gainihc  = 1.0;
 orderihc = 7;
 
 [MEcoeffs, MEscale, shift, s1, s0, x1, x0, OHCLPcoeffs, s0_nl, minR, order_of_zero, fs_bilinear, CF, preal, pimag, C1initphase, norm_gainc1, C2coeffs, norm_gainc2, ...
-        corner, strength, ihcasym_c1, slope_c1, ihcasym_c2, slope_c2, IHCLPcoeffs] = auditory_nerve_parameters(tdres, fp, ohcasym, Fcohc, gainohc, taumax, taumin, cf, taumaxc2, fcohcc2, Fcihc, gainihc);
+        corner, strength, ihcasym_c1, slope_c1, ihcasym_c2, slope_c2, IHCLPcoeffs] = auditory_nerve_parameters(tdres, fp, ohcasym, Fcohc, gainohc, bmTaumax, bmTaumin, cf, taumaxc2, fcohcc2, Fcihc, gainihc);
              
 
 %% Synapse Model

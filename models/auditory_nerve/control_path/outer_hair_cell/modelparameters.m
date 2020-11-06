@@ -20,7 +20,7 @@ Fcohc = 600;
 gainohc = 1.0;
 orderohc = 2;
 % Max and min time constants (input as bmTaumax and bmTaumin in source code, chosen as outputs for cf = 1000 Hz from Get_taubm)
-taumax = 0.003;
-taumin = 4.6310e-04;
+bmTaumax = 0.003;
+bmTaumin = 4.6310e-04;
 
-[shift, s1, s0, x1, x0, OHCLPcoeffs, s0_nl, minR] = outer_hair_cell_parameters(tdres, ohcasym, Fcohc, gainohc, taumax, taumin);
+[shift, s1, s0, x1, x0, OHCLPcoeffs, s0_nl, minR] = outer_hair_cell_parameters(tdres, ohcasym, Fcohc, gainohc, bmTaumax, bmTaumin);

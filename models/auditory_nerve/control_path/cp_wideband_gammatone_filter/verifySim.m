@@ -35,9 +35,10 @@ mex WbGammaTone.c complex.c
 
 data_input = testSignal.audio(:,1);
 wbout      = zeros(1,length(data_input));
+c_phase_shift= zeros(1,length(data_input));
 
 for i = 1:length(data_input)
-    wbout(1,i) = WbGammaTone(data_input(i),tdres,centerfreq,i-1,tauwb,wbgain,wborder, TauWBMax, cf);
+    [wbout(1,i), c_phase_shift(1,i)] = WbGammaTone(data_input(i),tdres,centerfreq,i-1,tauwb,wbgain,wborder, TauWBMax, cf);
 end
 
 figure
@@ -46,10 +47,10 @@ plot(data_input)
 legend('MEF Result Input Wave')
 title('Audio Input')
 
-sim_out = horzcat(zeros(1,6), mp.dataOut);
+sim_out = mp.dataOut;
 subplot(2,1,2)
 plot(wbout)
 hold on
-plot(sim_out)
+plot(sim_out, '--')
 legend('C Source Code','Simulink')
 title('C Source Code vs Simulink Output')

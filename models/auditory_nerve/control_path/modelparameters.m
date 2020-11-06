@@ -29,14 +29,14 @@ cordiciterationswb = 52;                              % Number of cordic iterati
 
 % Outer Hair Cell Parameters
 ohcasym  = 7.0; % Ratio of positive Max to negative Max
-Fcohc    = 600;
-gainohc  = 1.0;
-orderohc = 2;
+Fcohc    = 600; % Hardcoded in model, line 320
+gainohc  = 1.0; % Hardcoded in model, line 320
+orderohc = 2; % Hardcoded in model, line 320
 
-taumax = 0.003;      % Max time constant (given as bmTaumax in C source code -the value of bmTaumax for cf = 1000)
-taumin = 4.6310e-04; % Min time constant (given as bmTaumin in C source code - the value of bmTaumax for cf = 1000)
+bmTaumax = 0.003;      % Max time constant (given as bmTaumax in C source code -the value of bmTaumax for cf = 1000)
+bmTaumin = 4.6310e-04; % Min time constant (given as bmTaumin in C source code - the value of bmTaumax for cf = 1000)
              
-[shift, s1, s0, x1, x0, OHCLPcoeffs, s0_nl, minR] = outer_hair_cell_parameters(tdres, ohcasym, Fcohc, gainohc, taumax, taumin);
+[shift, s1, s0, x1, x0, OHCLPcoeffs, s0_nl, minR] = outer_hair_cell_parameters(tdres, ohcasym, Fcohc, gainohc, bmTaumax, bmTaumin);
 
 %% OHC Calculate Tau for C1
 gain = 52.0/2.0*(tanh(2.2*log10(cf/0.6e3)+0.15)+1.0); % Defined in both Get_tauwb & Get_taubm

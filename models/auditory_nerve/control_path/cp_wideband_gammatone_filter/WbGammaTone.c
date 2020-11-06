@@ -59,7 +59,7 @@
 #endif
 
 /* The computational function routine */
-double WbGammaTone(double x, double tdres, double centerfreq, int n, double tau, double gain, int order, double TauWBMax, double cf, double *output)
+double WbGammaTone(double x, double tdres, double centerfreq, int n, double tau, double gain, int order, double TauWBMax, double cf, double *output, double *phase_shift)
 {
   static double wbphase;
   static COMPLEX wbgtf[4], wbgtfl[4];
@@ -84,14 +84,16 @@ double WbGammaTone(double x, double tdres, double centerfreq, int n, double tau,
   c1LP = (dtmp-1)/(dtmp+1);
   c2LP = 1.0/(dtmp+1);
   wbgtf[0] = compmult(x,compexp(wbphase));                 /* FREQUENCY SHIFT */
-
+  
+  
   for(j = 1; j <= order; j++)                              /* IIR Bilinear transformation LPF */
   wbgtf[j] = comp2sum(compmult(c2LP*gain,comp2sum(wbgtf[j-1],wbgtfl[j-1])),
       compmult(c1LP,wbgtfl[j]));
   out = REAL(compprod(compexp(-wbphase), wbgtf[order])); /* FREQ SHIFT BACK UP */
-
+  
   for(i=0; i<=order;i++) wbgtfl[i] = wbgtf[i];
   *output = pow((tau/TauWBMax),order)*out*10e3*__max(1,cf/5e3);;
+  *phase_shift = *output;
   
 }
 
@@ -101,7 +103,7 @@ void mexFunction( int nlhs, mxArray *plhs[],
                   int nrhs, const mxArray *prhs[])
 {
 
-    double x, tdres, centerfreq, *ntmp, tau, gain, *ordertmp, *output, tauWBMax, cf;
+    double x, tdres, centerfreq, *ntmp, tau, gain, *ordertmp, *output, *phase_shift, tauWBMax, cf;
     int n, order;
 
     /* get the value of the scalar input  */
@@ -124,6 +126,8 @@ void mexFunction( int nlhs, mxArray *plhs[],
     plhs[0] = mxCreateDoubleMatrix(1, 1, mxREAL);
     output = mxGetPr(plhs[0]);
 
+    plhs[1] = mxCreateDoubleMatrix(1, 1, mxREAL);
+    phase_shift = mxGetPr(plhs[1]);
     /* call the computational routine */
-    WbGammaTone(x, tdres, centerfreq, n, tau, gain, order, tauWBMax, cf, output);
+    WbGammaTone(x, tdres, centerfreq, n, tau, gain, order, tauWBMax, cf, output, phase_shift);
 }

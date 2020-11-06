@@ -39,6 +39,10 @@ data = double(data);
 % Convert away from fixed point for faster processing
 channel = int(channel);
 
+disp(size(valid))
+disp(size(mp.Avalon_Sink_Data.Data))
+disp(size(data))
+
 % Grab only valid audio data and the corresponding channel
 data = data(valid);
 channel = channel(valid);
