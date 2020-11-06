@@ -34,7 +34,6 @@ oneSiteRedock = single(-t_rd_init * log(rand(1)));
 
 
 %% Simulation parameters
-vihc = 0.050;
 CF = 1000;
 nrep = 10;
 dt = tdres; 
