@@ -7,6 +7,12 @@
 
 clear all;
 
+%% Add Subfolders to MATLAB Path
+
+addpath(genpath('variable_delay'));
+addpath(genpath('referenced_functions'));
+addpath(genpath('gain_calculation'));
+
 %% Declare Sampling Rate
 
 fs = 48000;
@@ -173,7 +179,7 @@ gainapp_dp_memory = log2(num_bands) + 1;
 % data
 % *** % NOTE: Will need to change to adjust for number of bands and desired
 % signal behavior
-input_length = 15000;
+input_length = 1500;
 
 for i = 1:num_bands
    [Pa2val1(i),FFTval1(i)] = dB2lin(55,band_sizes(i));
