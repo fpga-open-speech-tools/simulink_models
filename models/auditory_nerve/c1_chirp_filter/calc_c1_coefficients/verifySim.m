@@ -46,11 +46,12 @@ for j = 1:length(rsigma)
     p(2) = conj(p(1)); p(4) = conj(p(3)); p(6) = conj(p(5));                % Line 534
     p(7) = p(1); p(8) = p(2); p(9) = p(5); p(10) = p(6);                    % Line 536
 
+    phase = phase_init;
     % Calculate phase & zero locations
     for i = 1:half_order_pole                                               % Lines 539-544
         preal = real(p(2*i-1));                                             % Line 541
         pimg  = imag(p(2*i-1));                                             % Line 542
-        phase = phase_init - atan((CF-pimg)/(-preal))-atan((CF+pimg)/(-preal));  % Line 543        
+        phase = phase - atan((CF-pimg)/(-preal))-atan((CF+pimg)/(-preal));  % Line 543        
 %         phase_calc(j,i) = atan((CF-pimg)/(-preal))-atan((CF+pimg)/(-preal));      
         phase_calc(j,i) = phase;
     end
