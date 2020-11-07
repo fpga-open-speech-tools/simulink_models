@@ -1,4 +1,4 @@
-
+load rsigma.mat
 %% Autogen parameters
 mp.testFile = [mp.test_signals_path filesep 'auditory_nerve\mef_result_subset.wav'];
 
