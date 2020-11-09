@@ -5,7 +5,7 @@
 % Created to test full dynamic compression model functionality from FFT
 % data to gain table
 
-clear all;
+% clear all;
 
 %% Add Subfolders to MATLAB Path
 
