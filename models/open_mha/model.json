@@ -43,6 +43,28 @@
                     "defaultValue": 0,
                     "name": "filter_select",
                     "registerNumber": 1
+                },
+                {
+                    "dataType": {
+                    "fractionLength": 8,
+                    "signed": false,
+                    "type": "uint32",
+                    "wordLength": 32
+                    },
+                    "defaultValue": 0,
+                    "name": "ar_data",
+                    "registerNumber": 0
+                },
+                {
+                    "dataType": {
+                    "fractionLength": 8,
+                    "signed": false,
+                    "type": "uint32",
+                    "wordLength": 32
+                    },
+                    "defaultValue": 0,
+                    "name": "gain_data",
+                    "registerNumber": 0
                 }
             ]
         }
