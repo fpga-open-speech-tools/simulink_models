@@ -33,7 +33,7 @@ close all;
 data_input_left  = testSignal.audio(:,1);
 data_input_right = testSignal.audio(:,2);
 sim_out          = double(squeeze(data_out.data));
-left_channel     = sim_out(142:end,1);
+left_channel     = sim_out(:,1);
 right_channel    = sim_out(:,2);
 
 figure
@@ -41,11 +41,11 @@ plot(data_input_left)
 hold on
 plot(left_channel)
 legend('Input', 'Output')
-title('FFT Validation - Left Channel')
+title('Left Channel')
 
 figure
 plot(data_input_right)
 hold on
 plot(right_channel)
 legend('Input', 'Output')
-title('FFT Validation - Right Channel')
+title('Right Channel')
