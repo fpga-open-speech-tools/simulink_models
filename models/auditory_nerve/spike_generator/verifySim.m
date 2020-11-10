@@ -33,7 +33,8 @@ close all;
 % Call SpikeGenerator to generate the matlab output
 
 
-mex spikegen_source.c complex.c
+% mex spikegen_source.c complex.c
+mex spikegen_pseudorandom.c complex.c
 
 data_input = testSignal.audio(:,1);
 
@@ -51,7 +52,13 @@ MaxArraySizeSpikes = length(data_input)*nrep;
 synout = 2e5*data_input';
 
 % [sptime_sim, spCount_sim, trd_vector_sim] = SpikeGenerator(data_input, randNums, tdres, t_rd_rest, t_rd_init, tau, t_rd_jump, nSites, tabs, trel, elapsed_time, unitRateInterval, oneSiteRedock);
-[spCount_sim, sptime_sim, trd_vector_sim] = spikegen_source(synout, tdres, t_rd_rest, t_rd_init, tau, t_rd_jump, nSites, tabs, trel, spont, totalstim, nrep, total_mean_rate, MaxArraySizeSpikes, sptime, trd_vector);
+% [spCount_sim, sptime_sim, trd_vector_sim] = spikegen_source(synout, tdres, t_rd_rest, t_rd_init, tau, t_rd_jump, nSites, tabs, trel, spont, totalstim, nrep, total_mean_rate, MaxArraySizeSpikes, sptime, trd_vector);
+[spCount_sim, sptime_sim, trd_vector_sim] = spikegen_pseudorandom(synout, randNums, tdres, t_rd_rest, t_rd_init, tau, ...
+                                                                  t_rd_jump, nSites, tabs, trel, spont, totalstim, nrep, ...
+                                                                  total_mean_rate, MaxArraySizeSpikes, double(unitRateInterval), ...
+                                                                  double(oneSiteRedock));
+                                                                
+                                                                
 
 
 %%
@@ -70,29 +77,29 @@ legend('C Source Code','Simulink')
 title('C Source Code vs Simulink Output')
 
 figure
-subplot(221)
-hold on
-plot(sptime_sim)
-plot(sptime,'--')
-hold off
-legend('C Source Code','Simulink')
-title('C Source Code vs Simulink Output')
+% subplot(221)
+% hold on
+% plot(sptime_sim)
+% plot(sptime,'--')
+% hold off
+% legend('C Source Code','Simulink')
+% title('C Source Code vs Simulink Output')
 
-subplot(222)
+% subplot(111)
 hold on
 plot(trd_vector_sim)
 plot(trd_vector,'--')
 hold off
 legend('C Source Code','Simulink')
 title('C Source Code vs Simulink Output')
-
-subplot(223)
-hold on
-plot(spCount_sim)
-plot(spCount,'--')
-hold off
-legend('C Source Code','Simulink')
-title('C Source Code vs Simulink Output')
+% 
+% subplot(223)
+% hold on
+% plot(spCount_sim)
+% plot(spCount,'--')
+% hold off
+% legend('C Source Code','Simulink')
+% title('C Source Code vs Simulink Output')
 
 
 
