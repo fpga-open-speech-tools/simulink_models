@@ -302,6 +302,8 @@ int SpikeGenerator( double *synout, double *randNums, double tdres, double t_rd_
         k = k+1;
         rand_counter = rand_counter + 1;
         
+        mexPrintf("%f\n",randNums[rand_counter]);
+        
         
     };
     
