@@ -1,4 +1,4 @@
-function [sigma0, ipw, ipb, rpa, pzero, order_of_zero, fs_bilinear, CF, phase_init, C1initphase, preal, pimag] = calc_c1_coefficients_parameters(cf, tdres, taumax)
+function [sigma0, ipw, ipb, rpa, pzero, order_of_zero, fs_bilinear, CF, phase_init, C1initphase, preal, pimag, order_of_pole] = calc_c1_coefficients_parameters(cf, tdres, taumax)
     TWOPI = 6.28318530717959;
     % Line Numbers from model_IHC_BEZ2018.c
     sigma0 = 1/taumax;                          % Line 464

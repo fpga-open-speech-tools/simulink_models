@@ -1,8 +1,10 @@
+load rsigma.mat
 data_input  = testSignal.audio(:,1);
+rsigma = double(squeeze(rsigma_sim_in.Data));
 c1_chirp_out = zeros(1,length(data_input));
 
 for i = 1:length(data_input)
-    c1_chirp_out(1,i) = C1ChirpFilt(data_input(i), tdres, cf, i-1, taumax, rsigma);
+    c1_chirp_out(1,i) = C1ChirpFilt(data_input(i), tdres, cf, i-1, taumax, rsigma(i));
 end
 
 c1_chirp_inhdl = hdlcosim_dataplane;
@@ -19,10 +21,11 @@ j = 1;
 for i = 1:clock_cycles
     if(mod(i,1024) == 1)
         avalon_sink_data = fi(data_input(j),1,32,28);
-        hdl_data_in(j) = avalon_sink_data;
+        rsigma_hdl_in(j) = single(rsigma(j)); 
+        hdl_data_in(j)   = avalon_sink_data;
         j = j + 1;
     end
-    [ce_out, avalon_source_valid, avalon_source_data, avalon_source_channel, avalon_source_error] = step(c1_chirp_inhdl, clk_enable, avalon_sink_valid, avalon_sink_data, avalon_sink_channel, avalon_sink_error, register_control_enable, rsigma);
+    [ce_out, avalon_source_valid, avalon_source_data, avalon_source_channel, avalon_source_error] = step(c1_chirp_inhdl, clk_enable, avalon_sink_valid, avalon_sink_data, avalon_sink_channel, avalon_sink_error, register_control_enable, rsigma_hdl_in(j));
     if(mod(i,1024) == 1)
         c1_chirp_hdl_out(j) = avalon_source_data;
     end
