@@ -62,7 +62,10 @@
 #include <time.h>
 
 #include "complex.h"
-int SpikeGenerator(double *synout, double *randNums, double tdres, double t_rd_rest, double t_rd_init, double tau, double t_rd_jump, int nSites, double tabs, double trel, double spont, int totalstim, int nrep,double total_mean_rate,long MaxArraySizeSpikes, double *sptime, double *trd_vector)
+int SpikeGenerator( double *synout, double *randNums, double tdres, double t_rd_rest, double t_rd_init, double tau,
+                    double t_rd_jump, int nSites, double tabs, double trel, double spont, int totalstim, 
+                    int nrep,double total_mean_rate,long MaxArraySizeSpikes, double *sptime, 
+                    double *trd_vector, double unitRateInterval_init, double oneSiteRedock_init)
 {
     
     /* Initializing the variables: */
@@ -80,6 +83,8 @@ int SpikeGenerator(double *synout, double *randNums, double tdres, double t_rd_r
     
     long randBufIndex;
     long randBufLen;
+    
+    int rand_counter = 0;
     
     
     long     spCount; /* total numebr of spikes fired */
@@ -124,7 +129,7 @@ int SpikeGenerator(double *synout, double *randNums, double tdres, double t_rd_r
     /* Initial < redocking time associated to nSites release sites */
     for (i=0; i<nSites; i++)
     {
-        oneSiteRedock[i]=t_rd_init/2;
+        oneSiteRedock[i]=t_rd_init/2; // Match the simulation
     }
     /* Initial  preRelease_initialGuessTimeBins  associated to nsites release sites */
     
@@ -143,6 +148,14 @@ int SpikeGenerator(double *synout, double *randNums, double tdres, double t_rd_r
         sortDims[i] = preRelease_initialGuessTimeBins[i];
         
     }
+    
+    for (i = 0; i < nSites; i++)
+    {
+      elapsed_time[i] = 0;//elapsed_time_init;
+      unitRateInterval[i] = unitRateInterval_init;
+    }
+    
+    
     
     mexCallMATLAB(1, sortOutputArray, 1, sortInputArray, "sort");
     
@@ -165,20 +178,22 @@ int SpikeGenerator(double *synout, double *randNums, double tdres, double t_rd_r
     Tref = tabs - trel*log( randNums[0] );
     
     /*initlal refractory regions */
-    current_refractory_period = (double) kInit*tdres;
+    current_refractory_period = 0;//(double) kInit*tdres;
     
     spCount = 0; /* total numebr of spikes fired */
-    k = kInit;  /*the loop starts from kInit */
+    k = 0;//kInit;  /*the loop starts from kInit */
     
     /* set dynamic mean redocking time to initial mean redocking time  */
     previous_redocking_period = t_rd_init;
     current_redocking_period = previous_redocking_period;
     t_rd_decay = 1; /* Logical "true" as to whether to decay the value of current_redocking_period at the end of the time step */
-    rd_first = 0; /* Logical "false" as to whether to a first redocking event has occurred */
+    rd_first = 1; // Assume the first redocking event already occured to match the intern assumptions
     
     /* a loop to find the spike times for all the totalstim*nrep */
     
     mexPrintf("%d\n",totalstim*nrep);
+    
+    mexPrintf("osr: %f\tet: %f\n",oneSiteRedock[0],elapsed_time);
     while (k < totalstim*nrep){
         
         for (siteNo = 0; siteNo<nSites; siteNo++)
@@ -191,19 +206,25 @@ int SpikeGenerator(double *synout, double *randNums, double tdres, double t_rd_r
                  * number of integer steps for the elapsed time and redocking time */
                 oneSiteRedock_rounded =  (int) floor(oneSiteRedock[siteNo]/tdres);
                 elapsed_time_rounded =  (int) floor(elapsed_time[siteNo]/tdres);
+                
+
                 if ( oneSiteRedock_rounded == elapsed_time_rounded )
                 {
                     /* Jump  trd by t_rd_jump if a redocking event has occurred   */
                     current_redocking_period  =   previous_redocking_period  + t_rd_jump;
                     previous_redocking_period =   current_redocking_period;
+                    mexPrintf("osr: %d\tet: %d\n",oneSiteRedock_rounded,elapsed_time_rounded);
                     t_rd_decay = 0; /* Don't decay the value of current_redocking_period if a jump has occurred */
                     rd_first = 1; /* Flag for when a jump has first occurred */
+                    mexPrintf("Redocking!\n");
                 }
                 
                 /* to be sure that for each site , the code start from its
                  * associated  previus release time :*/
                 elapsed_time[siteNo] = elapsed_time[siteNo] + tdres;
-                mexPrintf("adding to elapsed time\n");
+                // if (siteNo == 0)
+                  // mexPrintf("osr: %f\tet: %f\n",oneSiteRedock[siteNo]/tdres,elapsed_time[siteNo]/tdres);
+
             };
             
             
@@ -222,23 +243,23 @@ int SpikeGenerator(double *synout, double *randNums, double tdres, double t_rd_r
             if  ( (Xsum[siteNo]  >=  unitRateInterval[siteNo]) &&  ( k >= preReleaseTimeBinsSorted [siteNo] ) )
             {  /* An event- a release  happened for the siteNo*/
                 
-                oneSiteRedock[siteNo]  = -current_redocking_period*log( randNums[k]);
+                oneSiteRedock[siteNo]  = -current_redocking_period*log( randNums[rand_counter]);
                 current_release_times[siteNo] = previous_release_times[siteNo]  + elapsed_time[siteNo];
                 elapsed_time[siteNo] = 0;               
                 
                 if ( (current_release_times[siteNo] >= current_refractory_period) )
-                {  /* A spike occured for the current event- release
-                 * spike_times[(int)(current_release_times[siteNo]/tdres)-kInit+1 ] = 1;*/
+                {
                     
                     /*Register only non negative spike times */
                     if (current_release_times[siteNo] >= 0)
                     {
-                        sptime[spCount] = current_release_times[siteNo]; spCount = spCount + 1;
+                        sptime[spCount] = current_release_times[siteNo]; 
+                        spCount = spCount + 1;
                     }
                     
                     trel_k = __min(trel*100/synout[__max(0,k)],trel);
 
-                    Tref = tabs-trel_k*log( randNums[k] );   /*Refractory periods */
+                    Tref = tabs-trel_k*log( randNums[rand_counter] );   /*Refractory periods */
                     
                     current_refractory_period = current_release_times[siteNo] + Tref;
                     
@@ -247,7 +268,7 @@ int SpikeGenerator(double *synout, double *randNums, double tdres, double t_rd_r
                 previous_release_times[siteNo] = current_release_times[siteNo];
                 
                 Xsum[siteNo] = 0;
-                unitRateInterval[siteNo] = (int) (-log(randNums[k]) / tdres);
+                unitRateInterval[siteNo] = (int) (-log(randNums[rand_counter]) / tdres);
                 
             };
             /* Error Catching */
@@ -268,7 +289,7 @@ int SpikeGenerator(double *synout, double *randNums, double tdres, double t_rd_r
         }
         else
         {
-            mexPrintf("decay has occurred!\n");
+            t_rd_decay = 1;
         }
         
         /* Store the value of the adaptive mean redocking time if it is within the simulation output period */
@@ -276,6 +297,7 @@ int SpikeGenerator(double *synout, double *randNums, double tdres, double t_rd_r
             trd_vector [k] = current_redocking_period;
         
         k = k+1;
+        rand_counter = rand_counter + 1;
         
         
     };
@@ -300,6 +322,7 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
   double *synout, *randNums, tdres, *synout_pntr, t_rd_rest, t_rd_init, tau, t_rd_jump, tabs, trel, spont, total_mean_rate, *sptime, *trd_vector;
   int nSites, totalstim, nrep, n_synout, spcount, ii;
   long MaxArraySizeSpikes;
+  double elapsed_time, unitRateInterval, oneSiteRedock;
   
   mwSize  outsize[2];
   
@@ -323,7 +346,9 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
   nrep                = (int)mxGetScalar(prhs[12]);
   total_mean_rate     = mxGetScalar(prhs[13]);
   MaxArraySizeSpikes  = (long)mxGetScalar(prhs[14]);
-    
+  unitRateInterval    = mxGetScalar(prhs[15]);
+  oneSiteRedock       = mxGetScalar(prhs[16]);
+  
   // Calculate the repetition time
   totalstim = (int)floor(n_synout/nrep);
   
@@ -350,7 +375,9 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
     trd_vector = mxGetPr(plhs[2]);
 
     /* call the computational routine */
-    spcount = SpikeGenerator(synout, randNums, tdres, t_rd_rest, t_rd_init, tau, t_rd_jump, nSites, tabs, trel, spont, totalstim, nrep, total_mean_rate, MaxArraySizeSpikes, sptime, trd_vector);
+    spcount = SpikeGenerator( synout, randNums, tdres, t_rd_rest, t_rd_init, tau, t_rd_jump, nSites, tabs, 
+                              trel, spont, totalstim, nrep, total_mean_rate, MaxArraySizeSpikes, sptime, 
+                              trd_vector, unitRateInterval, oneSiteRedock);
     
     plhs[0] = mxCreateDoubleScalar(spcount);
     
