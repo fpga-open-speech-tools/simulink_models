@@ -29,7 +29,8 @@ tabs = 10e-3;
 
 randNums = single(rand(mp.nSamples,1));
 elapsed_time = single(tdres * randi(floor(Fs * t_rd_init)));
-unitRateInterval = single(-log(rand(1))/tdres);
+% unitRateInterval = single(-log(rand(1))/tdres);
+unitRateInterval = 87745;
 oneSiteRedock = single(-t_rd_init * log(rand(1)));
 
 

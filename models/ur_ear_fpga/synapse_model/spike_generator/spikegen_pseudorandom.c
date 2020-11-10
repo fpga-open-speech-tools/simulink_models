@@ -135,7 +135,7 @@ int SpikeGenerator( double *synout, double *randNums, double tdres, double t_rd_
     
     for (i=0; i<nSites; i++)
     {
-        preRelease_initialGuessTimeBins[i]= __max(-totalstim*nrep,ceil ((nSites/__max(synout[0],0.1) + t_rd_init)*log(randNums[0] ) / tdres));
+        preRelease_initialGuessTimeBins[i]= 0;//__max(-totalstim*nrep,ceil ((nSites/__max(synout[0],0.1) + t_rd_init)*log(randNums[0] ) / tdres));
         
     }
     
@@ -301,9 +301,7 @@ int SpikeGenerator( double *synout, double *randNums, double tdres, double t_rd_
         
         k = k+1;
         rand_counter = rand_counter + 1;
-        
-        mexPrintf("%f\n",randNums[rand_counter]);
-        
+      
         
     };
     
