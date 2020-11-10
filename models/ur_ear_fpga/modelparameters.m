@@ -19,6 +19,10 @@ cohc  = 1;    % outer hair cell impairment constant ( from 0 to 1 )
 cihc  = 1;    % inner hair cell impairment constant ( from 0 to 1 )
              
 
+%% Middle Ear Filter Parameters
+[MEcoeffs, MEscale] = middle_ear_filter_parameter(tdres);
+
+
 %% Control Path Parameters
 
 % CP Wideband Gammatone Filter Parameters
