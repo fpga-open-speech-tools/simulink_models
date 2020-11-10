@@ -29,9 +29,9 @@
 
 close all;
 %% Calculate the Coefficients
+load rsigma.mat
 mex c1_coefficients_source.c complex.c
 rsigma = double(squeeze(rsigma_sim_in.Data));
-C1initphase = 0;
 
 p = zeros(11,1);
 C1coeffs    = zeros(length(rsigma), half_order_pole, 6); % Declar empty coefficient array
@@ -98,22 +98,13 @@ for j = 1:length(rsigma)
     p(3) = (real(p(1)) + real(p(5)))/2 + 1i*((imag(p(1)) + imag(p(5)))/2);  % Line 532
     p(2) = conj(p(1)); p(4) = conj(p(3)); p(6) = conj(p(5));                % Line 534
     p(7) = p(1); p(8) = p(2); p(9) = p(5); p(10) = p(6);                    % Line 536
-
-    if(j==1) 
-        for i = 1:half_order_pole                                           % Lines 495-500
-            preal = real(p(2*i-1));                                         % Line 497
-            pimg  = imag(p(2*i-1));                                         % Line 498  
-            C1initphase = C1initphase + atan(CF/(-rzero))-atan((CF-pimg)/(-preal))-atan((CF+pimg)/(-preal)); % Line 499
-        end
-    end
     
     phase = phase_init;
     % Calculate phase & zero locations
     for i = 1:half_order_pole                                               % Lines 539-544
         preal = real(p(2*i-1));                                             % Line 541
         pimg  = imag(p(2*i-1));                                             % Line 542
-        phase = phase - atan((CF-pimg)/(-preal))-atan((CF+pimg)/(-preal));  % Line 543  
-%         phase = - atan((CF-pimg)/(-preal))-atan((CF+pimg)/(-preal));  % Line 543  
+        phase = phase - atan((CF-pimg)/(-preal))-atan((CF+pimg)/(-preal));  % Line 543   
         phase_calc(j,i) = phase;
     end
     
