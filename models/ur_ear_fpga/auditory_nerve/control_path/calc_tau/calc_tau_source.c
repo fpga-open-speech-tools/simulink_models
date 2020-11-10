@@ -134,8 +134,8 @@ double gain_groupdelay(double tdres,double centerfreq, double cf, double tau,int
   return(wb_gain);
 }
 
-void calc_tau(double tdres, double cf, double centerfreq, double tmptauc1, double lasttmpgain, int *grdelay, double *rsigma, double *tauc1, double *tauwb, double *wbgain){
-    double Taumin[1],Taumax[1],bmTaumin[1],bmTaumax[1],ratiobm[1],ohcasym,ihcasym,delay, wb_gain, tmpgain[1], TauWBMax, TauWBMin, cohc, fcohc, bmTaubm, taubm, ratiowb;
+void calc_tau(double tdres, double cf, double centerfreq, double tmptauc1, int *grdelay, double *rsigma, double *tauc1, double *tauwb, double *wbgain){
+    double Taumin[1],Taumax[1],bmTaumin[1],bmTaumax[1],ratiobm[1],ohcasym,ihcasym,lasttmpgain,delay, wb_gain, tmpgain[1], TauWBMax, TauWBMin, cohc, fcohc, bmTaubm, taubm, ratiowb;
 	
     int bmorder = 3, species = 2, grd, wborder;
 
@@ -200,11 +200,14 @@ void mexFunction( int nlhs, mxArray *plhs[],
     plhs[3] = mxCreateDoubleMatrix(1, 1, mxREAL);
     plhs[4] = mxCreateDoubleMatrix(1, 1, mxREAL);
     
-    grd = mxGetPr(plhs[0]);
+    grdelay = mxGetPr(plhs[0]);
     rsigma = mxGetPr(plhs[1]);
     tauc1 = mxGetPr(plhs[2]);
     tauwb = mxGetPr(plhs[3]);
     wbgain = mxGetPr(plhs[4]);
+    
+    
 
     calc_tau(tdres, cf, centerfreq, tmptauc1, grd, rsigma, tauc1, tauwb, wbgain);
+    *grdelay = (double) *grd;
 }
