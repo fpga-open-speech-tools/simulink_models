@@ -153,6 +153,7 @@ int SpikeGenerator( double *synout, double *randNums, double tdres, double t_rd_
     {
       elapsed_time[i] = 0;//elapsed_time_init;
       unitRateInterval[i] = unitRateInterval_init;
+      Xsum[i] = 0;
     }
     
     
@@ -208,7 +209,7 @@ int SpikeGenerator( double *synout, double *randNums, double tdres, double t_rd_
                 elapsed_time_rounded =  (int) floor(elapsed_time[siteNo]/tdres);
                 
 
-                if ( oneSiteRedock_rounded == elapsed_time_rounded )
+                if ( oneSiteRedock_rounded == elapsed_time_rounded)
                 {
                     /* Jump  trd by t_rd_jump if a redocking event has occurred   */
                     current_redocking_period  =   previous_redocking_period  + t_rd_jump;
@@ -216,6 +217,7 @@ int SpikeGenerator( double *synout, double *randNums, double tdres, double t_rd_
                     mexPrintf("osr: %d\tet: %d\n",oneSiteRedock_rounded,elapsed_time_rounded);
                     t_rd_decay = 0; /* Don't decay the value of current_redocking_period if a jump has occurred */
                     rd_first = 1; /* Flag for when a jump has first occurred */
+            
                     mexPrintf("Redocking!\n");
                 }
                 
@@ -226,6 +228,7 @@ int SpikeGenerator( double *synout, double *randNums, double tdres, double t_rd_
                   // mexPrintf("osr: %f\tet: %f\n",oneSiteRedock[siteNo]/tdres,elapsed_time[siteNo]/tdres);
 
             };
+
             
             
             /*the elapsed time passes  the one time redock (the redocking is finished),
