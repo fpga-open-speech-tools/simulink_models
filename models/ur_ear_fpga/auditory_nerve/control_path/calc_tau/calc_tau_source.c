@@ -96,8 +96,6 @@ double Get_taubm(double cf, int species, double taumax,double *bmTaumax,double *
     
   if(species==1) gain = 52.0/2.0*(tanh(2.2*log10(cf/0.6e3)+0.15)+1.0); /* for cat */
   if(species>1) gain = 52.0/2.0*(tanh(2.2*log10(cf/0.6e3)+0.15)+1.0); /* for human */
-  /*gain = 52/2*(tanh(2.2*log10(cf/1e3)+0.15)+1);*/ /* older values */
-
  
   if(gain>60.0) gain = 60.0;  
   if(gain<15.0) gain = 15.0;
@@ -118,19 +116,14 @@ double Get_taubm(double cf, int species, double taumax,double *bmTaumax,double *
 double gain_groupdelay(double tdres,double centerfreq, double cf, double tau,int *grdelay)
 { 
   double tmpcos,dtmp2,c1LP,c2LP,tmp1,tmp2,wb_gain, test;
-  //mexPrintf("I am in411 \n");
   tmpcos = cos(TWOPI*(centerfreq-cf)*tdres);
   dtmp2 = tau*2.0/tdres;
   c1LP = (dtmp2-1)/(dtmp2+1);
-  //mexPrintf("I am in412 \n");
   c2LP = 1.0/(dtmp2+1);
   tmp1 = 1+c1LP*c1LP-2*c1LP*tmpcos;
   tmp2 = 2*c2LP*c2LP*(1+tmpcos);
-  //mexPrintf("I am in413 \n");
   wb_gain = pow(tmp1/tmp2, 1.0/2.0);
-  //mexPrintf("I am in4131 \n");
   *grdelay = (int)floor((0.5-(c1LP*c1LP-c1LP*tmpcos)/(1+c1LP*c1LP-2*c1LP*tmpcos)));
-  //mexPrintf("I am in \n");
   return(wb_gain);
 }
 
@@ -179,8 +172,6 @@ void calc_tau(double tdres, double cf, double centerfreq, double tmptauc1, int *
 void mexFunction( int nlhs, mxArray *plhs[],
                   int nrhs, const mxArray *prhs[])
 { 
-  
-
     double cf, tdres, centerfreq, tmptauc1;
     double *ntmp, *grdelay, *rsigma, *tauc1, *tauwb, *wbgain;
     int n, *grd;
@@ -200,7 +191,7 @@ void mexFunction( int nlhs, mxArray *plhs[],
     plhs[3] = mxCreateDoubleMatrix(1, 1, mxREAL);
     plhs[4] = mxCreateDoubleMatrix(1, 1, mxREAL);
     
-    grdelay = mxGetPr(plhs[0]);
+    grd = (int *)mxGetData(plhs[0]);
     rsigma = mxGetPr(plhs[1]);
     tauc1 = mxGetPr(plhs[2]);
     tauwb = mxGetPr(plhs[3]);
@@ -209,5 +200,4 @@ void mexFunction( int nlhs, mxArray *plhs[],
     
 
     calc_tau(tdres, cf, centerfreq, tmptauc1, grd, rsigma, tauc1, tauwb, wbgain);
-    *grdelay = (double) *grd;
 }
