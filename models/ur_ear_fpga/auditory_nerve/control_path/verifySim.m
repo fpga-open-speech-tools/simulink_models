@@ -44,9 +44,9 @@ c_wbgain_actual = zeros(1,length(data_input));
 tmpgain = zeros(1,totalstim);
 
 %% CP Wideband Gamatone Filter Simulation
-mex WbGammaTone.c complex.c
-mex outer_hair_cell_source.c
-mex calc_tau_source.c
+mex 'cp_wideband_gammatone_filter\WbGammaTone.c' complex.c % Compile CP WB Gammatone Filter Source
+mex 'outer_hair_cell\outer_hair_cell_source.c'             % Compile Outer Hair Cell Source
+mex 'calc_tau\calc_tau_source.c'                           % Compile Calc Tau Source
 
 lasttmpgain = wbgain_i;
 

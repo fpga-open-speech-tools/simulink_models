@@ -30,10 +30,10 @@
 %% Compute the C Source Output
 close all;
 
-load rsigma.mat                        % Load Rsigma
-mex C1ChirpFilt.c complex.c            % Compile C1 Filter Source
-mex C2ChirpFilt.c complex.c            % Compile C2 Filter Source
-mex inner_hair_cell_source.c complex.c % Compile the IHC Source
+load rsigma.mat                                          % Load Rsigma
+mex 'c1_chirp_filter\C1ChirpFilt.c' complex.c            % Compile C1 Filter Source
+mex 'c2_wideband_filter\C2ChirpFilt.c' complex.c         % Compile C2 Filter Source
+mex 'inner_hair_cell\inner_hair_cell_source.c' complex.c % Compile the IHC Source
 
 % Initialize Data Arrays
 data_input          = testSignal.audio(:,1);
