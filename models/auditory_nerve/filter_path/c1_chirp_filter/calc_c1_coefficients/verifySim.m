@@ -34,7 +34,7 @@ mex c1_coefficients_source.c complex.c
 rsigma = double(squeeze(rsigma_sim_in.Data));
 
 p = zeros(11,1);
-C1coeffs    = zeros(length(rsigma), half_order_pole, 6); % Declar empty coefficient array
+C1coeffs    = zeros(length(rsigma), order_of_zero, 6); % Declar empty coefficient array
 rsigma_plot = zeros(1,length(rsigma));
 
 % Figure 1 Data Arrays
@@ -46,8 +46,8 @@ temp_2_out   = zeros(1,length(rsigma));
 temp_3_out   = zeros(1,length(rsigma));
 temp_4_out   = zeros(1,length(rsigma));
 temp_5_out   = zeros(1,length(rsigma));
-temp_calc    = zeros(length(rsigma),half_order_pole);
-phase_calc   = zeros(length(rsigma),half_order_pole);
+temp_calc    = zeros(length(rsigma),order_of_zero);
+phase_calc   = zeros(length(rsigma),order_of_zero);
 fs_bilinear_out   = zeros(1,length(rsigma));
 fs_bilinear_calc  = zeros(1,length(rsigma));
 % Figure 2 Data Arrays
@@ -101,7 +101,7 @@ for j = 1:length(rsigma)
     
     phase = phase_init;
     % Calculate phase & zero locations
-    for i = 1:half_order_pole                                               % Lines 539-544
+    for i = 1:order_of_zero                                                 % Lines 539-544
         preal = real(p(2*i-1));                                             % Line 541
         pimg  = imag(p(2*i-1));                                             % Line 542
         phase = phase - atan((CF-pimg)/(-preal))-atan((CF+pimg)/(-preal));  % Line 543   
@@ -113,7 +113,7 @@ for j = 1:length(rsigma)
     rzero_calc(1,j) = rzero;
     
     % Calculate biquad filter coefficients
-    for i = 1:half_order_pole
+    for i = 1:order_of_zero
         preal = real(p(2*i-1));                                             % Line 561
         pimg = imag(p(2*i-1));                                              % Line 562
         
