@@ -27,34 +27,42 @@
 % Bozeman, MT 59718
 % openspeech@flatearthinc.com
 
-%% 
+%% Compute the C Source Output
 %close all;
 mex C1ChirpFilt.c complex.c
 
 data_input  = testSignal.audio(:,1);
 c1_chirp_out = zeros(1,length(data_input));
+rsigma_plot = zeros(1,length(data_input));
 
 for i = 1:length(data_input)
-    c1_chirp_out(1,i) = C1ChirpFilt(data_input(i), tdres, cf, i-1, taumax, rsigma_sim_in.data(i));
+    rsigma_plot(i) = rsigma_sim_in.data(9504+i);
+    c1_chirp_out(1,i) = C1ChirpFilt(data_input(i), tdres, cf, i-1, taumax, rsigma_plot(i));
 end
 
+%% Plot the Results
 figure
 subplot(3,1,1)
 plot(data_input)
 legend('C1 Chirp Filter Input Wave')
 title('Audio Input')
 
+subplot(4,1,2)
+plot(rsigma_plot)
+legend('Rsigma')
+title('R Sigma Input')
+
 sim_out = mp.dataOut;
-subplot(3,1,2)
+subplot(4,1,3)
 plot(c1_chirp_out)
-%hold on
-%plot(sim_out,'--')
+% hold on
+% plot(sim_out,'--')
 legend('C Source Code','Simulink')
 title('C Source Code vs Simulink Output')
 
-subplot(3,1,3)
-plot(s_c1chirp.data)
-hold on
-plot(sim_out,'--')
-legend('C Source Code','Simulink')
+subplot(4,1,4)
+% plot(s_c1chirp.data)
+% hold on
+plot(sim_out)
+legend('Simulink')
 title('C Source Code vs Simulink Output')
