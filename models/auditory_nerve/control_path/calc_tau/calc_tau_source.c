@@ -134,41 +134,33 @@ double gain_groupdelay(double tdres,double centerfreq, double cf, double tau,int
   return(wb_gain);
 }
 
-void calc_tau(double tdres, double cf, double centerfreq, double tmptauc1, int *grdelay, double *rsigma, double *tauc1, double *tauwb, double *wbgain){
-    double Taumin[1],Taumax[1],bmTaumin[1],bmTaumax[1],ratiobm[1],lasttmpgain,ohcasym,ihcasym,delay, wb_gain, tmpgain[1], TauWBMax, TauWBMin, cohc, fcohc, bmTaubm, taubm, ratiowb;
+void calc_tau(double tdres, double cf, double centerfreq, double tmptauc1, double lasttmpgain, int *grdelay, double *rsigma, double *tauc1, double *tauwb, double *wbgain){
+    double Taumin[1],Taumax[1],bmTaumin[1],bmTaumax[1],ratiobm[1],ohcasym,ihcasym,delay, wb_gain, tmpgain[1], TauWBMax, TauWBMin, cohc, fcohc, bmTaubm, taubm, ratiowb;
 	
     int bmorder = 3, species = 2, grd, wborder;
 
     cohc = 1;
-    //mexPrintf("I am in \n");
     /*====== Parameters for the control-path wideband filter =======*/
     // Set Taumax and Taumin
     Get_tauwb(cf,species,bmorder,Taumax,Taumin);
     taubm   = cohc*(Taumax[0]-Taumin[0])+Taumin[0];
 	  ratiowb = Taumin[0]/Taumax[0];
-    //mexPrintf("I am in2 \n");
     /*====== Parameters for the signal-path C1 filter ======*/
 	  Get_taubm(cf,species,Taumax[0],bmTaumax,bmTaumin,ratiobm);
 	  bmTaubm  = cohc*(bmTaumax[0]-bmTaumin[0])+bmTaumin[0];
 	  fcohc    = bmTaumax[0]/bmTaubm;
-    //mexPrintf("I am in3 \n");
     /*====== Parameters for the control-path wideband filter =======*/
 	  wborder  = 3;
     TauWBMax = Taumin[0]+0.2*(Taumax[0]-Taumin[0]);
 	  TauWBMin = TauWBMax/Taumax[0]*Taumin[0];
-    //mexPrintf("I am in4 \n");
-    //mexPrintf("I am in42 \n");
 	  tmpgain[0]   = *wbgain; 
-    //mexPrintf("I am in43 \n");
-	  lasttmpgain  = *wbgain;
-    //mexPrintf("I am in5 \n");
+	 lasttmpgain  = *wbgain;
     *tauc1    = cohc*(tmptauc1-bmTaumin[0])+bmTaumin[0];  /* time -constant for the signal-path C1 filter */
 	  *rsigma   = 1/ *tauc1-1/bmTaumax[0]; /* shift of the location of poles of the C1 filter from the initial positions */
 
     *tauwb    = TauWBMax+(*tauc1-bmTaumax[0])*(TauWBMax-TauWBMin)/(bmTaumax[0]-bmTaumin[0]);
     wb_gain = gain_groupdelay(tdres,centerfreq,cf,*tauwb,grdelay);
     *wbgain = wb_gain;
-    //mexPrintf("I am in6 \n");
     /*
     grd = grdelay[0]; 
     
@@ -193,19 +185,13 @@ void mexFunction( int nlhs, mxArray *plhs[],
     double *ntmp, *grdelay, *rsigma, *tauc1, *tauwb, *wbgain;
     int n, *grd;
 
-    //mexPrintf("Number of inputs: %d\n",nrhs);
-    //mexPrintf("Number of outputs: %d\n",nlhs);
 
     tdres = mxGetScalar(prhs[0]);
     cf = mxGetScalar(prhs[1]);
     centerfreq = mxGetScalar(prhs[2]);
     tmptauc1 = mxGetScalar(prhs[3]);
-    //mexPrintf("Inputs done\n");
-    //ntmp = mxGetPr(prhs[4]);
 
 
-    /* convert to integers */
-    //n = (int) ntmp[0];
 
     /* get pointer to the data in the output */
     plhs[0] = mxCreateNumericMatrix(1, 1, mxINT32_CLASS, mxREAL);
@@ -213,17 +199,12 @@ void mexFunction( int nlhs, mxArray *plhs[],
     plhs[2] = mxCreateDoubleMatrix(1, 1, mxREAL);
     plhs[3] = mxCreateDoubleMatrix(1, 1, mxREAL);
     plhs[4] = mxCreateDoubleMatrix(1, 1, mxREAL);
-    //mexPrintf("Matrices allocated \n");
+    
     grd = mxGetPr(plhs[0]);
     rsigma = mxGetPr(plhs[1]);
     tauc1 = mxGetPr(plhs[2]);
     tauwb = mxGetPr(plhs[3]);
     wbgain = mxGetPr(plhs[4]);
 
-    //mexPrintf("Ptr stuff done\n");
-
     calc_tau(tdres, cf, centerfreq, tmptauc1, grd, rsigma, tauc1, tauwb, wbgain);
-    //mexPrintf("Number of outputs: %d\n",nlhs);
-    //*grdelay = (double) *grd; 
-   // mexPrintf("I am in \n");
 }

@@ -79,7 +79,7 @@ tauwb_i    = TauWBMax+(bmTaubm-bmTaumax)*(TauWBMax-TauWBMin)/(bmTaumax-bmTaumin)
 
 %% Delay constants
 
-mp.maxDelay = 1024; % Estimate of necessary buffer size
+mp.maxDelay = 64; % Estimate of necessary buffer size
 % buffer size to accomodate max delay; buffer size is a power of 2
 
 mp.integerDelayAddrSize = ceil(log2(floor(mp.maxDelay)));

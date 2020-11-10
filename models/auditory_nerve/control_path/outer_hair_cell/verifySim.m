@@ -37,7 +37,7 @@ mex outer_hair_cell_source.c
 ohc_sim = zeros(1,totalstim);
 
 for i = 1:length(data_input)
-    ohc_sim(1,i) = outer_hair_cell_source(data_input(i), ohcasym, s0, s1, x1, tdres, Fcohc, i-1, gainohc, orderohc, taumin, taumax);
+    ohc_sim(1,i) = outer_hair_cell_source(data_input(i), ohcasym, s0, s1, x1, tdres, Fcohc, i-1, gainohc, orderohc, bmTaumin, bmTaumax);
 end
 
 %% Plot the Results
