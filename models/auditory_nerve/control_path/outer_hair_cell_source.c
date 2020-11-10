@@ -124,8 +124,8 @@ void mexFunction( int nlhs, mxArray *plhs[],
                   int nrhs, const mxArray *prhs[])
 {
 
-    double x, asym, s0, s1, x1, ohc_boltzman;
-    double ohc_lowpass, tdres, Fc, *ntmp, gain, *ordertmp;
+    double x, asym, s0, s1, x1, *ohc_boltzman;
+    double *ohc_lowpass, tdres, Fc, *ntmp, gain, *ordertmp;
     int n, order;
     double taumin, taumax, *out;
 
@@ -152,10 +152,16 @@ void mexFunction( int nlhs, mxArray *plhs[],
     /* get pointer to the data in the output */
     plhs[0] = mxCreateDoubleMatrix(1, 1, mxREAL);
     out = mxGetPr(plhs[0]);
+    
+    plhs[1] = mxCreateDoubleMatrix(1, 1, mxREAL);
+    ohc_boltzman = mxGetPr(plhs[1]);
+    
+    plhs[2] = mxCreateDoubleMatrix(1, 1, mxREAL);
+    ohc_lowpass = mxGetPr(plhs[2]);
 
 
     /* call the computational routine */
-    ohc_boltzman = Boltzman(x, asym, s0, s1, x1);
-    ohc_lowpass  = OhcLowPass(ohc_boltzman, tdres, Fc, n, gain, order);
-    NLafterohc(ohc_lowpass, taumin, taumax, asym, out);
+    *ohc_boltzman = Boltzman(x, asym, s0, s1, x1);
+    *ohc_lowpass  = OhcLowPass(*ohc_boltzman, tdres, Fc, n, gain, order);
+    NLafterohc(*ohc_lowpass, taumin, taumax, asym, out);
 }
