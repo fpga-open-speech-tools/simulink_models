@@ -1,7 +1,7 @@
 TWOPI = 6.28318530717959;
 %% Autogen parameters
-% mp.testFile = [mp.test_signals_path filesep 'auditory_nerve\mef_result_subset.wav'];
-mp.testFile = [mp.test_signals_path filesep 'auditory_nerve\mef_result.wav'];
+mp.testFile = [mp.test_signals_path filesep 'auditory_nerve\mef_result_subset.wav'];
+% mp.testFile = [mp.test_signals_path filesep 'auditory_nerve\mef_result.wav'];
 
 mp.sim_prompts = 1;
 mp.sim_verify = 1;
