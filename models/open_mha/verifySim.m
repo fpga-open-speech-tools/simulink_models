@@ -39,7 +39,7 @@ right_channel    = sim_out(:,2);
 figure
 plot(data_input_left)
 hold on
-plot(left_channel)
+plot(left_channel(144:end), '--')
 legend('Input', 'Output')
 title('Left Channel')
 

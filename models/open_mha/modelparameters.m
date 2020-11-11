@@ -7,8 +7,8 @@ mp.testFile = [mp.test_signals_path filesep 'acoustic.wav'];
 mp.sim_prompts = 1;
 mp.sim_verify = 1;
 mp.simDuration = 0.5;
-% mp.nSamples = config.system.sampleClockFrequency * mp.simDuration;
-mp.nSamples = 2048;
+ mp.nSamples = config.system.sampleClockFrequency * mp.simDuration;
+%mp.nSamples = 2048;
 
 mp.useAvalonInterface = false;
 
@@ -48,6 +48,23 @@ RAM_addresses = 2^(RAM_size);
 
 %% Declare Control Signals
 
+
+ar_data_in   = (n_ar*ones(RAM_addresses,1))-1;
+vy_data_in = (RAM_addresses*ones(RAM_addresses,1))-1;
+
+ar_data_in(1:n_ar) = (1:n_ar)-1;
+% ar_data_in(n_ar+1:end) = n_ar;
+
+vy_data_in(1:RAM_addresses) = (1:RAM_addresses)-1;
+% vy_data_in(RAM_addresses+1:end) = RAM_addresses;
+
+% Shift the addresses into the correct location
+ar_data_in = bitshift(ar_data_in,n_shift);
+vy_data_in = bitshift(vy_data_in,n_shift);
+
+% Add the coefficients to the variables
+ar_data_in(1:n_ar) = ar_data_in(1:n_ar) + ar_coeffs(1:n_ar);
+vy_data_in(1:RAM_addresses) = vy_data_in(1:RAM_addresses) + vy(1:RAM_addresses);
 
 % ar_data_in   = (n_ar*ones(n_ar,1))-1;
 % vy_data_in = (RAM_addresses*ones(RAM_addresses,1))-1;

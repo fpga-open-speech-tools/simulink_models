@@ -40,7 +40,7 @@
                         "type": "ufix2",
                         "wordLength": 2
                     },
-                    "defaultValue": 0,
+                    "defaultValue": 1,
                     "name": "filter_select",
                     "registerNumber": 1
                 },
@@ -51,7 +51,7 @@
                     "type": "uint32",
                     "wordLength": 32
                     },
-                    "defaultValue": 0,
+                    "defaultValue": 1,
                     "name": "ar_data",
                     "registerNumber": 0
                 },
@@ -62,7 +62,7 @@
                     "type": "uint32",
                     "wordLength": 32
                     },
-                    "defaultValue": 0,
+                    "defaultValue": 1,
                     "name": "gain_data",
                     "registerNumber": 0
                 }
