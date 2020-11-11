@@ -39,29 +39,29 @@ RAM_size = 8 ;
 dp_gt = repmat(1:32,num_bands,1);
 
 RAM_addresses = 2^(RAM_size);
-vy = dp_gt;
-for i = length(dp_gt)+1:RAM_addresses
-    vy(i,1) = 0;
-end
+%vy = dp_gt;
+%for i = length(dp_gt)+1:RAM_addresses
+%    vy(i,1) = 0;
+%end
 
-ar_coeffs = 16:-1:1;
+%ar_coeffs = 16:-1:1;
 
 %% Declare Control Signals
 
 
-ar_data_in   = (n_ar*ones(n_ar,1))-1;
-vy_data_in = (RAM_addresses*ones(RAM_addresses,1))-1;
-
-ar_data_in(1:n_ar) = (1:n_ar)-1;
-% ar_data_in(n_ar+1:end) = n_ar;
-
-vy_data_in(1:RAM_addresses) = (1:RAM_addresses)-1;
-% vy_data_in(RAM_addresses+1:end) = RAM_addresses;
-
-% Shift the addresses into the correct location
-ar_data_in = bitshift(ar_data_in,n_shift);
-vy_data_in = bitshift(vy_data_in,n_shift);
-
-% Add the coefficients to the variables
-ar_data_in(1:n_ar) = ar_data_in(1:n_ar) + ar_coeffs(1:n_ar)';
-vy_data_in(1:RAM_addresses) = vy_data_in(1:RAM_addresses) + vy(1:RAM_addresses)';
+% ar_data_in   = (n_ar*ones(n_ar,1))-1;
+% vy_data_in = (RAM_addresses*ones(RAM_addresses,1))-1;
+% 
+% ar_data_in(1:n_ar) = (1:n_ar)-1;
+% % ar_data_in(n_ar+1:end) = n_ar;
+% 
+% vy_data_in(1:RAM_addresses) = (1:RAM_addresses)-1;
+% % vy_data_in(RAM_addresses+1:end) = RAM_addresses;
+% 
+% % Shift the addresses into the correct location
+% ar_data_in = bitshift(ar_data_in,n_shift);
+% vy_data_in = bitshift(vy_data_in,n_shift);
+% 
+% % Add the coefficients to the variables
+% ar_data_in(1:n_ar) = ar_data_in(1:n_ar) + ar_coeffs(1:n_ar)';
+% vy_data_in(1:RAM_addresses) = vy_data_in(1:RAM_addresses) + vy(1:RAM_addresses)';

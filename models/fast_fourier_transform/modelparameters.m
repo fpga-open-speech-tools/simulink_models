@@ -1,4 +1,5 @@
-
+modelname = 'dspmultichannelhdl';
+open_system(modelname);
 %%% Autogen parameters
 
 mp.testFile = [mp.test_signals_path filesep 'acoustic.wav'];

@@ -98,7 +98,6 @@ coeff_size = 8;
 % mha_filter.cpp
 
 ar_coeffs = zeros(2^coeff_size,1);
-
 ar_coeffs(1:2*num_bands) = exp( -1.0./(ar_taus(1:2*num_bands).*fs) );
 
 %% Initialize Filter Buffer Values
@@ -270,4 +269,4 @@ accum_delay_memory_size = 2^accum_delay_memory;
 
 %% Declare Stop Time
 
-stop_time = length(FFT_data_real) - 1;
+stop_time = (length(FFT_data_real) - 1)/mp.Fs/2;
