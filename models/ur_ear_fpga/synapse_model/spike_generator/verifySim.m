@@ -49,16 +49,50 @@ trd_vectorVect = zeros(1,length(data_input));
 total_mean_rate = sum(data_input/length(data_input));
 MaxArraySizeSpikes = length(data_input)*nrep;
 
+
+passind = 0;
+zz = prevRandNums(1+passind:end);
+
 synout = 2e5*data_input';
 
-% [sptime_sim, spCount_sim, trd_vector_sim] = SpikeGenerator(data_input, randNums, tdres, t_rd_rest, t_rd_init, tau, t_rd_jump, nSites, tabs, trel, elapsed_time, unitRateInterval, oneSiteRedock);
+
+[sptime_mattt, spCount_matt, trd_vector_matt] = SpikeGenerator_matt(data_input, double(zz), tdres, t_rd_rest, t_rd_init, tau, t_rd_jump, nSites, tabs, trel, elapsed_time, unitRateInterval, oneSiteRedock);
 % [spCount_sim, sptime_sim, trd_vector_sim] = spikegen_source(synout, tdres, t_rd_rest, t_rd_init, tau, t_rd_jump, nSites, tabs, trel, spont, totalstim, nrep, total_mean_rate, MaxArraySizeSpikes, sptime, trd_vector);
-[spCount_sim, sptime_sim, trd_vector_sim] = spikegen_pseudorandom(synout, double(randNums), tdres, t_rd_rest, t_rd_init, tau, t_rd_jump, nSites, tabs, trel, spont, totalstim, nrep, total_mean_rate, MaxArraySizeSpikes, double(unitRateInterval), double(oneSiteRedock));
+[spCount_sim, sptime_sim, trd_vector_sim] = spikegen_pseudorandom(synout, double(zz), tdres, t_rd_rest, t_rd_init, tau, t_rd_jump, nSites, tabs, trel, spont, totalstim, nrep, total_mean_rate, MaxArraySizeSpikes, double(unitRateInterval), double(oneSiteRedock));
                                                                 
                                                                 
 
 
 %%
+
+figure
+% subplot(221)
+% hold on
+% plot(sptime_sim)
+% plot(sptime,'--')
+% hold off
+% legend('C Source Code','Simulink')
+% title('C Source Code vs Simulink Output')
+
+% subplot(111)
+hold on
+plot(trd_vector_sim)
+plot(trd_vector_matt,':')
+plot(trd_vector,'--')
+hold off
+legend('C Source','Intern code','Simulink')
+title('C Source Code vs Intern Code vs Simulink Output')
+% end
+% 
+% subplot(223)
+% hold on
+% plot(spCount_sim)
+% plot(spCount,'--')
+% hold off
+% legend('C Source Code','Simulink')
+% title('C Source Code vs Simulink Output')
+
+
 figure
 subplot(2,1,1)
 plot(data_input)
@@ -73,33 +107,12 @@ plot(sim_out,'--')
 legend('C Source Code','Simulink')
 title('C Source Code vs Simulink Output')
 
-figure
-% subplot(221)
-% hold on
-% plot(sptime_sim)
-% plot(sptime,'--')
-% hold off
-% legend('C Source Code','Simulink')
-% title('C Source Code vs Simulink Output')
-
-% subplot(111)
-hold on
-plot(trd_vector_sim)
-plot(trd_vector,'--')
-hold off
-legend('C Source Code','Simulink')
-title('C Source Code vs Simulink Output')
-% 
-% subplot(223)
-% hold on
-% plot(spCount_sim)
-% plot(spCount,'--')
-% hold off
-% legend('C Source Code','Simulink')
-% title('C Source Code vs Simulink Output')
 
 
-
+%% Scratchpad
+yy = prevRandNums(1:1002);
+ro = squeeze(randOut.Data(randOut.Data>0));
+rs = squeeze(randStep.Data(randStep.Data>0));
 
 
 

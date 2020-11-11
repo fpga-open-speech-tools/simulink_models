@@ -214,11 +214,13 @@ int SpikeGenerator( double *synout, double *randNums, double tdres, double t_rd_
                     /* Jump  trd by t_rd_jump if a redocking event has occurred   */
                     current_redocking_period  =   previous_redocking_period  + t_rd_jump;
                     previous_redocking_period =   current_redocking_period;
-                    mexPrintf("osr: %d\tet: %d\n",oneSiteRedock_rounded,elapsed_time_rounded);
+                  //  if (siteNo == 0)
+                  //    mexPrintf("osr: %f\t\t\tnum: %f\t\t\tcntr: %d,%d\n",oneSiteRedock[siteNo],randNums[rand_counter],rand_counter,k);
+                  //  mexPrintf("osr: %d\tet: %d\n",oneSiteRedock_rounded,elapsed_time_rounded);
                     t_rd_decay = 0; /* Don't decay the value of current_redocking_period if a jump has occurred */
                     rd_first = 1; /* Flag for when a jump has first occurred */
             
-                    mexPrintf("Redocking!\n");
+                    //mexPrintf("Redocking!\n");
                 }
                 
                 /* to be sure that for each site , the code start from its
@@ -247,6 +249,8 @@ int SpikeGenerator( double *synout, double *randNums, double tdres, double t_rd_
             {  /* An event- a release  happened for the siteNo*/
                 
                 oneSiteRedock[siteNo]  = -current_redocking_period*log( randNums[rand_counter]);
+                if (siteNo == 0)
+                  mexPrintf("randN: %f\n",randNums[rand_counter]);
                 current_release_times[siteNo] = previous_release_times[siteNo]  + elapsed_time[siteNo];
                 elapsed_time[siteNo] = 0;               
                 
@@ -301,9 +305,11 @@ int SpikeGenerator( double *synout, double *randNums, double tdres, double t_rd_
         
         k = k+1;
         rand_counter = rand_counter + 1;
-      
+        //mexPrintf("%f\n",randNums[rand_counter]);
         
     };
+    
+    mexPrintf("Last index: %d\n",k);
     
     mxFree(preRelease_initialGuessTimeBins);
     mxFree(unitRateInterval);

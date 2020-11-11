@@ -76,9 +76,10 @@ function [sptime, spCount, trd_vector] = SpikeGenerator_matt(synout, randNums, t
         oneSiteRedock_rounded = floor(oneSiteRedock/tdres);
         elapsed_time_rounded = floor(elapsed_time/tdres);
         if oneSiteRedock_rounded == elapsed_time_rounded
-            current_redocking_period = previous_redocking_period + t_rd_jump;
+            current_redocking_period = previous_redocking_period + 4*t_rd_jump;
             previous_redocking_period = current_redocking_period;
             t_rd_decay = 0;
+            fprintf('%d, %f\n',k,randNums(k));
         end
         
         elapsed_time = elapsed_time + tdres;
@@ -94,14 +95,14 @@ function [sptime, spCount, trd_vector] = SpikeGenerator_matt(synout, randNums, t
             current_release_times = previous_release_times + elapsed_time;
             elapsed_time = 0;
             
-            %if current_release_times >= current_refractory_period
+%             if current_release_times >= current_refractory_period
                 %sptime(spCount + 1) = current_release_times;
                 sptime(k) = 1;
-                spCount = spCount + 1;
+                spCount = spCount + 4;
                 trel_k = min(trel*100/synout(k), trel);
                 Tref = tabs - trel_k*log(randNums(k));
                 current_refractory_period = current_release_times + Tref;
-            %end
+%             end
             
             previous_release_times = current_release_times;
             Xsum = 0;

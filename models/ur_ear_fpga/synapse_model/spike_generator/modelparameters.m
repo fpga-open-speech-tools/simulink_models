@@ -27,16 +27,21 @@ tau = 60e-3;
 trel = 10e-3;
 tabs = 10e-3;
 
-randNums = single(rand(mp.nSamples,1));
-elapsed_time = single(tdres * randi(floor(Fs * t_rd_init)));
+if exist('randNums','var')
+  prevRandNums = randNums;
+end
+
+randNums = single(rand(2001,1));
+elapsed_time = 0; % single(tdres * randi(floor(Fs * t_rd_init)));
 % unitRateInterval = single(-log(rand(1))/tdres);
 unitRateInterval = 87745;
-oneSiteRedock = single(-t_rd_init * log(rand(1)));
+% oneSiteRedock = single(-t_rd_init * log(rand(1)));
+oneSiteRedock = single(t_rd_init/2);
 
 
 %% Simulation parameters
 CF = 1000;
-nrep = 10;
+nrep = 1;
 dt = tdres; 
 noiseType = 1;
 implnt = 0;
