@@ -1,12 +1,12 @@
 
 %%% Autogen parameters
-
+test_FFT_to_gain_init;
 mp.testFile = [mp.test_signals_path filesep 'acoustic.wav'];
 
 % TODO: use booleans instead of 0 and 1
 mp.sim_prompts = 1;
 mp.sim_verify = 1;
-mp.simDuration = 0.5;
+mp.simDuration = 5;
  mp.nSamples = config.system.sampleClockFrequency * mp.simDuration;
 %mp.nSamples = 2048;
 
