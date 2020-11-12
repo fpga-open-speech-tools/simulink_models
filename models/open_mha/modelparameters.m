@@ -32,7 +32,7 @@ mp.SysRate_Upsample_Factor = mp.FFT_size/mp.FFT_frame_shift * 8 * 4;  % How much
 num_bands = 8;
 n_ar      = num_bands*2;
 n_vy      = 32;
-n_shift   = 8;
+n_shift   = 16;
 RAM_size = 8 ;
 
 %% Create the input data
@@ -50,7 +50,9 @@ RAM_addresses = 2^(RAM_size);
 
 
 ar_data_in   = (n_ar*ones(RAM_addresses,1))-1;
+%ar_data_in = uint32(ar_data_in);
 vy_data_in = (RAM_addresses*ones(RAM_addresses,1))-1;
+%vy_data_in = uint32(vy_data_in);
 
 ar_data_in(1:n_ar) = (1:n_ar)-1;
 % ar_data_in(n_ar+1:end) = n_ar;
