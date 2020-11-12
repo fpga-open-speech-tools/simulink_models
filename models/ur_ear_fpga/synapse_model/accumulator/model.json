@@ -1,0 +1,40 @@
+{
+    "system": {
+        "target": "audioblade",
+        "sampleClockFrequency": 48000,
+        "systemClockFrequency": 98304000,
+        "processing": "channel",
+        "audioIn": {
+            "wordLength": 32,
+            "fractionLength": 28,
+            "signed": true,
+            "numberOfChannels": 1
+        },
+        "audioOut": {
+            "wordLength": 32,
+            "fractionLength": 28,
+            "signed": true,
+            "numberOfChannels": 1
+        }
+    },
+
+    "devices": [
+        {
+            "name": "accumulator",
+            "registers": [
+                {
+                    "dataType": {
+                        "fractionLength": 0,
+                        "signed": false,
+                        "type": "uint32",
+                        "wordLength": 32
+                    },
+                    "defaultValue": 1440,
+                    "name": "Integration Time",
+                    "registerNumber": 0
+                }
+            ]
+        }
+    ]
+    
+}
