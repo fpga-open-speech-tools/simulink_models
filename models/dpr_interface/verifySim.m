@@ -32,6 +32,8 @@
 
 close all;
 
+dprData = squeeze(read_data.Data);
+
 figure(1)
 subplot(2,1,1)
 plot(testSignal.audio(:,1)); hold on
@@ -44,6 +46,16 @@ plot(testSignal.audio(:,2)); hold on
 plot(dataOut.Data(:,2))
 title('Right channel')
 legend('input', 'output')
+
+figure
+hold on
+plot(input_data)
+plot(dprData(514:1025),'--')
+hold off
+title('Right channel')
+legend('Write Data', 'Read Data')
+
+
 
 % original_audio = [mp.test_signal.left(:) mp.test_signal.right(:)];
 % processed_audio = [mp.left_data_out(:) mp.right_data_out(:)];
