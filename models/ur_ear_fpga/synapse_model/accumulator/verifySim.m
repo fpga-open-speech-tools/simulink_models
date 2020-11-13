@@ -32,7 +32,7 @@ close all;
 
 data_input = testSignal.audio(:,1);
 
-[counts, valid] = integrateCounts(integrationTime,spcountRedock1,spcountRedock2,spcountRedock3,spcountRedock4);
+[counts, valid] = integrateCounts(integrationTime,spcountRedock1_prev,spcountRedock2_prev,spcountRedock3_prev,spcountRedock4_prev);
 
 figure
 subplot(2,1,1)
@@ -55,7 +55,7 @@ figure
 subplot(211)
 hold on
 plot(counts)
-plot(squeeze(countTotal.Data),'--')
+plot(squeeze(countTotal.Data(2:end)),'--')
 hold off
 legend('MATLAB Function','Simulink')
 title('MATLAB Source vs Simulink Output')
@@ -63,7 +63,7 @@ title('MATLAB Source vs Simulink Output')
 subplot(212)
 hold on
 plot(valid)
-plot(squeeze(countValid.Data),'--')
+plot(squeeze(countValid.Data(2:end)),'--')
 hold off
 legend('MATLAB Function','Simulink')
 title('MATLAB Source vs Simulink Output')
@@ -71,9 +71,10 @@ title('MATLAB Source vs Simulink Output')
 
 
 
+validCounts_mlab = counts(boolean(valid));
+validCounts_sim  = countTotal.Data(boolean(countValid.Data));
 
-
-
+[ validCounts_mlab(1:10) validCounts_sim(1:10)]
 
 
 

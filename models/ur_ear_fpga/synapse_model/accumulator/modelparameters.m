@@ -12,6 +12,13 @@ mp.nSamples = Fs * mp.simDuration;
 integrationTime = 40e-3*Fs;
 threshold       = 0.950;
 
+if exist('spcountRedock1','var') 
+  spcountRedock1_prev = spcountRedock1;
+  spcountRedock2_prev = spcountRedock2;
+  spcountRedock3_prev = spcountRedock3;
+  spcountRedock4_prev = spcountRedock4;
+end
+
 spcountRedock1 = rand(mp.nSamples,1);
 spcountRedock2 = rand(mp.nSamples,1);
 spcountRedock3 = rand(mp.nSamples,1);
