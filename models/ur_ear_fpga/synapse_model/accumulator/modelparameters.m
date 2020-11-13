@@ -22,3 +22,5 @@ spcountRedock1 = spcountRedock1 > threshold;
 spcountRedock2 = spcountRedock2 > threshold;
 spcountRedock3 = spcountRedock3 > threshold;
 spcountRedock4 = spcountRedock4 > threshold;
+
+simStop = mp.nSamples/Fs;

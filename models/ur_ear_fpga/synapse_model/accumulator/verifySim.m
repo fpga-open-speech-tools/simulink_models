@@ -38,7 +38,7 @@ figure
 subplot(2,1,1)
 hold on
 plot(data_input)
-plot(dataOut.Data(:,1))
+plot(Avalon_Sink_Data.Data(:,1),'--')
 hold off;
 legend('Input data','Output data')
 title('Audio Input')
@@ -50,3 +50,33 @@ hold on
 plot(sim_out,'--')
 legend('MATLAB Function','Simulink')
 title('MATLAB Source vs Simulink Output')
+
+figure
+subplot(211)
+hold on
+plot(counts)
+plot(squeeze(countTotal.Data),'--')
+hold off
+legend('MATLAB Function','Simulink')
+title('MATLAB Source vs Simulink Output')
+
+subplot(212)
+hold on
+plot(valid)
+plot(squeeze(countValid.Data),'--')
+hold off
+legend('MATLAB Function','Simulink')
+title('MATLAB Source vs Simulink Output')
+
+
+
+
+
+
+
+
+
+
+
+
+
