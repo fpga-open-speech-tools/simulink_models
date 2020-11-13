@@ -1,7 +1,7 @@
 TWOPI = 6.28318530717959;
 %% Autogen parameters
 % mp.testFile = [mp.test_signals_path filesep 'auditory_nerve\mef_result_subset.wav'];
-mp.testFile = [mp.test_signals_path filesep 'auditory_nerve\mef_result.wav'];
+mp.testFile = [mp.test_signals_path filesep 'auditory_nerve\m06ae.wav'];
 
 mp.sim_prompts = 1;
 mp.sim_verify = 1;
@@ -13,6 +13,8 @@ cf    = 1000; % Characteristic frequency of specific neuron
 Fs    = 48e3; % Sampling frequency
 tdres = 1/Fs; % Binsize in seconds
 nrep  = 100;  % Number of repititions for peri-stimulus time histogram
+species = 2;
+order   = 3;  % Line 248 of model_IHC_BEZ2018.c
 
 % Impairment constants
 cohc  = 1;    % outer hair cell impairment constant ( from 0 to 1 )
@@ -51,8 +53,6 @@ end
 if(gain<15.0)
     gain = 15.0;
 end
-
-order = 3; % This is hardcoded as bmorder in C
 
 ratio_tauwb  = 10^(-gain/(20.0*order)); % Ratio defined in Get_tauwb
 Q10 = (cf/1000)^(0.3)*12.7*0.505+0.2085; % Defined Get_tauwb
@@ -96,16 +96,15 @@ gain_groupdelay_func = @gain_groupdelay;
 
 %% Filter Path Parameters
 % C1 Chirp Filter Parameters
-taumaxc1 = 0.003; % Max time constant (given as bmTaumax in C source code, set to 0.003 for testing, the value of bmTaumax for cf = 1000)
-[sigma0, ipw, ipb, rpa, pzero, order_of_zero, fs_bilinear, CF, phase_init, C1initphase, preal, pimag, order_of_pole] = calc_c1_coefficients_parameters(cf, tdres, taumaxc1);
+[taumax, taumin]              = Get_tauwb(cf, species, order);
+[bmTaumax, bmTaumin, ratiobm] = Get_taubm(cf, species, taumax);
+[sigma0, ipw, ipb, rpa, pzero, order_of_zero, fs_bilinear, CF, phase_init, C1initphase, preal, pimag, order_of_pole] = calc_c1_coefficients_parameters(cf, tdres, bmTaumax);
 [norm_gainc1] = c1_chirp_parameter(preal, pimag, pzero, order_of_pole, order_of_zero, CF);
 
-
-% C2 Wideband Filter Parameters
-taumaxc2 = 0.0030; % time constant determined with another function (chosen as the output of Get_taubm for cf = 1000 Hz)     
-fcohcc2 = 1;       % parameter calculated as 1/ratiobm in model_IHC_BEZ2018.c (arbitrary for initial test)
-[C2coeffs, norm_gainc2] = C2Coefficients( tdres, cf, taumaxc2, fcohcc2); % Calculating IIR Biquad Coefficients by calling C2Coefficients MATLAB function
-
+% C2 Filter Parameters
+bmTaubm  = cohc*(bmTaumax-bmTaumin)+bmTaumin;
+fcohcc2  = bmTaumax/bmTaubm;      
+[C2coeffs, norm_gainc2] = C2Coefficients(tdres, cf, bmTaumax, 1/ratiobm); % Calculating IIR Biquad Coefficients by calling C2Coefficients MATLAB function
 
 % Inner Hair Cell Parameters
 Fcihc    = 3000;

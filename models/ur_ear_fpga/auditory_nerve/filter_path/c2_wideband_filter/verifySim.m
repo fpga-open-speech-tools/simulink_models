@@ -37,7 +37,7 @@ data_input = testSignal.audio(:,1);
 c2_wbf_out = zeros(1,length(data_input));
 
 for i = 1:length(data_input)
-    c2_wbf_out(1,i) = C2ChirpFilt(data_input(i),tdres,cf,i-1,taumaxc2,fcohcc2);
+    c2_wbf_out(1,i) = C2ChirpFilt(data_input(i), tdres, cf, i-1, taumaxc2, 1/ratiobm);
 end
 
 figure
