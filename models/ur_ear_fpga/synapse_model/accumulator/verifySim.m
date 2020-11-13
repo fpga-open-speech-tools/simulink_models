@@ -68,12 +68,6 @@ hold off
 legend('MATLAB Function','Simulink')
 title('MATLAB Source vs Simulink Output')
 
-%%
-validCounts_mlab = counts(boolean(valid));
-validCounts_sim  = countTotal.Data(boolean(countValid.Data));
-
-validCounts_mlab == validCounts_sim
-
 
 
 
