@@ -56,7 +56,7 @@ if(debug_flag == 0)
     
 elseif(debug_flag == 1)   
     % Debug Flag == 1 
-    mex 'validation\model_IHC_BEZ2018_debug.c' 'validation\complex.c'                             % Compile the UR EAR IHC BEZ2018 Model
+    mex 'validation\model_IHC_BEZ2018_debug.c' 'validation\complex.c' % Compile the UR EAR IHC BEZ2018 Model
     [mef_source_out, rsigma_source_out, c1_chirp_source_out, c2_wbgt_source_out, anm_source_out] = model_IHC_BEZ2018_debug(data_input', cf, 1, tdres, rep_time, cohc, cihc, 2); % Simulate the Auditory Nerve Model
 
     % Plot the Results
