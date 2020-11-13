@@ -12,6 +12,8 @@ mp.nSamples = Fs * mp.simDuration;
 integrationTime = 40e-3*Fs;
 threshold       = 0.950;
 
+% TODO: Investigate why the simulation is not using the values set by the following functions
+% When this is debugged the if statement won't be needed.
 if exist('spcountRedock1','var') 
   spcountRedock1_prev = spcountRedock1;
   spcountRedock2_prev = spcountRedock2;
