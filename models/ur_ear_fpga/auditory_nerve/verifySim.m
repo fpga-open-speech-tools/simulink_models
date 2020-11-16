@@ -75,9 +75,9 @@ for i = 1:totalstim
     c_wbgain_actual(i) = tmpgain(i);
     lasttmpgain = c_wbgain_actual(i);
     [c_grdelay(1,i), c_rsigma(1,i), c_tauc1(1,i), c_tauwb(1,i), c_wbgain(1,i)] = calc_tau_source(tdres, cf, centerfreq, ohc_sim(1,i));
-    c1_chirp_filter(1,i)     = C1ChirpFilt(data_input(i), tdres, cf, i-1, taumaxc1, c_rsigma(1,i));
-    c2_wideband_filter(1,i)  = C2ChirpFilt(data_input(i), tdres, cf, i-1, taumaxc2, fcohcc2);
-    inner_hair_cell_out(1,i) = inner_hair_cell_source(c1_chirp_filter(i), slope_c1, ihcasym_c1, c2_wideband_filter(i), slope_c2, ihcasym_c2, tdres, Fcihc, i-1, gainihc, orderihc);
+    c1_chirp_filter(1,i)     = C1ChirpFilt(data_input(i), tdres, cf, i-1, bmTaumax, c_rsigma(1,i));
+    c2_wideband_filter(1,i)  = C2ChirpFilt(data_input(i), tdres, cf, i-1, bmTaumax, 1/ratiobm);
+    inner_hair_cell_out(1,i) = inner_hair_cell_source(c1_chirp_filter(i), slope_c1, ihcasym_c1, c2_wideband_filter(i), slope_c2, ihcasym_c2, tdres, Fc_ihc, i-1, gain_ihc, order_ihc);
 end
 
 %% Plot the Results
@@ -87,11 +87,10 @@ plot(data_input)
 legend('Middle Ear Result')
 title('Audio Input')
 
-rsigma_sim = double(squeeze(rsigma_sim_out.Data));
 subplot(3,1,2)
 plot(c_rsigma)
 hold on
-plot(rsigma_sim,'--')
+plot(rsigma_sim_out,'--')
 legend('C Source Code','Simulink')
 title('R Sigma Simulation')
 

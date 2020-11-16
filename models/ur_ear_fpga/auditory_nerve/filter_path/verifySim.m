@@ -44,9 +44,9 @@ inner_hair_cell_out = zeros(1,length(data_input));
 
 for i = 1:length(data_input)
     rsigma_plot(i)           = rsigma_sim_in.data(i);
-    c1_chirp_out(1,i)        = C1ChirpFilt(data_input(i), tdres, cf, i-1, taumaxc1, rsigma_plot(i));
-    c2_wbf_out(1,i)          = C2ChirpFilt(data_input(i), tdres, cf, i-1, taumaxc2, fcohcc2);
-    inner_hair_cell_out(1,i) = inner_hair_cell_source(c1_chirp_out(i), slope_c1, ihcasym_c1, c2_wbf_out(i), slope_c2, ihcasym_c2, tdres, Fcihc, i-1, gainihc, orderihc);
+    c1_chirp_out(1,i)        = C1ChirpFilt(data_input(i), tdres, cf, i-1, bmTaumax, rsigma_plot(i));
+    c2_wbf_out(1,i)          = C2ChirpFilt(data_input(i), tdres, cf, i-1, bmTaumax, 1/ratiobm);
+    inner_hair_cell_out(1,i) = inner_hair_cell_source(c1_chirp_out(i), slope_c1, ihcasym_c1, c2_wbf_out(i), slope_c2, ihcasym_c2, tdres, Fc_ihc, i-1, gain_ihc, order_ihc);
 end
 
 %% Plot the Results
