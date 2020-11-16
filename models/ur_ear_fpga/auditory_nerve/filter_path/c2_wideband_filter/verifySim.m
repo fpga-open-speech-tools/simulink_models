@@ -31,13 +31,13 @@
 % decoded correctly.  The input (modified by gain) and output values should be identical.
 
 close all;
-mex C2ChirpFilt.c '..\..\..\validation\complex.c'
+mex C2ChirpFilt.c complex.c
 
 data_input = testSignal.audio(:,1);
 c2_wbf_out = zeros(1,length(data_input));
 
 for i = 1:length(data_input)
-    c2_wbf_out(1,i) = C2ChirpFilt(data_input(i), tdres, cf, i-1, taumaxc2, 1/ratiobm);
+    c2_wbf_out(1,i) = C2ChirpFilt(data_input(i), tdres, cf, i-1, bmTaumax, 1/ratiobm);
 end
 
 figure
