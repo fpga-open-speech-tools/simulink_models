@@ -30,18 +30,18 @@
 %% 
 close all;
 
-data_input = testSignal.audio(:,1);
-totalstim  = length(data_input);
-wbout      = zeros(1,totalstim);
-ohc_sim    = zeros(1,totalstim);
-ohc_boltzman= zeros(1,totalstim);
-c_grdelay   = zeros(1,totalstim);
-c_rsigma   = zeros(1,totalstim);
-c_tauc1   = zeros(1,totalstim);
-c_tauwb   = zeros(1,totalstim);
-c_wbgain   = zeros(1,totalstim);
+data_input      = testSignal.audio(:,1);
+totalstim       = length(data_input);
+wbout           = zeros(1,totalstim);
+ohc_sim         = zeros(1,totalstim);
+ohc_boltzman    = zeros(1,totalstim);
+c_grdelay       = zeros(1,totalstim);
+c_rsigma        = zeros(1,totalstim);
+c_tauc1         = zeros(1,totalstim);
+c_tauwb         = zeros(1,totalstim);
+c_wbgain        = zeros(1,totalstim);
 c_wbgain_actual = zeros(1,length(data_input));
-tmpgain = zeros(1,totalstim);
+tmpgain         = zeros(1,totalstim);
 
 %% CP Wideband Gamatone Filter Simulation
 mex 'cp_wideband_gammatone_filter\WbGammaTone.c' complex.c % Compile CP WB Gammatone Filter Source
@@ -54,12 +54,9 @@ for i = 1:length(data_input)
     if(i == 1)
         wbout(1,i) = WbGammaTone(data_input(i),tdres,centerfreq,i-1,tauwb_i,wbgain_i,wborder, TauWBMax, cf);
     else
-       % wbout(1,i) = WbGammaTone(data_input(i),tdres,centerfreq,i-1,tauwb_i,wbgain_i,wborder, TauWBMax, cf);
-       % wbout(1,i) = WbGammaTone(data_input(i),tdres,centerfreq,i-1,c_tauwb(1,i-1),wbgain_i,wborder, TauWBMax, cf);
-       % wbout(1,i) = WbGammaTone(data_input(i),tdres,centerfreq,i-1,tauwb_i,c_wbgain(1,i-1),wborder, TauWBMax, cf);
         wbout(1,i) = WbGammaTone(data_input(i),tdres,centerfreq,i-1,c_tauwb(1,i-1),c_wbgain_actual(1,i-1),wborder, TauWBMax, cf);
     end
-    [ohc_sim(1,i), ohc_boltzman(1,i), ~] = outer_hair_cell_source(wbout(1,i), ohcasym, s0, s1, x1, tdres, Fcohc, i-1, gainohc, orderohc, bmTaumin, bmTaumax);
+    ohc_sim(1,i) = outer_hair_cell_source(wbout(1,i), ohcasym, s0, s1, x1, tdres, Fcohc, i-1, gainohc, orderohc, bmTaumin, bmTaumax);
     [c_grdelay(1,i), c_rsigma(1,i), c_tauc1(1,i), c_tauwb(1,i), c_wbgain(1,i)] = calc_tau_source(tdres, cf, centerfreq, ohc_sim(1,i));
     grd = int32(c_grdelay(i));
     if((grd+i) < length(data_input))
@@ -119,31 +116,8 @@ subplot(7,1,7)
 plot(c_wbgain_actual)
 hold on
 plot(wbgain,'--')
-hold on
-wbgain_actual_error = abs(wbgain(1:end-1) - c_wbgain_actual.');
-plot(wbgain_actual_error)
+% hold on
+% wbgain_actual_error = abs(wbgain(1:end-1) - c_wbgain_actual.');
+% plot(wbgain_actual_error)
 legend('C Source Code','Simulink', 'error')
 title('wbgain C Source Code vs Simulink Output')
-
-
-% 
-% plot(ohc_lowpass)
-% hold on
-% plot(s_ohc_lowpass,'--')
-% legend('C Source Code','Simulink')
-% title('ohc_lowpass')
-
-% plot(ohc_boltzman)
-% hold on
-% plot(s_ohc_boltzman,'--')
-% legend('C Source Code','Simulink')
-% title('ohc_boltzman')
-
-% plot(ohc_sim)
-% hold on
-% plot(s_ohc_out,'--')
-% legend('C Source Code','Simulink')
-
-
-
-
