@@ -31,7 +31,7 @@
 % decoded correctly.  The input (modified by gain) and output values should be identical.
 
 close all;
-mex C2ChirpFilt.c complex.c
+mex C2ChirpFilt.c '..\..\..\validation\complex.c'
 
 data_input = testSignal.audio(:,1);
 c2_wbf_out = zeros(1,length(data_input));
