@@ -41,7 +41,7 @@ end
 figure
 subplot(2,1,1)
 plot(data_input)
-legend('C1 Chirp Filter Input Wave')
+legend([plot_title ' Input Wave'])
 title('Audio Input')
 
 sim_out = mp.dataOut;

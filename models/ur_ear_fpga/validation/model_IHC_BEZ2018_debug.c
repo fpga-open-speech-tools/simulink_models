@@ -49,9 +49,9 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
     mwSize outsize[2];
     
 	double *pxtmp, *cftmp, *nreptmp, *tdrestmp, *reptimetmp, *cohctmp, *cihctmp, *speciestmp;
-    double *mef_out, *rsigma_out, *c1_chirp_out, *c2_wbgt_out, *ihcout;
+    double *mef_out, *rsigma_out, *c1_chirp_out, *c2_wbgt_out, *c1_nl_out, *c2_nl_out, *ihc_temp_source_out, *ihcout;
    
-	void   IHCAN(double *, double, int, double, int, double, double, int, double *, double *, double *, double *, double *);
+	void   IHCAN(double *, double, int, double, int, double, double, int, double *, double *, double *, double *, double *, double *, double *, double *);
 	
 	/* Check for proper number of arguments */
 	
@@ -60,9 +60,9 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
 		mexErrMsgTxt("model_IHC requires 8 input arguments.");
 	}; 
 
-	if (nlhs !=5)  
+	if (nlhs !=8)  
 	{
-		mexErrMsgTxt("model_IHC requires 5 output argument.");
+		mexErrMsgTxt("model_IHC requires 8 output argument.");
 	};
 	
 	/* Assign pointers to the inputs */
@@ -156,16 +156,22 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
 	plhs[2] = mxCreateNumericArray(2, outsize, mxDOUBLE_CLASS, mxREAL);
 	plhs[3] = mxCreateNumericArray(2, outsize, mxDOUBLE_CLASS, mxREAL);
 	plhs[4] = mxCreateNumericArray(2, outsize, mxDOUBLE_CLASS, mxREAL);
+	plhs[5] = mxCreateNumericArray(2, outsize, mxDOUBLE_CLASS, mxREAL);
+	plhs[6] = mxCreateNumericArray(2, outsize, mxDOUBLE_CLASS, mxREAL);
+	plhs[7] = mxCreateNumericArray(2, outsize, mxDOUBLE_CLASS, mxREAL);
 	/* Assign pointers to the outputs */
 	
 	mef_out      = mxGetPr(plhs[0]);	
 	rsigma_out   = mxGetPr(plhs[1]);
 	c1_chirp_out = mxGetPr(plhs[2]);	
 	c2_wbgt_out  = mxGetPr(plhs[3]);
-	ihcout       = mxGetPr(plhs[4]);
+	c1_nl_out    = mxGetPr(plhs[4]);
+	c2_nl_out           = mxGetPr(plhs[5]);
+	ihc_temp_source_out = mxGetPr(plhs[6]);
+	ihcout              = mxGetPr(plhs[7]);
 	/* run the model */
 
-	IHCAN(px, cf, nrep, tdres, totalstim, cohc, cihc, species, mef_out, rsigma_out, c1_chirp_out, c2_wbgt_out, ihcout);
+	IHCAN(px, cf, nrep, tdres, totalstim, cohc, cihc, species, mef_out, rsigma_out, c1_chirp_out, c2_wbgt_out, c1_nl_out, c2_nl_out, ihc_temp_source_out, ihcout);
 
  mxFree(px);
 
@@ -173,7 +179,7 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
 
 void IHCAN(double *px, double cf, int nrep, double tdres, int totalstim,
                 double cohc, double cihc, int species, double *mef_out, double *rsigma_out, double *c1_chirp_out, double *c2_wbgt_out,
-                double *ihcout)
+                double *c1_nl_out, double *c2_nl_out, double *ihc_temp_source_out, double *ihcout)
 {	
     
     /*variables for middle-ear model */
@@ -361,11 +367,15 @@ void IHCAN(double *px, double cf, int nrep, double tdres, int totalstim,
          c2_wbgt_out[n] = c2filterouttmp;  // Added for Debugging
 	    /*=== Run the inner hair cell (IHC) section: NL function and then lowpass filtering ===*/
 
-        c1vihctmp  = NLogarithm(cihc*c1filterouttmp,0.1,ihcasym,cf);
+        c1vihctmp    = NLogarithm(cihc*c1filterouttmp,0.1,ihcasym,cf);
+        c1_nl_out[n] = c1vihctmp;  // Added for Debugging
 	     
-		c2vihctmp = -NLogarithm(c2filterouttmp*fabs(c2filterouttmp)*cf/10*cf/2e3,0.2,1.0,cf); /* C2 transduction output */
-            
-        ihcouttmp[n] = IhcLowPass(c1vihctmp+c2vihctmp,tdres,3000,n,1.0,7);
+		c2vihctmp    = NLogarithm(c2filterouttmp*fabs(c2filterouttmp)*cf/10*cf/2e3,0.2,1.0,cf); /* C2 transduction output */
+        c2_nl_out[n] = c2vihctmp;  // Added for Debugging
+
+        double temp_nl = c1vihctmp - c2vihctmp;   
+        ihcouttmp[n] = IhcLowPass(temp_nl,tdres,3000,n,1.0,7);
+        ihc_temp_source_out[n] = ihcouttmp[n];
    };  /* End of the loop */
    
     /* Stretched out the IHC output according to nrep (number of repetitions) */

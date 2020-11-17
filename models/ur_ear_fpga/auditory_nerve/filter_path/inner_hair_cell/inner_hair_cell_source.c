@@ -112,9 +112,9 @@ void mexFunction( int nlhs, mxArray *plhs[],
                   int nrhs, const mxArray *prhs[])
 { 
     double cf;
-    double c1_chirp, c1_slope, c1_asym, c1_out;
-    double c2_wbf,   c2_slope, c2_asym, c2_out;
-    double tdres, Fc, *ntmp, gain, *ordertmp, *ihcout;
+    double c1_chirp, c1_slope, c1_asym;
+    double c2_wbf,   c2_slope, c2_asym;
+    double tdres, Fc, *ntmp, gain, *ordertmp, c1_nl_source_out, c2_nl_source_out, *ihcout;
     int n, order;
 
     // C1 Chirp Inputs
@@ -140,11 +140,15 @@ void mexFunction( int nlhs, mxArray *plhs[],
     order = (int) ordertmp[0];
 
     /* get pointer to the data in the output */
-    plhs[0] = mxCreateDoubleMatrix(1, 1, mxREAL);
-    ihcout = mxGetPr(plhs[0]);
+    plhs[2] = mxCreateDoubleMatrix(1, 1, mxREAL);
+    ihcout  = mxGetPr(plhs[2]);
 
-    c1_out = NLogarithm(c1_chirp, c1_slope, c1_asym, cf);
-    c2_out = NLogarithm(c2_wbf, c2_slope, c2_asym, cf);
-    /* call the computational routine */
-    IhcLowPass(c1_out, c2_out, tdres, Fc, n, gain, order, ihcout);
+    c1_nl_source_out  = NLogarithm(c1_chirp, c1_slope, c1_asym, cf);
+
+    c2_nl_source_out = NLogarithm(c2_wbf, c2_slope, c2_asym, cf);
+
+    IhcLowPass(c1_nl_source_out, c2_nl_source_out, tdres, Fc, n, gain, order, ihcout);
+
+    plhs[0] = mxCreateDoubleScalar(c1_nl_source_out);
+    plhs[1] = mxCreateDoubleScalar(c2_nl_source_out);
 }
