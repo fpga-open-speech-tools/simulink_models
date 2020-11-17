@@ -1,6 +1,6 @@
 
 %%% Autogen parameters
-test_FFT_to_gain_init;
+% test_FFT_to_gain_init;
 mp.testFile = [mp.test_signals_path filesep 'acoustic.wav'];
 
 % TODO: use booleans instead of 0 and 1
@@ -36,10 +36,10 @@ n_shift   = 16;
 RAM_size = 8 ;
 
 %% Create the input data
-dp_gt = repmat(ones(1,32),num_bands,1);
+dp_gt = repmat(ones(32,1),num_bands,1);
 
 RAM_addresses = 2^(RAM_size);
-%vy = dp_gt;
+vy = dp_gt;
 %for i = length(dp_gt)+1:RAM_addresses
 %    vy(i,1) = 0;
 %end
