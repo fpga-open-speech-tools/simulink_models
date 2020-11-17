@@ -34,7 +34,7 @@ data_input = testSignal.audio(:,1);
 total_stim = length(data_input);
 rep_time   = total_stim * tdres;
 
-debug_flag = 1;
+debug_flag = 0;
 
 if(debug_flag == 0)
     % Disable the Debug Outputs
@@ -57,64 +57,65 @@ if(debug_flag == 0)
 elseif(debug_flag == 1)   
     % Enable the Intermediate Steps and Plotting
     mex 'validation\model_IHC_BEZ2018_debug.c' 'validation\complex.c' % Compile the UR EAR IHC BEZ2018 Debug Source
-    [mef_source_out, rsigma_source_out, c1_chirp_source_out, c2_wbgt_source_out, c1_nl_source_out, c2_nl_source_out, ihc_temp_source_out, anm_source_out] = model_IHC_BEZ2018_debug(data_input', cf, 1, tdres, rep_time, cohc, cihc, 2); % Simulate the Auditory Nerve Model
+    [mef_source_out, rsigma_source_out, c1_chirp_source_out, c2_wbgt_source_out, c1_nl_source_out, c2_nl_source_out, ihc_source_out, anm_source_out] = model_IHC_BEZ2018_debug(data_input', cf, 1, tdres, rep_time, cohc, cihc, 2); % Simulate the Auditory Nerve Model
 
     % Plot the Results
     figure
-    subplot(9,1,1)
+    subplot(2,1,1)
     plot(data_input)
     title('Audio Input')
 
-    subplot(9,1,2)
+    subplot(2,1,2)
     plot(mef_source_out)
     hold on
     plot(mef_out_sim,'--')
     legend('C Source Code','Simulink')
     title('UR EAR - Middle Ear Filter Simulation')
-
-    subplot(9,1,3)
+    
+    figure
+    subplot(7,1,1)
     plot(rsigma_source_out)
     hold on
     plot(rsigma_sim_out,'--')
     legend('C Source Code','Simulink')
     title('UR EAR - R Sigma Simulation')
 
-    subplot(9,1,4)
+    subplot(7,1,2)
     plot(c1_chirp_source_out)
     hold on
     plot(c1_chirp_sim_out,'--')
     legend('C Source Code','Simulink')
     title('UR EAR - C1 Filter Simulation')
 
-    subplot(9,1,5)
+    subplot(7,1,3)
     plot(c2_wbgt_source_out)
     hold on
     plot(c2_wbgt_sim_out,'--')
     legend('C Source Code','Simulink')
     title('UR EAR - C2 Filter Simulation')
     
-    subplot(9,1,6)
+    subplot(7,1,4)
     plot(c1_nl_source_out)
     hold on
     plot(c1_nl_sim_out,'--')
     legend('C Source Code','Simulink')
     title('UR EAR - C1 NL Simulation')
     
-    subplot(9,1,7)
+    subplot(7,1,5)
     plot(c2_nl_source_out)
     hold on
     plot(c2_nl_sim_out,'--')
     legend('C Source Code','Simulink')
     title('UR EAR - C2 NL Simulation')
-
-    subplot(9,1,8)
-    plot(ihc_temp_source_out)
+    
+    subplot(7,1,6)
+    plot(ihc_source_out)
     hold on
-    plot(ihc_temp_sim_out,'--')
+    plot(ihc_sim_out,'--')
     legend('C Source Code','Simulink')
     title('UR EAR - IHC Temp Simulation')
     
-    subplot(9,1,9)
+    subplot(7,1,7)
     plot(anm_source_out)
     hold on
     plot(an_sim_out,'--')

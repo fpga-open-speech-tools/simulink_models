@@ -8,12 +8,12 @@ mp.simDuration = 10;
 mp.nSamples = config.system.sampleClockFrequency * mp.simDuration;
 
 %% ANM Settings
-cf    = 2500; % Characteristic frequency of specific neuron
-Fs    = 48e3; % Sampling frequency
-tdres = 1/Fs; % Binsize in seconds
-nrep  = 100;  % Number of repititions for peri-stimulus time histogram
-species = 2;  % Human
-order   = 3;  % Line 248 of model_IHC_BEZ2018.c
+cf      = 1000; % Characteristic frequency of specific neuron
+Fs      = 48e3; % Sampling frequency
+tdres   = 1/Fs; % Binsize in seconds
+nrep    = 1;    % Number of repititions for peri-stimulus time histogram
+species = 2;    % Human
+order   = 3;    % Line 248 of model_IHC_BEZ2018.c
 
 % Impairment constants
 cohc  = 1;    % outer hair cell impairment constant ( from 0 to 1 )
@@ -70,3 +70,13 @@ Fc_ihc    = 3000;  % Hardcoded In Function Call: Line 358
 gain_ihc  = 1.0;   % Hardcoded In Function Call: Line 358 
 order_ihc = 7;     % Hardcoded In Function Call: Line 358
 [corner, strength, ihcasym_c1, slope_c1, ihcasym_c2, slope_c2, IHCLPcoeffs] = inner_hair_cell_parameters(tdres, Fc_ihc, gain_ihc);
+
+%% Delay Point: Lines 367 - 379
+if(species == 1)
+    delay = delay_cat(cf);
+else
+%     delay = delay_human(cf);
+    delay = delay_cat(cf);
+end
+delay_point = max(0,ceil(delay/tdres)); % Line 374
+    

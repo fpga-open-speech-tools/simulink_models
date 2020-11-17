@@ -397,7 +397,7 @@ void IHCAN(double *px, double cf, int nrep, double tdres, int totalstim,
 	{        
 		ihcout[i] = ihcouttmp[i - delaypoint];
   	};   
-
+    mexPrintf("Deplay Point: %d\n", delaypoint);
     /* Freeing dynamic memory allocated earlier */
 
     mxFree(ihcouttmp);

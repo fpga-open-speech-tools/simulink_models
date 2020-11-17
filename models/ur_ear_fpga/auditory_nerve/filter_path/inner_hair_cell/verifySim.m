@@ -57,14 +57,14 @@ plot(c1_nl_source_out)
 hold on
 plot(c1_nl_sim_out, '--')
 legend('C Source Code','Simulink')
-title('Audio Input')
+title('C1 NL Simulation')
 
 subplot(4,1,3)
 plot(c2_nl_source_out)
 hold on
 plot(c2_nl_sim_out, '--')
 legend('C Source Code','Simulink')
-title('Audio Input')
+title('C2 NL Simulation')
 
 sim_out = mp.dataOut;
 subplot(4,1,4)
