@@ -36,7 +36,7 @@ n_shift   = 16;
 RAM_size = 8 ;
 
 %% Create the input data
-dp_gt = repmat(1:32,num_bands,1);
+dp_gt = repmat(ones(1,32),num_bands,1);
 
 RAM_addresses = 2^(RAM_size);
 %vy = dp_gt;

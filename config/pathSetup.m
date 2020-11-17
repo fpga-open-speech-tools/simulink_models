@@ -35,16 +35,16 @@ mp.codegen_path         = [autogenRootDir filesep 'simulink_codegen'];
 %% Quartus Setup
 mp.quartus_path = autogenConfig.quartus;
 
-%% Setup Python paths
-if count(py.sys.path,mp.ipcore_codegen_path) == 0
-    insert(py.sys.path,int32(0),mp.ipcore_codegen_path);
-end
-if count(py.sys.path,mp.driver_codegen_path) == 0
-    insert(py.sys.path,int32(0),mp.driver_codegen_path);
-end
-if count(py.sys.path,mp.dtogen_path) == 0
-    insert(py.sys.path,int32(0),mp.dtogen_path);
-end
+% %% Setup Python paths
+% if count(py.sys.path,mp.ipcore_codegen_path) == 0
+%     insert(py.sys.path,int32(0),mp.ipcore_codegen_path);
+% end
+% if count(py.sys.path,mp.driver_codegen_path) == 0
+%     insert(py.sys.path,int32(0),mp.driver_codegen_path);
+% end
+% if count(py.sys.path,mp.dtogen_path) == 0
+%     insert(py.sys.path,int32(0),mp.dtogen_path);
+% end
 
 %% Add the paths to the current Matlab session
 addpath(mp.driver_codegen_path)
