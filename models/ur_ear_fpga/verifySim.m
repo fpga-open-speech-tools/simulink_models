@@ -45,7 +45,7 @@ if(debug_flag == 0)
     figure
     subplot(2,1,1)
     plot(data_input)
-    title('Audio Input')
+    title(['Audio Input: Sampling Freq: ' num2str(Fs) ' Hz'])
 
     subplot(2,1,2)
     plot(anm_source_out)
