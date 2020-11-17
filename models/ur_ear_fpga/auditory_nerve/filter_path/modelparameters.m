@@ -10,16 +10,16 @@ mp.nSamples = config.system.sampleClockFrequency * mp.simDuration;
 mp.nSamples = length(double(squeeze(rsigma_sim_in.Data)));
 
 %% ANM Settings
-cf    = 1000; % Characteristic frequency of specific neuron
-Fs    = 48e3; % Sampling frequency
-tdres = 1/Fs; % Binsize in seconds
-nrep  = 100;  % Number of repititions for peri-stimulus time histogram
-species = 2;  % Human
-order   = 3;  % Line 248 of model_IHC_BEZ2018.c
+cf      = 2500; % Characteristic frequency of specific neuron
+Fs      = 48e3; % Sampling frequency
+tdres   = 1/Fs; % Binsize in seconds
+nrep    = 100;  % Number of repititions for peri-stimulus time histogram
+species = 2;    % Human
+order   = 3;    % Line 248 of model_IHC_BEZ2018.c
 
 % Impairment constants
-cohc  = 1;    % outer hair cell impairment constant ( from 0 to 1 )
-cihc  = 1;    % inner hair cell impairment constant ( from 0 to 1 )
+cohc    = 1;    % outer hair cell impairment constant ( from 0 to 1 )
+cihc    = 1;    % inner hair cell impairment constant ( from 0 to 1 )
 
 %% Filter Path Parameters
 [taumax, taumin]              = Get_tauwb(cf, species, order);  % Line 242 

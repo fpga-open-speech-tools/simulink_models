@@ -41,12 +41,12 @@
 
 % ---------------------------------------------------------------------- %
 
-function [C2coeffs,norm_gain] = C2Coefficients( tdres, cf, taumax, fcohc )
-    
+function [C2coeffs,norm_gain] = C2Coefficients(tdres, cf, taumax, fcohc)
+    TWOPI = 6.28318530717959;
     % Setup locations of poles and zeros
     sigma0 = 1/taumax;
-	ipw    = 1.01*cf*2*pi-50;
-    ipb    = 0.2343*2*pi*cf-1104;
+	ipw    = 1.01*cf*TWOPI-50;
+    ipb    = 0.2343*TWOPI*cf-1104;
 	rpa    = 10^(log10(cf)*0.9 + 0.55)+ 2000;
 	pzero  = 10^(log10(cf)*0.7+1.6)+500;
     
@@ -54,9 +54,9 @@ function [C2coeffs,norm_gain] = C2Coefficients( tdres, cf, taumax, fcohc )
     half_order_pole  = order_of_pole/2;
     order_of_zero    = half_order_pole;
     
-    fs_bilinear = 2*pi*cf/tan(2*pi*cf*tdres/2);
+    fs_bilinear = TWOPI*cf/tan(TWOPI*cf*tdres/2);
     rzero       = -pzero;
-	CF          = 2*pi*cf;
+	CF          = TWOPI*cf;
     
     p = zeros(11,1);
     p(1) = -sigma0 + 1i*ipw;

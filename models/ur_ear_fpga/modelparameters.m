@@ -8,7 +8,7 @@ mp.simDuration = 10;
 mp.nSamples = config.system.sampleClockFrequency * mp.simDuration;
 
 %% ANM Settings
-cf    = 1000; % Characteristic frequency of specific neuron
+cf    = 5000; % Characteristic frequency of specific neuron
 Fs    = 48e3; % Sampling frequency
 tdres = 1/Fs; % Binsize in seconds
 nrep  = 100;  % Number of repititions for peri-stimulus time histogram

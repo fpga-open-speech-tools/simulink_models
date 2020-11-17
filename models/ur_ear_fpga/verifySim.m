@@ -28,7 +28,7 @@
 % openspeech@flatearthinc.com
 
 %% 
-close all;
+% close all;
 
 data_input = testSignal.audio(:,1);
 total_stim = length(data_input);
@@ -52,7 +52,7 @@ if(debug_flag == 0)
     hold on
     plot(an_sim_out,'--')
     legend('C Source Code','Simulink')
-    title('UR EAR - Auditory Nerve Simulation')
+    title(['UR EAR - Auditory Nerve Simulation: Char Freq = ' num2str(cf) ' Hz'])
     
 elseif(debug_flag == 1)   
     % Enable the Intermediate Steps and Plotting
@@ -98,6 +98,6 @@ elseif(debug_flag == 1)
     hold on
     plot(an_sim_out,'--')
     legend('C Source Code','Simulink')
-    title('UR EAR - Auditory Nerve Simulation')
+    title(['UR EAR - Auditory Nerve Simulation: Char Freq = ' num2str(cf) ' Hz'])
 end
 
