@@ -108,12 +108,6 @@ title('C Source Code vs Simulink Output')
 
 
 
-%% Scratchpad
-yy = prevRandNums(1:1002);
-ro = squeeze(randOut.Data(randOut.Data>0));
-rs = squeeze(randStep.Data(randStep.Data>0));
-
-
 
 
 
