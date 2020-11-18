@@ -45,4 +45,3 @@ nrep = 1;
 dt = tdres; 
 noiseType = 1;
 implnt = 0;
-spont = 50;

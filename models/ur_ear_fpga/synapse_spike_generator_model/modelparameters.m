@@ -12,11 +12,17 @@ mp.testFile    = [mp.test_signals_path filesep 'auditory_nerve\inner_hair_cell.w
 cf = 1000;    % Characteristic frequency of specific neuron
 Fs = 48e3;    % Sampling frequency
 tdres = 1/Fs; % Binsize in seconds
-nrep = 100;   % Number of repititions for peri-stimulus time histogram
+nrep = 1;     % Number of repititions for peri-stimulus time histogram
 
 % Impairment constants
 cohc = 1; 
 cihc = 1; 
+
+% Simulation parameters
+% CF = 1000;
+dt = tdres; 
+noiseType = 1;
+implnt = 0;
 %% Nonlinear PLA Filter Parameters
 spont = 100; % Spontaneous firing rate of neurons, as set in testANmodel_BEZ2018.m source code
 
@@ -36,8 +42,7 @@ delaypoint = floor(7500/(cf/1e3));
 
 %% Power Law Adapter Parameters
 % Random Noise
-totalstim = 1001;
-noiseType = 1; % Set to variable ffGn type (1)
+totalstim = mp.nSamples;
 Hinput = 0.9;  % Set Hurst index to the value hard-coded in C source code
 spont = 100;   % Set mean of noise
 % Call fast fractional gaussian noise function for Double Precision
@@ -118,3 +123,25 @@ slow_a1_5 = -1.989549282714008;
 slow_a2_5 = 0.989558985673023;
 % Combine Coefficients into Matrix for Implementation in Simulink
 slow_coeffs = [slow_b0_1*0.2 slow_b1_1*0.2 slow_b2_1*0.2 slow_a0_1 slow_a1_1 slow_a2_1; slow_b0_2 slow_b1_2 slow_b2_2 slow_a0_2 slow_a1_2 slow_a2_2; slow_b0_3 slow_b1_3 slow_b2_3 slow_a0_3 slow_a1_3 slow_a2_3; slow_b0_4 slow_b1_4 slow_b2_4 slow_a0_4 slow_a1_4 slow_a2_4; slow_b0_5 slow_b1_5 slow_b2_5 slow_a0_5 slow_a1_5 slow_a2_5];
+
+
+%% Spike Gen Parameters
+spont = 100;
+nSites = 4;
+t_rd_rest = 14.0e-3;
+t_rd_jump = 0.4e-3;
+t_rd_init = t_rd_rest + 0.02e-3*spont - t_rd_jump;
+tau = 60e-3;    
+
+trel = 10e-3;
+tabs = 10e-3;
+
+elapsed_time = 0; % single(tdres * randi(floor(Fs * t_rd_init)));
+% unitRateInterval = single(-log(rand(1))/tdres);
+unitRateInterval = 87745;
+% oneSiteRedock = single(-t_rd_init * log(rand(1)));
+oneSiteRedock = single(t_rd_init/2);
+
+%% Accumulator Settings
+integrationTime = 40e-3*Fs;
+threshold       = 0.950;

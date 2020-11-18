@@ -22,7 +22,7 @@
 % ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 %
 % Tyler Davis
-% Audio Logic
+% AudioLogic, Inc
 % 985 Technology Blvd
 % Bozeman, MT 59718
 % openspeech@flatearthinc.com
@@ -52,7 +52,7 @@ legend('MATLAB Function','Simulink')
 title('MATLAB Source vs Simulink Output')
 
 figure
-subplot(211)
+subplot(2,1,1)
 hold on
 plot(counts)
 plot(squeeze(countTotal.Data(2:end)),'--')
@@ -60,7 +60,7 @@ hold off
 legend('MATLAB Function','Simulink')
 title('MATLAB Source vs Simulink Output')
 
-subplot(212)
+subplot(2,1,2)
 hold on
 plot(valid)
 plot(squeeze(countValid.Data(2:end)),'--')
@@ -69,12 +69,10 @@ legend('MATLAB Function','Simulink')
 title('MATLAB Source vs Simulink Output')
 
 
-
-
 validCounts_mlab = counts(boolean(valid));
 validCounts_sim  = countTotal.Data(boolean(countValid.Data));
 
-[ validCounts_mlab(1:10) validCounts_sim(1:10)]
+[validCounts_mlab(1:10) validCounts_sim(1:10)];
 
 
 

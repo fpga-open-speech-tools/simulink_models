@@ -7,8 +7,7 @@ mp.sim_verify = 1;
 mp.simDuration = 5;
 mp.nSamples = Fs * mp.simDuration;
 
-%% ANM Settings
-
+%% Accumulator Settings
 integrationTime = 40e-3*Fs;
 threshold       = 0.950;
 

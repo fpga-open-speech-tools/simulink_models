@@ -31,8 +31,6 @@
 close all;
 
 % Call SpikeGenerator to generate the matlab output
-
-
 mex spikegen_source.c complex.c
 mex spikegen_pseudorandom.c complex.c
 
@@ -49,17 +47,12 @@ trd_vectorVect = zeros(1,length(data_input));
 total_mean_rate = sum(data_input/length(data_input));
 MaxArraySizeSpikes = length(data_input)*nrep;
 
-
-passind = 0;
-zz = prevRandNums(1+passind:end);
-
-synout = 2e5*data_input';
-
+syn_out = 2e5*data_input';
 
 % [sptime_mattt, spCount_matt, trd_vector_matt] = SpikeGenerator_matt(data_input, double(zz), tdres, t_rd_rest, t_rd_init, tau, t_rd_jump, nSites, tabs, trel, elapsed_time, unitRateInterval, oneSiteRedock);
 % [spCount_sim, sptime_sim, trd_vector_sim] = spikegen_source(synout, tdres, t_rd_rest, t_rd_init, tau, t_rd_jump, nSites, tabs, trel, spont, totalstim, nrep, total_mean_rate, MaxArraySizeSpikes, sptime, trd_vector);
-[spCount_sim, sptime_sim, trd_vector_sim] = spikegen_pseudorandom(synout, double(zz), tdres, t_rd_rest, t_rd_init, tau, t_rd_jump, nSites, tabs, trel, spont, totalstim, nrep, total_mean_rate, MaxArraySizeSpikes, double(unitRateInterval), double(oneSiteRedock));
-                                                                
+[spCount_source, sptime_source, trd_vector_source, sp_count_redock_1, sp_count_redock_2, sp_count_redock_3, sp_count_redock_4] = spikegen_pseudorandom(...
+    syn_out, randNums, tdres, t_rd_rest, t_rd_init, tau, t_rd_jump, nSites, tabs, trel, spont, totalstim, nrep, total_mean_rate, MaxArraySizeSpikes, double(unitRateInterval), double(oneSiteRedock));                                                              
                                                                 
 
 
@@ -68,7 +61,7 @@ synout = 2e5*data_input';
 figure
 % subplot(221)
 % hold on
-% plot(sptime_sim)
+% plot(sptime_source)
 % plot(sptime,'--')
 % hold off
 % legend('C Source Code','Simulink')
@@ -76,7 +69,7 @@ figure
 
 % subplot(111)
 hold on
-plot(trd_vector_sim)
+plot(trd_vector_source)
 plot(trd_vector,'--')
 hold off
 legend('C Source','Intern code','Simulink')
@@ -85,7 +78,7 @@ title('C Source Code vs Simulink Output')
 % 
 % subplot(223)
 % hold on
-% plot(spCount_sim)
+% plot(spCount_source)
 % plot(spCount,'--')
 % hold off
 % legend('C Source Code','Simulink')
