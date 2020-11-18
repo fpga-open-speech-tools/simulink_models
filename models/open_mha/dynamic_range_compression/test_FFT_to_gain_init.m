@@ -269,4 +269,5 @@ accum_delay_memory_size = 2^accum_delay_memory;
 
 %% Declare Stop Time
 
-stop_time = (length(FFT_data_real) - 1)/mp.Fs/2;
+% Why is this mp.Fs now instead of fs? Switched for model referencing.
+stop_time = (length(FFT_data_real) - 1)/fs/2;
