@@ -1,6 +1,6 @@
 
 %%% Autogen parameters
-% test_FFT_to_gain_init;
+test_FFT_to_gain_init;
 mp.testFile = [mp.test_signals_path filesep 'acoustic.wav'];
 
 % TODO: use booleans instead of 0 and 1
