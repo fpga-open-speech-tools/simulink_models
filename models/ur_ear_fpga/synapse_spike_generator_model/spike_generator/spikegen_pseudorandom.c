@@ -116,6 +116,7 @@ int SpikeGenerator( double *synout, double *randNums, double tdres, double t_rd_
     
     MaxArraySizeEvents= ceil ((long) (totalstim*nrep*tdres/MeanInterEvents+ 3 * sqrt(totalstim*nrep*tdres/MeanInterEvents)))+nSites;
     
+    mexPrintf("synout1: %f\n",synout[0]);
     
     
     /* Max random array Size:   nSites elements for oneSiteRedock initialization, nSites elements for preRelease_initialGuessTimeBins initialization
@@ -139,6 +140,7 @@ int SpikeGenerator( double *synout, double *randNums, double tdres, double t_rd_
         
     }
     
+    mexPrintf("synout2: %f\n",synout[0]);
     
     /* Call Sort function using  */
     sortInputArray[0] = mxCreateDoubleMatrix(1, nSites, mxREAL);
@@ -157,6 +159,7 @@ int SpikeGenerator( double *synout, double *randNums, double tdres, double t_rd_
     }
     
     
+    mexPrintf("synout3: %f\n",synout[0]);
     
     mexCallMATLAB(1, sortOutputArray, 1, sortInputArray, "sort");
     
@@ -174,6 +177,7 @@ int SpikeGenerator( double *synout, double *randNums, double tdres, double t_rd_
     /* The position of first spike, also where the process is started- continued from the past */
     kInit = (int) preReleaseTimeBinsSorted[0];
     
+    mexPrintf("synout5: %f\n",synout[1]);
     
     /* Current refractory time */
     Tref = tabs - trel*log( randNums[0] );
@@ -193,11 +197,14 @@ int SpikeGenerator( double *synout, double *randNums, double tdres, double t_rd_
     /* a loop to find the spike times for all the totalstim*nrep */
         
     mexPrintf("osr: %f\tet: %f\n",oneSiteRedock[0],elapsed_time);
+
+
+    mexPrintf("synout6: %f\n",synout[0]);
     while (k < totalstim*nrep){
-        
+      if(k < 5)
+        mexPrintf("k= %d,synout7: %f\n",k,synout[k]);
         for (siteNo = 0; siteNo<nSites; siteNo++)
-        {
-            
+        {            
             if ( k > preReleaseTimeBinsSorted [siteNo] )
             {
             
@@ -241,20 +248,23 @@ int SpikeGenerator( double *synout, double *randNums, double tdres, double t_rd_
                 /* There are  nSites integrals each vesicle senses 1/nosites of  the whole rate */
             }
             
-            
-            
+            /* if (siteNo == 0)
+            {
+              mexPrintf("Xsum: %f\turi: %d\n",Xsum[siteNo],unitRateInterval[siteNo]);
+              mexPrintf("et: %f\tosr: %f\n",elapsed_time[siteNo],oneSiteRedock[siteNo]);
+            } */
             if  ( (Xsum[siteNo]  >=  unitRateInterval[siteNo]) &&  ( k >= preReleaseTimeBinsSorted [siteNo] ) )
             {  /* An event- a release  happened for the siteNo*/
                 
                 oneSiteRedock[siteNo]  = -current_redocking_period*log( randNums[rand_counter]);
-                if (siteNo == 0)
-                  mexPrintf("randN: %f\n",randNums[rand_counter]);
+                // if (siteNo == 0)
+                  // mexPrintf("randN: %f\n",randNums[rand_counter]);
                 current_release_times[siteNo] = previous_release_times[siteNo]  + elapsed_time[siteNo];
-                elapsed_time[siteNo] = 0;               
-                
+                elapsed_time[siteNo] = 0;           
+                // mexPrintf("crt: %f, crp: %f\n",current_release_times[siteNo],current_refractory_period);
                 if ( (current_release_times[siteNo] >= current_refractory_period) )
                 {
-                    
+                    //mexPrintf("crt > crp\n");
                     /*Register only non negative spike times */
                     if(siteNo == 0)
                     {
@@ -350,7 +360,7 @@ int SpikeGenerator( double *synout, double *randNums, double tdres, double t_rd_
         
         k = k+1;
         rand_counter = rand_counter + 1;
-        //mexPrintf("%f\n",randNums[rand_counter]);
+        mexPrintf("%f\n",randNums[rand_counter]);
         
     };
     
@@ -409,10 +419,12 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
   
   // Define the input array
   synout = (double*)mxCalloc(totalstim*nrep,sizeof(double));
+  mexPrintf("synout: %f\n",synout_pntr[0]);
 
    for (ii = 0; ii < n_synout; ii++)
       synout[ii] = synout_pntr[ii]; 
-    
+  
+  mexPrintf("synout: %f\n",synout[0]);
   
     
   // Define the size of the output arrays
@@ -438,7 +450,7 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
     sp_count_redock_4 = mxGetPr(plhs[6]);
 
     /* call the computational routine */
-    spcount = SpikeGenerator(synout, randNums, tdres, t_rd_rest, t_rd_init, tau, t_rd_jump, nSites, tabs, 
+    spcount = SpikeGenerator(synout_pntr, randNums, tdres, t_rd_rest, t_rd_init, tau, t_rd_jump, nSites, tabs, 
                               trel, spont, totalstim, nrep, total_mean_rate, MaxArraySizeSpikes, sptime, 
                               trd_vector, unitRateInterval, oneSiteRedock, sp_count_redock_1, sp_count_redock_2, sp_count_redock_3, sp_count_redock_4);
     

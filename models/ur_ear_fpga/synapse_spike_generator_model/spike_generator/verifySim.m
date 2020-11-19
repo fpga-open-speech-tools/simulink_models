@@ -54,6 +54,7 @@ syn_out = 2e5*data_input';
 [spCount_source, sptime_source, trd_vector_source, sp_count_redock_1, sp_count_redock_2, sp_count_redock_3, sp_count_redock_4] = spikegen_pseudorandom(...
     syn_out, randNums, tdres, t_rd_rest, t_rd_init, tau, t_rd_jump, nSites, tabs, trel, spont, totalstim, nrep, total_mean_rate, MaxArraySizeSpikes, double(unitRateInterval), double(oneSiteRedock));                                                              
                                                                 
+[counts, valid] = integrateCounts(integrationTime,sp_count_redock_1,sp_count_redock_2,sp_count_redock_3,sp_count_redock_4);
 
 
 %%
@@ -101,7 +102,51 @@ title('C Source Code vs Simulink Output')
 
 
 
+%--Spike Gen Results---
+figure
+subplot(4,1,1)
+plot(sp_count_redock_1)
+hold on
+plot(sp_count_redock_1_sim,'--')
+legend('C Source','Simulink')
+title('Spike Count: Redock Site 1')
 
+subplot(4,1,2)
+plot(sp_count_redock_2)
+hold on
+plot(sp_count_redock_2_sim,'--')
+legend('C Source','Simulink')
+title('Spike Count: Redock Site 2')
+
+subplot(4,1,3)
+plot(sp_count_redock_3)
+hold on
+plot(sp_count_redock_3_sim,'--')
+legend('C Source','Simulink')
+title('Spike Count: Redock Site 3')
+
+subplot(4,1,4)
+plot(sp_count_redock_4)
+hold on
+plot(sp_count_redock_4_sim,'--')
+legend('C Source','Simulink')
+title('Spike Count: Redock Site 4')
+
+% %--Accumulator Results---
+% figure
+% subplot(2,1,1)
+% plot(counts)
+% hold on
+% plot(spike_count_sim_out,'--')
+% legend('MATLAB Function','Simulink')
+% title('Accumulator: Counts')
+% 
+% subplot(2,1,2)
+% plot(valid)
+% hold on
+% plot(spike_valid_sim_out(2:end),'--')
+% legend('MATLAB Function','Simulink')
+% title('Accumulator: Valid')
 
 
 

@@ -9,7 +9,7 @@ mp.nSamples = config.system.sampleClockFrequency * mp.simDuration;
 
 %% ANM Settings
 cf      = 1000; % Characteristic frequency of specific neuron
-Fs      = 48e3; % Sampling frequency
+Fs      = 16e3; % Sampling frequency
 tdres   = 1/Fs; % Binsize in seconds
 nrep    = 1;    % Number of repititions for peri-stimulus time histogram
 species = 2;    % Human
@@ -106,7 +106,7 @@ delaypoint = floor(7500/(cf/1e3));
 Hinput = 0.9;  % Set Hurst index to the value hard-coded in C source code
 spont = 100;   % Set mean of noise
 % Call fast fractional gaussian noise function for Double Precision
-randNums = single(ffGn(mp.nSamples, tdres, Hinput, noiseType, spont));
+randNums = ffGn(mp.nSamples, tdres, Hinput, noiseType, spont);
 
 % Parameters for Fast Power Law Adaptation Function
 alpha1 = 1.5e-6*100e3; 

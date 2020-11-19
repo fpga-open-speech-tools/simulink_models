@@ -31,6 +31,7 @@
 close all;
 
 mex 'spike_generator\spikegen_pseudorandom.c' complex.c
+mex 'spike_generator\spikegen_source.c' complex.c
 data_input = testSignal.audio(:,1);
 totalstim  = length(data_input);
 
@@ -42,8 +43,16 @@ MaxArraySizeSpikes = length(data_input)*nrep;
 %% Compute the Results
 pla_nl_out = NLBeforePLA(data_input, totalstim, spont, cf);
 syn_out    = PowerLaw(pla_nl_out, totalstim, randNums, Fs);
-[spCount_source, sptime_source, trd_vector_source, sp_count_redock_1, sp_count_redock_2, sp_count_redock_3, sp_count_redock_4] = spikegen_pseudorandom(...
-    syn_out, randNums, tdres, t_rd_rest, t_rd_init, tau, t_rd_jump, nSites, tabs, trel, spont, totalstim, nrep, total_mean_rate, MaxArraySizeSpikes, double(unitRateInterval), double(oneSiteRedock));
+
+[spCount_source, sptime_source, trd_vector_source, sp_count_redock_1, sp_count_redock_2, sp_count_redock_3, sp_count_redock_4] = spikegen_source( ...
+    syn_out, tdres, t_rd_rest, t_rd_init, tau, t_rd_jump, nSites, tabs, trel, spont, totalstim, nrep, total_mean_rate, MaxArraySizeSpikes);
+
+
+% [spCount_source, sptime_source, trd_vector_source, sp_count_redock_1, sp_count_redock_2, sp_count_redock_3, sp_count_redock_4] = spikegen_pseudorandom(...
+%     syn_out, randNumsSpikeGen, tdres, t_rd_rest, t_rd_init, tau, t_rd_jump, nSites, tabs, trel, spont, totalstim, nrep, total_mean_rate, MaxArraySizeSpikes, double(unitRateInterval), double(oneSiteRedock));
+
+  
+  
 [counts, valid] = integrateCounts(integrationTime,sp_count_redock_1,sp_count_redock_2,sp_count_redock_3,sp_count_redock_4);
 
 %% Plot the Results
@@ -110,6 +119,6 @@ title('Accumulator: Counts')
 subplot(2,1,2)
 plot(valid)
 hold on
-plot(spike_valid_sim_out,'--')
+plot(spike_valid_sim_out(2:end),'--')
 legend('MATLAB Function','Simulink')
 title('Accumulator: Valid')

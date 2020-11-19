@@ -62,7 +62,9 @@
 #include <time.h>
 
 #include "complex.h"
-int SpikeGenerator(double *synout, double tdres, double t_rd_rest, double t_rd_init, double tau, double t_rd_jump, int nSites, double tabs, double trel, double spont, int totalstim, int nrep,double total_mean_rate,long MaxArraySizeSpikes, double *sptime, double *trd_vector)
+int SpikeGenerator( double *synout, double tdres, double t_rd_rest, double t_rd_init, double tau, double t_rd_jump, int nSites, 
+                    double tabs, double trel, double spont, int totalstim, int nrep,double total_mean_rate,long MaxArraySizeSpikes, double *sptime, double *trd_vector,                 
+                    double *sp_count_redock_1, double *sp_count_redock_2, double *sp_count_redock_3, double *sp_count_redock_4)
 {
     
     /* Initializing the variables: */
@@ -227,21 +229,62 @@ int SpikeGenerator(double *synout, double tdres, double t_rd_rest, double t_rd_i
             
             
             
-            if  ( (Xsum[siteNo]  >=  unitRateInterval[siteNo]) &&  ( k >= preReleaseTimeBinsSorted [siteNo] ) )
-            {  /* An event- a release  happened for the siteNo*/
-                
-                oneSiteRedock[siteNo]  = -current_redocking_period*log( randNums[randBufIndex++]);
-                current_release_times[siteNo] = previous_release_times[siteNo]  + elapsed_time[siteNo];
-                elapsed_time[siteNo] = 0;               
-                
-                if ( (current_release_times[siteNo] >= current_refractory_period) )
-                {  /* A spike occured for the current event- release
-                 * spike_times[(int)(current_release_times[siteNo]/tdres)-kInit+1 ] = 1;*/
-                    
+            if ( (current_release_times[siteNo] >= current_refractory_period) )
+                {
+                    // mexPrintf("crt > crp\n");
+                    // mexPrintf("siteNo: %d\n",k);
                     /*Register only non negative spike times */
-                    if (current_release_times[siteNo] >= 0)
+                    if(siteNo == 0 & k > -1)
                     {
-                        sptime[spCount] = current_release_times[siteNo]; spCount = spCount + 1;
+                        if (current_release_times[siteNo] >= 0)
+                        {
+                            sptime[spCount] = current_release_times[siteNo]; 
+                            spCount = spCount + 1;
+                            sp_count_redock_1[k] = 1;
+                        }
+                        else
+                        {
+                            sp_count_redock_1[k] = 0;
+                        }
+                    }
+                    else if(siteNo == 1 & k > -1)
+                    {
+                        if (current_release_times[siteNo] >= 0)
+                        {
+                            sptime[spCount] = current_release_times[siteNo]; 
+                            spCount = spCount + 1;
+                            sp_count_redock_2[k] = 1;
+                        }
+                        else
+                        {
+                            sp_count_redock_2[k] = 0;
+                        }
+                    }
+                    else if(siteNo == 2 & k > -1)
+                    {
+                        if (current_release_times[siteNo] >= 0)
+                        {
+                            sptime[spCount] = current_release_times[siteNo]; 
+                            spCount = spCount + 1;
+                            sp_count_redock_3[k] = 1;
+                        }
+                        else
+                        {
+                            sp_count_redock_3[k] = 0;
+                        }
+                    }
+                    else if(siteNo == 3 & k > -1)
+                    {
+                        if (current_release_times[siteNo] >= 0)
+                        {
+                            sptime[spCount] = current_release_times[siteNo]; 
+                            spCount = spCount + 1;
+                            sp_count_redock_4[k] = 1;
+                        }
+                        else
+                        {
+                            sp_count_redock_4[k] = 0;
+                        }
                     }
                     
                     trel_k = __min(trel*100/synout[__max(0,k)],trel);
@@ -251,13 +294,6 @@ int SpikeGenerator(double *synout, double tdres, double t_rd_rest, double t_rd_i
                     current_refractory_period = current_release_times[siteNo] + Tref;
                     
                 }
-                
-                previous_release_times[siteNo] = current_release_times[siteNo];
-                
-                Xsum[siteNo] = 0;
-                unitRateInterval[siteNo] = (int) (-log(randNums[randBufIndex++]) / tdres);
-                
-            };
             /* Error Catching */
             if ( (spCount+1)>MaxArraySizeSpikes  || (randBufIndex+1 )>randBufLen  )
             {     /* mexPrintf ("\n--------Array for spike times or random Buffer length not large enough, Rerunning the function.-----\n\n"); */
@@ -308,6 +344,7 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
   // Define the inputs and outputs
   double *synout, tdres, *synout_pntr, t_rd_rest, t_rd_init, tau, t_rd_jump, tabs, trel, spont, total_mean_rate, *sptime, *trd_vector;
   int nSites, totalstim, nrep, n_synout, spcount, ii;
+  double *sp_count_redock_1, *sp_count_redock_2, *sp_count_redock_3, *sp_count_redock_4;
   long MaxArraySizeSpikes;
   
   mwSize  outsize[2];
@@ -332,8 +369,8 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
   MaxArraySizeSpikes  = (long)mxGetScalar(prhs[13]);
     
   // Calculate the repetition time
-  totalstim = (int)floor(n_synout/nrep);
-  
+    totalstim = totalstim * nrep;
+
   // Define the input array
   synout = (double*)mxCalloc(totalstim*nrep,sizeof(double));
 
@@ -349,16 +386,25 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
     
     plhs[1] = mxCreateNumericArray(2, outsize, mxDOUBLE_CLASS, mxREAL);
     plhs[2] = mxCreateNumericArray(2, outsize, mxDOUBLE_CLASS, mxREAL);
-    
+    plhs[3] = mxCreateNumericArray(2, outsize, mxDOUBLE_CLASS, mxREAL);
+    plhs[4] = mxCreateNumericArray(2, outsize, mxDOUBLE_CLASS, mxREAL);
+    plhs[5] = mxCreateNumericArray(2, outsize, mxDOUBLE_CLASS, mxREAL);
+    plhs[6] = mxCreateNumericArray(2, outsize, mxDOUBLE_CLASS, mxREAL);
     
 
     // Assign the pointer values
     sptime = mxGetPr(plhs[1]);
-    trd_vector = mxGetPr(plhs[2]);
+    trd_vector = mxGetPr(plhs[2]);    
+    sp_count_redock_1 = mxGetPr(plhs[3]);
+    sp_count_redock_2 = mxGetPr(plhs[4]);
+    sp_count_redock_3 = mxGetPr(plhs[5]);
+    sp_count_redock_4 = mxGetPr(plhs[6]);
 
     /* call the computational routine */
-    spcount = SpikeGenerator(synout, tdres, t_rd_rest, t_rd_init, tau, t_rd_jump, nSites, tabs, trel, spont, totalstim, nrep, total_mean_rate, MaxArraySizeSpikes, sptime, trd_vector);
-    
+    spcount = SpikeGenerator( synout, tdres, t_rd_rest, t_rd_init, tau, t_rd_jump, nSites, tabs, 
+                              trel, spont, totalstim, nrep, total_mean_rate, MaxArraySizeSpikes, sptime, trd_vector,
+                              sp_count_redock_1, sp_count_redock_2, sp_count_redock_3, sp_count_redock_4);   
+                              
     plhs[0] = mxCreateDoubleScalar(spcount);
     
 }

@@ -27,11 +27,10 @@ tau = 60e-3;
 trel = 10e-3;
 tabs = 10e-3;
 
-if exist('randNums','var')
-  prevRandNums = randNums;
-end
-
+% Call fast fractional gaussian noise function for Double Precision
+% randNums = single(ffGn(totalstim, tdres, Hinput, noiseType, spont));
 randNums = single(rand(1002,1));
+
 elapsed_time = 0; % single(tdres * randi(floor(Fs * t_rd_init)));
 % unitRateInterval = single(-log(rand(1))/tdres);
 unitRateInterval = 87745;
@@ -45,3 +44,7 @@ nrep = 1;
 dt = tdres; 
 noiseType = 1;
 implnt = 0;
+
+%% Accumulator Settings
+integrationTime = 01e-3*Fs;
+threshold       = 0.950;

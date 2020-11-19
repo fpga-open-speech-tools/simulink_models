@@ -6,7 +6,7 @@ mp.sim_verify  = 1;
 mp.simDuration = 5;
 mp.nSamples    = config.system.sampleClockFrequency * mp.simDuration;
 
-mp.testFile    = [mp.test_signals_path filesep 'auditory_nerve\inner_hair_cell.wav'];
+mp.testFile    = [mp.test_signals_path filesep 'auditory_nerve\m06ae_ihc_result.wav'];
 
 %% ANM Settings
 cf = 1000;    % Characteristic frequency of specific neuron
@@ -46,7 +46,9 @@ totalstim = mp.nSamples;
 Hinput = 0.9;  % Set Hurst index to the value hard-coded in C source code
 spont = 100;   % Set mean of noise
 % Call fast fractional gaussian noise function for Double Precision
-randNums = single(ffGn(totalstim, tdres, Hinput, noiseType, spont));
+randNums = ffGn(totalstim, tdres, Hinput, noiseType, spont);
+randNumsSpikeGen = rand(totalstim,1);
+
 
 % Parameters for Fast Power Law Adaptation Function
 alpha1 = 1.5e-6*100e3; 
