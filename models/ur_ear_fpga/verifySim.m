@@ -64,9 +64,14 @@ elseif(debug_flag == 1)
     [mef_source_out, rsigma_source_out, c1_chirp_source_out, c2_wbgt_source_out, c1_nl_source_out, c2_nl_source_out, ihc_source_out, anm_source_out] = model_IHC_BEZ2018_debug(data_input', cf, 1, tdres, rep_time, cohc, cihc, 2); % Simulate the Auditory Nerve Model
     pla_nl_out = NLBeforePLA(anm_source_out, total_stim, spont, cf);
     syn_out    = PowerLaw(pla_nl_out, total_stim, randNums, Fs);
+    
     [spCount_source, sptime_source, trd_vector_source, sp_count_redock_1, sp_count_redock_2, sp_count_redock_3, sp_count_redock_4] = spikegen_pseudorandom(...
-        syn_out, randNums, tdres, t_rd_rest, t_rd_init, tau, t_rd_jump, nSites, tabs, trel, spont, total_stim, nrep, total_mean_rate, MaxArraySizeSpikes, double(unitRateInterval), double(oneSiteRedock));
-    [counts, valid] = integrateCounts(integrationTime,sp_count_redock_1,sp_count_redock_2,sp_count_redock_3,sp_count_redock_4);
+        syn_out, randNumsSpikeGen, tdres, t_rd_rest, t_rd_init, tau, t_rd_jump, nSites, tabs, trel, spont, total_stim, nrep, total_mean_rate, MaxArraySizeSpikes, double(unitRateInterval), double(oneSiteRedock));
+    
+    [spCount_source, sptime_source, trd_vector_source, sp_count_redock_1, sp_count_redock_2, sp_count_redock_3, sp_count_redock_4] = spikegen_source( ...
+            syn_out, tdres, t_rd_rest, t_rd_init, tau, t_rd_jump, nSites, tabs, trel, spont, totalstim, nrep, total_mean_rate, MaxArraySizeSpikes);
+  
+    [counts, valid] = integrateCounts(integrationTime,sp_count_redock_1*4,sp_count_redock_2,sp_count_redock_3,sp_count_redock_4);
     
     %---------------------------------
     %---Plot the Results--------------
