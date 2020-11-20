@@ -114,10 +114,7 @@ int SpikeGenerator( double *synout, double *randNums, double tdres, double t_rd_
     /* The sufficient array size (more than 99.7% of cases) to register event times  after zero is :/
      * /*MaxN=signalLengthInSec/meanEvents+ 3*sqrt(signalLengthInSec/MeanEvents)*/
     
-    MaxArraySizeEvents= ceil ((long) (totalstim*nrep*tdres/MeanInterEvents+ 3 * sqrt(totalstim*nrep*tdres/MeanInterEvents)))+nSites;
-    
-    mexPrintf("synout1: %f\n",synout[0]);
-    
+    MaxArraySizeEvents= ceil ((long) (totalstim*nrep*tdres/MeanInterEvents+ 3 * sqrt(totalstim*nrep*tdres/MeanInterEvents)))+nSites; 
     
     /* Max random array Size:   nSites elements for oneSiteRedock initialization, nSites elements for preRelease_initialGuessTimeBins initialization
      * 1 element for Tref initialization, MaxArraySizeSpikes elements for Tref in the loop, MaxArraySizeEvents elements one  time for redocking, another time for rate intervals
@@ -140,7 +137,6 @@ int SpikeGenerator( double *synout, double *randNums, double tdres, double t_rd_
         
     }
     
-    mexPrintf("synout2: %f\n",synout[0]);
     
     /* Call Sort function using  */
     sortInputArray[0] = mxCreateDoubleMatrix(1, nSites, mxREAL);
@@ -157,10 +153,7 @@ int SpikeGenerator( double *synout, double *randNums, double tdres, double t_rd_
       unitRateInterval[i] = unitRateInterval_init;
       Xsum[i] = 0;
     }
-    
-    
-    mexPrintf("synout3: %f\n",synout[0]);
-    
+        
     mexCallMATLAB(1, sortOutputArray, 1, sortInputArray, "sort");
     
     /*Now Sort the four initial preRelease times and associate
@@ -176,9 +169,7 @@ int SpikeGenerator( double *synout, double *randNums, double tdres, double t_rd_
     
     /* The position of first spike, also where the process is started- continued from the past */
     kInit = (int) preReleaseTimeBinsSorted[0];
-    
-    mexPrintf("synout5: %f\n",synout[1]);
-    
+        
     /* Current refractory time */
     Tref = tabs - trel*log( randNums[0] );
     
@@ -198,8 +189,6 @@ int SpikeGenerator( double *synout, double *randNums, double tdres, double t_rd_
         
     mexPrintf("osr: %f\tet: %f\n",oneSiteRedock[0],elapsed_time);
 
-
-    mexPrintf("synout6: %f\n",synout[0]);
     while (k < totalstim*nrep){
       if(k < 5)
         mexPrintf("k= %d,synout7: %f\n",k,synout[k]);
@@ -419,12 +408,8 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
   
   // Define the input array
   synout = (double*)mxCalloc(totalstim*nrep,sizeof(double));
-  mexPrintf("synout: %f\n",synout_pntr[0]);
-
-   for (ii = 0; ii < n_synout; ii++)
-      synout[ii] = synout_pntr[ii]; 
   
-  mexPrintf("synout: %f\n",synout[0]);
+  // mexPrintf("randNum: %f\n",randNums[0]);
   
     
   // Define the size of the output arrays
