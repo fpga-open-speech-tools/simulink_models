@@ -60,6 +60,7 @@ elseif(debug_flag == 1)
     MaxArraySizeSpikes = length(data_input)*nrep;
     mex 'validation\model_IHC_BEZ2018_debug.c' 'validation\complex.c' % Compile the UR EAR IHC BEZ2018 Debug Source
     mex 'synapse_spike_generator_model\spike_generator\spikegen_pseudorandom.c' 'synapse_spike_generator_model\complex.c'
+    mex 'synapse_spike_generator_model\spike_generator\spikegen_source.c' 'synapse_spike_generator_model\complex.c'
     
     [mef_source_out, rsigma_source_out, c1_chirp_source_out, c2_wbgt_source_out, c1_nl_source_out, c2_nl_source_out, ihc_source_out, anm_source_out] = model_IHC_BEZ2018_debug(data_input', cf, 1, tdres, rep_time, cohc, cihc, 2); % Simulate the Auditory Nerve Model
     pla_nl_out = NLBeforePLA(anm_source_out, total_stim, spont, cf);
