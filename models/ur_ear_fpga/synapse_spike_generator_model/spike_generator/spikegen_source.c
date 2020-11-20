@@ -227,12 +227,15 @@ int SpikeGenerator( double *synout, double tdres, double t_rd_rest, double t_rd_
                 /* There are  nSites integrals each vesicle senses 1/nosites of  the whole rate */
             }
             
-            
-            
-            if ( (current_release_times[siteNo] >= current_refractory_period) )
+            if  ( (Xsum[siteNo]  >=  unitRateInterval[siteNo]) &&  ( k >= preReleaseTimeBinsSorted [siteNo] ) )
+            {  /* An event- a release  happened for the siteNo*/
+                
+                oneSiteRedock[siteNo]  = -current_redocking_period*log( randNums[randBufIndex++]);
+                current_release_times[siteNo] = previous_release_times[siteNo]  + elapsed_time[siteNo];
+                elapsed_time[siteNo] = 0;  
+                
+              if ( (current_release_times[siteNo] >= current_refractory_period) )
                 {
-                    // mexPrintf("crt > crp\n");
-                    // mexPrintf("siteNo: %d\n",k);
                     /*Register only non negative spike times */
                     if(siteNo == 0 & k > -1)
                     {
@@ -294,6 +297,12 @@ int SpikeGenerator( double *synout, double tdres, double t_rd_rest, double t_rd_
                     current_refractory_period = current_release_times[siteNo] + Tref;
                     
                 }
+                previous_release_times[siteNo] = current_release_times[siteNo];
+                
+                Xsum[siteNo] = 0;
+                unitRateInterval[siteNo] = (int) (-log(randNums[randBufIndex++]) / tdres);
+                
+            };
             /* Error Catching */
             if ( (spCount+1)>MaxArraySizeSpikes  || (randBufIndex+1 )>randBufLen  )
             {     /* mexPrintf ("\n--------Array for spike times or random Buffer length not large enough, Rerunning the function.-----\n\n"); */
@@ -320,6 +329,8 @@ int SpikeGenerator( double *synout, double tdres, double t_rd_rest, double t_rd_
             trd_vector [k] = current_redocking_period;
         
         k = k+1;
+        // if (k > -1)
+          // mexPrintf("synout: %f\trand: %f\n",synout[k],randNums[k]);
         
         
     };
