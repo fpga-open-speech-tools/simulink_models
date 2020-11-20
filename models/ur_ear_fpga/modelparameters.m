@@ -1,4 +1,10 @@
 TWOPI = 6.28318530717959;
+%% Add Subfolders to Path
+addpath(genpath('auditory_nerve'))
+addpath(genpath('middle_ear_filter'))
+addpath(genpath('synapse_spike_generator_model'))
+addpath(genpath('validation'))
+
 %% Autogen parameters
 mp.testFile = [mp.test_signals_path filesep 'auditory_nerve\m06ae.wav'];
 

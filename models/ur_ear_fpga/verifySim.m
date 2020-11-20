@@ -34,30 +34,51 @@ data_input = testSignal.audio(:,1);
 total_stim = length(data_input);
 rep_time   = total_stim * tdres;
 
+total_mean_rate = sum(data_input/length(data_input));
+MaxArraySizeSpikes = length(data_input)*nrep;
+
 debug_flag = 1;
 
 if(debug_flag == 0)
     % Disable the Debug Outputs
     mex 'validation\model_IHC_BEZ2018.c' 'validation\complex.c'                             % Compile the UR EAR IHC BEZ2018 Model
+    mex 'synapse_spike_generator_model\spike_generator\spikegen_source.c' 'synapse_spike_generator_model\complex.c'
     anm_source_out = model_IHC_BEZ2018(data_input', cf, 1, tdres, rep_time, cohc, cihc, 2); % Simulate the Auditory Nerve Model
+    pla_nl_out     = NLBeforePLA(anm_source_out, total_stim, spont, cf);
+    syn_out        = PowerLaw(pla_nl_out, total_stim, randNums, Fs);
+    [spCount_source, sptime_source, trd_vector_source, sp_count_redock_1, sp_count_redock_2, sp_count_redock_3, sp_count_redock_4] = spikegen_source( ...
+        syn_out, tdres, t_rd_rest, t_rd_init, tau, t_rd_jump, nSites, tabs, trel, spont, total_stim, nrep, total_mean_rate, MaxArraySizeSpikes);
+    [counts_source_out, valid_source_out] = integrateCounts(integrationTime,sp_count_redock_1,sp_count_redock_2,sp_count_redock_3,sp_count_redock_4);
 
     % Plot the Results
     figure
-    subplot(2,1,1)
+    subplot(4,1,1)
     plot(data_input)
     title(['Audio Input: Sampling Freq: ' num2str(Fs) ' Hz'])
 
-    subplot(2,1,2)
+    subplot(4,1,2)
     plot(anm_source_out)
     hold on
     plot(an_sim_out,'--')
     legend('C Source Code','Simulink')
     title(['UR EAR - Auditory Nerve Simulation: Char Freq = ' num2str(cf) ' Hz'])
+      
+    subplot(4,1,3)
+    plot(counts_source_out)
+    hold on
+    plot(spike_count_sim_out,'--')
+    legend('MATLAB Source Code','Simulink')
+    title('UR EAR - Accumulator Counts' )
     
+    subplot(4,1,4)
+    plot(valid_source_out)
+    hold on
+    plot(spike_valid_sim_out,'--')
+    legend('MATLAB Code','Simulink')
+    title('UR EAR - Accumulator Valid')
+
 elseif(debug_flag == 1)   
     % Enable the Intermediate Steps and Plotting
-    total_mean_rate = sum(data_input/length(data_input));
-    MaxArraySizeSpikes = length(data_input)*nrep;
     mex 'validation\model_IHC_BEZ2018_debug.c' 'validation\complex.c' % Compile the UR EAR IHC BEZ2018 Debug Source
     mex 'synapse_spike_generator_model\spike_generator\spikegen_pseudorandom.c' 'synapse_spike_generator_model\complex.c'
     mex 'synapse_spike_generator_model\spike_generator\spikegen_source.c' 'synapse_spike_generator_model\complex.c'
