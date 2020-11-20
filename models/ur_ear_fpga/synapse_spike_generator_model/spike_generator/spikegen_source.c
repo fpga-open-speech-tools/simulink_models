@@ -372,12 +372,7 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
     totalstim = totalstim * nrep;
 
   // Define the input array
-  synout = (double*)mxCalloc(totalstim*nrep,sizeof(double));
-
-   for (ii = 0; ii < n_synout; ii++)
-      synout[ii] = synout_pntr[ii]; 
-    
-  
+  synout = (double*)mxCalloc(totalstim*nrep,sizeof(double));  
     
   // Define the size of the output arrays
   
@@ -401,7 +396,7 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
     sp_count_redock_4 = mxGetPr(plhs[6]);
 
     /* call the computational routine */
-    spcount = SpikeGenerator( synout, tdres, t_rd_rest, t_rd_init, tau, t_rd_jump, nSites, tabs, 
+    spcount = SpikeGenerator( synout_pntr, tdres, t_rd_rest, t_rd_init, tau, t_rd_jump, nSites, tabs, 
                               trel, spont, totalstim, nrep, total_mean_rate, MaxArraySizeSpikes, sptime, trd_vector,
                               sp_count_redock_1, sp_count_redock_2, sp_count_redock_3, sp_count_redock_4);   
                               
