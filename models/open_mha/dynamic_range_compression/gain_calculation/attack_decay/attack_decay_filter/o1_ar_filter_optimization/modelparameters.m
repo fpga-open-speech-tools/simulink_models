@@ -15,13 +15,13 @@
 % openspeech@flatearthinc.com
 
 %% Autogen parameters
-mp.testFile = [mp.test_signals_path filesep 'acoustic.wav'];
+mp.testFile = [mp.test_signals_path filesep 'auditory_nerve\mef_result_subset.wav'];
 
 mp.sim_prompts = 1;
 mp.sim_verify = 1;
 mp.simDuration = 15;
 mp.nSamples = config.system.sampleClockFrequency * mp.simDuration;
-mp.useAvalonInterface = true;
+mp.useAvalonInterface = false;
 
 mp.W_bits = 24;
 mp.F_bits = 23;
