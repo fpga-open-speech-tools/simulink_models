@@ -40,10 +40,15 @@ for i =1:1:total_stim
 end
 
 %% Plot the Results
-sim_out = mp.dataOut(1,:);
 figure
+subplot(2,1,1)
+plot(data_input)
+legend("Audio Input Wave")
+title("Audio Input")
+
+subplot(2,1,2)
 plot(open_mha_drc_filter_sim)
 hold on
-plot(sim_out,'--')
+plot(Avalon_Sink_Data,'--')
 legend('MATLAB Code','Simulink')
 title('Open MHA DRC Filter Simulation')
