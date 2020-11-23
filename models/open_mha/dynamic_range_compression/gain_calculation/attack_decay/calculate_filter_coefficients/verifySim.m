@@ -53,6 +53,8 @@ subplot(7,1,1)
 plot(band_num_input)
 hold on
 plot(Avalon_Sink_Data)
+legend('Band Number Input', 'Band Number Output')
+title('Band Number')
 
 subplot(7,1,2)
 plot(addr_attack_matlab)
