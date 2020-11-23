@@ -36,7 +36,7 @@ total_stim = length(data_input);
 open_mha_drc_filter_sim = zeros(total_stim,1);
 
 for i =1:1:total_stim
-    open_mha_drc_filter_sim(i,1) = (c1_random_in * buf_random_in) + (c2_random_in * data_input(i,1)); % mha_filter.hh - Line 201
+    open_mha_drc_filter_sim(i,1) = (c1_random_in * buf_random_in) + (c2_random_in * fi(data_input(i,1),1,40,32)); % mha_filter.hh - Line 201
 end
 
 %% Plot the Results

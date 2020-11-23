@@ -27,6 +27,6 @@ mp.W_bits = 24;
 mp.F_bits = 23;
 
 %% Open MHA DRC Filter Coefficients
-c2_random_in  = single(rand(1,1));
-c1_random_in  = single(rand(1,1));
-buf_random_in = single(rand(1,1));
+c2_random_in  = fi(rand(1,1),0,16,16);
+c1_random_in  = fi(rand(1,1),0,16,16);
+buf_random_in = fi(rand(1,1),1,40,32);
