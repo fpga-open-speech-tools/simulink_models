@@ -1,0 +1,40 @@
+{
+    "system": {
+        "target": "audiomini",
+        "sampleClockFrequency": 48000,
+        "systemClockFrequency": 98304000,
+        "processing": "sample",
+        "audioIn": {
+            "wordLength": 32,
+            "fractionLength": 28,
+            "signed": true,
+            "numberOfChannels": 2
+        },
+        "audioOut": {
+            "wordLength": 32,
+            "fractionLength": 28,
+            "signed": true,
+            "numberOfChannels": 2
+        }
+    },
+
+    "devices": [
+        {
+            "name": "calculate_filter_coefficients_sim",
+            "registers": [
+                {
+                    "dataType": {
+                        "fractionLength": 0,
+                        "signed": false,
+                        "type": "boolean",
+                        "wordLength": 1
+                    },
+                    "defaultValue": 0,
+                    "name": "passthrough",
+                    "registerNumber": 0
+                }
+            ]
+        }
+    ]
+    
+}
