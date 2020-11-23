@@ -33,7 +33,7 @@ mp.F_bits = 23;
 Fs = 48e3;
 num_bands = 1;
 buf_a = 65; % Initial Condition of the Attack Filter Delay Block
-buf_r = 65; % This should be updated to buf_d to match naming convention
+buf_d = 65; % Initial Condition of the Delay Filter Delay Block
 
 %% Attack Filter Parameters
 % The Attack Filter is an "o1flt_lowpass_t" object - Line 105 of dc.hh
