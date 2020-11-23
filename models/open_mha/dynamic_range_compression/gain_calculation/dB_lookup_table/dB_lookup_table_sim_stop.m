@@ -49,11 +49,6 @@ disp(maxdiff);
 disp('Average Percent Difference');
 disp(avgpercdiff);
 
-disp('Max Diff Input Value = ');
-disp(level_in(mdidx+4));
-disp('Max Perc Diff Input Value = ');
-disp(level_in(mpdidx+4));
-
 avgdiff = sum(diff)/length(diff);
 bitprecision = -log2(avgdiff)
 guaranteedbits = -log2(maxdiff);

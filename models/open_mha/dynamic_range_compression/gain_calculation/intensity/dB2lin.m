@@ -14,3 +14,4 @@ Pa2val = (10.^(dBval./10))./2500000000;
 % Note that this case assumes that each bin contains the same intensity,
 % and that the real and imaginary components of the FFT data are equal
 FFTval = (sqrt((Pa2val/2)./(num_bins*2)));
+

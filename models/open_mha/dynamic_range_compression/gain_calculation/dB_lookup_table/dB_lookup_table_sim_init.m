@@ -34,7 +34,13 @@ fs = 48000;
 %% Declare Simulation Input Signals
 
 % Data Input Signal (Input Level level_in)
-load('level_in.mat');
+% Designed to simulate all possible input intensity levels
+% from 0 dB to 96 dB
+dB_level_in = linspace(0,96,20000);
+% Converting input signal from units of dBSPL to Pascal-squared
+[level_in,FFTval] = dB2lin(dB_level_in,1);
+
+% load('level_in.mat');
 
 %% Declare Stop Time
 
