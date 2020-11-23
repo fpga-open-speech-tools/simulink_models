@@ -49,16 +49,17 @@ tau_as = tau_a.*[1:0.2:num_bands]';
 tau_ds = tau_d.*[1:0.2:num_bands]';
 
 % Initialization
-ad_taus   = zeros(2^coeff_size,1);
-ad_coeffs = zeros(2^coeff_size,1);
+ad_coeffs = fi(zeros(2^coeff_size,1),0,16,16);
 
 % Create the Coefficient Array
 z = 1;
 for i = 1:2:2*num_bands-1
-    [ad_coeffs(i,1), ~]   = o1_lp_coeffs(tau_as(z), fs);
-    [ad_coeffs(i+1,1), ~] = o1_lp_coeffs(tau_ds(z), fs);
+    [attack_c1, ~]   = o1_lp_coeffs(tau_as(z), fs);
+    ad_coeffs(i,1)   = fi(attack_c1,0,16,16);
+    [decay_c1, ~]    = o1_lp_coeffs(tau_ds(z), fs);
+    ad_coeffs(i+1,1) = fi(decay_c1,0,16,16);
     z = z+1;
 end
 time = (0:1:length(band_num_input)-1) *1/fs;
-band_num_timeseries = timeseries(band_num_input,time);
+band_num_timeseries = timeseries(uint8(band_num_input),time);
 

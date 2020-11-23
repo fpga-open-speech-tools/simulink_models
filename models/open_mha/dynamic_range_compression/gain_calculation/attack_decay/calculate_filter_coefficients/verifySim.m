@@ -41,9 +41,9 @@ c2_d_matlab        = zeros(total_stim,1);
 for i = 1:1:total_stim
     addr_attack_matlab(i,1) = (band_num_input(i) - 1) * num_coeff;
     addr_decay_matlab(i,1)  = ((band_num_input(i) - 1) * num_coeff) + 1;
-    c1_a_matlab(i,1)        = fi(ad_coeffs(addr_attack_matlab(i,1) + 1),0,16,16);  % Account for MATLAB Array Indexing starting at 1
+    c1_a_matlab(i,1)        = ad_coeffs(addr_attack_matlab(i,1) + 1);  % Account for MATLAB Array Indexing starting at 1
     c2_a_matlab(i,1)        = 1 - c1_a_matlab(i,1);
-    c1_d_matlab(i,1)        = fi(ad_coeffs(addr_decay_matlab(i,1) + 1),0,16,16);   % Account for MATLAB Array Indexing starting at 1
+    c1_d_matlab(i,1)        = ad_coeffs(addr_decay_matlab(i,1) + 1);   % Account for MATLAB Array Indexing starting at 1
     c2_d_matlab(i,1)        = 1 - c1_d_matlab(i,1);
 end
 
