@@ -15,7 +15,8 @@
 % openspeech@flatearthinc.com
 
 %% Initialize
-addpath(genpath('..\attack_decay_filter')); % Location of the o1_lp_coeffs function
+addpath(genpath('..\attack_decay_filter'));        % Location of the o1_lp_coeffs function
+addpath(genpath('..\..\..\referenced_functions')); % Location of the Dual Port RAM
 
 %% Autogen parameters
 mp.testFile = [mp.test_signals_path filesep 'auditory_nerve\mef_result_subset.wav'];
@@ -40,14 +41,9 @@ mp.W_bits = 24;
 mp.F_bits = 23;
 
 %% Attack and Decay DPRAM Parameters
-% Base time constants
-tau_a = 0.020; % seconds
-tau_d = 0.100; % seconds
-
-% Calculating vector easily via multiples of base constants
-tau_as = tau_a.*[1:0.2:num_bands]';
-tau_ds = tau_d.*[1:0.2:num_bands]';
-
+% Create tau values to generate C1 Coefficients between 0 and 1
+tau_as = -1 ./ (log([0:1:num_bands-1] ./ num_bands) * fs);
+tau_ds = -1 ./ (log([num_bands-1:-1:0] ./ num_bands) * fs);
 % Initialization
 ad_coeffs = fi(zeros(2^coeff_size,1),0,16,16);
 
