@@ -20,7 +20,7 @@
 
     "devices": [
         {
-            "name": "attack_decay_filter_sim",
+            "name": "calculate_filter_coefficients_sim",
             "registers": [
                 {
                     "dataType": {
