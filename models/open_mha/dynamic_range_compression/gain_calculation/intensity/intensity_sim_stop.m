@@ -24,16 +24,32 @@
 
 %% Calculate openMHA Results
 
-bin_intensity(1:inlength) = FFT_data_real(1:inlength).^2 + FFT_data_imag(1:inlength).^2;
 for i = 1:inlength
-    level_in(i) = accumulate_band(bin_intensity(i), accumulator_reset(i), bin_num(i), num_bins);
+    level_in(i) = colored_intensity(FFT_data_real(i), FFT_data_imag(i), accumulator_reset(i), bin_num(i), FFTsize);
 end
 % *** openMHA Source File, Function Call: dc.cpp 
 % *** openMHA Source File, Function Call Lines: 404 (colored_intensity) 
 % *** openMHA Source File, Computation: mha_signal.cpp
 % *** openMHA Source File, Computation Lines: 1937-1965 
 
-%% Compare Results
-
-
 %% Plot Results
+
+% Note that the only relevant results are those that correspond to
+% positive frequency bins. Thus, for an FFT size of 256, these are the
+% first 129 bins after each valid_data signal high.
+
+figure()
+plot(level_in(1:FFTsize/2));
+hold on;
+plot(out.level_in(1:FFTsize/2));
+hold off;
+legend('Expected Intensity Values','Simulink Intensity Values','Location','southeast');
+xlabel('Sample Number');
+ylabel('Intensity Level [Pa^2]');
+title('Sound Intensity Level: Actual vs. Expected Results');
+
+figure()
+plot(abs(level_in(1:FFTsize/2) - out.level_in(1:FFTsize/2)'));
+xlabel('Sample Number');
+ylabel('Intensity Level Difference[Pa^2]');
+title('Difference Error Between openMHA and Simulink Intensity Levels');

@@ -178,7 +178,7 @@ gainapp_dp_memory = log2(num_bands) + 1;
 % data
 % *** % NOTE: Will need to change to adjust for number of bands and desired
 % signal behavior
-input_length = 1500;
+input_length = 15;
 
 for i = 1:num_bands
    [Pa2val1(i),FFTval1(i)] = dB2lin(55,band_sizes(i));
