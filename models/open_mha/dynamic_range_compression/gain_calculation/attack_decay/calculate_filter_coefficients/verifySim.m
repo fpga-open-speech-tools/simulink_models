@@ -50,7 +50,7 @@ end
 %% Plot the Results
 figure
 subplot(7,1,1)
-plot(data_input)
+plot(band_num_input)
 hold on
 plot(Avalon_Sink_Data)
 

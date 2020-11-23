@@ -17,6 +17,12 @@
 %% Autogen parameters
 mp.testFile = [mp.test_signals_path filesep 'auditory_nerve\mef_result_subset.wav'];
 
+% Open MHA Parameters 
+fs = 48e3;
+coeff_size = 8;
+num_bands  = 8;
+num_coeff  = 2;
+
 % Data Input Array
 band_num_input = [1:1:num_bands num_bands:-1:1];
 band_num_input = [band_num_input band_num_input band_num_input band_num_input band_num_input];
@@ -31,11 +37,6 @@ mp.W_bits = 24;
 mp.F_bits = 23;
 
 %% Attack and Decay DPRAM Parameters
-fs = 48e3;
-coeff_size = 8;
-num_bands  = 8;
-num_coeff  = 2;
-
 % Base time constants
 tau_a = 0.020; % seconds
 tau_d = 0.100; % seconds
