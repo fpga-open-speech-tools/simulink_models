@@ -14,6 +14,9 @@
 % Bozeman, MT 59718
 % openspeech@flatearthinc.com
 
+%% Initialize
+addpath(genpath('..\attack_decay_filter')); % Location of the o1_lp_coeffs function
+
 %% Autogen parameters
 mp.testFile = [mp.test_signals_path filesep 'auditory_nerve\mef_result_subset.wav'];
 
