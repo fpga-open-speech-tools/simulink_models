@@ -26,7 +26,29 @@ mp.useAvalonInterface = false;
 mp.W_bits = 24;
 mp.F_bits = 23;
 
+%% Fixed Point Sizes
+% Coefficient Paramters
+coeff_fp_size = 16; % Word Size
+coeff_fp_dec  = 16; % Fractional Bits
+coeff_fp_sign = 0;  % Unsigned = 0, Signed = 1
+
+% Data Input/Feedback Paramters
+in_fp_size = 40; % Word Size
+in_fp_dec  = 32; % Fractional Bits
+in_fp_sign = 1;  % Unsigned = 0, Signed = 1
+
+%% Simulation Type - Either 'double' or 'fxpt'
+sim_type    = 'fxpt';     
+% Define the Input Data Types
+if(strcmp(sim_type,'double'))
+    input_type = 'double';
+    coeff_type = 'double';
+elseif(strcmp(sim_type,'fxpt'))
+    input_type = fixdt(in_fp_sign,in_fp_size,in_fp_dec);
+    coeff_type = fixdt(coeff_fp_sign,coeff_fp_size,coeff_fp_dec);
+end
+
 %% Open MHA DRC Filter Coefficients
-c2_random_in  = fi(rand(1,1),0,16,16);
-c1_random_in  = fi(rand(1,1),0,16,16);
-buf_random_in = fi(rand(1,1),1,40,32);
+c2_random_in  = rand(1,1);
+c1_random_in  = rand(1,1);
+buf_random_in = rand(1,1);
