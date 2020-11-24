@@ -15,5 +15,10 @@ for ii = floor(1:(length(spcountRedock1)/integrationTime-1))
   valid(inds(end)) = 1;
 end
 
+if size(counts,2) > inds(end)
+  counts(inds(end)+1:end) = cumsum(spcountRedock1(inds(end)+1:end)) + cumsum(spcountRedock2(inds(end)+1:end)) ...
+                          + cumsum(spcountRedock3(inds(end)+1:end)) + cumsum(spcountRedock4(inds(end)+1:end));
+end
+
 
 end
