@@ -39,7 +39,7 @@ buf_d = 65 .* ones(num_bands,1); % Initial Condition of the Delay Filter Delay B
 % The Attack Filter is an "o1flt_lowpass_t" object - Line 105 of dc.hh
 % Set the attack and release time constants equal for the attack filter
 % Lines 448-452 of mha_filter.cpp
-attack_attack_tau  = 0.005;            % Time Constant in seconds - from openMHA Dynamic Compression Plugin documentation
+attack_attack_tau  = 0.005;             % Time Constant in seconds - from openMHA Dynamic Compression Plugin documentation
 attack_release_tau = attack_attack_tau; % Time Constant in seconds
 [attack_c1_a, attack_c2_a] = o1_lp_coeffs(attack_attack_tau,Fs);
 [attack_c1_r, attack_c2_r] = o1_lp_coeffs(attack_release_tau,Fs);
