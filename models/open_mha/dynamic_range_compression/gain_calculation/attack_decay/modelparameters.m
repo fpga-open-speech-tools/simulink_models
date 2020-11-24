@@ -34,6 +34,29 @@ coeff_size = 8;    % Coefficient Address Size
 num_bands  = 8;    % Number of Frequency Bands
 num_coeff  = 2;    % Number of C1 Coefficients required by the Attack and Decay Filter
 
+%% Simulation Type - Either 'double' or 'fxpt'
+%--Only Fixed Point works with the Current Dual Port RAM Block--
+sim_type    = 'fxpt';                  
+
+% Attack and Decay Coefficient Fixed Point Paramters
+ad_coeff_fp_size = 16; % Word Size
+ad_coeff_fp_dec  = 16; % Fractional Bits
+ad_coeff_fp_sign = 0;  % Unsigned = 0, Signed = 1
+
+% Data Input/Feedback Fixed Point Paramters
+in_fp_size = 40; % Word Size
+in_fp_dec  = 32; % Fractional Bits
+in_fp_sign = 1;  % Unsigned = 0, Signed = 1
+
+% Define the Input Data Types
+if(strcmp(sim_type,'double'))
+    input_type    = 'double';
+    ad_coeff_type = 'double';
+elseif(strcmp(sim_type,'fxpt'))
+    input_type    = fixdt(in_fp_sign,in_fp_size,in_fp_dec);
+    ad_coeff_type = fixdt(ad_coeff_fp_sign,ad_coeff_fp_size,ad_coeff_fp_dec);
+end
+
 %% Band Number Array
 stim_length    = AudioSource.fromFile(mp.testFile, mp.Fs, mp.nSamples).nSamples;
 band_num_input = zeros(stim_length,1);
@@ -45,19 +68,49 @@ time = (0:1:length(band_num_input)-1) * 1/fs;
 band_num_timeseries = timeseries(band_num_input,time);
 
 %% Attack and Decay DP-RAM Parameters
-% Create tau values to generate C1 Coefficients between 0 and 1
-tau_as = -1 ./ (log([0:1:num_bands-1] ./ num_bands) * fs);
-tau_ds = -1 ./ (log([num_bands-1:-1:0] ./ num_bands) * fs);
-% Initialization
-ad_coeffs = fi(zeros(2^coeff_size,1),0,16,16);
+%--Attack Coefficients
+%-Initialize the attack coefficient arrays: 1 coefficient per band
+attack_c1_a_array = zeros(num_bands,1);
+attack_c2_a_array = zeros(num_bands,1);
+attack_c1_r_array = zeros(num_bands,1);
+attack_c2_r_array = zeros(num_bands,1);
 
-% Create the Coefficient Array
+for j = 1:num_bands
+    if j == 1
+        attack_attack_tau  = 0.005; % Defined in the Open MHA Plug in documnetation
+    else
+        attack_attack_tau  = attack_attack_tau /2; % Reduce the time constant by half for each consecutive band 
+    end
+    attack_release_tau = attack_attack_tau; % Set the release time constant equal to the attack time constant - Lines 450-451 of mha_filter.cpp
+    [attack_c1_a_array(j,1), attack_c2_a_array(j,1)] = o1_lp_coeffs(attack_attack_tau,fs);  % Compute the attack coefficients - Lines 589-599 of mha_filter.cpp
+    [attack_c1_r_array(j,1), attack_c2_r_array(j,1)] = o1_lp_coeffs(attack_release_tau,fs); % Compute the release coefficients - Lines 589-599 of mha_filter.cpp
+end
+%--Decay Coefficients
+%-Initialize the decay coefficient arrays: 1 coefficient per band
+decay_c1_a_array = zeros(num_bands,1);
+decay_c2_a_array = zeros(num_bands,1);
+decay_c1_r_array = zeros(num_bands,1);
+decay_c2_r_array = zeros(num_bands,1);
+
+decay_attack_tau  = 0; % Line 507 of mha_filter.cpp
+for j = 1:num_bands        
+    if j == 1
+        decay_release_tau = 0.060; % Defined in the Open MHA Plug in documnetation
+    else
+        decay_release_tau = decay_release_tau / 2; % Reduce the time constant by half for each consecutive band 
+    end
+
+    [decay_c1_a_array(j,1), decay_c2_a_array(j,1)] = o1_lp_coeffs(decay_attack_tau,fs);  % Compute the attack coefficients - Lines 589-599 of mha_filter.cpp
+    [decay_c1_r_array(j,1), decay_c2_r_array(j,1)] = o1_lp_coeffs(decay_release_tau,fs); % Compute the release coefficients - Lines 589-599 of mha_filter.cpp
+end
+
+%--Dual Port RAM Coefficient Array
+%-Initialization
+ad_coeffs = zeros(2^coeff_size,1);
 z = 1;
 for i = 1:2:2*num_bands-1
-    [attack_c1, ~]   = o1_lp_coeffs(tau_as(z), fs);
-    ad_coeffs(i,1)   = fi(attack_c1,0,16,16);
-    [decay_c1, ~]    = o1_lp_coeffs(tau_ds(z), fs);
-    ad_coeffs(i+1,1) = fi(decay_c1,0,16,16);
+    ad_coeffs(i,1)   = attack_c1_a_array(z);
+    ad_coeffs(i+1,1) = decay_c1_r_array(z);
     z = z+1;
 end
 
