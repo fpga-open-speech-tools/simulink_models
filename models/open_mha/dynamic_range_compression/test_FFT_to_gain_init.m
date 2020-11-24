@@ -22,6 +22,29 @@ fs = 48000;
 Wbits = 40;    %fixdt(1,Wbits,Fbits)
 Fbits = 32;
 
+%% Simulation Type - Either 'double' or 'fxpt'
+%--Only Fixed Point works with the Current Dual Port RAM Block--
+sim_type = 'fxpt';                  
+
+% Attack and Decay Coefficient Fixed Point Paramters
+ad_coeff_fp_size = 16; % Word Size
+ad_coeff_fp_dec  = 16; % Fractional Bits
+ad_coeff_fp_sign = 0;  % Unsigned = 0, Signed = 1
+
+% Data Input/Feedback Fixed Point Paramters
+in_fp_size = 40; % Word Size
+in_fp_dec  = 32; % Fractional Bits
+in_fp_sign = 1;  % Unsigned = 0, Signed = 1
+
+% Define the Input Data Types
+if(strcmp(sim_type,'double'))
+    input_type    = 'double';
+    ad_coeff_type = 'double';
+elseif(strcmp(sim_type,'fxpt'))
+    input_type    = fixdt(in_fp_sign,in_fp_size,in_fp_dec);
+    ad_coeff_type = fixdt(ad_coeff_fp_sign,ad_coeff_fp_size,ad_coeff_fp_dec);
+end
+
 %% Declare FFT Parameters
 
 FFTsize = 256;
