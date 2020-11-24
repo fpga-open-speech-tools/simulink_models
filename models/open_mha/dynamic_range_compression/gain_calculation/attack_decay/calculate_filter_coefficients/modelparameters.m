@@ -48,12 +48,11 @@ ad_coeff_fp_size = 16; % Word Size
 ad_coeff_fp_dec  = 16; % Fractional Bits
 ad_coeff_fp_sign = 0;  % Unsigned = 0, Signed = 1
 
-% Data Input/Feedback Paramters
+% Data Input/Feedback Fixed Point Paramters
 in_fp_size = 40; % Word Size
 in_fp_dec  = 32; % Fractional Bits
 in_fp_sign = 1;  % Unsigned = 0, Signed = 1
 
-%% Simulation Input for N Bands
 % Define the Input Data Types
 if(strcmp(sim_type,'double'))
     input_type    = 'double';

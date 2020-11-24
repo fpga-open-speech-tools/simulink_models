@@ -35,31 +35,29 @@ num_bands   = 1;                       % Number of Frequency Bands to Simulate
 buf_a       = 65 .* ones(num_bands,1); % Initial Condition of the Attack Filter Delay Block
 buf_d       = 65 .* ones(num_bands,1); % Initial Condition of the Delay Filter Delay Block
 
-% Simulation Type - Either 'double' or 'fxpt'
-sim_type    = 'double';                  
+%% Simulation Type - Either 'double' or 'fxpt'
+sim_type    = 'fxpt';                  
 
-%% Fixed Point Sizes
-% Coefficient Paramters
-coeff_fp_size = 16; % Word Size
-coeff_fp_dec  = 16; % Fractional Bits
-coeff_fp_sign = 0;  % Unsigned = 0, Signed = 1
+% Attack and Decay Coefficient Fixed Point Paramters
+ad_coeff_fp_size = 16; % Word Size
+ad_coeff_fp_dec  = 16; % Fractional Bits
+ad_coeff_fp_sign = 0;  % Unsigned = 0, Signed = 1
 
-% Data Input/Feedback Paramters
+% Data Input/Feedback Fixed Point Paramters
 in_fp_size = 40; % Word Size
 in_fp_dec  = 32; % Fractional Bits
 in_fp_sign = 1;  % Unsigned = 0, Signed = 1
 
-%% Simulation Input for N Bands
 % Define the Input Data Types
 if(strcmp(sim_type,'double'))
-    input_type = 'double';
-    coeff_type = 'double';
+    input_type    = 'double';
+    ad_coeff_type = 'double';
 elseif(strcmp(sim_type,'fxpt'))
-    input_type = fixdt(in_fp_sign,in_fp_size,in_fp_dec);
-    coeff_type = fixdt(coeff_fp_sign,coeff_fp_size,coeff_fp_dec);
+    input_type    = fixdt(in_fp_sign,in_fp_size,in_fp_dec);
+    ad_coeff_type = fixdt(ad_coeff_fp_sign,ad_coeff_fp_size,ad_coeff_fp_dec);
 end
 
-% Initialization 
+%% Initialization 
 audio_input       = AudioSource.fromFile(mp.testFile, mp.Fs, mp.nSamples);  % Read in the audio file
 audio_length      = audio_input.nSamples;                                   % Determine the number of points in the audio signal
 data_input_matrix = zeros(audio_length, num_bands);                         % Define the input matrix as the audio signal length X the number of bands
