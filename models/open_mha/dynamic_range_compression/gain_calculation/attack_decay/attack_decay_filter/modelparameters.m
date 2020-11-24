@@ -31,7 +31,7 @@ mp.F_bits = 23;
 
 %% Open MHA Parameters
 fs          = 48e3;                    % Sampling Frequency
-num_bands   = 2;                       % Number of Frequency Bands to Simulate
+num_bands   = 8;                       % Number of Frequency Bands to Simulate
 buf_a       = 65 .* ones(num_bands,1); % Initial Condition of the Attack Filter Delay Block
 buf_d       = 65 .* ones(num_bands,1); % Initial Condition of the Delay Filter Delay Block
 
@@ -92,7 +92,6 @@ attack_c1_a_array = zeros(num_bands,1);
 attack_c2_a_array = zeros(num_bands,1);
 attack_c1_r_array = zeros(num_bands,1);
 attack_c2_r_array = zeros(num_bands,1);
-
 
 % Initialize the attack coefficient input arrays
 attack_c1_a_in = zeros(stim_length,1);

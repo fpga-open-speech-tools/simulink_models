@@ -39,6 +39,8 @@ delay_buff_sim_matrix    = zeros(audio_length,num_bands);
 decay_filter_matlab      = zeros(audio_length,num_bands);
 delay_filter_sim_matrix  = zeros(audio_length,num_bands);
 
+input_temp = zeros(audio_length,num_bands);
+
 %% Calculate the Results
 % Based on Line 282 from dc.cpp
 for i = 1:1:audio_length
@@ -67,14 +69,18 @@ for i = 1:audio_length
         
         delay_buff_sim_matrix(i,j)    = decay_buff_sim(((i-1)*num_bands) + j,1);
         delay_filter_sim_matrix(i,j)  = delay_filter_sim(((i-1)*num_bands) + j,1);
+        
+        input_temp(i,j) = data_input(((i-1)*num_bands) + j,1);
     end    
 end
 
 %% Plot the Results
 if num_bands == 1
     figure
-    plot(data_input(:,1))
-    legend('Audio Input Wave')
+    plot(data_input_matrix(:,1))
+    hold on
+    plot(input_temp(:,1),'--')
+    legend('Input: Matrix', 'Input Array')
     title(['Number of Bands = ' num2str(num_bands)])
     
     figure
@@ -107,8 +113,10 @@ if num_bands == 1
     title('Decay Filter Simulation')
 elseif num_bands == 2
     figure
-    plot(data_input(:,1))
-    legend('Audio Input Wave')
+    plot(data_input_matrix(:,1))
+    hold on
+    plot(input_temp(:,1),'--')
+    legend('Input: Matrix', 'Input Array')
     title(['Number of Bands = ' num2str(num_bands)])
     
     figure
@@ -171,8 +179,10 @@ elseif num_bands == 2
 elseif num_bands == 8
     figure
     subplot(5,1,1)
-    plot(data_input(:,1))
-    legend('Audio Input Wave')
+    plot(data_input_matrix(:,1))
+    hold on
+    plot(input_temp(:,1),'--')
+    legend('Input: Matrix - Band 1', 'Input Array - Band 1')
     title(['Number of Bands = ' num2str(num_bands)])
 
     subplot(5,1,2)
