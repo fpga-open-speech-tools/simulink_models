@@ -28,7 +28,7 @@
 % openspeech@flatearthinc.com
 
 %% Initialization
-close all;
+% close all;
 attack_buff_matlab       = zeros(audio_length,num_bands);
 attack_buff_sim_matrix   = zeros(audio_length,num_bands);
 attack_filter_matlab     = zeros(audio_length,num_bands);

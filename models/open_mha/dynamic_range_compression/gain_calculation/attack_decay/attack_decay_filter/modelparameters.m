@@ -31,7 +31,7 @@ mp.F_bits = 23;
 
 %% Open MHA Parameters
 fs          = 48e3;                    % Sampling Frequency
-num_bands   = 8;                       % Number of Frequency Bands to Simulate
+num_bands   = 1;                       % Number of Frequency Bands to Simulate
 buf_a       = 65 .* ones(num_bands,1); % Initial Condition of the Attack Filter Delay Block
 buf_d       = 65 .* ones(num_bands,1); % Initial Condition of the Delay Filter Delay Block
 
@@ -63,8 +63,8 @@ end
 audio_input       = AudioSource.fromFile(mp.testFile, mp.Fs, mp.nSamples);  % Read in the audio file
 audio_length      = audio_input.nSamples;                                   % Determine the number of points in the audio signal
 data_input_matrix = zeros(audio_length, num_bands);                         % Define the input matrix as the audio signal length X the number of bands
-data_input        = zeros(audio_input.nSamples * num_bands,1);              % Define the simulation input array 
-stim_length       = length(data_input);                                     % Deteremine the simulation length
+data_input_array  = zeros(audio_length * num_bands,1);                      % Define the simulation input array 
+stim_length       = length(data_input_array);                               % Deteremine the simulation length
 time              = (0:1:stim_length-1)/fs;                                 % Create the time vector for the simulation
 simulation_time   = (stim_length-1)/fs;                                     % Compute the simulation end point
 
@@ -77,10 +77,10 @@ end
 % Create a single data input array by interleafing the columns
 for i = 1:audio_length
     for j = 1:num_bands
-        data_input(((i-1)*num_bands) + j,1) = data_input_matrix(i,j); 
+        data_input_array(((i-1)*num_bands) + j,1) = data_input_matrix(i,j); 
     end
 end
-data_input_ts = timeseries(data_input, time); % Convert the data array to a time series
+data_input_ts = timeseries(data_input_array, time); % Convert the data array to a time series
 
 %% Attack Filter Parameters
 % The Attack Filter is an "o1flt_lowpass_t" object - Line 105 of dc.hh
