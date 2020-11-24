@@ -38,12 +38,12 @@ decay_filter_matlab  = zeros(total_stim,1);
 
 for i =1:1:total_stim
     % Based on Line 282 from dc.cpp
-    if(i == 1) % Initial Condition
-        attack_filter_matlab(i,1) = o1_ar_filter(data_input(i,1), attack_c1_a, attack_c2_a, attack_c1_r, attack_c2_r, buf_a);
-        decay_filter_matlab(i,1)  = o1_ar_filter(attack_filter_matlab(i,1), decay_c1_a, decay_c2_a, decay_c1_r, decay_c2_r, buf_d);
+    if(i <= num_bands) % Initial Condition
+        attack_filter_matlab(i,1) = o1_ar_filter(data_input(i,1), attack_c1_a_double(i,1), attack_c2_a_double(i,1), attack_c1_r_double(i,1), attack_c2_r_double(i,1), buf_a(i,1));
+        decay_filter_matlab(i,1)  = o1_ar_filter(attack_filter_matlab(i,1), decay_c1_a_double(i,1), decay_c2_a_double(i,1), decay_c1_r_double(i,1), decay_c2_r_double(i,1), buf_d(i,1));
     else
-        attack_filter_matlab(i,1) = o1_ar_filter(data_input(i,1), attack_c1_a, attack_c2_a, attack_c1_r, attack_c2_r, attack_filter_matlab(i-num_bands,1));
-        decay_filter_matlab(i,1)  = o1_ar_filter(attack_filter_matlab(i,1), decay_c1_a, decay_c2_a, decay_c1_r, decay_c2_r, decay_filter_matlab(i-num_bands,1));
+        attack_filter_matlab(i,1) = o1_ar_filter(data_input(i,1), attack_c1_a_double(i,1), attack_c2_a_double(i,1), attack_c1_r_double(i,1), attack_c2_r_double(i,1), attack_filter_matlab(i-num_bands,1));
+        decay_filter_matlab(i,1)  = o1_ar_filter(attack_filter_matlab(i,1), decay_c1_a_double(i,1), decay_c2_a_double(i,1), decay_c1_r_double(i,1), decay_c2_r_double(i,1), decay_filter_matlab(i-num_bands,1));
     end
 end
 
