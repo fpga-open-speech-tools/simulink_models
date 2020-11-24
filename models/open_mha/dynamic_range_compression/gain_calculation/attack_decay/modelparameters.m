@@ -35,8 +35,8 @@ num_bands  = 8;    % Number of Frequency Bands
 num_coeff  = 2;    % Number of C1 Coefficients required by the Attack and Decay Filter
 
 %% Band Number Array
-stim_length         = AudioSource.fromFile(mp.testFile, mp.Fs, mp.nSamples).nSamples;
-band_num_input      = zeros(stim_length,1);
+stim_length    = AudioSource.fromFile(mp.testFile, mp.Fs, mp.nSamples).nSamples;
+band_num_input = zeros(stim_length,1);
 for i = 1:stim_length
     band_num_input(i,1) = mod(i-1,num_bands) + 1;
 end
@@ -62,6 +62,6 @@ for i = 1:2:2*num_bands-1
 end
 
 %% Attack and Decay Delay Block Paramters
-buf_a = ones(num_bands,1) * 65; % Initial Condition of the Attack Filter Delay Block
-buf_d = ones(num_bands,1) * 65; % Initial Condition of the Delay Filter Delay Block
+buf_a = ones(num_bands,1) .* 65; % Initial Condition of the Attack Filter Delay Block
+buf_d = ones(num_bands,1) .* 65; % Initial Condition of the Delay Filter Delay Block
 

@@ -42,8 +42,8 @@ for i =1:1:total_stim
         attack_filter_matlab(i,1) = o1_ar_filter(data_input(i,1), attack_c1_a, attack_c2_a, attack_c1_r, attack_c2_r, buf_a);
         decay_filter_matlab(i,1)  = o1_ar_filter(attack_filter_matlab(i,1), decay_c1_a, decay_c2_a, decay_c1_r, decay_c2_r, buf_d);
     else
-        attack_filter_matlab(i,1) = o1_ar_filter(data_input(i,1), attack_c1_a, attack_c2_a, attack_c1_r, attack_c2_r, attack_filter_matlab(i-1,1));
-        decay_filter_matlab(i,1)  = o1_ar_filter(attack_filter_matlab(i,1), decay_c1_a, decay_c2_a, decay_c1_r, decay_c2_r, decay_filter_matlab(i-1,1));
+        attack_filter_matlab(i,1) = o1_ar_filter(data_input(i,1), attack_c1_a, attack_c2_a, attack_c1_r, attack_c2_r, attack_filter_matlab(i-num_bands,1));
+        decay_filter_matlab(i,1)  = o1_ar_filter(attack_filter_matlab(i,1), decay_c1_a, decay_c2_a, decay_c1_r, decay_c2_r, decay_filter_matlab(i-num_bands,1));
     end
 end
 
