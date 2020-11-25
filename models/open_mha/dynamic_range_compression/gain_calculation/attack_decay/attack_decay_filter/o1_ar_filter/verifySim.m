@@ -29,17 +29,8 @@
 
 %% Initialization
 close all;
-data_input = testSignal.audio(:,1);
-total_stim = length(data_input);
 
-%% Calculate the Results
-open_mha_drc_filter_sim = zeros(total_stim,1);
-
-for i =1:1:total_stim
-    open_mha_drc_filter_sim(i,1) = o1_ar_filter_source(data_input(i,1), c1_a_random_in, c2_a_random_in, c1_r_random_in, c2_r_random_in, buf_random_in);
-end
-
-%% Plot the Results
+% Plot the Results
 figure
 subplot(2,1,1)
 plot(data_input)
@@ -47,8 +38,8 @@ legend("Audio Input Wave")
 title("Audio Input")
 
 subplot(2,1,2)
-plot(open_mha_drc_filter_sim)
+plot(o1_ar_filter_matlab)
 hold on
 plot(Avalon_Sink_Data,'--')
 legend('MATLAB Code','Simulink')
-title('Open MHA DRC Filter Simulation')
+title('O1 AR Filter Simulation')

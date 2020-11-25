@@ -48,9 +48,30 @@ elseif(strcmp(sim_type,'fxpt'))
     ad_coeff_type = fixdt(ad_coeff_fp_sign,ad_coeff_fp_size,ad_coeff_fp_dec);
 end
 
-%% Open MHA DRC Filter Coefficients
-c1_a_random_in = rand(1,1);
-c2_a_random_in = rand(1,1);
-c1_r_random_in = rand(1,1);
-c2_r_random_in = rand(1,1);
-buf_random_in  = rand(1,1);
+%% O1 AR Filter Coefficients
+fs          = 48e3;
+tau_attack  = 0.005;
+tau_release = 0.060;
+[c1_a_in, c2_a_in] = o1_lp_coeffs(tau_attack, fs);
+[c1_r_in, c2_r_in] = o1_lp_coeffs(tau_release, fs);
+
+%% Calculate the Results
+audio_input = AudioSource.fromFile(mp.testFile, mp.Fs, mp.nSamples);  % Read in the audio file
+data_input  = audio_input.audio(:,1);
+total_stim  = audio_input.nSamples;                                   % Determine the number of points in the audio signal
+time        = (0:1:total_stim-1)/fs;                                  % Create the time vector for the simulation
+
+% Initialize Result Arrays
+buff_in             = zeros(total_stim,1);
+o1_ar_filter_matlab = zeros(total_stim,1);
+
+for i =1:1:total_stim
+    if i == 1
+        buff_in(i) = 65;
+    else
+        buff_in(i) = o1_ar_filter_matlab(i-1,1);
+    end
+    o1_ar_filter_matlab(i,1) = o1_ar_filter_source(data_input(i,1), c1_a_in, c2_a_in, c1_r_in, c2_r_in, buff_in(i));
+end
+
+buff_in_ts = timeseries(buff_in,time);
