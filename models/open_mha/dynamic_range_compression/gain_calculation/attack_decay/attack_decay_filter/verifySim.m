@@ -28,7 +28,7 @@
 % openspeech@flatearthinc.com
 
 %% Initialization
-% close all;
+close all;
 attack_buff_matlab       = zeros(audio_length,num_bands);
 attack_buff_sim_matrix   = zeros(audio_length,num_bands);
 attack_filter_matlab     = zeros(audio_length,num_bands);
@@ -75,144 +75,51 @@ for i = 1:audio_length
 end
 
 %% Plot the Results
-if num_bands == 1
-    figure
-    plot(data_input_matrix(:,1))
-    hold on
-    plot(input_temp(:,1),'--')
-    legend('Input: Matrix', 'Input Array')
-    title(['Number of Bands = ' num2str(num_bands)])
-    
-    figure
-    subplot(4,1,1)
-    plot(attack_buff_matlab(:,1))
-    hold on
-    plot(attack_buff_sim_matrix(:,1),'--')
-    legend('MATLAB Code','Simulink')
-    title('Attack Buffer Simulation')
-    
-    subplot(4,1,2)
-    plot(attack_filter_matlab(:,1))
-    hold on
-    plot(attack_filter_sim_matrix(:,1),'--')
-    legend('MATLAB Code','Simulink')
-    title('Attack Filter Simulation')
-    
-    subplot(4,1,3)
-    plot(delay_buff_matlab(:,1))
-    hold on
-    plot(delay_buff_sim_matrix(:,1),'--')
-    legend('MATLAB Code','Simulink')
-    title('Decay Buffer Simulation')
+figure
+subplot(2,1,1)
+plot(attack_buff_sim, '--')
+legend('Simulink')
+title('Attack Buffer - Interleafed')
 
-    subplot(4,1,4)
-    plot(decay_filter_matlab(:,1))
-    hold on
-    plot(delay_filter_sim_matrix(:,1),'--')
-    legend('MATLAB Code','Simulink')
-    title('Decay Filter Simulation')
-elseif num_bands == 2
-    figure
-    plot(data_input_matrix(:,1))
-    hold on
-    plot(input_temp(:,1),'--')
-    legend('Input: Matrix', 'Input Array')
-    title(['Number of Bands = ' num2str(num_bands)])
-    
-    figure
-    subplot(4,1,1)
-    plot(attack_buff_matlab(:,1))
-    hold on
-    plot(attack_buff_sim_matrix(:,1),'--')
-    legend('MATLAB Code','Simulink')
-    title('Attack Buffer Simulation - Band 1')
-    
-    subplot(4,1,2)
-    plot(attack_filter_matlab(:,1))
-    hold on
-    plot(attack_filter_sim_matrix(:,1),'--')
-    legend('MATLAB Code','Simulink')
-    title('Attack Filter Simulation - Band 1')
-    
-    subplot(4,1,3)
-    plot(delay_buff_matlab(:,1))
-    hold on
-    plot(delay_buff_sim_matrix(:,1),'--')
-    legend('MATLAB Code','Simulink')
-    title('Decay Buffer Simulation - Band 1')
-
-    subplot(4,1,4)
-    plot(decay_filter_matlab(:,1))
-    hold on
-    plot(delay_filter_sim_matrix(:,1),'--')
-    legend('MATLAB Code','Simulink')
-    title('Decay Filter Simulation - Band 1')
-        
-    figure
-    subplot(4,1,1)
-    plot(attack_buff_matlab(:,2))
-    hold on
-    plot(attack_buff_sim_matrix(:,2),'--')
-    legend('MATLAB Code','Simulink')
-    title('Attack Buffer Simulation - Band 2')
-    
-    subplot(4,1,2)
-    plot(attack_filter_matlab(:,2))
-    hold on
-    plot(attack_filter_sim_matrix(:,2),'--')
-    legend('MATLAB Code','Simulink')
-    title('Attack Filter Simulation - Band 2')
-    
-    subplot(4,1,3)
-    plot(delay_buff_matlab(:,2))
-    hold on
-    plot(delay_buff_sim_matrix(:,2),'--')
-    legend('MATLAB Code','Simulink')
-    title('Decay Buffer Simulation - Band 2')
-
-    subplot(4,1,4)
-    plot(decay_filter_matlab(:,2))
-    hold on
-    plot(delay_filter_sim_matrix(:,2),'--')
-    legend('MATLAB Code','Simulink')
-    title('Decay Filter Simulation - Band 2')
-elseif num_bands == 8
+subplot(2,1,2)
+plot(decay_buff_sim, '--')
+legend('Simulink')
+title('Decay Buffer - Interleafed')
+ 
+for j = 1:num_bands
     figure
     subplot(5,1,1)
-    plot(data_input_matrix(:,1))
+    plot(data_input_matrix(:,j))
     hold on
-    plot(input_temp(:,1),'--')
-    legend('Input: Matrix - Band 1', 'Input Array - Band 1')
-    title(['Number of Bands = ' num2str(num_bands)])
-
+    plot(input_temp(:,j),'--')
+    legend('Input: Matrix', 'Input Array')
+    title(['Input  - Band Number: ' num2str(j)])
+    
     subplot(5,1,2)
-    plot(attack_filter_matlab(:,1))
+    plot(attack_buff_matlab(:,j))
     hold on
-    plot(attack_filter_sim_matrix(:,1),'--')
+    plot(attack_buff_sim_matrix(:,j),'--')
     legend('MATLAB Code','Simulink')
-    title('Attack Filter Simulation - Band 1')
-
+    title(['Attack Buffer Simulation  - Band Number: ' num2str(j)])
+    
     subplot(5,1,3)
-    plot(decay_filter_matlab(:,1))
+    plot(attack_filter_matlab(:,j))
     hold on
-    plot(delay_filter_sim_matrix(:,1),'--')
+    plot(attack_filter_sim_matrix(:,j),'--')
     legend('MATLAB Code','Simulink')
-    title('Decay Filter Simulation - Band 1')
+    title(['Attack Filter Simulation - Band Number: ' num2str(j)])
     
     subplot(5,1,4)
-    plot(attack_filter_matlab(:,8))
+    plot(delay_buff_matlab(:,j))
     hold on
-    plot(attack_filter_sim_matrix(:,8),'--')
+    plot(delay_buff_sim_matrix(:,j),'--')
     legend('MATLAB Code','Simulink')
-    title('Attack Filter Simulation - Band 8')
+    title(['Decay Buffer Simulation - Band Number: ' num2str(j)])
 
     subplot(5,1,5)
-    plot(decay_filter_matlab(:,8))
+    plot(decay_filter_matlab(:,j))
     hold on
-    plot(delay_filter_sim_matrix(:,8),'--')
+    plot(delay_filter_sim_matrix(:,j),'--')
     legend('MATLAB Code','Simulink')
-    title('Decay Filter Simulation - Band 8')
-else
-    msg = [num2str(num_bands) ' Bands not supported for plotting'];
-    f = warndlg(msg,'Warning'); 
+    title(['Decay Filter Simulation - Band Number: ' num2str(j)])
 end
