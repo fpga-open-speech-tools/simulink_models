@@ -47,16 +47,16 @@ for i = 1:1:audio_length
     for j = 1:1:num_bands
         if(i == 1) % Initial Condition
             attack_buff_matlab(i,j)   = buf_a(j,1);
-            attack_filter_matlab(i,j) = o1_ar_filter(data_input_matrix(i,j), attack_c1_a_array(j,1), attack_c2_a_array(j,1), attack_c1_r_array(j,1), attack_c2_r_array(j,1), attack_buff_matlab(i,j));
+            attack_filter_matlab(i,j) = o1_ar_filter_source(data_input_matrix(i,j), attack_c1_a_array(j,1), attack_c2_a_array(j,1), attack_c1_r_array(j,1), attack_c2_r_array(j,1), attack_buff_matlab(i,j));
             
             delay_buff_matlab(i,j)    = buf_d(j,1);
-            decay_filter_matlab(i,j)  = o1_ar_filter(attack_filter_matlab(i,j), decay_c1_a_array(j,1), decay_c2_a_array(j,1), decay_c1_r_array(j,1), decay_c2_r_array(j,1), delay_buff_matlab(i,j));
+            decay_filter_matlab(i,j)  = o1_ar_filter_source(attack_filter_matlab(i,j), decay_c1_a_array(j,1), decay_c2_a_array(j,1), decay_c1_r_array(j,1), decay_c2_r_array(j,1), delay_buff_matlab(i,j));
         else
             attack_buff_matlab(i,j)   = attack_filter_matlab(i-1,j);
-            attack_filter_matlab(i,j) = o1_ar_filter(data_input_matrix(i,j), attack_c1_a_array(j,1), attack_c2_a_array(j,1), attack_c1_r_array(j,1), attack_c2_r_array(j,1), attack_buff_matlab(i,j));
+            attack_filter_matlab(i,j) = o1_ar_filter_source(data_input_matrix(i,j), attack_c1_a_array(j,1), attack_c2_a_array(j,1), attack_c1_r_array(j,1), attack_c2_r_array(j,1), attack_buff_matlab(i,j));
             
             delay_buff_matlab(i,j)    = decay_filter_matlab(i-1,j);
-            decay_filter_matlab(i,j)  = o1_ar_filter(attack_filter_matlab(i,j), decay_c1_a_array(j,1), decay_c2_a_array(j,1), decay_c1_r_array(j,1), decay_c2_r_array(j,1), delay_buff_matlab(i,j));
+            decay_filter_matlab(i,j)  = o1_ar_filter_source(attack_filter_matlab(i,j), decay_c1_a_array(j,1), decay_c2_a_array(j,1), decay_c1_r_array(j,1), decay_c2_r_array(j,1), delay_buff_matlab(i,j));
         end
     end
 end
@@ -70,7 +70,7 @@ for i = 1:audio_length
         delay_buff_sim_matrix(i,j)    = decay_buff_sim(((i-1)*num_bands) + j,1);
         delay_filter_sim_matrix(i,j)  = delay_filter_sim(((i-1)*num_bands) + j,1);
         
-        input_temp(i,j) = data_input(((i-1)*num_bands) + j,1);
+        input_temp(i,j) = data_input_array(((i-1)*num_bands) + j,1);
     end    
 end
 
