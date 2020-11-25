@@ -15,8 +15,8 @@
 % openspeech@flatearthinc.com
 
 %% Initialziation
-addpath(genpath('o1_ar_filter')); % This contains the O1 AR Filter Source MATLAB Function
-addpath(genpath('o1_ar_filter_optimization'));
+addpath(genpath('o1_ar_filter')); % This contains the O1 AR Filter Source MATLAB Function and the O1 LP Coefficient Function
+% addpath(genpath('o1_ar_filter_optimization'));
 
 %% Autogen parameters
 mp.testFile = [mp.test_signals_path filesep 'auditory_nerve\mef_result_subset.wav'];
@@ -32,12 +32,12 @@ mp.F_bits = 23;
 
 %% Open MHA Parameters
 fs          = 48e3;                    % Sampling Frequency
-num_bands   = 8;                       % Number of Frequency Bands to Simulate
+num_bands   = 1;                       % Number of Frequency Bands to Simulate
 buf_a       = 65 .* ones(num_bands,1); % Initial Condition of the Attack Filter Delay Block
 buf_d       = 65 .* ones(num_bands,1); % Initial Condition of the Delay Filter Delay Block
 
 %% Simulation Type - Either 'double' or 'fxpt'
-sim_type    = 'fxpt';                  
+sim_type    = 'double';                  
 
 % Attack and Decay Coefficient Fixed Point Paramters
 ad_coeff_fp_size = 16; % Word Size
