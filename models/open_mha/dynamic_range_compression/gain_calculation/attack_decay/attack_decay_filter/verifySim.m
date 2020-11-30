@@ -29,37 +29,37 @@
 
 %% Initialization
 close all;
-attack_buff_matlab       = zeros(audio_length,num_bands);
+% attack_buff_matlab       = zeros(audio_length,num_bands);
 attack_buff_sim_matrix   = zeros(audio_length,num_bands);
-attack_filter_matlab     = zeros(audio_length,num_bands);
+% attack_filter_matlab     = zeros(audio_length,num_bands);
 attack_filter_sim_matrix = zeros(audio_length,num_bands);
 
-delay_buff_matlab        = zeros(audio_length,num_bands);
-delay_buff_sim_matrix    = zeros(audio_length,num_bands);
-decay_filter_matlab      = zeros(audio_length,num_bands);
+% delay_buff_matlab        = zeros(audio_length,num_bands);
+decay_buff_sim_matrix    = zeros(audio_length,num_bands);
+% decay_filter_matlab      = zeros(audio_length,num_bands);
 delay_filter_sim_matrix  = zeros(audio_length,num_bands);
 
 input_temp = zeros(audio_length,num_bands);
 
-%% Calculate the Results
-% Based on Line 282 from dc.cpp
-for i = 1:1:audio_length
-    for j = 1:1:num_bands
-        if(i == 1) % Initial Condition
-            attack_buff_matlab(i,j)   = buf_a(j,1);
-            attack_filter_matlab(i,j) = o1_ar_filter_source(data_input_matrix(i,j), attack_c1_a_array(j,1), attack_c2_a_array(j,1), attack_c1_r_array(j,1), attack_c2_r_array(j,1), attack_buff_matlab(i,j));
-            
-            delay_buff_matlab(i,j)    = buf_d(j,1);
-            decay_filter_matlab(i,j)  = o1_ar_filter_source(attack_filter_matlab(i,j), decay_c1_a_array(j,1), decay_c2_a_array(j,1), decay_c1_r_array(j,1), decay_c2_r_array(j,1), delay_buff_matlab(i,j));
-        else
-            attack_buff_matlab(i,j)   = attack_filter_matlab(i-1,j);
-            attack_filter_matlab(i,j) = o1_ar_filter_source(data_input_matrix(i,j), attack_c1_a_array(j,1), attack_c2_a_array(j,1), attack_c1_r_array(j,1), attack_c2_r_array(j,1), attack_buff_matlab(i,j));
-            
-            delay_buff_matlab(i,j)    = decay_filter_matlab(i-1,j);
-            decay_filter_matlab(i,j)  = o1_ar_filter_source(attack_filter_matlab(i,j), decay_c1_a_array(j,1), decay_c2_a_array(j,1), decay_c1_r_array(j,1), decay_c2_r_array(j,1), delay_buff_matlab(i,j));
-        end
-    end
-end
+% %% Calculate the Results
+% % Based on Line 282 from dc.cpp
+% for i = 1:1:audio_length
+%     for j = 1:1:num_bands
+%         if(i == 1) % Initial Condition
+%             attack_buff_matlab(i,j)   = buf_a(j,1);
+%             attack_filter_matlab(i,j) = o1_ar_filter_source(data_input_matrix(i,j), attack_c1_a_array(j,1), attack_c2_a_array(j,1), attack_c1_r_array(j,1), attack_c2_r_array(j,1), attack_buff_matlab(i,j));
+%             
+%             delay_buff_matlab(i,j)    = buf_d(j,1);
+%             decay_filter_matlab(i,j)  = o1_ar_filter_source(attack_filter_matlab(i,j), decay_c1_a_array(j,1), decay_c2_a_array(j,1), decay_c1_r_array(j,1), decay_c2_r_array(j,1), delay_buff_matlab(i,j));
+%         else
+%             attack_buff_matlab(i,j)   = attack_filter_matlab(i-1,j);
+%             attack_filter_matlab(i,j) = o1_ar_filter_source(data_input_matrix(i,j), attack_c1_a_array(j,1), attack_c2_a_array(j,1), attack_c1_r_array(j,1), attack_c2_r_array(j,1), attack_buff_matlab(i,j));
+%             
+%             delay_buff_matlab(i,j)    = decay_filter_matlab(i-1,j);
+%             decay_filter_matlab(i,j)  = o1_ar_filter_source(attack_filter_matlab(i,j), decay_c1_a_array(j,1), decay_c2_a_array(j,1), decay_c1_r_array(j,1), decay_c2_r_array(j,1), delay_buff_matlab(i,j));
+%         end
+%     end
+% end
 
 %% Parse the Simulink Results
 for i = 1:audio_length
@@ -67,7 +67,7 @@ for i = 1:audio_length
         attack_buff_sim_matrix(i,j)   = attack_buff_sim(((i-1)*num_bands) + j,1);
         attack_filter_sim_matrix(i,j) = attack_filter_sim(((i-1)*num_bands) + j,1);
         
-        delay_buff_sim_matrix(i,j)    = decay_buff_sim(((i-1)*num_bands) + j,1);
+        decay_buff_sim_matrix(i,j)    = decay_buff_sim(((i-1)*num_bands) + j,1);
         delay_filter_sim_matrix(i,j)  = delay_filter_sim(((i-1)*num_bands) + j,1);
         
         input_temp(i,j) = data_input_array(((i-1)*num_bands) + j,1);
@@ -77,13 +77,17 @@ end
 %% Plot the Results
 figure
 subplot(2,1,1)
+plot(attack_buff_ts.Data)
+hold on
 plot(attack_buff_sim, '--')
-legend('Simulink')
+legend('MATLAB', 'Simulink')
 title('Attack Buffer - Interleafed')
 
 subplot(2,1,2)
+plot(decay_buff_ts.Data)
+hold on
 plot(decay_buff_sim, '--')
-legend('Simulink')
+legend('MATLAB', 'Simulink')
 title('Decay Buffer - Interleafed')
  
 for j = 1:num_bands
@@ -110,9 +114,9 @@ for j = 1:num_bands
     title(['Attack Filter Simulation - Band Number: ' num2str(j)])
     
     subplot(5,1,4)
-    plot(delay_buff_matlab(:,j))
+    plot(decay_buff_matlab(:,j))
     hold on
-    plot(delay_buff_sim_matrix(:,j),'--')
+    plot(decay_buff_sim_matrix(:,j),'--')
     legend('MATLAB Code','Simulink')
     title(['Decay Buffer Simulation - Band Number: ' num2str(j)])
 
