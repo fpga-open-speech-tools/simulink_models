@@ -32,7 +32,8 @@
                     "defaultValue": 1.5,
                     "name": "Gain",
                     "registerNumber": 0
-                },                    
+                }, 
+                {
                 "dataType": {
                         "fractionLength": 16,
                         "signed": false,
