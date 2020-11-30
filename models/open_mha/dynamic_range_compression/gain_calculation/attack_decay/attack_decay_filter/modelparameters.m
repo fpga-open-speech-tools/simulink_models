@@ -69,8 +69,8 @@ simulation_time   = (stim_length-1)/fs;                                     % Co
 
 % Create the input signal
 % Copy the audio input wave into each column of the data input matrix
-for i = 1:num_bands
-    data_input_matrix(:,i) = audio_input.audio(:,1);                        
+for j = 1:num_bands
+    data_input_matrix(:,j) = audio_input.audio(:,1);                        
 end
 
 % Create a single data input array by interleafing the columns

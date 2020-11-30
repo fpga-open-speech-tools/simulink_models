@@ -25,7 +25,7 @@
 % Bozeman, MT 59718
 % openspeech@flatearthinc.com
 
-function y = o1_ar_filter(x, c1_a, c2_a, c1_r, c2_r, buff_in)
+function y = o1_ar_filter_source(x, c1_a, c2_a, c1_r, c2_r, buff_in)
     if(x >= buff_in)                       % Line 200
         y = (c1_a * buff_in) + (c2_a * x); % Line 201
     else                                   % Line 202
