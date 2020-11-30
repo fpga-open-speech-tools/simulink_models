@@ -15,8 +15,8 @@
 % openspeech@flatearthinc.com
 
 %% Initialziation
-addpath(genpath('o1_ar_filter')); % This contains the O1 AR Filter Source MATLAB Function and the O1 LP Coefficient Function
-% addpath(genpath('o1_ar_filter_optimization'));
+addpath(genpath('o1_ar_filter'));              % O1 AR Simulink Model, O1 AR Filter Source MATLAB Function, & the O1 LP Coefficient Function
+addpath(genpath('o1_ar_filter_optimization')); % O1 AR Optimized Simulink Model
 
 %% Autogen parameters
 mp.testFile = [mp.test_signals_path filesep 'auditory_nerve\mef_result_subset.wav'];
@@ -109,22 +109,6 @@ for j = 1:num_bands
     [attack_c1_r_array(j,1), attack_c2_r_array(j,1)] = o1_lp_coeffs(attack_release_tau,fs); % Compute the release coefficients - Lines 589-599 of mha_filter.cpp
 end
 
-% Create the coefficient input array 
-% The coefficients are repeated [1:num_bands 1:num_bands]
-for i = 1:audio_length
-    for j = 1:num_bands
-        attack_c1_a_in(((i-1)*num_bands) + j,1) = attack_c1_a_array(j,1);
-        attack_c2_a_in(((i-1)*num_bands) + j,1) = attack_c2_a_array(j,1);
-        attack_c1_r_in(((i-1)*num_bands) + j,1) = attack_c1_r_array(j,1);
-        attack_c2_r_in(((i-1)*num_bands) + j,1) = attack_c2_r_array(j,1);
-    end
-end
-% Convert the Attack Coefficient Array to a Timeseries
-attack_c1_a_ts = timeseries(attack_c1_a_in,time);
-attack_c2_a_ts = timeseries(attack_c2_a_in,time);
-attack_c1_r_ts = timeseries(attack_c1_r_in,time);
-attack_c2_r_ts = timeseries(attack_c2_r_in,time);
-
 %% Decay Filter Parameters
 % The Decay Filter is an "o1flt_maxtrack_t" object - Line 106 of dc.hh
 % Set the attack time constant = 0 - Line 507 of mha_filter.cpp
@@ -150,59 +134,3 @@ for j = 1:num_bands
     [decay_c1_a_array(j,1), decay_c2_a_array(j,1)] = o1_lp_coeffs(decay_attack_tau,fs);  % Compute the attack coefficients - Lines 589-599 of mha_filter.cpp
     [decay_c1_r_array(j,1), decay_c2_r_array(j,1)] = o1_lp_coeffs(decay_release_tau,fs); % Compute the release coefficients - Lines 589-599 of mha_filter.cpp
 end
-
-% Create the coefficient input array 
-% The coefficients are repeated [1:num_bands 1:num_bands]
-for i = 1:audio_length
-    for j = 1:num_bands
-        decay_c1_a_fp(((i-1)*num_bands) + j,1) = decay_c1_a_array(j,1);
-        decay_c2_a_fp(((i-1)*num_bands) + j,1) = decay_c2_a_array(j,1);
-        decay_c1_r_fp(((i-1)*num_bands) + j,1) = decay_c1_r_array(j,1);
-        decay_c2_r_fp(((i-1)*num_bands) + j,1) = decay_c2_r_array(j,1);
-    end
-end
-% Convert the Attack Coefficient Array to a Timeseries
-decay_c1_a_ts = timeseries(decay_c1_a_fp,time);
-decay_c2_a_ts = timeseries(decay_c2_a_fp,time);
-decay_c1_r_ts = timeseries(decay_c1_r_fp,time);
-decay_c2_r_ts = timeseries(decay_c2_r_fp,time);
-
-%% Calculate the Results - Testing the Delay Block
-attack_buff_matlab   = zeros(audio_length,num_bands);
-attack_filter_matlab = zeros(audio_length,num_bands);
-attack_buff_ts       = zeros(audio_length*num_bands,1);
-
-decay_buff_matlab    = zeros(audio_length,num_bands);
-decay_filter_matlab  = zeros(audio_length,num_bands);
-decay_buff_ts       = zeros(audio_length*num_bands,1);
-
-% Based on Line 282 from dc.cpp
-for i = 1:1:audio_length
-    for j = 1:1:num_bands
-        if(i == 1) % Initial Condition
-            attack_buff_matlab(i,j)   = buf_a(j,1);
-            attack_filter_matlab(i,j) = o1_ar_filter_source(data_input_matrix(i,j), attack_c1_a_array(j,1), attack_c2_a_array(j,1), attack_c1_r_array(j,1), attack_c2_r_array(j,1), attack_buff_matlab(i,j));
-            
-            decay_buff_matlab(i,j)    = buf_d(j,1);
-            decay_filter_matlab(i,j)  = o1_ar_filter_source(attack_filter_matlab(i,j), decay_c1_a_array(j,1), decay_c2_a_array(j,1), decay_c1_r_array(j,1), decay_c2_r_array(j,1), decay_buff_matlab(i,j));
-        else
-            attack_buff_matlab(i,j)   = attack_filter_matlab(i-1,j);
-            attack_filter_matlab(i,j) = o1_ar_filter_source(data_input_matrix(i,j), attack_c1_a_array(j,1), attack_c2_a_array(j,1), attack_c1_r_array(j,1), attack_c2_r_array(j,1), attack_buff_matlab(i,j));
-            
-            decay_buff_matlab(i,j)    = decay_filter_matlab(i-1,j);
-            decay_filter_matlab(i,j)  = o1_ar_filter_source(attack_filter_matlab(i,j), decay_c1_a_array(j,1), decay_c2_a_array(j,1), decay_c1_r_array(j,1), decay_c2_r_array(j,1), decay_buff_matlab(i,j));
-        end
-    end
-end
-
-for i = 1:audio_length
-    for j = 1:num_bands
-        attack_buff_ts(((i-1)*num_bands) + j,1) = attack_buff_matlab(i,j);
-        decay_buff_ts(((i-1)*num_bands) + j,1) = decay_buff_matlab(i,j);
-    end
-end
-
-attack_buff_ts = attack_buff_ts(9:end);
-decay_buff_ts  = timeseries(decay_buff_ts, time); 
-
-attack_buff_ts = timeseries(attack_buff_ts, time(1:end-8));
