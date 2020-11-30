@@ -32,7 +32,7 @@ mp.F_bits = 23;
 
 %% Open MHA Parameters
 fs          = 48e3;                    % Sampling Frequency
-num_bands   = 2;                       % Number of Frequency Bands to Simulate
+num_bands   = 8;                       % Number of Frequency Bands to Simulate
 buf_a       = 65 .* ones(num_bands,1); % Initial Condition of the Attack Filter Delay Block
 buf_d       = 65 .* ones(num_bands,1); % Initial Condition of the Delay Filter Delay Block
 
@@ -202,5 +202,7 @@ for i = 1:audio_length
     end
 end
 
-attack_buff_ts = timeseries(attack_buff_ts, time);
+attack_buff_ts = attack_buff_ts(9:end);
 decay_buff_ts  = timeseries(decay_buff_ts, time); 
+
+attack_buff_ts = timeseries(attack_buff_ts, time(1:end-8));
