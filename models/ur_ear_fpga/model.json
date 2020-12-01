@@ -24,7 +24,7 @@
             "registers": [
                 {
                     "dataType": {
-                        "fractionLength": 16,
+                        "fractionLength": 8,
                         "signed": false,
                         "type": "ufix16en8",
                         "wordLength": 16

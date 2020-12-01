@@ -1,0 +1,339 @@
+Info: Starting: Create HDL design files for synthesis
+Info: qsys-generate D:\NIH3Repo\simulink_models\models\ur_ear_fpga\hdlsrc\ur_ear_fpga_sim\quartus\audioblade_system.qsys --synthesis=VHDL --output-directory=D:\NIH3Repo\simulink_models\models\ur_ear_fpga\hdlsrc\ur_ear_fpga_sim\quartus\audioblade_system --family="Arria 10" --part=10AS066H2F34I1HG
+Progress: Loading quartus/audioblade_system.qsys
+Progress: Reading input file
+Progress: Adding FE_AD4020_Left [FE_AD4020 1.0]
+Progress: Parameterizing module FE_AD4020_Left
+Progress: Adding FE_AD4020_Right [FE_AD4020 1.0]
+Progress: Parameterizing module FE_AD4020_Right
+Progress: Adding FE_AD5791_v1_Left [FE_AD5791_v1 1.0]
+Progress: Parameterizing module FE_AD5791_v1_Left
+Progress: Adding FE_AD5791_v1_Right [FE_AD5791_v1 1.0]
+Progress: Parameterizing module FE_AD5791_v1_Right
+Progress: Adding FE_AD7768_v1_0 [FE_AD7768_v1 1.0]
+Progress: Parameterizing module FE_AD7768_v1_0
+Progress: Adding FE_FPGA_Microphone_Encoder_Decoder_0 [FE_FPGA_Microphone_Encoder_Decoder 1.0]
+Progress: Parameterizing module FE_FPGA_Microphone_Encoder_Decoder_0
+Progress: Adding FE_FPGA_Microphone_Encoder_Decoder_1 [FE_FPGA_Microphone_Encoder_Decoder 1.0]
+Progress: Parameterizing module FE_FPGA_Microphone_Encoder_Decoder_1
+Progress: Adding FE_FPGA_Microphone_Encoder_Decoder_10 [FE_FPGA_Microphone_Encoder_Decoder 1.0]
+Progress: Parameterizing module FE_FPGA_Microphone_Encoder_Decoder_10
+Progress: Adding FE_FPGA_Microphone_Encoder_Decoder_11 [FE_FPGA_Microphone_Encoder_Decoder 1.0]
+Progress: Parameterizing module FE_FPGA_Microphone_Encoder_Decoder_11
+Progress: Adding FE_FPGA_Microphone_Encoder_Decoder_12 [FE_FPGA_Microphone_Encoder_Decoder 1.0]
+Progress: Parameterizing module FE_FPGA_Microphone_Encoder_Decoder_12
+Progress: Adding FE_FPGA_Microphone_Encoder_Decoder_13 [FE_FPGA_Microphone_Encoder_Decoder 1.0]
+Progress: Parameterizing module FE_FPGA_Microphone_Encoder_Decoder_13
+Progress: Adding FE_FPGA_Microphone_Encoder_Decoder_14 [FE_FPGA_Microphone_Encoder_Decoder 1.0]
+Progress: Parameterizing module FE_FPGA_Microphone_Encoder_Decoder_14
+Progress: Adding FE_FPGA_Microphone_Encoder_Decoder_15 [FE_FPGA_Microphone_Encoder_Decoder 1.0]
+Progress: Parameterizing module FE_FPGA_Microphone_Encoder_Decoder_15
+Progress: Adding FE_FPGA_Microphone_Encoder_Decoder_2 [FE_FPGA_Microphone_Encoder_Decoder 1.0]
+Progress: Parameterizing module FE_FPGA_Microphone_Encoder_Decoder_2
+Progress: Adding FE_FPGA_Microphone_Encoder_Decoder_3 [FE_FPGA_Microphone_Encoder_Decoder 1.0]
+Progress: Parameterizing module FE_FPGA_Microphone_Encoder_Decoder_3
+Progress: Adding FE_FPGA_Microphone_Encoder_Decoder_4 [FE_FPGA_Microphone_Encoder_Decoder 1.0]
+Progress: Parameterizing module FE_FPGA_Microphone_Encoder_Decoder_4
+Progress: Adding FE_FPGA_Microphone_Encoder_Decoder_5 [FE_FPGA_Microphone_Encoder_Decoder 1.0]
+Progress: Parameterizing module FE_FPGA_Microphone_Encoder_Decoder_5
+Progress: Adding FE_FPGA_Microphone_Encoder_Decoder_6 [FE_FPGA_Microphone_Encoder_Decoder 1.0]
+Progress: Parameterizing module FE_FPGA_Microphone_Encoder_Decoder_6
+Progress: Adding FE_FPGA_Microphone_Encoder_Decoder_7 [FE_FPGA_Microphone_Encoder_Decoder 1.0]
+Progress: Parameterizing module FE_FPGA_Microphone_Encoder_Decoder_7
+Progress: Adding FE_FPGA_Microphone_Encoder_Decoder_8 [FE_FPGA_Microphone_Encoder_Decoder 1.0]
+Progress: Parameterizing module FE_FPGA_Microphone_Encoder_Decoder_8
+Progress: Adding FE_FPGA_Microphone_Encoder_Decoder_9 [FE_FPGA_Microphone_Encoder_Decoder 1.0]
+Progress: Parameterizing module FE_FPGA_Microphone_Encoder_Decoder_9
+Progress: Adding FE_Qsys_AD1939_Audio_Blade_v1_0 [FE_Qsys_AD1939_Audio_Blade_v1 1.0]
+Progress: Parameterizing module FE_Qsys_AD1939_Audio_Blade_v1_0
+Progress: Adding arria10_hps_0 [altera_arria10_hps 18.0]
+Progress: Parameterizing module arria10_hps_0
+Progress: Adding axi_clk_bridge [altera_clock_bridge 18.0]
+Progress: Parameterizing module axi_clk_bridge
+Progress: Adding clk_1 [clock_source 18.0]
+Progress: Parameterizing module clk_1
+Progress: Adding clk_AD1939_ABCLK [clock_source 18.0]
+Progress: Parameterizing module clk_AD1939_ABCLK
+Progress: Adding clk_AD1939_ALRCLK [clock_source 18.0]
+Progress: Parameterizing module clk_AD1939_ALRCLK
+Progress: Adding emif_0 [altera_emif 18.0]
+Progress: Parameterizing module emif_0
+Progress: Adding emif_a10_hps_0 [altera_emif_a10_hps 18.0]
+Progress: Parameterizing module emif_a10_hps_0
+Progress: Adding mm_clock_crossing_bridge_0 [altera_avalon_mm_clock_crossing_bridge 18.0]
+Progress: Parameterizing module mm_clock_crossing_bridge_0
+Progress: Adding mux_ddr_0 [mux_ddr 1.0]
+Progress: Parameterizing module mux_ddr_0
+Progress: Adding pll_using_AD1939_MCLK [altera_iopll 18.0]
+Progress: Parameterizing module pll_using_AD1939_MCLK
+Progress: Adding som_config [altera_avalon_pio 18.0]
+Progress: Parameterizing module som_config
+Progress: Adding ur_ear_fpga_sim_0 [ur_ear_fpga_sim 1.0]
+Progress: Parameterizing module ur_ear_fpga_sim_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: audioblade_system.emif_0: Fast simulation model disabled due to additional core clocks.  High-fidelity simulation model will be used.
+Info: audioblade_system.emif_0.arch: Periodic OCT re-calibration is disabled because the interface uses calibrated IO standards for either Address, Command or Clock signals.
+Info: audioblade_system.emif_0.arch: PHY and controller running at 2x the frequency of user logic for improved efficiency.
+Info: audioblade_system.emif_0.arch: Placement of address/command pins must follow "DDR4 Scheme 2: Component/SODIMM".
+Info: audioblade_system.emif_0.arch: Interface estimated to require 3 I/O Bank(s) and 3 I/O PLL(s). This is only an estimation. Final usage depends on user pin location assignments and/or fitter behavior.
+Info: audioblade_system.emif_0.arch: Valid memory frequencies for the current PLL reference clock and user clock rate, in MHz: 1200.0
+Info: audioblade_system.emif_0.arch: For additional documentation about the interface, consult the *_readme.txt file after generation.
+Info: audioblade_system.emif_a10_hps_0: When ECC is enabled, a partial write using the DM pins triggers a read-modify-write operation.  Frequent partial writes can lead to poor efficiency.
+Info: audioblade_system.emif_a10_hps_0: Debug features for HPS are currently not supported.
+Info: audioblade_system.emif_a10_hps_0.arch: Placement of address/command pins must follow "DDR4 Scheme 2: Component/SODIMM".
+Info: audioblade_system.emif_a10_hps_0.arch: Interface estimated to require 2 I/O Bank(s) and 2 I/O PLL(s). This is only an estimation. Final usage depends on user pin location assignments and/or fitter behavior.
+Info: audioblade_system.emif_a10_hps_0.arch: Valid memory frequencies for the current PLL reference clock and user clock rate, in MHz: 1200.0
+Info: audioblade_system.emif_a10_hps_0.arch: For additional documentation about the interface, consult the *_readme.txt file after generation.
+Warning: audioblade_system.pll_using_AD1939_MCLK: Able to implement PLL - Actual settings differ from Requested settings
+Info: audioblade_system.som_config: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Error: audioblade_system.ur_ear_fpga_sim_0: Port avalon_sink_channel is not fully defined after elaboration
+Error: audioblade_system.ur_ear_fpga_sim_0: Port avalon_source_channel is not fully defined after elaboration
+Warning: audioblade_system.ur_ear_fpga_sim_0.avalon_streaming_sink: The channel signal isn't wide enough to support the number of channels.
+Warning: audioblade_system.ur_ear_fpga_sim_0.avalon_streaming_sink: Signal avalon_sink_channel[-1] of type channel must have width [1-128]
+Warning: audioblade_system.ur_ear_fpga_sim_0.avalon_streaming_source: The channel signal isn't wide enough to support the number of channels.
+Warning: audioblade_system.ur_ear_fpga_sim_0.avalon_streaming_source: Signal avalon_source_channel[-1] of type channel must have width [1-128]
+Info: audioblade_system.FE_AD4020_Left.Line_In/FE_AD5791_v1_Left.Line_Out: The source has a channel signal of 2 bits, but the sink does not. Avalon-ST Adapter will be inserted.
+Info: audioblade_system.FE_AD4020_Right.Line_In/FE_AD5791_v1_Right.Line_Out: The source has a channel signal of 2 bits, but the sink does not. Avalon-ST Adapter will be inserted.
+Info: audioblade_system.FE_Qsys_AD1939_Audio_Blade_v1_0.Line_In/ur_ear_fpga_sim_0.avalon_streaming_sink: The source channel signal is 2 bits, but the sink is -1 bits. Avalon-ST Adapter will be inserted.
+Info: audioblade_system.ur_ear_fpga_sim_0.avalon_streaming_source/FE_Qsys_AD1939_Audio_Blade_v1_0.Line_Out: The source channel signal is -1 bits, but the sink is 2 bits. Avalon-ST Adapter will be inserted.
+Info: audioblade_system.FE_FPGA_Microphone_Encoder_Decoder_1.mic_output/FE_Qsys_AD1939_Audio_Blade_v1_0.Headphone_Out: The source channel signal is 4 bits, but the sink is 2 bits. Avalon-ST Adapter will be inserted.
+Warning: audioblade_system.FE_AD7768_v1_0.data_out: FE_AD7768_v1_0.data_out must be connected to an Avalon-ST sink
+Warning: audioblade_system.FE_FPGA_Microphone_Encoder_Decoder_0.bme_output: FE_FPGA_Microphone_Encoder_Decoder_0.bme_output must be connected to an Avalon-ST sink
+Warning: audioblade_system.FE_FPGA_Microphone_Encoder_Decoder_0.mic_output: FE_FPGA_Microphone_Encoder_Decoder_0.mic_output must be connected to an Avalon-ST sink
+Warning: audioblade_system.FE_FPGA_Microphone_Encoder_Decoder_0.cfg_input: FE_FPGA_Microphone_Encoder_Decoder_0.cfg_input must be connected to an Avalon-ST source
+Warning: audioblade_system.FE_FPGA_Microphone_Encoder_Decoder_0.rgb_input: FE_FPGA_Microphone_Encoder_Decoder_0.rgb_input must be connected to an Avalon-ST source
+Warning: audioblade_system.FE_FPGA_Microphone_Encoder_Decoder_1.bme_output: FE_FPGA_Microphone_Encoder_Decoder_1.bme_output must be connected to an Avalon-ST sink
+Warning: audioblade_system.FE_FPGA_Microphone_Encoder_Decoder_1.cfg_input: FE_FPGA_Microphone_Encoder_Decoder_1.cfg_input must be connected to an Avalon-ST source
+Warning: audioblade_system.FE_FPGA_Microphone_Encoder_Decoder_1.rgb_input: FE_FPGA_Microphone_Encoder_Decoder_1.rgb_input must be connected to an Avalon-ST source
+Warning: audioblade_system.FE_FPGA_Microphone_Encoder_Decoder_10.bme_output: FE_FPGA_Microphone_Encoder_Decoder_10.bme_output must be connected to an Avalon-ST sink
+Warning: audioblade_system.FE_FPGA_Microphone_Encoder_Decoder_10.mic_output: FE_FPGA_Microphone_Encoder_Decoder_10.mic_output must be connected to an Avalon-ST sink
+Warning: audioblade_system.FE_FPGA_Microphone_Encoder_Decoder_10.cfg_input: FE_FPGA_Microphone_Encoder_Decoder_10.cfg_input must be connected to an Avalon-ST source
+Warning: audioblade_system.FE_FPGA_Microphone_Encoder_Decoder_10.rgb_input: FE_FPGA_Microphone_Encoder_Decoder_10.rgb_input must be connected to an Avalon-ST source
+Warning: audioblade_system.FE_FPGA_Microphone_Encoder_Decoder_11.bme_output: FE_FPGA_Microphone_Encoder_Decoder_11.bme_output must be connected to an Avalon-ST sink
+Warning: audioblade_system.FE_FPGA_Microphone_Encoder_Decoder_11.mic_output: FE_FPGA_Microphone_Encoder_Decoder_11.mic_output must be connected to an Avalon-ST sink
+Warning: audioblade_system.FE_FPGA_Microphone_Encoder_Decoder_11.cfg_input: FE_FPGA_Microphone_Encoder_Decoder_11.cfg_input must be connected to an Avalon-ST source
+Warning: audioblade_system.FE_FPGA_Microphone_Encoder_Decoder_11.rgb_input: FE_FPGA_Microphone_Encoder_Decoder_11.rgb_input must be connected to an Avalon-ST source
+Warning: audioblade_system.FE_FPGA_Microphone_Encoder_Decoder_12.bme_output: FE_FPGA_Microphone_Encoder_Decoder_12.bme_output must be connected to an Avalon-ST sink
+Warning: audioblade_system.FE_FPGA_Microphone_Encoder_Decoder_12.mic_output: FE_FPGA_Microphone_Encoder_Decoder_12.mic_output must be connected to an Avalon-ST sink
+Warning: audioblade_system.FE_FPGA_Microphone_Encoder_Decoder_12.cfg_input: FE_FPGA_Microphone_Encoder_Decoder_12.cfg_input must be connected to an Avalon-ST source
+Warning: audioblade_system.FE_FPGA_Microphone_Encoder_Decoder_12.rgb_input: FE_FPGA_Microphone_Encoder_Decoder_12.rgb_input must be connected to an Avalon-ST source
+Warning: audioblade_system.FE_FPGA_Microphone_Encoder_Decoder_13.bme_output: FE_FPGA_Microphone_Encoder_Decoder_13.bme_output must be connected to an Avalon-ST sink
+Warning: audioblade_system.FE_FPGA_Microphone_Encoder_Decoder_13.mic_output: FE_FPGA_Microphone_Encoder_Decoder_13.mic_output must be connected to an Avalon-ST sink
+Warning: audioblade_system.FE_FPGA_Microphone_Encoder_Decoder_13.cfg_input: FE_FPGA_Microphone_Encoder_Decoder_13.cfg_input must be connected to an Avalon-ST source
+Warning: audioblade_system.FE_FPGA_Microphone_Encoder_Decoder_13.rgb_input: FE_FPGA_Microphone_Encoder_Decoder_13.rgb_input must be connected to an Avalon-ST source
+Warning: audioblade_system.FE_FPGA_Microphone_Encoder_Decoder_14.bme_output: FE_FPGA_Microphone_Encoder_Decoder_14.bme_output must be connected to an Avalon-ST sink
+Warning: audioblade_system.FE_FPGA_Microphone_Encoder_Decoder_14.mic_output: FE_FPGA_Microphone_Encoder_Decoder_14.mic_output must be connected to an Avalon-ST sink
+Warning: audioblade_system.FE_FPGA_Microphone_Encoder_Decoder_14.cfg_input: FE_FPGA_Microphone_Encoder_Decoder_14.cfg_input must be connected to an Avalon-ST source
+Warning: audioblade_system.FE_FPGA_Microphone_Encoder_Decoder_14.rgb_input: FE_FPGA_Microphone_Encoder_Decoder_14.rgb_input must be connected to an Avalon-ST source
+Warning: audioblade_system.FE_FPGA_Microphone_Encoder_Decoder_15.bme_output: FE_FPGA_Microphone_Encoder_Decoder_15.bme_output must be connected to an Avalon-ST sink
+Warning: audioblade_system.FE_FPGA_Microphone_Encoder_Decoder_15.mic_output: FE_FPGA_Microphone_Encoder_Decoder_15.mic_output must be connected to an Avalon-ST sink
+Warning: audioblade_system.FE_FPGA_Microphone_Encoder_Decoder_15.cfg_input: FE_FPGA_Microphone_Encoder_Decoder_15.cfg_input must be connected to an Avalon-ST source
+Warning: audioblade_system.FE_FPGA_Microphone_Encoder_Decoder_15.rgb_input: FE_FPGA_Microphone_Encoder_Decoder_15.rgb_input must be connected to an Avalon-ST source
+Warning: audioblade_system.FE_FPGA_Microphone_Encoder_Decoder_2.bme_output: FE_FPGA_Microphone_Encoder_Decoder_2.bme_output must be connected to an Avalon-ST sink
+Warning: audioblade_system.FE_FPGA_Microphone_Encoder_Decoder_2.mic_output: FE_FPGA_Microphone_Encoder_Decoder_2.mic_output must be connected to an Avalon-ST sink
+Warning: audioblade_system.FE_FPGA_Microphone_Encoder_Decoder_2.cfg_input: FE_FPGA_Microphone_Encoder_Decoder_2.cfg_input must be connected to an Avalon-ST source
+Warning: audioblade_system.FE_FPGA_Microphone_Encoder_Decoder_2.rgb_input: FE_FPGA_Microphone_Encoder_Decoder_2.rgb_input must be connected to an Avalon-ST source
+Warning: audioblade_system.FE_FPGA_Microphone_Encoder_Decoder_3.bme_output: FE_FPGA_Microphone_Encoder_Decoder_3.bme_output must be connected to an Avalon-ST sink
+Warning: audioblade_system.FE_FPGA_Microphone_Encoder_Decoder_3.mic_output: FE_FPGA_Microphone_Encoder_Decoder_3.mic_output must be connected to an Avalon-ST sink
+Warning: audioblade_system.FE_FPGA_Microphone_Encoder_Decoder_3.cfg_input: FE_FPGA_Microphone_Encoder_Decoder_3.cfg_input must be connected to an Avalon-ST source
+Warning: audioblade_system.FE_FPGA_Microphone_Encoder_Decoder_3.rgb_input: FE_FPGA_Microphone_Encoder_Decoder_3.rgb_input must be connected to an Avalon-ST source
+Warning: audioblade_system.FE_FPGA_Microphone_Encoder_Decoder_4.bme_output: FE_FPGA_Microphone_Encoder_Decoder_4.bme_output must be connected to an Avalon-ST sink
+Warning: audioblade_system.FE_FPGA_Microphone_Encoder_Decoder_4.mic_output: FE_FPGA_Microphone_Encoder_Decoder_4.mic_output must be connected to an Avalon-ST sink
+Warning: audioblade_system.FE_FPGA_Microphone_Encoder_Decoder_4.cfg_input: FE_FPGA_Microphone_Encoder_Decoder_4.cfg_input must be connected to an Avalon-ST source
+Warning: audioblade_system.FE_FPGA_Microphone_Encoder_Decoder_4.rgb_input: FE_FPGA_Microphone_Encoder_Decoder_4.rgb_input must be connected to an Avalon-ST source
+Warning: audioblade_system.FE_FPGA_Microphone_Encoder_Decoder_5.bme_output: FE_FPGA_Microphone_Encoder_Decoder_5.bme_output must be connected to an Avalon-ST sink
+Warning: audioblade_system.FE_FPGA_Microphone_Encoder_Decoder_5.mic_output: FE_FPGA_Microphone_Encoder_Decoder_5.mic_output must be connected to an Avalon-ST sink
+Warning: audioblade_system.FE_FPGA_Microphone_Encoder_Decoder_5.cfg_input: FE_FPGA_Microphone_Encoder_Decoder_5.cfg_input must be connected to an Avalon-ST source
+Warning: audioblade_system.FE_FPGA_Microphone_Encoder_Decoder_5.rgb_input: FE_FPGA_Microphone_Encoder_Decoder_5.rgb_input must be connected to an Avalon-ST source
+Warning: audioblade_system.FE_FPGA_Microphone_Encoder_Decoder_6.bme_output: FE_FPGA_Microphone_Encoder_Decoder_6.bme_output must be connected to an Avalon-ST sink
+Warning: audioblade_system.FE_FPGA_Microphone_Encoder_Decoder_6.mic_output: FE_FPGA_Microphone_Encoder_Decoder_6.mic_output must be connected to an Avalon-ST sink
+Warning: audioblade_system.FE_FPGA_Microphone_Encoder_Decoder_6.cfg_input: FE_FPGA_Microphone_Encoder_Decoder_6.cfg_input must be connected to an Avalon-ST source
+Warning: audioblade_system.FE_FPGA_Microphone_Encoder_Decoder_6.rgb_input: FE_FPGA_Microphone_Encoder_Decoder_6.rgb_input must be connected to an Avalon-ST source
+Warning: audioblade_system.FE_FPGA_Microphone_Encoder_Decoder_7.bme_output: FE_FPGA_Microphone_Encoder_Decoder_7.bme_output must be connected to an Avalon-ST sink
+Warning: audioblade_system.FE_FPGA_Microphone_Encoder_Decoder_7.mic_output: FE_FPGA_Microphone_Encoder_Decoder_7.mic_output must be connected to an Avalon-ST sink
+Warning: audioblade_system.FE_FPGA_Microphone_Encoder_Decoder_7.cfg_input: FE_FPGA_Microphone_Encoder_Decoder_7.cfg_input must be connected to an Avalon-ST source
+Warning: audioblade_system.FE_FPGA_Microphone_Encoder_Decoder_7.rgb_input: FE_FPGA_Microphone_Encoder_Decoder_7.rgb_input must be connected to an Avalon-ST source
+Warning: audioblade_system.FE_FPGA_Microphone_Encoder_Decoder_8.bme_output: FE_FPGA_Microphone_Encoder_Decoder_8.bme_output must be connected to an Avalon-ST sink
+Warning: audioblade_system.FE_FPGA_Microphone_Encoder_Decoder_8.mic_output: FE_FPGA_Microphone_Encoder_Decoder_8.mic_output must be connected to an Avalon-ST sink
+Warning: audioblade_system.FE_FPGA_Microphone_Encoder_Decoder_8.cfg_input: FE_FPGA_Microphone_Encoder_Decoder_8.cfg_input must be connected to an Avalon-ST source
+Warning: audioblade_system.FE_FPGA_Microphone_Encoder_Decoder_8.rgb_input: FE_FPGA_Microphone_Encoder_Decoder_8.rgb_input must be connected to an Avalon-ST source
+Warning: audioblade_system.FE_FPGA_Microphone_Encoder_Decoder_9.bme_output: FE_FPGA_Microphone_Encoder_Decoder_9.bme_output must be connected to an Avalon-ST sink
+Warning: audioblade_system.FE_FPGA_Microphone_Encoder_Decoder_9.mic_output: FE_FPGA_Microphone_Encoder_Decoder_9.mic_output must be connected to an Avalon-ST sink
+Warning: audioblade_system.FE_FPGA_Microphone_Encoder_Decoder_9.cfg_input: FE_FPGA_Microphone_Encoder_Decoder_9.cfg_input must be connected to an Avalon-ST source
+Warning: audioblade_system.FE_FPGA_Microphone_Encoder_Decoder_9.rgb_input: FE_FPGA_Microphone_Encoder_Decoder_9.rgb_input must be connected to an Avalon-ST source
+Warning: audioblade_system.FE_Qsys_AD1939_Audio_Blade_v1_0.Microphone_In: FE_Qsys_AD1939_Audio_Blade_v1_0.Microphone_In must be connected to an Avalon-ST sink
+Info: audioblade_system: "Transforming system: audioblade_system"
+Info: audioblade_system: Running transform generation_view_transform
+Info: audioblade_system: Running transform generation_view_transform took 0.001s
+Info: FE_AD4020_Left: Running transform generation_view_transform
+Info: FE_AD4020_Left: Running transform generation_view_transform took 0.000s
+Info: FE_AD4020_Right: Running transform generation_view_transform
+Info: FE_AD4020_Right: Running transform generation_view_transform took 0.000s
+Info: FE_AD5791_v1_Left: Running transform generation_view_transform
+Info: FE_AD5791_v1_Left: Running transform generation_view_transform took 0.000s
+Info: FE_AD5791_v1_Right: Running transform generation_view_transform
+Info: FE_AD5791_v1_Right: Running transform generation_view_transform took 0.000s
+Info: FE_AD7768_v1_0: Running transform generation_view_transform
+Info: FE_AD7768_v1_0: Running transform generation_view_transform took 0.000s
+Info: FE_FPGA_Microphone_Encoder_Decoder_0: Running transform generation_view_transform
+Info: FE_FPGA_Microphone_Encoder_Decoder_0: Running transform generation_view_transform took 0.000s
+Info: FE_FPGA_Microphone_Encoder_Decoder_1: Running transform generation_view_transform
+Info: FE_FPGA_Microphone_Encoder_Decoder_1: Running transform generation_view_transform took 0.000s
+Info: FE_FPGA_Microphone_Encoder_Decoder_10: Running transform generation_view_transform
+Info: FE_FPGA_Microphone_Encoder_Decoder_10: Running transform generation_view_transform took 0.000s
+Info: FE_FPGA_Microphone_Encoder_Decoder_11: Running transform generation_view_transform
+Info: FE_FPGA_Microphone_Encoder_Decoder_11: Running transform generation_view_transform took 0.000s
+Info: FE_FPGA_Microphone_Encoder_Decoder_12: Running transform generation_view_transform
+Info: FE_FPGA_Microphone_Encoder_Decoder_12: Running transform generation_view_transform took 0.000s
+Info: FE_FPGA_Microphone_Encoder_Decoder_13: Running transform generation_view_transform
+Info: FE_FPGA_Microphone_Encoder_Decoder_13: Running transform generation_view_transform took 0.000s
+Info: FE_FPGA_Microphone_Encoder_Decoder_14: Running transform generation_view_transform
+Info: FE_FPGA_Microphone_Encoder_Decoder_14: Running transform generation_view_transform took 0.000s
+Info: FE_FPGA_Microphone_Encoder_Decoder_15: Running transform generation_view_transform
+Info: FE_FPGA_Microphone_Encoder_Decoder_15: Running transform generation_view_transform took 0.000s
+Info: FE_FPGA_Microphone_Encoder_Decoder_2: Running transform generation_view_transform
+Info: FE_FPGA_Microphone_Encoder_Decoder_2: Running transform generation_view_transform took 0.000s
+Info: FE_FPGA_Microphone_Encoder_Decoder_3: Running transform generation_view_transform
+Info: FE_FPGA_Microphone_Encoder_Decoder_3: Running transform generation_view_transform took 0.000s
+Info: FE_FPGA_Microphone_Encoder_Decoder_4: Running transform generation_view_transform
+Info: FE_FPGA_Microphone_Encoder_Decoder_4: Running transform generation_view_transform took 0.000s
+Info: FE_FPGA_Microphone_Encoder_Decoder_5: Running transform generation_view_transform
+Info: FE_FPGA_Microphone_Encoder_Decoder_5: Running transform generation_view_transform took 0.000s
+Info: FE_FPGA_Microphone_Encoder_Decoder_6: Running transform generation_view_transform
+Info: FE_FPGA_Microphone_Encoder_Decoder_6: Running transform generation_view_transform took 0.000s
+Info: FE_FPGA_Microphone_Encoder_Decoder_7: Running transform generation_view_transform
+Info: FE_FPGA_Microphone_Encoder_Decoder_7: Running transform generation_view_transform took 0.000s
+Info: FE_FPGA_Microphone_Encoder_Decoder_8: Running transform generation_view_transform
+Info: FE_FPGA_Microphone_Encoder_Decoder_8: Running transform generation_view_transform took 0.000s
+Info: FE_FPGA_Microphone_Encoder_Decoder_9: Running transform generation_view_transform
+Info: FE_FPGA_Microphone_Encoder_Decoder_9: Running transform generation_view_transform took 0.000s
+Info: FE_Qsys_AD1939_Audio_Blade_v1_0: Running transform generation_view_transform
+Info: FE_Qsys_AD1939_Audio_Blade_v1_0: Running transform generation_view_transform took 0.000s
+Info: arria10_hps_0: Running transform generation_view_transform
+Info: arria10_hps_0: Running transform generation_view_transform took 0.666s
+Info: axi_clk_bridge: Running transform generation_view_transform
+Info: axi_clk_bridge: Running transform generation_view_transform took 0.000s
+Info: emif_0: Running transform generation_view_transform
+Info: emif_0: Running transform generation_view_transform took 0.000s
+Info: emif_a10_hps_0: Running transform generation_view_transform
+Info: emif_a10_hps_0: Running transform generation_view_transform took 0.000s
+Info: mm_clock_crossing_bridge_0: Running transform generation_view_transform
+Info: mm_clock_crossing_bridge_0: Running transform generation_view_transform took 0.000s
+Info: mux_ddr_0: Running transform generation_view_transform
+Info: mux_ddr_0: Running transform generation_view_transform took 0.000s
+Info: pll_using_AD1939_MCLK: Running transform generation_view_transform
+Info: pll_using_AD1939_MCLK: Running transform generation_view_transform took 0.000s
+Info: som_config: Running transform generation_view_transform
+Info: som_config: Running transform generation_view_transform took 0.000s
+Info: ur_ear_fpga_sim_0: Running transform generation_view_transform
+Info: ur_ear_fpga_sim_0: Running transform generation_view_transform took 0.000s
+Info: fpga_interfaces: Running transform generation_view_transform
+Info: fpga_interfaces: Running transform generation_view_transform took 0.000s
+Info: hps_io: Running transform generation_view_transform
+Info: hps_io: Running transform generation_view_transform took 0.000s
+Info: arch: Running transform generation_view_transform
+Info: arch: Running transform generation_view_transform took 0.000s
+Info: cal_slave_component: Running transform generation_view_transform
+Info: cal_slave_component: Running transform generation_view_transform took 0.000s
+Info: arch: Running transform generation_view_transform
+Info: arch: Running transform generation_view_transform took 0.000s
+Info: border: Running transform generation_view_transform
+Info: border: Running transform generation_view_transform took 0.000s
+Info: clk_bridge: Running transform generation_view_transform
+Info: clk_bridge: Running transform generation_view_transform took 0.000s
+Info: rst_bridge: Running transform generation_view_transform
+Info: rst_bridge: Running transform generation_view_transform took 0.000s
+Info: ioaux_master_bridge: Running transform generation_view_transform
+Info: ioaux_master_bridge: Running transform generation_view_transform took 0.000s
+Info: ioaux_soft_ram: Running transform generation_view_transform
+Info: ioaux_soft_ram: Running transform generation_view_transform took 0.000s
+Info: audioblade_system: Running transform merlin_avalon_transform
+Info: Interconnect is inserted between master mux_ddr_0.altera_axi_master and slave mm_clock_crossing_bridge_0.s0 because the master is of type axi and the slave is of type avalon.
+Info: Interconnect is inserted between master mux_ddr_0.altera_axi_master and slave mm_clock_crossing_bridge_0.s0 because they have different clock source.
+Info: Inserting clock-crossing logic between cmd_demux.src0 and cmd_mux.sink0
+Info: Inserting clock-crossing logic between cmd_demux_001.src0 and cmd_mux.sink1
+Info: Inserting clock-crossing logic between rsp_demux.src0 and rsp_mux.sink0
+Info: Inserting clock-crossing logic between rsp_demux.src1 and rsp_mux_001.sink0
+Info: Interconnect is inserted between master arria10_hps_0.h2f_axi_master and slave mux_ddr_0.altera_axi_slave because the master has awaddr signal 32 bit wide, but the slave is 29 bit wide.
+Info: Interconnect is inserted between master arria10_hps_0.h2f_axi_master and slave mux_ddr_0.altera_axi_slave because the master has wdata signal 128 bit wide, but the slave is 32 bit wide.
+Info: Interconnect is inserted between master arria10_hps_0.h2f_axi_master and slave mux_ddr_0.altera_axi_slave because the master has wstrb signal 16 bit wide, but the slave is 4 bit wide.
+Info: Interconnect is inserted between master arria10_hps_0.h2f_axi_master and slave mux_ddr_0.altera_axi_slave because the master has araddr signal 32 bit wide, but the slave is 29 bit wide.
+Info: Interconnect is inserted between master arria10_hps_0.h2f_axi_master and slave mux_ddr_0.altera_axi_slave because the master has rdata signal 128 bit wide, but the slave is 32 bit wide.
+Info: Interconnect is inserted between master arria10_hps_0.h2f_axi_master and slave mux_ddr_0.altera_axi_slave because they have different clock source.
+Info: Inserting clock-crossing logic between cmd_demux.src0 and cmd_mux.sink0
+Info: Inserting clock-crossing logic between cmd_demux_001.src0 and cmd_mux_001.sink0
+Info: Inserting clock-crossing logic between rsp_demux.src0 and rsp_mux.sink0
+Info: Inserting clock-crossing logic between rsp_demux_001.src0 and rsp_mux_001.sink0
+Info: Inserting clock-crossing logic between cmd_demux.src0 and cmd_mux.sink0
+Info: Inserting clock-crossing logic between cmd_demux_001.src0 and cmd_mux.sink1
+Info: Inserting clock-crossing logic between rsp_demux.src0 and rsp_mux.sink0
+Info: Inserting clock-crossing logic between rsp_demux.src1 and rsp_mux_001.sink0
+Info: Interconnect is inserted between master mm_clock_crossing_bridge_0.m0 and slave emif_0.ctrl_amm_0 because the master has address signal 32 bit wide, but the slave is 26 bit wide.
+Info: Interconnect is inserted between master mm_clock_crossing_bridge_0.m0 and slave emif_0.ctrl_amm_0 because the master has debugaccess signal 1 bit wide, but the slave is 0 bit wide.
+Warning: arria10_hps_0.f2h_irq0: Cannot connect clock for irq_mapper.sender
+Warning: arria10_hps_0.f2h_irq0: Cannot connect reset for irq_mapper.sender
+Warning: arria10_hps_0.f2h_irq1: Cannot connect clock for irq_mapper_001.sender
+Warning: arria10_hps_0.f2h_irq1: Cannot connect reset for irq_mapper_001.sender
+Info: avalon_st_adapter: Inserting channel_adapter: channel_adapter_0
+Info: avalon_st_adapter_001: Inserting channel_adapter: channel_adapter_0
+Info: avalon_st_adapter_002: Inserting channel_adapter: channel_adapter_0
+Error: avalon_st_adapter_002.channel_adapter_0: "Channel Signal Width (bits)" (outChannelWidth) -1 is out of range: 0-512
+Error: avalon_st_adapter_002: "Sink Channel Port Width" (outChannelWidth) -1 is out of range: 0-8
+Info: avalon_st_adapter_003: Inserting channel_adapter: channel_adapter_0
+Error: avalon_st_adapter_003.channel_adapter_0: "Channel Signal Width (bits)" (inChannelWidth) -1 is out of range: 0-512
+Error: avalon_st_adapter_003: "Source Channel Port Width" (inChannelWidth) -1 is out of range: 0-8
+Info: avalon_st_adapter_004: Inserting channel_adapter: channel_adapter_0
+Info: audioblade_system: Running transform merlin_avalon_transform took 4.848s
+Info: arria10_hps_0: Running transform merlin_avalon_transform
+Info: arria10_hps_0: Running transform merlin_avalon_transform took 0.014s
+Info: emif_0: Running transform merlin_avalon_transform
+Info: emif_0: Running transform merlin_avalon_transform took 0.295s
+Info: emif_a10_hps_0: Running transform merlin_avalon_transform
+Info: emif_a10_hps_0: Running transform merlin_avalon_transform took 0.014s
+Info: mm_interconnect_0: Running transform merlin_avalon_transform
+Info: avalon_st_adapter: Inserting error_adapter: error_adapter_0
+Info: mm_interconnect_0: Running transform merlin_avalon_transform took 0.566s
+Info: mm_interconnect_1: Running transform merlin_avalon_transform
+Info: mm_interconnect_1: Running transform merlin_avalon_transform took 0.013s
+Info: mm_interconnect_2: Running transform merlin_avalon_transform
+Info: avalon_st_adapter: Inserting error_adapter: error_adapter_0
+Info: avalon_st_adapter_001: Inserting error_adapter: error_adapter_0
+Info: mm_interconnect_2: Running transform merlin_avalon_transform took 1.088s
+Info: mm_interconnect_3: Running transform merlin_avalon_transform
+Info: mm_interconnect_3: Running transform merlin_avalon_transform took 0.264s
+Info: avalon_st_adapter: Running transform merlin_avalon_transform
+Info: avalon_st_adapter: Running transform merlin_avalon_transform took 0.012s
+Info: avalon_st_adapter_001: Running transform merlin_avalon_transform
+Info: avalon_st_adapter_001: Running transform merlin_avalon_transform took 0.013s
+Info: avalon_st_adapter_002: Running transform merlin_avalon_transform
+Info: avalon_st_adapter_002: Running transform merlin_avalon_transform took 0.014s
+Info: avalon_st_adapter_003: Running transform merlin_avalon_transform
+Info: avalon_st_adapter_003: Running transform merlin_avalon_transform took 0.013s
+Info: avalon_st_adapter_004: Running transform merlin_avalon_transform
+Info: avalon_st_adapter_004: Running transform merlin_avalon_transform took 0.014s
+Info: hps_io: Running transform merlin_avalon_transform
+Info: hps_io: Running transform merlin_avalon_transform took 0.014s
+Info: cal_slave_component: Running transform merlin_avalon_transform
+Info: Interconnect is inserted between master ioaux_master_bridge.m0 and slave ioaux_soft_ram.s1 because the master has waitrequest signal 1 bit wide, but the slave is 0 bit wide.
+Info: Interconnect is inserted between master ioaux_master_bridge.m0 and slave ioaux_soft_ram.s1 because the master has readdatavalid signal 1 bit wide, but the slave is 0 bit wide.
+Info: Interconnect is inserted between master ioaux_master_bridge.m0 and slave ioaux_soft_ram.s1 because the master has burstcount signal 1 bit wide, but the slave is 0 bit wide.
+Info: Interconnect is inserted between master ioaux_master_bridge.m0 and slave ioaux_soft_ram.s1 because the master has address signal 16 bit wide, but the slave is 12 bit wide.
+Info: Interconnect is inserted between master ioaux_master_bridge.m0 and slave ioaux_soft_ram.s1 because the master has read signal 1 bit wide, but the slave is 0 bit wide.
+Info: cal_slave_component: Running transform merlin_avalon_transform took 0.545s
+Info: avalon_st_adapter: Running transform merlin_avalon_transform
+Info: avalon_st_adapter: Running transform merlin_avalon_transform took 0.012s
+Info: avalon_st_adapter: Running transform merlin_avalon_transform
+Info: avalon_st_adapter: Running transform merlin_avalon_transform took 0.014s
+Info: avalon_st_adapter_001: Running transform merlin_avalon_transform
+Info: avalon_st_adapter_001: Running transform merlin_avalon_transform took 0.014s
+Info: mm_interconnect_0: Running transform merlin_avalon_transform
+Info: mm_interconnect_0: Running transform merlin_avalon_transform took 0.265s
+Info: audioblade_system: "Naming system components in system: audioblade_system"
+Info: audioblade_system: "Processing generation queue"
+Info: audioblade_system: "Generating: audioblade_system"
+Warning: audioblade_system: "No matching role found for ur_ear_fpga_sim_0:avalon_streaming_sink:avalon_sink_channel (channel)"
+Warning: audioblade_system: "No matching role found for ur_ear_fpga_sim_0:avalon_streaming_source:avalon_source_channel (channel)"
+Error: Internal error: STD_LOGIC: Zero or negative width types not supported, it was -1
