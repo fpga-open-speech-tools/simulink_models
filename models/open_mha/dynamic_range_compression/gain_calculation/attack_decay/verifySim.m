@@ -27,102 +27,125 @@
 % Bozeman, MT 59718
 % openspeech@flatearthinc.com
 
+
 %% Initialization
 close all;
-data_input = testSignal.audio(:,1);
-total_stim = length(data_input);
-% Coefficient Arrays
-addr_attack_matlab   = zeros(total_stim,1);
-addr_decay_matlab    = zeros(total_stim,1);
-c1_a_matlab          = zeros(total_stim,1);
-c2_a_matlab          = zeros(total_stim,1);
-c1_d_matlab          = zeros(total_stim,1);
-c2_d_matlab          = zeros(total_stim,1);
-% Attack and Decay Reults
-attack_filter_matlab = zeros(total_stim,1);
-decay_filter_matlab  = zeros(total_stim,1);
+% C1 and C2 Coefficients
+c1_a_matlab          = zeros(audio_length,num_bands);
+c1_a_simulink        = zeros(audio_length,num_bands);
+c2_a_matlab          = zeros(audio_length,num_bands);
+c2_a_simulink        = zeros(audio_length,num_bands);
+c1_d_matlab          = zeros(audio_length,num_bands);
+c1_d_simulink        = zeros(audio_length,num_bands);
+c2_d_matlab          = zeros(audio_length,num_bands);
+c2_d_simulink        = zeros(audio_length,num_bands);
+% Attack Filter Results
+attack_buff_matlab           = zeros(audio_length,num_bands);
+attack_filter_matlab         = zeros(audio_length,num_bands);
+attack_filter_sim_matrix     = zeros(audio_length,num_bands);
+attack_filter_opt_sim_matrix = zeros(audio_length,num_bands);
+%Decay Filter Results
+delay_buff_matlab           = zeros(audio_length,num_bands);
+decay_filter_matlab         = zeros(audio_length,num_bands);
+decay_filter_sim_matrix     = zeros(audio_length,num_bands);
+decay_filter_opt_sim_matrix = zeros(audio_length,num_bands);
 
+input_temp = zeros(audio_length,num_bands);
 
 %% Calculate the Results
-decay_attack_tau  = 0;
-[decay_c1_a, decay_c2_a] = o1_lp_coeffs(decay_attack_tau,fs);
-
-for i = 1:1:total_stim
-    addr_attack_matlab(i,1) = (band_num_input(i) - 1) * num_coeff;
-    addr_decay_matlab(i,1)  = ((band_num_input(i) - 1) * num_coeff) + 1;
-    c1_a_matlab(i,1)        = ad_coeffs(addr_attack_matlab(i,1) + 1);  % Account for MATLAB Array Indexing starting at 1
-    c2_a_matlab(i,1)        = 1 - c1_a_matlab(i,1);
-    c1_d_matlab(i,1)        = ad_coeffs(addr_decay_matlab(i,1) + 1);   % Account for MATLAB Array Indexing starting at 1
-    c2_d_matlab(i,1)        = 1 - c1_d_matlab(i,1);
-    if(i <= 8) % Initial Condition
-        attack_filter_matlab(i,1) = o1_ar_filter(data_input(i,1), c1_a_matlab(i,1), c2_a_matlab(i,1), c1_a_matlab(i,1), c2_a_matlab(i,1), buf_a(i,1));
-        decay_filter_matlab(i,1)  = o1_ar_filter(attack_filter_matlab(i,1), decay_c1_a, decay_c2_a, c1_d_matlab(i,1),  c2_d_matlab(i,1), buf_d(i,1));
-    else
-        attack_filter_matlab(i,1) = o1_ar_filter(data_input(i,1), c1_a_matlab(i,1), c2_a_matlab(i,1), c1_a_matlab(i,1), c2_a_matlab(i,1), attack_filter_matlab(i-num_bands,1));
-        decay_filter_matlab(i,1)  = o1_ar_filter(attack_filter_matlab(i,1), decay_c1_a, decay_c2_a, c1_d_matlab(i,1),  c2_d_matlab(i,1), decay_filter_matlab(i-num_bands,1));
+% Based on Line 282 from dc.cpp
+for i = 1:1:audio_length
+    for j = 1:1:num_bands
+        c1_a_matlab(i,j) = attack_c1_a_array(j,1);
+        c2_a_matlab(i,j) = attack_c2_a_array(j,1);
+        c1_d_matlab(i,j) = decay_c1_r_array(j,1);
+        c2_d_matlab(i,j) = decay_c2_r_array(j,1);
+        if(i == 1) % Initial Condition
+            attack_buff_matlab(i,j)   = buf_a(j,1);
+            attack_filter_matlab(i,j) = o1_ar_filter_source(data_input_matrix(i,j), c1_a_matlab(i,j), c2_a_matlab(i,j), c1_a_matlab(i,j), c2_a_matlab(i,j), attack_buff_matlab(i,j));
+            
+            delay_buff_matlab(i,j)    = buf_d(j,1);
+            decay_filter_matlab(i,j)  = o1_ar_filter_source(attack_filter_matlab(i,j), 0, 1, c1_d_matlab(i,j), c2_d_matlab(i,j), delay_buff_matlab(i,j));
+        else
+            attack_buff_matlab(i,j)   = attack_filter_matlab(i-1,j);
+            attack_filter_matlab(i,j) = o1_ar_filter_source(data_input_matrix(i,j), c1_a_matlab(i,j), c2_a_matlab(i,j), c1_a_matlab(i,j), c2_a_matlab(i,j), attack_buff_matlab(i,j));
+            
+            delay_buff_matlab(i,j)    = decay_filter_matlab(i-1,j);
+            decay_filter_matlab(i,j)  = o1_ar_filter_source(attack_filter_matlab(i,j), 0, 1, c1_d_matlab(i,j), c2_d_matlab(i,j), delay_buff_matlab(i,j));
+        end
     end
 end
 
+%% Parse the Simulink Results
+for i = 1:audio_length
+    for j = 1:num_bands
+        input_temp(i,j) = data_input_array(((i-1)*num_bands) + j,1);
+        
+        %DP-RAM Coefficients
+        c1_a_simulink(i,j) = c1_a_sim_out(((i-1)*num_bands) + j,1);
+        c2_a_simulink(i,j) = c2_a_sim_out(((i-1)*num_bands) + j,1);
+        c1_d_simulink(i,j) = c1_d_sim_out(((i-1)*num_bands) + j,1);
+        c2_d_simulink(i,j) = c2_d_sim_out(((i-1)*num_bands) + j,1);
+        
+        % Attack and Decay Filter
+        attack_filter_opt_sim_matrix(i,j) = attack_filter_opt_sim(((i-1)*num_bands) + j,1);
+        decay_filter_opt_sim_matrix(i,j) = decay_filter_opt_sim(((i-1)*num_bands) + j,1);
+    end    
+end
+
 %% Plot the Results
-figure
-subplot(3,1,1)
-plot(data_input)
-legend("Audio Input Wave")
-title("Audio Input")
+for j = 1:num_bands
+    figure
+    subplot(7,1,1)
+    plot(data_input_matrix(:,j))
+    hold on
+    plot(input_temp(:,j),'--')
+    legend('Input: Matrix', 'Input Array')
+    title(['Input  - Band Number: ' num2str(j)])
+        
+    subplot(7,1,2)
+    plot(c1_a_matlab(:,j))
+    hold on
+    plot(c1_a_simulink(:,j),'--')
+    legend('MATLAB Code','Simulink')
+    title(['C1 A Simulation - Band Number: ' num2str(j)])
 
-subplot(3,1,2)
-plot(attack_filter_matlab)
-hold on
-plot(attack_filter_sim,'--')
-legend('MATLAB Code','Simulink')
-title('Attack Filter Simulation')
 
-subplot(3,1,3)
-plot(decay_filter_matlab)
-hold on
-plot(delay_filter_sim,'--')
-legend('MATLAB Code','Simulink')
-title('Decay Filter Simulation')
+    subplot(7,1,3)
+    plot(c2_a_matlab(:,j))
+    hold on
+    plot(c2_a_simulink(:,j),'--')
+    legend('MATLAB Code','Simulink')
+    title(['C2 A Simulation - Band Number: ' num2str(j)])
+    
+            
+    subplot(7,1,4)
+    plot(c1_d_matlab(:,j))
+    hold on
+    plot(c1_d_simulink(:,j),'--')
+    legend('MATLAB Code','Simulink')
+    title(['C1 D Simulation - Band Number: ' num2str(j)])
 
-figure
-subplot(6,1,1)
-plot(addr_attack_matlab)
-hold on
-plot(addr_attack_sim_out(1:end-1),'--')
-legend('MATLAB Code','Simulink')
-title('Attack Address Simulation')
 
-subplot(6,1,2)
-plot(addr_decay_matlab)
-hold on
-plot(addr_decay_sim_out(1:end-1),'--')
-legend('MATLAB Code','Simulink')
-title('Decay Address Simulation')
+    subplot(7,1,5)
+    plot(c2_d_matlab(:,j))
+    hold on
+    plot(c2_d_simulink(:,j),'--')
+    legend('MATLAB Code','Simulink')
+    title(['C2 D Simulation - Band Number: ' num2str(j)])
+    
+    subplot(7,1,6)
+    plot(attack_filter_matlab(:,j))
+    hold on
+    plot(attack_filter_opt_sim_matrix(:,j),'--')
+    legend('MATLAB Code','Simulink Optimization')
+    title(['Attack Filter Simulation - Band Number: ' num2str(j)])
 
-subplot(6,1,3)
-plot(c1_a_matlab)
-hold on
-plot(c1_a_sim_out(2:end),'--')
-legend('MATLAB Code','Simulink')
-title('C1 Attack Cofficient Read Simulation')
 
-subplot(6,1,4)
-plot(c2_a_matlab)
-hold on
-plot(c2_a_sim_out(2:end),'--')
-legend('MATLAB Code','Simulink')
-title('C2 Attack Cofficient Read Simulation')
-
-subplot(6,1,5)
-plot(c1_d_matlab)
-hold on
-plot(c1_d_sim_out(2:end),'--')
-legend('MATLAB Code','Simulink')
-title('C1 Decay Cofficient Read Simulation')
-
-subplot(6,1,6)
-plot(c2_d_matlab)
-hold on
-plot(c2_d_sim_out(2:end),'--')
-legend('MATLAB Code','Simulink')
-title('C2 Decay Cofficient Read Simulation')
+    subplot(7,1,7)
+    plot(decay_filter_matlab(:,j))
+    hold on
+    plot(decay_filter_opt_sim_matrix(:,j),'--')
+    legend('MATLAB Code','Simulink Optimization')
+    title(['Decay Filter Simulation - Band Number: ' num2str(j)])
+end

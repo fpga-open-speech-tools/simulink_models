@@ -15,9 +15,9 @@
 % openspeech@flatearthinc.com
 
 %% Initialize
-addpath(genpath('..\attack_decay_filter'));           % Attack and Decay Filter
-addpath(genpath('..\calculate_filter_coefficients')); % Attack and Decay Filter Coefficients
-addpath(genpath('..\..\..\referenced_functions'));    % Dual Port RAM - Frost Library
+addpath(genpath('attack_decay_filter'));           % Attack and Decay Filter
+addpath(genpath('calculate_filter_coefficients')); % Attack and Decay Filter Coefficients
+addpath(genpath('..\..\referenced_functions'));    % Dual Port RAM - Frost Library
 
 %% Autogen parameters
 mp.testFile = [mp.test_signals_path filesep 'auditory_nerve\mef_result_subset.wav'];
@@ -29,10 +29,11 @@ mp.nSamples    = config.system.sampleClockFrequency * mp.simDuration;
 mp.useAvalonInterface = false;
 
 %% Open MHA Parameters 
-fs         = 48e3; % Samplig Frequency
-coeff_size = 8;    % Coefficient Address Size
-num_bands  = 8;    % Number of Frequency Bands
-num_coeff  = 2;    % Number of C1 Coefficients required by the Attack and Decay Filter
+fs          = 48e3;          % Samplig Frequency
+coeff_size  = 8;             % Coefficient Address Size
+num_bands   = 8;             % Number of Frequency Bands
+band_number = 1:1:num_bands; % Create an array of band numbers
+num_coeff   = 2;             % Number of C1 Coefficients required by the Attack and Decay Filter
 
 %% Simulation Type - Either 'double' or 'fxpt'
 %--Only Fixed Point works with the Current Dual Port RAM Block--
@@ -57,15 +58,28 @@ elseif(strcmp(sim_type,'fxpt'))
     ad_coeff_type = fixdt(ad_coeff_fp_sign,ad_coeff_fp_size,ad_coeff_fp_dec);
 end
 
-%% Band Number Array
-stim_length    = AudioSource.fromFile(mp.testFile, mp.Fs, mp.nSamples).nSamples;
-band_num_input = zeros(stim_length,1);
-for i = 1:stim_length
-    band_num_input(i,1) = mod(i-1,num_bands) + 1;
+%% Initialization 
+audio_input       = AudioSource.fromFile(mp.testFile, mp.Fs, mp.nSamples);  % Read in the audio file
+audio_length      = audio_input.nSamples;                                   % Determine the number of points in the audio signal
+data_input_matrix = zeros(audio_length, num_bands);                         % Define the input matrix as the audio signal length X the number of bands
+data_input_array  = zeros(audio_length * num_bands,1);                      % Define the simulation input array 
+stim_length       = length(data_input_array);                               % Deteremine the simulation length
+time              = (0:1:stim_length-1)/fs;                                 % Create the time vector for the simulation
+simulation_time   = (stim_length-1)/fs;                                     % Compute the simulation end point
+
+% Create the input signal
+% Copy the audio input wave into each column of the data input matrix
+for j = 1:num_bands
+    data_input_matrix(:,j) = audio_input.audio(:,1);                        
 end
 
-time = (0:1:length(band_num_input)-1) * 1/fs;
-band_num_timeseries = timeseries(band_num_input,time);
+% Create a single data input array by interleafing the columns
+for i = 1:audio_length
+    for j = 1:num_bands
+        data_input_array(((i-1)*num_bands) + j,1) = data_input_matrix(i,j); 
+    end
+end
+data_input_ts = timeseries(data_input_array, time); % Convert the data array to a time series
 
 %% Attack and Decay DP-RAM Parameters
 %--Attack Coefficients
