@@ -8,13 +8,13 @@
             "wordLength": 32,
             "fractionLength": 28,
             "signed": true,
-            "numberOfChannels": 2
+            "numberOfChannels": 1
         },
         "audioOut": {
             "wordLength": 32,
             "fractionLength": 28,
             "signed": true,
-            "numberOfChannels": 2
+            "numberOfChannels": 1
         }
     },
 
