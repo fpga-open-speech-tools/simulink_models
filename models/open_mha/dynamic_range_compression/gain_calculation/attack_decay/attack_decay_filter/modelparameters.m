@@ -37,7 +37,7 @@ buf_a       = 65 .* ones(num_bands,1); % Initial Condition of the Attack Filter 
 buf_d       = 65 .* ones(num_bands,1); % Initial Condition of the Delay Filter Delay Block
 
 %% Simulation Type - Either 'double' or 'fxpt'
-sim_type    = 'double';                  
+sim_type    = 'fxpt';                  
 
 % Attack and Decay Coefficient Fixed Point Paramters
 ad_coeff_fp_size = 16; % Word Size
