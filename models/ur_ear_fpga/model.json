@@ -26,12 +26,23 @@
                     "dataType": {
                         "fractionLength": 16,
                         "signed": false,
-                        "type": "ufix20en16",
-                        "wordLength": 20
+                        "type": "ufix16en8",
+                        "wordLength": 16
                     },
                     "defaultValue": 1.5,
                     "name": "Gain",
                     "registerNumber": 0
+                }, 
+                {
+                "dataType": {
+                        "fractionLength": 16,
+                        "signed": false,
+                        "type": "ufix16en16",
+                        "wordLength": 16
+                    },
+                    "defaultValue": 0.999,
+                    "name": "Attack_and_Decay_Coefficients",
+                    "registerNumber": 1
                 },
                {
                     "dataType": {
@@ -42,7 +53,7 @@
                     },
                     "defaultValue": 1,
                     "name": "Enable",
-                    "registerNumber": 1
+                    "registerNumber": 2
                 }
             ]
         }

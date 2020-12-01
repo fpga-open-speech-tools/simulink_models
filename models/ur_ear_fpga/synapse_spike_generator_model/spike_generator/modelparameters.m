@@ -29,7 +29,18 @@ tabs = 10e-3;
 
 % Call fast fractional gaussian noise function for Double Precision
 % randNums = single(ffGn(totalstim, tdres, Hinput, noiseType, spont));
-randNums = rand(12,1,mp.nSamples);
+randNumsSpikeGen1 = rand(1,mp.nSamples);
+randNumsSpikeGen2 = rand(1,mp.nSamples);
+randNumsSpikeGen3 = rand(1,mp.nSamples);
+randNumsSpikeGen4 = rand(1,mp.nSamples);
+randNumsSpikeGen5 = rand(1,mp.nSamples);
+randNumsSpikeGen6 = rand(1,mp.nSamples);
+randNumsSpikeGen7 = rand(1,mp.nSamples);
+randNumsSpikeGen8 = rand(1,mp.nSamples);
+randNumsSpikeGen9 = rand(1,mp.nSamples);
+randNumsSpikeGen10 = rand(1,mp.nSamples);
+randNumsSpikeGen11 = rand(1,mp.nSamples);
+randNumsSpikeGen12 = rand(1,mp.nSamples);
 
 elapsed_time = 0; % single(tdres * randi(floor(Fs * t_rd_init)));
 % unitRateInterval = single(-log(rand(1))/tdres);
