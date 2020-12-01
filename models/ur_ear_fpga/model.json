@@ -41,7 +41,7 @@
                         "wordLength": 16
                     },
                     "defaultValue": 0.999,
-                    "name": "Attack and Decay Coefficients",
+                    "name": "Attack_and_Decay_Coefficients",
                     "registerNumber": 1
                 },
                {
