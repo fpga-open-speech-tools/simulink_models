@@ -15,10 +15,10 @@
 % openspeech@flatearthinc.com
 
 %% Initialization
-data_input = testSignal.audio(:,1);
-total_stim = length(data_input);
-rep_time   = total_stim * tdres;
-total_mean_rate = sum(data_input/length(data_input));
+data_input         = testSignal.audio(:,1);
+total_stim         = length(data_input);
+rep_time           = total_stim * tdres;
+total_mean_rate    = sum(data_input/length(data_input));
 MaxArraySizeSpikes = length(data_input)*nrep;
 
 %% Compute the HDL Simulation Results from the Source Code
@@ -35,7 +35,7 @@ syn_out        = PowerLaw(pla_nl_out, total_stim, randNums, Fs);
 ur_ear_fpga_inhdl = hdlcosim_dataplane;
 hdl_data_in       = zeros(total_stim,1);
 counts_hdl_out    = zeros(total_stim,1);
-valid_hdl_out     = zeros(totatl_stim,1);
+valid_hdl_out     = zeros(total_stim,1);
 
 % Data Plane Inputs
 clk_enable              = fi(1,0,1,0);
@@ -51,14 +51,17 @@ progress_bar = waitbar(0, 'Initializing Simulation');
 
 for i = 1:clock_cycles
     if(mod(i,1024) == 1)
-        avalon_sink_data = fi(data_input(j),1,32,28);
-        hdl_data_in(j) = avalon_sink_data;
-        progress = j/totalstim;
-        progress_str = ['Simulation: ' num2str(progress*100) '% Complete - Input ' num2str(j) ' of ' num2str(totalstim)];
+        avalon_sink_data    = fi(data_input(j),1,32,28);
+        randNumsSpikeGen_in = randNumsSpikeGen(:,:,j);
+        rand_nums_in        = randNums(1,j);
+        hdl_data_in(j)      = avalon_sink_data;
+        
+        progress     = j/total_stim;
+        progress_str = ['Simulation: ' num2str(progress*100) '% Complete - Input ' num2str(j) ' of ' num2str(total_stim)];
         waitbar(progress,progress_bar,progress_str);
         j = j + 1;
     end
-    [~, ~, avalon_source_data, ~, ~, count_hdl, valid_hdl] = step(ur_ear_fpga_inhdl, clk_enable, avalon_sink_valid, avalon_sink_data, avalon_sink_channel, avalon_sink_error, register_control_enable);
+    [~, ~, avalon_source_data, ~, ~, count_hdl, valid_hdl] = step(ur_ear_fpga_inhdl, clk_enable, avalon_sink_valid, avalon_sink_data, avalon_sink_channel, avalon_sink_error, rand_nums_in, randNumsSpikeGen_in, integrationTime);
     if(mod(i,1024) == 1)
         counts_hdl_out(j) = count_hdl;
         valid_hdl_out(j)  = valid_hdl;
@@ -77,13 +80,13 @@ title(['Audio Input: Sampling Freq: ' num2str(Fs) ' Hz'])
 subplot(3,1,2)
 plot(counts_source_out)
 hold on
-plot(spike_count_sim_out,'--')
-legend('MATLAB Source Code','Simulink')
+plot(counts_hdl_out,'--')
+legend('MATLAB Source Code','HDL')
 title('UR EAR - Accumulator Counts' )
 
-subplot(4,1,4)
+subplot(3,1,3)
 plot(valid_source_out)
 hold on
-plot(spike_valid_sim_out,'--')
-legend('MATLAB Code','Simulink')
+plot(valid_hdl_out,'--')
+legend('MATLAB Code','HDL')
 title('UR EAR - Accumulator Valid')
