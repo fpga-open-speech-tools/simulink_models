@@ -28,8 +28,9 @@ num_bands  = 8;
 num_coeff  = 2;
 
 % Data Input Array
-band_num_input = [1:1:num_bands num_bands:-1:1];
+band_num_input = 1:1:num_bands;
 band_num_input = [band_num_input band_num_input band_num_input band_num_input band_num_input];
+band_num_input = [band_num_input band_num_input];
 
 mp.sim_prompts = 1;
 mp.sim_verify = 1;
@@ -62,20 +63,53 @@ elseif(strcmp(sim_type,'fxpt'))
     ad_coeff_type = fixdt(ad_coeff_fp_sign,ad_coeff_fp_size,ad_coeff_fp_dec);
 end
 
-%% Attack and Decay DPRAM Parameters
-% Create tau values to generate C1 Coefficients between 0 and 1
-tau_as = -1 ./ (log([0:1:num_bands-1] ./ num_bands) * fs);
-tau_ds = -1 ./ (log([num_bands-1:-1:0] ./ num_bands) * fs);
-% Initialization
-ad_coeffs = zeros(2^coeff_size,1);
+%% Attack and Decay DP-RAM Parameters
+%--Attack Coefficients
+%-Initialize the attack coefficient arrays: 1 coefficient per band
+attack_c1_a_array = zeros(num_bands,1);
+attack_c2_a_array = zeros(num_bands,1);
+attack_c1_r_array = zeros(num_bands,1);
+attack_c2_r_array = zeros(num_bands,1);
 
-% Create the Coefficient Array
+for j = 1:num_bands
+    if j == 1
+        attack_attack_tau  = 0.005; % Defined in the Open MHA Plug in documnetation
+    else
+        attack_attack_tau  = attack_attack_tau /2; % Reduce the time constant by half for each consecutive band 
+    end
+    attack_release_tau = attack_attack_tau; % Set the release time constant equal to the attack time constant - Lines 450-451 of mha_filter.cpp
+    [attack_c1_a_array(j,1), attack_c2_a_array(j,1)] = o1_lp_coeffs(attack_attack_tau,fs);  % Compute the attack coefficients - Lines 589-599 of mha_filter.cpp
+    [attack_c1_r_array(j,1), attack_c2_r_array(j,1)] = o1_lp_coeffs(attack_release_tau,fs); % Compute the release coefficients - Lines 589-599 of mha_filter.cpp
+end
+%--Decay Coefficients
+%-Initialize the decay coefficient arrays: 1 coefficient per band
+decay_c1_a_array = zeros(num_bands,1);
+decay_c2_a_array = zeros(num_bands,1);
+decay_c1_r_array = zeros(num_bands,1);
+decay_c2_r_array = zeros(num_bands,1);
+
+decay_attack_tau  = 0; % Line 507 of mha_filter.cpp
+for j = 1:num_bands        
+    if j == 1
+        decay_release_tau = 0.060; % Defined in the Open MHA Plug in documnetation
+    else
+        decay_release_tau = decay_release_tau / 2; % Reduce the time constant by half for each consecutive band 
+    end
+
+    [decay_c1_a_array(j,1), decay_c2_a_array(j,1)] = o1_lp_coeffs(decay_attack_tau,fs);  % Compute the attack coefficients - Lines 589-599 of mha_filter.cpp
+    [decay_c1_r_array(j,1), decay_c2_r_array(j,1)] = o1_lp_coeffs(decay_release_tau,fs); % Compute the release coefficients - Lines 589-599 of mha_filter.cpp
+end
+
+%--Dual Port RAM Coefficient Array
+%-Initialization
+ad_coeffs = zeros(2^coeff_size,1);
 z = 1;
 for i = 1:2:2*num_bands-1
-    [ad_coeffs(i,1), ~]   = o1_lp_coeffs(tau_as(z), fs);
-    [ad_coeffs(i+1,1), ~] = o1_lp_coeffs(tau_ds(z), fs);
+    ad_coeffs(i,1)   = attack_c1_a_array(z);
+    ad_coeffs(i+1,1) = decay_c1_r_array(z);
     z = z+1;
 end
-time = (0:1:length(band_num_input)-1) *1/fs;
+
+time = (0:1:length(band_num_input)-1) * 1/fs;
 band_num_timeseries = timeseries(uint8(band_num_input),time);
 
