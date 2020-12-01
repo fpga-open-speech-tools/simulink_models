@@ -200,7 +200,7 @@ static ssize_t Gain_write(struct device *dev, struct device_attribute *attr, con
   int substring_count = 0;
   int num_counter = 0;
   
-  fe_dpr_interface_dev_t *devp = (fe_dpr_interface_dev_t *)dev_get_drvdata(dev);
+  fe_ur_ear_fpga_sim_dev_t *devp = (fe_ur_ear_fpga_sim_dev_t *)dev_get_drvdata(dev);
 
   // Check to see if the function was called with an empty string
   if (count < 3)
@@ -262,7 +262,7 @@ static ssize_t Attack_and_Decay_Coefficients_write(struct device *dev, struct de
   int substring_count = 0;
   int num_counter = 0;
   
-  fe_dpr_interface_dev_t *devp = (fe_dpr_interface_dev_t *)dev_get_drvdata(dev);
+  fe_ur_ear_fpga_sim_dev_t *devp = (fe_ur_ear_fpga_sim_dev_t *)dev_get_drvdata(dev);
 
   // Check to see if the function was called with an empty string
   if (count < 3)
