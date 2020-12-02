@@ -40,14 +40,14 @@ c2_a_matlab_combined = zeros(audio_length * num_bands, 1);
 c1_d_matlab_combined = zeros(audio_length * num_bands, 1);
 c2_d_matlab_combined = zeros(audio_length * num_bands, 1);
 % C1 and C2 Coefficients
-c1_a_matlab          = zeros(audio_length,num_bands);
-c1_a_simulink        = zeros(audio_length,num_bands);
-c2_a_matlab          = zeros(audio_length,num_bands);
-c2_a_simulink        = zeros(audio_length,num_bands);
-c1_d_matlab          = zeros(audio_length,num_bands);
-c1_d_simulink        = zeros(audio_length,num_bands);
-c2_d_matlab          = zeros(audio_length,num_bands);
-c2_d_simulink        = zeros(audio_length,num_bands);
+c1_a_matlab          = fi(zeros(audio_length,num_bands), ad_coeff_fp_sign, ad_coeff_fp_size, ad_coeff_fp_dec);
+c1_a_simulink        = fi(zeros(audio_length,num_bands), ad_coeff_fp_sign, ad_coeff_fp_size, ad_coeff_fp_dec);
+c2_a_matlab          = fi(zeros(audio_length,num_bands), ad_coeff_fp_sign, ad_coeff_fp_size, ad_coeff_fp_dec);
+c2_a_simulink        = fi(zeros(audio_length,num_bands), ad_coeff_fp_sign, ad_coeff_fp_size, ad_coeff_fp_dec);
+c1_d_matlab          = fi(zeros(audio_length,num_bands), ad_coeff_fp_sign, ad_coeff_fp_size, ad_coeff_fp_dec);
+c1_d_simulink        = fi(zeros(audio_length,num_bands), ad_coeff_fp_sign, ad_coeff_fp_size, ad_coeff_fp_dec);
+c2_d_matlab          = fi(zeros(audio_length,num_bands), ad_coeff_fp_sign, ad_coeff_fp_size, ad_coeff_fp_dec);
+c2_d_simulink        = fi(zeros(audio_length,num_bands), ad_coeff_fp_sign, ad_coeff_fp_size, ad_coeff_fp_dec);
 % Attack Filter Results
 attack_buff_matlab           = zeros(audio_length,num_bands);
 attack_filter_matlab         = zeros(audio_length,num_bands);
@@ -117,52 +117,52 @@ temp = round(stim_length/2);
 
 figure
 subplot(3,1,1)
-plot(band_num_matlab(temp - 25:temp + 25, 1))
+plot(band_num_matlab)
 hold on
-plot(band_num_sim_out(temp - 25:temp + 25, 1),'--')
+plot(band_num_sim_out,'--')
 legend('MATLAB', 'Simulink')
 title('Band Number Simulation')
 
 subplot(3,1,2)
-plot(addr_attack_matlab(temp - 25:temp + 25, 1))
+plot(addr_attack_matlab)
 hold on
-plot(addr_attack_sim_out(temp - 25:temp + 25, 1),'--')
+plot(addr_attack_sim_out,'--')
 legend('MATLAB Code','Simulink')
 title('Attack Address Simulation')
 
 subplot(3,1,3)
-plot(addr_decay_matlab(temp - 25:temp + 25, 1))
+plot(addr_decay_matlab)
 hold on
-plot(addr_decay_sim_out(temp - 25:temp + 25, 1),'--')
+plot(addr_decay_sim_out,'--')
 legend('MATLAB Code','Simulink')
 title('Decay Address Simulation')
 
 figure
 subplot(4,1,1)
-plot(c1_a_matlab_combined(temp - 25:temp + 25, 1))
+plot(c1_a_matlab_combined)
 hold on
-plot(c1_a_sim_out(temp - 25:temp + 25, 1),'--')
+plot(c1_a_sim_out,'--')
 legend('MATLAB Code','Simulink')
 title('C1 Attack - Interleafed Simulation')
 
 subplot(4,1,2)
-plot(c2_a_matlab_combined(temp - 25:temp + 25, 1))
+plot(c2_a_matlab_combined)
 hold on
-plot(c2_a_sim_out(temp - 25:temp + 25, 1),'--')
+plot(c2_a_sim_out,'--')
 legend('MATLAB Code','Simulink')
 title('C2 Attack - Interleafed Simulation')
 
 subplot(4,1,3)
-plot(c1_d_matlab_combined(temp - 25:temp + 25, 1))
+plot(c1_d_matlab_combined)
 hold on
-plot(c1_d_sim_out(temp - 25:temp + 25, 1),'--')
+plot(c1_d_sim_out,'--')
 legend('MATLAB Code','Simulink')
 title('C1 Decay - Interleafed Simulation')
 
 subplot(4,1,4)
-plot(c2_d_matlab_combined(temp - 25:temp + 25, 1))
+plot(c2_d_matlab_combined)
 hold on
-plot(c2_d_sim_out(temp - 25:temp + 25, 1),'--')
+plot(c2_d_sim_out,'--')
 legend('MATLAB Code','Simulink')
 title('C2 Decay - Interleafed Simulation')
 
@@ -207,13 +207,14 @@ for j = 1:num_bands
     plot(attack_filter_matlab(1:end-1,j))
     hold on
     plot(attack_filter_opt_sim_matrix(1:end-1,j),'--')
-    legend('MATLAB Code','Simulink Optimization')
+    hold on
+    legend('MATLAB Code','Simulink')
     title(['Attack Filter Simulation - Band Number: ' num2str(j)])
 
     subplot(7,1,7)
     plot(decay_filter_matlab(1:end-1,j))
     hold on
     plot(decay_filter_opt_sim_matrix(1:end-1,j),'--')
-    legend('MATLAB Code','Simulink Optimization')
+    legend('MATLAB Code','Simulink')
     title(['Decay Filter Simulation - Band Number: ' num2str(j)])
 end

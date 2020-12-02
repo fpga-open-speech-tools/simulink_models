@@ -37,7 +37,7 @@ num_coeff   = 2;             % Number of C1 Coefficients required by the Attack 
 
 %% Simulation Type - Either 'double' or 'fxpt'
 %--Only Fixed Point works with the Current Dual Port RAM Block--
-sim_type    = 'fxpt';                  
+sim_type = 'fxpt';                  
 
 % Attack and Decay Coefficient Fixed Point Paramters
 ad_coeff_fp_size = 16; % Word Size
@@ -84,10 +84,17 @@ data_input_ts = timeseries(data_input_array, time); % Convert the data array to 
 %% Attack and Decay DP-RAM Parameters
 %--Attack Coefficients
 %-Initialize the attack coefficient arrays: 1 coefficient per band
-attack_c1_a_array = zeros(num_bands,1);
-attack_c2_a_array = zeros(num_bands,1);
-attack_c1_r_array = zeros(num_bands,1);
-attack_c2_r_array = zeros(num_bands,1);
+if(strcmp(sim_type,'double'))
+    attack_c1_a_array = zeros(num_bands,1);
+    attack_c2_a_array = zeros(num_bands,1);
+    attack_c1_r_array = zeros(num_bands,1);
+    attack_c2_r_array = zeros(num_bands,1);
+elseif(strcmp(sim_type,'fxpt'))
+    attack_c1_a_array = fi(zeros(num_bands,1), ad_coeff_fp_sign, ad_coeff_fp_size, ad_coeff_fp_dec);
+    attack_c2_a_array = fi(zeros(num_bands,1), ad_coeff_fp_sign, ad_coeff_fp_size, ad_coeff_fp_dec);
+    attack_c1_r_array = fi(zeros(num_bands,1), ad_coeff_fp_sign, ad_coeff_fp_size, ad_coeff_fp_dec);
+    attack_c2_r_array = fi(zeros(num_bands,1), ad_coeff_fp_sign, ad_coeff_fp_size, ad_coeff_fp_dec);
+end
 
 for j = 1:num_bands
     if j == 1
@@ -96,15 +103,23 @@ for j = 1:num_bands
         attack_attack_tau  = attack_attack_tau /2; % Reduce the time constant by half for each consecutive band 
     end
     attack_release_tau = attack_attack_tau; % Set the release time constant equal to the attack time constant - Lines 450-451 of mha_filter.cpp
-    [attack_c1_a_array(j,1), attack_c2_a_array(j,1)] = o1_lp_coeffs(attack_attack_tau,fs);  % Compute the attack coefficients - Lines 589-599 of mha_filter.cpp
-    [attack_c1_r_array(j,1), attack_c2_r_array(j,1)] = o1_lp_coeffs(attack_release_tau,fs); % Compute the release coefficients - Lines 589-599 of mha_filter.cpp
+    
+    [attack_c1_a_array(j,1), attack_c2_a_array(j,1)] = o1_lp_coeffs(attack_attack_tau, fs, sim_type, ad_coeff_fp_sign, ad_coeff_fp_size, ad_coeff_fp_dec);  % Compute the attack coefficients - Lines 589-599 of mha_filter.cpp
+    [attack_c1_r_array(j,1), attack_c2_r_array(j,1)] = o1_lp_coeffs(attack_release_tau, fs, sim_type, ad_coeff_fp_sign, ad_coeff_fp_size, ad_coeff_fp_dec); % Compute the release coefficients - Lines 589-599 of mha_filter.cpp
 end
 %--Decay Coefficients
 %-Initialize the decay coefficient arrays: 1 coefficient per band
-decay_c1_a_array = zeros(num_bands,1);
-decay_c2_a_array = zeros(num_bands,1);
-decay_c1_r_array = zeros(num_bands,1);
-decay_c2_r_array = zeros(num_bands,1);
+if(strcmp(sim_type,'double'))
+    decay_c1_a_array = zeros(num_bands,1);
+    decay_c2_a_array = zeros(num_bands,1);
+    decay_c1_r_array = zeros(num_bands,1);
+    decay_c2_r_array = zeros(num_bands,1);
+elseif(strcmp(sim_type,'fxpt'))
+    decay_c1_a_array = fi(zeros(num_bands,1), ad_coeff_fp_sign, ad_coeff_fp_size, ad_coeff_fp_dec);
+    decay_c2_a_array = fi(zeros(num_bands,1), ad_coeff_fp_sign, ad_coeff_fp_size, ad_coeff_fp_dec);
+    decay_c1_r_array = fi(zeros(num_bands,1), ad_coeff_fp_sign, ad_coeff_fp_size, ad_coeff_fp_dec);
+    decay_c2_r_array = fi(zeros(num_bands,1), ad_coeff_fp_sign, ad_coeff_fp_size, ad_coeff_fp_dec);
+end
 
 decay_attack_tau  = 0; % Line 507 of mha_filter.cpp
 for j = 1:num_bands        
@@ -114,8 +129,8 @@ for j = 1:num_bands
         decay_release_tau = decay_release_tau / 2; % Reduce the time constant by half for each consecutive band 
     end
 
-    [decay_c1_a_array(j,1), decay_c2_a_array(j,1)] = o1_lp_coeffs(decay_attack_tau,fs);  % Compute the attack coefficients - Lines 589-599 of mha_filter.cpp
-    [decay_c1_r_array(j,1), decay_c2_r_array(j,1)] = o1_lp_coeffs(decay_release_tau,fs); % Compute the release coefficients - Lines 589-599 of mha_filter.cpp
+    [decay_c1_a_array(j,1), decay_c2_a_array(j,1)] = o1_lp_coeffs(decay_attack_tau, fs, sim_type, ad_coeff_fp_sign, ad_coeff_fp_size, ad_coeff_fp_dec);  % Compute the attack coefficients - Lines 589-599 of mha_filter.cpp
+    [decay_c1_r_array(j,1), decay_c2_r_array(j,1)] = o1_lp_coeffs(decay_release_tau, fs, sim_type, ad_coeff_fp_sign, ad_coeff_fp_size, ad_coeff_fp_dec); % Compute the release coefficients - Lines 589-599 of mha_filter.cpp
 end
 
 %--Dual Port RAM Coefficient Array
