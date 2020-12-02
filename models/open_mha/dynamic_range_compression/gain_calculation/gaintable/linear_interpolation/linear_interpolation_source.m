@@ -11,16 +11,7 @@
 % 985 Technology Blvd
 % Bozeman, MT 59718
 % openspeech@flatearthinc.com
-
-%% Calculate Linear Interpolation Results
-li_matlab = zeros(sim_length,1);
-for i =1:sim_length
-   li_matlab(i) = linear_interpolation_source(in_high.Data(i), in_low.Data(i), in_frac.Data(i));
+%% Linear Interpolation Function
+function out = linear_interpolation_source(high, low, frac)
+    out = ((high - low) * frac) + low;
 end
-%% Plot Results
-figure
-plot(li_matlab)
-hold on
-plot(li_sim_out,'--')
-legend('MATLAB', 'Simulink')
-title('Linear Interpolation Simulation')
