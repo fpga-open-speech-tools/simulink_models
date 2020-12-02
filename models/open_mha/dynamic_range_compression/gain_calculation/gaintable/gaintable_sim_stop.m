@@ -6,26 +6,84 @@
 % FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 % ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 %
-% Matthew Blunt
-% Audio Logic
+% Connor Dack
+% AudioLogic, Inc
 % 985 Technology Blvd
 % Bozeman, MT 59718
 % openspeech@flatearthinc.com
 
-% openMHA Dynamic Compression Simulink Model Code
-% Gain Table Test/Verification Simulation Stop Script
-% 11/18/2020
+%% Initialzie
+close all;
+sim_length = length(data_in_array);
+gain_addr_low_matlab  = zeros(sim_length,1);
+gain_addr_high_matlab = zeros(sim_length,1);
+frac_matlab           = zeros(sim_length,1);
+gain_low_matlab       = zeros(sim_length,1);
+gain_high_matlab      = zeros(sim_length,1);
+gain_matlab           = zeros(sim_length,1);
 
-%% NOTES
-
-% The following script is designed to isolate and test the Gain Table
-% simulation results against expected results calculated via openMHA source
-% code methods.
-
-%% Calculate openMHA Results
-
-
-%% Compare Results
-
+%% Calculate Gain Table Results
+index_array = gtmin:gtstep:X_high+gtstep;
+for i = 1:sim_length
+    temp = data_in_array(i);
+    if(temp >= X_high)
+        temp = X_high;
+    end
+    band_number_calc = mod(i,8)+1;
+    for j = 1:table_length
+        if((temp >= index_array(j)) && (temp < index_array(j+1)))
+            gain_addr_low_matlab(i)  = ((band_number_calc -1) * table_length) + j;
+            gain_addr_high_matlab(i) = ((band_number_calc -1) * table_length) + j + 1;
+            frac_matlab(i)           = (temp - index_array(j))/3;
+            gain_low_matlab(i)       = vy(gain_addr_low_matlab(i));
+            gain_high_matlab(i)      = vy(gain_addr_high_matlab(i));
+            gain_matlab(i)           = linear_interpolation_source(gain_high_matlab(i), gain_low_matlab(i), frac_matlab(i));
+            break
+        end
+    end
+end
 
 %% Plot Results
+figure
+subplot(6,1,1)
+plot(gain_addr_low_matlab)
+hold on
+plot(gain_addr_low_sim_out,'--')
+legend('MATLAB','Simulink')
+title('Gain Address - Low: Simulation')
+
+subplot(6,1,2)
+plot(gain_addr_high_matlab)
+hold on
+plot(gain_addr_high_sim_out,'--')
+legend('MATLAB','Simulink')
+title('Gain Address - High: Simulation')
+
+subplot(6,1,3)
+plot(frac_matlab)
+hold on
+plot(frac_sim_out,'--')
+legend('MATLAB','Simulink')
+title('Prelook Up Table - Fractional Simulation')
+
+subplot(6,1,4)
+plot(gain_low_matlab)
+hold on
+plot(gain_low_sim_out,'--')
+legend('MATLAB','Simulink')
+title('Gain Low Simulation')
+
+subplot(6,1,5)
+plot(gain_high_matlab)
+hold on
+plot(gain_high_sim_out,'--')
+legend('MATLAB','Simulink')
+title('Gain High Simulation')
+
+sim_out(:,1,1) = gain_sim_out(1,1,:);
+subplot(6,1,6)
+plot(gain_matlab)
+hold on
+plot(sim_out,'--')
+legend('MATLAB','Simulink')
+title('Gain Result Simulation')
