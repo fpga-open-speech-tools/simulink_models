@@ -23,37 +23,15 @@
             "name": "ur_ear_fpga_sim",
             "registers": [
                 {
-                    "dataType": {
-                        "fractionLength": 8,
-                        "signed": false,
-                        "type": "ufix16en8",
-                        "wordLength": 16
-                    },
-                    "defaultValue": 1.5,
-                    "name": "Gain",
-                    "registerNumber": 0
-                }, 
-                {
                 "dataType": {
-                        "fractionLength": 16,
-                        "signed": false,
-                        "type": "ufix16en16",
-                        "wordLength": 16
-                    },
-                    "defaultValue": 0.999,
-                    "name": "Attack_and_Decay_Coefficients",
-                    "registerNumber": 1
-                },
-               {
-                    "dataType": {
                         "fractionLength": 0,
                         "signed": false,
-                        "type": "fix1",
-                        "wordLength": 1
+                        "type": "uint32",
+                        "wordLength": 32
                     },
-                    "defaultValue": 1,
-                    "name": "Enable",
-                    "registerNumber": 2
+                    "defaultValue": 48,
+                    "name": "integration_time",
+                    "registerNumber": 0
                 }
             ]
         }
