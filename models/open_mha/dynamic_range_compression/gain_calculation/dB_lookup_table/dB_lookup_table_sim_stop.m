@@ -37,30 +37,30 @@ level_in = level_in';
 level_in_db = level_in_db';
 diff = abs(out.level_in_db(4:end-4) - level_in_db(4:end-4));
 percdiff = 100.*(diff./level_in_db(4:end-4));
-[maxpercdiff mpdidx] = max(percdiff);
-[maxdiff mdidx] = max(diff);
+[maxpercdiff, mpdidx] = max(percdiff);
+[maxdiff, mdidx] = max(diff);
 avgpercdiff = sum(percdiff)/length(percdiff);
 
 % Display results
-disp('Maximum Percent Difference = ');
-disp(maxpercdiff);
-disp('Maximum Difference = ');
-disp(maxdiff);
-disp('Average Percent Difference');
-disp(avgpercdiff);
+% disp('Maximum Percent Difference = ');
+% disp(maxpercdiff);
+% disp('Maximum Difference = ');
+% disp(maxdiff);
+% disp('Average Percent Difference');
+% disp(avgpercdiff);
 
-avgdiff = sum(diff)/length(diff);
-bitprecision = -log2(avgdiff)
+avgdiff        = sum(diff)/length(diff);
+bitprecision   = -log2(avgdiff);
 guaranteedbits = -log2(maxdiff);
 
 %% Plotting Resulting I/O Characteristics
 
 figure()
-semilogx(level_in(4:end),level_in_db(4:end),'b');
+semilogx(level_in(4:end),level_in_db(4:end));
 hold on;
-plot(level_in(4:end),out.level_in_db(4:end),'r');
+plot(level_in(4:end),out.level_in_db(4:end),'--');
 hold off;
-legend('Expected Input Values','Lookup Table Input Values','Location','southeast');
+legend('Expected Input Values','Lookup Table Input Values');
 xlabel('Input Level [Pa^2]');
 ylabel('Input Level [dB]');
 title('Dual-Port dB Lookup Table: Actual vs. Expected Results');
