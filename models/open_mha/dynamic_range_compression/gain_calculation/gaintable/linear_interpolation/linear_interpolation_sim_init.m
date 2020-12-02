@@ -32,6 +32,21 @@ sim_length = 1000;
 time = (0:sim_length-1) ./ fs;
 stop_time = time(end);
 
+%% Simulation Type - Either 'double' or 'fxpt'
+sim_type = 'fxpt';                  
+
+% Attack and Decay Coefficient Fixed Point Paramters
+gain_coeff_fp_size = 16; % Word Size
+gain_coeff_fp_dec  = 8;  % Fractional Bits
+gain_coeff_fp_sign = 1;  % Unsigned = 0, Signed = 1
+
+% Define the Input Data Types
+if(strcmp(sim_type,'double'))
+    gain_coeff_type = 'double';
+elseif(strcmp(sim_type,'fxpt'))
+    gain_coeff_type = fixdt(gain_coeff_fp_sign,gain_coeff_fp_size,gain_coeff_fp_dec);
+end
+
 %% Simulation Input Signals
 in_low  = timeseries(1:sim_length,time);
 in_high = timeseries((1:sim_length) * 10,time);
