@@ -54,9 +54,9 @@ end
 figure()
 plot(band_num(1:129));
 hold on;
-plot(out.band_num(1:129));
-plot(out.band_num(301:429));
+plot(out.band_num(1:129), '--');
+plot(out.band_num(301:429), '.');
 title('Frequency Band State Controller Verification Plots');
 xlabel('Bin Number');
 ylabel('Frequency Band Number');
-legend('openMHA Band Number Results','State Controller Results','State Controller Results - Post Reset','Location','southeast');
+legend('openMHA Band Number Results','State Controller Results','State Controller Results - Post Reset');
