@@ -23,9 +23,10 @@
 % code methods.
 
 %% Calculate openMHA Results
+level_in = zeros(inlength,1);
 
 for i = 1:inlength
-    level_in(i) = colored_intensity(FFT_data_real(i), FFT_data_imag(i), accumulator_reset(i), bin_num(i), FFTsize);
+    level_in(i,1) = colored_intensity(FFT_data_real(i), FFT_data_imag(i), accumulator_reset(i), bin_num(i), FFTsize);
 end
 % *** openMHA Source File, Function Call: dc.cpp 
 % *** openMHA Source File, Function Call Lines: 404 (colored_intensity) 
@@ -41,9 +42,9 @@ end
 figure()
 plot(level_in(1:FFTsize/2));
 hold on;
-plot(out.level_in(1:FFTsize/2));
+plot(out.level_in(1:FFTsize/2),'--');
 hold off;
-legend('Expected Intensity Values','Simulink Intensity Values','Location','southeast');
+legend('Expected Intensity Values','Simulink Intensity Values');
 xlabel('Sample Number');
 ylabel('Intensity Level [Pa^2]');
 title('Sound Intensity Level: Actual vs. Expected Results');

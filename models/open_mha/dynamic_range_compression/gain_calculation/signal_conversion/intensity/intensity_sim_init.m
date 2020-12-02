@@ -30,10 +30,20 @@ close all;
 
 fs = 48000;
 
-%% Declare Data Type
+%% Simulation Type - Either 'double' or 'fxpt'
+sim_type = 'fxpt';                  
 
-Wbits = 40;    %fixdt(1,Wbits,Fbits)
-Fbits = 32;
+% Data Input/Feedback Fixed Point Paramters
+in_fp_size = 40; % Word Size
+in_fp_dec  = 32; % Fractional Bits
+in_fp_sign = 1;  % Unsigned = 0, Signed = 1
+
+% Define the Input Data Types
+if(strcmp(sim_type,'double'))
+    input_type    = 'double';
+elseif(strcmp(sim_type,'fxpt'))
+    input_type    = fixdt(in_fp_sign,in_fp_size,in_fp_dec);
+end
 
 %% Declare FFT Parameters
 
@@ -136,7 +146,7 @@ band_edges = [band_edges mirrored_band_edges];
 input_length = 6;
 
 % Organizing FFT Data Input Vectors
-i = 1;
+% i = 1;
 FFT_data_real = [];
 FFT_data_imag = [];
 for i = 1:input_length

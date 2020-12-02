@@ -17,7 +17,7 @@
 % 11/18/2020
 
 close all;
-
+addpath(genpath('..\..\..\referenced_functions'));    % Programmable Look Up Table - Frost Library
 %% NOTES
 
 % The following script is designed as an init script for the dB Lookup
