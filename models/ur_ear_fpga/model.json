@@ -32,17 +32,6 @@
                     "defaultValue": 48,
                     "name": "integration_time",
                     "registerNumber": 0
-                },
-                {
-                "dataType": {
-                        "fractionLength": 0,
-                        "signed": false,
-                        "type": "uint32",
-                        "wordLength": 32
-                    },
-                    "defaultValue": 48,
-                    "name": "dummy_reg",
-                    "registerNumber": 0
                 }
             ]
         }
