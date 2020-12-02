@@ -1,7 +1,0 @@
-calc_phase_temp/nfp_uminus_single --> ur_ear_fpga_sim_calc_phase_temp_nfp_uminus_single
-calc_phase_temp/nfp_sub_single --> ur_ear_fpga_sim_calc_phase_temp_nfp_sub_single
-calc_phase_temp/nfp_div_single --> ur_ear_fpga_sim_calc_phase_temp_nfp_div_single
-calc_phase_temp/nfp_atan_single --> ur_ear_fpga_sim_calc_phase_temp_nfp_atan_single
-calc_phase_temp/nfp_add2_single --> ur_ear_fpga_sim_calc_phase_temp_nfp_add2_single
-calc_phase_temp/nfp_add_single --> ur_ear_fpga_sim_calc_phase_temp_nfp_add_single
-calc_phase_temp --> ur_ear_fpga_sim_calc_phase_temp_calc_phase_temp

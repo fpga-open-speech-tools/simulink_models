@@ -1,1 +1,0 @@
-auditory_nerve --> ur_ear_fpga_sim_auditory_nerve_auditory_nerve

@@ -1,8 +1,0 @@
-calc_coeff/nfp_uminus_single --> ur_ear_fpga_sim_calc_coeff_nfp_uminus_single
-calc_coeff/nfp_gain_pow2_single --> ur_ear_fpga_sim_calc_coeff_nfp_gain_pow2_single
-calc_coeff/nfp_div_single --> ur_ear_fpga_sim_calc_coeff_nfp_div_single
-calc_coeff/nfp_sub_single --> ur_ear_fpga_sim_calc_coeff_nfp_sub_single
-calc_coeff/nfp_add_single --> ur_ear_fpga_sim_calc_coeff_nfp_add_single
-calc_coeff/nfp_pow_single --> ur_ear_fpga_sim_calc_coeff_nfp_pow_single
-calc_coeff/nfp_convert_double2single --> ur_ear_fpga_sim_calc_coeff_nfp_convert_double2single
-calc_coeff --> ur_ear_fpga_sim_calc_coeff_calc_coeff

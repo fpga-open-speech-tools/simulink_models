@@ -1,5 +1,0 @@
-config audioblade_system_altera_avalon_st_adapter_180_o2kdrqa_cfg;
-		design audioblade_system_altera_avalon_st_adapter_180_o2kdrqa;
-		instance audioblade_system_altera_avalon_st_adapter_180_o2kdrqa.channel_adapter_0 use audioblade_system_channel_adapter_180.audioblade_system_channel_adapter_180_br73nbi;
-endconfig
-

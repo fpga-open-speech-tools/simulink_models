@@ -1,2 +1,0 @@
-ccflags-y := -I$(src)/../../../../../component_library/include
-obj-m := ur_ear_fpga_sim.o

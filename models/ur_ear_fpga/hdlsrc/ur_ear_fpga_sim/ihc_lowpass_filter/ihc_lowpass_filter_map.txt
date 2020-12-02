@@ -1,5 +1,0 @@
-ihc_lowpass_filter/nfp_uminus_single --> ur_ear_fpga_sim_ihc_lowpass_filter_nfp_uminus_single
-ihc_lowpass_filter/nfp_mul_single --> ur_ear_fpga_sim_ihc_lowpass_filter_nfp_mul_single
-ihc_lowpass_filter/nfp_add_single --> ur_ear_fpga_sim_ihc_lowpass_filter_nfp_add_single
-ihc_lowpass_filter/nfp_sub_single --> ur_ear_fpga_sim_ihc_lowpass_filter_nfp_sub_single
-ihc_lowpass_filter --> ur_ear_fpga_sim_ihc_lowpass_filter_ihc_lowpass_filter

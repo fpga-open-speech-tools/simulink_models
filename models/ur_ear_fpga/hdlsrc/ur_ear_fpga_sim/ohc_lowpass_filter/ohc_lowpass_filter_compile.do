@@ -1,7 +1,0 @@
-vmap work ../work
-
-vmap -c
-vcom  ur_ear_fpga_sim_ohc_lowpass_filter_nfp_uminus_single.vhd
-vcom  ur_ear_fpga_sim_ohc_lowpass_filter_nfp_mul_single.vhd
-vcom  ur_ear_fpga_sim_ohc_lowpass_filter_nfp_add_single.vhd
-vcom  ur_ear_fpga_sim_ohc_lowpass_filter_ohc_lowpass_filter.vhd

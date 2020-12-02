@@ -1,5 +1,0 @@
-config audioblade_system_altera_emif_a10_hps_180_ejzkfmy_cfg;
-		design audioblade_system_altera_emif_a10_hps_180_ejzkfmy;
-		instance audioblade_system_altera_emif_a10_hps_180_ejzkfmy.arch use audioblade_system_altera_emif_arch_nf_180.audioblade_system_altera_emif_arch_nf_180_es4upsa;
-endconfig
-

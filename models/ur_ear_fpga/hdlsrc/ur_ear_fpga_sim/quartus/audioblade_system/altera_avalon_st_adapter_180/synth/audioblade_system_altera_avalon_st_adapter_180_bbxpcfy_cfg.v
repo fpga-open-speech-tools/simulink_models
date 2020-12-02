@@ -1,5 +1,0 @@
-config audioblade_system_altera_avalon_st_adapter_180_bbxpcfy_cfg;
-		design audioblade_system_altera_avalon_st_adapter_180_bbxpcfy;
-		instance audioblade_system_altera_avalon_st_adapter_180_bbxpcfy.channel_adapter_0 use audioblade_system_channel_adapter_180.audioblade_system_channel_adapter_180_agpsntq;
-endconfig
-

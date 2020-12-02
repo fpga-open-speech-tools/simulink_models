@@ -1,5 +1,0 @@
-middle_ear_filter/nfp_uminus_single --> ur_ear_fpga_sim_middle_ear_filter_nfp_uminus_single
-middle_ear_filter/nfp_mul_single --> ur_ear_fpga_sim_middle_ear_filter_nfp_mul_single
-middle_ear_filter/nfp_add_single --> ur_ear_fpga_sim_middle_ear_filter_nfp_add_single
-middle_ear_filter/nfp_gain_pow2_single --> ur_ear_fpga_sim_middle_ear_filter_nfp_gain_pow2_single
-middle_ear_filter --> ur_ear_fpga_sim_middle_ear_filter_middle_ear_filter

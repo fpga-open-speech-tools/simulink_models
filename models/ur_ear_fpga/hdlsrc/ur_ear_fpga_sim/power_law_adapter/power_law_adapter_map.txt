@@ -1,9 +1,0 @@
-power_law_adapter/nfp_mul_single --> ur_ear_fpga_sim_power_law_adapter_nfp_mul_single
-power_law_adapter/nfp_add_single --> ur_ear_fpga_sim_power_law_adapter_nfp_add_single
-power_law_adapter/Fast Power Law/nfp_gain_pow2_single --> ur_ear_fpga_sim_power_law_adapter_nfp_gain_pow2_single
-power_law_adapter/Fast Power Law/nfp_uminus_single --> ur_ear_fpga_sim_power_law_adapter_nfp_uminus_single
-power_law_adapter/Slow Power Law --> ur_ear_fpga_sim_power_law_adapter_Slow_Power_Law
-power_law_adapter/Fast Power Law --> ur_ear_fpga_sim_power_law_adapter_Fast_Power_Law
-power_law_adapter/nfp_sub_single --> ur_ear_fpga_sim_power_law_adapter_nfp_sub_single
-power_law_adapter/nfp_relop_single --> ur_ear_fpga_sim_power_law_adapter_nfp_relop_single
-power_law_adapter --> ur_ear_fpga_sim_power_law_adapter_power_law_adapter

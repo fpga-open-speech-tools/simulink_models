@@ -1,5 +1,0 @@
-config audioblade_system_altera_arria10_hps_io_180_of6hmti_cfg;
-		design audioblade_system_altera_arria10_hps_io_180_of6hmti;
-		instance audioblade_system_altera_arria10_hps_io_180_of6hmti.border use audioblade_system_altera_arria10_interface_generator_140.audioblade_system_altera_arria10_interface_generator_140_62dhioi;
-endconfig
-

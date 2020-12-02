@@ -1,1 +1,0 @@
-synapse_model --> ur_ear_fpga_sim_synapse_model_synapse_model

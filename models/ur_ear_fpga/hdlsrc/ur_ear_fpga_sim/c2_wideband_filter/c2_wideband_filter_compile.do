@@ -1,8 +1,0 @@
-vmap work ../work
-
-vmap -c
-vcom  ur_ear_fpga_sim_c2_wideband_filter_nfp_abs_single.vhd
-vcom  ur_ear_fpga_sim_c2_wideband_filter_nfp_div_single.vhd
-vcom  ur_ear_fpga_sim_c2_wideband_filter_nfp_mul_single.vhd
-vcom  ur_ear_fpga_sim_c2_wideband_filter_Calculate_C2filterout.vhd
-vcom  ur_ear_fpga_sim_c2_wideband_filter_c2_wideband_filter.vhd
