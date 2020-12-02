@@ -1,0 +1,8 @@
+vmap work ../work
+
+vmap -c
+vcom  ur_ear_fpga_sim_middle_ear_filter_nfp_uminus_single.vhd
+vcom  ur_ear_fpga_sim_middle_ear_filter_nfp_mul_single.vhd
+vcom  ur_ear_fpga_sim_middle_ear_filter_nfp_add_single.vhd
+vcom  ur_ear_fpga_sim_middle_ear_filter_nfp_gain_pow2_single.vhd
+vcom  ur_ear_fpga_sim_middle_ear_filter_middle_ear_filter.vhd

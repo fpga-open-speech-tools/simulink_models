@@ -1,0 +1,3 @@
+iir_10th_order/nfp_mul_single --> ur_ear_fpga_sim_iir_10th_order_nfp_mul_single
+iir_10th_order/nfp_add_single --> ur_ear_fpga_sim_iir_10th_order_nfp_add_single
+iir_10th_order --> ur_ear_fpga_sim_iir_10th_order_iir_10th_order

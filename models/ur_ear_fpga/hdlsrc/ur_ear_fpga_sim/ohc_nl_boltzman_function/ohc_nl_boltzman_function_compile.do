@@ -1,0 +1,10 @@
+vmap work ../work
+
+vmap -c
+vcom  ur_ear_fpga_sim_ohc_nl_boltzman_function_nfp_uminus_single.vhd
+vcom  ur_ear_fpga_sim_ohc_nl_boltzman_function_nfp_div_single.vhd
+vcom  ur_ear_fpga_sim_ohc_nl_boltzman_function_nfp_sub_single.vhd
+vcom  ur_ear_fpga_sim_ohc_nl_boltzman_function_nfp_add_single.vhd
+vcom  ur_ear_fpga_sim_ohc_nl_boltzman_function_nfp_exp_single.vhd
+vcom  ur_ear_fpga_sim_ohc_nl_boltzman_function_nfp_mul_single.vhd
+vcom  ur_ear_fpga_sim_ohc_nl_boltzman_function_ohc_nl_boltzman_function.vhd

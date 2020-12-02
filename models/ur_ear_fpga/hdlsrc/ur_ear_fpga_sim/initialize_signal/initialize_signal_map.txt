@@ -1,0 +1,2 @@
+initialize_signal/nfp_wire_double --> ur_ear_fpga_sim_initialize_signal_nfp_wire_double
+initialize_signal --> ur_ear_fpga_sim_initialize_signal_initialize_signal

@@ -1,0 +1,861 @@
+
+State Machine - |Audioblade|audioblade_system:i0|audioblade_system_altera_mm_interconnect_180_alyigqi:mm_interconnect_2|altera_merlin_burst_adapter:som_config_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |Audioblade|audioblade_system:i0|audioblade_system_altera_mm_interconnect_180_2zdh4ci:mm_interconnect_1|altera_merlin_burst_adapter:mux_ddr_0_altera_axi_slave_rd_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |Audioblade|audioblade_system:i0|audioblade_system_altera_mm_interconnect_180_2zdh4ci:mm_interconnect_1|altera_merlin_burst_adapter:mux_ddr_0_altera_axi_slave_wr_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |Audioblade|audioblade_system:i0|audioblade_system_altera_mm_interconnect_180_d4sniia:mm_interconnect_0|altera_merlin_burst_adapter:mm_clock_crossing_bridge_0_s0_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_14|cur_sdo_state
+Name cur_sdo_state.shift_wait cur_sdo_state.load_shift_reg cur_sdo_state.load_rgb cur_sdo_state.load_cfg cur_sdo_state.load_n_mics cur_sdo_state.load_header cur_sdo_state.idle 
+cur_sdo_state.idle 0 0 0 0 0 0 0 
+cur_sdo_state.load_header 0 0 0 0 0 1 1 
+cur_sdo_state.load_n_mics 0 0 0 0 1 0 1 
+cur_sdo_state.load_cfg 0 0 0 1 0 0 1 
+cur_sdo_state.load_rgb 0 0 1 0 0 0 1 
+cur_sdo_state.load_shift_reg 0 1 0 0 0 0 1 
+cur_sdo_state.shift_wait 1 0 0 0 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_14|next_sdo_state
+Name next_sdo_state.shift_wait next_sdo_state.load_shift_reg next_sdo_state.load_rgb next_sdo_state.load_cfg next_sdo_state.load_n_mics next_sdo_state.load_header next_sdo_state.idle 
+next_sdo_state.idle 0 0 0 0 0 0 0 
+next_sdo_state.load_header 0 0 0 0 0 1 1 
+next_sdo_state.load_n_mics 0 0 0 0 1 0 1 
+next_sdo_state.load_cfg 0 0 0 1 0 0 1 
+next_sdo_state.load_rgb 0 0 1 0 0 0 1 
+next_sdo_state.load_shift_reg 0 1 0 0 0 0 1 
+next_sdo_state.shift_wait 1 0 0 0 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_14|cur_sdi_state
+Name cur_sdi_state.valid_pulse cur_sdi_state.read_mic_data cur_sdi_state.read_humid cur_sdi_state.read_temp cur_sdi_state.read_pressure cur_sdi_state.read_n_mics cur_sdi_state.read_packet_number cur_sdi_state.idle 
+cur_sdi_state.idle 0 0 0 0 0 0 0 0 
+cur_sdi_state.read_packet_number 0 0 0 0 0 0 1 1 
+cur_sdi_state.read_n_mics 0 0 0 0 0 1 0 1 
+cur_sdi_state.read_pressure 0 0 0 0 1 0 0 1 
+cur_sdi_state.read_temp 0 0 0 1 0 0 0 1 
+cur_sdi_state.read_humid 0 0 1 0 0 0 0 1 
+cur_sdi_state.read_mic_data 0 1 0 0 0 0 0 1 
+cur_sdi_state.valid_pulse 1 0 0 0 0 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_14|bme_valid_state
+Name bme_valid_state.low_wait bme_valid_state.pulse bme_valid_state.idle 
+bme_valid_state.idle 0 0 0 
+bme_valid_state.pulse 0 1 1 
+bme_valid_state.low_wait 1 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_14|mic_valid_state
+Name mic_valid_state.low_wait mic_valid_state.pulse mic_valid_state.increment_counter mic_valid_state.idle 
+mic_valid_state.idle 0 0 0 0 
+mic_valid_state.increment_counter 0 0 1 1 
+mic_valid_state.pulse 0 1 0 1 
+mic_valid_state.low_wait 1 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_1|cur_sdi_state
+Name cur_sdi_state.valid_pulse cur_sdi_state.read_mic_data cur_sdi_state.read_humid cur_sdi_state.read_temp cur_sdi_state.read_pressure cur_sdi_state.read_n_mics cur_sdi_state.read_packet_number cur_sdi_state.idle 
+cur_sdi_state.idle 0 0 0 0 0 0 0 0 
+cur_sdi_state.read_packet_number 0 0 0 0 0 0 1 1 
+cur_sdi_state.read_n_mics 0 0 0 0 0 1 0 1 
+cur_sdi_state.read_pressure 0 0 0 0 1 0 0 1 
+cur_sdi_state.read_temp 0 0 0 1 0 0 0 1 
+cur_sdi_state.read_humid 0 0 1 0 0 0 0 1 
+cur_sdi_state.read_mic_data 0 1 0 0 0 0 0 1 
+cur_sdi_state.valid_pulse 1 0 0 0 0 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_1|bme_valid_state
+Name bme_valid_state.low_wait bme_valid_state.pulse bme_valid_state.idle 
+bme_valid_state.idle 0 0 0 
+bme_valid_state.pulse 0 1 1 
+bme_valid_state.low_wait 1 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_1|mic_valid_state
+Name mic_valid_state.low_wait mic_valid_state.pulse mic_valid_state.increment_counter mic_valid_state.idle 
+mic_valid_state.idle 0 0 0 0 
+mic_valid_state.increment_counter 0 0 1 1 
+mic_valid_state.pulse 0 1 0 1 
+mic_valid_state.low_wait 1 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_0|cur_sdo_state
+Name cur_sdo_state.shift_wait cur_sdo_state.load_shift_reg cur_sdo_state.load_rgb cur_sdo_state.load_cfg cur_sdo_state.load_n_mics cur_sdo_state.load_header cur_sdo_state.idle 
+cur_sdo_state.idle 0 0 0 0 0 0 0 
+cur_sdo_state.load_header 0 0 0 0 0 1 1 
+cur_sdo_state.load_n_mics 0 0 0 0 1 0 1 
+cur_sdo_state.load_cfg 0 0 0 1 0 0 1 
+cur_sdo_state.load_rgb 0 0 1 0 0 0 1 
+cur_sdo_state.load_shift_reg 0 1 0 0 0 0 1 
+cur_sdo_state.shift_wait 1 0 0 0 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_0|next_sdo_state
+Name next_sdo_state.shift_wait next_sdo_state.load_shift_reg next_sdo_state.load_rgb next_sdo_state.load_cfg next_sdo_state.load_n_mics next_sdo_state.load_header next_sdo_state.idle 
+next_sdo_state.idle 0 0 0 0 0 0 0 
+next_sdo_state.load_header 0 0 0 0 0 1 1 
+next_sdo_state.load_n_mics 0 0 0 0 1 0 1 
+next_sdo_state.load_cfg 0 0 0 1 0 0 1 
+next_sdo_state.load_rgb 0 0 1 0 0 0 1 
+next_sdo_state.load_shift_reg 0 1 0 0 0 0 1 
+next_sdo_state.shift_wait 1 0 0 0 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_0|cur_sdi_state
+Name cur_sdi_state.valid_pulse cur_sdi_state.read_mic_data cur_sdi_state.read_humid cur_sdi_state.read_temp cur_sdi_state.read_pressure cur_sdi_state.read_n_mics cur_sdi_state.read_packet_number cur_sdi_state.idle 
+cur_sdi_state.idle 0 0 0 0 0 0 0 0 
+cur_sdi_state.read_packet_number 0 0 0 0 0 0 1 1 
+cur_sdi_state.read_n_mics 0 0 0 0 0 1 0 1 
+cur_sdi_state.read_pressure 0 0 0 0 1 0 0 1 
+cur_sdi_state.read_temp 0 0 0 1 0 0 0 1 
+cur_sdi_state.read_humid 0 0 1 0 0 0 0 1 
+cur_sdi_state.read_mic_data 0 1 0 0 0 0 0 1 
+cur_sdi_state.valid_pulse 1 0 0 0 0 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_0|bme_valid_state
+Name bme_valid_state.low_wait bme_valid_state.pulse bme_valid_state.idle 
+bme_valid_state.idle 0 0 0 
+bme_valid_state.pulse 0 1 1 
+bme_valid_state.low_wait 1 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_0|mic_valid_state
+Name mic_valid_state.low_wait mic_valid_state.pulse mic_valid_state.increment_counter mic_valid_state.idle 
+mic_valid_state.idle 0 0 0 0 
+mic_valid_state.increment_counter 0 0 1 1 
+mic_valid_state.pulse 0 1 0 1 
+mic_valid_state.low_wait 1 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|audioblade_system_altera_mm_interconnect_180_alyigqi:mm_interconnect_2|altera_merlin_burst_adapter:ur_ear_fpga_sim_0_avalon_slave_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_9|cur_sdo_state
+Name cur_sdo_state.shift_wait cur_sdo_state.load_shift_reg cur_sdo_state.load_rgb cur_sdo_state.load_cfg cur_sdo_state.load_n_mics cur_sdo_state.load_header cur_sdo_state.idle 
+cur_sdo_state.idle 0 0 0 0 0 0 0 
+cur_sdo_state.load_header 0 0 0 0 0 1 1 
+cur_sdo_state.load_n_mics 0 0 0 0 1 0 1 
+cur_sdo_state.load_cfg 0 0 0 1 0 0 1 
+cur_sdo_state.load_rgb 0 0 1 0 0 0 1 
+cur_sdo_state.load_shift_reg 0 1 0 0 0 0 1 
+cur_sdo_state.shift_wait 1 0 0 0 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_9|next_sdo_state
+Name next_sdo_state.shift_wait next_sdo_state.load_shift_reg next_sdo_state.load_rgb next_sdo_state.load_cfg next_sdo_state.load_n_mics next_sdo_state.load_header next_sdo_state.idle 
+next_sdo_state.idle 0 0 0 0 0 0 0 
+next_sdo_state.load_header 0 0 0 0 0 1 1 
+next_sdo_state.load_n_mics 0 0 0 0 1 0 1 
+next_sdo_state.load_cfg 0 0 0 1 0 0 1 
+next_sdo_state.load_rgb 0 0 1 0 0 0 1 
+next_sdo_state.load_shift_reg 0 1 0 0 0 0 1 
+next_sdo_state.shift_wait 1 0 0 0 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_15|cur_sdo_state
+Name cur_sdo_state.shift_wait cur_sdo_state.load_shift_reg cur_sdo_state.load_rgb cur_sdo_state.load_cfg cur_sdo_state.load_n_mics cur_sdo_state.load_header cur_sdo_state.idle 
+cur_sdo_state.idle 0 0 0 0 0 0 0 
+cur_sdo_state.load_header 0 0 0 0 0 1 1 
+cur_sdo_state.load_n_mics 0 0 0 0 1 0 1 
+cur_sdo_state.load_cfg 0 0 0 1 0 0 1 
+cur_sdo_state.load_rgb 0 0 1 0 0 0 1 
+cur_sdo_state.load_shift_reg 0 1 0 0 0 0 1 
+cur_sdo_state.shift_wait 1 0 0 0 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_15|next_sdo_state
+Name next_sdo_state.shift_wait next_sdo_state.load_shift_reg next_sdo_state.load_rgb next_sdo_state.load_cfg next_sdo_state.load_n_mics next_sdo_state.load_header next_sdo_state.idle 
+next_sdo_state.idle 0 0 0 0 0 0 0 
+next_sdo_state.load_header 0 0 0 0 0 1 1 
+next_sdo_state.load_n_mics 0 0 0 0 1 0 1 
+next_sdo_state.load_cfg 0 0 0 1 0 0 1 
+next_sdo_state.load_rgb 0 0 1 0 0 0 1 
+next_sdo_state.load_shift_reg 0 1 0 0 0 0 1 
+next_sdo_state.shift_wait 1 0 0 0 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_13|cur_sdo_state
+Name cur_sdo_state.shift_wait cur_sdo_state.load_shift_reg cur_sdo_state.load_rgb cur_sdo_state.load_cfg cur_sdo_state.load_n_mics cur_sdo_state.load_header cur_sdo_state.idle 
+cur_sdo_state.idle 0 0 0 0 0 0 0 
+cur_sdo_state.load_header 0 0 0 0 0 1 1 
+cur_sdo_state.load_n_mics 0 0 0 0 1 0 1 
+cur_sdo_state.load_cfg 0 0 0 1 0 0 1 
+cur_sdo_state.load_rgb 0 0 1 0 0 0 1 
+cur_sdo_state.load_shift_reg 0 1 0 0 0 0 1 
+cur_sdo_state.shift_wait 1 0 0 0 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_13|next_sdo_state
+Name next_sdo_state.shift_wait next_sdo_state.load_shift_reg next_sdo_state.load_rgb next_sdo_state.load_cfg next_sdo_state.load_n_mics next_sdo_state.load_header next_sdo_state.idle 
+next_sdo_state.idle 0 0 0 0 0 0 0 
+next_sdo_state.load_header 0 0 0 0 0 1 1 
+next_sdo_state.load_n_mics 0 0 0 0 1 0 1 
+next_sdo_state.load_cfg 0 0 0 1 0 0 1 
+next_sdo_state.load_rgb 0 0 1 0 0 0 1 
+next_sdo_state.load_shift_reg 0 1 0 0 0 0 1 
+next_sdo_state.shift_wait 1 0 0 0 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_12|cur_sdo_state
+Name cur_sdo_state.shift_wait cur_sdo_state.load_shift_reg cur_sdo_state.load_rgb cur_sdo_state.load_cfg cur_sdo_state.load_n_mics cur_sdo_state.load_header cur_sdo_state.idle 
+cur_sdo_state.idle 0 0 0 0 0 0 0 
+cur_sdo_state.load_header 0 0 0 0 0 1 1 
+cur_sdo_state.load_n_mics 0 0 0 0 1 0 1 
+cur_sdo_state.load_cfg 0 0 0 1 0 0 1 
+cur_sdo_state.load_rgb 0 0 1 0 0 0 1 
+cur_sdo_state.load_shift_reg 0 1 0 0 0 0 1 
+cur_sdo_state.shift_wait 1 0 0 0 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_12|next_sdo_state
+Name next_sdo_state.shift_wait next_sdo_state.load_shift_reg next_sdo_state.load_rgb next_sdo_state.load_cfg next_sdo_state.load_n_mics next_sdo_state.load_header next_sdo_state.idle 
+next_sdo_state.idle 0 0 0 0 0 0 0 
+next_sdo_state.load_header 0 0 0 0 0 1 1 
+next_sdo_state.load_n_mics 0 0 0 0 1 0 1 
+next_sdo_state.load_cfg 0 0 0 1 0 0 1 
+next_sdo_state.load_rgb 0 0 1 0 0 0 1 
+next_sdo_state.load_shift_reg 0 1 0 0 0 0 1 
+next_sdo_state.shift_wait 1 0 0 0 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_AD7768_v1:fe_ad7768_v1_0|data_state
+Name data_state.read_data_valid data_state.read_data_capture data_state.increment_channel data_state.read_data_convert data_state.read_data_register data_state.data_hold data_state.data_wait data_state.data_read 
+data_state.data_read 0 0 0 0 0 0 0 0 
+data_state.data_wait 0 0 0 0 0 0 1 1 
+data_state.data_hold 0 0 0 0 0 1 0 1 
+data_state.read_data_register 0 0 0 0 1 0 0 1 
+data_state.read_data_convert 0 0 0 1 0 0 0 1 
+data_state.increment_channel 0 0 1 0 0 0 0 1 
+data_state.read_data_capture 0 1 0 0 0 0 0 1 
+data_state.read_data_valid 1 0 0 0 0 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|AD1939_hps_audio_blade:fe_qsys_ad1939_audio_blade_v1_0|state
+Name state.state_right_valid state.state_right_capture state.state_right_wait state.state_left_valid state.state_left_capture state.state_left_wait 
+state.state_left_wait 0 0 0 0 0 0 
+state.state_left_capture 0 0 0 0 1 1 
+state.state_left_valid 0 0 0 1 0 1 
+state.state_right_wait 0 0 1 0 0 1 
+state.state_right_capture 0 1 0 0 0 1 
+state.state_right_valid 1 0 0 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_AD5791_v1:fe_ad5791_v1_right|state
+Name state.spi_cmd_read_load state.spi_init_load state.spi_write_data_start state.spi_data_load state.spi_write_data_busy state.spi_data_wait state.init_DAC 
+state.init_DAC 0 0 0 0 0 0 0 
+state.spi_data_wait 0 0 0 0 0 1 1 
+state.spi_write_data_busy 0 0 0 0 1 0 1 
+state.spi_data_load 0 0 0 1 0 0 1 
+state.spi_write_data_start 0 0 1 0 0 0 1 
+state.spi_init_load 0 1 0 0 0 0 1 
+state.spi_cmd_read_load 1 0 0 0 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_AD5791_v1:fe_ad5791_v1_right|spi_commands:spi_AD5791|cur_spi_state
+Name cur_spi_state.SPI_STATE_COMMAND_DONE_SIGNAL cur_spi_state.SPI_STATE_COMMAND_DONE cur_spi_state.SPI_STATE_PAYLOAD cur_spi_state.SPI_STATE_WAIT 
+cur_spi_state.SPI_STATE_WAIT 0 0 0 0 
+cur_spi_state.SPI_STATE_PAYLOAD 0 0 1 1 
+cur_spi_state.SPI_STATE_COMMAND_DONE 0 1 0 1 
+cur_spi_state.SPI_STATE_COMMAND_DONE_SIGNAL 1 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_AD5791_v1:fe_ad5791_v1_right|spi_commands:spi_AD5791|spi_abstract:spi_slave|cur_spi_state
+Name cur_spi_state.SPI_CSN cur_spi_state.SPI_CSN_DELAY cur_spi_state.SPI_SHIFT cur_spi_state.SPI_CS cur_spi_state.SPI_WAIT 
+cur_spi_state.SPI_WAIT 0 0 0 0 0 
+cur_spi_state.SPI_CS 0 0 0 1 1 
+cur_spi_state.SPI_SHIFT 0 0 1 0 1 
+cur_spi_state.SPI_CSN_DELAY 0 1 0 0 1 
+cur_spi_state.SPI_CSN 1 0 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_AD5791_v1:fe_ad5791_v1_left|state
+Name state.spi_cmd_read_load state.spi_init_load state.spi_write_data_start state.spi_data_load state.spi_write_data_busy state.spi_data_wait state.init_DAC 
+state.init_DAC 0 0 0 0 0 0 0 
+state.spi_data_wait 0 0 0 0 0 1 1 
+state.spi_write_data_busy 0 0 0 0 1 0 1 
+state.spi_data_load 0 0 0 1 0 0 1 
+state.spi_write_data_start 0 0 1 0 0 0 1 
+state.spi_init_load 0 1 0 0 0 0 1 
+state.spi_cmd_read_load 1 0 0 0 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_AD5791_v1:fe_ad5791_v1_left|spi_commands:spi_AD5791|cur_spi_state
+Name cur_spi_state.SPI_STATE_COMMAND_DONE_SIGNAL cur_spi_state.SPI_STATE_COMMAND_DONE cur_spi_state.SPI_STATE_PAYLOAD cur_spi_state.SPI_STATE_WAIT 
+cur_spi_state.SPI_STATE_WAIT 0 0 0 0 
+cur_spi_state.SPI_STATE_PAYLOAD 0 0 1 1 
+cur_spi_state.SPI_STATE_COMMAND_DONE 0 1 0 1 
+cur_spi_state.SPI_STATE_COMMAND_DONE_SIGNAL 1 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_AD5791_v1:fe_ad5791_v1_left|spi_commands:spi_AD5791|spi_abstract:spi_slave|cur_spi_state
+Name cur_spi_state.SPI_CSN cur_spi_state.SPI_CSN_DELAY cur_spi_state.SPI_SHIFT cur_spi_state.SPI_CS cur_spi_state.SPI_WAIT 
+cur_spi_state.SPI_WAIT 0 0 0 0 0 
+cur_spi_state.SPI_CS 0 0 0 1 1 
+cur_spi_state.SPI_SHIFT 0 0 1 0 1 
+cur_spi_state.SPI_CSN_DELAY 0 1 0 0 1 
+cur_spi_state.SPI_CSN 1 0 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_AD4020_v1:fe_ad4020_right|state
+Name state.spi_read_data_finish state.spi_write_init_start state.spi_write_init_busy state.spi_read_data_start state.spi_read_data_busy state.spi_data_load state.spi_init_load state.init_adc 
+state.init_adc 0 0 0 0 0 0 0 0 
+state.spi_init_load 0 0 0 0 0 0 1 1 
+state.spi_data_load 0 0 0 0 0 1 0 1 
+state.spi_read_data_busy 0 0 0 0 1 0 0 1 
+state.spi_read_data_start 0 0 0 1 0 0 0 1 
+state.spi_write_init_busy 0 0 1 0 0 0 0 1 
+state.spi_write_init_start 0 1 0 0 0 0 0 1 
+state.spi_read_data_finish 1 0 0 0 0 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_AD4020_v1:fe_ad4020_right|spi_commands:spi_AD4020|cur_spi_state
+Name cur_spi_state.SPI_STATE_COMMAND_DONE_SIGNAL cur_spi_state.SPI_STATE_COMMAND_DONE cur_spi_state.SPI_STATE_PAYLOAD cur_spi_state.SPI_STATE_WAIT 
+cur_spi_state.SPI_STATE_WAIT 0 0 0 0 
+cur_spi_state.SPI_STATE_PAYLOAD 0 0 1 1 
+cur_spi_state.SPI_STATE_COMMAND_DONE 0 1 0 1 
+cur_spi_state.SPI_STATE_COMMAND_DONE_SIGNAL 1 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_AD4020_v1:fe_ad4020_right|spi_commands:spi_AD4020|spi_abstract:spi_slave|cur_spi_state
+Name cur_spi_state.SPI_CSN cur_spi_state.SPI_CSN_DELAY cur_spi_state.SPI_SHIFT cur_spi_state.SPI_CS cur_spi_state.SPI_WAIT 
+cur_spi_state.SPI_WAIT 0 0 0 0 0 
+cur_spi_state.SPI_CS 0 0 0 1 1 
+cur_spi_state.SPI_SHIFT 0 0 1 0 1 
+cur_spi_state.SPI_CSN_DELAY 0 1 0 0 1 
+cur_spi_state.SPI_CSN 1 0 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_AD4020_v1:fe_ad4020_left|state
+Name state.spi_read_data_finish state.spi_write_init_start state.spi_write_init_busy state.spi_read_data_start state.spi_read_data_busy state.spi_data_load state.spi_init_load state.init_adc 
+state.init_adc 0 0 0 0 0 0 0 0 
+state.spi_init_load 0 0 0 0 0 0 1 1 
+state.spi_data_load 0 0 0 0 0 1 0 1 
+state.spi_read_data_busy 0 0 0 0 1 0 0 1 
+state.spi_read_data_start 0 0 0 1 0 0 0 1 
+state.spi_write_init_busy 0 0 1 0 0 0 0 1 
+state.spi_write_init_start 0 1 0 0 0 0 0 1 
+state.spi_read_data_finish 1 0 0 0 0 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_AD4020_v1:fe_ad4020_left|spi_commands:spi_AD4020|cur_spi_state
+Name cur_spi_state.SPI_STATE_COMMAND_DONE_SIGNAL cur_spi_state.SPI_STATE_COMMAND_DONE cur_spi_state.SPI_STATE_PAYLOAD cur_spi_state.SPI_STATE_WAIT 
+cur_spi_state.SPI_STATE_WAIT 0 0 0 0 
+cur_spi_state.SPI_STATE_PAYLOAD 0 0 1 1 
+cur_spi_state.SPI_STATE_COMMAND_DONE 0 1 0 1 
+cur_spi_state.SPI_STATE_COMMAND_DONE_SIGNAL 1 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_AD4020_v1:fe_ad4020_left|spi_commands:spi_AD4020|spi_abstract:spi_slave|cur_spi_state
+Name cur_spi_state.SPI_CSN cur_spi_state.SPI_CSN_DELAY cur_spi_state.SPI_SHIFT cur_spi_state.SPI_CS cur_spi_state.SPI_WAIT 
+cur_spi_state.SPI_WAIT 0 0 0 0 0 
+cur_spi_state.SPI_CS 0 0 0 1 1 
+cur_spi_state.SPI_SHIFT 0 0 1 0 1 
+cur_spi_state.SPI_CSN_DELAY 0 1 0 0 1 
+cur_spi_state.SPI_CSN 1 0 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_9|cur_sdi_state
+Name cur_sdi_state.valid_pulse cur_sdi_state.read_mic_data cur_sdi_state.read_humid cur_sdi_state.read_temp cur_sdi_state.read_pressure cur_sdi_state.read_n_mics cur_sdi_state.read_packet_number cur_sdi_state.idle 
+cur_sdi_state.idle 0 0 0 0 0 0 0 0 
+cur_sdi_state.read_packet_number 0 0 0 0 0 0 1 1 
+cur_sdi_state.read_n_mics 0 0 0 0 0 1 0 1 
+cur_sdi_state.read_pressure 0 0 0 0 1 0 0 1 
+cur_sdi_state.read_temp 0 0 0 1 0 0 0 1 
+cur_sdi_state.read_humid 0 0 1 0 0 0 0 1 
+cur_sdi_state.read_mic_data 0 1 0 0 0 0 0 1 
+cur_sdi_state.valid_pulse 1 0 0 0 0 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_9|bme_valid_state
+Name bme_valid_state.low_wait bme_valid_state.pulse bme_valid_state.idle 
+bme_valid_state.idle 0 0 0 
+bme_valid_state.pulse 0 1 1 
+bme_valid_state.low_wait 1 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_9|mic_valid_state
+Name mic_valid_state.low_wait mic_valid_state.pulse mic_valid_state.increment_counter mic_valid_state.idle 
+mic_valid_state.idle 0 0 0 0 
+mic_valid_state.increment_counter 0 0 1 1 
+mic_valid_state.pulse 0 1 0 1 
+mic_valid_state.low_wait 1 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_8|cur_sdo_state
+Name cur_sdo_state.shift_wait cur_sdo_state.load_shift_reg cur_sdo_state.load_rgb cur_sdo_state.load_cfg cur_sdo_state.load_n_mics cur_sdo_state.load_header cur_sdo_state.idle 
+cur_sdo_state.idle 0 0 0 0 0 0 0 
+cur_sdo_state.load_header 0 0 0 0 0 1 1 
+cur_sdo_state.load_n_mics 0 0 0 0 1 0 1 
+cur_sdo_state.load_cfg 0 0 0 1 0 0 1 
+cur_sdo_state.load_rgb 0 0 1 0 0 0 1 
+cur_sdo_state.load_shift_reg 0 1 0 0 0 0 1 
+cur_sdo_state.shift_wait 1 0 0 0 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_8|next_sdo_state
+Name next_sdo_state.shift_wait next_sdo_state.load_shift_reg next_sdo_state.load_rgb next_sdo_state.load_cfg next_sdo_state.load_n_mics next_sdo_state.load_header next_sdo_state.idle 
+next_sdo_state.idle 0 0 0 0 0 0 0 
+next_sdo_state.load_header 0 0 0 0 0 1 1 
+next_sdo_state.load_n_mics 0 0 0 0 1 0 1 
+next_sdo_state.load_cfg 0 0 0 1 0 0 1 
+next_sdo_state.load_rgb 0 0 1 0 0 0 1 
+next_sdo_state.load_shift_reg 0 1 0 0 0 0 1 
+next_sdo_state.shift_wait 1 0 0 0 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_8|cur_sdi_state
+Name cur_sdi_state.valid_pulse cur_sdi_state.read_mic_data cur_sdi_state.read_humid cur_sdi_state.read_temp cur_sdi_state.read_pressure cur_sdi_state.read_n_mics cur_sdi_state.read_packet_number cur_sdi_state.idle 
+cur_sdi_state.idle 0 0 0 0 0 0 0 0 
+cur_sdi_state.read_packet_number 0 0 0 0 0 0 1 1 
+cur_sdi_state.read_n_mics 0 0 0 0 0 1 0 1 
+cur_sdi_state.read_pressure 0 0 0 0 1 0 0 1 
+cur_sdi_state.read_temp 0 0 0 1 0 0 0 1 
+cur_sdi_state.read_humid 0 0 1 0 0 0 0 1 
+cur_sdi_state.read_mic_data 0 1 0 0 0 0 0 1 
+cur_sdi_state.valid_pulse 1 0 0 0 0 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_8|bme_valid_state
+Name bme_valid_state.low_wait bme_valid_state.pulse bme_valid_state.idle 
+bme_valid_state.idle 0 0 0 
+bme_valid_state.pulse 0 1 1 
+bme_valid_state.low_wait 1 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_8|mic_valid_state
+Name mic_valid_state.low_wait mic_valid_state.pulse mic_valid_state.increment_counter mic_valid_state.idle 
+mic_valid_state.idle 0 0 0 0 
+mic_valid_state.increment_counter 0 0 1 1 
+mic_valid_state.pulse 0 1 0 1 
+mic_valid_state.low_wait 1 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_7|cur_sdo_state
+Name cur_sdo_state.shift_wait cur_sdo_state.load_shift_reg cur_sdo_state.load_rgb cur_sdo_state.load_cfg cur_sdo_state.load_n_mics cur_sdo_state.load_header cur_sdo_state.idle 
+cur_sdo_state.idle 0 0 0 0 0 0 0 
+cur_sdo_state.load_header 0 0 0 0 0 1 1 
+cur_sdo_state.load_n_mics 0 0 0 0 1 0 1 
+cur_sdo_state.load_cfg 0 0 0 1 0 0 1 
+cur_sdo_state.load_rgb 0 0 1 0 0 0 1 
+cur_sdo_state.load_shift_reg 0 1 0 0 0 0 1 
+cur_sdo_state.shift_wait 1 0 0 0 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_7|next_sdo_state
+Name next_sdo_state.shift_wait next_sdo_state.load_shift_reg next_sdo_state.load_rgb next_sdo_state.load_cfg next_sdo_state.load_n_mics next_sdo_state.load_header next_sdo_state.idle 
+next_sdo_state.idle 0 0 0 0 0 0 0 
+next_sdo_state.load_header 0 0 0 0 0 1 1 
+next_sdo_state.load_n_mics 0 0 0 0 1 0 1 
+next_sdo_state.load_cfg 0 0 0 1 0 0 1 
+next_sdo_state.load_rgb 0 0 1 0 0 0 1 
+next_sdo_state.load_shift_reg 0 1 0 0 0 0 1 
+next_sdo_state.shift_wait 1 0 0 0 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_7|cur_sdi_state
+Name cur_sdi_state.valid_pulse cur_sdi_state.read_mic_data cur_sdi_state.read_humid cur_sdi_state.read_temp cur_sdi_state.read_pressure cur_sdi_state.read_n_mics cur_sdi_state.read_packet_number cur_sdi_state.idle 
+cur_sdi_state.idle 0 0 0 0 0 0 0 0 
+cur_sdi_state.read_packet_number 0 0 0 0 0 0 1 1 
+cur_sdi_state.read_n_mics 0 0 0 0 0 1 0 1 
+cur_sdi_state.read_pressure 0 0 0 0 1 0 0 1 
+cur_sdi_state.read_temp 0 0 0 1 0 0 0 1 
+cur_sdi_state.read_humid 0 0 1 0 0 0 0 1 
+cur_sdi_state.read_mic_data 0 1 0 0 0 0 0 1 
+cur_sdi_state.valid_pulse 1 0 0 0 0 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_7|bme_valid_state
+Name bme_valid_state.low_wait bme_valid_state.pulse bme_valid_state.idle 
+bme_valid_state.idle 0 0 0 
+bme_valid_state.pulse 0 1 1 
+bme_valid_state.low_wait 1 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_7|mic_valid_state
+Name mic_valid_state.low_wait mic_valid_state.pulse mic_valid_state.increment_counter mic_valid_state.idle 
+mic_valid_state.idle 0 0 0 0 
+mic_valid_state.increment_counter 0 0 1 1 
+mic_valid_state.pulse 0 1 0 1 
+mic_valid_state.low_wait 1 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_6|cur_sdo_state
+Name cur_sdo_state.shift_wait cur_sdo_state.load_shift_reg cur_sdo_state.load_rgb cur_sdo_state.load_cfg cur_sdo_state.load_n_mics cur_sdo_state.load_header cur_sdo_state.idle 
+cur_sdo_state.idle 0 0 0 0 0 0 0 
+cur_sdo_state.load_header 0 0 0 0 0 1 1 
+cur_sdo_state.load_n_mics 0 0 0 0 1 0 1 
+cur_sdo_state.load_cfg 0 0 0 1 0 0 1 
+cur_sdo_state.load_rgb 0 0 1 0 0 0 1 
+cur_sdo_state.load_shift_reg 0 1 0 0 0 0 1 
+cur_sdo_state.shift_wait 1 0 0 0 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_6|next_sdo_state
+Name next_sdo_state.shift_wait next_sdo_state.load_shift_reg next_sdo_state.load_rgb next_sdo_state.load_cfg next_sdo_state.load_n_mics next_sdo_state.load_header next_sdo_state.idle 
+next_sdo_state.idle 0 0 0 0 0 0 0 
+next_sdo_state.load_header 0 0 0 0 0 1 1 
+next_sdo_state.load_n_mics 0 0 0 0 1 0 1 
+next_sdo_state.load_cfg 0 0 0 1 0 0 1 
+next_sdo_state.load_rgb 0 0 1 0 0 0 1 
+next_sdo_state.load_shift_reg 0 1 0 0 0 0 1 
+next_sdo_state.shift_wait 1 0 0 0 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_6|cur_sdi_state
+Name cur_sdi_state.valid_pulse cur_sdi_state.read_mic_data cur_sdi_state.read_humid cur_sdi_state.read_temp cur_sdi_state.read_pressure cur_sdi_state.read_n_mics cur_sdi_state.read_packet_number cur_sdi_state.idle 
+cur_sdi_state.idle 0 0 0 0 0 0 0 0 
+cur_sdi_state.read_packet_number 0 0 0 0 0 0 1 1 
+cur_sdi_state.read_n_mics 0 0 0 0 0 1 0 1 
+cur_sdi_state.read_pressure 0 0 0 0 1 0 0 1 
+cur_sdi_state.read_temp 0 0 0 1 0 0 0 1 
+cur_sdi_state.read_humid 0 0 1 0 0 0 0 1 
+cur_sdi_state.read_mic_data 0 1 0 0 0 0 0 1 
+cur_sdi_state.valid_pulse 1 0 0 0 0 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_6|bme_valid_state
+Name bme_valid_state.low_wait bme_valid_state.pulse bme_valid_state.idle 
+bme_valid_state.idle 0 0 0 
+bme_valid_state.pulse 0 1 1 
+bme_valid_state.low_wait 1 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_6|mic_valid_state
+Name mic_valid_state.low_wait mic_valid_state.pulse mic_valid_state.increment_counter mic_valid_state.idle 
+mic_valid_state.idle 0 0 0 0 
+mic_valid_state.increment_counter 0 0 1 1 
+mic_valid_state.pulse 0 1 0 1 
+mic_valid_state.low_wait 1 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_5|cur_sdo_state
+Name cur_sdo_state.shift_wait cur_sdo_state.load_shift_reg cur_sdo_state.load_rgb cur_sdo_state.load_cfg cur_sdo_state.load_n_mics cur_sdo_state.load_header cur_sdo_state.idle 
+cur_sdo_state.idle 0 0 0 0 0 0 0 
+cur_sdo_state.load_header 0 0 0 0 0 1 1 
+cur_sdo_state.load_n_mics 0 0 0 0 1 0 1 
+cur_sdo_state.load_cfg 0 0 0 1 0 0 1 
+cur_sdo_state.load_rgb 0 0 1 0 0 0 1 
+cur_sdo_state.load_shift_reg 0 1 0 0 0 0 1 
+cur_sdo_state.shift_wait 1 0 0 0 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_5|next_sdo_state
+Name next_sdo_state.shift_wait next_sdo_state.load_shift_reg next_sdo_state.load_rgb next_sdo_state.load_cfg next_sdo_state.load_n_mics next_sdo_state.load_header next_sdo_state.idle 
+next_sdo_state.idle 0 0 0 0 0 0 0 
+next_sdo_state.load_header 0 0 0 0 0 1 1 
+next_sdo_state.load_n_mics 0 0 0 0 1 0 1 
+next_sdo_state.load_cfg 0 0 0 1 0 0 1 
+next_sdo_state.load_rgb 0 0 1 0 0 0 1 
+next_sdo_state.load_shift_reg 0 1 0 0 0 0 1 
+next_sdo_state.shift_wait 1 0 0 0 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_5|cur_sdi_state
+Name cur_sdi_state.valid_pulse cur_sdi_state.read_mic_data cur_sdi_state.read_humid cur_sdi_state.read_temp cur_sdi_state.read_pressure cur_sdi_state.read_n_mics cur_sdi_state.read_packet_number cur_sdi_state.idle 
+cur_sdi_state.idle 0 0 0 0 0 0 0 0 
+cur_sdi_state.read_packet_number 0 0 0 0 0 0 1 1 
+cur_sdi_state.read_n_mics 0 0 0 0 0 1 0 1 
+cur_sdi_state.read_pressure 0 0 0 0 1 0 0 1 
+cur_sdi_state.read_temp 0 0 0 1 0 0 0 1 
+cur_sdi_state.read_humid 0 0 1 0 0 0 0 1 
+cur_sdi_state.read_mic_data 0 1 0 0 0 0 0 1 
+cur_sdi_state.valid_pulse 1 0 0 0 0 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_5|bme_valid_state
+Name bme_valid_state.low_wait bme_valid_state.pulse bme_valid_state.idle 
+bme_valid_state.idle 0 0 0 
+bme_valid_state.pulse 0 1 1 
+bme_valid_state.low_wait 1 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_5|mic_valid_state
+Name mic_valid_state.low_wait mic_valid_state.pulse mic_valid_state.increment_counter mic_valid_state.idle 
+mic_valid_state.idle 0 0 0 0 
+mic_valid_state.increment_counter 0 0 1 1 
+mic_valid_state.pulse 0 1 0 1 
+mic_valid_state.low_wait 1 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_4|cur_sdo_state
+Name cur_sdo_state.shift_wait cur_sdo_state.load_shift_reg cur_sdo_state.load_rgb cur_sdo_state.load_cfg cur_sdo_state.load_n_mics cur_sdo_state.load_header cur_sdo_state.idle 
+cur_sdo_state.idle 0 0 0 0 0 0 0 
+cur_sdo_state.load_header 0 0 0 0 0 1 1 
+cur_sdo_state.load_n_mics 0 0 0 0 1 0 1 
+cur_sdo_state.load_cfg 0 0 0 1 0 0 1 
+cur_sdo_state.load_rgb 0 0 1 0 0 0 1 
+cur_sdo_state.load_shift_reg 0 1 0 0 0 0 1 
+cur_sdo_state.shift_wait 1 0 0 0 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_4|next_sdo_state
+Name next_sdo_state.shift_wait next_sdo_state.load_shift_reg next_sdo_state.load_rgb next_sdo_state.load_cfg next_sdo_state.load_n_mics next_sdo_state.load_header next_sdo_state.idle 
+next_sdo_state.idle 0 0 0 0 0 0 0 
+next_sdo_state.load_header 0 0 0 0 0 1 1 
+next_sdo_state.load_n_mics 0 0 0 0 1 0 1 
+next_sdo_state.load_cfg 0 0 0 1 0 0 1 
+next_sdo_state.load_rgb 0 0 1 0 0 0 1 
+next_sdo_state.load_shift_reg 0 1 0 0 0 0 1 
+next_sdo_state.shift_wait 1 0 0 0 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_4|cur_sdi_state
+Name cur_sdi_state.valid_pulse cur_sdi_state.read_mic_data cur_sdi_state.read_humid cur_sdi_state.read_temp cur_sdi_state.read_pressure cur_sdi_state.read_n_mics cur_sdi_state.read_packet_number cur_sdi_state.idle 
+cur_sdi_state.idle 0 0 0 0 0 0 0 0 
+cur_sdi_state.read_packet_number 0 0 0 0 0 0 1 1 
+cur_sdi_state.read_n_mics 0 0 0 0 0 1 0 1 
+cur_sdi_state.read_pressure 0 0 0 0 1 0 0 1 
+cur_sdi_state.read_temp 0 0 0 1 0 0 0 1 
+cur_sdi_state.read_humid 0 0 1 0 0 0 0 1 
+cur_sdi_state.read_mic_data 0 1 0 0 0 0 0 1 
+cur_sdi_state.valid_pulse 1 0 0 0 0 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_4|bme_valid_state
+Name bme_valid_state.low_wait bme_valid_state.pulse bme_valid_state.idle 
+bme_valid_state.idle 0 0 0 
+bme_valid_state.pulse 0 1 1 
+bme_valid_state.low_wait 1 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_4|mic_valid_state
+Name mic_valid_state.low_wait mic_valid_state.pulse mic_valid_state.increment_counter mic_valid_state.idle 
+mic_valid_state.idle 0 0 0 0 
+mic_valid_state.increment_counter 0 0 1 1 
+mic_valid_state.pulse 0 1 0 1 
+mic_valid_state.low_wait 1 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_3|cur_sdo_state
+Name cur_sdo_state.shift_wait cur_sdo_state.load_shift_reg cur_sdo_state.load_rgb cur_sdo_state.load_cfg cur_sdo_state.load_n_mics cur_sdo_state.load_header cur_sdo_state.idle 
+cur_sdo_state.idle 0 0 0 0 0 0 0 
+cur_sdo_state.load_header 0 0 0 0 0 1 1 
+cur_sdo_state.load_n_mics 0 0 0 0 1 0 1 
+cur_sdo_state.load_cfg 0 0 0 1 0 0 1 
+cur_sdo_state.load_rgb 0 0 1 0 0 0 1 
+cur_sdo_state.load_shift_reg 0 1 0 0 0 0 1 
+cur_sdo_state.shift_wait 1 0 0 0 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_3|next_sdo_state
+Name next_sdo_state.shift_wait next_sdo_state.load_shift_reg next_sdo_state.load_rgb next_sdo_state.load_cfg next_sdo_state.load_n_mics next_sdo_state.load_header next_sdo_state.idle 
+next_sdo_state.idle 0 0 0 0 0 0 0 
+next_sdo_state.load_header 0 0 0 0 0 1 1 
+next_sdo_state.load_n_mics 0 0 0 0 1 0 1 
+next_sdo_state.load_cfg 0 0 0 1 0 0 1 
+next_sdo_state.load_rgb 0 0 1 0 0 0 1 
+next_sdo_state.load_shift_reg 0 1 0 0 0 0 1 
+next_sdo_state.shift_wait 1 0 0 0 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_3|cur_sdi_state
+Name cur_sdi_state.valid_pulse cur_sdi_state.read_mic_data cur_sdi_state.read_humid cur_sdi_state.read_temp cur_sdi_state.read_pressure cur_sdi_state.read_n_mics cur_sdi_state.read_packet_number cur_sdi_state.idle 
+cur_sdi_state.idle 0 0 0 0 0 0 0 0 
+cur_sdi_state.read_packet_number 0 0 0 0 0 0 1 1 
+cur_sdi_state.read_n_mics 0 0 0 0 0 1 0 1 
+cur_sdi_state.read_pressure 0 0 0 0 1 0 0 1 
+cur_sdi_state.read_temp 0 0 0 1 0 0 0 1 
+cur_sdi_state.read_humid 0 0 1 0 0 0 0 1 
+cur_sdi_state.read_mic_data 0 1 0 0 0 0 0 1 
+cur_sdi_state.valid_pulse 1 0 0 0 0 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_3|bme_valid_state
+Name bme_valid_state.low_wait bme_valid_state.pulse bme_valid_state.idle 
+bme_valid_state.idle 0 0 0 
+bme_valid_state.pulse 0 1 1 
+bme_valid_state.low_wait 1 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_3|mic_valid_state
+Name mic_valid_state.low_wait mic_valid_state.pulse mic_valid_state.increment_counter mic_valid_state.idle 
+mic_valid_state.idle 0 0 0 0 
+mic_valid_state.increment_counter 0 0 1 1 
+mic_valid_state.pulse 0 1 0 1 
+mic_valid_state.low_wait 1 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_2|cur_sdo_state
+Name cur_sdo_state.shift_wait cur_sdo_state.load_shift_reg cur_sdo_state.load_rgb cur_sdo_state.load_cfg cur_sdo_state.load_n_mics cur_sdo_state.load_header cur_sdo_state.idle 
+cur_sdo_state.idle 0 0 0 0 0 0 0 
+cur_sdo_state.load_header 0 0 0 0 0 1 1 
+cur_sdo_state.load_n_mics 0 0 0 0 1 0 1 
+cur_sdo_state.load_cfg 0 0 0 1 0 0 1 
+cur_sdo_state.load_rgb 0 0 1 0 0 0 1 
+cur_sdo_state.load_shift_reg 0 1 0 0 0 0 1 
+cur_sdo_state.shift_wait 1 0 0 0 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_2|next_sdo_state
+Name next_sdo_state.shift_wait next_sdo_state.load_shift_reg next_sdo_state.load_rgb next_sdo_state.load_cfg next_sdo_state.load_n_mics next_sdo_state.load_header next_sdo_state.idle 
+next_sdo_state.idle 0 0 0 0 0 0 0 
+next_sdo_state.load_header 0 0 0 0 0 1 1 
+next_sdo_state.load_n_mics 0 0 0 0 1 0 1 
+next_sdo_state.load_cfg 0 0 0 1 0 0 1 
+next_sdo_state.load_rgb 0 0 1 0 0 0 1 
+next_sdo_state.load_shift_reg 0 1 0 0 0 0 1 
+next_sdo_state.shift_wait 1 0 0 0 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_2|cur_sdi_state
+Name cur_sdi_state.valid_pulse cur_sdi_state.read_mic_data cur_sdi_state.read_humid cur_sdi_state.read_temp cur_sdi_state.read_pressure cur_sdi_state.read_n_mics cur_sdi_state.read_packet_number cur_sdi_state.idle 
+cur_sdi_state.idle 0 0 0 0 0 0 0 0 
+cur_sdi_state.read_packet_number 0 0 0 0 0 0 1 1 
+cur_sdi_state.read_n_mics 0 0 0 0 0 1 0 1 
+cur_sdi_state.read_pressure 0 0 0 0 1 0 0 1 
+cur_sdi_state.read_temp 0 0 0 1 0 0 0 1 
+cur_sdi_state.read_humid 0 0 1 0 0 0 0 1 
+cur_sdi_state.read_mic_data 0 1 0 0 0 0 0 1 
+cur_sdi_state.valid_pulse 1 0 0 0 0 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_2|bme_valid_state
+Name bme_valid_state.low_wait bme_valid_state.pulse bme_valid_state.idle 
+bme_valid_state.idle 0 0 0 
+bme_valid_state.pulse 0 1 1 
+bme_valid_state.low_wait 1 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_2|mic_valid_state
+Name mic_valid_state.low_wait mic_valid_state.pulse mic_valid_state.increment_counter mic_valid_state.idle 
+mic_valid_state.idle 0 0 0 0 
+mic_valid_state.increment_counter 0 0 1 1 
+mic_valid_state.pulse 0 1 0 1 
+mic_valid_state.low_wait 1 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_15|cur_sdi_state
+Name cur_sdi_state.valid_pulse cur_sdi_state.read_mic_data cur_sdi_state.read_humid cur_sdi_state.read_temp cur_sdi_state.read_pressure cur_sdi_state.read_n_mics cur_sdi_state.read_packet_number cur_sdi_state.idle 
+cur_sdi_state.idle 0 0 0 0 0 0 0 0 
+cur_sdi_state.read_packet_number 0 0 0 0 0 0 1 1 
+cur_sdi_state.read_n_mics 0 0 0 0 0 1 0 1 
+cur_sdi_state.read_pressure 0 0 0 0 1 0 0 1 
+cur_sdi_state.read_temp 0 0 0 1 0 0 0 1 
+cur_sdi_state.read_humid 0 0 1 0 0 0 0 1 
+cur_sdi_state.read_mic_data 0 1 0 0 0 0 0 1 
+cur_sdi_state.valid_pulse 1 0 0 0 0 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_15|bme_valid_state
+Name bme_valid_state.low_wait bme_valid_state.pulse bme_valid_state.idle 
+bme_valid_state.idle 0 0 0 
+bme_valid_state.pulse 0 1 1 
+bme_valid_state.low_wait 1 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_15|mic_valid_state
+Name mic_valid_state.low_wait mic_valid_state.pulse mic_valid_state.increment_counter mic_valid_state.idle 
+mic_valid_state.idle 0 0 0 0 
+mic_valid_state.increment_counter 0 0 1 1 
+mic_valid_state.pulse 0 1 0 1 
+mic_valid_state.low_wait 1 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_13|cur_sdi_state
+Name cur_sdi_state.valid_pulse cur_sdi_state.read_mic_data cur_sdi_state.read_humid cur_sdi_state.read_temp cur_sdi_state.read_pressure cur_sdi_state.read_n_mics cur_sdi_state.read_packet_number cur_sdi_state.idle 
+cur_sdi_state.idle 0 0 0 0 0 0 0 0 
+cur_sdi_state.read_packet_number 0 0 0 0 0 0 1 1 
+cur_sdi_state.read_n_mics 0 0 0 0 0 1 0 1 
+cur_sdi_state.read_pressure 0 0 0 0 1 0 0 1 
+cur_sdi_state.read_temp 0 0 0 1 0 0 0 1 
+cur_sdi_state.read_humid 0 0 1 0 0 0 0 1 
+cur_sdi_state.read_mic_data 0 1 0 0 0 0 0 1 
+cur_sdi_state.valid_pulse 1 0 0 0 0 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_13|bme_valid_state
+Name bme_valid_state.low_wait bme_valid_state.pulse bme_valid_state.idle 
+bme_valid_state.idle 0 0 0 
+bme_valid_state.pulse 0 1 1 
+bme_valid_state.low_wait 1 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_13|mic_valid_state
+Name mic_valid_state.low_wait mic_valid_state.pulse mic_valid_state.increment_counter mic_valid_state.idle 
+mic_valid_state.idle 0 0 0 0 
+mic_valid_state.increment_counter 0 0 1 1 
+mic_valid_state.pulse 0 1 0 1 
+mic_valid_state.low_wait 1 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_12|cur_sdi_state
+Name cur_sdi_state.valid_pulse cur_sdi_state.read_mic_data cur_sdi_state.read_humid cur_sdi_state.read_temp cur_sdi_state.read_pressure cur_sdi_state.read_n_mics cur_sdi_state.read_packet_number cur_sdi_state.idle 
+cur_sdi_state.idle 0 0 0 0 0 0 0 0 
+cur_sdi_state.read_packet_number 0 0 0 0 0 0 1 1 
+cur_sdi_state.read_n_mics 0 0 0 0 0 1 0 1 
+cur_sdi_state.read_pressure 0 0 0 0 1 0 0 1 
+cur_sdi_state.read_temp 0 0 0 1 0 0 0 1 
+cur_sdi_state.read_humid 0 0 1 0 0 0 0 1 
+cur_sdi_state.read_mic_data 0 1 0 0 0 0 0 1 
+cur_sdi_state.valid_pulse 1 0 0 0 0 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_12|bme_valid_state
+Name bme_valid_state.low_wait bme_valid_state.pulse bme_valid_state.idle 
+bme_valid_state.idle 0 0 0 
+bme_valid_state.pulse 0 1 1 
+bme_valid_state.low_wait 1 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_12|mic_valid_state
+Name mic_valid_state.low_wait mic_valid_state.pulse mic_valid_state.increment_counter mic_valid_state.idle 
+mic_valid_state.idle 0 0 0 0 
+mic_valid_state.increment_counter 0 0 1 1 
+mic_valid_state.pulse 0 1 0 1 
+mic_valid_state.low_wait 1 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_11|cur_sdo_state
+Name cur_sdo_state.shift_wait cur_sdo_state.load_shift_reg cur_sdo_state.load_rgb cur_sdo_state.load_cfg cur_sdo_state.load_n_mics cur_sdo_state.load_header cur_sdo_state.idle 
+cur_sdo_state.idle 0 0 0 0 0 0 0 
+cur_sdo_state.load_header 0 0 0 0 0 1 1 
+cur_sdo_state.load_n_mics 0 0 0 0 1 0 1 
+cur_sdo_state.load_cfg 0 0 0 1 0 0 1 
+cur_sdo_state.load_rgb 0 0 1 0 0 0 1 
+cur_sdo_state.load_shift_reg 0 1 0 0 0 0 1 
+cur_sdo_state.shift_wait 1 0 0 0 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_11|next_sdo_state
+Name next_sdo_state.shift_wait next_sdo_state.load_shift_reg next_sdo_state.load_rgb next_sdo_state.load_cfg next_sdo_state.load_n_mics next_sdo_state.load_header next_sdo_state.idle 
+next_sdo_state.idle 0 0 0 0 0 0 0 
+next_sdo_state.load_header 0 0 0 0 0 1 1 
+next_sdo_state.load_n_mics 0 0 0 0 1 0 1 
+next_sdo_state.load_cfg 0 0 0 1 0 0 1 
+next_sdo_state.load_rgb 0 0 1 0 0 0 1 
+next_sdo_state.load_shift_reg 0 1 0 0 0 0 1 
+next_sdo_state.shift_wait 1 0 0 0 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_11|cur_sdi_state
+Name cur_sdi_state.valid_pulse cur_sdi_state.read_mic_data cur_sdi_state.read_humid cur_sdi_state.read_temp cur_sdi_state.read_pressure cur_sdi_state.read_n_mics cur_sdi_state.read_packet_number cur_sdi_state.idle 
+cur_sdi_state.idle 0 0 0 0 0 0 0 0 
+cur_sdi_state.read_packet_number 0 0 0 0 0 0 1 1 
+cur_sdi_state.read_n_mics 0 0 0 0 0 1 0 1 
+cur_sdi_state.read_pressure 0 0 0 0 1 0 0 1 
+cur_sdi_state.read_temp 0 0 0 1 0 0 0 1 
+cur_sdi_state.read_humid 0 0 1 0 0 0 0 1 
+cur_sdi_state.read_mic_data 0 1 0 0 0 0 0 1 
+cur_sdi_state.valid_pulse 1 0 0 0 0 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_11|bme_valid_state
+Name bme_valid_state.low_wait bme_valid_state.pulse bme_valid_state.idle 
+bme_valid_state.idle 0 0 0 
+bme_valid_state.pulse 0 1 1 
+bme_valid_state.low_wait 1 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_11|mic_valid_state
+Name mic_valid_state.low_wait mic_valid_state.pulse mic_valid_state.increment_counter mic_valid_state.idle 
+mic_valid_state.idle 0 0 0 0 
+mic_valid_state.increment_counter 0 0 1 1 
+mic_valid_state.pulse 0 1 0 1 
+mic_valid_state.low_wait 1 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_10|cur_sdo_state
+Name cur_sdo_state.shift_wait cur_sdo_state.load_shift_reg cur_sdo_state.load_rgb cur_sdo_state.load_cfg cur_sdo_state.load_n_mics cur_sdo_state.load_header cur_sdo_state.idle 
+cur_sdo_state.idle 0 0 0 0 0 0 0 
+cur_sdo_state.load_header 0 0 0 0 0 1 1 
+cur_sdo_state.load_n_mics 0 0 0 0 1 0 1 
+cur_sdo_state.load_cfg 0 0 0 1 0 0 1 
+cur_sdo_state.load_rgb 0 0 1 0 0 0 1 
+cur_sdo_state.load_shift_reg 0 1 0 0 0 0 1 
+cur_sdo_state.shift_wait 1 0 0 0 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_10|next_sdo_state
+Name next_sdo_state.shift_wait next_sdo_state.load_shift_reg next_sdo_state.load_rgb next_sdo_state.load_cfg next_sdo_state.load_n_mics next_sdo_state.load_header next_sdo_state.idle 
+next_sdo_state.idle 0 0 0 0 0 0 0 
+next_sdo_state.load_header 0 0 0 0 0 1 1 
+next_sdo_state.load_n_mics 0 0 0 0 1 0 1 
+next_sdo_state.load_cfg 0 0 0 1 0 0 1 
+next_sdo_state.load_rgb 0 0 1 0 0 0 1 
+next_sdo_state.load_shift_reg 0 1 0 0 0 0 1 
+next_sdo_state.shift_wait 1 0 0 0 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_10|cur_sdi_state
+Name cur_sdi_state.valid_pulse cur_sdi_state.read_mic_data cur_sdi_state.read_humid cur_sdi_state.read_temp cur_sdi_state.read_pressure cur_sdi_state.read_n_mics cur_sdi_state.read_packet_number cur_sdi_state.idle 
+cur_sdi_state.idle 0 0 0 0 0 0 0 0 
+cur_sdi_state.read_packet_number 0 0 0 0 0 0 1 1 
+cur_sdi_state.read_n_mics 0 0 0 0 0 1 0 1 
+cur_sdi_state.read_pressure 0 0 0 0 1 0 0 1 
+cur_sdi_state.read_temp 0 0 0 1 0 0 0 1 
+cur_sdi_state.read_humid 0 0 1 0 0 0 0 1 
+cur_sdi_state.read_mic_data 0 1 0 0 0 0 0 1 
+cur_sdi_state.valid_pulse 1 0 0 0 0 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_10|bme_valid_state
+Name bme_valid_state.low_wait bme_valid_state.pulse bme_valid_state.idle 
+bme_valid_state.idle 0 0 0 
+bme_valid_state.pulse 0 1 1 
+bme_valid_state.low_wait 1 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_10|mic_valid_state
+Name mic_valid_state.low_wait mic_valid_state.pulse mic_valid_state.increment_counter mic_valid_state.idle 
+mic_valid_state.idle 0 0 0 0 
+mic_valid_state.increment_counter 0 0 1 1 
+mic_valid_state.pulse 0 1 0 1 
+mic_valid_state.low_wait 1 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_1|cur_sdo_state
+Name cur_sdo_state.shift_wait cur_sdo_state.load_shift_reg cur_sdo_state.load_rgb cur_sdo_state.load_cfg cur_sdo_state.load_n_mics cur_sdo_state.load_header cur_sdo_state.idle 
+cur_sdo_state.idle 0 0 0 0 0 0 0 
+cur_sdo_state.load_header 0 0 0 0 0 1 1 
+cur_sdo_state.load_n_mics 0 0 0 0 1 0 1 
+cur_sdo_state.load_cfg 0 0 0 1 0 0 1 
+cur_sdo_state.load_rgb 0 0 1 0 0 0 1 
+cur_sdo_state.load_shift_reg 0 1 0 0 0 0 1 
+cur_sdo_state.shift_wait 1 0 0 0 0 0 1 
+
+State Machine - |Audioblade|audioblade_system:i0|FE_FPGA_Microphone_Encoder_Decoder:fe_fpga_microphone_encoder_decoder_1|next_sdo_state
+Name next_sdo_state.shift_wait next_sdo_state.load_shift_reg next_sdo_state.load_rgb next_sdo_state.load_cfg next_sdo_state.load_n_mics next_sdo_state.load_header next_sdo_state.idle 
+next_sdo_state.idle 0 0 0 0 0 0 0 
+next_sdo_state.load_header 0 0 0 0 0 1 1 
+next_sdo_state.load_n_mics 0 0 0 0 1 0 1 
+next_sdo_state.load_cfg 0 0 0 1 0 0 1 
+next_sdo_state.load_rgb 0 0 1 0 0 0 1 
+next_sdo_state.load_shift_reg 0 1 0 0 0 0 1 
+next_sdo_state.shift_wait 1 0 0 0 0 0 1 

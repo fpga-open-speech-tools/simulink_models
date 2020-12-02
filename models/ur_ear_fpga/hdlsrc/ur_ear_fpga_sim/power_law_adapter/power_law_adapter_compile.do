@@ -1,0 +1,12 @@
+vmap work ../work
+
+vmap -c
+vcom  ur_ear_fpga_sim_power_law_adapter_nfp_mul_single.vhd
+vcom  ur_ear_fpga_sim_power_law_adapter_nfp_add_single.vhd
+vcom  ur_ear_fpga_sim_power_law_adapter_nfp_gain_pow2_single.vhd
+vcom  ur_ear_fpga_sim_power_law_adapter_nfp_uminus_single.vhd
+vcom  ur_ear_fpga_sim_power_law_adapter_Slow_Power_Law.vhd
+vcom  ur_ear_fpga_sim_power_law_adapter_Fast_Power_Law.vhd
+vcom  ur_ear_fpga_sim_power_law_adapter_nfp_sub_single.vhd
+vcom  ur_ear_fpga_sim_power_law_adapter_nfp_relop_single.vhd
+vcom  ur_ear_fpga_sim_power_law_adapter_power_law_adapter.vhd

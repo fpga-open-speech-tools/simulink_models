@@ -1,0 +1,1 @@
+accumulator --> ur_ear_fpga_sim_accumulator_accumulator

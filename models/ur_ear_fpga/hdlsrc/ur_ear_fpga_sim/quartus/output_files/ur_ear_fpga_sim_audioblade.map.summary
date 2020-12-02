@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Wed Dec 02 08:32:35 2020
+Quartus Prime Version : 18.0.0 Build 614 04/24/2018 SJ Standard Edition
+Revision Name : ur_ear_fpga_sim_audioblade
+Top-level Entity Name : Audioblade
+Family : Arria 10
+Logic utilization (in ALMs) : N/A
+Total registers : 21367
+Total pins : 418
+Total virtual pins : 0
+Total block memory bits : 537,280
+Total DSP Blocks : 0
+Total HSSI RX channels : 0
+Total HSSI TX channels : 0
+Total PLLs : 4

@@ -1,0 +1,12 @@
+vmap work ../work
+
+vmap -c
+vcom  ur_ear_fpga_sim_nl_pla_filter_nfp_signum_single.vhd
+vcom  ur_ear_fpga_sim_nl_pla_filter_nfp_mul_single.vhd
+vcom  ur_ear_fpga_sim_nl_pla_filter_nfp_pow10_single.vhd
+vcom  ur_ear_fpga_sim_nl_pla_filter_nfp_log10_single.vhd
+vcom  ur_ear_fpga_sim_nl_pla_filter_nfp_add_single.vhd
+vcom  ur_ear_fpga_sim_nl_pla_filter_Subsystem.vhd
+vcom  ur_ear_fpga_sim_nl_pla_filter_nfp_abs_single.vhd
+vcom  ur_ear_fpga_sim_nl_pla_filter_nfp_relop_single.vhd
+vcom  ur_ear_fpga_sim_nl_pla_filter_nl_pla_filter.vhd

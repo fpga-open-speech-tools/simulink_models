@@ -1,0 +1,5 @@
+config audioblade_system_altera_avalon_st_adapter_180_v3lgypq_cfg;
+		design audioblade_system_altera_avalon_st_adapter_180_v3lgypq;
+		instance audioblade_system_altera_avalon_st_adapter_180_v3lgypq.error_adapter_0 use audioblade_system_error_adapter_180.audioblade_system_error_adapter_180_jats3da;
+endconfig
+

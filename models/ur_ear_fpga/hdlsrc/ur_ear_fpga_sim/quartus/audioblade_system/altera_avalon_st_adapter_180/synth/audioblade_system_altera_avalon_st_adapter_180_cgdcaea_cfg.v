@@ -1,0 +1,5 @@
+config audioblade_system_altera_avalon_st_adapter_180_cgdcaea_cfg;
+		design audioblade_system_altera_avalon_st_adapter_180_cgdcaea;
+		instance audioblade_system_altera_avalon_st_adapter_180_cgdcaea.channel_adapter_0 use audioblade_system_channel_adapter_180.audioblade_system_channel_adapter_180_iipikvi;
+endconfig
+

@@ -1,0 +1,19 @@
+vmap work ../work
+vmap -c
+vcom  ur_ear_fpga_sim_calc_tau_SimpleDualPortRAM_generic.vhd
+vcom  ur_ear_fpga_sim_calc_tau_nfp_convert_single_to_fix_16_En5.vhd
+vcom  ur_ear_fpga_sim_calc_tau_write_address_generator.vhd
+vcom  ur_ear_fpga_sim_calc_tau_nfp_div_single.vhd
+vcom  ur_ear_fpga_sim_calc_tau_nfp_floor_single.vhd
+vcom  ur_ear_fpga_sim_calc_tau_nfp_mul_single.vhd
+vcom  ur_ear_fpga_sim_calc_tau_nfp_sqrt_single.vhd
+vcom  ur_ear_fpga_sim_calc_tau_nfp_sub_single.vhd
+vcom  ur_ear_fpga_sim_calc_tau_nfp_add_single.vhd
+vcom  ur_ear_fpga_sim_calc_tau_nfp_cos_single.vhd
+vcom  ur_ear_fpga_sim_calc_tau_nfp_gain_pow2_single.vhd
+vcom  ur_ear_fpga_sim_calc_tau_gain_groupdelay.vhd
+vcom  ur_ear_fpga_sim_calc_tau_Calculate_tauwb.vhd
+vcom  ur_ear_fpga_sim_calc_tau_Calculate_tauc1.vhd
+vcom  ur_ear_fpga_sim_calc_tau_nfp_recip_single.vhd
+vcom  ur_ear_fpga_sim_calc_tau_nfp_relop_single.vhd
+vcom  ur_ear_fpga_sim_calc_tau_calc_tau.vhd

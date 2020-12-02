@@ -1,0 +1,5 @@
+c2_wideband_filter/Calculate C2filterout/nfp_abs_single --> ur_ear_fpga_sim_c2_wideband_filter_nfp_abs_single
+c2_wideband_filter/Calculate C2filterout/nfp_div_single --> ur_ear_fpga_sim_c2_wideband_filter_nfp_div_single
+c2_wideband_filter/nfp_mul_single --> ur_ear_fpga_sim_c2_wideband_filter_nfp_mul_single
+c2_wideband_filter/Calculate C2filterout --> ur_ear_fpga_sim_c2_wideband_filter_Calculate_C2filterout
+c2_wideband_filter --> ur_ear_fpga_sim_c2_wideband_filter_c2_wideband_filter

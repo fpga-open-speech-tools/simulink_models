@@ -1,0 +1,30 @@
+Making tcl file for qsys
+Generating qsys file from tcl file
+log file can be found at D:\NIH3Repo\simulink_models\models\ur_ear_fpga\hdlsrc\ur_ear_fpga_sim/quartus/qsys_script.log
+cd D:\\NIH3Repo\\simulink_models\\models\\ur_ear_fpga\\hdlsrc\\ur_ear_fpga_sim/quartus/ && C:\\intelFPGA\\18.0\\quartus\\sopc_builder\\bin/qsys-script --script=audioblade_system.tcl --search-path="../../../../../component_library/**/*,$" 
+Generating audioblade_system.qsys
+log file can be found at D:\NIH3Repo\simulink_models\models\ur_ear_fpga\hdlsrc\ur_ear_fpga_sim/quartus/audioblade_system.qsys_gen.log
+cd D:\\NIH3Repo\\simulink_models\\models\\ur_ear_fpga\\hdlsrc\\ur_ear_fpga_sim/quartus/ && C:\\intelFPGA\\18.0\\quartus\\sopc_builder\\bin/qsys-generate --synthesis=VHDL --search-path="../component_library/**/*,$"  audioblade_system.qsys
+Generating make_project.tcl
+Generating pll.qsys
+log file can be found at D:\NIH3Repo\simulink_models\models\ur_ear_fpga\hdlsrc\ur_ear_fpga_sim/quartus/pll.qsys_gen.log
+cd D:\\NIH3Repo\\simulink_models\\models\\ur_ear_fpga\\hdlsrc\\ur_ear_fpga_sim/quartus/ && C:\\intelFPGA\\18.0\\quartus\\sopc_builder\\bin/qsys-generate --synthesis=VHDL --search-path="../component_library/**/*,$"  pll.qsys
+Generating project
+log file can be found at D:\NIH3Repo\simulink_models\models\ur_ear_fpga\hdlsrc\ur_ear_fpga_sim/quartus/project_gen.log
+cd D:\\NIH3Repo\\simulink_models\\models\\ur_ear_fpga\\hdlsrc\\ur_ear_fpga_sim/quartus/ && C:\\intelFPGA\\18.0\\quartus\\bin64/quartus_sh -t make_project.tcl
+Compiling project
+log file can be found at D:\NIH3Repo\simulink_models\models\ur_ear_fpga\hdlsrc\ur_ear_fpga_sim/quartus/compile_project.log
+cd D:\\NIH3Repo\\simulink_models\\models\\ur_ear_fpga\\hdlsrc\\ur_ear_fpga_sim/quartus/ && C:\\intelFPGA\\18.0\\quartus\\bin64/quartus_sh -t compile_project.tcl
+
+Traceback (most recent call last):
+  File "D:\NIH3Repo\simulink_codegen/autogen_quartus.py", line 26, in main
+    execute_quartus_workflow(
+  File "D:\NIH3Repo\simulink_codegen\quartus\workflow.py", line 414, in execute_quartus_workflow
+    compile_project(project_name, project_revision, template, working_dir)
+  File "D:\NIH3Repo\simulink_codegen\quartus\workflow.py", line 330, in compile_project
+    run_cmd_and_log(cmd, log_msg, log_file_path)
+  File "D:\NIH3Repo\simulink_codegen\quartus\workflow.py", line 131, in run_cmd_and_log
+    raise ChildProcessError(
+ChildProcessError: The following command failed cd D:\NIH3Repo\simulink_models\models\ur_ear_fpga\hdlsrc\ur_ear_fpga_sim/quartus/ && C:\intelFPGA\18.0\quartus\bin64/quartus_sh -t compile_project.tcl 
+ The log file can be found at D:\NIH3Repo\simulink_models\models\ur_ear_fpga\hdlsrc\ur_ear_fpga_sim/quartus/compile_project.log
+exit

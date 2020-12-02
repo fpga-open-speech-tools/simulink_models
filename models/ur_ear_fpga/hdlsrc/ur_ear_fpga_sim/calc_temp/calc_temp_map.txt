@@ -1,0 +1,5 @@
+calc_temp/nfp_add_single --> ur_ear_fpga_sim_calc_temp_nfp_add_single
+calc_temp/nfp_convert_double2single --> ur_ear_fpga_sim_calc_temp_nfp_convert_double2single
+calc_temp/nfp_pow_single --> ur_ear_fpga_sim_calc_temp_nfp_pow_single
+calc_temp/nfp_sub_single --> ur_ear_fpga_sim_calc_temp_nfp_sub_single
+calc_temp --> ur_ear_fpga_sim_calc_temp_calc_temp

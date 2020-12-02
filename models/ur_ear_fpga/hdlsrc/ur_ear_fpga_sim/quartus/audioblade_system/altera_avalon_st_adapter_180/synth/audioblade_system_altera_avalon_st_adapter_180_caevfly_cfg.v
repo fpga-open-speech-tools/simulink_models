@@ -1,0 +1,5 @@
+config audioblade_system_altera_avalon_st_adapter_180_caevfly_cfg;
+		design audioblade_system_altera_avalon_st_adapter_180_caevfly;
+		instance audioblade_system_altera_avalon_st_adapter_180_caevfly.error_adapter_0 use audioblade_system_error_adapter_180.audioblade_system_error_adapter_180_ww4pkiq;
+endconfig
+

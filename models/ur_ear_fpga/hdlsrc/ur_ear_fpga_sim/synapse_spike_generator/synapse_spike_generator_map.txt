@@ -1,0 +1,1 @@
+synapse_spike_generator --> ur_ear_fpga_sim_synapse_spike_generator_synapse_spike_generator

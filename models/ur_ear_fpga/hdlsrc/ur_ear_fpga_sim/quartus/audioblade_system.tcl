@@ -1,0 +1,17 @@
+package require -exact qsys 18.0
+load_system {audioblade_system.qsys}
+set_instance_parameter_value pll_using_AD1939_MCLK {gui_output_clock_frequency0} {98.304}
+
+add_instance ur_ear_fpga_sim_0 ur_ear_fpga_sim 1.0
+
+add_connection pll_using_AD1939_MCLK.outclk0 ur_ear_fpga_sim_0.clock
+add_connection clk_1.clk_reset ur_ear_fpga_sim_0.reset
+add_connection arria10_hps_0.h2f_lw_axi_master ur_ear_fpga_sim_0.avalon_slave
+set_connection_parameter_value arria10_hps_0.h2f_lw_axi_master/ur_ear_fpga_sim_0.avalon_slave arbitrationPriority {1}
+set_connection_parameter_value arria10_hps_0.h2f_lw_axi_master/ur_ear_fpga_sim_0.avalon_slave baseAddress {0x0020}
+set_connection_parameter_value arria10_hps_0.h2f_lw_axi_master/ur_ear_fpga_sim_0.avalon_slave defaultConnection {0}
+
+add_connection FE_Qsys_AD1939_Audio_Blade_v1_0.Line_In ur_ear_fpga_sim_0.avalon_streaming_sink
+
+add_connection ur_ear_fpga_sim_0.avalon_streaming_source FE_Qsys_AD1939_Audio_Blade_v1_0.Line_Out
+save_system {audioblade_system}
