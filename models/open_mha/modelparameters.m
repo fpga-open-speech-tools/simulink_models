@@ -1,5 +1,8 @@
+addpath(genpath('dual_port_ram_interface'));   % Dual Port RAM Interface
+addpath(genpath('dynamic_range_compression')); % Open MHA Dynamic Range Compression Block
+addpath(genpath('..\fast_fourier_transform')); % Fast Fourier Transform Refence Models
 
-%%% Autogen parameters
+%% Autogen parameters
 test_FFT_to_gain_init;
 mp.testFile = [mp.test_signals_path filesep 'acoustic.wav'];
 
@@ -30,7 +33,7 @@ mp.SysRate_Upsample_Factor = mp.FFT_size/mp.FFT_frame_shift * 8 * 4;  % How much
 
 %% Declare DPR variables
 num_bands = 8;
-n_ar      = num_bands*2;
+n_ad      = num_bands*2;
 n_vy      = 32;
 n_shift   = 16;
 RAM_size = 8 ;
@@ -49,23 +52,23 @@ vy = dp_gt;
 %% Declare Control Signals
 
 
-ar_data_in   = (n_ar*ones(RAM_addresses,1))-1;
+ad_data_in   = (n_ad*ones(RAM_addresses,1))-1;
 %ar_data_in = uint32(ar_data_in);
 vy_data_in = (RAM_addresses*ones(RAM_addresses,1))-1;
 %vy_data_in = uint32(vy_data_in);
 
-ar_data_in(1:n_ar) = (1:n_ar)-1;
+ad_data_in(1:n_ad) = (1:n_ad)-1;
 % ar_data_in(n_ar+1:end) = n_ar;
 
 vy_data_in(1:RAM_addresses) = (1:RAM_addresses)-1;
 % vy_data_in(RAM_addresses+1:end) = RAM_addresses;
 
 % Shift the addresses into the correct location
-ar_data_in = bitshift(ar_data_in,n_shift);
+ad_data_in = bitshift(ad_data_in,n_shift);
 vy_data_in = bitshift(vy_data_in,n_shift);
 
 % Add the coefficients to the variables
-ar_data_in(1:n_ar) = ar_data_in(1:n_ar) + ar_coeffs(1:n_ar);
+ad_data_in(1:n_ad) = ad_data_in(1:n_ad) + ad_coeffs(1:n_ad);
 vy_data_in(1:RAM_addresses) = vy_data_in(1:RAM_addresses) + vy(1:RAM_addresses);
 
 % ar_data_in   = (n_ar*ones(n_ar,1))-1;

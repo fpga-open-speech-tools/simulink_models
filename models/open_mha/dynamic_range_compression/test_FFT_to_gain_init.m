@@ -7,11 +7,6 @@
 
 % clear all;
 
-%% Add Subfolders to MATLAB Path
-
-addpath(genpath('variable_delay'));
-addpath(genpath('referenced_functions'));
-addpath(genpath('gain_calculation'));
 
 %% Declare Sampling Rate
 
@@ -40,15 +35,22 @@ gain_coeff_fp_size = 16; % Word Size
 gain_coeff_fp_dec  = 8;  % Fractional Bits
 gain_coeff_fp_sign = 1;  % Unsigned = 0, Signed = 1
 
+% Prelook Up Table: Fractional - Fixed Point Paramters
+frac_coeff_fp_size = 32; % Word Size
+frac_coeff_fp_dec  = 32; % Fractional Bits
+frac_coeff_fp_sign = 0;  % Unsigned = 0, Signed = 1
+
 % Define the Input Data Types
 if(strcmp(sim_type,'double'))
     input_type      = 'double';
     ad_coeff_type   = 'double';
     gain_coeff_type = 'double';
+    frac_coeff_type = 'double';
 elseif(strcmp(sim_type,'fxpt'))
     input_type      = fixdt(in_fp_sign,in_fp_size,in_fp_dec);
     ad_coeff_type   = fixdt(ad_coeff_fp_sign,ad_coeff_fp_size,ad_coeff_fp_dec);
     gain_coeff_type = fixdt(gain_coeff_fp_sign,gain_coeff_fp_size,gain_coeff_fp_dec);
+    frac_coeff_type = fixdt(frac_coeff_fp_sign,frac_coeff_fp_size,frac_coeff_fp_dec);
 end
 
 %% Declare FFT Parameters
@@ -111,8 +113,8 @@ tau_rs = tau_r.*[1:0.2:num_bands]';
 
 z = 1;
 for i = 1:2:2*num_bands-1
-    ar_taus(i) = tau_as(z);
-    ar_taus(i+1) = tau_rs(z);
+    ad_taus(i) = tau_as(z);
+    ad_taus(i+1) = tau_rs(z);
     z = z+1;
 end
 
@@ -126,13 +128,13 @@ coeff_size = 8;
 % Calculating filter coefficients as done in the source code C++ file
 % mha_filter.cpp
 
-ar_coeffs = zeros(2^coeff_size,1);
-ar_coeffs(1:2*num_bands) = exp( -1.0./(ar_taus(1:2*num_bands).*fs) );
+ad_coeffs = zeros(2^coeff_size,1);
+ad_coeffs(1:2*num_bands) = exp( -1.0./(ad_taus(1:2*num_bands).*fs) );
 
 %% Initialize Filter Buffer Values
 
 buf_a = 65.*ones(num_bands,1);
-buf_r = 65.*ones(num_bands,1);
+buf_d = 65.*ones(num_bands,1);
 
 %% Calculate New Attack-Release Filter Coefficients
 
