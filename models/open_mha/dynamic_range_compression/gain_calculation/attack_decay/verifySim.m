@@ -107,8 +107,8 @@ for i = 1:audio_length-1
         c2_d_simulink(i,j) = c2_d_sim_out(((i-1)*num_bands) + j + 1,1);
         
         % Attack and Decay Filter
-        attack_filter_opt_sim_matrix(i,j) = attack_filter_sim(((i-1)*num_bands) + j + 1,1);
-        decay_filter_opt_sim_matrix(i,j) = decay_filter_sim(((i-1)*num_bands) + j + 1,1);
+        attack_filter_opt_sim_matrix(i,j) = attack_filter_sim(((i-1)*num_bands) + j,1);
+        decay_filter_opt_sim_matrix(i,j) = decay_filter_sim(((i-1)*num_bands) + j,1);
     end    
 end
 
