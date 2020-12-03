@@ -54,3 +54,16 @@ plot(abs(level_in(1:FFTsize/2) - out.level_in(1:FFTsize/2)'));
 xlabel('Sample Number');
 ylabel('Intensity Level Difference[Pa^2]');
 title('Difference Error Between openMHA and Simulink Intensity Levels');
+
+figure
+subplot(3,1,1)
+plot(out.grab_accumulator)
+title("Grab Accumulator Trigger Simulation")
+
+subplot(3,1,2)
+plot(out.band_num)
+title("Band Number Simulation")
+
+subplot(3,1,3)
+plot(valid_data)
+title("Valid Data Input")

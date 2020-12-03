@@ -20,6 +20,7 @@ addpath(genpath('intensity'));                       % Intensity Conversion
 addpath(genpath('dB_lookup_table'));                 % pa2 to dB Look Up Table
 addpath(genpath('..\..\referenced_functions'));      % Frost Library
 
+load('fft_simulation.mat')
 %% Open MHA Parameters 
 fs          = 48e3;          % Samplig Frequency
 coeff_size  = 8;             % Coefficient Address Size
@@ -59,26 +60,5 @@ band_edges = calculate_band_edges(ef, num_bins, binwidth, num_bands);
 mirrored_band_edges = calculate_mirrored_band_edges(band_sizes, FFTsize, num_bins, num_bands);
 band_edges = [band_edges mirrored_band_edges];
 
-
-%% Simulation Input Signals (Random Input Signal Test Case)
-% Signal Length Multiplier
-input_length = 6;
-
-% Organizing FFT Data Input Vectors
-FFT_data_real = [];
-FFT_data_imag = [];
-for i = 1:input_length
-    FFT_data_real = [0.1.*rand(1,256) zeros(1,44)];
-    FFT_data_imag = [0.1.*rand(1,256) zeros(1,44)];
-end
-
-% Find length of input signal
-inlength = length(FFT_data_real);
-
-% Calculate Valid Signal
-valid_data = zeros(size(FFT_data_real));
-valid_data(find(FFT_data_real)) = 1;
-time = (1:inlength) ./ fs;
-valid_data_ts = timeseries(valid_data,time);
 %% Simulation Time
-stop_time = (inlength - 1)/fs;
+stop_time = (length(fft_valid_sim_out.Data) - 1)/fs;

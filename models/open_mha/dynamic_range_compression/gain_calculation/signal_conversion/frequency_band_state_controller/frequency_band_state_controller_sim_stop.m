@@ -52,6 +52,7 @@ end
 %% Plot Results
 
 figure()
+subplot(3,1,1)
 plot(band_num(1:129));
 hold on;
 plot(out.band_num(1:129), '--');
@@ -60,3 +61,11 @@ title('Frequency Band State Controller Verification Plots');
 xlabel('Bin Number');
 ylabel('Frequency Band Number');
 legend('openMHA Band Number Results','State Controller Results','State Controller Results - Post Reset');
+
+subplot(3,1,2)
+plot(out.bin_num)
+title("Bin Number Simulation")
+
+subplot(3,1,3)
+plot(out.valid_data)
+title("Valid Signal Simulation")
