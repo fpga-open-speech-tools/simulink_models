@@ -38,8 +38,7 @@ end
 % *** openMHA Source File, Function Call: fftfilterbank.cpp 
 % *** openMHA Source File, Function Call Lines: 173-188 
 % *** openMHA Source File, Computation: mha_fftfb.cpp
-% *** openMHA Source File, Computation Lines: 353-358 & 480-505 (for edge
-% frequencies)
+% *** openMHA Source File, Computation Lines: 353-358 & 480-505 (for edge frequencies)
 
 %% Compare Results
 
@@ -53,14 +52,15 @@ end
 
 figure()
 subplot(3,1,1)
-plot(band_num(1:129));
-hold on;
-plot(out.band_num(1:129), '--');
-plot(out.band_num(301:429), '.');
+% plot(band_num(1:129));
+% hold on;
+% plot(out.band_num(1:129), '--');
+% plot(out.band_num(301:429), '.');
+plot(out.band_num);
 title('Frequency Band State Controller Verification Plots');
 xlabel('Bin Number');
 ylabel('Frequency Band Number');
-legend('openMHA Band Number Results','State Controller Results','State Controller Results - Post Reset');
+% legend('openMHA Band Number Results','State Controller Results','State Controller Results - Post Reset');
 
 subplot(3,1,2)
 plot(out.bin_num)
