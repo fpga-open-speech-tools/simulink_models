@@ -38,13 +38,13 @@ close all;
 %% Plot the Results
 figure;
 subplot(3,1,1)
-plot(level_dB_sim_out)
+plot(level_dB_sim)
 title('Level dB Conversion Simulation')
 
 subplot(3,1,2)
-plot(grab_accumulator_sim_out)
+plot(grab_accumulator_sim)
 title('Accumulator Trigger Simulation')
 
 subplot(3,1,3)
-plot(band_number_sim_out)
+plot(band_number_sim)
 title('Band Number Simulation')

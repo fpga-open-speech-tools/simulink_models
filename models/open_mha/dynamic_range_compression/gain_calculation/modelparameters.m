@@ -19,6 +19,9 @@ addpath(genpath('attack_decay'));            % Attack and Decay Block
 addpath(genpath('gaintable'));               % Gain Table
 addpath(genpath('..\referenced_functions')); % Frost Library
 
+load signal_conversion_sim.mat % Simulation Results from the Signal Conversion Block
+stop_time = level_dB_sim.Time(end);% Compute the simulation end point
+
 %% Autogen parameters
 mp.testFile = [mp.test_signals_path filesep 'auditory_nerve\mef_result_subset.wav'];
 
@@ -29,7 +32,10 @@ mp.nSamples    = config.system.sampleClockFrequency * mp.simDuration;
 mp.useAvalonInterface = false;
 
 %% Open MHA Parameters 
-fs          = 48e3;          % Samplig Frequency
+audio_fs           = 48e3;                          % Audio Sampling Rate from the AD1939
+fft_up_sample_rate = 128;                           % FFT Up Sample Rate
+fs                 = audio_fs * fft_up_sample_rate; % Samplig Frequency
+
 coeff_size  = 8;             % Coefficient Address Size
 num_bands   = 8;             % Number of Frequency Bands
 band_number = 1:1:num_bands; % Create an array of band numbers
@@ -70,34 +76,6 @@ elseif(strcmp(sim_type,'fxpt'))
     ad_coeff_type   = fixdt(ad_coeff_fp_sign,ad_coeff_fp_size,ad_coeff_fp_dec);
     gain_coeff_type = fixdt(gain_coeff_fp_sign,gain_coeff_fp_size,gain_coeff_fp_dec);
     frac_coeff_type = fixdt(frac_coeff_fp_sign,frac_coeff_fp_size,frac_coeff_fp_dec);
-end
-
-%% Initialization 
-audio_input       = AudioSource.fromFile(mp.testFile, mp.Fs, mp.nSamples);  % Read in the audio file
-audio_length      = audio_input.nSamples;                                   % Determine the number of points in the audio signal
-data_input_matrix = zeros(audio_length, num_bands);                         % Define the input matrix as the audio signal length X the number of bands
-data_input_array  = zeros(audio_length * num_bands,1);                      % Define the simulation input array 
-stim_length       = length(data_input_array);                               % Deteremine the simulation length
-time              = (0:1:stim_length-1)/fs;                                 % Create the time vector for the simulation
-simulation_time   = (stim_length-1)/fs;                                     % Compute the simulation end point
-
-% Create the input signal
-% Copy the audio input wave into each column of the data input matrix
-for j = 1:num_bands
-    data_input_matrix(:,j) = audio_input.audio(:,1);                        
-end
-
-% Create a single data input array by interleafing the columns
-for i = 1:audio_length
-    for j = 1:num_bands
-        data_input_array(((i-1)*num_bands) + j,1) = data_input_matrix(i,j); 
-    end
-end
-if(strcmp(sim_type,'double'))
-    data_input_ts = timeseries(data_input_array, time); % Convert the data array to a time series
-elseif(strcmp(sim_type,'fxpt'))
-    data_input_array = fi(data_input_array,in_fp_sign,in_fp_size,in_fp_dec);
-    data_input_ts = timeseries(data_input_array, time);
 end
 
 %% Attack and Decay DP-RAM Parameters
@@ -171,6 +149,11 @@ gtmin = 0;
 gtstep = 3;
 gtdata = [0 15 25 32 34 36 38 40 39.25 38.5 37.75 37 36.25 35.5 34.75 34 33.25 32.5 31.75 31 28 25 22 19 16 13 10 7 4 1 -2 -2];
 table_length = length(gtdata);
+
+input_levels_db = zeros(table_length,1);
+for i = 1:table_length
+    input_levels_db(i) = gtmin + (i-1)*gtstep;
+end
 
 % Declaring Gain Vectors for each Frequency Band in dB and Concatenating
 gt_db = [];
