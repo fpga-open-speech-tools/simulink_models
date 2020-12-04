@@ -18,7 +18,7 @@ addpath(genpath('..\..\referenced_functions'));
 
 %% Model Parameters
 fs          = 48e3;        % Sampling Freq
-X_high      = 9096;          % Declare maximum dB output suitable for Gain Table
+X_high      = 90;          % Declare maximum dB output suitable for Gain Table
 num_bands   = 8;           % Number of Frequency Bands
 band_number = 1:num_bands; % Band Number Array
 
