@@ -6,7 +6,11 @@
 % data to gain table
 
 % clear all;
-
+%% Initialize
+addpath(genpath('gain_application_controller'));
+addpath(genpath('gain_calculation')); 
+addpath(genpath('referenced_functions'));
+addpath(genpath('signal_conversion')); 
 
 %% Declare Sampling Rate
 
