@@ -22,50 +22,47 @@
 % State Controller simulation results against expected results calculated 
 % via openMHA source code methods.
 
+
+close all;
 %% Calculate openMHA Results
-
-% Code modified to match edge frequency syntax. Bands are simply split into
-% rectangular windows according to edge frequency vector ef for all
-% positive frequencies.
-j = 1;
-for i = 1:FFTsize/2+1
-    if (i-1)*binwidth <= ef(j+1)
-        band_num(i) = j;
-    else band_num(i) = j+1;
-    j = j+1;
-    end
-end
-% *** openMHA Source File, Function Call: fftfilterbank.cpp 
-% *** openMHA Source File, Function Call Lines: 173-188 
-% *** openMHA Source File, Computation: mha_fftfb.cpp
-% *** openMHA Source File, Computation Lines: 353-358 & 480-505 (for edge frequencies)
-
-%% Compare Results
-
-error = abs(band_num(1:129) - out.band_num(1:129));
-if size(find(error)) > 0
-    disp('ERROR - Frequency Band Numbers do not match for positive frequencies');
-else disp('Frequency Band Numbers matched succesfully.');
-end
+% 
+% % Code modified to match edge frequency syntax. Bands are simply split into
+% % rectangular windows according to edge frequency vector ef for all
+% % positive frequencies.
+% j = 1;
+% for i = 1:FFTsize/2+1
+%     if (i-1)*binwidth <= ef(j+1)
+%         band_num(i) = j;
+%     else band_num(i) = j+1;
+%         j = j+1;
+%     end
+% end
+% % *** openMHA Source File, Function Call: fftfilterbank.cpp 
+% % *** openMHA Source File, Function Call Lines: 173-188 
+% % *** openMHA Source File, Computation: mha_fftfb.cpp
+% % *** openMHA Source File, Computation Lines: 353-358 & 480-505 (for edge frequencies)
 
 %% Plot Results
 
 figure()
 subplot(3,1,1)
+plot(bin_num_sim_out)
+title("Bin Number Simulation")
+
+subplot(3,1,2)
 % plot(band_num(1:129));
 % hold on;
 % plot(out.band_num(1:129), '--');
 % plot(out.band_num(301:429), '.');
-plot(out.band_num);
+plot(band_num_sim_out);
 title('Frequency Band State Controller Verification Plots');
 xlabel('Bin Number');
 ylabel('Frequency Band Number');
 % legend('openMHA Band Number Results','State Controller Results','State Controller Results - Post Reset');
 
-subplot(3,1,2)
-plot(out.bin_num)
-title("Bin Number Simulation")
-
 subplot(3,1,3)
-plot(out.valid_data)
+plot(fft_valid_sim.Data)
+hold on
+plot(valid_sim_out, '--')
+legend('Input', 'Simulink')
 title("Valid Signal Simulation")

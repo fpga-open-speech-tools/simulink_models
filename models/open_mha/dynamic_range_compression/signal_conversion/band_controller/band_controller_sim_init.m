@@ -24,11 +24,12 @@
 load fft_simulation.mat
 
 %% Open MHA Parameters
-fs        = 48e3;
+audio_fs  = 48e3;
+fs        = 128 * audio_fs;
 FFTsize   = 256;
 num_bins  = FFTsize/2 + 1;
 freq      = linspace(0,24000,129);
-binwidth  = (fs/2)/(FFTsize/2);
+binwidth  = (audio_fs/2)/(FFTsize/2);
 
 stop_time = fft_valid_sim.Time(end);
 %% Declare Freq Band Information
