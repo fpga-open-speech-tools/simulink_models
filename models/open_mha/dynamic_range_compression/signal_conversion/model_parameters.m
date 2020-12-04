@@ -15,10 +15,10 @@
 % openspeech@flatearthinc.com
 
 %% Initialize
-addpath(genpath('frequency_band_state_controller')); % Frequency Band State Controller
-addpath(genpath('intensity'));                       % Intensity Conversion
-addpath(genpath('dB_lookup_table'));                 % pa2 to dB Look Up Table
-addpath(genpath('..\..\referenced_functions'));      % Frost Library
+addpath(genpath('band_controller'));           % Frequency Band State Controller
+addpath(genpath('intensity'));                 % Intensity Conversion
+addpath(genpath('dB_lookup_table'));           % pa2 to dB Look Up Table
+addpath(genpath('..\..\referenced_functions'));% Frost Library
 
 load('fft_simulation.mat')
 %% Open MHA Parameters 
