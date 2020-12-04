@@ -23,6 +23,7 @@ addpath(genpath('referenced_functions'));
 %% Load the FFT Simulation Data
 load('fft_simulation.mat')
 stop_time = fft_data_sim.Time(end);
+stopTime  = stop_time;
 
 %% Open MHA Parameters
 coeff_size  = 8;             % Coefficient Address Size
