@@ -49,8 +49,3 @@ hold on
 plot(right_channel)
 legend('Input', 'Output')
 title('Right Channel')
-
-figure
-plot(gain_pre_delay)
-legend('gain pre delay')
-title('Gain Plots')
