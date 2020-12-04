@@ -38,7 +38,7 @@ close all;
 %% Plot the Results
 figure;
 subplot(3,1,1)
-plot(avalon_source_data)
+plot(level_dB_sim_out)
 title('Level dB Conversion Simulation')
 
 subplot(3,1,2)

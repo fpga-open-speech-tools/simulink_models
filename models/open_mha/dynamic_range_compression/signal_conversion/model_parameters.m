@@ -15,18 +15,20 @@
 % openspeech@flatearthinc.com
 
 %% Initialize
-addpath(genpath('band_controller'));           % Frequency Band State Controller
-addpath(genpath('intensity'));                 % Intensity Conversion
-addpath(genpath('dB_lookup_table'));           % pa2 to dB Look Up Table
-addpath(genpath('..\..\referenced_functions'));% Frost Library
+addpath(genpath('band_controller'));         % Frequency Band State Controller
+addpath(genpath('intensity'));               % Intensity Conversion
+addpath(genpath('dB_lookup_table'));         % pa2 to dB Look Up Table
+addpath(genpath('..\referenced_functions')); % Frost Library
 
 load('fft_simulation.mat')
-%% Open MHA Parameters 
-fs          = 48e3;          % Samplig Frequency
-coeff_size  = 8;             % Coefficient Address Size
-num_bands   = 8;             % Number of Frequency Bands
-band_number = 1:1:num_bands; % Create an array of band numbers
-num_coeff   = 2;             % Number of C1 Coefficients required by the Attack and Decay Filter
+%% Open MHA Parameters
+audio_fs           = 48e3;                          % Audio Sampling Rate from the AD1939
+fft_up_sample_rate = 128;                           % FFT Up Sample Rate
+fs                 = audio_fs * fft_up_sample_rate; % Samplig Frequency
+coeff_size         = 8;                             % Coefficient Address Size
+num_bands          = 8;                             % Number of Frequency Bands
+band_number        = 1:1:num_bands;                 % Create an array of band numbers
+num_coeff          = 2;                             % Number of C1 Coefficients required by the Attack and Decay Filter
 
 %% Simulation Type - Either 'double' or 'fxpt'
 sim_type = 'fxpt';                  
@@ -48,7 +50,7 @@ end
 FFTsize = 256;
 num_bins = FFTsize/2 + 1;
 freq = linspace(0,24000,129);
-binwidth = (fs/2)/(FFTsize/2);
+binwidth = (audio_fs/2)/(FFTsize/2);
 
 %% Declare Freq Band Information
 num_bands = 8;
@@ -61,4 +63,4 @@ mirrored_band_edges = calculate_mirrored_band_edges(band_sizes, FFTsize, num_bin
 band_edges = [band_edges mirrored_band_edges];
 
 %% Simulation Time
-stop_time = (length(fft_valid_sim.Data) - 1)/fs;
+stop_time = fft_valid_sim.Time(end);
