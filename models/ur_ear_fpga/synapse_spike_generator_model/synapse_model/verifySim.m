@@ -30,11 +30,15 @@
 %% 
 close all;
 
+mex synapse_source.c complex.c
+
 data_input = testSignal.audio(:,1);
 totalstim  = length(data_input);
 
 pla_nl_out = NLBeforePLA(data_input, totalstim, spont, cf);
 syn_out    = PowerLaw(pla_nl_out, totalstim, randNums, Fs);
+
+syn_out_sim = synapse_source(data_input', cf, nrep, tdres, noiseType, implnt, spont, tabs, trel, randNums);
 
 figure
 subplot(2,1,1)

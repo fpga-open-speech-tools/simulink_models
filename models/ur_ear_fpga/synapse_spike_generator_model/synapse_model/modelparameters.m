@@ -1,4 +1,9 @@
-TWOPI= 6.28318530717959; 
+TWOPI= 6.28318530717959;
+
+addpath(genpath('../../auditory_nerve'))
+addpath(genpath('../../middle_ear_filter'))
+addpath(genpath('../../synapse_spike_generator_model'))
+addpath(genpath('../../validation'))
 
 %% Autogen parameters
 mp.sim_prompts = 1;
@@ -17,6 +22,12 @@ nrep = 100;   % Number of repititions for peri-stimulus time histogram
 % Impairment constants
 cohc = 1; 
 cihc = 1; 
+
+trel = 10e-3;
+tabs = 10e-3;
+
+implnt = 0; % Set implnt = 0 => approximate model, 1 => exact power law
+
 %% Nonlinear PLA Filter Parameters
 spont = 100; % Spontaneous firing rate of neurons, as set in testANmodel_BEZ2018.m source code
 
