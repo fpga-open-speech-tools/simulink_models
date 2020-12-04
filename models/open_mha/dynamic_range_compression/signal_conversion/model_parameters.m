@@ -61,4 +61,4 @@ mirrored_band_edges = calculate_mirrored_band_edges(band_sizes, FFTsize, num_bin
 band_edges = [band_edges mirrored_band_edges];
 
 %% Simulation Time
-stop_time = (length(fft_valid_sim_out.Data) - 1)/fs;
+stop_time = (length(fft_valid_sim.Data) - 1)/fs;

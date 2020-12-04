@@ -33,7 +33,7 @@ close all;
 data_input_left  = testSignal.audio(:,1);
 data_input_right = testSignal.audio(:,2);
 sim_out          = double(squeeze(data_out.data));
-left_channel     = sim_out(142:end,1);
+left_channel     = sim_out(15 + 11+mp.FFT_size:end,1);
 right_channel    = sim_out(:,2);
 
 figure
@@ -49,6 +49,12 @@ hold on
 plot(right_channel)
 legend('Input', 'Output')
 title('FFT Validation - Right Channel')
+
+figure
+fft_data = real(fft_data_sim.Data);
+plot(fft_data)
+legend('FFT data')
+title('FFT Data - Left Channel')
 
 % fft_matlab = abs(fft(data_input_left));
 % sim_out    = double(squeeze(fft_out.data));
