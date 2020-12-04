@@ -7,10 +7,10 @@
 
 % clear all;
 %% Initialize
-addpath(genpath('gain_application_controller'));
-addpath(genpath('gain_calculation')); 
-addpath(genpath('referenced_functions'));
 addpath(genpath('signal_conversion')); 
+addpath(genpath('gain_calculation')); 
+addpath(genpath('gain_output_controller'));
+addpath(genpath('referenced_functions'));
 
 %% Declare Sampling Rate
 
