@@ -1,3 +1,10 @@
+% dB_lookup_table_sim_init.m
+%
+% The following script is designed as an init script for the dB Lookup
+% Table Simulink model. It sets the parameters for both the 
+% Simulink model and the comparison MATLAB computation. In addition, it 
+% provides the test signals for the Simulink Model.
+%
 % Copyright 2020 Audio Logic
 %
 % THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
@@ -16,15 +23,24 @@
 % dB Lookup Table Test/Verification Simulation Init Script
 % 11/18/2020
 
+%% Initialization
 close all;
 addpath(genpath('..\..\..\referenced_functions'));    % Programmable Look Up Table - Frost Library
-%% NOTES
 
-% The following script is designed as an init script for the dB Lookup
-% Table Simulink model. It sets the parameters for both the 
-% Simulink model and the comparison MATLAB computation. In addition, it 
-% provides the test signals for the Simulink Model.
+%% Simulation Type - Either 'double' or 'fxpt'
+sim_type = 'fxpt';                  
 
+% Data Input/Feedback Fixed Point Paramters
+in_fp_size = 40; % Word Size
+in_fp_dec  = 32; % Fractional Bits
+in_fp_sign = 1;  % Unsigned = 0, Signed = 1
+
+% Define the Input Data Types
+if(strcmp(sim_type,'double'))
+    input_type    = 'double';
+elseif(strcmp(sim_type,'fxpt'))
+    input_type    = fixdt(in_fp_sign,in_fp_size,in_fp_dec);
+end
 
 %% Declare Sampling Rate
 fs = 48000;
@@ -42,17 +58,3 @@ dB_level_in = linspace(0,96,20000);
 stop_time = (length(level_in) - 1)/fs;
 
 
-%% Simulation Type - Either 'double' or 'fxpt'
-sim_type = 'fxpt';                  
-
-% Data Input/Feedback Fixed Point Paramters
-in_fp_size = 40; % Word Size
-in_fp_dec  = 32; % Fractional Bits
-in_fp_sign = 1;  % Unsigned = 0, Signed = 1
-
-% Define the Input Data Types
-if(strcmp(sim_type,'double'))
-    input_type    = 'double';
-elseif(strcmp(sim_type,'fxpt'))
-    input_type    = fixdt(in_fp_sign,in_fp_size,in_fp_dec);
-end

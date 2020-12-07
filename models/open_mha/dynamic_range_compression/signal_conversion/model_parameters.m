@@ -21,14 +21,9 @@ addpath(genpath('dB_lookup_table'));         % pa2 to dB Look Up Table
 addpath(genpath('..\referenced_functions')); % Frost Library
 
 load('fft_simulation.mat')
-%% Open MHA Parameters
-audio_fs           = 48e3;                          % Audio Sampling Rate from the AD1939
-fft_up_sample_rate = 128;                           % FFT Up Sample Rate
-fs                 = audio_fs * fft_up_sample_rate; % Samplig Frequency
-coeff_size         = 8;                             % Coefficient Address Size
-num_bands          = 8;                             % Number of Frequency Bands
-band_number        = 1:1:num_bands;                 % Create an array of band numbers
-num_coeff          = 2;                             % Number of C1 Coefficients required by the Attack and Decay Filter
+%% Debug Mode
+debug = true;
+% toggleModelRefDebug(debug);
 
 %% Simulation Type - Either 'double' or 'fxpt'
 sim_type = 'fxpt';                  
@@ -45,8 +40,16 @@ elseif(strcmp(sim_type,'fxpt'))
     input_type    = fixdt(in_fp_sign,in_fp_size,in_fp_dec);
 end
 
-%% Initialization 
-% Declare FFT Parameters
+%% Open MHA Parameters
+audio_fs           = 48e3;                          % Audio Sampling Rate from the AD1939
+fft_up_sample_rate = 128;                           % FFT Up Sample Rate
+fs                 = audio_fs * fft_up_sample_rate; % Samplig Frequency
+coeff_size         = 8;                             % Coefficient Address Size
+num_bands          = 8;                             % Number of Frequency Bands
+band_number        = 1:1:num_bands;                 % Create an array of band numbers
+num_coeff          = 2;                             % Number of C1 Coefficients required by the Attack and Decay Filter
+
+%% Declare FFT Parameters
 FFTsize = 256;
 num_bins = FFTsize/2 + 1;
 freq = linspace(0,24000,129);

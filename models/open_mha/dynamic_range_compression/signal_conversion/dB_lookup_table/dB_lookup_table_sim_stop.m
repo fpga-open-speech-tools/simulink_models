@@ -1,3 +1,8 @@
+% dB_lookup_table_sim_stop.m
+%
+% The following script is designed to isolate and test the dB Lookup Table
+% simulation results against expected results calculated via openMHA source
+% code methods.
 % Copyright 2020 Audio Logic
 %
 % THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
@@ -15,12 +20,6 @@
 % openMHA Dynamic Compression Simulink Model Code
 % dB Lookup Table Test/Verification Simulation Stop Script
 % 11/18/2020
-
-%% NOTES
-
-% The following script is designed to isolate and test the dB Lookup Table
-% simulation results against expected results calculated via openMHA source
-% code methods.
 
 %% Calculate openMHA Results
 

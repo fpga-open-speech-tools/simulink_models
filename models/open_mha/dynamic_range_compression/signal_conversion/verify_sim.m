@@ -1,17 +1,4 @@
-% mp = sm_stop_verify(mp)
-%
-% Matlab function that verifies the model output 
-
-% Inputs:
-%   mp, which is the model data structure that holds the model parameters
-%
-% Outputs:
-%   mp, the model data structure that now contains the left/right channel
-%   data, which is in the following format:
-%          mp.left_data_out         - The processed left channel data
-%          mp.left_time_out         - time of left channel data
-%          mp.right_data_out        - The processed right channel data
-%          mp.right_time_out        - time of right channel data
+% verify_sim.m
 %
 % Copyright 2020 AudioLogic, Inc
 %
@@ -36,15 +23,53 @@ close all;
 
 
 %% Plot the Results
-figure;
-subplot(3,1,1)
-plot(level_dB_sim)
-title('Level dB Conversion Simulation')
+if debug
+    % Frequency Band Controller Simulation
+    figure()
+    subplot(3,1,1)
+    plot(bin_num_sim_out)
+    title("Bin Number Simulation")
 
-subplot(3,1,2)
-plot(grab_accumulator_sim)
-title('Accumulator Trigger Simulation')
+    subplot(3,1,2)
+    plot(band_num_sim_out);
+    ylabel('Frequency Band Number');
+    title('Band Number Simulation');
 
-subplot(3,1,3)
-plot(band_number_sim)
-title('Band Number Simulation')
+    subplot(3,1,3)
+    plot(fft_valid_sim.Data)
+    hold on
+    plot(valid_sim_out, '--')
+    legend('Input', 'Simulink')
+    title("Valid Signal Simulation")
+    
+    % Intensity and dB ConversionSimulation
+    figure
+    subplot(4,1,1)
+    plot(grab_accumulator_sim_out)
+    title("Grab Accumulator Trigger Simulation")
+    
+    subplot(4,1,2)
+    plot(band_num_sim_out)
+    title("Band Number Simulation")
+
+    subplot(4,1,3)
+    plot(level_sim_out)
+    title("Level Simulation")
+    
+    subplot(4,1,4)
+    plot(level_dB_sim_out)
+    title("Level dB Simulation")
+else
+    figure;
+    subplot(3,1,1)
+    plot(level_dB_sim)
+    title('Level dB Conversion Simulation')
+
+    subplot(3,1,2)
+    plot(grab_accumulator_sim)
+    title('Accumulator Trigger Simulation')
+
+    subplot(3,1,3)
+    plot(band_number_sim)
+    title('Band Number Simulation')
+end

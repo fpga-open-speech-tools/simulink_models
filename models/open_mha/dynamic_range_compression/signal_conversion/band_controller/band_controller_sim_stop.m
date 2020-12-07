@@ -43,26 +43,19 @@ close all;
 % % *** openMHA Source File, Computation Lines: 353-358 & 480-505 (for edge frequencies)
 
 %% Plot Results
-
 figure()
 subplot(3,1,1)
-plot(bin_num_sim_out)
+plot(bin_num_out)
 title("Bin Number Simulation")
 
 subplot(3,1,2)
-% plot(band_num(1:129));
-% hold on;
-% plot(out.band_num(1:129), '--');
-% plot(out.band_num(301:429), '.');
-plot(band_num_sim_out);
-title('Frequency Band State Controller Verification Plots');
-xlabel('Bin Number');
+plot(band_num_out);
 ylabel('Frequency Band Number');
-% legend('openMHA Band Number Results','State Controller Results','State Controller Results - Post Reset');
+title('Band Number Simulation');
 
 subplot(3,1,3)
 plot(fft_valid_sim.Data)
 hold on
-plot(valid_sim_out, '--')
+plot(valid_out, '--')
 legend('Input', 'Simulink')
 title("Valid Signal Simulation")

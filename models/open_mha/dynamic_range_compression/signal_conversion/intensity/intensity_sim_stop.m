@@ -1,3 +1,9 @@
+% intensity_sim_stop.m
+%
+% The following script is designed to isolate and test the Intensity
+% simulation results against expected results calculated via openMHA source
+% code methods.
+%
 % Copyright 2020 Audio Logic
 %
 % THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
@@ -16,17 +22,11 @@
 % Intensity Test/Verification Simulation Stop Script
 % 11/18/2020
 
-%% NOTES
-
-% The following script is designed to isolate and test the Intensity
-% simulation results against expected results calculated via openMHA source
-% code methods.
-
 %% Calculate openMHA Results
-level_in = zeros(inlength,1);
+level_matlab = zeros(inlength,1);
 
 for i = 1:inlength
-    level_in(i,1) = colored_intensity(FFT_data_real(i), FFT_data_imag(i), accumulator_reset(i), bin_num(i), FFTsize);
+    level_matlab(i,1) = colored_intensity(FFT_data_real(i), FFT_data_imag(i), accumulator_reset(i), bin_num(i), FFTsize);
 end
 % *** openMHA Source File, Function Call: dc.cpp 
 % *** openMHA Source File, Function Call Lines: 404 (colored_intensity) 
@@ -38,11 +38,10 @@ end
 % Note that the only relevant results are those that correspond to
 % positive frequency bins. Thus, for an FFT size of 256, these are the
 % first 129 bins after each valid_data signal high.
-
 figure()
-plot(level_in(1:FFTsize/2));
+plot(level_matlab(1:FFTsize/2));
 hold on;
-plot(out.level_in(1:FFTsize/2),'--');
+plot(level_out(1:FFTsize/2),'--');
 hold off;
 legend('Expected Intensity Values','Simulink Intensity Values');
 xlabel('Sample Number');
@@ -50,18 +49,18 @@ ylabel('Intensity Level [Pa^2]');
 title('Sound Intensity Level: Actual vs. Expected Results');
 
 figure()
-plot(abs(level_in(1:FFTsize/2) - out.level_in(1:FFTsize/2)'));
+plot(abs(level_matlab(1:FFTsize/2) - level_out(1:FFTsize/2)'));
 xlabel('Sample Number');
 ylabel('Intensity Level Difference[Pa^2]');
 title('Difference Error Between openMHA and Simulink Intensity Levels');
 
 figure
 subplot(3,1,1)
-plot(out.grab_accumulator)
+plot(grab_accumulator_out)
 title("Grab Accumulator Trigger Simulation")
 
 subplot(3,1,2)
-plot(out.band_num)
+plot(band_num_out)
 title("Band Number Simulation")
 
 subplot(3,1,3)
