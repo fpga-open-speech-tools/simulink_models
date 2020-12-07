@@ -146,37 +146,18 @@ buf_d = ones(num_bands,1) .* 65; % Initial Condition of the Delay Filter Delay B
 
 %% Gain Table
 % Gain Table Parameters
-gtmin = 0;
-gtstep = 3;
-gtdata = [0 15 25 32 34 36 38 40 39.25 38.5 37.75 37 36.25 35.5 34.75 34 33.25 32.5 31.75 31 28 25 22 19 16 13 10 7 4 1 -2 -2];
-table_length = length(gtdata);
+mins      = 20*ones(1,num_bands);               % Maximum audio input level .......................................... dB
+maxes     = 50*ones(1,num_bands);               % Minimum audio input level .......................................... dB
+boost     = 0;                                  % Amount to boost the minimum level to be heard comfortably .......... dB
+inputdB   = 0:3:93;                             % Input dB levels to calculate gains for ............................. dB
 
-input_levels_db = zeros(table_length,1);
-for i = 1:table_length
-    input_levels_db(i) = gtmin + (i-1)*gtstep;
-end
+vy = calculateGainArray(mins, boost, maxes, inputdB);
 
-% Declaring Gain Vectors for each Frequency Band in dB and Concatenating
-gt_db = [];
-for i = 1:num_bands
-    gt_db = [gt_db gtdata];
-end
+numgainentries = length(vy);
 
-% Map dB gains to Linear Factors
-gt = 10.^(gt_db./20);
-
-% Transposing Table to Simulate DP Memory Table
-dp_gt = gt';
-
-% Sizing DP Table to match Address Port Width of RAM Block
-numgainentries = table_length*num_bands;
 RAM_size = ceil(log2(numgainentries));
-% RAM_size = ceil(log2(numgainentries));   % number of bits
+
 RAM_addresses = 2^RAM_size;
-vy = dp_gt;
-for i = length(dp_gt)+1:RAM_addresses
-    vy(i,1) = 0;
-end
 
 %% Dual-Port Gain Application Parameters
 gainapp_dp_memory = log2(num_bands) + 1;
