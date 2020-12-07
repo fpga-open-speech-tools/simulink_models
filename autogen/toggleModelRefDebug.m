@@ -3,7 +3,8 @@ function toggleModelRefDebug(debug)
     %
     %   When debug is true, all model references with ToWorkspace blocks
     %   have their numInstancesAllowed set to Single and ToWorkspace blocks
-    %   belonging to those model references are enabled
+    %   belonging to those model references are enabled.
+    %
     %   When debug is false, all model references with ToWorkspace blocks
     %   have their numInstancesAllowed set to Multi and ToWorkspace blocks
     %   belonging to those model references are disabled

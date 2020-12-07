@@ -22,8 +22,8 @@ addpath(genpath('..\referenced_functions')); % Frost Library
 
 load('fft_simulation.mat')
 %% Debug Mode
+% Run toggleModelRefDebug(true) before simulating the model
 debug = true;
-% toggleModelRefDebug(debug);
 
 %% Simulation Type - Either 'double' or 'fxpt'
 sim_type = 'fxpt';                  
