@@ -35,13 +35,13 @@
                 },
                 {
                     "dataType": {
-                        "fractionLength": 0,
-                        "signed": false,
-                        "type": "ufix2",
-                        "wordLength": 2
+                    "fractionLength": 16,
+                    "signed": false,
+                    "type": "uint32",
+                    "wordLength": 32
                     },
                     "defaultValue": 1,
-                    "name": "filter_select",
+                    "name": "ad_data",
                     "registerNumber": 1
                 },
                 {
@@ -52,19 +52,8 @@
                     "wordLength": 32
                     },
                     "defaultValue": 1,
-                    "name": "ar_data",
-                    "registerNumber": 0
-                },
-                {
-                    "dataType": {
-                    "fractionLength": 8,
-                    "signed": false,
-                    "type": "uint32",
-                    "wordLength": 32
-                    },
-                    "defaultValue": 1,
                     "name": "gain_data",
-                    "registerNumber": 0
+                    "registerNumber": 2
                 }
             ]
         }
