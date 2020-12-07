@@ -113,7 +113,7 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
     
     /* Calculate number of samples for total repetition time */
     
-    totalstim = totalstim * nrep; // Modified to match spikegen_source
+    totalstim = (int)floor(pxbins/nrep);
     
     px = (double*)mxCalloc(totalstim*nrep,sizeof(double));
     
