@@ -40,9 +40,6 @@ syn_out    = PowerLaw(pla_nl_out, totalstim, randNums, Fs);
 
 syn_out_sim = synapse_source(data_input', cf, nrep, tdres, noiseType, implnt, spont, tabs, trel);
 
-% Pick out the 
-CSourceData = syn_out_sim(1:length(sim_out));
-
 %% 
 
 figure
@@ -56,7 +53,7 @@ subplot(2,1,2)
 plot(syn_out)
 hold on
 plot(sim_out,'--')
-plot(CSourceData,':','linewidth',2)
+plot(syn_out_sim,':','linewidth',2)
 hold off;
 legend('MATLAB Function','Simulink','C Source')
 title('Synapse Model: MATLAB Function vs Simulink Output')
