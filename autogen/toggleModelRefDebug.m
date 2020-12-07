@@ -1,6 +1,12 @@
-function aaa = toggleModelRefDebug(debug)
-%TOGGLEMODELREFDEBUG Summary of this function goes here
-%   Detailed explanation goes here
+function toggleModelRefDebug(debug)
+%TOGGLEMODELREFDEBUG Toggles ModelReferences between validating and
+%simulating
+%   When debug is true, all model references with ToWorkspace blocks
+%   have their numInstancesAllowed set to Single and ToWorkspace blocks
+%   belonging to those model references are commented
+%   When debug is false, all model references with ToWorkspace blocks
+%   have their numInstancesAllowed set to Multi and ToWorkspace blocks
+%   belonging to those model references are uncommented
 
 if debug
     numInstancesAllowed = 'Single';
