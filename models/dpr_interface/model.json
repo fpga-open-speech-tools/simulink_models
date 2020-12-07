@@ -1,0 +1,40 @@
+{
+    "system": {
+        "target": "audiomini",
+        "sampleClockFrequency": 48000,
+        "systemClockFrequency": 98304000,
+        "processing": "sample",
+        "audioIn": {
+            "wordLength": 32,
+            "fractionLength": 28,
+            "signed": true,
+            "numberOfChannels": 2
+        },
+        "audioOut": {
+            "wordLength": 32,
+            "fractionLength": 28,
+            "signed": true,
+            "numberOfChannels": 2
+        }
+    },
+
+    "devices": [
+        {
+            "name": "dpr_test",
+            "registers": [
+                {
+                    "dataType": {
+                        "fractionLength": 8,
+                        "signed": false,
+                        "type": "ufix32en8",
+                        "wordLength": 32
+                    },
+                    "defaultValue": 0,
+                    "name": "dpr_data",
+                    "registerNumber": 0
+                }
+            ]
+        }
+    ]
+    
+}

@@ -34,15 +34,16 @@ The Beamer is a combination of multiple independent FrOST Example Designs: The D
 
 
 ## Testing the Beamer Project
-1. Create Folder Structure in AWS S3 -  `[s3-bucket]\audioresearch\beamer`
-2. Upload the following files to the S3 Bucket from step 1
+1. If necessary, create an [S3 Bucket](https://github.com/fpga-open-speech-tools/utils/tree/dev/s3) using the Frost CloudFormation Template
+2. Create the Folder Structure in AWS S3 - `[s3-bucket]\audioresearch\beamer`
+3. Upload the following files to the S3 Bucket from step 1
     - `[FrOST Repos]\simulink_models\models\Beamer\model.json`
     - `[FrOST Repos]\simulink_models\models\Beamer\hdlsrc\Beamer\aes_reflex.dtbo`
     - `[FrOST Repos]\simulink_models\models\Beamer\hdlsrc\Beamer\quartus\ip\delay_and_sum_beamformer\DSBF.ko`
     - `[FrOST Repos]\simulink_models\models\Beamer\hdlsrc\Beamer\quartus\ip\fft_filters\fft_filters.ko`
     - `[FrOST Repos]\simulink_models\models\Beamer\hdlsrc\Beamer\quartus\ip\noise_suppression\noise_suppression.ko`
     - `[FrOST Repos]\simulink_models\models\Beamer\hdlsrc\Beamer\quartus\ip\simple_gain\simple_gain.ko`
-3. Program the Audio Research
+4. Program the Audio Research
     - Open Quartus and load the Beamer Project from `[FrOST Repos]\simulink_models\models\Beamer\hdlsrc\Beamer\quartus\DSBF_simple_gain_fft_filters_noise_suppression.qpf`
     - Open the FPGA Programmer from `Tools -> Programmer`
     - Click `Hardware Setup`, then `Arria 10` under the `Currently Selected Hardware` dropdown, then `Close`
@@ -54,14 +55,14 @@ The Beamer is a combination of multiple independent FrOST Example Designs: The D
     - Check the `Program/Configure` box for the Arria 10 (Middle Right)
     - Click `Start` on the left
     - Once programmed, the HPS will start to Boot
-4. Connect to the web app on an Audio Research 
+5. Connect to the web app on an Audio Research 
     - Log into the Arria 10 using the serial port 
         - Username: `root`
         - Password: `root`
     - Determine the IP Address using `ip addr`
     - In a web browser, navigate to `[ip address]:5000`
-5. Download the project you uploaded, which will be listed as the final subdirectory in `[s3-bucket]\audioresearch\beamer` that was used during upload
-6. After download, click the edit icon under `Controls` and then the wrench icon to generate the controls
-
-# Notes
-External users still can't upload to S3 (URL not configurable)  
+6. Download the Beamer Controls to the Audio Research
+    - Enter the bucket name use during the upload step and click `Update`
+    - Under device, select `audioresearch`
+    - Under the beamer project, click the download icon
+    - Once downloaded and installed, the project controls will be available
