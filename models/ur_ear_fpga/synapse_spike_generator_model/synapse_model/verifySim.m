@@ -38,7 +38,7 @@ totalstim  = length(data_input);
 pla_nl_out = NLBeforePLA(data_input, totalstim, spont, cf);
 syn_out    = PowerLaw(pla_nl_out, totalstim, randNums, Fs);
 
-syn_out_sim = synapse_source(data_input', cf, nrep, tdres, noiseType, implnt, spont, tabs, trel, randNums);
+syn_out_sim = synapse_source(data_input', cf, nrep, tdres, noiseType, implnt, spont, tabs, trel);
 
 % Pick out the 
 CSourceData = syn_out_sim(1:length(sim_out));
