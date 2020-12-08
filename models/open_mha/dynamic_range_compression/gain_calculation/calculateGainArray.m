@@ -1,4 +1,4 @@
-function gainArray = calculateGainArray(mins, boost, maxes, inputdB)
+function gainArray = calculateGainArray(mins, maxes, inputdB)
 
   % Reshape the arrays as needed
   if size(mins,2) == 1
@@ -21,19 +21,10 @@ function gainArray = calculateGainArray(mins, boost, maxes, inputdB)
   minArray    = repmat(mins,nDivs,1);
   maxArray    = repmat(maxes,nDivs,1);
   dBArray     = repmat(inputdB',1,nFreq); 
-  dBGainArray = zeros(size(dBArray));
+  divArray= repmat([0:nDivs-1]',1,nFreq);
   
-  % Find the locations of the input that exceed the maximum value
-  maxInds = dBArray > maxArray;
-  
-  % Set those indices to the max
-  dBGainArray(maxInds) = maxArray(maxInds) - dBArray(maxInds);
-
-  % Find all indices below the minimum plus the "boost"
-  minInds = dBArray < minArray+boost;
-  
-  % Set those indices to the minimum plus the boost
-  dBGainArray(minInds) = minArray(minInds) - dBArray(minInds) + boost;
+  % Calculate the gain to remap the input to the desired range
+  dBGainArray = divArray.*(maxArray-minArray)/(nDivs-1) + minArray - dBArray;
   
   % Reshape the NxM array into a row vector
   gainArray = reshape(10.^(dBGainArray/10),1,nFreq*nDivs);
