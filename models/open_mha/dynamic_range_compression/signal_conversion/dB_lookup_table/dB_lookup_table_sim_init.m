@@ -24,7 +24,7 @@
 % 11/18/2020
 
 %% Initialization
-close all;
+% close all;
 addpath(genpath('..\..\..\referenced_functions'));    % Programmable Look Up Table - Frost Library
 
 %% Simulation Type - Either 'double' or 'fxpt'
@@ -43,28 +43,29 @@ elseif(strcmp(sim_type,'fxpt'))
 end
 
 %% Declare Simulation Parameters
-fs = 48000;
+fs                = 48000;
 simulation_length = 20000;
+stop_time         = (simulation_length - 1)/fs;
 
-% Look Up Table Parameters
-look_up_table_size = 256;
-dB_low             = 0;
-dB_high            = 96;
-
-%% Declare Simulation Input Signals
+%% Declare Input Signals
+level_in_low  = 4e-10;
+level_in_high = 2;
+level_in      = linspace(level_in_low, level_in_high, simulation_length);
 % Data Input Signal (Input Level level_in)
 % Designed to simulate all possible input intensity levels
 % from 0 dB to 96 dB
 dB_level_in = linspace(dB_low, dB_high, simulation_length);
 % Converting input signal from units of dBSPL to Pascal-squared
-[level_in,FFTval] = dB2lin(dB_level_in,1);
-%% Look Up Table
+[level_in,~] = dB2lin(dB_level_in,1);
+
+%% Look Up Table Parameters
+look_up_table_size = 256;
+dB_low             = 0;
+dB_high            = 96;
 % Look Up Table dB Values
 table_init         = linspace(dB_low, dB_high, look_up_table_size)';
 table_init_fp      = fi(tableInit,in_fp_sign,in_fp_size,in_fp_dec);
 % Look Up Table Indexing 
-table_indexing     = logspace(log10(level_in(1)), log10(level_in(end)), look_up_table_size)';
+% table_indexing     = logspace(log10(level_in(1)), log10(level_in(end)), look_up_table_size)';
+table_indexing     = logspace(log10(level_in_low), log10(level_in_high), look_up_table_size)';
 table_indexing_fp  = fi(table_indexing,0,40,38);
-
-%% Declare Stop Time
-stop_time = (length(level_in) - 1)/fs;

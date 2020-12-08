@@ -54,11 +54,19 @@ level_in_db_matlab = 10.*log10(2500000000.*double(level_in));
 
 %% Plotting Resulting I/O Characteristics
 figure()
+% subplot(2,1,1)
+% semilogx(level_in)
+% % hold on
+% % plot(level_in_2)
+% title('Input Signal')
+% legend('dB to PA2', 'Equally Spaced PA2')
+
+% subplot(2,1,2)
 semilogx(level_in,level_in_db_matlab);
 hold on;
-plot(level_in,level_in_db,'--');
+plot(level_in,plt_sim_out,'--');
 hold on;
-plot(level_in,temp)
+plot(level_in,level_in_db)
 legend('MATLAB','Programmable Look Up Table', '1D Look Up Table');
 xlabel('Input Level [Pa^2]');
 ylabel('Input Level [dB]');
