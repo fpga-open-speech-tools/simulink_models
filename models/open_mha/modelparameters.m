@@ -24,7 +24,7 @@ mp.testFile = [mp.test_signals_path filesep 'acoustic.wav'];
 
 mp.sim_prompts = 1;
 mp.sim_verify  = 1;
-mp.simDuration = 1;
+mp.simDuration = .001;
 mp.nSamples    = config.system.sampleClockFrequency * mp.simDuration;
 mp.useAvalonInterface = false;
 
@@ -144,14 +144,20 @@ end
 buf_a = ones(num_bands,1) .* 65; % Initial Condition of the Attack Filter Delay Block
 buf_d = ones(num_bands,1) .* 65; % Initial Condition of the Delay Filter Delay Block
 
-%% Gain Table
-% Gain Table Parameters
-mins      = 20*ones(1,num_bands);               % Maximum audio input level .......................................... dB
-maxes     = 50*ones(1,num_bands);               % Minimum audio input level .......................................... dB
-boost     = 0;                                  % Amount to boost the minimum level to be heard comfortably .......... dB
-inputdB   = 0:3:93;                             % Input dB levels to calculate gains for ............................. dB
+%% Gain Table Parameters
+gain_table_min_input  = 0;
+gain_table_input_step = 3;
+gain_table_max_input  = 93;
+input_levels_db       = gain_table_min_input:gain_table_input_step:gain_table_max_input;
+table_length          = size(input_levels_db,2);
 
-vy = calculateGainArray(mins, boost, maxes, inputdB);
+audio_dB_level_min = 20;
+audio_dB_level_max = 50;
+mins               = audio_dB_level_min*ones(1,num_bands); % Maximum audio input level .......................................... dB
+maxes              = audio_dB_level_max*ones(1,num_bands); % Minimum audio input level .......................................... dB
+boost              = 0;                    % Amount to boost the minimum level to be heard comfortably .......... dB
+
+vy = calculateGainArray(mins, boost, maxes, input_levels_db);
 
 numgainentries = length(vy);
 
