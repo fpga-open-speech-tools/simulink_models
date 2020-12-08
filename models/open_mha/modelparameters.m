@@ -15,8 +15,8 @@
 % openspeech@flatearthinc.com
 
 %% Add the Model Referencing Paths
-addpath(genpath('dual_port_ram_interface'));   % Dual Port RAM Interface
 addpath(genpath('dynamic_range_compression')); % Open MHA Dynamic Range Compression Block
+addpath(genpath('..\dpr_interface'));          % Dual Port RAM Interface
 addpath(genpath('..\fast_fourier_transform')); % Fast Fourier Transform Refence Models
     
 %% Autogen parameters
@@ -24,7 +24,7 @@ mp.testFile = [mp.test_signals_path filesep 'acoustic.wav'];
 
 mp.sim_prompts = 1;
 mp.sim_verify  = 1;
-mp.simDuration = .001;
+mp.simDuration = 1; %.001;
 mp.nSamples    = config.system.sampleClockFrequency * mp.simDuration;
 mp.useAvalonInterface = false;
 

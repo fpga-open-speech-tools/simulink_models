@@ -31,8 +31,8 @@ addpath(genpath('..\..\..\referenced_functions'));    % Programmable Look Up Tab
 sim_type = 'fxpt';                  
 
 % Data Input/Feedback Fixed Point Paramters
-in_fp_size = 40; % Word Size
-in_fp_dec  = 32; % Fractional Bits
+in_fp_size = 32; % Word Size
+in_fp_dec  = 23; % Fractional Bits
 in_fp_sign = 1;  % Unsigned = 0, Signed = 1
 
 % Define the Input Data Types
@@ -42,19 +42,29 @@ elseif(strcmp(sim_type,'fxpt'))
     input_type    = fixdt(in_fp_sign,in_fp_size,in_fp_dec);
 end
 
-%% Declare Sampling Rate
+%% Declare Simulation Parameters
 fs = 48000;
+simulation_length = 20000;
+
+% Look Up Table Parameters
+look_up_table_size = 256;
+dB_low             = 0;
+dB_high            = 96;
 
 %% Declare Simulation Input Signals
-
 % Data Input Signal (Input Level level_in)
 % Designed to simulate all possible input intensity levels
 % from 0 dB to 96 dB
-dB_level_in = linspace(0,96,20000);
+dB_level_in = linspace(dB_low, dB_high, simulation_length);
 % Converting input signal from units of dBSPL to Pascal-squared
 [level_in,FFTval] = dB2lin(dB_level_in,1);
+%% Look Up Table
+% Look Up Table dB Values
+table_init         = linspace(dB_low, dB_high, look_up_table_size)';
+table_init_fp      = fi(tableInit,in_fp_sign,in_fp_size,in_fp_dec);
+% Look Up Table Indexing 
+table_indexing     = logspace(log10(level_in(1)), log10(level_in(end)), look_up_table_size)';
+table_indexing_fp  = fi(table_indexing,0,40,38);
 
 %% Declare Stop Time
 stop_time = (length(level_in) - 1)/fs;
-
-
