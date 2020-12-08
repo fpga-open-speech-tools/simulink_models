@@ -140,6 +140,8 @@ for i = 1:2:2*num_bands-1
     z = z+1;
 end
 
+attack_decay_data_default_value = 1048576;
+
 %% Attack and Decay Delay Block Paramters
 buf_a = ones(num_bands,1) .* 65; % Initial Condition of the Attack Filter Delay Block
 buf_d = ones(num_bands,1) .* 65; % Initial Condition of the Delay Filter Delay Block
@@ -164,6 +166,8 @@ numgainentries = length(vy);
 RAM_size = ceil(log2(numgainentries));
 
 RAM_addresses = 2^RAM_size;
+
+gain_table_default_data = 16711680;
 
 %% Dual-Port Gain Application Parameters
 gainapp_dp_memory = log2(num_bands) + 1;
