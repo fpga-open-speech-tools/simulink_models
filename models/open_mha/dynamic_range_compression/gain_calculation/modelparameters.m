@@ -143,21 +143,26 @@ end
 buf_a = ones(num_bands,1) .* 65; % Initial Condition of the Attack Filter Delay Block
 buf_d = ones(num_bands,1) .* 65; % Initial Condition of the Delay Filter Delay Block
 
-%% Gain Table
-% Gain Table Parameters
+%% Gain Table Parameters
+dB_low             = 0;
+dB_high            = 93;
+gain_table_input_step = 3;
+input_levels_db       = dB_low:gain_table_input_step:dB_high;
+table_length          = size(input_levels_db,2);
 
-mins      = 20*ones(1,num_bands);               % Maximum audio input level .......................................... dB
-maxes     = 50*ones(1,num_bands);               % Minimum audio input level .......................................... dB
-boost     = 0;                                  % Amount to boost the minimum level to be heard comfortably .......... dB
-inputdB   = 0:3:93;                             % Input dB levels to calculate gains for ............................. dB
+mins  = dB_low*ones(1,num_bands);  % Maximum audio input level .......................................... dB
+maxes = dB_high*ones(1,num_bands); % Minimum audio input level .......................................... dB
 
-vy = calculateGainArray(mins, boost, maxes, inputdB);
+vy = calculateGainArray(mins, maxes, input_levels_db);
 
 numgainentries = length(vy);
 
 RAM_size = ceil(log2(numgainentries));
 
 RAM_addresses = 2^RAM_size;
+
+gain_table_default_data = 16711680;
+
 
 
 

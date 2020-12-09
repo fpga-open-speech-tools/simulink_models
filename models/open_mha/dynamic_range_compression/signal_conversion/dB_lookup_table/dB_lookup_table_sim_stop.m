@@ -65,9 +65,7 @@ figure()
 semilogx(level_in,level_in_db_matlab);
 hold on;
 plot(level_in,level_in_db,'--');
-hold on;
-plot(level_in,lookup_table)
-legend('MATLAB','Programmable Look Up Table', '1D Look Up Table');
+legend('MATLAB','Programmable Look Up Table');
 xlabel('Input Level [Pa^2]');
 ylabel('Input Level [dB]');
 title('Dual-Port dB Lookup Table: Actual vs. Expected Results');
