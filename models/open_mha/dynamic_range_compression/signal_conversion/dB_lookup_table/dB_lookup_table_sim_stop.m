@@ -64,9 +64,9 @@ figure()
 % subplot(2,1,2)
 semilogx(level_in,level_in_db_matlab);
 hold on;
-plot(level_in,plt_sim_out,'--');
+plot(level_in,level_in_db,'--');
 hold on;
-plot(level_in,level_in_db)
+plot(level_in,lookup_table)
 legend('MATLAB','Programmable Look Up Table', '1D Look Up Table');
 xlabel('Input Level [Pa^2]');
 ylabel('Input Level [dB]');

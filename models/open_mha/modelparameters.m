@@ -24,7 +24,7 @@ mp.testFile = [mp.test_signals_path filesep 'acoustic.wav'];
 
 mp.sim_prompts = 1;
 mp.sim_verify  = 1;
-mp.simDuration = 1; %.001;
+mp.simDuration = 1;
 mp.nSamples    = config.system.sampleClockFrequency * mp.simDuration;
 mp.useAvalonInterface = false;
 
@@ -171,9 +171,8 @@ audio_dB_level_min = 0;
 audio_dB_level_max = 96;
 mins               = audio_dB_level_min*ones(1,num_bands); % Maximum audio input level .......................................... dB
 maxes              = audio_dB_level_max*ones(1,num_bands); % Minimum audio input level .......................................... dB
-boost              = 0;                                    % Amount to boost the minimum level to be heard comfortably .......... dB
 
-vy = calculateGainArray(mins, boost, maxes, input_levels_db);
+vy = calculateGainArray(mins, maxes, input_levels_db);
 
 numgainentries = length(vy);
 
