@@ -93,6 +93,20 @@ band_edges = calculate_band_edges(ef, num_bins, binwidth, num_bands);
 mirrored_band_edges = calculate_mirrored_band_edges(band_sizes, FFTsize, num_bins, num_bands);
 band_edges = [band_edges mirrored_band_edges];
 
+%% Look Up Table Parameters
+look_up_table_size = 1024;
+dB_low             = 0;
+dB_high            = 96;
+table_index_low    = dB2lin(dB_low,1);
+table_index_high   = dB2lin(dB_high,1);
+
+% Look Up Table Indexing 
+table_indexing     = logspace(log10(table_index_low), log10(table_index_high), look_up_table_size); % Line 164 of mha_signal.hh
+table_indexing_fp  = fi(table_indexing,0,40,38);
+% Look Up Table dB Values
+table_init         = linspace(dB_low, dB_high, look_up_table_size)';
+table_init_fp      = fi(table_init,in_fp_sign,in_fp_size,in_fp_dec);
+
 %% Attack and Decay DP-RAM Parameters
 %--Attack Coefficients
 %-Initialize the attack coefficient arrays: 1 coefficient per band
@@ -153,11 +167,11 @@ gain_table_max_input  = 93;
 input_levels_db       = gain_table_min_input:gain_table_input_step:gain_table_max_input;
 table_length          = size(input_levels_db,2);
 
-audio_dB_level_min = 20;
-audio_dB_level_max = 50;
+audio_dB_level_min = 0;
+audio_dB_level_max = 96;
 mins               = audio_dB_level_min*ones(1,num_bands); % Maximum audio input level .......................................... dB
 maxes              = audio_dB_level_max*ones(1,num_bands); % Minimum audio input level .......................................... dB
-boost              = 0;                    % Amount to boost the minimum level to be heard comfortably .......... dB
+boost              = 0;                                    % Amount to boost the minimum level to be heard comfortably .......... dB
 
 vy = calculateGainArray(mins, boost, maxes, input_levels_db);
 

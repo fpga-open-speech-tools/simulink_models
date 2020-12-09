@@ -31,8 +31,8 @@ addpath(genpath('..\..\..\referenced_functions'));    % Programmable Look Up Tab
 sim_type = 'fxpt';                  
 
 % Data Input/Feedback Fixed Point Paramters
-in_fp_size = 32; % Word Size
-in_fp_dec  = 23; % Fractional Bits
+in_fp_size = 40; % Word Size
+in_fp_dec  = 32; % Fractional Bits
 in_fp_sign = 1;  % Unsigned = 0, Signed = 1
 
 % Define the Input Data Types
@@ -47,25 +47,24 @@ fs                = 48000;
 simulation_length = 20000;
 stop_time         = (simulation_length - 1)/fs;
 
+%% Look Up Table Parameters
+look_up_table_size = 1024;
+dB_low             = 0;
+dB_high            = 96;
+
+table_index_low    = dB2lin(dB_low,1);
+table_index_high   = dB2lin(dB_high,1);
+
+% Look Up Table Indexing 
+table_indexing     = logspace(log10(table_index_low), log10(table_index_high), look_up_table_size); % Line 164 of mha_signal.hh
+table_indexing_fp  = fi(table_indexing,0,40,38);
+% Look Up Table dB Values
+table_init         = linspace(dB_low, dB_high, look_up_table_size)';
+table_init_fp      = fi(table_init,in_fp_sign,in_fp_size,in_fp_dec);
 %% Declare Input Signals
-level_in_low  = 4e-10;
-level_in_high = 2;
-level_in      = linspace(level_in_low, level_in_high, simulation_length);
 % Data Input Signal (Input Level level_in)
 % Designed to simulate all possible input intensity levels
 % from 0 dB to 96 dB
 dB_level_in = linspace(dB_low, dB_high, simulation_length);
 % Converting input signal from units of dBSPL to Pascal-squared
 [level_in,~] = dB2lin(dB_level_in,1);
-
-%% Look Up Table Parameters
-look_up_table_size = 256;
-dB_low             = 0;
-dB_high            = 96;
-% Look Up Table dB Values
-table_init         = linspace(dB_low, dB_high, look_up_table_size)';
-table_init_fp      = fi(tableInit,in_fp_sign,in_fp_size,in_fp_dec);
-% Look Up Table Indexing 
-% table_indexing     = logspace(log10(level_in(1)), log10(level_in(end)), look_up_table_size)';
-table_indexing     = logspace(log10(level_in_low), log10(level_in_high), look_up_table_size)';
-table_indexing_fp  = fi(table_indexing,0,40,38);
