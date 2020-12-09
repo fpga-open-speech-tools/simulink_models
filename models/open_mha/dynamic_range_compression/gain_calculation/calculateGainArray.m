@@ -20,7 +20,7 @@ function gainArray = calculateGainArray(mins, maxes, inputdB)
   % Define the min, max, and dB arrays
   minArray    = repmat(mins,nDivs,1);
   maxArray    = repmat(maxes,nDivs,1);
-  dBArray     = repmat(inputdB',1,nFreq); 
+  dBArray     = repmat(inputdB',1,nFreq);
   divArray= repmat([0:nDivs-1]',1,nFreq);
   
   % Calculate the gain to remap the input to the desired range

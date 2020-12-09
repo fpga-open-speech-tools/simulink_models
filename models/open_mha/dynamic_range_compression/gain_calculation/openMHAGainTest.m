@@ -4,7 +4,7 @@ clc
 
 %% Define some parameters
 mins     = [ 0 50 44 35 57 70 20 0 ];
-maxes    = [ 93 85 93 50 60 90 30 60 ];
+maxes    = [ 93 93 70 50 60 90 30 60 ];
 
 inputRef = 4e-10; % Defined in the Gain Calculation dB Lookup Table reference model
 inputdB  = 0:3:93;
@@ -55,7 +55,7 @@ end
 figure(3)
 subplot(nrow,ncol,nrow)
 plegend = legend('dB conversion','Full multiplication');
-set(plegend,'interpreter','latex','fontsize',8,'location','northwest')
+set(plegend,'interpreter','latex','fontsize',8,'location','northeast')
 
 
 
