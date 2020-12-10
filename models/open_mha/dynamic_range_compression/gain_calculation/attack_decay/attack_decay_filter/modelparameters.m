@@ -18,6 +18,9 @@
 addpath(genpath('o1_ar_filter'));              % O1 AR Simulink Model, O1 AR Filter Source MATLAB Function, & the O1 LP Coefficient Function
 addpath(genpath('o1_ar_filter_optimization')); % O1 AR Optimized Simulink Model
 
+%% Debug Mode
+debug = false;
+
 %% Autogen parameters
 mp.testFile = [mp.test_signals_path filesep 'auditory_nerve\mef_result_subset.wav'];
 

@@ -61,45 +61,61 @@ for i = 1:1:audio_length
     end
 end
 
-%% Parse the Simulink Results
-for i = 1:audio_length
+
+%% Simulation Results
+if debug == true
+    % Parse the Simulink Results
+    for i = 1:audio_length
+        for j = 1:num_bands
+            attack_filter_sim_matrix(i,j)     = attack_filter_sim(((i-1)*num_bands) + j,1);
+            attack_filter_opt_sim_matrix(i,j) = attack_filter_opt_sim(((i-1)*num_bands) + j,1);
+
+            decay_filter_sim_matrix(i,j)  = decay_filter_sim(((i-1)*num_bands) + j,1);
+            decay_filter_opt_sim_matrix(i,j) = decay_filter_opt_sim(((i-1)*num_bands) + j,1);
+
+            input_temp(i,j) = data_input_array(((i-1)*num_bands) + j,1);
+        end    
+    end
+
+    % Plot the Result
     for j = 1:num_bands
-        attack_filter_sim_matrix(i,j)     = attack_filter_sim(((i-1)*num_bands) + j,1);
-        attack_filter_opt_sim_matrix(i,j) = attack_filter_opt_sim(((i-1)*num_bands) + j,1);
-        
-        decay_filter_sim_matrix(i,j)  = decay_filter_sim(((i-1)*num_bands) + j,1);
-        decay_filter_opt_sim_matrix(i,j) = decay_filter_opt_sim(((i-1)*num_bands) + j,1);
-        
-        input_temp(i,j) = data_input_array(((i-1)*num_bands) + j,1);
-    end    
-end
+        figure
+        subplot(3,1,1)
+        plot(data_input_matrix(:,j))
+        hold on
+        plot(input_temp(:,j),'--')
+        legend('Input: Matrix', 'Input Array')
+        title(['Input  - Band Number: ' num2str(j)])
 
-%% Plot the Results
-for j = 1:num_bands
-    figure
-    subplot(3,1,1)
-    plot(data_input_matrix(:,j))
-    hold on
-    plot(input_temp(:,j),'--')
-    legend('Input: Matrix', 'Input Array')
-    title(['Input  - Band Number: ' num2str(j)])
+        subplot(3,1,2)
+        plot(attack_filter_matlab(:,j))
+        hold on
+        plot(attack_filter_sim_matrix(:,j),'--')
+        hold on
+        plot(attack_filter_opt_sim_matrix(:,j),'.')
+        legend('MATLAB Code','Simulink','Simulink Optimization')
+        title(['Attack Filter Simulation - Band Number: ' num2str(j)])
+
+
+        subplot(3,1,3)
+        plot(decay_filter_matlab(:,j))
+        hold on
+        plot(decay_filter_sim_matrix(:,j),'--')
+        hold on
+        plot(decay_filter_opt_sim_matrix(:,j),'.')
+        legend('MATLAB Code','Simulink','Simulink Optimization')
+        title(['Decay Filter Simulation - Band Number: ' num2str(j)])
+    end
+else
+    figure;
+    subplot(2,1,1)
+    plot(Avalon_Sink_Data)
+    title('Level dB Filter')
+    legend('Simulink')
     
-    subplot(3,1,2)
-    plot(attack_filter_matlab(:,j))
-    hold on
-    plot(attack_filter_sim_matrix(:,j),'--')
-    hold on
-    plot(attack_filter_opt_sim_matrix(:,j),'.')
-    legend('MATLAB Code','Simulink','Simulink Optimization')
-    title(['Attack Filter Simulation - Band Number: ' num2str(j)])
+    subplot(2,1,2)
+    plot(grab_accumulator_sim_out)
+    title('Grab Accumulator Trigger')
+    legend('Simulink')
 
-
-    subplot(3,1,3)
-    plot(decay_filter_matlab(:,j))
-    hold on
-    plot(decay_filter_sim_matrix(:,j),'--')
-    hold on
-    plot(decay_filter_opt_sim_matrix(:,j),'.')
-    legend('MATLAB Code','Simulink','Simulink Optimization')
-    title(['Decay Filter Simulation - Band Number: ' num2str(j)])
 end

@@ -32,18 +32,37 @@
 close all;
 
 %% Plot the Results
-figure;
+if debug == true
+    figure;
+    gain_sim_plot = gc_gain_sim.Data;
+    gain_plot(:,1,1) = gain_sim_plot(1,1,:);
+    subplot(3,1,1)
+    plot(gain_plot)
+    title('Calculate Gain Simulation')
 
-gain_sim_plot = gc_gain_sim.Data;
-gain_plot(:,1,1) = gain_sim_plot(1,1,:);
-subplot(3,1,1)
-plot(gain_plot)
-title('Calculate Gain Simulation')
+    subplot(3,1,2)
+    plot(gc_band_number_sim.Data)
+    title('Band Number Simulation')
 
-subplot(3,1,2)
-plot(gc_band_number_sim.Data)
-title('Band Number Simulation')
+    subplot(3,1,3)
+    plot(gc_grab_accumulator_sim.Data)
+    title('Accumulator Trigger Simulation')
+else
+    figure
+    subplot(4,1,1)
+    plot(level_dB_sim.Data)
+    title('Level dB Input')
+    
+    gain_sim_plot(:,1,1) = gain_sim_out(1,1,:);
+    subplot(4,1,2)
+    plot(gain_sim_plot)
+    title('Calculate Gain Simulation')
 
-subplot(3,1,3)
-plot(gc_grab_accumulator_sim.Data)
-title('Accumulator Trigger Simulation')
+    subplot(4,1,3)
+    plot(band_num_sim_out)
+    title('Band Number Simulation')
+
+    subplot(4,1,4)
+    plot(grab_accum_sim_out)
+    title('Accumulator Trigger Simulation')
+end

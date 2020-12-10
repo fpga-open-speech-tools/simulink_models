@@ -90,131 +90,149 @@ for i = 1:1:audio_length
     end
 end
 
-%% Parse the Simulink Results
-for i = 1:audio_length-1
-    for j = 1:num_bands
-        input_temp(i,j) = data_input_array(((i-1)*num_bands) + j + 1,1);
-        
-        c1_a_matlab_combined(((i-1)*num_bands) + j + 1,1) = attack_c1_a_array(j,1);
-        c2_a_matlab_combined(((i-1)*num_bands) + j + 1,1) = attack_c2_a_array(j,1);
-        c1_d_matlab_combined(((i-1)*num_bands) + j + 1,1) = decay_c1_r_array(j,1);
-        c2_d_matlab_combined(((i-1)*num_bands) + j + 1,1) = decay_c2_r_array(j,1);
-        
-        %DP-RAM Coefficients
-        c1_a_simulink(i,j) = c1_a_sim_out(((i-1)*num_bands) + j + 1,1);
-        c2_a_simulink(i,j) = c2_a_sim_out(((i-1)*num_bands) + j + 1,1);
-        c1_d_simulink(i,j) = c1_d_sim_out(((i-1)*num_bands) + j + 1,1);
-        c2_d_simulink(i,j) = c2_d_sim_out(((i-1)*num_bands) + j + 1,1);
-        
-        % Attack and Decay Filter
-        attack_filter_opt_sim_matrix(i,j) = attack_filter_sim(((i-1)*num_bands) + j,1);
-        decay_filter_opt_sim_matrix(i,j) = decay_filter_sim(((i-1)*num_bands) + j,1);
-    end    
-end
+%% Debug Results
+if debug == true
+    for i = 1:audio_length-1
+        for j = 1:num_bands
+            input_temp(i,j) = data_input_array(((i-1)*num_bands) + j + 1,1);
 
-%% Plot the Results
-temp = round(stim_length/2);
+            c1_a_matlab_combined(((i-1)*num_bands) + j + 1,1) = attack_c1_a_array(j,1);
+            c2_a_matlab_combined(((i-1)*num_bands) + j + 1,1) = attack_c2_a_array(j,1);
+            c1_d_matlab_combined(((i-1)*num_bands) + j + 1,1) = decay_c1_r_array(j,1);
+            c2_d_matlab_combined(((i-1)*num_bands) + j + 1,1) = decay_c2_r_array(j,1);
 
-figure
-subplot(3,1,1)
-plot(band_num_matlab)
-hold on
-plot(band_num_sim_out,'--')
-legend('MATLAB', 'Simulink')
-title('Band Number Simulation')
+            %DP-RAM Coefficients
+            c1_a_simulink(i,j) = c1_a_sim_out(((i-1)*num_bands) + j + 1,1);
+            c2_a_simulink(i,j) = c2_a_sim_out(((i-1)*num_bands) + j + 1,1);
+            c1_d_simulink(i,j) = c1_d_sim_out(((i-1)*num_bands) + j + 1,1);
+            c2_d_simulink(i,j) = c2_d_sim_out(((i-1)*num_bands) + j + 1,1);
 
-subplot(3,1,2)
-plot(addr_attack_matlab)
-hold on
-plot(addr_attack_sim_out,'--')
-legend('MATLAB Code','Simulink')
-title('Attack Address Simulation')
+            % Attack and Decay Filter
+            attack_filter_opt_sim_matrix(i,j) = attack_filter_sim(((i-1)*num_bands) + j,1);
+            decay_filter_opt_sim_matrix(i,j) = decay_filter_sim(((i-1)*num_bands) + j,1);
+        end    
+    end
 
-subplot(3,1,3)
-plot(addr_decay_matlab)
-hold on
-plot(addr_decay_sim_out,'--')
-legend('MATLAB Code','Simulink')
-title('Decay Address Simulation')
+    temp = round(stim_length/2);
 
-figure
-subplot(4,1,1)
-plot(c1_a_matlab_combined)
-hold on
-plot(c1_a_sim_out,'--')
-legend('MATLAB Code','Simulink')
-title('C1 Attack - Interleafed Simulation')
-
-subplot(4,1,2)
-plot(c2_a_matlab_combined)
-hold on
-plot(c2_a_sim_out,'--')
-legend('MATLAB Code','Simulink')
-title('C2 Attack - Interleafed Simulation')
-
-subplot(4,1,3)
-plot(c1_d_matlab_combined)
-hold on
-plot(c1_d_sim_out,'--')
-legend('MATLAB Code','Simulink')
-title('C1 Decay - Interleafed Simulation')
-
-subplot(4,1,4)
-plot(c2_d_matlab_combined)
-hold on
-plot(c2_d_sim_out,'--')
-legend('MATLAB Code','Simulink')
-title('C2 Decay - Interleafed Simulation')
-
-for j = 1:num_bands
     figure
-    subplot(7,1,1)
-    plot(data_input_matrix(:,j))
+    subplot(3,1,1)
+    plot(band_num_matlab)
     hold on
-    plot(input_temp(:,j),'--')
-    legend('Input: Matrix', 'Input Array')
-    title(['Input  - Band Number: ' num2str(j)])
-        
-    subplot(7,1,2)
-    plot(c1_a_matlab(1:end-1,j))
-    hold on
-    plot(c1_a_simulink(1:end-1,j),'--')
-    legend('MATLAB Code','Simulink')
-    title(['C1 A Simulation - Band Number: ' num2str(j)])
+    plot(band_num_sim_out,'--')
+    legend('MATLAB', 'Simulink')
+    title('Band Number Simulation')
 
-    subplot(7,1,3)
-    plot(c2_a_matlab(1:end-1,j))
+    subplot(3,1,2)
+    plot(addr_attack_matlab)
     hold on
-    plot(c2_a_simulink(1:end-1,j),'--')
+    plot(addr_attack_sim_out,'--')
     legend('MATLAB Code','Simulink')
-    title(['C2 A Simulation - Band Number: ' num2str(j)])
-          
-    subplot(7,1,4)
-    plot(c1_d_matlab(1:end-1,j))
-    hold on
-    plot(c1_d_simulink(1:end-1,j),'--')
-    legend('MATLAB Code','Simulink')
-    title(['C1 D Simulation - Band Number: ' num2str(j)])
+    title('Attack Address Simulation')
 
-    subplot(7,1,5)
-    plot(c2_d_matlab(1:end-1,j))
+    subplot(3,1,3)
+    plot(addr_decay_matlab)
     hold on
-    plot(c2_d_simulink(1:end-1,j),'--')
+    plot(addr_decay_sim_out,'--')
     legend('MATLAB Code','Simulink')
-    title(['C2 D Simulation - Band Number: ' num2str(j)])
+    title('Decay Address Simulation')
+
+    figure
+    subplot(4,1,1)
+    plot(c1_a_matlab_combined)
+    hold on
+    plot(c1_a_sim_out,'--')
+    legend('MATLAB Code','Simulink')
+    title('C1 Attack - Interleafed Simulation')
+
+    subplot(4,1,2)
+    plot(c2_a_matlab_combined)
+    hold on
+    plot(c2_a_sim_out,'--')
+    legend('MATLAB Code','Simulink')
+    title('C2 Attack - Interleafed Simulation')
+
+    subplot(4,1,3)
+    plot(c1_d_matlab_combined)
+    hold on
+    plot(c1_d_sim_out,'--')
+    legend('MATLAB Code','Simulink')
+    title('C1 Decay - Interleafed Simulation')
+
+    subplot(4,1,4)
+    plot(c2_d_matlab_combined)
+    hold on
+    plot(c2_d_sim_out,'--')
+    legend('MATLAB Code','Simulink')
+    title('C2 Decay - Interleafed Simulation')
+
+    for j = 1:num_bands
+        figure
+        subplot(7,1,1)
+        plot(data_input_matrix(:,j))
+        hold on
+        plot(input_temp(:,j),'--')
+        legend('Input: Matrix', 'Input Array')
+        title(['Input  - Band Number: ' num2str(j)])
+
+        subplot(7,1,2)
+        plot(c1_a_matlab(1:end-1,j))
+        hold on
+        plot(c1_a_simulink(1:end-1,j),'--')
+        legend('MATLAB Code','Simulink')
+        title(['C1 A Simulation - Band Number: ' num2str(j)])
+
+        subplot(7,1,3)
+        plot(c2_a_matlab(1:end-1,j))
+        hold on
+        plot(c2_a_simulink(1:end-1,j),'--')
+        legend('MATLAB Code','Simulink')
+        title(['C2 A Simulation - Band Number: ' num2str(j)])
+
+        subplot(7,1,4)
+        plot(c1_d_matlab(1:end-1,j))
+        hold on
+        plot(c1_d_simulink(1:end-1,j),'--')
+        legend('MATLAB Code','Simulink')
+        title(['C1 D Simulation - Band Number: ' num2str(j)])
+
+        subplot(7,1,5)
+        plot(c2_d_matlab(1:end-1,j))
+        hold on
+        plot(c2_d_simulink(1:end-1,j),'--')
+        legend('MATLAB Code','Simulink')
+        title(['C2 D Simulation - Band Number: ' num2str(j)])
+
+        subplot(7,1,6)
+        plot(attack_filter_matlab(1:end-1,j))
+        hold on
+        plot(attack_filter_opt_sim_matrix(1:end-1,j),'--')
+        hold on
+        legend('MATLAB Code','Simulink')
+        title(['Attack Filter Simulation - Band Number: ' num2str(j)])
+
+        subplot(7,1,7)
+        plot(decay_filter_matlab(1:end-1,j))
+        hold on
+        plot(decay_filter_opt_sim_matrix(1:end-1,j),'--')
+        legend('MATLAB Code','Simulink')
+        title(['Decay Filter Simulation - Band Number: ' num2str(j)])
+    end
+else
+    figure
+    subplot(3,1,1)
+    plot(band_number_sim_out)
+    legend('Simulink')
+    title('Band Number Simulation')  
     
-    subplot(7,1,6)
-    plot(attack_filter_matlab(1:end-1,j))
-    hold on
-    plot(attack_filter_opt_sim_matrix(1:end-1,j),'--')
-    hold on
-    legend('MATLAB Code','Simulink')
-    title(['Attack Filter Simulation - Band Number: ' num2str(j)])
-
-    subplot(7,1,7)
-    plot(decay_filter_matlab(1:end-1,j))
-    hold on
-    plot(decay_filter_opt_sim_matrix(1:end-1,j),'--')
-    legend('MATLAB Code','Simulink')
-    title(['Decay Filter Simulation - Band Number: ' num2str(j)])
+    subplot(3,1,2)
+    plot(grab_accumulator_sim_out)
+    legend('Simulink')
+    title('Grab Accumulator Trigger Simulation')  
+    
+    level_dB_plot(:,1,1) = avalon_source_data(1,1,:);
+    subplot(3,1,3)
+    plot(level_dB_plot)
+    legend('Simulink')
+    title('Level dB Filtered Simulation')  
 end

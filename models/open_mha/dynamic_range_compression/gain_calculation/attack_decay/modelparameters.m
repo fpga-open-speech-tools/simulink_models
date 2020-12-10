@@ -19,6 +19,9 @@ addpath(genpath('attack_decay_filter'));           % Attack and Decay Filter
 addpath(genpath('calculate_filter_coefficients')); % Attack and Decay Filter Coefficients
 addpath(genpath('..\..\referenced_functions'));    % Dual Port RAM - Frost Library
 
+%% Debug Flag
+debug = false;
+
 %% Autogen parameters
 mp.testFile = [mp.test_signals_path filesep 'auditory_nerve\mef_result_subset.wav'];
 

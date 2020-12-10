@@ -50,52 +50,90 @@ end
 %% Plot the Results
 % There is a single unit delay caused by reading from the Dual Port RAM
 % This is accounted for with the 2:end plotting of the outputs
-figure
-subplot(7,1,1)
-plot(band_num_input)
-hold on
-plot(Avalon_Sink_Data(2:end),'--')
-legend('Band Number Input', 'Band Number Output')
-title('Band Number')
+if debug == true   
+    figure
+    subplot(7,1,1)
+    plot(band_num_input)
+    hold on
+    plot(Avalon_Sink_Data(2:end),'--')
+    legend('Band Number Input', 'Band Number Output')
+    title('Band Number')
 
-subplot(7,1,2)
-plot(addr_attack_matlab)
-hold on
-plot(addr_attack_sim_out(1:end-1),'--')
-legend('MATLAB Code','Simulink')
-title('Attack Address Simulation')
+    subplot(7,1,2)
+    plot(addr_attack_matlab)
+    hold on
+    plot(addr_attack_sim_out(1:end-1),'--')
+    legend('MATLAB Code','Simulink')
+    title('Attack Address Simulation')
 
-subplot(7,1,3)
-plot(addr_decay_matlab)
-hold on
-plot(addr_decay_sim_out(1:end-1),'--')
-legend('MATLAB Code','Simulink')
-title('Decay Address Simulation')
+    subplot(7,1,3)
+    plot(addr_decay_matlab)
+    hold on
+    plot(addr_decay_sim_out(1:end-1),'--')
+    legend('MATLAB Code','Simulink')
+    title('Decay Address Simulation')
 
-subplot(7,1,4)
-plot(c1_a_matlab)
-hold on
-plot(c1_a_sim_out(2:end),'--')
-legend('MATLAB Code','Simulink')
-title('C1 Attack Cofficient Read Simulation')
+    subplot(7,1,4)
+    plot(c1_a_matlab)
+    hold on
+    plot(c1_a_sim_out,'--')
+    legend('MATLAB Code','Simulink')
+    title('C1 Attack Cofficient Read Simulation')
 
-subplot(7,1,5)
-plot(c2_a_matlab)
-hold on
-plot(c2_a_sim_out(2:end),'--')
-legend('MATLAB Code','Simulink')
-title('C2 Attack Cofficient Read Simulation')
+    subplot(7,1,5)
+    plot(c2_a_matlab)
+    hold on
+    plot(c2_a_sim_out,'--')
+    legend('MATLAB Code','Simulink')
+    title('C2 Attack Cofficient Read Simulation')
 
-subplot(7,1,6)
-plot(c1_d_matlab)
-hold on
-plot(c1_d_sim_out(2:end),'--')
-legend('MATLAB Code','Simulink')
-title('C1 Decay Cofficient Read Simulation')
+    subplot(7,1,6)
+    plot(c1_d_matlab)
+    hold on
+    plot(c1_d_sim_out,'--')
+    legend('MATLAB Code','Simulink')
+    title('C1 Decay Cofficient Read Simulation')
 
-subplot(7,1,7)
-plot(c2_d_matlab)
-hold on
-plot(c2_d_sim_out(2:end),'--')
-legend('MATLAB Code','Simulink')
-title('C2 Decay Cofficient Read Simulation')
+    subplot(7,1,7)
+    plot(c2_d_matlab)
+    hold on
+    plot(c2_d_sim_out,'--')
+    legend('MATLAB Code','Simulink')
+    title('C2 Decay Cofficient Read Simulation')
+else
+    figure
+    subplot(7,1,1)
+    plot(band_num_input)
+    hold on
+    plot(Avalon_Sink_Data,'--')
+    legend('Band Number Input', 'Band Number Output')
+    title('Band Number')
+    
+    subplot(5,1,2)
+    plot(c1_a_matlab)
+    hold on
+    plot(c1_a_sim_out,'--')
+    legend('MATLAB Code','Simulink')
+    title('C1 Attack Cofficient Read Simulation')
+
+    subplot(5,1,3)
+    plot(c2_a_matlab)
+    hold on
+    plot(c2_a_sim_out,'--')
+    legend('MATLAB Code','Simulink')
+    title('C2 Attack Cofficient Read Simulation')
+
+    subplot(5,1,4)
+    plot(c1_d_matlab)
+    hold on
+    plot(c1_d_sim_out,'--')
+    legend('MATLAB Code','Simulink')
+    title('C1 Decay Cofficient Read Simulation')
+
+    subplot(5,1,5)
+    plot(c2_d_matlab)
+    hold on
+    plot(c2_d_sim_out,'--')
+    legend('MATLAB Code','Simulink')
+    title('C2 Decay Cofficient Read Simulation')
+end

@@ -44,46 +44,65 @@ for i = 1:sim_length
 end
 
 %% Plot Results
-figure
-subplot(6,1,1)
-plot(gain_addr_low_matlab)
-hold on
-plot(gain_addr_low_sim_out,'--')
-legend('MATLAB','Simulink')
-title('Gain Address - Low: Simulation')
+if debug == true
+    figure
+    subplot(6,1,1)
+    plot(gain_addr_low_matlab)
+    hold on
+    plot(gain_addr_low_sim_out,'--')
+    legend('MATLAB','Simulink')
+    title('Gain Address - Low: Simulation')
 
-subplot(6,1,2)
-plot(gain_addr_high_matlab)
-hold on
-plot(gain_addr_high_sim_out,'--')
-legend('MATLAB','Simulink')
-title('Gain Address - High: Simulation')
+    subplot(6,1,2)
+    plot(gain_addr_high_matlab)
+    hold on
+    plot(gain_addr_high_sim_out,'--')
+    legend('MATLAB','Simulink')
+    title('Gain Address - High: Simulation')
 
-subplot(6,1,3)
-plot(frac_matlab)
-hold on
-plot(frac_sim_out,'--')
-legend('MATLAB','Simulink')
-title('Prelook Up Table - Fractional Simulation')
+    subplot(6,1,3)
+    plot(frac_matlab)
+    hold on
+    plot(frac_sim_out,'--')
+    legend('MATLAB','Simulink')
+    title('Prelook Up Table - Fractional Simulation')
 
-subplot(6,1,4)
-plot(gain_low_matlab)
-hold on
-plot(gain_low_sim_out,'--')
-legend('MATLAB','Simulink')
-title('Gain Low Simulation')
+    subplot(6,1,4)
+    plot(gain_low_matlab)
+    hold on
+    plot(gain_low_sim_out,'--')
+    legend('MATLAB','Simulink')
+    title('Gain Low Simulation')
 
-subplot(6,1,5)
-plot(gain_high_matlab)
-hold on
-plot(gain_high_sim_out,'--')
-legend('MATLAB','Simulink')
-title('Gain High Simulation')
+    subplot(6,1,5)
+    plot(gain_high_matlab)
+    hold on
+    plot(gain_high_sim_out,'--')
+    legend('MATLAB','Simulink')
+    title('Gain High Simulation')
 
-sim_out(:,1,1) = gain_sim_out(1,1,:);
-subplot(6,1,6)
-plot(gain_matlab)
-hold on
-plot(sim_out,'--')
-legend('MATLAB','Simulink')
-title('Gain Result Simulation')
+    sim_out(:,1,1) = gain_sim_out(1,1,:);
+    subplot(6,1,6)
+    plot(gain_matlab)
+    hold on
+    plot(sim_out,'--')
+    legend('MATLAB','Simulink')
+    title('Gain Result Simulation')
+else
+   figure;
+   gain_sim_plot(:,1,1) = gain_sim_out(1,1,:);
+   subplot(3,1,1)
+   plot(gain_sim_plot)
+   legend('Simulink')
+   title('Gain Simulation')
+   
+   subplot(3,1,2)
+   plot(band_number_sim_out)
+   legend('Simulink')
+   title('Band Number Simulation')
+   
+   subplot(3,1,3)
+   plot(grab_accumulator_sim_out)
+   legend('Simulink')
+   title('Grab Accumulator Simulation')
+end

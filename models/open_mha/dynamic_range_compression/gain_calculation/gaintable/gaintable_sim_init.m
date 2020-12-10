@@ -16,6 +16,9 @@
 addpath(genpath('linear_interpolation'));
 addpath(genpath('..\..\referenced_functions'));
 
+%% Debug Mode
+debug = false;
+
 %% Model Parameters
 fs          = 48e3;        % Sampling Freq
 X_high      = 90;          % Declare maximum dB output suitable for Gain Table

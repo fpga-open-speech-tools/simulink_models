@@ -22,6 +22,9 @@ addpath(genpath('..\referenced_functions')); % Frost Library
 load signal_conversion_sim.mat % Simulation Results from the Signal Conversion Block
 stop_time = level_dB_sim.Time(end);% Compute the simulation end point
 
+%% Debug Flag
+debug = false;
+
 %% Autogen parameters
 mp.testFile = [mp.test_signals_path filesep 'auditory_nerve\mef_result_subset.wav'];
 
