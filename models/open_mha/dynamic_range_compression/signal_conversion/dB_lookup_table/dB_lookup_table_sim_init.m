@@ -25,7 +25,7 @@
 
 %% Initialization
 % close all;
-addpath(genpath('..\..\..\referenced_functions'));    % Programmable Look Up Table - Frost Library
+addpath(genpath('..\..\referenced_functions'));    % Programmable Look Up Table - Frost Library
 
 %% Simulation Type - Either 'double' or 'fxpt'
 sim_type = 'fxpt';                  
@@ -70,8 +70,6 @@ table_init_fp = fi(table_init,in_fp_sign,in_fp_size,in_fp_dec);
 dB_level_in = linspace(dB_low, dB_high, simulation_length);
 % Converting input signal from units of dBSPL to Pascal-squared
 [level_in,~] = dB2lin(dB_level_in,1);
-
-
 
 %% PLUT INIT SCRIPT
 %
