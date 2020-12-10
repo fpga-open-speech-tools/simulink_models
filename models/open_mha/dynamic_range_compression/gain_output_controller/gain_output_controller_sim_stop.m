@@ -12,9 +12,17 @@
 % Bozeman, MT 59718
 % openspeech@flatearthinc.com
 
+%% Calculate the Results
 
 %% Plot Results
-figure;
-plot(goc_gain_sim.Data)
-legend('Gain')
-title('Gain Output Controller Simulation')
+if debug == true
+    figure;
+    plot(goc_gain_sim.Data)
+    legend('Simulink')
+    title('Gain Output Controller Simulation')
+else
+    figure;
+    plot(gain_sim_out)
+    legend('Simulink')
+    title('Gain Output Controller Simulation')
+end

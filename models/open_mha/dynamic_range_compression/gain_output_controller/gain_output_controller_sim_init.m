@@ -16,6 +16,9 @@
 load gain_calculation_simulation.mat         % Results from the Gain Calcualtion Block
 addpath(genpath('..\referenced_functions')); % Frost Library
 
+%% Debug Mode
+debug = false;
+
 %% Open MHA Parameters 
 audio_fs           = 48e3;                          % Audio Sampling Rate from the AD1939
 fft_up_sample_rate = 128;                           % FFT Up Sample Rate
