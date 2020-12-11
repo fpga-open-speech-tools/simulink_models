@@ -17,7 +17,7 @@ addpath(genpath('linear_interpolation'));
 addpath(genpath('..\..\referenced_functions'));
 
 %% Debug Mode
-debug = false;
+debug = true;
 
 %% Model Parameters
 fs          = 48e3;        % Sampling Freq
@@ -85,9 +85,9 @@ RAM_addresses = 2^RAM_size;
 gain_table_default_data = 16711680;
 
 %% Simulation Input Signals
-dB_length = 100;
-data_in_array = zeros(dB_length*num_bands,1);
-for i = 1:dB_length
+sim_length = 100;
+data_in_array = zeros(sim_length*num_bands,1);
+for i = 1:sim_length
     for j = 1:num_bands
         data_in_array(((i-1)*num_bands) + j,1) = i;
     end
