@@ -1,18 +1,20 @@
 {
     "system": {
+        "name": "OpenMHA Dynamic Range Compression",
+        "description": "The dynamic range of the audio is limited to be within the bounds of the decibel gains below",
         "target": "audiomini",
         "sampleClockFrequency": 48000,
         "systemClockFrequency": 98304000,
         "processing": "sample",
         "audioIn": {
-            "wordLength": 24,
-            "fractionLength": 23,
+            "wordLength": 32,
+            "fractionLength": 28,
             "signed": true,
             "numberOfChannels": 2
         },
         "audioOut": {
-            "wordLength": 24,
-            "fractionLength": 23,
+            "wordLength": 32,
+            "fractionLength": 28,
             "signed": true,
             "numberOfChannels": 2
         }
@@ -21,6 +23,7 @@
     "devices": [
         {
             "name": "open_mha",
+            "description":"The dynamic range of the audio is limited to be within the bounds of the decibel gains below",
             "registers": [
                 {
                     "dataType": {
@@ -32,28 +35,30 @@
                     "defaultValue": 0,
                     "name": "passthrough",
                     "registerNumber": 0
+                }, 
+                {
+                    "dataType": {
+                    "fractionLength": 8,
+                    "signed": false,
+                    "type": "uint32",
+                    "wordLength": 32,
+                    "dpram": 256
+                    },
+                    "defaultValue": 1,
+                    "name": "gain_data",
+                    "registerNumber": 2
                 },
                 {
                     "dataType": {
                     "fractionLength": 16,
                     "signed": false,
                     "type": "uint32",
-                    "wordLength": 32
+                    "wordLength": 32,
+                    "dpram": 32
                     },
                     "defaultValue": 1,
-                    "name": "ad_data",
+                    "name": "ar_data",
                     "registerNumber": 1
-                },
-                {
-                    "dataType": {
-                    "fractionLength": 8,
-                    "signed": false,
-                    "type": "uint32",
-                    "wordLength": 32
-                    },
-                    "defaultValue": 1,
-                    "name": "gain_data",
-                    "registerNumber": 2
                 }
             ]
         }
