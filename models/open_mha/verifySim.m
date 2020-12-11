@@ -28,7 +28,7 @@
 % openspeech@flatearthinc.com
 
 %% Plot the Input to the FFT and the Output to the FFT
-close all;
+% close all;
 
 data_input_left  = testSignal.audio(:,1);
 data_input_right = testSignal.audio(:,2);

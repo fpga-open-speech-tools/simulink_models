@@ -24,7 +24,7 @@ mp.testFile = [mp.test_signals_path filesep 'acoustic.wav'];
 
 mp.sim_prompts = 1;
 mp.sim_verify  = 1;
-mp.simDuration = 1e-3;
+mp.simDuration = 1;
 mp.nSamples    = config.system.sampleClockFrequency * mp.simDuration;
 mp.useAvalonInterface = false;
 

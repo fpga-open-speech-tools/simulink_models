@@ -57,7 +57,7 @@
                     "dpram": 32
                     },
                     "defaultValue": 1,
-                    "name": "ar_data",
+                    "name": "ad_data",
                     "registerNumber": 1
                 }
             ]
