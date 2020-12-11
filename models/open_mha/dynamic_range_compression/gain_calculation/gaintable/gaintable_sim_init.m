@@ -26,10 +26,8 @@ band_number = 1:num_bands; % Band Number Array
 
 % Pre Lookup Parameters
 dB_min  = 0;
-dB_max  = 92;
 dB_step = 4;
-X_high  = dB_max-dB_step;            % Declare maximum dB output suitable for Gain Table  
-prelookup_table_size = (dB_max - dB_min)/dB_step + 1;
+prelookup_table_size = 24;
 
 % Gain Parameters
 dB_gain_low  = 20;
@@ -70,6 +68,8 @@ input_levels_db = zeros(prelookup_table_size,1);
 for i = 1:prelookup_table_size
     input_levels_db(i) = dB_min + (i-1)*dB_step;
 end
+dB_max = input_levels_db(end);
+X_high = dB_max-dB_step;            % Declare maximum dB output suitable for Gain Table 
 % Gain Tables
 mins  = dB_gain_low*ones(1,num_bands);  % Maximum audio input level .......................................... dB
 maxes = dB_gain_high*ones(1,num_bands); % Minimum audio input level .......................................... dB
