@@ -1,0 +1,20 @@
+vmap work ../work
+
+vmap -c
+vcom  cp_wideband_gammatone_filter_nfp_div_single.vhd
+vcom  cp_wideband_gammatone_filter_nfp_sub_single.vhd
+vcom  cp_wideband_gammatone_filter_nfp_add_single.vhd
+vcom  cp_wideband_gammatone_filter_nfp_mul_single.vhd
+vcom  cp_wideband_gammatone_filter_nfp_gain_pow2_single.vhd
+vcom  cp_wideband_gammatone_filter_Third_Order_IIR_Filter.vhd
+vcom  cp_wideband_gammatone_filter_nfp_pow_single.vhd
+vcom  cp_wideband_gammatone_filter_nfp_relop_single.vhd
+vcom  cp_wideband_gammatone_filter_Calculate_wbout.vhd
+vcom  cp_wideband_gammatone_filter_nfp_uminus_single.vhd
+vcom  cp_wideband_gammatone_filter_nfp_sincos_single.vhd
+vcom  cp_wideband_gammatone_filter_nfp_sincos_single_block.vhd
+vcom  cp_wideband_gammatone_filter_nfp_mul_single_block.vhd
+vcom  cp_wideband_gammatone_filter_nfp_sub_single_block.vhd
+vcom  cp_wideband_gammatone_filter_nfp_add_single_block.vhd
+vcom  cp_wideband_gammatone_filter_nfp_relop_single_block.vhd
+vcom  cp_wideband_gammatone_filter_cp_wideband_gammatone_filter.vhd

@@ -1,0 +1,12 @@
+vmap work ../work
+
+vmap -c
+vcom  ohc_nonlinear_filter_nfp_uminus_single.vhd
+vcom  ohc_nonlinear_filter_nfp_relop_single.vhd
+vcom  ohc_nonlinear_filter_nfp_relop_single_block.vhd
+vcom  ohc_nonlinear_filter_nfp_mul_single.vhd
+vcom  ohc_nonlinear_filter_nfp_add_single.vhd
+vcom  ohc_nonlinear_filter_nfp_exp_single.vhd
+vcom  ohc_nonlinear_filter_nfp_div_single.vhd
+vcom  ohc_nonlinear_filter_nfp_abs_single.vhd
+vcom  ohc_nonlinear_filter_ohc_nonlinear_filter.vhd

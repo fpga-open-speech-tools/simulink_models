@@ -1,0 +1,7 @@
+ohc_nl_boltzman_function/nfp_uminus_single --> ohc_nl_boltzman_function_nfp_uminus_single
+ohc_nl_boltzman_function/nfp_div_single --> ohc_nl_boltzman_function_nfp_div_single
+ohc_nl_boltzman_function/nfp_sub_single --> ohc_nl_boltzman_function_nfp_sub_single
+ohc_nl_boltzman_function/nfp_add_single --> ohc_nl_boltzman_function_nfp_add_single
+ohc_nl_boltzman_function/nfp_exp_single --> ohc_nl_boltzman_function_nfp_exp_single
+ohc_nl_boltzman_function/nfp_mul_single --> ohc_nl_boltzman_function_nfp_mul_single
+ohc_nl_boltzman_function --> ohc_nl_boltzman_function_ohc_nl_boltzman_function

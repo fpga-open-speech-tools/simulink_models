@@ -1,0 +1,30 @@
+vmap -c
+vlib work
+vmap work work
+
+vcom  dataplane_pkg.vhd
+cd calc_tau
+do calc_tau_compile.do
+cd ..
+cd cp_wideband_gammatone_filter
+do cp_wideband_gammatone_filter_compile.do
+cd ..
+cd ohc_lowpass_filter
+do ohc_lowpass_filter_compile.do
+cd ..
+cd ohc_nl_boltzman_function
+do ohc_nl_boltzman_function_compile.do
+cd ..
+cd ohc_nonlinear_filter
+do ohc_nonlinear_filter_compile.do
+cd ..
+cd outer_hair_cell
+do outer_hair_cell_compile.do
+cd ..
+cd control_path
+do control_path_compile.do
+cd ..
+vcom  nfp_convert_sfix_32_En28_to_single.vhd
+vcom  Avalon_Data_Processing.vhd
+vcom  dataplane_tc.vhd
+vcom  dataplane.vhd
