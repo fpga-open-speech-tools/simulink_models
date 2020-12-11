@@ -1,0 +1,80 @@
+{
+    "inputs": [
+        [{
+            "name": "db Min",
+            "min": 0,
+            "max": 92,
+            "step": 1,
+            "value": 0
+        },
+        {
+            "name": "db Max",
+            "min": 0,
+            "max": 93,
+            "step": 1,
+            "value": 93
+        }]
+    ],
+    "groups": [
+        "0-250 (Hz)",
+        "250-500 (Hz)",
+        "500-750 (Hz)",
+        "750-1k (Hz)",
+        "1k-2k (Hz)",
+        "2k-4k (Hz)",
+        "4k-12k (Hz)",
+        "12k-24k (Hz)"
+    ],
+    "processing": {
+        "initFunctions": [
+        ],
+        "groupFunctions": [
+            {"output_name":"table_${index}_gains","function":"get_table_gains(gain_table_size, band_${index}_min, band_${index}_max)"},
+            {"output_name":"table_${index}_gains_scaled", "function":"print_table(dotPow(10,dotDivide(table_${index}_gains,10)))"}
+
+        ],
+        "endFunctions": [
+        ],
+        "inputs": [
+            {
+                "name":"band_${index}_min",
+                "type":"pointer",
+                "value":[0,0]
+            },
+            {
+                "name":"band_${index}_max",
+                "type":"pointer",
+                "value":[0,1]
+            },
+            {
+                "name":"gain_table_size",
+                "type":"constant",
+                "value":24
+            },
+            {
+                "name":"gain_table_spacing",
+                "type":"constant",
+                "value":4
+            },
+            {
+                "name":"print_table",
+                "type":"function",
+                "value": {
+                    "parameters":["table"],
+                    "type":"javascript",
+                    "output": "let output = ''; table.forEach((val) => {output += val + ' ';}); return output;"
+                }
+            },
+            {
+                "name":"get_table_gains",
+                "type":"function",
+                "value":{
+                    "parameters":["table_size","min", "max"],
+                    "type":"javascript",
+                    "output":"console.log(table_size); console.log(min); console.log(max);let newTable = Array.from(Array(table_size).keys()); console.log(newTable); let x = newTable.map(value=>value * (max - min)/(table_size - 1) + min - 3 * value); console.log(x); return x;"
+                }
+            }
+        ],
+        "output": "%table_0_gains_scaled%table_1_gains_scaled%table_2_gains_scaled%table_3_gains_scaled%table_4_gains_scaled%table_5_gains_scaled%table_6_gains_scaled%table_7_gains_scaled"
+	}
+}
