@@ -147,23 +147,34 @@ buf_a = ones(num_bands,1) .* 65; % Initial Condition of the Attack Filter Delay 
 buf_d = ones(num_bands,1) .* 65; % Initial Condition of the Delay Filter Delay Block
 
 %% Gain Table Parameters
-dB_low             = 0;
-dB_high            = 93;
-gain_table_input_step = 3;
-input_levels_db       = dB_low:gain_table_input_step:dB_high;
-table_length          = size(input_levels_db,2);
+% Pre Lookup Parameters
+dB_min  = 0;
+dB_max  = 92;
+dB_step = 4;
+X_high  = dB_max-dB_step;            % Declare maximum dB output suitable for Gain Table  
+prelookup_table_size = (dB_max - dB_min)/dB_step + 1;
 
-mins  = dB_low*ones(1,num_bands);  % Maximum audio input level .......................................... dB
-maxes = dB_high*ones(1,num_bands); % Minimum audio input level .......................................... dB
+% Gain Parameters
+dB_gain_low  = 20;
+dB_gain_high = 50;
+
+% Pre-lookup table values
+input_levels_db = zeros(prelookup_table_size,1);
+for i = 1:prelookup_table_size
+    input_levels_db(i) = dB_min + (i-1)*dB_step;
+end
+% Gain Tables
+mins  = dB_gain_low*ones(1,num_bands);  % Maximum audio input level .......................................... dB
+maxes = dB_gain_high*ones(1,num_bands); % Minimum audio input level .......................................... dB
 
 vy = calculateGainArray(mins, maxes, input_levels_db);
-
+vy = [vy zeros(1,256-length(vy))];
 numgainentries = length(vy);
-
 RAM_size = ceil(log2(numgainentries));
 
 RAM_addresses = 2^RAM_size;
 
+% Gain Value to prevent Dual Port Ram Write
 gain_table_default_data = 16711680;
 
 

@@ -23,7 +23,7 @@ gain_high_matlab      = zeros(sim_length,1);
 gain_matlab           = zeros(sim_length,1);
 
 %% Calculate Gain Table Results
-index_array = gtmin:gtstep:X_high+gtstep;
+index_array = 0:dB_step:100;
 for i = 1:sim_length
     temp = data_in_array(i);
     if(temp >= X_high)
@@ -34,7 +34,7 @@ for i = 1:sim_length
         if((temp >= index_array(j)) && (temp < index_array(j+1)))
             gain_addr_low_matlab(i)  = ((band_number_calc -1) * table_length) + j;
             gain_addr_high_matlab(i) = ((band_number_calc -1) * table_length) + j + 1;
-            frac_matlab(i)           = (temp - index_array(j))/3;
+            frac_matlab(i)           = (temp - index_array(j))/dB_step;
             gain_low_matlab(i)       = vy(gain_addr_low_matlab(i));
             gain_high_matlab(i)      = vy(gain_addr_high_matlab(i));
             gain_matlab(i)           = linear_interpolation_source(gain_high_matlab(i), gain_low_matlab(i), frac_matlab(i));
@@ -89,6 +89,9 @@ if debug == true
     legend('MATLAB','Simulink')
     title('Gain Result Simulation')
 else
+   figure;
+   plot(data_in.Data)
+   
    figure;
    gain_sim_plot(:,1,1) = gain_sim_out(1,1,:);
    subplot(3,1,1)
