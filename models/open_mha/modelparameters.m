@@ -47,10 +47,17 @@ num_bands   = 8;             % Number of Frequency Bands
 band_number = 1:1:num_bands; % Create an array of band numbers
 num_coeff   = 2;             % Number of C1 Coefficients required by the Attack and Decay Filter
 ef          = [0 250 500 750 1000 2000 4000 12000 24000];
-dB_low      = 0;
-dB_high     = 93;
-dB_step     = 3;
-X_high      = dB_high-dB_step;            % Declare maximum dB output suitable for Gain Table  
+
+% Pre Lookup Parameters
+dB_min  = 0;
+dB_max  = 92;
+dB_step = 4;
+X_high  = dB_max-dB_step;            % Declare maximum dB output suitable for Gain Table  
+prelookup_table_size = (dB_max - dB_min)/dB_step + 1;
+
+% Gain Parameters
+dB_gain_low  = 20;
+dB_gain_high = 50;
 
 %% Sampling Frequencies
 audio_fs           = 48e3;                          % Audio Sampling Rate from the AD1939
@@ -97,18 +104,6 @@ mirrored_band_edges = calculate_mirrored_band_edges(band_sizes, FFTsize, num_bin
 band_edges = [band_edges mirrored_band_edges];
 
 %% Look Up Table Parameters
-look_up_table_size = 1024;
-table_index_low    = dB2lin(dB_low,1);
-table_index_high   = dB2lin(dB_high,1);
-
-% Look Up Table Indexing 
-table_indexing     = logspace(log10(table_index_low), log10(table_index_high), look_up_table_size); % Line 164 of mha_signal.hh
-table_indexing_fp  = fi(table_indexing,0,40,38);
-% Look Up Table dB Values
-table_init         = linspace(dB_low, dB_high, look_up_table_size)';
-table_init_fp      = fi(table_init,in_fp_sign,in_fp_size,in_fp_dec);
-
-
 maxInput = 1;
 binaryOffset = ceil(log2(maxInput)); % used for binary tricks, as well as identifying input range
 IGOTTHIS = false;
@@ -260,20 +255,23 @@ buf_a = ones(num_bands,1) .* 65; % Initial Condition of the Attack Filter Delay 
 buf_d = ones(num_bands,1) .* 65; % Initial Condition of the Delay Filter Delay Block
 
 %% Gain Table Parameters
-input_levels_db       = dB_low:dB_step:dB_high;
-table_length          = size(input_levels_db,2);
-
-mins  = dB_low*ones(1,num_bands);  % Maximum audio input level .......................................... dB
-maxes = dB_high*ones(1,num_bands); % Minimum audio input level .......................................... dB
+% Pre-lookup table values
+input_levels_db = zeros(prelookup_table_size,1);
+for i = 1:prelookup_table_size
+    input_levels_db(i) = dB_min + (i-1)*dB_step;
+end
+% Gain Tables
+mins  = dB_gain_low*ones(1,num_bands);  % Maximum audio input level .......................................... dB
+maxes = dB_gain_high*ones(1,num_bands); % Minimum audio input level .......................................... dB
 
 vy = calculateGainArray(mins, maxes, input_levels_db);
-
+vy = [vy zeros(1,256-length(vy))];
 numgainentries = length(vy);
-
 RAM_size = ceil(log2(numgainentries));
 
 RAM_addresses = 2^RAM_size;
 
+% Gain Value to prevent Dual Port Ram Write
 gain_table_default_data = 16711680;
 
 %% Dual-Port Gain Application Parameters
