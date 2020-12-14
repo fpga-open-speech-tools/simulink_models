@@ -89,17 +89,6 @@ mirrored_band_edges = calculate_mirrored_band_edges(band_sizes, FFTsize, num_bin
 band_edges = [band_edges mirrored_band_edges];
 
 %% Look Up Table Parameters
-look_up_table_size = 1024;
-table_index_low    = dB2lin(dB_low,1);
-table_index_high   = dB2lin(dB_high,1);
-
-% Look Up Table Indexing 
-table_indexing     = logspace(log10(table_index_low), log10(table_index_high), look_up_table_size); % Line 164 of mha_signal.hh
-table_indexing_fp  = fi(table_indexing,0,40,38);
-% Look Up Table dB Values
-table_init         = linspace(dB_low, dB_high, look_up_table_size)';
-table_init_fp      = fi(table_init,in_fp_sign,in_fp_size,in_fp_dec);
-
 maxInput = 1;
 binaryOffset = ceil(log2(maxInput)); % used for binary tricks, as well as identifying input range
 floorParam = 2^-31;
