@@ -36,9 +36,9 @@ for i = 1:sim_length
     for j = 1:prelookup_table_size
         if((temp >= input_levels_db(j)) && (temp < input_levels_db(j+1)))
             plt_index_matlab(i)      = j - 1; % Account for MATLAB Indexing with 1 and Simulink with 0
+            frac_matlab(i)           = mod(double(temp),dB_step)/dB_step;
             gain_addr_low_matlab(i)  = ((band_number_calc(i) - 1) * prelookup_table_size) + plt_index_matlab(i);
             gain_addr_high_matlab(i) = ((band_number_calc(i) - 1) * prelookup_table_size) + plt_index_matlab(i) + 1;
-            frac_matlab(i)           = (temp - index_array(j))/dB_step;
             gain_low_matlab(i)       = vy(gain_addr_low_matlab(i)  + 1);
             gain_high_matlab(i)      = vy(gain_addr_high_matlab(i) + 1);
             gain_matlab(i)           = linear_interpolation_source(gain_high_matlab(i), gain_low_matlab(i), frac_matlab(i));
@@ -63,14 +63,14 @@ if debug == true
     title('Band Number')
     
     figure
-    subplot(7,1,1)
+    subplot(2,1,1)
     plot(plt_index_matlab)
     hold on
     plot(prelookup_table_index_sim,'--')
     legend('MATLAB','Simulink')
     title('Pre-Lookup Table Index: Simulation')
     
-    subplot(7,1,2)
+    subplot(2,1,2)
     plot(frac_matlab)
     hold on
     plot(frac_sim_out,'--')
