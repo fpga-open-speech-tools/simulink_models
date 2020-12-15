@@ -100,6 +100,12 @@ if debug == true
     plot(c2_d_sim_out,'--')
     legend('MATLAB Code','Simulink')
     title('C2 Decay Cofficient Read Simulation')
+    
+    figure(); 
+    plot(idpram_out(20:end-3));
+    hold on;
+    plot(dpram_i_out(20:end-3), '--');
+    legend('Initialized DPRAM','DPRAM that is initialized')
 else
     figure
     subplot(7,1,1)

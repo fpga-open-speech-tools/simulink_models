@@ -19,7 +19,7 @@ addpath(genpath('..\attack_decay_filter'));        % Location of the o1_lp_coeff
 addpath(genpath('..\..\..\referenced_functions')); % Location of the Dual Port RAM
 
 %% Debug Flag
-debug = false;
+debug = true;
 
 %% Autogen parameters
 mp.testFile = [mp.test_signals_path filesep 'auditory_nerve\mef_result_subset.wav'];
@@ -76,7 +76,7 @@ attack_c2_r_array = zeros(num_bands,1);
 
 for j = 1:num_bands
     if j == 1
-        attack_attack_tau  = 0.005; % Defined in the Open MHA Plug in documnetation
+        attack_attack_tau  = 0.02; % Defined in the Open MHA Plug in documnetation
     else
         attack_attack_tau  = attack_attack_tau /2; % Reduce the time constant by half for each consecutive band 
     end
@@ -94,7 +94,7 @@ decay_c2_r_array = zeros(num_bands,1);
 decay_attack_tau  = 0; % Line 507 of mha_filter.cpp
 for j = 1:num_bands        
     if j == 1
-        decay_release_tau = 0.060; % Defined in the Open MHA Plug in documnetation
+        decay_release_tau = 0.1; % Defined in the Open MHA Plug in documnetation
     else
         decay_release_tau = decay_release_tau / 2; % Reduce the time constant by half for each consecutive band 
     end
@@ -112,7 +112,7 @@ for i = 1:2:2*num_bands-1
     ad_coeffs(i+1,1) = decay_c1_r_array(z);
     z = z+1;
 end
-
+ad_coeffs = fi(ad_coeffs, 0, 16, 16);
 time = (0:1:length(band_num_input)-1) * 1/fs;
 band_num_timeseries = timeseries(uint8(band_num_input),time);
 
