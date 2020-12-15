@@ -14,7 +14,7 @@
 
 %% Initialzie
 close all;
-sim_length = length(data_in_array);
+sim_length = length(data_in_test);
 band_number_calc      = zeros(sim_length,1);
 plt_index_matlab      = zeros(sim_length,1);
 gain_addr_low_matlab  = zeros(sim_length,1);
@@ -28,7 +28,7 @@ gain_matlab           = zeros(sim_length,1);
 % index_array = 0:dB_step:100;
 k = 0;
 for i = 1:sim_length
-    temp = data_in_array(i);
+    temp = data_in_test(i);
     if(temp >= X_high)
         temp = X_high;
     end
@@ -63,14 +63,14 @@ if debug == true
     title('Band Number')
     
     figure
-    subplot(2,1,1)
+    subplot(7,1,1)
     plot(plt_index_matlab)
     hold on
     plot(prelookup_table_index_sim,'--')
     legend('MATLAB','Simulink')
     title('Pre-Lookup Table Index: Simulation')
     
-    subplot(2,1,2)
+    subplot(7,1,2)
     plot(frac_matlab)
     hold on
     plot(frac_sim_out,'--')
@@ -78,6 +78,7 @@ if debug == true
     title('Prelook Up Table - Fractional: Simulation')
     
     subplot(7,1,3)
+    
     plot(gain_addr_low_matlab)
     hold on
     plot(gain_addr_low_sim_out,'--')
@@ -94,14 +95,14 @@ if debug == true
     subplot(7,1,5)
     plot(gain_low_matlab)
     hold on
-    plot(gain_low_sim_out,'--')
+    plot(gain_low_sim_out(2:end),'--')
     legend('MATLAB','Simulink')
     title('Gain Low: Simulation')
 
     subplot(7,1,6)
     plot(gain_high_matlab)
     hold on
-    plot(gain_high_sim_out,'--')
+    plot(gain_high_sim_out(2:end),'--')
     legend('MATLAB','Simulink')
     title('Gain High: Simulation')
 
@@ -109,7 +110,7 @@ if debug == true
     subplot(7,1,7)
     plot(gain_matlab)
     hold on
-    plot(sim_out,'--')
+    plot(sim_out(2:end),'--')
     legend('MATLAB','Simulink')
     title('Gain Result: Simulation')
 else

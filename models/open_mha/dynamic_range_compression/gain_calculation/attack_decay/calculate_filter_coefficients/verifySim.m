@@ -76,36 +76,30 @@ if debug == true
     subplot(7,1,4)
     plot(c1_a_matlab)
     hold on
-    plot(c1_a_sim_out,'--')
+    plot(c1_a_sim_out(2:end),'--')
     legend('MATLAB Code','Simulink')
     title('C1 Attack Cofficient Read Simulation')
 
     subplot(7,1,5)
     plot(c2_a_matlab)
     hold on
-    plot(c2_a_sim_out,'--')
+    plot(c2_a_sim_out(2:end),'--')
     legend('MATLAB Code','Simulink')
     title('C2 Attack Cofficient Read Simulation')
 
     subplot(7,1,6)
     plot(c1_d_matlab)
     hold on
-    plot(c1_d_sim_out,'--')
+    plot(c1_d_sim_out(2:end),'--')
     legend('MATLAB Code','Simulink')
     title('C1 Decay Cofficient Read Simulation')
 
     subplot(7,1,7)
     plot(c2_d_matlab)
     hold on
-    plot(c2_d_sim_out,'--')
+    plot(c2_d_sim_out(2:end),'--')
     legend('MATLAB Code','Simulink')
     title('C2 Decay Cofficient Read Simulation')
-    
-    figure(); 
-    plot(idpram_out(20:end-3));
-    hold on;
-    plot(dpram_i_out(20:end-3), '--');
-    legend('Initialized DPRAM','DPRAM that is initialized')
 else
     figure
     subplot(7,1,1)
@@ -118,28 +112,28 @@ else
     subplot(5,1,2)
     plot(c1_a_matlab)
     hold on
-    plot(c1_a_sim_out,'--')
+    plot(c1_a_sim_out(2:end),'--')
     legend('MATLAB Code','Simulink')
     title('C1 Attack Cofficient Read Simulation')
 
     subplot(5,1,3)
     plot(c2_a_matlab)
     hold on
-    plot(c2_a_sim_out,'--')
+    plot(c2_a_sim_out(2:end),'--')
     legend('MATLAB Code','Simulink')
     title('C2 Attack Cofficient Read Simulation')
 
     subplot(5,1,4)
     plot(c1_d_matlab)
     hold on
-    plot(c1_d_sim_out,'--')
+    plot(c1_d_sim_out(2:end),'--')
     legend('MATLAB Code','Simulink')
     title('C1 Decay Cofficient Read Simulation')
 
     subplot(5,1,5)
     plot(c2_d_matlab)
     hold on
-    plot(c2_d_sim_out,'--')
+    plot(c2_d_sim_out(2:end),'--')
     legend('MATLAB Code','Simulink')
     title('C2 Decay Cofficient Read Simulation')
 end

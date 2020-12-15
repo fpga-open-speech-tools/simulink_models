@@ -93,14 +93,10 @@ for i = 1:sim_length
     end
 end
 
+data_in_array = cat(1,data_in_array(1:num_bands*prelookup_table_size), data_in_array);
+
 time      = (0:length(data_in_array)-1)/fs;
 stop_time = time(end);
 
-if(strcmp(sim_type,'double'))
-    data_in   = timeseries(data_in_array,time);
-elseif(strcmp(sim_type,'fxpt'))
-    data_in_array = fi(data_in_array,gain_coeff_fp_sign,gain_coeff_fp_size,gain_coeff_fp_dec);
-    data_in   = timeseries(data_in_array,time);
-end
-    
+data_in   = timeseries(data_in_array,time);    
     
