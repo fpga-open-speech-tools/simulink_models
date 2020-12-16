@@ -1,0 +1,9 @@
+spike_generator/Redocking Calculation/Current Redock Component/nfp_abs_double --> spike_generator_nfp_abs_double
+spike_generator/Redocking Calculation/Current Redock Component/nfp_convert_fix_10_En0_to_single --> spike_generator_nfp_convert_fix_10_En0_to_single
+spike_generator/Redocking Calculation/Correct Redocking Period/nfp_mul_single --> spike_generator_nfp_mul_single
+spike_generator/Redocking Calculation/Current Redock Component/nfp_add_single --> spike_generator_nfp_add_single
+spike_generator/Redocking Calculation/Current Redock Component --> spike_generator_Current_Redock_Component
+spike_generator/Redocking Calculation/Correct Redocking Period/nfp_sub_single --> spike_generator_nfp_sub_single
+spike_generator/Redocking Calculation/Correct Redocking Period --> spike_generator_Correct_Redocking_Period
+spike_generator/Redocking Calculation --> spike_generator_Redocking_Calculation
+spike_generator --> spike_generator_spike_generator
