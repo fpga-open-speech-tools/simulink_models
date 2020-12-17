@@ -30,7 +30,7 @@ gain_levels_db = 20.*log10(gain);
 output_levels_db = level_in_filtered + gain_levels_db;
 
 figure()
-plot(level_in_filtered, output_levels_db, '-r');
+plot(level_in_filtered(1:96), output_levels_db(1:96), '-r');
 hold on;
 plot(input_levels_db,input_levels_db + gtdata, 'b');
 hold off;
@@ -60,6 +60,11 @@ avg_perc_gain_error = (sum(perc_gain_error)/length(gain));
 disp('Average Percent Error: Gain = ');
 disp(avg_perc_gain_error);
 
+figure()
+plot(out.gain);
+hold on;
+plot(gain);
+hold off;
 
 
 
