@@ -112,7 +112,8 @@ delaypoint = floor(7500/(cf/1e3));
 Hinput = 0.9;  % Set Hurst index to the value hard-coded in C source code
 spont = 100;   % Set mean of noise
 % Call fast fractional gaussian noise function for Double Precision
-randNums = ffGn(mp.nSamples, tdres, Hinput, noiseType, spont);
+pla_rand_delay = 256;
+pla_rand_nums  = single(ffGn(pla_rand_delay, tdres, Hinput, noiseType, spont));
 
 % Parameters for Fast Power Law Adaptation Function
 alpha1 = 1.5e-6*100e3; 
