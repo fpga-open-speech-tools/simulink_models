@@ -1,6 +1,7 @@
 
 %% Autogen parameters
-mp.testFile = [mp.test_signals_path filesep 'auditory_nerve\cp_wideband_gammatone_filter.wav'];
+% mp.testFile = [mp.test_signals_path filesep 'auditory_nerve\cp_wideband_gammatone_filter_delay.wav'];
+mp.testFile = ['cp_wideband_gammatone_filter_delay.wav'];
 
 mp.sim_prompts = 1;
 mp.sim_verify = 1;

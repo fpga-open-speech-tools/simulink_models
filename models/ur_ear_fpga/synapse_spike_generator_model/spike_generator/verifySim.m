@@ -41,6 +41,7 @@ totalstim = length(data_input);
 sptimeVect = zeros(1,length(data_input));
 spCountVect = zeros(1,length(data_input));
 trd_vectorVect = zeros(1,length(data_input));
+randNums = rand(1,length(data_input));
     
 
 % Define some parameters
