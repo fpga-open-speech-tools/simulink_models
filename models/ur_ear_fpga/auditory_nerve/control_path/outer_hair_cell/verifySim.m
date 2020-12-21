@@ -29,7 +29,7 @@
 
 %% 
 close all;
-data_input  = testSignal.audio(:,1) .* 500;
+data_input  = [ 0; testSignal.audio(:,1) .* 500 ];
 totalstim   = length(data_input);
 
 %% Outer Hair Cell Simulation
