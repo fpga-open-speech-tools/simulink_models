@@ -270,6 +270,7 @@ numgainentries = length(vy);
 RAM_size = ceil(log2(numgainentries));
 
 RAM_addresses = 2^RAM_size;
+addr_bits = 16;
 
 % Gain Value to prevent Dual Port Ram Write
 gain_table_default_data = 16711680;
