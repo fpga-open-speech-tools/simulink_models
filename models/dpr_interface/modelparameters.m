@@ -10,6 +10,8 @@ mp.nSamples = config.system.sampleClockFrequency * mp.simDuration;
 nAddresses = 512;
 n_shift = 16;
 
+addr_bits = 16;
+
 input_data = 1:nAddresses;
 
 % Set the addresses for the DPR
