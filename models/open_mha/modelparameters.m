@@ -54,8 +54,8 @@ dB_step = 4;
 prelookup_table_size = 24;
 
 % Gain Parameters
-dB_gain_low  = 20;
-dB_gain_high = 50;
+dB_gain_low  = 0;
+dB_gain_high = 93;
 
 %% Sampling Frequencies
 audio_fs           = 48e3;                          % Audio Sampling Rate from the AD1939
