@@ -32,7 +32,24 @@
                     "defaultValue": 48,
                     "name": "integration_time",
                     "registerNumber": 0
-                }
+                },
+                {
+                    "dataType": {
+                            "fractionLength": 0,
+                            "signed": false,
+                            "type": "uint32",
+                            "wordLength": 32
+                        },
+                        "defaultValue": 48,
+                        "name": "spike_count",
+                        "registerNumber": 1,
+                        "direction": "out",
+                        "connection": {
+                            "type": "ws",
+                            "file": "lws-minimal-ws-server",
+                            "port": "7681"
+                        }
+                    }
             ]
         }
     ]
