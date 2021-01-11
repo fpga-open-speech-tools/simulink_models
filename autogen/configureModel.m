@@ -94,7 +94,7 @@ function regs = parsedeviceregisters(device)
     nRegs = numel(device.registers);
     regs = cell(nRegs);
     for idx=1:nRegs
-        reg = device.registers(idx);
+        reg = device.registers{idx};
         tempReg.name = reg.name;
         tempReg.value = reg.defaultValue;
 

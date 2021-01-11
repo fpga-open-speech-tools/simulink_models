@@ -1,6 +1,6 @@
 {
     "system": {
-        "target": "audioblade",
+        "target": "reflex",
         "sampleClockFrequency": 48000,
         "systemClockFrequency": 98304000,
         "processing": "channel",
