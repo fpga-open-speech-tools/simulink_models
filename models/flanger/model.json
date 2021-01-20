@@ -20,29 +20,40 @@
 
     "devices": [
         {
-            "name": "simple_gain",
+            "name": "flanger",
             "registers": [
                 {
                     "dataType": {
-                        "fractionLength": 16,
-                        "signed": false,
-                        "type": "ufix20en16",
-                        "wordLength": 20
-                    },
-                    "defaultValue": 1.5,
-                    "name": "Gain",
-                    "registerNumber": 0
-                },
-               {
-                    "dataType": {
                         "fractionLength": 0,
                         "signed": false,
-                        "type": "fix1",
+                        "type": "boolean",
                         "wordLength": 1
                     },
                     "defaultValue": 1,
-                    "name": "Enable",
+                    "name": "enable",
+                    "registerNumber": 0
+                },
+                {
+                    "dataType": {
+                        "fractionLength": 5,
+                        "signed": false,
+                        "type": "ufix8",
+                        "wordLength": 8
+                    },
+                    "defaultValue": 1,
+                    "name": "rate",
                     "registerNumber": 1
+                },
+                {
+                    "dataType": {
+                        "fractionLength": 7,
+                        "signed": false,
+                        "type": "ufix8_En7",
+                        "wordLength": 8
+                    },
+                    "defaultValue": 0.5,
+                    "name": "regen",
+                    "registerNumber": 2
                 }
             ]
         }
