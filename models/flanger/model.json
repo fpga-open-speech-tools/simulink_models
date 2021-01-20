@@ -1,9 +1,11 @@
 {
     "system": {
+        "name": "Flanger",
+        "description": "The Flange Sound Effect Demo",
         "target": "audiomini",
         "sampleClockFrequency": 48000,
         "systemClockFrequency": 98304000,
-        "processing": "channel",
+        "processing": "sample",
         "audioIn": {
             "wordLength": 24,
             "fractionLength": 23,

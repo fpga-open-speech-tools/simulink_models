@@ -8,8 +8,6 @@ mp.sim_prompts = 1;
 mp.sim_verify = 1;
 mp.simDuration = 5;
 mp.nSamples = config.system.sampleClockFrequency * mp.simDuration;
-
-mp.useAvalonInterface = true;
     
 %%% General model parameters
 

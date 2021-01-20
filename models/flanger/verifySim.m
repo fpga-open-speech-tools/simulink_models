@@ -26,12 +26,12 @@
 figure(1)
 subplot(2,1,1)
 plot(testSignal.audio(:,1)); hold on
-plot(mp.dataOut(1,:))
+plot(data_out(:,1))
 title(['Rate = ' num2str(mp.register{2}.value) ' Enable = ' num2str(mp.register{1}.value) ' Regen = ' num2str(mp.register{3}.value)])
 
 subplot(2,1,2)
 plot(testSignal.audio(:,2)); hold on
-plot(mp.dataOut(2,:))
+plot(data_out(:,2))
 title(['Rate = ' num2str(mp.register{2}.value) ' Enable = ' num2str(mp.register{1}.value) ' Regen = ' num2str(mp.register{3}.value)])
 
 % original_audio = [mp.test_signal.left(:) mp.test_signal.right(:)];
