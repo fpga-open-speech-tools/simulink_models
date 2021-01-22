@@ -1,6 +1,5 @@
 # Noise Suppression via Adaptive Wiener Filtering
 This Simulink model implements an adaptive Wiener filter based on [Speech enhancement with an adaptive Wiener filter](https://link.springer.com/article/10.1007/s10772-013-9205-5) by Marwa et al. 
-
 ## Algorithm
 ![](algorithm_block_diagram.svg)
 
