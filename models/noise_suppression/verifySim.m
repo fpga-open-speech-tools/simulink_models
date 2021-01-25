@@ -38,17 +38,33 @@ noiseVariance = mp.register{2}.timeseries.Data(1);
 
 % Compute the SNR Metrics for the Left Channel
 original_audio = original_audio.audio;
-simulink_audio = double(dataOut.Data(1:mp.nSamples,1));
-snr_simulink   = snr(original_audio, simulink_audio - original_audio);
-disp(['SNR Simulink: ' num2str(snr_simulink)])
-snr_matlab = snr(original_audio, left_channel_matlab - original_audio);
-disp(['SNR MATLAB: ' num2str(snr_matlab)])
+simulink_audio_left = double(dataOut.Data(1:mp.nSamples,1));
+snr_simulink_left   = snr(original_audio, simulink_audio_left - original_audio);
+disp(['SNR Left Channel Simulink: ' num2str(snr_simulink_left)])
+snr_matlab_left = snr(original_audio, left_channel_matlab - original_audio);
+disp(['SNR Left Channel MATLAB: ' num2str(snr_matlab_left)])
 
 % Windowed SNR
-[segmental_snr_simulink, snr_simulink_mean] = segmentalSnr(simulink_audio, original_audio, mp.windowSize);
-disp(['SNR Simulink Mean: ' num2str(snr_simulink_mean)])
-[segmental_snr_matlab, snr_matlab_mean] = segmentalSnr(left_channel_matlab, original_audio, mp.windowSize);
-disp(['SNR MATLAB Mean: ' num2str(snr_matlab_mean)])
+[segmental_snr_simulink_left, snr_simulink_mean_left] = segmentalSnr(simulink_audio_left, original_audio, mp.windowSize);
+disp(['SNR Left Channel Simulink Mean: ' num2str(snr_simulink_mean_left)])
+[segmental_snr_matlab_left, snr_matlab_mean_left] = segmentalSnr(left_channel_matlab, original_audio, mp.windowSize);
+disp(['SNR Left Channel MATLAB Mean: ' num2str(snr_matlab_mean_left)])
+disp(' ');
+
+
+% Compute the SNR Metrics for the Right Channel
+simulink_audio_right = double(dataOut.Data(1:mp.nSamples,1));
+snr_simulink_right   = snr(original_audio, simulink_audio_right - original_audio);
+disp(['SNR Right Channel Simulink: ' num2str(snr_simulink_right)])
+snr_matlab_right = snr(original_audio, right_channel_matlab - original_audio);
+disp(['SNR Right Channel MATLAB: ' num2str(snr_matlab_right)])
+
+% Windowed SNR
+[segmental_snr_simulink_right, snr_simulink_mean_right] = segmentalSnr(simulink_audio_right, original_audio, mp.windowSize);
+disp(['SNR Right Channel Simulink Mean: ' num2str(snr_simulink_mean_right)])
+[segmental_snr_matlab_right, snr_matlab_mean_right] = segmentalSnr(right_channel_matlab, original_audio, mp.windowSize);
+disp(['SNR Right Channel MATLAB Mean: ' num2str(snr_matlab_mean_right)])
+
 %% Plot the Results
 % Left Channel
 figure
@@ -68,25 +84,32 @@ title('Left Channel Filtered Results')
 legend('Simulink', 'MATLAB')
 
 subplot(4,1,4)
-plot(segmental_snr_simulink)
+plot(segmental_snr_simulink_left)
 hold on
-plot(segmental_snr_matlab, '--')
+plot(segmental_snr_matlab_left, '--')
 title('SNR over the Window Size')
 legend('Simulink', 'MATLAB')
 
 % Right Channel
 figure
-subplot(3,1,1)
+subplot(4,1,1)
 plot(original_audio)
 title('Right Channel Original Input')
 
-subplot(3,1,2)
+subplot(4,1,2)
 plot(testSignal.audio(:,2));
 title('Right Channel Noisy Input')
 
-subplot(3,1,3)
+subplot(4,1,3)
 plot(dataOut.Data(:,2))
 hold on
 plot(right_channel_matlab,'--')
 title('Right Channel Filtered Results')
+legend('Simulink', 'MATLAB')
+
+subplot(4,1,4)
+plot(segmental_snr_simulink_right)
+hold on
+plot(segmental_snr_matlab_right, '--')
+title('SNR over the Window Size')
 legend('Simulink', 'MATLAB')
