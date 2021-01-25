@@ -21,12 +21,25 @@
 % FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 % ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 %
-% Ross K. Snider
-% Audio Logic
+% Connor Dack
+% AudioLogic, Inc
 % 985 Technology Blvd
 % Bozeman, MT 59718
 % openspeech@flatearthinc.com
 
-%% Verify that the test data got encoded, passed through the model, and
-% decoded correctly.  The input (modified by gain) and output values should be identical.
+%% Plot the outputs
+figure;
+subplot(2,1,1)
+plot(testSignal.audio(:,1));
+hold on
+plot(data_out(:,1),'--');
+title('Left Channel')
+legend('Input', 'Filtered Output')
+
+subplot(2,1,2)
+plot(testSignal.audio(:,2));
+hold on
+plot(data_out(:,2), '--');
+title('Right Channel')
+legend('Input', 'Filtered Output')
 

@@ -1,18 +1,19 @@
 {
     "system": {
+        "name": "FFT Filters"
         "target": "audiomini",
         "sampleClockFrequency": 48000,
         "systemClockFrequency": 98304000,
         "processing": "sample",
         "audioIn": {
-            "wordLength": 32,
-            "fractionLength": 28,
+            "wordLength": 24,
+            "fractionLength": 23,
             "signed": true,
             "numberOfChannels": 2
         },
         "audioOut": {
-            "wordLength": 32,
-            "fractionLength": 28,
+            "wordLength": 24,
+            "fractionLength": 23,
             "signed": true,
             "numberOfChannels": 2
         }
@@ -29,8 +30,8 @@
                         "type": "boolean",
                         "wordLength": 1
                     },
-                    "defaultValue": 0,
-                    "name": "passthrough",
+                    "defaultValue": 1,
+                    "name": "enable",
                     "registerNumber": 0
                 },
                 {
@@ -40,6 +41,7 @@
                         "type": "ufix2",
                         "wordLength": 2
                     },
+                    "enumerations": {"LPF": 0, "BPF": 1, "HPF": 2, "APF": 3},
                     "defaultValue": 0,
                     "name": "filter_select",
                     "registerNumber": 1
