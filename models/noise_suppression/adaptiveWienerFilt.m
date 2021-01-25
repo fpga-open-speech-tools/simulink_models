@@ -1,6 +1,6 @@
 function [sn, means] = adaptiveWienerFilt(noisyAudio, Fs, windowSize, noiseVariance)
 %% Adaptive Wiener Filter
-% Author: Justin Williams
+% Author: Justin Williams, Trevor Vannoy
 % Under:  AudioLogic, Inc
 %         Frost Examples
 %
@@ -12,7 +12,7 @@ function [sn, means] = adaptiveWienerFilt(noisyAudio, Fs, windowSize, noiseVaria
 % Inputs:
 %           noisyAudio  - Noisy speech signal
 %           Fs          - Sample rate
-%           windowSize  - Size of Window [0 5] ms
+%           windowSize  - Size of Window in samples
 % Outputs:
 %           sn          - Filtered Output Signal
 %% Calculations

@@ -3,16 +3,11 @@
 % Matlab function that verifies the model output 
 
 % Inputs:
-%   mp, which is the model data structure that holds the model parameters
+%   mp
 %
 % Outputs:
-%   mp, the model data structure that now contains the left/right channel
-%   data, which is in the following format:
-%          mp.left_data_out         - The processed left channel data
-%          mp.left_time_out         - time of left channel data
-%          mp.right_data_out        - The processed right channel data
-%          mp.right_time_out        - time of right channel data
-%
+%   mp
+
 % Copyright 2019 Audio Logic
 %
 % THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
