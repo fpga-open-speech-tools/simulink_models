@@ -28,8 +28,8 @@ close all;
 original_audio = AudioSource.fromFile([mp.test_signals_path filesep 'sp03.wav'], mp.Fs, mp.nSamples);
 noiseVariance = mp.register{2}.timeseries.Data(1);
 % Calculate the MATLAB Results
-[left_channel_matlab, ~]  = adaptiveWienerFilt(testSignal.audio(:,1), mp.windowSize, noiseVariance);
-[right_channel_matlab, ~] = adaptiveWienerFilt(testSignal.audio(:,2), mp.windowSize, noiseVariance);
+left_channel_matlab  = adaptiveWienerFilt(testSignal.audio(:,1), mp.windowSize, noiseVariance);
+right_channel_matlab = adaptiveWienerFilt(testSignal.audio(:,2), mp.windowSize, noiseVariance);
 
 % Compute the SNR Metrics for the Left Channel
 original_audio = original_audio.audio;
