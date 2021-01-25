@@ -1,18 +1,19 @@
 {
     "system": {
         "target": "audiomini",
+        "name": "Fast Fourier Transform Example",
         "sampleClockFrequency": 48000,
         "systemClockFrequency": 98304000,
         "processing": "sample",
         "audioIn": {
-            "wordLength": 32,
-            "fractionLength": 28,
+            "wordLength": 24,
+            "fractionLength": 23,
             "signed": true,
             "numberOfChannels": 2
         },
         "audioOut": {
-            "wordLength": 32,
-            "fractionLength": 28,
+            "wordLength": 24,
+            "fractionLength": 23,
             "signed": true,
             "numberOfChannels": 2
         }
@@ -20,31 +21,8 @@
 
     "devices": [
         {
-            "name": "fft_filters",
-            "registers": [
-                {
-                    "dataType": {
-                        "fractionLength": 0,
-                        "signed": false,
-                        "type": "boolean",
-                        "wordLength": 1
-                    },
-                    "defaultValue": 0,
-                    "name": "passthrough",
-                    "registerNumber": 0
-                },
-                {
-                    "dataType": {
-                        "fractionLength": 0,
-                        "signed": false,
-                        "type": "ufix2",
-                        "wordLength": 2
-                    },
-                    "defaultValue": 0,
-                    "name": "filter_select",
-                    "registerNumber": 1
-                }
-            ]
+            "name": "fft",
+            "registers": []
         }
     ]
     
