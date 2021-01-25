@@ -1,18 +1,14 @@
 
 %% Autogen parameters
-
 mp.testFile = [mp.test_signals_path filesep 'noisySpeech.wav'];
 
-% TODO: use booleans instead of 0 and 1
 mp.sim_prompts = 1;
-mp.sim_verify = 1;
-mp.simDuration = 5;
+mp.sim_verify  = 1;
+mp.simDuration = 1;
 mp.nSamples = config.system.sampleClockFrequency * mp.simDuration;
 
 mp.useAvalonInterface = false;
-    
 %% Exponential moving average setup
-
 % 10 ms window
 mp.windowSize = 10e-3 * mp.Fs;
 
