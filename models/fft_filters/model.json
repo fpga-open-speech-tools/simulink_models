@@ -1,6 +1,6 @@
 {
     "system": {
-        "name": "FFT Filters"
+        "name": "FFT Filters",
         "target": "audiomini",
         "sampleClockFrequency": 48000,
         "systemClockFrequency": 98304000,
