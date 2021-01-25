@@ -1,4 +1,4 @@
-function [sn, means] = adaptiveWienerFilt(noisyAudio, Fs, windowSize, noiseVariance)
+function [sn, means] = adaptiveWienerFilt(noisyAudio, windowSize, noiseVariance)
 %% Adaptive Wiener Filter
 % Author: Justin Williams, Trevor Vannoy
 % Under:  AudioLogic, Inc
