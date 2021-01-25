@@ -17,37 +17,22 @@ function [sn, means] = adaptiveWienerFilt(noisyAudio, windowSize, noiseVariance)
 %           sn          - Filtered Output Signal
 %% Calculations
 sn = zeros(length(noisyAudio),1 );
-win = zeros(windowSize,1);        % Init look-behind-window
 means = zeros(ceil(length(noisyAudio)/windowSize), 1);
-meansExponential = zeros(ceil(length(noisyAudio)/windowSize), 1);
-varExponential = zeros(ceil(length(noisyAudio)/windowSize), 1);
+signalAvg = zeros(ceil(length(noisyAudio)/windowSize), 1);
+signalVariance = zeros(ceil(length(noisyAudio)/windowSize), 1);
 exponentialWeight = 2/(windowSize + 1);
 for n = 1:length(noisyAudio)
-    
-    if n <= windowSize
-        win(n)    = noisyAudio(n);
-        [signalAvg, signalVariance] = wienStats(win, noiseVariance);
-    elseif (n > windowSize && n <= (length(noisyAudio) - windowSize))
-        win     = noisyAudio(n - windowSize + 1 : n);
-        [signalAvg, signalVariance] = wienStats(win, noiseVariance);
-    else
-        win     = noisyAudio((n):end);
-        [signalAvg, signalVariance] = wienStats(win, noiseVariance);
-    end
-    
     if n > 1
-        meansExponential(n) = meansExponential(n-1) + exponentialWeight * (noisyAudio(n) - meansExponential(n-1));
-        varExponential(n) = (1 - exponentialWeight) * (varExponential(n-1) + exponentialWeight * (noisyAudio(n) - meansExponential(n-1)).^2);
+        signalAvg(n) = signalAvg(n-1) + exponentialWeight * (noisyAudio(n) - signalAvg(n-1));
+        signalVariance(n) = (1 - exponentialWeight) * (signalVariance(n-1) + exponentialWeight * (noisyAudio(n) - signalAvg(n-1)).^2);
     else
-        meansExponential(n) = noisyAudio(n);
+        signalAvg(n) = noisyAudio(n);
     end
     
     % Filter Signal
-    sn(n) = signalAvg ... 
-        + (signalVariance / (noiseVariance + signalVariance)) * (noisyAudio(n) - signalAvg);
+    sn(n) = signalAvg(n) ... 
+        + (signalVariance(n) / (noiseVariance + signalVariance(n))) * (noisyAudio(n) - signalAvg(n));
     
-    means(n) = signalAvg;
-    vars(n) = signalVariance;
     
     % Account for any nans / divide by zeros
     if (isnan(sn(n)))
