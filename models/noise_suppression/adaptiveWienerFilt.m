@@ -16,7 +16,6 @@ function [sn, means] = adaptiveWienerFilt(noisyAudio, Fs, windowSize, noiseVaria
 % Outputs:
 %           sn          - Filtered Output Signal
 %% Calculations
-Ts = 1 / Fs;
 sn = zeros(length(noisyAudio),1 );
 win = zeros(windowSize,1);        % Init look-behind-window
 means = zeros(ceil(length(noisyAudio)/windowSize), 1);
