@@ -48,9 +48,9 @@
                 },
                 {
                     "dataType": {
-                        "fractionLength": 7,
+                        "fractionLength": 8,
                         "signed": false,
-                        "type": "ufix8_En7",
+                        "type": "ufix8_En8",
                         "wordLength": 8
                     },
                     "defaultValue": 0.5,

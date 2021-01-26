@@ -7,3 +7,4 @@ gm_*.slx
 *.bak
 config/path.json
 *.mexw64
+**/autogen_quartus.log

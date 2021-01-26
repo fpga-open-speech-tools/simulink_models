@@ -36,7 +36,7 @@
                 {
                     "dataType": {
                         "fractionLength": 12,
-                        "signed": true,
+                        "signed": false,
                         "type": "sdfds",
                         "wordLength": 16
                     },
