@@ -1,4 +1,4 @@
-# Example Echo with Feedback
+# Echo with Feedback
 This design showcases a simple echo audio effect with a feedback loop based off the Mathworks example [Delay-Based Audio Effects](https://www.mathworks.com/help/audio/ug/delay-based-audio-effects.html).
 
 ## Requirements
