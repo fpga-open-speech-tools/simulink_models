@@ -17,7 +17,7 @@ Follow the instructions for deploying to Amazon S3  [here]( https://github.com/f
 ### Controls
  - `Enable`: Enable or disable the echo sound effect.  In a disabled state, audio is passed directly through the system.
  - `delay`: The echo delay (in samples)
- - `feedback`: The gain of the echo feedback, <img src="https://render.githubusercontent.com/render/math?math=g_f">. 
+ - `feedback`: The gain of the echo feedback, <img src="https://latex.codecogs.com/gif.latex?g_f" /> . 
  - `wet_dry_mix`: The ratio of the original audio (dry) to the echo signal (wet).  This value should range between 0 and 1 where 0 passes only the original audio and 0 passes only the delayed feedback signal.
  
 ## Implementation
