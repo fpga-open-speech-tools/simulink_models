@@ -1,5 +1,5 @@
 # Echo with Feedback
-This design showcases a simple echo audio effect with a feedback loop based off the Mathworks example [Delay-Based Audio Effects](https://www.mathworks.com/help/audio/ug/delay-based-audio-effects.html). This model was developed using the Frost Autogen Framework and deployed to an Audio Mini using Frost Edge. To set up Frost Autogen or Frost Edge, please review the [Getting Started Guides](). 
+This design showcases a simple echo audio effect with a feedback loop based off the Mathworks example [Delay-Based Audio Effects](https://www.mathworks.com/help/audio/ug/delay-based-audio-effects.html). This model was developed using the Frost Autogen Framework and deployed to an Audio Mini using Frost Edge. To set up Frost Autogen or Frost Edge, please review the [Getting Started Guides](https://github.com/fpga-open-speech-tools/docs/tree/master/getting_started). 
 
 ## Usage
  - `Enable`: Enable or disable the echo sound effect.  In a disabled state, audio is passed directly through the system.
