@@ -1,5 +1,6 @@
 {
     "system": {
+        "name": "Delay Based Echo",
         "target": "audiomini",
         "sampleClockFrequency": 48000,
         "systemClockFrequency": 98304000,
@@ -20,7 +21,7 @@
 
     "devices": [
         {
-            "name": "echo",
+            "name": "delay_based_echo",
             "registers": [
                 {
                     "dataType": {
