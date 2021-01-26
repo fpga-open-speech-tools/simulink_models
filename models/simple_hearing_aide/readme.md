@@ -1,8 +1,8 @@
-# A Simple Hearing Aide
-This simple hearing aide example is a combination of the [Adaptive Wiener Filter Noise Suppression Model](../noise_suppression) and the [FFT Filter Model](../fft_filters).
+# A Simple Hearing Aid
+This simple hearing aid example is a combination of the [Adaptive Wiener Filter Noise Suppression Model](../noise_suppression) and the [FFT Filter Model](../fft_filters).
 
 ## Usage
-- `System Enable`: The first enable and disable toggle will pass the audio through the simple hearing aide or by pass it.
+- `System Enable`: The first enable and disable toggle will pass the audio through the simple hearing aid or by pass it.
 - **Noise Suppression Controls**:
     - `Noise Suppression Enable`: The second enable and disable toggle turn on or off the noise suppression component
     - `Noise Variance`: The amount of noise suppression can be varied at runtime, which ranges from 0 to 1
@@ -23,9 +23,9 @@ This simple hearing aide example is a combination of the [Adaptive Wiener Filter
 
 
 ## Implementation
-The Simple Hearing Aide model is implemented using the Adaptive Wiener Filter Noise Suppression Reference Model, the FFT Analysis and Synthesis Reference Models, and the FFT Filter Bank Reference Model. The Adaptive Wiener Filter processes both left and right audio channels before passing the data to the FFT Filter Blocks. The FFT Filter Bank processes the left channel and right channel independently before the two channels are vectorized and passed to the output.
+The Simple Hearing Aid model is implemented using the Adaptive Wiener Filter Noise Suppression Reference Model, the FFT Analysis and Synthesis Reference Models, and the FFT Filter Bank Reference Model. The Adaptive Wiener Filter processes both left and right audio channels before passing the data to the FFT Filter Blocks. The FFT Filter Bank processes the left channel and right channel independently before the two channels are vectorized and passed to the output.
 
 
 <p align="center">
-  <img src="simple_hearing_aide.PNG" />
+  <img src="simple_hearing_aid.PNG" />
 </p>
