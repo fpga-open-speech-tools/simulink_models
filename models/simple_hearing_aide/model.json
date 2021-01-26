@@ -65,7 +65,7 @@
                         "wordLength": 1
                     },
                     "defaultValue": 1,
-                    "name": "flt_enable",
+                    "name": "left_channel_filter_enable",
                     "registerNumber": 3
                 },
                 {
@@ -77,8 +77,31 @@
                     },
                     "enumerations": {"LPF": 0, "BPF": 1, "HPF": 2, "APF": 3},
                     "defaultValue": 0,
-                    "name": "filter_select",
+                    "name": "left_channel_filter_select",
                     "registerNumber": 4
+                },
+                {
+                    "dataType": {
+                        "fractionLength": 0,
+                        "signed": false,
+                        "type": "boolean",
+                        "wordLength": 1
+                    },
+                    "defaultValue": 1,
+                    "name": "right_channel_filter_enable",
+                    "registerNumber": 5
+                },
+                {
+                    "dataType": {
+                        "fractionLength": 0,
+                        "signed": false,
+                        "type": "ufix2",
+                        "wordLength": 2
+                    },
+                    "enumerations": {"LPF": 0, "BPF": 1, "HPF": 2, "APF": 3},
+                    "defaultValue": 0,
+                    "name": "right_channel_filter_select",
+                    "registerNumber": 6
                 }
             ]
         }
