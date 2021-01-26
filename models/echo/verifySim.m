@@ -21,7 +21,7 @@
 % FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 % ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 %
-% Ross K. Snider
+% Ross K. Snider, Tyler Davis
 % Audio Logic
 % 985 Technology Blvd
 % Bozeman, MT 59718
@@ -34,7 +34,7 @@ audioInputLeft  = testSignal.audio(:,1);
 audioOutputLeft = createEcho(audioInputLeft,wetDryRatio,feedbackGain,echoDuration);
 
 audioInputRight  = testSignal.audio(:,2);
-audioOutputRight = createEcho(audioInputLeft,wetDryRatio,feedbackGain,echoDuration);
+audioOutputRight = createEcho(audioInputRight,wetDryRatio,feedbackGain,echoDuration);
 
 figure(1)
 subplot(2,1,1)
