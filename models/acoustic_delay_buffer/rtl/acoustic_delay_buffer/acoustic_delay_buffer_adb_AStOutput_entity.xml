@@ -1,4 +1,0 @@
-<?xml version='1.0' encoding='ISO-8859-1' ?>
-<entity name='acoustic_delay_buffer_adb_AStOutput' floating-point-script-prefix='acoustic_delay_buffer_adb_AStOutput_fpc'>
-  <clock name='sys' port='clk' reset='areset' reset-type='high' />
-</entity>
