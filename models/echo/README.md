@@ -24,5 +24,5 @@ Follow the instructions for deploying to Amazon S3  [here]( https://github.com/f
 This design implements a simple echo sound effect using a variable delay, feedback loop, and several gains as shown in the following figure.  The variable delay implementation is particularly useful as it provides an example of using dual-port RAMs to create effects and interface with registers.
 
 <p align="center">
-  <img src="images/echo.png" />
+  <img src="echo.png" />
 </p>
