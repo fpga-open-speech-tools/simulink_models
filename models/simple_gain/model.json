@@ -1,18 +1,19 @@
 {
     "system": {
+        "name": "The Simple Gain",
         "target": "audiomini",
         "sampleClockFrequency": 48000,
         "systemClockFrequency": 98304000,
         "processing": "channel",
         "audioIn": {
-            "wordLength": 32,
-            "fractionLength": 28,
+            "wordLength": 24,
+            "fractionLength": 23,
             "signed": true,
             "numberOfChannels": 2
         },
         "audioOut": {
-            "wordLength": 32,
-            "fractionLength": 28,
+            "wordLength": 24,
+            "fractionLength": 23,
             "signed": true,
             "numberOfChannels": 2
         }
@@ -22,17 +23,6 @@
         {
             "name": "simple_gain",
             "registers": [
-                {
-                    "dataType": {
-                        "fractionLength": 16,
-                        "signed": false,
-                        "type": "ufix20en16",
-                        "wordLength": 20
-                    },
-                    "defaultValue": 1.5,
-                    "name": "Gain",
-                    "registerNumber": 0
-                },
                {
                     "dataType": {
                         "fractionLength": 0,
@@ -41,7 +31,18 @@
                         "wordLength": 1
                     },
                     "defaultValue": 1,
-                    "name": "Enable",
+                    "name": "enable",
+                    "registerNumber": 0
+                },
+                {
+                    "dataType": {
+                        "fractionLength": 16,
+                        "signed": false,
+                        "type": "ufix20en16",
+                        "wordLength": 20
+                    },
+                    "defaultValue": 1.5,
+                    "name": "gain",
                     "registerNumber": 1
                 }
             ]
