@@ -15,6 +15,6 @@ mp.useAvalonInterface = false;
 
 %% Set size of Dual Port Memory
 mp.max_delay = mp.Fs*1/2;   % max delay in samples, i.e. mp.Fs = 1 second max delay
-mp.dpram_addr_size = ceil(log2(mp.max_delay));
+delay_dpram_addr_size = ceil(log2(mp.max_delay));
 
 
