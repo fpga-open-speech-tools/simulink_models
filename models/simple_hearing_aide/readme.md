@@ -1,5 +1,5 @@
 # A Simple Hearing Aide
-This simple hearing aide example is a combination of the [Adaptive Wiener Filter Noise Suppression Model](../simple_gain) and the [FFT Filter Model](../fft_filters).
+This simple hearing aide example is a combination of the [Adaptive Wiener Filter Noise Suppression Model](../noise_suppression) and the [FFT Filter Model](../fft_filters).
 
 ## Usage
 - `System Enable`: The first enable and disable toggle will pass the audio through the simple hearing aide or by pass it.
