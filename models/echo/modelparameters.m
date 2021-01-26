@@ -18,3 +18,8 @@ mp.max_delay = mp.Fs*1/2;   % max delay in samples, i.e. mp.Fs = 1 second max de
 mp.dpram_addr_size = ceil(log2(mp.max_delay));
 
 
+%% Define the register settings
+
+echoDuration = mp.register{2}.timeseries.Data;
+feedbackGain = mp.register{3}.timeseries.Data;
+wetDryRatio  = mp.register{4}.timeseries.Data;

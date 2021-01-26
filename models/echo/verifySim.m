@@ -30,15 +30,27 @@
 %% Verify that the test data got encoded, passed through the model, and
 % decoded correctly.  The input (modified by gain) and output values should be identical.
 
+audioInputLeft  = testSignal.audio(:,1);
+audioOutputLeft = createEcho(audioInputLeft,wetDryRatio,feedbackGain,echoDuration);
+
+audioInputRight  = testSignal.audio(:,1);
+audioOutputRight = createEcho(audioInputLeft,wetDryRatio,feedbackGain,echoDuration);
+
 figure(1)
 subplot(2,1,1)
-plot(testSignal.audio(:,1)); hold on
+hold on
+plot(audioInputLeft); 
 plot(dataOut.Data(:,1))
+plot(audioOutputLeft);
+hold off;
 title(['Delay = ' num2str(mp.register{2}.value) '  Enable = ' num2str(mp.register{1}.value) '  Decay = ' num2str(mp.register{3}.value)  '  Wet/Dry Mix = ' num2str(mp.register{4}.value)])
 
 subplot(2,1,2)
-plot(testSignal.audio(:,2)); hold on
+hold on
+plot(audioInputRight);
 plot(dataOut.Data(:,2))
+plot(audioOutputRight);
+hold off
 title(['Delay = ' num2str(mp.register{2}.value) '  Enable = ' num2str(mp.register{1}.value) '  Decay = ' num2str(mp.register{3}.value)  '  Wet/Dry Mix = ' num2str(mp.register{4}.value)])
 
 % original_audio = [mp.test_signal.left(:) mp.test_signal.right(:)];
