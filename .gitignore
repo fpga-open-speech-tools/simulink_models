@@ -1,8 +1,9 @@
 *.slxc
 slprj
-hdlprj
+**/hdlsrc
 gm_*.slx
 *.autosave
 *.asv
 *.bak
 config/path.json
+*.mexw64

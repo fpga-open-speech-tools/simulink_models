@@ -20,7 +20,7 @@
 
     "devices": [
         {
-            "name": "SE",
+            "name": "echo",
             "registers": [
                 {
                     "dataType": {

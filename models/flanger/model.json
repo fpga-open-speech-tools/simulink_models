@@ -1,6 +1,7 @@
 {
     "system": {
-        "name": "FFT Filters",
+        "name": "Flanger",
+        "description": "The Flange Sound Effect Demo",
         "target": "audiomini",
         "sampleClockFrequency": 48000,
         "systemClockFrequency": 98304000,
@@ -21,7 +22,7 @@
 
     "devices": [
         {
-            "name": "fft_filters",
+            "name": "flanger",
             "registers": [
                 {
                     "dataType": {
@@ -36,15 +37,25 @@
                 },
                 {
                     "dataType": {
-                        "fractionLength": 0,
+                        "fractionLength": 5,
                         "signed": false,
-                        "type": "ufix2",
-                        "wordLength": 2
+                        "type": "ufix8",
+                        "wordLength": 8
                     },
-                    "enumerations": {"LPF": 0, "BPF": 1, "HPF": 2, "APF": 3},
-                    "defaultValue": 0,
-                    "name": "filter_select",
+                    "defaultValue": 1,
+                    "name": "rate",
                     "registerNumber": 1
+                },
+                {
+                    "dataType": {
+                        "fractionLength": 7,
+                        "signed": false,
+                        "type": "ufix8_En7",
+                        "wordLength": 8
+                    },
+                    "defaultValue": 0.5,
+                    "name": "regen",
+                    "registerNumber": 2
                 }
             ]
         }

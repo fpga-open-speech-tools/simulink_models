@@ -23,7 +23,7 @@
 
 
 [modelPath,modelAbbreviation,~] = fileparts(which(bdroot));
-if contains(bdroot, "gm_")
+if contains(bdroot, "gm_") || (isfield(mp, 'generation_active') && mp.generation_active)
     return
 end
 mp.modelPath = char(modelPath);
