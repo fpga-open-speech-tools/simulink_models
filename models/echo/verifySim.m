@@ -33,7 +33,7 @@
 audioInputLeft  = testSignal.audio(:,1);
 audioOutputLeft = createEcho(audioInputLeft,wetDryRatio,feedbackGain,echoDuration);
 
-audioInputRight  = testSignal.audio(:,1);
+audioInputRight  = testSignal.audio(:,2);
 audioOutputRight = createEcho(audioInputLeft,wetDryRatio,feedbackGain,echoDuration);
 
 figure(1)
@@ -41,17 +41,19 @@ subplot(2,1,1)
 hold on
 plot(audioInputLeft); 
 plot(dataOut.Data(:,1))
-plot(audioOutputLeft);
+plot(audioOutputLeft,'--');
 hold off;
 title(['Delay = ' num2str(mp.register{2}.value) '  Enable = ' num2str(mp.register{1}.value) '  Decay = ' num2str(mp.register{3}.value)  '  Wet/Dry Mix = ' num2str(mp.register{4}.value)])
+legend('Input Audio','Simulink Simulation','Direct Calculation')
 
 subplot(2,1,2)
 hold on
 plot(audioInputRight);
 plot(dataOut.Data(:,2))
-plot(audioOutputRight);
+plot(audioOutputRight,'--');
 hold off
 title(['Delay = ' num2str(mp.register{2}.value) '  Enable = ' num2str(mp.register{1}.value) '  Decay = ' num2str(mp.register{3}.value)  '  Wet/Dry Mix = ' num2str(mp.register{4}.value)])
+legend('Input Audio','Simulink Simulation','Direct Calculation')
 
 % original_audio = [mp.test_signal.left(:) mp.test_signal.right(:)];
 % processed_audio = [mp.left_data_out(:) mp.right_data_out(:)];
