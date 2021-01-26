@@ -1,6 +1,6 @@
 {
     "system": {
-        "name": "Simple Hearing Aide",
+        "name": "Simple Hearing Aid",
         "description": "Adaptive Wiener Filtering Noise Suppression and FFT Filtering",
         "target": "audiomini",
         "sampleClockFrequency": 48000,
@@ -22,7 +22,7 @@
 
     "devices": [
         {
-            "name": "simple_hearing_aide",
+            "name": "simple_hearing_aid",
             "registers": [
                 {
                     "dataType": {
