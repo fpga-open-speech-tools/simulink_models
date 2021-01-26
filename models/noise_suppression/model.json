@@ -1,18 +1,20 @@
 {
     "system": {
+        "name": "Noise Suppression",
+        "description": "Adaptive Wiener Filtering",
         "target": "audiomini",
         "sampleClockFrequency": 48000,
         "systemClockFrequency": 98304000,
         "processing": "sample",
         "audioIn": {
-            "wordLength": 32,
-            "fractionLength": 28,
+            "wordLength": 24,
+            "fractionLength": 23,
             "signed": true,
             "numberOfChannels": 2
         },
         "audioOut": {
-            "wordLength": 32,
-            "fractionLength": 28,
+            "wordLength": 24,
+            "fractionLength": 23,
             "signed": true,
             "numberOfChannels": 2
         }
