@@ -38,7 +38,7 @@ audioInputRight  = testSignal.audio(:,2);
 audioOutputLeft = createEcho(audioInputLeft,wetDryRatio,feedbackGain,echoDuration);
 audioOutputRight = createEcho(audioInputRight,wetDryRatio,feedbackGain,echoDuration);
 
-figure(1)
+figure
 subplot(2,1,1)
 hold on
 plot(audioInputLeft); 
