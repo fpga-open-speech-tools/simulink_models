@@ -3,16 +3,16 @@
         [{
             "name": "db Min",
             "min": 0,
-            "max": 92,
+            "max": 91,
             "step": 1,
             "value": 0
         },
         {
             "name": "db Max",
             "min": 0,
-            "max": 93,
+            "max": 92,
             "step": 1,
-            "value": 93
+            "value": 92
         }]
     ],
     "groups": [
@@ -29,7 +29,7 @@
         "initFunctions": [
         ],
         "groupFunctions": [
-            {"output_name":"table_${index}_gains","function":"get_table_gains(gain_table_size, band_${index}_min, band_${index}_max)"},
+            {"output_name":"table_${index}_gains","function":"get_table_gains(gain_table_size, gain_table_spacing, band_${index}_min, band_${index}_max)"},
             {"output_name":"table_${index}_gains_scaled", "function":"print_table(dotPow(10,dotDivide(table_${index}_gains,10)))"}
 
         ],
@@ -62,16 +62,16 @@
                 "value": {
                     "parameters":["table"],
                     "type":"javascript",
-                    "output": "let output = ''; table.forEach((val) => {output += val + ' ';}); return output;"
+                    "output": "let output = ''; table.map(value => value.toFixed(5).replace(/\\.0+$/,'')).forEach((val) => {output += val + ' ';}); return output;"
                 }
             },
             {
                 "name":"get_table_gains",
                 "type":"function",
                 "value":{
-                    "parameters":["table_size","min", "max"],
+                    "parameters":["table_size","table_spacing", "min", "max"],
                     "type":"javascript",
-                    "output":"console.log(table_size); console.log(min); console.log(max);let newTable = Array.from(Array(table_size).keys()); console.log(newTable); let x = newTable.map(value=>value * (max - min)/(table_size - 1) + min - 3 * value); console.log(x); return x;"
+                    "output":"let newTable = Array.from(Array(table_size).keys()); let x = newTable.map(value=>value * (max - min)/(table_size - 1) + min - table_spacing * value); console.log(x); return x;"
                 }
             }
         ],

@@ -32,7 +32,9 @@
             {"output_name":"table_attack_decay", "function":"[]"}
         ],
         "groupFunctions": [
-            {"output_name":"table_${index}_attack_decay", "function":"print_table([exp(-1/(fs*tau_a_${index}/1000)),1 - exp(-1/(fs*tau_r_${index}/1000))])"}
+            {"output_name":"test2", "function":"print_table([tau_a_${index}])"},
+            {"output_name":"test3", "function":"print_table([tau_r_${index}])"},
+            {"output_name":"table_${index}_attack_decay", "function":"print_table([exp(-1/(fs*tau_a_${index}/1000)), exp(-1/(fs*tau_r_${index}/1000))])"}
         ],
         "endFunctions": [
         ],
@@ -58,7 +60,7 @@
                 "value": {
                     "parameters":["table"],
                     "type":"javascript",
-                    "output": "let output = ''; table.forEach((val) => {output += val + ' ';}); return output;"
+                    "output": "let output = ''; table.map(value => value.toFixed(5).replace(/\\.0+$/,'')).forEach((val) => {output += val + ' ';}); console.log(output); return output;"
                 }
             }
         ],
