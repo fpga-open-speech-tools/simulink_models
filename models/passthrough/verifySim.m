@@ -32,8 +32,8 @@
 
 close all;
 
-audioOut = mp.Avalon_Source_Data.Data;
-audioChannel = mp.Avalon_Source_Channel.Data;
+audioOut = mp.Avalon_Sink_Data.Data;
+audioChannel = mp.Avalon_Sink_Channel.Data;
 
 figure()
 subplot(2,1,1) 
