@@ -1,0 +1,110 @@
+{
+    "system": {
+        "name": "Simple Hearing Aid",
+        "description": "Adaptive Wiener Filtering Noise Suppression and FFT Filtering",
+        "target": "audiomini",
+        "sampleClockFrequency": 48000,
+        "systemClockFrequency": 98304000,
+        "processing": "sample",
+        "audioIn": {
+            "wordLength": 24,
+            "fractionLength": 23,
+            "signed": true,
+            "numberOfChannels": 2
+        },
+        "audioOut": {
+            "wordLength": 24,
+            "fractionLength": 23,
+            "signed": true,
+            "numberOfChannels": 2
+        }
+    },
+
+    "devices": [
+        {
+            "name": "simple_hearing_aid",
+            "registers": [
+                {
+                    "dataType": {
+                        "fractionLength": 0,
+                        "signed": false,
+                        "type": "boolean",
+                        "wordLength": 1
+                    },
+                    "defaultValue": 1,
+                    "name": "sys_enable",
+                    "registerNumber": 0
+                },
+                {
+                    "dataType": {
+                        "fractionLength": 0,
+                        "signed": false,
+                        "type": "boolean",
+                        "wordLength": 1
+                    },
+                    "defaultValue": 1,
+                    "name": "ns_enable",
+                    "registerNumber": 1
+                },
+                {
+                    "dataType": {
+                        "fractionLength": 15,
+                        "signed": false,
+                        "type": "ufix16_en15",
+                        "wordLength": 16 
+                    },
+                    "defaultValue": 0.001,
+                    "name": "noise_variance",
+                    "registerNumber": 2
+                },
+                {
+                    "dataType": {
+                        "fractionLength": 0,
+                        "signed": false,
+                        "type": "boolean",
+                        "wordLength": 1
+                    },
+                    "defaultValue": 1,
+                    "name": "left_channel_filter_enable",
+                    "registerNumber": 3
+                },
+                {
+                    "dataType": {
+                        "fractionLength": 0,
+                        "signed": false,
+                        "type": "ufix2",
+                        "wordLength": 2
+                    },
+                    "enumerations": {"LPF": 0, "BPF": 1, "HPF": 2, "APF": 3},
+                    "defaultValue": 0,
+                    "name": "left_channel_filter_select",
+                    "registerNumber": 4
+                },
+                {
+                    "dataType": {
+                        "fractionLength": 0,
+                        "signed": false,
+                        "type": "boolean",
+                        "wordLength": 1
+                    },
+                    "defaultValue": 1,
+                    "name": "right_channel_filter_enable",
+                    "registerNumber": 5
+                },
+                {
+                    "dataType": {
+                        "fractionLength": 0,
+                        "signed": false,
+                        "type": "ufix2",
+                        "wordLength": 2
+                    },
+                    "enumerations": {"LPF": 0, "BPF": 1, "HPF": 2, "APF": 3},
+                    "defaultValue": 0,
+                    "name": "right_channel_filter_select",
+                    "registerNumber": 6
+                }
+            ]
+        }
+    ]
+    
+}
