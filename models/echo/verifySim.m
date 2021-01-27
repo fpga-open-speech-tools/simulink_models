@@ -35,8 +35,8 @@ audioInputLeft  = testSignal.audio(:,1);
 audioInputRight  = testSignal.audio(:,2);
 
 % Calculate the echo result using a Matlab script
-audioOutputLeft = createEcho(audioInputLeft,wetDryRatio,feedbackGain,echoDuration);
-audioOutputRight = createEcho(audioInputRight,wetDryRatio,feedbackGain,echoDuration);
+audioOutputLeft = createEcho(audioInputLeft,wetDryRatio,decayGain,echoDuration);
+audioOutputRight = createEcho(audioInputRight,wetDryRatio,decayGain,echoDuration);
 
 figure
 subplot(2,1,1)
