@@ -32,15 +32,22 @@
 
 close all;
 
+audioOut = mp.Avalon_Source_Data.Data;
+audioChannel = mp.Avalon_Source_Channel.Data;
+
 figure()
-subplot(2,1,1)
-plot(testSignal.audio(:,1)); hold on
-plot(mp.dataOut(1, :))
+subplot(2,1,1) 
+hold on
+plot(testSignal.audio(:,1));
+plot(audioOut(audioChannel == 0))
+hold off
 title('Left Passtrhough')
 legend('input', 'output')
 
 subplot(2,1,2)
-plot(testSignal.audio(:,2)); hold on
-plot(mp.dataOut(2, :))
+hold on
+plot(testSignal.audio(:,2));
+plot(audioOut(audioChannel == 1))
+hold off
 title('Right Passthrough')
 legend('input', 'output')
