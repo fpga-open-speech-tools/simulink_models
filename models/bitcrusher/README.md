@@ -4,7 +4,7 @@ This design implements a basic [bitcrusher](https://en.wikipedia.org/wiki/Bitcru
 ## Usage
  - `Enable`: Enable or disable the bitcrusher sound effect. In a disabled state, audio is passed directly through the system.
  - `Bits`: The desired audio resolution in number of bits (e.g. 8 bits)
- - `Wet Dry Mix`: The ratio of the original audio (dry) to the echo signal (wet). This value should range between 0 and 1 where 0 passes only the original audio and 1 passes only the delayed feedback signal.
+ - `Wet Dry Mix`: The ratio of the original audio (dry) to the echo signal (wet). This value should range between 0 and 1 where 0 passes only the original audio and 1 passes only the modified signal.
  
 ## Implementation
 The bitcrusher reduces the apparent resolution of the audio by AND'ing the audio samples with a bit resolution mask. For example, a 24-bit audio sample would be reduced to 8-bits of resolution by performing a bit-wise AND with the mask `0xFF0000`.
