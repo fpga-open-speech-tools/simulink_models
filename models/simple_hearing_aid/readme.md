@@ -1,5 +1,6 @@
 # A Simple Hearing Aid
 This simple hearing aid example is a combination of the [Adaptive Wiener Filter Noise Suppression Model](../noise_suppression) and the [FFT Filter Model](../fft_filters).
+This model was developed using the Frost Autogen Framework and deployed to an Audio Mini using Frost Edge. To set up Frost Autogen or Frost Edge, please review the [Getting Started Guides](https://github.com/fpga-open-speech-tools/docs/tree/master/getting_started).
 
 ## Usage
 - `System Enable`: Enable or disable the audio processing.  Audio will pass directly from input to output when this processing is disabled.
