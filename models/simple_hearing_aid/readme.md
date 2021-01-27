@@ -2,19 +2,19 @@
 This simple hearing aid example is a combination of the [Adaptive Wiener Filter Noise Suppression Model](../noise_suppression) and the [FFT Filter Model](../fft_filters).
 
 ## Usage
-- `System Enable`: The first enable and disable toggle will pass the audio through the simple hearing aid or by pass it.
+- `System Enable`: Enable or disable the audio processing.  Audio will pass directly from input to output when this processing is disabled.
 - **Noise Suppression Controls**:
-    - `Noise Suppression Enable`: The second enable and disable toggle turn on or off the noise suppression component
+    - `Noise Suppression Enable`: Enable or disable the noise suppression.
     - `Noise Variance`: The amount of noise suppression can be varied at runtime, which ranges from 0 to 1
 - **Left Channel FFT Filter Controls**: 
-    - `Left Channel FFT Filter Enable`: The third enable and disable toggle turn on or off the FFT Filters
+    - `Left Channel FFT Filter Enable`: Enable or disable the FFT filters for the left audio channel.
     - `Left Channel FFT Filter Selection`: These are defined in [model parameters](modelparameters.m). *Note the filter parameters are the same for both channels because of the model referencing.*
         - `LPF`: Low Pass Filter from 0-4k Hz
         - `BPF`: Band Pass Filter from 4k-8k Hz
         - `HPF`: High Pass Filter from 8k Hz and up
         - `APF`: All Pass Filter
 - **Right Channel FFT Filter Controls**: 
-    - `Right Channel FFT Filter Enable`: The third enable and disable toggle turn on or off the FFT Filters
+    - `Right Channel FFT Filter Enable`: Enable or disable the FFT filters for the right audio channel.
     - `Right ChannelFFT Filter Selection`: These are defined in [model parameters](modelparameters.m). *Note the filter parameters are the same for both channels because of the model referencing.*
         - `LPF`: Low Pass Filter from 0-4k Hz
         - `BPF`: Band Pass Filter from 4k-8k Hz
