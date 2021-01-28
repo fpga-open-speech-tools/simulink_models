@@ -7,10 +7,13 @@ mp.testFile = [mp.test_signals_path filesep 'noisySpeech.wav'];
 mp.sim_prompts = 1;
 mp.sim_verify = 1;
 mp.simDuration = 1;
-mp.nSamples = config.system.sampleClockFrequency * mp.simDuration;
+mp.nSamples = mp.Fs * mp.simDuration;
 
-mp.useAvalonInterface = false;
-    
+
+%% Gain parameters
+
+gain_dt = mp.register{2}.dataType;
+
 %% Flanger parameters
 
 % 10 ms window
