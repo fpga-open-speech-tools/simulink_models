@@ -6,7 +6,7 @@ This example design shows the implementation of a simple audio gain control usin
  - `gain`: The amount of gain applied to the audio signal.  
  
 ## Implementation
-The simple gain model takes an audio signal and both a gain value and an enable signal from user controls.  The audio signal is directly multiplied by the gain value which is then passed out of the dataplane when the enable is 1.  When the enable is 0, the original audio is passed through the dataplane.
+The simple gain model takes an audio signal and two signals from user controls; gain and enable.  The audio signal is directly multiplied by the gain value which is then passed out of the dataplane when the enable is 1.  When the enable is 0, the original audio is passed through the dataplane.
 
 <p align="center">
   <img src="simple_gain.png" />
