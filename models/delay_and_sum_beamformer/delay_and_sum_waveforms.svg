@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Created with Inkscape (http://www.inkscape.org/) -->
-
 <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"
@@ -14,7 +12,7 @@
    viewBox="0 0 170.35576 75.259723"
    version="1.1"
    id="svg8"
-   inkscape:version="0.92.4 5da689c313, 2019-01-14"
+   inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07, custom)"
    sodipodi:docname="delay_and_sum_waveforms.svg">
   <defs
      id="defs2">
@@ -458,11 +456,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.49497475"
-     inkscape:cx="-285.60397"
-     inkscape:cy="72.528636"
+     inkscape:zoom="1.4"
+     inkscape:cx="239.85724"
+     inkscape:cy="119.90464"
      inkscape:document-units="mm"
-     inkscape:current-layer="g983"
+     inkscape:current-layer="layer1"
      showgrid="true"
      units="in"
      inkscape:snap-object-midpoints="true"
@@ -471,15 +469,16 @@
      inkscape:snap-intersection-paths="true"
      inkscape:snap-smooth-nodes="true"
      inkscape:snap-midpoints="true"
-     inkscape:window-width="2540"
-     inkscape:window-height="1038"
+     inkscape:window-width="1905"
+     inkscape:window-height="2097"
      inkscape:window-x="10"
-     inkscape:window-y="592"
+     inkscape:window-y="413"
      inkscape:window-maximized="0"
      fit-margin-top="0"
      fit-margin-left="0"
      fit-margin-right="0"
-     fit-margin-bottom="0">
+     fit-margin-bottom="0"
+     inkscape:document-rotation="0">
     <inkscape:grid
        type="xygrid"
        id="grid967"
@@ -494,7 +493,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -503,6 +502,39 @@
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(-9.1367942,-49.695209)">
+    <g
+       transform="matrix(0.70588237,0,0,0.70588237,42.098915,28.93658)"
+       id="g983"
+       style="stroke-width:1.41666663">
+      <rect
+         style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:0;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers fill stroke"
+         id="rect124"
+         width="713.18225"
+         height="302.99014"
+         x="-5.7655425"
+         y="-2.6755109"
+         transform="matrix(0.37482638,0,0,0.37482638,-62.359038,26.414058)" />
+      <g
+         id="g10688">
+        <circle
+           style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.99953699;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers"
+           id="path969"
+           cx="95.912819"
+           cy="82.706596"
+           r="11.244792" />
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12.7px;line-height:1.25;font-family:'Linux Libertine';-inkscape-font-specification:'Linux Libertine';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.374826"
+           x="92.375053"
+           y="86.014923"
+           id="text973"><tspan
+             sodipodi:role="line"
+             id="tspan971"
+             x="92.375053"
+             y="86.014923"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12.7px;font-family:'Linux Libertine';-inkscape-font-specification:'Linux Libertine';stroke-width:0.374826">∑</tspan></text>
+      </g>
+    </g>
     <g
        style="font-style:normal;font-weight:normal;font-size:12px;font-family:Dialog;color-interpolation:auto;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:9.50581837;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto"
        id="g889"
@@ -569,31 +601,6 @@
       </g>
     </g>
     <g
-       transform="matrix(0.70588237,0,0,0.70588237,42.098915,28.93658)"
-       id="g983"
-       style="stroke-width:1.41666663">
-      <g
-         id="g10688">
-        <circle
-           style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.99953699;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers"
-           id="path969"
-           cx="95.912819"
-           cy="82.706596"
-           r="11.244792" />
-        <text
-           xml:space="preserve"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12.69999981px;line-height:1.25;font-family:'Linux Libertine';-inkscape-font-specification:'Linux Libertine';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.37482637"
-           x="92.375053"
-           y="86.014923"
-           id="text973"><tspan
-             sodipodi:role="line"
-             id="tspan971"
-             x="92.375053"
-             y="86.014923"
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12.69999981px;font-family:'Linux Libertine';-inkscape-font-specification:'Linux Libertine';stroke-width:0.37482637">∑</tspan></text>
-      </g>
-    </g>
-    <g
        id="g999-7"
        transform="matrix(0.9583328,0,0,0.9583328,8.2682636,20.973992)"
        style="stroke-width:1.04347885">
@@ -606,7 +613,7 @@
          y="53.583332" />
       <text
          xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:1.25;font-family:'Linux Libertine';-inkscape-font-specification:'Linux Libertine';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.27608711"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;line-height:1.25;font-family:'Linux Libertine';-inkscape-font-specification:'Linux Libertine';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.276087"
          x="67.574791"
          y="60.809349"
          id="text989-3"><tspan
@@ -614,8 +621,8 @@
            id="tspan987-7"
            x="67.574791"
            y="60.809349"
-           style="font-size:8.46666622px;stroke-width:0.27608711">Δ<tspan
-   style="font-size:64.99999762%;baseline-shift:sub;stroke-width:0.27608711"
+           style="font-size:8.46667px;stroke-width:0.276087">Δ<tspan
+   style="font-size:65%;baseline-shift:sub;stroke-width:0.276087"
    id="tspan1080">2</tspan></tspan></text>
     </g>
     <g
@@ -631,7 +638,7 @@
          y="53.583332" />
       <text
          xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:1.25;font-family:'Linux Libertine';-inkscape-font-specification:'Linux Libertine';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.27608711"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;line-height:1.25;font-family:'Linux Libertine';-inkscape-font-specification:'Linux Libertine';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.276087"
          x="67.574791"
          y="60.809349"
          id="text989-3-6"><tspan
@@ -639,8 +646,8 @@
            id="tspan987-7-7"
            x="67.574791"
            y="60.809349"
-           style="font-size:8.46666622px;stroke-width:0.27608711">Δ<tspan
-   style="font-size:64.99999762%;baseline-shift:sub"
+           style="font-size:8.46667px;stroke-width:0.276087">Δ<tspan
+   style="font-size:65%;baseline-shift:sub"
    id="tspan10681">3</tspan></tspan></text>
     </g>
     <g
@@ -656,7 +663,7 @@
          y="53.583332" />
       <text
          xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:1.25;font-family:'Linux Libertine';-inkscape-font-specification:'Linux Libertine';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.27608711"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;line-height:1.25;font-family:'Linux Libertine';-inkscape-font-specification:'Linux Libertine';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.276087"
          x="67.574791"
          y="60.809349"
          id="text989-3-0"><tspan
@@ -664,8 +671,8 @@
            id="tspan987-7-4"
            x="67.574791"
            y="60.809349"
-           style="font-size:8.46666622px;stroke-width:0.27608711">Δ<tspan
-   style="font-size:64.99999762%;baseline-shift:sub"
+           style="font-size:8.46667px;stroke-width:0.276087">Δ<tspan
+   style="font-size:65%;baseline-shift:sub"
    id="tspan10683">4</tspan></tspan></text>
     </g>
     <g
@@ -681,7 +688,7 @@
          y="53.583332" />
       <text
          xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;line-height:1.25;font-family:'Linux Libertine';-inkscape-font-specification:'Linux Libertine';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.27608711"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;line-height:1.25;font-family:'Linux Libertine';-inkscape-font-specification:'Linux Libertine';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.276087"
          x="67.574791"
          y="60.809349"
          id="text989-3-01"><tspan
@@ -689,12 +696,12 @@
            id="tspan987-7-5"
            x="67.574791"
            y="60.809349"
-           style="font-size:8.46666622px;stroke-width:0.27608711">Δ<tspan
-   style="font-size:64.99999762%;baseline-shift:sub"
+           style="font-size:8.46667px;stroke-width:0.276087">Δ<tspan
+   style="font-size:65%;baseline-shift:sub"
    id="tspan10679">1</tspan></tspan></text>
     </g>
     <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.26458332;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker8948)"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.264583;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker8948)"
        d="M 81.800343,63.236213 103.78404,82.142188"
        id="path8920"
        inkscape:connector-type="polyline"
@@ -702,7 +709,7 @@
        inkscape:connection-start="#g999-7-4"
        inkscape:connection-end="#g983" />
     <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker9066)"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker9066)"
        d="m 81.800343,78.917187 20.399097,6.11973"
        id="path8922"
        inkscape:connector-type="polyline"
@@ -710,7 +717,7 @@
        inkscape:connection-start="#g999-7"
        inkscape:connection-end="#g983" />
     <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker9190)"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker9190)"
        d="M 81.800343,95.71823 102.19944,89.5985"
        id="path8924"
        inkscape:connector-type="polyline"
@@ -718,7 +725,7 @@
        inkscape:connection-start="#g999-7-1"
        inkscape:connection-end="#g983" />
     <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker7726)"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker7726)"
        d="M 81.800343,111.3992 103.78404,92.493228"
        id="path8926"
        inkscape:connector-type="polyline"
@@ -726,28 +733,28 @@
        inkscape:connection-start="#g999-7-0"
        inkscape:connection-end="#g983" />
     <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#marker9618)"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#marker9618)"
        d="m 71.657988,58.875 -9.480905,-10e-7"
        id="path9312"
        inkscape:connector-type="polyline"
        inkscape:connector-curvature="0"
        inkscape:connection-start="#g999-7-4" />
     <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#marker9476)"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#marker9476)"
        d="m 71.657988,77.395834 -9.480905,-10e-7"
        id="path9314"
        inkscape:connector-type="polyline"
        inkscape:connector-curvature="0"
        inkscape:connection-start="#g999-7" />
     <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#marker9340)"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#marker9340)"
        d="m 71.657988,97.239583 -8.157989,-10e-7"
        id="path9316"
        inkscape:connector-type="polyline"
        inkscape:connector-curvature="0"
        inkscape:connection-start="#g999-7-1" />
     <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#marker7312)"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#marker7312)"
        d="m 71.657988,115.76042 -6.835072,0"
        id="path9318"
        inkscape:connector-type="polyline"
