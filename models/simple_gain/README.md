@@ -1,4 +1,4 @@
-# Simple Vector Gain
+# Simple Gain
 This example design shows the implementation of a simple audio gain control using the Avalon streaming interface.  To set up Frost Autogen or Frost Edge, please review the [Getting Started Guides](https://github.com/fpga-open-speech-tools/docs/tree/master/getting_started). 
 
 ## Usage
