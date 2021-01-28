@@ -37,7 +37,7 @@
                     "dataType": {
                         "fractionLength": 12,
                         "signed": true,
-                        "type": "sdfds",
+                        "type": "sfix16_en12",
                         "wordLength": 16
                     },
                     "defaultValue": 1,
