@@ -11,7 +11,7 @@ two tape machines. This effect can be modeled with a feedforward comb filter who
 
 ## Usage
  - `Enable`: Enable or disable the flanger. In a disabled state, audio is passed directly through the system.
- - `Rate`: The rate of the LFO that modulates the delay line. This value ranges between 0 and approximatley 8 Hz.
+ - `Rate`: The rate of the LFO that modulates the delay line. This value ranges between 0 and approximately 8 Hz.
  - `Regen`: The amount of feedback gain 
  - `Wet Dry Mix`: The ratio of the original audio (dry) to the processed signal (wet). This value should range between 0 and 1, where 0 passes only the original audio and 1 passes only the modified signal.
  
