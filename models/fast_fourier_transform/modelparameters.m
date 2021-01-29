@@ -16,7 +16,7 @@ mp.FFT_size = 128;
 % XXX: an unsigned int of mp.FFT_size_Nbits only goes up to mp.FFT_size - 1; not sure if that's intended or a bug 
 mp.FFT_size_Nbits = log2(mp.FFT_size);
 mp.FFT_size_half = mp.FFT_size/2;
-mp.FFT_frame_shift = mp.FFT_size/4;  % Changiing this from a divide by four implies substantial architectural changes
+mp.FFT_frame_shift = mp.FFT_size/4;  % XXX: Changiing this from a divide by four implies substantial architectural changes
 mp.FFT_frame_shift_Nbits = log2(mp.FFT_frame_shift);
 
 mp.DPRAM1_size = mp.FFT_size*2;  % number of words
