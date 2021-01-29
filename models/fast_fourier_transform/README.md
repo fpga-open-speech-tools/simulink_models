@@ -22,4 +22,4 @@ For a basic example of connecting the analysis and synthesis blocks together, se
 When using the analysis and synthesis models, you need to implement all the parameters found in the `%% Model parameters` section of `modelparameters.m`; the variable names **can not be changed** without having to change them in the analysis and synthesis models. The only model parameter you should change is `mp.FFT_size`. All other parameters are derived parameters; **changing them will break the analysis and synthesis models**. 
 
 ## Implementation
-The incoming audio signal is buffered into a dual-port RAM that is twice the FFT size. Once the buffer is full, data is read out in bursts at rate 32-times faster than the sampling rate. The STFT is implemented with Hanning windows that are overlapped by 1/4 of the FFT size.
+The incoming audio signal is buffered into a dual-port RAM that is twice the FFT size. Once the buffer is full, data is read out in bursts at a rate 32-times faster than the sampling rate. The STFT is implemented with Hanning windows that are overlapped by 1/4 of the FFT size.
