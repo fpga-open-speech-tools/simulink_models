@@ -1,4 +1,4 @@
-# Delay and Sum Beamformer
+git # Delay and Sum Beamformer
 This model implements a delay and sum beamformer, intended for use with the [Audio Logic Microphone Array](https://fpga-open-speech-tools.github.io/ab_mic_array.html). In audio applications, beamforming is a spatial filtering technique in which an array of microphones is used to "focus" on signals coming from a particular direction. 
 
 This model was developed using the Frost Autogen Framework, and can be manually deployed to an Audio Research or Audio Blade. To set up Frost Autogen, please review the [Getting Started Guides](https://github.com/fpga-open-speech-tools/docs/tree/master/getting_started).

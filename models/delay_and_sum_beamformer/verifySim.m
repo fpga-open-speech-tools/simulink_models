@@ -49,7 +49,7 @@ subplot(3,1,1)
 plot(testSignal.audio(:,1));
 title('signal at each sensor')
 subplot(3,1,2)
-plot(mp.dataOut')
+plot(dataOut)
 title('beamformed signal')
 
 subplot(3,1,3)

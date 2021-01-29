@@ -31,6 +31,7 @@ mp.Fs = config.system.sampleClockFrequency;
 mp.signed = config.system.audioIn.signed;
 mp.W_bits = config.system.audioIn.wordLength;  % Word length
 mp.F_bits = config.system.audioIn.fractionLength;  % Number of fractional bits in word
+mp.audio_dt = fixdt(mp.signed, mp.W_bits, mp.F_bits);
 mp.nChannels = config.system.audioIn.numberOfChannels;
 mp.nOutChannels = config.system.audioOut.numberOfChannels;
 
@@ -76,6 +77,18 @@ mp.Ts_system = 1 / mp.Fs_system;
 mp.Ts_sim = 1/(mp.Fs * mp.nChannels);         % System clock period
 mp.rate_change = mp.Fs_system/mp.Fs;   % how much faster the system clock is to the sample clock
 
+regSize = size(mp.register);
+nRegs = regSize(1);
+tempRegs = containers.Map();
+for idx=1:nRegs
+    tempRegs(mp.register{idx}.name) = mp.register{idx};
+end
+
+
+mp.getReg = tempRegs;
+clear tempRegs;
+clear nRegs;
+clear regSize;
 
 %% Helper functions
 function regs = parseregisters(config)
@@ -100,7 +113,6 @@ function regs = parsedeviceregisters(device)
             reg = device.registers{idx};
         end
         tempReg.name = reg.name;
-        tempReg.value = reg.defaultValue;
 
         if reg.dataType.type == "boolean"
             tempReg.dataType = fixdt('boolean');
@@ -108,6 +120,8 @@ function regs = parsedeviceregisters(device)
             tempReg.dataType = fixdt(reg.dataType.signed, ...
                 reg.dataType.wordLength, reg.dataType.fractionLength);
         end
+      
+        tempReg.value = fi(reg.defaultValue, tempReg.dataType);
         tempReg.timeseries = timeseries(tempReg.value, 0);
         
         regs{idx} = tempReg; 
