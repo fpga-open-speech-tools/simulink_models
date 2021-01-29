@@ -18,15 +18,16 @@ arraySpacing = mp.arraySpacing;
 samplingRate = mp.samplingRate;
 speedOfSound = mp.speedOfSound;
 
-% TODO: document this equation... this is across the entire array, 
-% but delays are relative to the array center, so delays are +/- maxDelay/2
+% this is across the entire array,  but delays are relative to the array
+% center, so delays are +/- maxDelay/2
 mp.maxDelay = sqrt(((mp.arraySize(1) - 1)*mp.arraySpacing).^2 + ((mp.arraySize(2) - 1)*mp.arraySpacing).^2)*mp.samplingRate/mp.speedOfSound;
-% buffer size to accomodate max delay; buffer size is a power of 2
 
+% buffer size to accomodate max delay; buffer size is a power of 2
 mp.integerDelayAddrSize = ceil(log2(floor(mp.maxDelay))) + 2;
 mp.integerDelayBufferSize = 2^mp.integerDelayAddrSize;
 mp.upsampleFactor = 16;
 upsampleFactor = mp.upsampleFactor;
+
 % number of required bits is two more than that required to represent upsampleFactor
 % because we need to be able to represent +/- upsample factor inclusive
 mp.fractionalDelayAddrSize = ceil(log2(floor(mp.upsampleFactor))) + 2;
