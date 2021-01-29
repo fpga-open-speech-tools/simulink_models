@@ -11,7 +11,7 @@ The basic idea behind [beamforming](https://en.wikipedia.org/wiki/Beamforming) i
 
 ## Usage
 - `Azimuth`: The horizontal steering angle in degrees (audio coming from this direction is reinforced); this ranges between +/-90 degrees.
-- `Elevation`: The vertical steering angle in degrees (audio coming from this direction is reincofreced); this ranges between +/-90 degrees.
+- `Elevation`: The vertical steering angle in degrees (audio coming from this direction is reinforced); this ranges between +/-90 degrees.
 
 ## Implementation
 The following block diagram shows a high-level view of the implementation.
