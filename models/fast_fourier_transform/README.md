@@ -9,6 +9,11 @@ These models were developed for use with the Frost Autogen Framework. To set up 
 ## Algorithm
 A Fast Fourier Transform (FFT) is used to transform audio into the frequency domain (known as [Fourier Analysis](https://en.wikipedia.org/wiki/Fourier_analysis)), after which frequency-domain processing can be performed; after processing, an inverse FFT (iFFT) is used to synthesize the time-domain audio from it's frequency spectrum (known as Fourier Synthesis). The models contained here implement the [Short-time Fourier transform](https://en.wikipedia.org/wiki/Short-time_Fourier_transform) (STFT) and inverse STFT; the inverse STFT is implemented using the [overlap-and-add method](https://en.wikipedia.org/wiki/Overlap%E2%80%93add_method).
 
+The following figure shows a graphical example of the STFT overlap-and-add method. The blue input signal is split up into 5 overlapped windows, and then transformed into the frequency domain. After processing in the frequency domain, an inverse FFT is applied to get the blue output signals, which are overlapped and added together to produce the final output signal.
+<p align="center">
+    <img src="fft_overlap_add_1.jpg" />
+</p>
+
 ## Usage
 The `fft_analysis` and `fft_synthesis` models are intended be used as [model references](https://www.mathworks.com/help/simulink/model-reference.html). To do frequency-domain processing, add the `fft_analysis` and `fft_synthesis` models to your model as referenced models. You will pass the audio into the `fft_analysis` block, do your desired frequency-domain processing on the `FFT_data` signal, then feed processed FFT data into the `modified_FFT_data` port of the `fft_synthesis` block. 
 
