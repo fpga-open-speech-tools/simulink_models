@@ -5,14 +5,14 @@
         "systemClockFrequency": 98304000,
         "processing": "sample",
         "audioIn": {
-            "wordLength": 32,
-            "fractionLength": 28,
+            "wordLength": 24,
+            "fractionLength": 23,
             "signed": true,
             "numberOfChannels": 2
         },
         "audioOut": {
-            "wordLength": 32,
-            "fractionLength": 28,
+            "wordLength": 24,
+            "fractionLength": 23,
             "signed": true,
             "numberOfChannels": 2
         }
@@ -20,7 +20,7 @@
 
     "devices": [
         {
-            "name": "dpr_test",
+            "name": "dpr",
             "registers": [
                 {
                     "dataType": {
