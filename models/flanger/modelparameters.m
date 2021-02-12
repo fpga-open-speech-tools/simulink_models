@@ -30,3 +30,7 @@ mp.nco_accumulator_bits = ceil(log2(mp.Fs/rate_min));
 %% Set parameters for the delay line
 mp.delay_max = mp.nco_max;
 mp.dpram_addr_size = ceil(log2(mp.delay_max));
+
+
+rate_dt = mp.getReg("rate").dataType;
+regen_dt = mp.getReg("regen").dataType;
