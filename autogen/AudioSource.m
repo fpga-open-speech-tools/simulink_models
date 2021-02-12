@@ -19,6 +19,7 @@ classdef AudioSource
     properties
         audio
         sampleRateHz
+        dataType
     end
     
     properties(SetAccess = private)
@@ -28,13 +29,18 @@ classdef AudioSource
     end
     
     methods
-        function obj = AudioSource(audio, sampleRateHz)
+        function obj = AudioSource(audio, sampleRateHz, dataType)
         %AudioSource Initializes AudioSource with m x n audio input and
         % sample rate in hz, where m is the the number of samples and n is
         % the number of channels.
         
             obj.sampleRateHz = sampleRateHz;
             obj.audio = audio;
+            if exist('dataType','var')
+                obj.dataType = dataType;
+            else
+                obj.dataType = fixdt(1,24,23);
+            end
         end
         
         function obj = set.audio(obj, audio)
@@ -71,12 +77,13 @@ classdef AudioSource
             % requires the input to be time series. Call this method
             % to use an AudioSource in Simulink simulations.
             time = [0:(obj.nSamples - 1)] / obj.sampleRateHz;
-            ts = timeseries(obj.audio, time);
+            fix_audio = fi(obj.audio, obj.dataType);
+            ts = timeseries(fix_audio, time);
         end
     end
 
     methods(Static)
-        function audioSource = fromFile(filepath, sampleRate, nSamples)
+        function audioSource = fromFile(filepath, sampleRate, nSamples, dataType)
             info = audioinfo(filepath);
             fileFs = info.SampleRate;
             
@@ -91,7 +98,7 @@ classdef AudioSource
             end     
             yResampled = resample(y,sampleRate, fileFs);
 
-            audioSource = AudioSource(yResampled, sampleRate);
+            audioSource = AudioSource(yResampled, sampleRate, dataType);
         end
     end
 

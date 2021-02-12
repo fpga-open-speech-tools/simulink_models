@@ -31,7 +31,7 @@ mp.modelAbbreviation = char(modelAbbreviation);
 
 configureModel;
 
-testSignal = AudioSource.fromFile(mp.testFile, mp.Fs, mp.nSamples);
+testSignal = AudioSource.fromFile(mp.testFile, mp.Fs, mp.nSamples, mp.audio_dt);
 stopTime = testSignal.duration;
 
 nSamples = testSignal.nSamples;
