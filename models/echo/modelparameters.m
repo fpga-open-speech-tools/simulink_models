@@ -13,6 +13,6 @@ delay_dpram_addr_size = ceil(log2(mp.max_delay)); % Size of the Dual Port RAM ne
 %% Define the register settings
 echoDuration = mp.register{2}.timeseries.Data;
 decayGain = mp.register{3}.timeseries.Data;
-decayType = mp.register{3}.dataType;
+decay_dt = mp.register{3}.dataType;
 wetDryRatio  = mp.register{4}.timeseries.Data;
-wetDryRatioType = mp.register{4}.dataType;
+wetDryRatio_dt = mp.register{4}.dataType;

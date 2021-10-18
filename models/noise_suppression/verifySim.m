@@ -25,7 +25,7 @@
 %% Verify the results of the Noise Suppresion Models
 % Initialize
 close all;
-original_audio = AudioSource.fromFile([mp.test_signals_path filesep 'sp03.wav'], mp.Fs, mp.nSamples);
+original_audio = AudioSource.fromFile([mp.test_signals_path filesep 'sp03.wav'], mp.Fs, mp.nSamples, mp.audio_dt);
 noiseVariance = mp.register{2}.timeseries.Data(1);
 % Calculate the MATLAB Results
 left_channel_matlab  = adaptiveWienerFilt(testSignal.audio(:,1), mp.windowSize, noiseVariance);
