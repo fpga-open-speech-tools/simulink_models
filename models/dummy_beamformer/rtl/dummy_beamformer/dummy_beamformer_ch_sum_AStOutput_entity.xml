@@ -1,4 +1,0 @@
-<?xml version='1.0' encoding='ISO-8859-1' ?>
-<entity name='dummy_beamformer_ch_sum_AStOutput' floating-point-script-prefix='dummy_beamformer_ch_sum_AStOutput_fpc'>
-  <clock name='sys' port='clk' reset='areset' reset-type='high' />
-</entity>

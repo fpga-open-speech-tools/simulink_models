@@ -1,0 +1,161 @@
+{
+    "system": {
+        "target": "audiomini",
+        "sampleClockFrequency": 48000,
+        "systemClockFrequency": 98304000,
+        "processing": "sample",
+        "audioIn": {
+            "wordLength": 24,
+            "fractionLength": 23,
+            "signed": true,
+            "numberOfChannels": 2
+        },
+        "audioOut": {
+            "wordLength": 24,
+            "fractionLength": 23,
+            "signed": true,
+            "numberOfChannels": 2
+        }
+    },
+
+    "devices": [
+        {
+            "name": "sound_effects",
+            "registers": [
+                {
+                    "dataType": {
+                        "fractionLength": 0,
+                        "signed": false,
+                        "type": "boolean",
+                        "wordLength": 1
+                    },
+                    "defaultValue": 1,
+                    "name": "gain_enable",
+                    "registerNumber": 0
+                },
+                {
+                    "dataType": {
+                        "fractionLength": 12,
+                        "signed": true,
+                        "type": "sdfds",
+                        "wordLength": 16
+                    },
+                    "defaultValue": 1,
+                    "name": "gain",
+                    "registerNumber": 1
+                },
+                 {
+                    "dataType": {
+                        "fractionLength": 0,
+                        "signed": false,
+                        "type": "boolean",
+                        "wordLength": 1
+                    },
+                    "defaultValue": 1,
+                    "name": "flanger_enable",
+                    "registerNumber": 2
+                },
+                {
+                    "dataType": {
+                        "fractionLength": 5,
+                        "signed": false,
+                        "type": "ufix8",
+                        "wordLength": 8
+                    },
+                    "defaultValue": 1,
+                    "name": "flanger_rate",
+                    "registerNumber": 3
+                },
+                {
+                    "dataType": {
+                        "fractionLength": 7,
+                        "signed": false,
+                        "type": "ufix8_En7",
+                        "wordLength": 8
+                    },
+                    "defaultValue": 0.5,
+                    "name": "flanger_regen",
+                    "registerNumber": 4
+                },
+                 {
+                    "dataType": {
+                        "fractionLength": 0,
+                        "signed": false,
+                        "type": "boolean",
+                        "wordLength": 1
+                    },
+                    "defaultValue": 1,
+                    "name": "echo_enable",
+                    "registerNumber": 5
+                },
+                {
+                    "dataType": {
+                        "fractionLength": 0,
+                        "signed": false,
+                        "type": "ufix15",
+                        "wordLength": 15
+                    },
+                    "defaultValue": 12000,
+                    "name": "echo_delay",
+                    "registerNumber": 6
+                },
+                {
+                    "dataType": {
+                        "fractionLength": 7,
+                        "signed": false,
+                        "type": "ufix8_En7",
+                        "wordLength": 8
+                    },
+                    "defaultValue": 0.8,
+                    "name": "echo_feedback",
+                    "registerNumber": 7
+                },
+                {
+                    "dataType": {
+                        "fractionLength": 7,
+                        "signed": false,
+                        "type": "ufix8_En7",
+                        "wordLength": 8
+                    },
+                    "defaultValue": 0.5,
+                    "name": "echo_wet_dry_mix",
+                    "registerNumber": 8
+                },
+                {
+                    "dataType": {
+                        "fractionLength": 0,
+                        "signed": false,
+                        "type": "boolean",
+                        "wordLength": 1
+                    },
+                    "defaultValue": 1,
+                    "name": "bitcrusher_enable",
+                    "registerNumber": 9
+                },
+                {
+                    "dataType": {
+                        "fractionLength": 0,
+                        "signed": false,
+                        "type": "ufix15",
+                        "wordLength": 5
+                    },
+                    "defaultValue": 8,
+                    "name": "bitcrusher_bits",
+                    "registerNumber": 10
+                },
+                {
+                    "dataType": {
+                        "fractionLength": 7,
+                        "signed": false,
+                        "type": "ufix8_En7",
+                        "wordLength": 8
+                    },
+                    "defaultValue": 0.5,
+                    "name": "bitcrusher_wet_dry_mix",
+                    "registerNumber": 11
+                }
+            ]
+        }
+    ]
+    
+}

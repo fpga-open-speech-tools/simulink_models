@@ -22,24 +22,44 @@
 % ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 %
 % Connor Dack
-% AudioLogic, Inc
+% Audio Logic
 % 985 Technology Blvd
 % Bozeman, MT 59718
 % openspeech@flatearthinc.com
 
-%% Plot the outputs
-figure;
-subplot(2,1,1)
-plot(testSignal.audio(:,1));
-hold on
-plot(data_out(:,1),'--');
-title('Left Channel')
-legend('Input', 'Filtered Output')
+%% Plot the Input to the FFT and the Output to the FFT
+close all;
 
-subplot(2,1,2)
-plot(testSignal.audio(:,2));
-hold on
-plot(data_out(:,2), '--');
-title('Right Channel')
-legend('Input', 'Filtered Output')
+data_input_left  = testSignal.audio(:,1);
+data_input_right = testSignal.audio(:,2);
+sim_out          = double(squeeze(data_out.data));
+left_channel     = sim_out(15 + 11+mp.FFT_size:end,1);
+right_channel    = sim_out(:,2);
 
+figure
+plot(data_input_left)
+hold on
+plot(left_channel)
+legend('Input', 'Output')
+title('FFT Validation - Left Channel')
+
+figure
+plot(data_input_right)
+hold on
+plot(right_channel)
+legend('Input', 'Output')
+title('FFT Validation - Right Channel')
+
+figure
+fft_data = real(fft_data_sim.Data);
+plot(fft_data)
+legend('FFT data')
+title('FFT Data - Left Channel')
+
+% fft_matlab = abs(fft(data_input_left));
+% sim_out    = double(squeeze(fft_out.data));
+% left_channel = abs(sim_out(:,1));
+% figure
+% plot(fft_matlab)
+% hold on
+% plot(left_channel);

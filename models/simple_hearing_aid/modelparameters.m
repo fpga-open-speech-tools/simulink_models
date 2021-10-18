@@ -1,17 +1,23 @@
 
-%%% Autogen parameters
+%% Autogen parameters
+mp.testFile = [mp.test_signals_path filesep 'noisySpeech.wav'];
 
-mp.testFile = [mp.test_signals_path filesep 'acoustic.wav'];
-
-% TODO: use booleans instead of 0 and 1
 mp.sim_prompts = 1;
-mp.sim_verify = 1;
+mp.sim_verify  = 1;
 mp.simDuration = .1;
 mp.nSamples = config.system.sampleClockFrequency * mp.simDuration;
 
 mp.useAvalonInterface = false;
+%% Noise Suppression Model Parameters
+% Exponential moving average setup 10 ms window
+mp.windowSize = 10e-3 * mp.Fs;
 
-%% Model parameters 
+% define the exponential moving average weight to be roughly equivalent to
+% a simple moving average of length mp.windowSize
+% https://en.wikipedia.org/wiki/Moving_average#Relationship_between_SMA_and_EMA
+mp.exponentialMovingAverageWeight = fi(2/(mp.windowSize + 1), 0, 32, 31);
+
+%% FFT Model parameters 
 mp.FFT_size = 128;
 % XXX: an unsigned int of mp.FFT_size_Nbits only goes up to mp.FFT_size - 1; not sure if that's intended or a bug 
 mp.FFT_size_Nbits = log2(mp.FFT_size);
@@ -54,3 +60,5 @@ mp.latency_threshold3 = sum(mp.fft_gains_3_real)/mp.FFT_size;
 mp.fft_gains_4_real = ones(mp.FFT_size_half,1);
 mp.fft_gains_4_imag  = zeros(mp.FFT_size_half,1);  % zero imaginary part
 mp.latency_threshold4 = sum(mp.fft_gains_4_real)/mp.FFT_size;
+
+

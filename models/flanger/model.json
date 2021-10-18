@@ -1,6 +1,7 @@
 {
     "system": {
-        "name": "Variable Delay Echo",
+        "name": "Flanger",
+        "description": "The Flange Sound Effect Demo",
         "target": "audiomini",
         "sampleClockFrequency": 48000,
         "systemClockFrequency": 98304000,
@@ -21,7 +22,7 @@
 
     "devices": [
         {
-            "name": "variable_delay_echo",
+            "name": "flanger",
             "registers": [
                 {
                     "dataType": {
@@ -36,13 +37,13 @@
                 },
                 {
                     "dataType": {
-                        "fractionLength": 0,
+                        "fractionLength": 5,
                         "signed": false,
-                        "type": "ufix15",
-                        "wordLength": 15
+                        "type": "ufix8",
+                        "wordLength": 8
                     },
-                    "defaultValue": 12000,
-                    "name": "delay",
+                    "defaultValue": 1,
+                    "name": "rate",
                     "registerNumber": 1
                 },
                 {
@@ -52,20 +53,9 @@
                         "type": "ufix8_En8",
                         "wordLength": 8
                     },
-                    "defaultValue": 0.8,
-                    "name": "decay",
-                    "registerNumber": 2
-                },
-                {
-                    "dataType": {
-                        "fractionLength": 8,
-                        "signed": false,
-                        "type": "ufix8_En8",
-                        "wordLength": 8
-                    },
                     "defaultValue": 0.5,
-                    "name": "wet_dry_mix",
-                    "registerNumber": 3
+                    "name": "regen",
+                    "registerNumber": 2
                 }
             ]
         }
