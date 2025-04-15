@@ -3,15 +3,18 @@
 
 mp.testFile = [mp.test_signals_path filesep 'noisySpeech.wav'];
 
-% TODO: use booleans instead of 0 and 1
 mp.sim_prompts = 1;
 mp.sim_verify = 1;
 mp.simDuration = 1;
 mp.nSamples = config.system.sampleClockFrequency * mp.simDuration;
 
-mp.useAvalonInterface = false;
-    
+%% Gain parameters
+gain_dt = mp.getReg("gain").dataType;
+
 %% Flanger parameters
+
+rate_dt = mp.getReg("flanger_rate").dataType;
+regen_dt = mp.getReg("flanger_regen").dataType;
 
 % 10 ms window
 mp.windowSize = 10e-3 * mp.Fs;
@@ -38,5 +41,7 @@ mp.dpram_addr_size = ceil(log2(mp.delay_max));
 
 
 %% Echo parameters
+decay_dt = mp.getReg("echo_feedback").dataType;
+wet_dry_mix_dt = mp.getReg("echo_wet_dry_mix").dataType;
 mp.max_delay = mp.Fs*1/2;   % max delay in samples, i.e. mp.Fs = 1 second max delay
 delay_dpram_addr_size = ceil(log2(mp.max_delay));
